@@ -3,7 +3,7 @@ import { getCookie } from "../../Cookie";
 
 //1. axios 인터셉터 생성
 export const api = axios.create({
-  //baseURL: "http://3.39.177.59:8080",
+
 
   baseURL: "URL",
 
@@ -15,7 +15,7 @@ export const api = axios.create({
 });
 
 export const instances = axios.create({
-  //baseURL: "http://3.39.177.59:8080",
+
 
   baseURL: "URL",
 
