@@ -1,0 +1,145 @@
+.card {
+  position: relative;
+  cursor: pointer;
+  width: 20%;
+  height: auto;
+  /* border: 1px black solid; */
+  }
+  
+  .card .front{
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      border: 0px solid black;
+      position: absolute;
+      transform: rotateY(90deg);
+      transition: all ease-in 0.2s;
+  }
+  
+  .card .front.matched{
+      background-color:  #6b86ff;
+  }
+  
+  
+  
+  .flipped .front {
+      transform: rotateY(0deg);
+      transition-delay: 0.2s;
+  }
+  
+  .card .back{
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      border: 0px solid white;
+      transition: all ease-in 0.2s;
+      transition-delay: 0.2s;
+  }
+  
+  .flipped .back {
+      transform: rotateY(90deg);
+      transition-delay: 0s;
+  }
+  
+  .card {
+    position: relative;
+    cursor: pointer;
+    width: 20%;
+    height: auto;
+    /* border: 1px black solid; */
+    }
+    
+    .card .front{
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        border: 0px solid black;
+        position: absolute;
+        transform: rotateY(90deg);
+        transition: all ease-in 0.2s;
+    }
+    
+    .card .front.matched{
+        background-color:  #6b86ff;
+    }
+    
+    
+    
+    .flipped .front {
+        transform: rotateY(0deg);
+        transition-delay: 0.2s;
+    }
+    
+    .card .back{
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        border: 0px solid white;
+        transition: all ease-in 0.2s;
+        transition-delay: 0.2s;
+    }
+    
+    .flipped .back {
+        transform: rotateY(90deg);
+        transition-delay: 0s;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .container button {
+      color: white;
+      background-color: black;
+      border: 0px solid white;
+      width: 7rem;
+      height: 3rem;
+      font-family: monospace;
+      font-size: 1rem;
+  }
+  
+  .container button:hover {
+      filter: brightness(0.7);
+      cursor: pointer;
+  }
+  
+ .turns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white; 
+      font-family: monospace;
+      font-size: 1.5rem;
+      background-color: black;
+      border: 0px solid white;
+      border-radius: 20px;
+      /* width: 10rem;
+      height: 4rem; */
+  }
+  
+  .grid {
+      /* height: 600px; */
+      width: 80%;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      gap: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+  }
+  
+  .grid div img {
+      width: 100%;
+  }
+  
