@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { api } from '../../shared/api/core/api';
+import { apis } from '../../shared/api/main';
 import {useNavigate} from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
 import { setCookie } from '../../shared/Cookie';
@@ -11,7 +12,7 @@ const KaKaoLogin = () => {
 
   // 인가코드
   let code = new URL(window.location.href).searchParams.get("code");
-console.log(code)
+  console.log(code)
   // React.useEffect(() => {
   //   if (code) {
   //     const kakao = ()=>{

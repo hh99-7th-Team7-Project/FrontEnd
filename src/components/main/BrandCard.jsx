@@ -1,54 +1,65 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import { Navigate, useNavigate } from 'react-router-dom';
+import CoffeeCard from './CoffeeCard';
+import apis from '../../shared/api/main';
+import { __loadCoffee } from '../../redux/modules/coffee';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 const BrandCard = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const coffeeReducer = useSelector((state) => state.coffee.list);
+   console.log(coffeeReducer)
 
-    const CafeList = ["스타벅스","이디야","드롭탑","빽다방","엔젤리너스","커피빈","카페베네","컴포즈","할리스","폴바셋","탐앤탐스","더벤티"];
+    useEffect(()=>{
+        dispatch(__loadCoffee())
+        console.log("돌아가?")
+    },[])
 
 
   return (
     <>
         <div>
-            <CardWrap>
-                {CafeList.map((item, index) => {                    
-                    return <Card key={index} value={item}><CardText>{CafeList[index]}</CardText></Card>
+            <SCcardWrap>
+                {coffeeReducer.map((item, index) => {                    
+                    return (<CoffeeCard key={index} item={item}/>)
                 })}        
-            </CardWrap>
+            </SCcardWrap>
         </div>
     </>
   )
 }
 
-const CardWrap = Styled.div`    
+const SCcardWrap = Styled.div`    
     margin: auto;
-    width: 95vw;
+    /* width: 80%; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     border: 1px solid black;
 `;
 
-const Card = Styled.div`
-    border: 2px solid black;
-    width: 300px;
-    padding-top: 200px;
-    padding-bottom: 200px;
-    margin: 50px;
-    border-radius: 30px;
-    &:hover {
-        cursor: pointer;
-    }
+// const Card = Styled.div`
+//     border: 2px solid black;
+//     width: 300px;
+//     padding-top: 200px;
+//     padding-bottom: 200px;
+//     margin: 50px;
+//     border-radius: 30px;
+//     &:hover {
+//         cursor: pointer;
+//     }
 
-`;
+// `;
 
-const CardText = Styled.span`    
-    margin: 20px auto;
-    font-size: 50px;
-    text-align: center;
-`;
+// const CardText = Styled.div`    
+//     margin: 20px auto;
+//     font-size: 50px;
+//     text-align: center;
+// `;
 
 export default BrandCard
