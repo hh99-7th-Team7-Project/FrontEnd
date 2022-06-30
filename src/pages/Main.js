@@ -37,8 +37,10 @@ const ScHR = Styled.hr`
   margin-bottom: 50px;
 `;
 
+
 const ScMapRandomWrap = Styled.div`
-  display: column;
+  display: column;  
+  width: 50%;
 `;
 
 const ScMRSContainer = Styled.div`

@@ -2,7 +2,7 @@ import React from 'react'
 import Styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { __addComment } from '../../redux/modules/commentpost';
+import { __addComment } from '../../redux/modules/comment';
 
 
 const Comment = () => {

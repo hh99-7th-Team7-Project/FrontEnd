@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import Styled from 'styled-components';
 import { useSelector } from "react-redux";
-import { __loadComment } from '../../redux/modules/commentpost';
+import { __loadComment } from '../../redux/modules/comment';
 
 const CommentCard = () => {
   
-  const review_list = useSelector((state)=>state.commentpost.posts);
+  const review_list = useSelector((state)=>state.comment.posts);
 
 
   useEffect(()=>{

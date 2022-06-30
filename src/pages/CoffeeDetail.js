@@ -4,7 +4,7 @@ import ImgCard from '../components/CoffeeDetail/ImgCard';
 import Review from '../components/CoffeeDetail/Review';
 import Comment from '../components/CoffeeDetail/Comment';
 import CommentCard from '../components/CoffeeDetail/CommentCard';
-import { __loadComment } from '../redux/modules/commentpost';
+import { __loadComment } from '../redux/modules/comment';
 import { useDispatch } from 'react-redux';
 
 const CoffeeDetail = () => {

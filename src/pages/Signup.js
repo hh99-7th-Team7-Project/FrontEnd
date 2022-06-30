@@ -114,13 +114,8 @@ const SignUp = () => {
       form
     });
     // console.log(res);
-    alert(res.data.body.message);
-
-    setEmail(null)
-    setPassword(null)
-    setPassword2(null)
-    setNickname(null)
-    setFileImage(null)
+    // alert(res.data.body.message);
+    navigate("/login")
   };
   //프로필 사진 업로드
   const saveFileImage = async (e) => {
