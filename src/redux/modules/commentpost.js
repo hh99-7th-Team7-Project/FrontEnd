@@ -8,21 +8,21 @@ const initialState = {
 
 // action 
 
-const ADD_POST = "comment_reducer/ADD_POST";
-const LOAD_POST = "comment_reducer/LOAD_POST"
+const ADD_COMMENT = "comment_reducer/ADD_COMMENT";
+const LOAD_COMMENT = "comment_reducer/LOAD_COMMENT"
 
 
 // action creator
 
-export const addPost = (payload) => { 
+export const addComment = (payload) => { 
     return {
-        type: ADD_POST, 
+        type: ADD_COMMENT, 
         payload
     }; 
 }
-export const loadPost = (payload) => { 
+export const loadComment = (payload) => { 
     return {
-        type: LOAD_POST, 
+        type: LOAD_COMMENT, 
         payload
     }; 
 }
@@ -30,25 +30,25 @@ export const loadPost = (payload) => {
 
 // middleware
 
-export const __addPost = (payload) => async (dispatch, getState) => {
+export const __addComment = (payload) => async (dispatch, getState) => {
     try {
         const response = await axios.post(
             "http://localhost:4000/Review",
             payload
         );
 
-        dispatch(addPost(response.data));
+        dispatch(addComment(response.data));
     } catch (error) {
         console.log(error);
     }
 };
 
-export const __loadPost = () => async(dispatch, getState) => {
+export const __loadComment = () => async(dispatch, getState) => {
     
     try {
         const posts = await axios.get("http://localhost:4000/Review");
         console.log(posts); 
-        dispatch(loadPost(posts.data))
+        dispatch(loadComment(posts.data))
         }
         
     catch (error) {
@@ -62,12 +62,12 @@ export const __loadPost = () => async(dispatch, getState) => {
 
 export default function postReducer (state = initialState, action) {
     switch (action.type){
-        case ADD_POST:
+        case ADD_COMMENT:
             return {
                 ...state, 
                 posts: [...state.posts, action.payload]
             };
-        case LOAD_POST:
+        case LOAD_COMMENT:
             return {
                 ...state,
                 posts: [...action.payload]

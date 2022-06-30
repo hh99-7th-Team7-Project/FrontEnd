@@ -11,37 +11,37 @@ const Main = () => {
   return (
     <>
       <Header/>
-      <Container>   
-        <HR/>
+      <ScContainer>   
+        <ScHR/>
         <ImgSlide/>
-        <MRSContainer>
-          <MapRandomWrap>
+        <ScMRSContainer>
+          <ScMapRandomWrap>
             <Map/>
             <RandomCoffee />
-          </MapRandomWrap>
+          </ScMapRandomWrap>
           <Sadari/>
-        </MRSContainer>
+        </ScMRSContainer>
         <BrandCard/>
-      </Container>
+      </ScContainer>
     </>
     
   )
 }
 
-const Container = Styled.div`
+const ScContainer = Styled.div`
   display: column;  
 `;
 
-const HR = Styled.hr`
+const ScHR = Styled.hr`
   margin-top: 50px;
   margin-bottom: 50px;
 `;
 
-const MapRandomWrap = Styled.div`
+const ScMapRandomWrap = Styled.div`
   display: column;
 `;
 
-const MRSContainer = Styled.div`
+const ScMRSContainer = Styled.div`
   display: flex;
 `;
 

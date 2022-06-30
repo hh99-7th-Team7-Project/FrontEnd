@@ -4,7 +4,7 @@ import ImgCard from '../components/CoffeeDetail/ImgCard';
 import Review from '../components/CoffeeDetail/Review';
 import Comment from '../components/CoffeeDetail/Comment';
 import CommentCard from '../components/CoffeeDetail/CommentCard';
-import { __loadPost } from '../redux/modules/commentpost';
+import { __loadComment } from '../redux/modules/commentpost';
 import { useDispatch } from 'react-redux';
 
 const CoffeeDetail = () => {
@@ -12,43 +12,43 @@ const CoffeeDetail = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(__loadPost());
+    dispatch(__loadComment());
    },[dispatch])
 
 
   return (
     <>      
-      <HR/>
-      <Container>
+      <ScHR/>
+      <ScContainer>
         <ImgCard 
             url="https://www.angelinus.com/Data/Goods/48/DetailImage.png"
         />
-        <ReviewCommentBox>
+        <ScReviewCommentBox>
           <Review 
               title="아메리카노"
               subtitle="americano"
           />
           <Comment />          
           <CommentCard/>
-        </ReviewCommentBox>
+        </ScReviewCommentBox>
         
-      </Container>
+      </ScContainer>
       
       
     </>
   )
 }
 
-const HR = Styled.hr`
+const ScHR = Styled.hr`
   margin-top: 50px;
   margin-bottom: 50px;
 `;
 
-const Container = Styled.div`
+const ScContainer = Styled.div`
   display: flex;
 `;
 
-const ReviewCommentBox = Styled.div`
+const ScReviewCommentBox = Styled.div`
   display: column;
 `;
 

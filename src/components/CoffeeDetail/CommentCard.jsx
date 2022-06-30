@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Styled from 'styled-components';
 import { useSelector } from "react-redux";
-import { __loadPost } from '../../redux/modules/commentpost';
+import { __loadComment } from '../../redux/modules/commentpost';
 
 const CommentCard = () => {
   
@@ -9,7 +9,7 @@ const CommentCard = () => {
 
 
   useEffect(()=>{
-    __loadPost();
+    __loadComment();
   },[])
 
   console.log(review_list);

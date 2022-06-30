@@ -2,7 +2,7 @@ import React from 'react'
 import Styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { __addPost } from '../../redux/modules/commentpost';
+import { __addComment } from '../../redux/modules/commentpost';
 
 
 const Comment = () => {
@@ -20,7 +20,7 @@ const Comment = () => {
       commentInputRef.current.value !== ""
     ) 
     {
-      dispatch(__addPost({
+      dispatch(__addComment({
         Review: commentInputRef.current.value
       })
     );
