@@ -22,36 +22,42 @@ const ImgSlide = () => {
     
         return (
             <ScWrap>
-            <ScImgSlideWrap img={img}>
-                <ScImg src={Paiks_Cream_Crape} >
-                    <ScContentWrap>
-                        <ScDotWrap>
-                            <ScDot onClick={firstDot} img={img}/>
-                            <ScDot onClick={secondDot} img={img}/>
-                            <ScDot onClick={thirdDot} img={img}/>
-                        </ScDotWrap>
-                    </ScContentWrap>
-                </ScImg>
-                <ScImg src={Paiks_IceCream_Ratte}>
-                    <ScContentWrap>
-                            <ScDotWrap>
-                                <ScDot onClick={firstDot} img={img}/>
-                                <ScDot onClick={secondDot} img={img}/>
-                                <ScDot onClick={thirdDot} img={img}/>
-                            </ScDotWrap>
-                    </ScContentWrap>
-                </ScImg>
-                <ScImg src={Compose}>
-                    <ScContentWrap>
-                            <ScDotWrap>
-                                <ScDot onClick={firstDot} img={img}/>
-                                <ScDot onClick={secondDot} img={img}/>
-                                <ScDot onClick={thirdDot} img={img}/>
-                            </ScDotWrap>
-                    </ScContentWrap>
-                </ScImg>
-            </ScImgSlideWrap>
-        </ScWrap>
+                <ScImgSlideWrap img={img}>
+                    <ScImg src={Paiks_Cream_Crape} >
+                        <ScContentWrap>
+                            <ScDotAlign>
+                                <ScDotWrap>
+                                    <ScDot onClick={firstDot} img={img}/>
+                                    <ScDot onClick={secondDot} img={img}/>
+                                    <ScDot onClick={thirdDot} img={img}/>
+                                </ScDotWrap>
+                            </ScDotAlign>
+                        </ScContentWrap>
+                    </ScImg>
+                    <ScImg src={Paiks_IceCream_Ratte}>
+                        <ScContentWrap>
+                                <ScDotAlign>
+                                    <ScDotWrap>
+                                        <ScDot onClick={firstDot} img={img}/>
+                                        <ScDot onClick={secondDot} img={img}/>
+                                        <ScDot onClick={thirdDot} img={img}/>
+                                    </ScDotWrap>
+                                </ScDotAlign>
+                        </ScContentWrap>
+                    </ScImg>
+                    <ScImg src={Compose}>
+                        <ScContentWrap>
+                                <ScDotAlign>
+                                    <ScDotWrap>
+                                        <ScDot onClick={firstDot} img={img}/>
+                                        <ScDot onClick={secondDot} img={img}/>
+                                        <ScDot onClick={thirdDot} img={img}/>
+                                    </ScDotWrap>
+                                </ScDotAlign>
+                        </ScContentWrap>
+                    </ScImg>
+                </ScImgSlideWrap>
+            </ScWrap>
         )
     }
 
@@ -64,8 +70,7 @@ const ScWrap = Styled.div`
 const ScImgSlideWrap = Styled.div`
     position: relative;
     display: flex;
-    width: 300vw;
-    height: 50vh;
+    width: 300vw;    
     overflow: hidden;
     transition: 0.5s ease-in-out;
     margin: auto;
@@ -76,7 +81,7 @@ const ScImgSlideWrap = Styled.div`
 const ScImg = Styled.div`
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: left;
     width: 100vw;
     height: 50vh;
     background-image: url(${props => props.src});
@@ -89,17 +94,27 @@ const ScContentWrap = Styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
     width: 100px;
     height: 70px;
     padding-top: 20px;
 `;
 
+const ScDotAlign = Styled.div`
+    align-items: center;    
+    width: 700px
+    
+
+`;
 
 const ScDotWrap = Styled.div`
     display: flex;
     align-items: center;
+    position: absolute;
     justify-content: space-between;
-    width: 80px;    
+    width: 80px;
+        
+    
 `;
 
 const ScDot = Styled.div`
