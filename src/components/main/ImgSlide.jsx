@@ -21,47 +21,47 @@ const ImgSlide = () => {
     }
     
         return (
-            <Wrap>
-            <ImgSlideWrap img={img}>
-                <Img src={Paiks_Cream_Crape} >
-                    <ContentWrap>
-                        <DotWrap>
-                            <Dot onClick={firstDot} img={img}/>
-                            <Dot onClick={secondDot} img={img}/>
-                            <Dot onClick={thirdDot} img={img}/>
-                        </DotWrap>
-                    </ContentWrap>
-                </Img>
-                <Img src={Paiks_IceCream_Ratte}>
-                    <ContentWrap>
-                            <DotWrap>
-                                <Dot onClick={firstDot} img={img}/>
-                                <Dot onClick={secondDot} img={img}/>
-                                <Dot onClick={thirdDot} img={img}/>
-                            </DotWrap>
-                    </ContentWrap>
-                </Img>
-                <Img src={Compose}>
-                    <ContentWrap>
-                            <DotWrap>
-                                <Dot onClick={firstDot} img={img}/>
-                                <Dot onClick={secondDot} img={img}/>
-                                <Dot onClick={thirdDot} img={img}/>
-                            </DotWrap>
-                    </ContentWrap>
-                </Img>
-            </ImgSlideWrap>
-        </Wrap>
+            <ScWrap>
+            <ScImgSlideWrap img={img}>
+                <ScImg src={Paiks_Cream_Crape} >
+                    <ScContentWrap>
+                        <ScDotWrap>
+                            <ScDot onClick={firstDot} img={img}/>
+                            <ScDot onClick={secondDot} img={img}/>
+                            <ScDot onClick={thirdDot} img={img}/>
+                        </ScDotWrap>
+                    </ScContentWrap>
+                </ScImg>
+                <ScImg src={Paiks_IceCream_Ratte}>
+                    <ScContentWrap>
+                            <ScDotWrap>
+                                <ScDot onClick={firstDot} img={img}/>
+                                <ScDot onClick={secondDot} img={img}/>
+                                <ScDot onClick={thirdDot} img={img}/>
+                            </ScDotWrap>
+                    </ScContentWrap>
+                </ScImg>
+                <ScImg src={Compose}>
+                    <ScContentWrap>
+                            <ScDotWrap>
+                                <ScDot onClick={firstDot} img={img}/>
+                                <ScDot onClick={secondDot} img={img}/>
+                                <ScDot onClick={thirdDot} img={img}/>
+                            </ScDotWrap>
+                    </ScContentWrap>
+                </ScImg>
+            </ScImgSlideWrap>
+        </ScWrap>
         )
     }
 
 
-const Wrap = Styled.div`
+const ScWrap = Styled.div`
     overflow: hidden;
     margin: 10px auto;
 `;
 
-const ImgSlideWrap = Styled.div`
+const ScImgSlideWrap = Styled.div`
     position: relative;
     display: flex;
     width: 300vw;
@@ -73,7 +73,7 @@ const ImgSlideWrap = Styled.div`
 `;
 
 
-const Img = Styled.div`
+const ScImg = Styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -84,7 +84,7 @@ const Img = Styled.div`
     float: left;
 `;
 
-const ContentWrap = Styled.div`
+const ScContentWrap = Styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,14 +95,14 @@ const ContentWrap = Styled.div`
 `;
 
 
-const DotWrap = Styled.div`
+const ScDotWrap = Styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 80px;    
 `;
 
-const Dot = Styled.div`
+const ScDot = Styled.div`
     width: 15px;
     height: 15px;
     border-radius: 50%;

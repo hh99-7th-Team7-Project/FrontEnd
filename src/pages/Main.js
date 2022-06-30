@@ -1,16 +1,17 @@
 import React from 'react'
 import Styled from 'styled-components';
 // components
-import  {BrandCard,Logo,ImgSlide,Map,RandomCoffee,Sadari}from '../components/main/mainIndex'
+import  {BrandCard,ImgSlide,Map,RandomCoffee,Sadari}from '../components/main/mainIndex'
+import Header from './Header/Header';
 
 
 const Main = () => {
 
 
   return (
-    <>  
-      <Container>
-        <Logo/>
+    <>
+      <Header/>
+      <Container>   
         <HR/>
         <ImgSlide/>
         <MRSContainer>

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import Styled from 'styled-components';
-import Logo from '../components/main/Logo';
 import ImgCard from '../components/CoffeeDetail/ImgCard';
 import Review from '../components/CoffeeDetail/Review';
 import Comment from '../components/CoffeeDetail/Comment';
@@ -18,8 +17,7 @@ const CoffeeDetail = () => {
 
 
   return (
-    <>
-      <Logo />
+    <>      
       <HR/>
       <Container>
         <ImgCard 

@@ -81,7 +81,7 @@ const Sadari = () => {
     }
   }, [choiceOne, choiceTwo]);
   return (
-    <SadariWrap>
+    <ScSadariWrap>
         <div className='container'>
       <button onClick={shuffleCards}>New Game</button>
       <div className="grid">
@@ -98,11 +98,11 @@ const Sadari = () => {
       </div>
       <p className='turns'>Turns: {turn}</p>
     </div>
-    </SadariWrap>
+    </ScSadariWrap>
   )
 }
 
-const SadariWrap = Styled.div`
+const ScSadariWrap = Styled.div`
     border: 2px solid black;
     width: 50vw;
     padding: 10px;

@@ -1,13 +1,11 @@
 import React from 'react'
 import Styled from 'styled-components';
-import Logo from '../../components/main/Logo';
 import Brand from '../../components/BrandDetail/Brand';
 import ImgCard from '../../components/BrandDetail/ImgCard';
 
 const Angel = () => {
   return (
-    <>
-      <Logo/>
+    <>      
       <HR/>
       <Brand
           brand="Angelinus"

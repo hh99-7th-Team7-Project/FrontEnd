@@ -7,11 +7,11 @@ const RandomCoffee = () => {
 
 
   return (
-    <RandomWrap>여기에 랜덤 커피가 들어갑니다.</RandomWrap>
+    <ScRandomWrap>여기에 랜덤 커피가 들어갑니다.</ScRandomWrap>
   )
 }
 
-const RandomWrap = Styled.div`
+const ScRandomWrap = Styled.div`
     border: 2px solid black;
     width: 50vw;    
     margin: 20px;

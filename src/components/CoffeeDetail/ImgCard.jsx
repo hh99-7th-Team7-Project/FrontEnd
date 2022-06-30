@@ -4,22 +4,22 @@ import Styled from 'styled-components';
 const ImgCard = ( {url} ) => {
   return (
     <>
-        <ImgWrap>            
-            <Img src={url}/>
-        </ImgWrap>
+        <ScImgWrap>            
+            <ScImg src={url}/>
+        </ScImgWrap>
     </>
   )
 }
 
 
-const ImgWrap = Styled.div`    
+const ScImgWrap = Styled.div`    
     width: 500px;
     height: 500px;
     margin-left: 50px;
     justify-content: center;
 `;
 
-const Img = Styled.img`
+const ScImg = Styled.img`
     width: 500px;
     height: 500px;
 `;

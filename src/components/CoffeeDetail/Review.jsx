@@ -4,39 +4,39 @@ import TomTom from '../../pages/detailpage/TomTom';
 
 const Review = ( { title, subtitle } ) => {
   return (
-    <Wrap>
-        <ContentBox>
-            <SubBox>
-                <H1>{title}</H1>
-                <LikeBtn>나만의 음료로 등록</LikeBtn>
-            </SubBox>
-            <H4>{subtitle}</H4>
-        </ContentBox>
-        <HR/>
-    </Wrap>
+    <ScWrap>
+        <ScContentBox>
+            <ScSubBox>
+                <ScH1>{title}</ScH1>
+                <ScLikeBtn>나만의 음료로 등록</ScLikeBtn>
+            </ScSubBox>
+            <ScH4>{subtitle}</ScH4>
+        </ScContentBox>
+        <ScHR/>
+    </ScWrap>
   )
 }
 
-const Wrap = Styled.div`       
+const ScWrap = Styled.div`       
     margin-left: 20px;
     width: 70vw;
     height: 150px;
 `;
 
-const ContentBox = Styled.div`    
+const ScContentBox = Styled.div`    
     margin: 20px;
 `;
 
-const SubBox = Styled.div`
+const ScSubBox = Styled.div`
     display: flex;
     justify-content: space-between;
 `;
 
-const H1 = Styled.h1`
+const ScH1 = Styled.h1`
     padding-left: 20px;
 `;
 
-const LikeBtn = Styled.div`
+const ScLikeBtn = Styled.div`
     background-color: #004D40;
     border-color: #004D40;
     color: white;
@@ -44,12 +44,12 @@ const LikeBtn = Styled.div`
     
 `;
 
-const H4 = Styled.h4`
+const ScH4 = Styled.h4`
     color: gray;
     padding-left: 20px;
 `;
 
-const HR = Styled.hr`
+const ScHR = Styled.hr`
   margin-top: 50px;
   margin-bottom: 50px;
 `;

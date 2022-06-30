@@ -7,35 +7,44 @@ const CommentCard = () => {
   
   const review_list = useSelector((state)=>state.commentpost.posts);
 
+
   useEffect(()=>{
     __loadPost();
   },[])
 
   console.log(review_list);
 
-  
+
     return (
-        <Wrap>
+        <ScWrap>
           {review_list.map((item, index) => {
-            return (
-            <Comment key={index}>{item.Review}</Comment>
+            return (            
+            <ScComment key={index}>{item.Review}
+              <ScHR/>         
+            </ScComment>            
           )})}
-        </Wrap>
+        </ScWrap>
         ) 
   }
   
 
-const Wrap = Styled.div`
+const ScWrap = Styled.div`
 margin-top: 60px;
 margin-left: 20px;
 width: 70vw;
-height: 150px;
-border: 1px solid black;
-overflow-x: scroll;
+height: 500px;
+
+overflow-z: scroll;
 `;
 
-const Comment = Styled.p`
-  
+const ScComment = Styled.div`
+  font-size: 20px;
+  color: brown;
+  margin-bottom: 5px;
 `;
 
+
+const ScHR = Styled.hr`
+  margin-top: 5px;  
+`;
 export default CommentCard

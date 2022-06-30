@@ -29,44 +29,43 @@ const Comment = () => {
     } else {
       alert ("빈칸입니다.")
     }
-
   }
 
   return ( 
-    <Wrap>
+    <ScWrap>
         <p>리뷰 작성하기</p>
-        <Input type="text" placeholder="리뷰를 등록해주세요" ref={commentInputRef}/>
+        <ScInput type="text" placeholder="리뷰를 등록해주세요" ref={commentInputRef}/>
         
-        <BtnWrap>
-          <ReviewBtn onClick={()=>{
+        <ScBtnWrap>
+          <ScReviewBtn onClick={()=>{
             addComment();
-          }}>리뷰등록하기</ReviewBtn>
-        </BtnWrap>
-    </Wrap>
+          }}>리뷰등록하기</ScReviewBtn>
+        </ScBtnWrap>
+    </ScWrap>
   )
 }
 
 
-const Wrap = Styled.div`   
+const ScWrap = Styled.div`   
     margin-top: 10px;
     margin-left: 20px;
     width: 70vw;
     height: 150px;    
 `;
 
-const Input = Styled.input`
+const ScInput = Styled.input`
     width: 55vw;
     height: 30px;
     margin: 30px auto;
     
 `;
 
-const BtnWrap = Styled.div`  
+const ScBtnWrap = Styled.div`  
   margin-top: 20px;
 
 `;
 
-const ReviewBtn = Styled.button`
+const ScReviewBtn = Styled.button`
     margin-left: 30px;
     width: 200px;
     height: 30px;

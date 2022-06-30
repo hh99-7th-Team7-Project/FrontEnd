@@ -5,8 +5,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/configStore';
 import  GlobalStyle  from './GlobalStyle';
-
 import reportWebVitals from './reportWebVitals';
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -13,17 +13,17 @@ const BrandCard = () => {
   return (
     <>
         <div>
-            <CardWrap>
+            <ScCardWrap>
                 {CafeList.map((item, index) => {                    
-                    return <Card key={index} value={item}><CardText>{CafeList[index]}</CardText></Card>
+                    return <ScCard key={index} value={item}><ScCardText>{CafeList[index]}</ScCardText></ScCard>
                 })}        
-            </CardWrap>
+            </ScCardWrap>
         </div>
     </>
   )
 }
 
-const CardWrap = Styled.div`    
+const ScCardWrap = Styled.div`    
     margin: auto;
     width: 95vw;
     display: flex;
@@ -32,7 +32,7 @@ const CardWrap = Styled.div`
     border: 1px solid black;
 `;
 
-const Card = Styled.div`
+const ScCard = Styled.div`
     border: 2px solid black;
     width: 300px;
     padding-top: 200px;
@@ -45,7 +45,7 @@ const Card = Styled.div`
 
 `;
 
-const CardText = Styled.span`    
+const ScCardText = Styled.span`    
     margin: 20px auto;
     font-size: 50px;
     text-align: center;
