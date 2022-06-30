@@ -35,7 +35,7 @@
 <code>이윤진</code>
 
 
-<code>이윤진</code>
+<code>안소진</code>
 
 ## 🔨 Trouble Shooting
 
