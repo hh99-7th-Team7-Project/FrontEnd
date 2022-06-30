@@ -11,7 +11,6 @@ const Map = () => {
 
 const MapWrap = Styled.div`
     border: 2px solid black;
-    width: 30vw;
 
     margin: 20px;
 `;

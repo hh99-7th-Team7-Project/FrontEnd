@@ -38,6 +38,7 @@ const HR = Styled.hr`
 
 const MapRandomWrap = Styled.div`
   display: column;  
+  width: 50%;
 `;
 
 const MRSContainer = Styled.div`
