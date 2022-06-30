@@ -2,9 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 // 페이지
-import { Angel, CafeBene, CoffeeBean , Compose , DropTop , Ediya , Hollys , Paiks , Paul , StarBucks , TheVenti , TomTom  } from '../pages/detailpage/BrandPage';
+
 import Main from '../pages/Main';
-import BrandDetail from '../pages/BrandDetail';
 import CoffeeDetail from '../pages/CoffeeDetail'
 import Map from '../pages/Map';
 import MyPage from '../pages/MyPage';
@@ -30,19 +29,6 @@ const Router = () => {
             <Route path="/user/google/callback" element={<GoogleLogin/>}/>
             <Route path="/user/naver/callback" element={<NaverLogin/>}/>
 
-            {/* cafebrand */}
-            <Route path='/angelinus' element={<Angel/>}/>
-            <Route path='/cafebene' element={<CafeBene/>}/>
-            <Route path='/coffeebean' element={<CoffeeBean/>}/>
-            <Route path='/compose' element={<Compose/>}/>
-            <Route path='/droptop' element={<DropTop/>}/>
-            <Route path='/ediya' element={<Ediya/>}/>
-            <Route path='/hollys' element={<Hollys/>}/>
-            <Route path='/paiks' element={<Paiks/>}/>
-            <Route path='/paul' element={<Paul/>}/>
-            <Route path='/starbucks' element={<StarBucks/>}/>
-            <Route path='/theventi' element={<TheVenti/>}/>
-            <Route path='/tomntoms' element={<TomTom/>}/>
             {/** CafeDetail */}
             <Route path='/angelinus/americano' element={<CoffeeDetail/>}/>
             <Route path='/cafebene/:coffeename' element={<CoffeeDetail/>}/>
@@ -55,7 +41,7 @@ const Router = () => {
             <Route path='/paul/:coffeename' element={<CoffeeDetail/>}/>
             <Route path='/starbucks/:coffeename' element={<CoffeeDetail/>}/>
             <Route path='/theventi/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/tomntoms/:coffeename' element={<CoffeeDetail/>}/>            
+            <Route path='/tomntoms/:coffeename' element={<CoffeeDetail/>}/>
         </Routes>
     )
 }

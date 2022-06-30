@@ -1,6 +1,5 @@
 import React from 'react'
 import Styled from 'styled-components';
-import TomTom from '../../pages/detailpage/TomTom';
 
 const Review = ( { title, subtitle } ) => {
   return (
