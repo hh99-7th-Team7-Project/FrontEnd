@@ -124,11 +124,9 @@ const SignUp = () => {
       console.log(form)
 
       const res = await apis.addUser(form);
-      // console.log(res);
-      // alert(res.data.body.message);
       navigate("/login")
     }
-    // console.log(ProfileImage[0])
+
   };
   //프로필 사진 업로드
   const saveFileImage = async (e) => {
@@ -136,7 +134,7 @@ const SignUp = () => {
     // setProfileImage(e.target.files)
   };
 
-  // console.log(ProfileImage)
+
 
   return (
     <div>

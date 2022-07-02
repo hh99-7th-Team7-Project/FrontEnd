@@ -12,6 +12,7 @@ import KaKaoLogin from "../pages/Login/KaKaoLogin";
 import GoogleLogin from "../pages/Login/GoogleLogin";
 import NaverLogin from "../pages/Login/NaverLogin";
 import Signup from "../pages/Signup"
+import AdminPage from "../pages/AdminPage";
 
 
 
@@ -25,9 +26,12 @@ const Router = () => {
             <Route path="/signup" element={<Signup/>}/>
             {/* Login */}
             <Route path="/login" element={<Login/>}/>
-            <Route path="/user/kakao/callback" element={<KaKaoLogin/>}/>
+            <Route path="/oauth/kakao/callback" element={<KaKaoLogin/>}/>
             <Route path="/user/google/callback" element={<GoogleLogin/>}/>
             <Route path="/user/naver/callback" element={<NaverLogin/>}/>
+
+            {/* Admin Page */}
+            <Route path="/admin" element={<AdminPage/>}/>
 
             {/** CafeDetail */}
             <Route path='/angelinus/americano' element={<CoffeeDetail/>}/>
