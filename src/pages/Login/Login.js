@@ -33,7 +33,7 @@ const Login = () => {
       setCookie("token", response.headers.authorization.split(" ")[1])
 
       alert("환영합니다")
-      navigate("/main")
+      navigate("/")
     }
     catch (err) {
       alert("아이디와 비밀번호를 확인해주세요")
@@ -50,7 +50,7 @@ const Login = () => {
           placeholder="Password"
           ref={passwordRef}/>
       <button onClick={loginClick}>로그인</button>
-      <a href={KAKAO_AUTH_URL}> <img src="/kakao_login_medium_narrow.png" /></a>
+      <a href={KAKAO_AUTH_URL}> <img src="/kakao_login_medium_narrow.png"/></a>
       <a href={GOOGLE_AUTH_URL}> 구굴구굴</a>
       <a href={NAVER_AUTH_URL}>네이버네이버</a>
     </div>

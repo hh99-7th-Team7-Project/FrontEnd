@@ -32,6 +32,13 @@ export function removeCoffee(payload) {
 /* ----------------- 미들웨어 ------------------ */
 export const __loadCoffee = () => {
   return async function (dispatch) {
+    const loadData = await apis.getCoffee();
+    console.log(loadData.data);
+    dispatch(loadCoffee(loadData.data));
+  };
+};
+export const __createCoffee = () => {
+  return async function (dispatch) {
     console.log("러닝")
     const loadData = await apis.getCoffee();
     console.log(loadData.data);
