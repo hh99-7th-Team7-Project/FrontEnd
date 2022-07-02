@@ -1,20 +1,30 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled, {css} from 'styled-components';
 
 
 
 const CoffeeCard = ({item}) => {
 
+const navigate = useNavigate()
+console.log(item.pricePair)
+const pricePair = item.pricePair
+console.log(pricePair)
 
+const moveOnclick = () => {
+navigate(`/${item?.brand}/${item?.name}/${item?.id}`)
+}
 
   return (
     <div>
-        <SCcard color={item?.brand}>
+        <SCcard color={item?.brand} onClick={moveOnclick}>
         <SCcoffeeImg src={item?.img}/>
         <SChover>
          <SCcardText>{item?.brand}</SCcardText>
         <SCcardText>{item?.name}</SCcardText>
-        <SCcardText>{item?.price}</SCcardText>
+        {pricePair.map((price,idx)=>{
+          return(<SCcardText key={idx}>{price?.size}:{price?.price}</SCcardText> )
+        })}
         </SChover>
         </SCcard>
     </div>
@@ -59,7 +69,7 @@ const SCcard = styled.div`
   }};
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 2px solid #ddd;
     width: 300px;
     padding: 80px 0;
     margin: 50px;

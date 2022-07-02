@@ -35,18 +35,8 @@ const Router = () => {
             <Route path="/admin" element={<AdminPage/>}/>
 
             {/** CafeDetail */}
-            <Route path='/angelinus/:coffeename/:id' element={<CoffeeDetail/>}/>
-            <Route path='/cafebene/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/coffeebean/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/compose/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/droptop/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/ediya/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/hollys/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/paiks/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/paul/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/starbucks/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/theventi/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/tomntoms/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/:brand/:coffeename/:id' element={<CoffeeDetail/>}/>
+
         </Routes>
     )
 }
