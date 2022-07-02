@@ -10,7 +10,13 @@ const apis = {
     getCoffee: () => api.get("/coffee"),
     getCoffees: ()=> api.get("/coffee"),
     addCoffee: (brand, coffee) => instance.post(`/coffee/${brand}`,coffee),
-    getRandomCoffee: ()=> api.get("/coffee/random?brand=스타벅스&category=coffee")
+    getRandomCoffee: ()=> api.get("/coffee/random?brand=스타벅스&category=coffee"),
+
+
+
+    postComment : (review) => api.post(`/coffee/hal/2/review`,review),
+    // getComment : () => api.get(`coffee/${brand}/${id}/review`),
+
 }
 
 export default apis;

@@ -21,11 +21,10 @@ const Comment = () => {
     ) 
     {
       dispatch(__addComment({
-        review: commentInputRef.current.value,
-        star: 5
+        Review: commentInputRef.current.value,
+        
       })
-    );
-    navigate('/angelinus/americano')
+    );    
     } else {
       alert ("빈칸입니다.")
     }
@@ -39,6 +38,7 @@ const Comment = () => {
         <ScBtnWrap>
           <ScReviewBtn onClick={()=>{
             addComment();
+            commentInputRef.current.value=""
           }}>리뷰등록하기</ScReviewBtn>
         </ScBtnWrap>
     </ScWrap>
