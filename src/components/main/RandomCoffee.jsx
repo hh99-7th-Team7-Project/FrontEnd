@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components'
+import apis from '../../shared/api/main'
 
 const RandomCoffee = () => {
 
+  // useEffect(()=>{
+  //   apis.getRandomCoffee()
+  // },[])
 
 
 
