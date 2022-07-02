@@ -1,12 +1,13 @@
 import React from 'react';
 import Styled from 'styled-components';
+import {Link} from 'react-router-dom'
 
 const Button = () => {
   return (
     <ScWrap>
-        <ScBtn>로그인</ScBtn>
+        <Link to="/login"><ScBtn>로그인</ScBtn></Link>
         <ScP> | </ScP>
-        <ScBtn>회원가입</ScBtn>
+        <Link to="/signup"><ScBtn>회원가입</ScBtn></Link>
     </ScWrap>
   )
 }
