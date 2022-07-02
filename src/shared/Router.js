@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 // 페이지
 
@@ -12,6 +12,7 @@ import KaKaoLogin from "../pages/Login/KaKaoLogin";
 import GoogleLogin from "../pages/Login/GoogleLogin";
 import NaverLogin from "../pages/Login/NaverLogin";
 import Signup from "../pages/Signup"
+import CommentCard from "../components/CoffeeDetail/CommentCard";
 
 
 
@@ -30,18 +31,18 @@ const Router = () => {
             <Route path="/user/naver/callback" element={<NaverLogin/>}/>
 
             {/** CafeDetail */}
-            <Route path='/angelinus/americano' element={<CoffeeDetail/>}/>
-            <Route path='/cafebene/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/coffeebean/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/compose/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/droptop/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/ediya/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/hollys/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/paiks/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/paul/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/starbucks/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/theventi/:coffeename' element={<CoffeeDetail/>}/>
-            <Route path='/tomntoms/:coffeename' element={<CoffeeDetail/>}/>
+            <Route path='/angelinus/:coffeename/:id' element={<CoffeeDetail/>}/>
+            <Route path='/cafebene/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/coffeebean/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/compose/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/droptop/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/ediya/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/hollys/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/paiks/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/paul/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/starbucks/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/theventi/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/tomntoms/:coffeename/:id/review' element={<CoffeeDetail/>}/>
         </Routes>
     )
 }
