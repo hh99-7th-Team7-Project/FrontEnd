@@ -21,10 +21,10 @@ const Comment = () => {
     ) 
     {
       dispatch(__addComment({
-        Review: commentInputRef.current.value
+        review: commentInputRef.current.value,
+        star: 5
       })
     );
-    alert("Review 저장완료!")
     navigate('/angelinus/americano')
     } else {
       alert ("빈칸입니다.")
