@@ -4,12 +4,12 @@ import { getCookie } from "../../Cookie";
 
 export const api = axios.create({
 
-  baseURL: "http://localhost:4000",
+  baseURL: "http://3.36.103.203:8080",
   // withCredentials: false,
 });
 //1. axios 인터셉터 생성
 export const instances = axios.create({
-  baseURL: "URL",
+  baseURL: "http://3.36.103.203:8080",
 });
 
 //2. 요청 인터셉터
@@ -17,7 +17,7 @@ api.interceptors.request.use(
   //요청직전 호출
   (config) => {
     const token = getCookie("token");
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = `BEARER ${token}`;
     return config;
   },
   //에러 전 호출

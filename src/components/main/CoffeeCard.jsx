@@ -10,13 +10,13 @@ const CoffeeCard = ({item}) => {
   return (
     <div>
         <SCcard color={item.brand}>
-        <SCcoffeeImg src={item.coffeeimg}/>
-    
-        <SChover>
-         <SCcardText>{item.brand}</SCcardText>
-        <SCcardText>{item.coffee}</SCcardText>
-        <SCcardText>{item.price}</SCcardText>
-        </SChover>
+          <SCcoffeeImg src={item.coffeeimg}/>
+      
+          <SChover>
+            <SCcardText>{item.brand}</SCcardText>
+            <SCcardText>{item.coffee}</SCcardText>
+            <SCcardText>{item.price}</SCcardText>
+          </SChover>
         </SCcard>
     </div>
   )

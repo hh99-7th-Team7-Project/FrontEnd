@@ -1,143 +1,102 @@
 {
   "Review": [
     {
-      "id": 1,
-      "Review": "얼죽아"
+      "Review": "네네",
+      "id": 1
     },
     {
-      "id": 2,
-      "Review": "에스프레소가 너무 써요"
+      "Review": "아메리카노 좋아요",
+      "id": 3
     },
     {
-      "id": 3,
-      "Review": "바닐라 라떼 최고"
-    },
-    {
-      "Review": "이건 최고예요!",
+      "Review": "테스트",
       "id": 4
-    },
-    {
-      "Review": "아메리카노가 제일 좋아요",
-      "id": 5
-    },
-    {
-      "Review": "테스트입니다.!",
-      "id": 6
-    },
-    {
-      "Review": "최고",
-      "id": 7
-    },
-    {
-      "Review": "ㅁㄴㅇ",
-      "id": 8
-    },
-    {
-      "Review": "테스트",
-      "id": 9
-    },
-    {
-      "Review": "ㅁㄴㅇ",
-      "id": 10
-    },
-    {
-      "Review": "ㅇㄹ",
-      "id": 11
-    },
-    {
-      "Review": "ㄴㅇ",
-      "id": 12
-    },
-    {
-      "Review": "asd",
-      "id": 13
-    },
-    {
-      "Review": "테스트",
-      "id": 14
-    },
-    {
-      "Review": "??",
-      "id": 15
-    },
-    {
-      "Review": "아메리카노",
-      "id": 16
-    },
-    {
-      "Review": "잘 붙나요",
-      "id": 17
-    },
-    {
-      "Review": "?",
-      "id": 18
-    },
-    {
-      "Review": "테스트입니다.",
-      "id": 19
     }
   ],
-  "coffee":[
-    { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-      ,"price": "3000원"
-      ,"star": "3.5" 
-      ,"coffeeimg":"https://ifh.cc/g/natCJQ.png" 
-        },
-      { "brand":"할리스"
-      ,"coffee":"카페라떼"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/gZY9Pc.png"  },
-      { "brand":"엔젤인어스"
-      ,"coffee":"카푸치노"
-       ,"price": "3000원"
-      ,"star": "3.5" 
-      ,"coffeeimg":"https://ifh.cc/g/lKWCnv.png"   },
-      { "brand":"엔젤인어스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"   
-      ,"coffeeimg":"https://ifh.cc/g/ZFVz6W.png" },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/Pj0htB.png"  },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/RjFVnj.png"  },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/Y2VPOQ.png"  },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/1bQajC.png"  },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/SOfWPW.png"  },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/natCJQ.png"  },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5" 
-      ,"coffeeimg":"https://ifh.cc/g/natCJQ.png"   },
-      { "brand":"스타벅스"
-      ,"coffee":"아메리카노"
-       ,"price": "3000원"
-      ,"star": "3.5"  
-      ,"coffeeimg":"https://ifh.cc/g/natCJQ.png"  }
+  "coffee": [
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/natCJQ.png"
+    },
+    {
+      "brand": "할리스",
+      "coffee": "카페라떼",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/gZY9Pc.png"
+    },
+    {
+      "brand": "엔젤인어스",
+      "coffee": "카푸치노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/lKWCnv.png"
+    },
+    {
+      "brand": "엔젤인어스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/ZFVz6W.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/Pj0htB.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/RjFVnj.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/Y2VPOQ.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/1bQajC.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/SOfWPW.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/natCJQ.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/natCJQ.png"
+    },
+    {
+      "brand": "스타벅스",
+      "coffee": "아메리카노",
+      "price": "3000원",
+      "star": "3.5",
+      "coffeeimg": "https://ifh.cc/g/natCJQ.png"
+    }
   ]
 }
