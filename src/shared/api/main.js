@@ -8,6 +8,7 @@ const apis = {
     postLogin : (userdata) => api.post("/api/login", userdata),
 
     getCoffee: () => api.get("/coffee"),
+    getCoffeeDetail: (brand, id) => api.get(`/coffee/${brand}/${id}`),
     getCoffees: ()=> api.get("/coffee"),
     addCoffee: (brand, coffee) => instance.post(`/coffee/${brand}`,coffee),
     getRandomCoffee: ()=> api.get("/coffee/random?brand=스타벅스&category=coffee"),

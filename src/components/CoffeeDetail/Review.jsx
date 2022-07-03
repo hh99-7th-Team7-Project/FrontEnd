@@ -1,20 +1,31 @@
-import React from 'react'
+import React, {  useState } from 'react'
 import Styled from 'styled-components';
 
-const Review = ( { title, subtitle } ) => {
+const Review = ( { item } ) => {
+    console.log(item)
+    // const [pri,setPri] = useState([])
+    // setPri(...price)
+    const pricePair = item?.pricePair
+    console.log(pricePair)
+
   return (
     <ScWrap>
         <ScContentBox>
             <ScSubBox>
-                <ScH1>{title}</ScH1>
+                <ScH1>{item?.name}</ScH1>
                 <ScLikeBtn>나만의 음료로 등록</ScLikeBtn>
             </ScSubBox>
-            <ScH4>{subtitle}</ScH4>
+            <ScH4>{item?.category}</ScH4>
+                {pricePair&&pricePair.map((price,idx)=>{
+                    return (<div key={idx}>{price?.size}:{price?.price}</div>)
+                })}
         </ScContentBox>
         <ScHR/>
     </ScWrap>
   )
 }
+
+export default Review
 
 const ScWrap = Styled.div`       
     margin-left: 20px;
@@ -53,4 +64,3 @@ const ScHR = Styled.hr`
   margin-bottom: 50px;
 `;
 
-export default Review

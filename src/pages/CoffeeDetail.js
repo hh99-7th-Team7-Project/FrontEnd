@@ -1,30 +1,46 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Styled from 'styled-components';
 import ImgCard from '../components/CoffeeDetail/ImgCard';
 import Review from '../components/CoffeeDetail/Review';
 import Comment from '../components/CoffeeDetail/Comment';
 import CommentCard from '../components/CoffeeDetail/CommentCard';
+import { useParams } from 'react-router-dom';
+import {useDispatch,useSelector}from 'react-redux';
+import axios from 'axios';
+import { __loadCoffeeDetail } from '../redux/modules/coffee';
 
 
 
 
 const CoffeeDetail = () => {
+  const { brand } = useParams();
+  const { coffeename } = useParams();
+  const { id } = useParams();
+
+  const dispatch = useDispatch()
+  const [data, setData] = useState()
+  const [pri,setPri]=useState()
+console.log(data)
+console.log(pri)
+
+const coffeeReducer = useSelector((state) => state.coffee.list);
+console.log(coffeeReducer)
+const pricePair = coffeeReducer.pricePair
+
+useEffect(()=>{
+ dispatch(__loadCoffeeDetail(brand, id)) 
+},[])
 
 
-
-
-  return (
+return (
     <>      
       <ScHR/>
       <ScContainer>
         <ImgCard 
-            url="https://www.angelinus.com/Data/Goods/48/DetailImage.png"
+            url={coffeeReducer?.img}
         />
         <ScReviewCommentBox>
-          <Review 
-              title="아메리카노"
-              subtitle="americano"
-          />
+        <Review item={coffeeReducer}/>
           <Comment />          
           <CommentCard />
         </ScReviewCommentBox>

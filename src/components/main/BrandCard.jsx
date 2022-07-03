@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import axios from 'axios';
 import styled, {keyframes} from 'styled-components';
+import apis from '../../shared/api/main';
 
 const BrandCard = () => {
      const [color, setColor] = useState('#ddd') 
@@ -22,7 +23,11 @@ const BrandCard = () => {
     const coffeeReducer = useSelector((state) => state.coffee.list);
    console.log(coffeeReducer)
 
-  const brandlist = ["스타벅스", "빽다방", "커피빈","이디야","컴포즈 커피","드롭탑", "탐앤탐스","더벤티","할리스","폴바셋","카페베네","엔젤인어스"]
+  const brandlist = ["스타벅스", "빽다방", "커피빈","이디야","컴포즈커피","드롭탑", "탐앤탐스","더벤티","할리스","폴바셋","카페베네","엔젤인어스"]
+
+// useEffect(()=>{
+//   apis.getCoffees()
+// },[])
 
   return (
     <>
@@ -71,7 +76,7 @@ const BrandCard = () => {
       </Swiper>
         <div>
             <SCcardWrap>
-                {coffeeReducer.map((item, index) => {                    
+                {coffeeReducer&&coffeeReducer.map((item, index) => {                    
                     return (<CoffeeCard key={index} item={item}/>)
                 })}        
             </SCcardWrap>
