@@ -16,28 +16,39 @@ const AdminPage = () => {
   const sizeRef = useRef()
   const priceRef = useRef()
 
+  
   useEffect(()=>{
     dispatch(__loadCoffee())
     console.log("돌아가?")
 },[])
 
+
   const addcoffee = (e) =>{
-    e.preventDefault();
+    e.preventDesfault();
 
+    const datas = {
+      brand:  brandRef.current.value,
+      category:  categoryRef.current.value,
+      name : nameRef.current.value,
+      size : sizeRef.current.value,
+      price : priceRef.current.value
+    }
     const form = new FormData();
-
+    form.append("signup", new Blob([JSON.stringify(datas)], {
+      type: "application/json"
+    }))
     for(let i = 0 ; i < selectedImages.length ; i++){
         form.append("images", selectedImages[i]);
     }
         // form.append('brand', brandRef.current.value);
-        form.append('category', categoryRef.current.value);
-        form.append('name', nameRef.current.value);
-        form.append('size', sizeRef.current.value);
-        form.append('price', priceRef.current.value);
+        // form.append('category', categoryRef.current.value);
+        // form.append('name', nameRef.current.value);
+        // form.append('size', sizeRef.current.value);
+        // form.append('price', priceRef.current.value);
      
     dispatch(
         __createCoffee(
-          // formData: form
+          brandRef.current.value , form
     )
     )
   
