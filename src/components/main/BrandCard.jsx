@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CoffeeCard from './CoffeeCard';
-import { __loadCoffee,loadCoffee } from '../../redux/modules/coffee';
+import { __loadCoffee,loadCoffee, loadBrand } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -21,18 +21,14 @@ const BrandCard = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const coffeeReducer = useSelector((state) => state.coffee.list);
+    const brandReducer = useSelector((state) => state.coffee.brand_list);
    console.log(coffeeReducer)
-
-  const brandlist = ["스타벅스", "빽다방", "커피빈","이디야","컴포즈커피","드롭탑", "탐앤탐스","더벤티","할리스","폴바셋","카페베네","엔젤인어스"]
-
-// useEffect(()=>{
-//   apis.getCoffees()
-// },[])
+   console.log(brandReducer)
 
   return (
     <>
      <Swiper
-        slidesPerView={7}
+        slidesPerView={8}
         spaceBetween={10}
         slidesPerGroup={1}
         loop={true}
@@ -64,11 +60,12 @@ const BrandCard = () => {
         }}
         className="mySwiper"
       >
-        {brandlist.map((item, index) => {                    
+        {brandReducer.map((item, index) => {                    
                     return (<SwiperSlide key={index} onClick={async()=>{
                       color === '#ddd'? setColor("tomato"):setColor("#ddd");
-                      const star =await axios.get(process.env.REACT_APP_URL+`/coffee/${item}`)
-                      dispatch(loadCoffee(star.data))
+                      dispatch(__loadCoffee(item))
+                      // const star =await axios.get(process.env.REACT_APP_URL+`/coffee/${item}`)
+                      // dispatch(loadCoffee(star.data))
                   }} color={color}>
                     <ScSlide >{item}</ScSlide>
                     </SwiperSlide>)
@@ -98,7 +95,7 @@ const ScSlide = styled.div`
   height: 120px;
   transform: scale(0.9);
   background: #fff;
-  border-radius: 70px;
+  border-radius: 60px;
   border: 1px #ddd solid;
   background-color: ${props => props.color};
 
