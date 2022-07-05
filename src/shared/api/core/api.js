@@ -23,7 +23,7 @@ api.interceptors.request.use(
   }
 );
 
-//2-1. 요청 인터셉터 토큰포함
+//2-1. 요청 인터셉터 토큰포함(formdata)
 instance.interceptors.request.use(
   //요청직전 호출
   (config) => {
@@ -41,7 +41,7 @@ instance.interceptors.request.use(
   }
 );
 
-//2-1. 요청 인터셉터 토큰 미포함(회원가입)
+//2-1. 요청 인터셉터 토큰 미포함(formdata 회원가입)
 instances.interceptors.request.use(
   (config) => {
     config.headers = {

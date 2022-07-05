@@ -7,7 +7,7 @@ import styled from 'styled-components'
 function App() {
   return (
     <SCwrap> 
-        <Router/>
+        <Router />
     </SCwrap>
   );
 }
@@ -17,5 +17,6 @@ function App() {
 export default App;
 
 const SCwrap = styled.div`
-margin: 0 15%;
+display: flex;
+justify-content: center;
 `

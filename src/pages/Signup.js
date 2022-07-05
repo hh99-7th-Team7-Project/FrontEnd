@@ -74,16 +74,19 @@ const SignUp = () => {
   //아이디,비번,닉네임 정규식
   const idCheck = (email) => {
     let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+    // ^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\w+\.)+\w+$
     // 대문자 포함
     return regExp.test(email);
   };
   const pwCheck = (email) => {
     let regExp = /^[0-9a-zA-Z]{6,}$/;
-    // 대문자 포함
+    //(?=.*[A-Za-z0-9])(?=.*\\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\\d~!@#$%^&*()+|=]{8,20}
+    // 대문자 포함 영어필수 숫자필수 특문 필수 8-20글자
     return regExp.test(email);
   };
   const nickCheck = (nick) => {
-    let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]/;
+    let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]{2,10}/;
+    //모두가능 2자에서10자
     return regExp.test(nick);
   };
 

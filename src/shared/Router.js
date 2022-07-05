@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, Link, useNavigate } from "react-router-dom";
 
 // 페이지
 
@@ -13,41 +13,70 @@ import GoogleLogin from "../pages/Login/GoogleLogin";
 import NaverLogin from "../pages/Login/NaverLogin";
 import Signup from "../pages/Signup"
 import AdminPage from "../pages/AdminPage";
-
-
+import Board from "../pages/Board/Board";
+import BoardDetail from "../pages/Board/BoardDetail";
+import BoardWrite from "../pages/Board/BoardWrite";
+import Search from "../pages/Search/Search";
+import SearchBoard from "../pages/Search/SearchBoard";
+import SearchCoffee from "../pages/Search/SearchCoffee";
+import Chat from "../pages/Chat";
 
 const Router = () => {
 
-    return (
-        <Routes>
-            <Route path='/' element={<Main/>}/>
-            <Route path="/mypage" element={<MyPage/>}/>
-            
-            <Route path="/signup" element={<Signup/>}/>
-            {/* Login */}
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/oauth/kakao/callback" element={<KaKaoLogin/>}/>
-            <Route path="/user/google/callback" element={<GoogleLogin/>}/>
-            <Route path="/user/naver/callback" element={<NaverLogin/>}/>
+  //내 현재위치 geolocation
+  const [myLocation, setSetMyLocation] = useState({ lat: '36.0659104000', lng: '128.10945683000' });
+  const [error, setError] = useState('');
+  console.log(myLocation)
+  useEffect(() => {
+    if (navigator.geolocation) {
+      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          setSetMyLocation({
+            lat: position.coords.latitude, // 위도
+            lng: position.coords.longitude, // 경도 
+          });
+          console.log(myLocation)
+        },
+      );
+    } else {
+      setError('Geolocation is not supported.');
+    }
+  }, [])
 
-            {/* Admin Page */}
-            <Route path="/admin" element={<AdminPage/>}/>
 
-            {/** CafeDetail */}
-            <Route path='/angelinus/:coffeename/:id/review/' element={<CoffeeDetail/>}/>
-            <Route path='/cafebene/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/coffeebean/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/compose/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/droptop/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/ediya/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/hollys/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/paiks/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/paul/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/starbucks/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/theventi/:coffeename/:id/review' element={<CoffeeDetail/>}/>
-            <Route path='/tomntoms/:coffeename/:id/review' element={<CoffeeDetail/>}/>            
-        </Routes>
-    )
+
+
+  return (
+    <Routes>
+      <Route path='/' element={<Main myLocation={myLocation} />} />
+      <Route path="/mypage" element={<MyPage />} />
+
+      {/* signup */}
+      <Route path="/signup" element={<Signup />} />
+      {/* Login */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
+      <Route path="/user/google/callback" element={<GoogleLogin />} />
+      <Route path="/user/naver/callback" element={<NaverLogin />} />
+
+      {/* Admin Page */}
+      <Route path="/admin" element={<AdminPage />} />
+
+      {/** CafeDetail */}
+      <Route path='/:brand/:coffeename/:id' element={<CoffeeDetail />} />
+      {/* map */}
+      <Route path="/map/:brand" element={<Map myLocation={myLocation} />} />
+      {/* Search */}
+      <Route path="/search/:keyword" element={<Search />} />
+      <Route path="/search/board/:keyword" element={<SearchBoard />} />
+      <Route path="/search/coffee/:keyword" element={<SearchCoffee />} />
+      {/* Board */}
+      <Route path="/board" element={<Board />} />
+      <Route path="/board/:id" element={<BoardDetail />} />
+      <Route path="/board/write" element={<BoardWrite />} />
+    </Routes>
+  )
 }
 
 export default Router;
