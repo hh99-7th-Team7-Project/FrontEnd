@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import UpdateComment from "./UpdateComment";
 import { useSelector, useDispatch } from "react-redux";
 import { __deleteComment, __loadComment } from '../../redux/modules/comment';
 
@@ -8,36 +8,46 @@ const CommentCard = (props) => {
 
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
-  const review_list = useSelector((state)=>state.comment.posts);  
 
+  const [showUpdate, setShowUpdate ] = useState(false);
+
+  const openUpdate = () => {
+    setShowUpdate(true);
+  }
+  
+  const review_list = useSelector((state)=>state.comment.posts);
+  
 
   useEffect(()=>{
     dispatch(__loadComment());
 
   },[dispatch])
 
-
-
-
     return (
+      <>
         <ScWrap>
           {review_list.map((item, index) => {
             return (            
             <ScComment key={index}>{item.Review}            
-              <ScHR/>              
-              <button onClick={()=>{
-                navigate(`/angelinus/americano/review/update/${item.id}`);
-              }}>수정</button>
+              <ScHR/>
+              <button onClick={openUpdate}>수정</button>
               <button onClick={()=>{
                 dispatch(__deleteComment(Number(item?.id)))                
                 dispatch(__loadComment());
               }}>삭제</button>
+              {showUpdate === true ? (
+            <UpdateComment
+              showUpdate={showUpdate}
+              setShowUpdate={setShowUpdate}
+              commentId={item?.id}          
+            />) : null}  
             </ScComment>
           )})}
         </ScWrap>
-        ) 
+              
+        </>
+        )
+        
   }
 
 

@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styled from 'styled-components';
-import { useDispatch }from 'react-redux';
-import { __updateComment } from '../../redux/modules/comment';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector }from 'react-redux';
+import { __loadComment, __updateComment } from '../../redux/modules/comment';
 
-const UpdateComment = () => {
 
-    const { id } = useParams();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+const UpdateComment = (props) => {
+
+    const { showUpdate , setShowUpdate, commentId } = props;   
+    
+    const dispatch = useDispatch();   
     const reviewRef = React.useRef();
 
-    console.log(id);
 
     const onChange = (e) => {
         if (
@@ -20,14 +19,18 @@ const UpdateComment = () => {
           {
             dispatch(__updateComment({                
                 Review: reviewRef.current.value,
-                id: id,
-                
-            }),
+                id: commentId,
+            })
         );
-            navigate(`/angelinus/americano/${id}/review`)
+            dispatch(__loadComment());
+            setShowUpdate(!showUpdate);
         } else {
             alert ("빈칸입니다.")
         }
+    }
+
+    const closeUpdate = () => {
+        setShowUpdate(!showUpdate);
     }
 
 
@@ -36,7 +39,7 @@ const UpdateComment = () => {
         <ScModal>
             <ScTBWrap>
                 <ScModalTitle>리뷰 수정하기</ScModalTitle>
-                <ScButton>닫기</ScButton>
+                <ScButton onClick={closeUpdate}>닫기</ScButton>
             </ScTBWrap>
             <input type="text" ref={reviewRef} />
             <button onClick={()=>{
@@ -86,6 +89,9 @@ const ScButton = Styled.button`
     background-color: transparent;
     border: 0;
     font-size: 22px;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 export default UpdateComment;

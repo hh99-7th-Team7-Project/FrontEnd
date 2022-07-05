@@ -31,7 +31,7 @@ export const loadComment = (payload) => {
 }
 
 export const deleteComment = (payload) => {
-    console.log("지울 Comment 인덱스" , payload)
+    
     return {
         type: DELETE_COMMENT,
         payload
@@ -39,7 +39,7 @@ export const deleteComment = (payload) => {
 }
 
 export const updateComment = (payload) => {    
-    console.log("수정할거야", payload);
+    
     return {
         type: UPDATE_COMMENT,
         payload
@@ -67,7 +67,7 @@ export const __loadComment = () => async(dispatch, getState) => {
     
     try {
         const posts = await axios.get("http://localhost:4000/Review");
-        console.log(posts.data); 
+        
         dispatch(loadComment(posts.data))
         }
     catch (error) {
@@ -92,10 +92,8 @@ export const __updateComment = (payload) => async(dispatch, getState) => {
         console.log("확인", payload);
         await axios.put(`http://localhost:4000/Review/${Number(payload.id)}`,{
             Review: payload.Review
-        });    
-        console.log(payload);    
-        dispatch(updateComment(payload.id));
-        
+        });
+        dispatch(updateComment(payload));
     } catch (error) {
         console.log(error);
     }
@@ -125,12 +123,10 @@ export default function postReducer (state = initialState, action) {
                 posts: [...new_comment_list]
             };
         case UPDATE_COMMENT:
-            const updateCommentList = state.posts.map((value)=>{
-                console.log(action.payload);
+            const updateCommentList = state.posts.map((value)=>{                
                 return value.id === Number(action.payload.id)?
-                action.payload.Review : value.Review;                
+                action.payload.Review : value.Review;
             });
-
             return {...state, posts: updateCommentList}
         default:
             return state;
