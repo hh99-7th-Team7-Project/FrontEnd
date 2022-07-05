@@ -1,16 +1,20 @@
 {
   "Review": [
     {
-      "Review": "네네",
-      "id": 1
-    },
-    {
       "Review": "아메리카노 좋아요",
       "id": 3
     },
     {
       "Review": "테스트",
-      "id": 4
+      "id": 5
+    },
+    {
+      "Review": "확인",
+      "id": 6
+    },
+    {
+      "Review": "수정",
+      "id": 7
     }
   ],
   "coffee": [

@@ -11,7 +11,6 @@ const Map = () => {
 
 const ScMapWrap = Styled.div`
     border: 2px solid black;
-
     margin: 20px;
 `;
 

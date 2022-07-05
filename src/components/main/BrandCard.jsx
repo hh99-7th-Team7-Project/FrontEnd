@@ -20,7 +20,7 @@ const BrandCard = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const coffeeReducer = useSelector((state) => state.coffee.list);
-   console.log(coffeeReducer)
+   
 
   const brandlist = ["스타벅스", "빽다방", "커피빈","이디야","컴포즈 커피","드롭탑", "탐앤탐스","더벤티","할리스","폴바셋","카페베네","엔젤인어스"]
 

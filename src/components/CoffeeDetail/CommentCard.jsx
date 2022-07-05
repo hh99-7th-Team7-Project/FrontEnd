@@ -1,38 +1,53 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Styled from 'styled-components';
+import UpdateComment from "./UpdateComment";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom';
 import { __deleteComment, __loadComment } from '../../redux/modules/comment';
 
 const CommentCard = (props) => {
 
 
   const dispatch = useDispatch();
-  
-  const review_list = useSelector((state)=>state.comment.posts);  
 
+  const [showUpdate, setShowUpdate ] = useState(false);
+
+  const openUpdate = () => {
+    setShowUpdate(true);
+  }
+  
+  const review_list = useSelector((state)=>state.comment.posts);
+  
 
   useEffect(()=>{
     dispatch(__loadComment());
 
   },[dispatch])
 
-
     return (
+      <>
         <ScWrap>
           {review_list.map((item, index) => {
             return (            
             <ScComment key={index}>{item.Review}            
-              <ScHR/>              
-              <button>수정</button>
-              <button onClick={()=>{
+              <ScHR/>
+              <ScButton onClick={openUpdate}>수정</ScButton>
+              <ScButton onClick={()=>{
                 dispatch(__deleteComment(Number(item?.id)))                
                 dispatch(__loadComment());
-              }}>삭제</button>
-            </ScComment>            
+              }}>삭제</ScButton>
+              {showUpdate === true ? (
+            <UpdateComment
+              showUpdate={showUpdate}
+              setShowUpdate={setShowUpdate}
+              commentId={item?.id}          
+            />) : null}  
+            </ScComment>
           )})}
         </ScWrap>
-        ) 
+              
+        </>
+        )
+        
   }
 
 
@@ -54,5 +69,11 @@ const ScComment = Styled.div`
 
 const ScHR = Styled.hr`
   margin-top: 5px;  
+`;
+
+const ScButton = Styled.button`
+  &:hover{
+    cursor: pointer;
+  }
 `;
 export default CommentCard
