@@ -3,27 +3,41 @@ import Styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CoffeeCard from './CoffeeCard';
-import { __loadCoffee,loadCoffee, loadBrand } from '../../redux/modules/coffee';
+import { __loadCoffee,loadCoffee, loadBrand, __loadCoffees } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react'
+
 
 // Import Swiper styles
 import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import axios from 'axios';
-import styled, {keyframes} from 'styled-components';
-import apis from '../../shared/api/main';
+import styled, {css, keyframes} from 'styled-components';
 
-const BrandCard = () => {
-     const [color, setColor] = useState('#ddd') 
+
+const BrandCard = (props) => {
+    // const{coffeeReducer} = props
+    const [color, setColor] = useState(false) 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const ediya = "이디야"
+    useEffect(()=>{
+  dispatch(__loadCoffee(ediya))  
+},[dispatch])
+
     const coffeeReducer = useSelector((state) => state.coffee.list);
-    const brandReducer = useSelector((state) => state.coffee.brand_list);
    console.log(coffeeReducer)
-   console.log(brandReducer)
+
+
+   const brandList =[{brand:"스타벅스", id:0},{brand:"빽다방", id:1},
+   {brand:"커피빈", id:2},{brand:"이디야", id:3},{brand:"컴포즈커피", id:4},{brand:"드롭탑", id:5}, {brand:"탐앤탐스", id:6},{brand:"더벤티", id:7},{brand:"할리스", id:8},{brand:"폴바셋", id:9},{brand:"카페베네", id:10},{brand:"엔젤인어스", id:11}]
+
+
+
+// const coffeeLoad =(e)=>{
+//   <add className ="active" here>
+// }
 
   return (
     <>
@@ -38,6 +52,7 @@ const BrandCard = () => {
         // }}
         navigation={true}
         modules={[Navigation]}
+  
         breakpoints={{
           0:{
             slidesPerView :2,
@@ -52,27 +67,36 @@ const BrandCard = () => {
             slidesPerView : 5,
           },
           1200:{
-            slidesPerView : 6,
+            slidesPerView : 7,
           },
           1600:{
-            slidesPerView : 7,
+            slidesPerView : 9,
           }
         }}
         className="mySwiper"
       >
-        {brandReducer.map((item, index) => {                    
-                    return (<SwiperSlide key={index} onClick={async()=>{
-                      color === '#ddd'? setColor("tomato"):setColor("#ddd");
-                      dispatch(__loadCoffee(item))
-                      // const star =await axios.get(process.env.REACT_APP_URL+`/coffee/${item}`)
-                      // dispatch(loadCoffee(star.data))
-                  }} color={color}>
-                    <ScSlide >{item}</ScSlide>
-                    </SwiperSlide>)
+        {brandList.map((item, index) => {                    
+                    return (
+                    <SwiperSlide key={index}
+                      className="slide" 
+                    >
+                    <ScSlide  
+                      onClick={(e)=>{
+                        // e.target.style.background
+                        console.log(item.id)
+                      setColor(!color);
+                      dispatch(__loadCoffee(item?.brand))  
+                  }}
+                    >{item?.brand}</ScSlide>
+                    </SwiperSlide>
+                    
+                    )
                 })}  
       </Swiper>
+      
         <div>
             <SCcardWrap>
+             <div>{coffeeReducer?.brand}</div>
                 {coffeeReducer&&coffeeReducer.map((item, index) => {                    
                     return (<CoffeeCard key={index} item={item}/>)
                 })}        
@@ -87,6 +111,7 @@ const animation = keyframes`
     transform: scale(1.0);
   }
 `;
+
 
 const ScSlide = styled.div`
   text-align: center;
@@ -117,10 +142,19 @@ const ScSlide = styled.div`
 
   animation: ${animation} 0.5s ;
   }
-  /* &:active{
+
+  /* div:nth-child(){
+    border-bottom: 2px solid var(--aquaD);
+  } */
+
+  &:active{
     scale: 1.1;
     border: 1px #b46f6f solid;
-  }  */
+    background: pink!important;
+    ::after {
+      background-color: #e73653!important;
+    }
+  } 
 `
 const SCcardWrap = Styled.div`
     margin: 30px 0;

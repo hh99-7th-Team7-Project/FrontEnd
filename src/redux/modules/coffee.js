@@ -46,6 +46,13 @@ export const __loadCoffee = (brand) => {
     dispatch(loadCoffee(loadData.data));
   };
 };
+export const __loadCoffees = () => {
+  return async function (dispatch) {
+    const loadData = await apis.getCoffees();
+    console.log(loadData.data);
+    dispatch(loadCoffee(loadData.data));
+  };
+};
 export const __loadCoffeeDetail = (brand,id) => {
   return async function (dispatch) {
     const loadData = await apis.getCoffeeDetail(brand,id);
@@ -70,10 +77,10 @@ export default function CoffeeReducer(state = intialstate, action) {
       return { list: action.payload };
     }
     case LOAD_BRAND: {
-      return { brand_list : action.payload };
+      return {...state, brand_list : action.payload };
     }
     case LOAD_COFFEE_DETAIL: {
-      return { list: action.payload };
+      return { ...state, coffee: action.payload };
     }
     case CREATE_COFFEE: {
       return { ...state, list: [...state.list, action.payload] };

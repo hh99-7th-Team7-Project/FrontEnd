@@ -13,20 +13,17 @@ const Category = () => {
 }
 
 const ScCategoryBox = Styled.div`  
-  margin-left: 50px;
-  margin: 20px 30px auto;  
-  width: 550px;
-  padding: 10px;
+  /* margin-left: 50px; */
+  /* margin: 20px 30px auto;   */
+  /* width: 550px; */
+  /* padding: 10px; */
   display: flex;
-  
-  
-  
 `;
 
 const ScCategory = Styled.div` 
-  width: 100px;
+  /* width: 100px; */
   background-color: white;
-  margin-left: 30px;
+  /* margin-left: 30px; */
   &: hover {
     cursor: pointer;
   }

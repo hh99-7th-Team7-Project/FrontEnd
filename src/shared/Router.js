@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, Link, useNavigate } from "react-router-dom";
 
 // 페이지
 
@@ -13,29 +13,69 @@ import GoogleLogin from "../pages/Login/GoogleLogin";
 import NaverLogin from "../pages/Login/NaverLogin";
 import Signup from "../pages/Signup"
 import AdminPage from "../pages/AdminPage";
-import CommentCard from "../components/CoffeeDetail/CommentCard";
-
-
+import Board from "../pages/Board/Board";
+import BoardDetail from "../pages/Board/BoardDetail";
+import BoardWrite from "../pages/Board/BoardWrite";
+import Search from "../pages/Search/Search";
+import SearchBoard from "../pages/Search/SearchBoard";
+import SearchCoffee from "../pages/Search/SearchCoffee";
+import Chat from "../pages/Chat";
 
 const Router = () => {
 
+ //내 현재위치 geolocation
+ const navigate = useNavigate()
+ const [myLocation, setSetMyLocation] = useState({lat: '36.0659104000', lng: '128.10945683000'});
+ const [error, setError] = useState('');
+console.log(myLocation)
+ useEffect(()=>{
+   if (navigator.geolocation) {
+     // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+     navigator.geolocation.getCurrentPosition(
+       position => {  
+         setSetMyLocation({
+           lat: position.coords.latitude, // 위도
+           lng: position.coords.longitude, // 경도 
+         });
+         console.log(myLocation)
+       },
+     );
+   } else {
+     setError('Geolocation is not supported.');
+   }
+ },[])
+
+
+
+
     return (
         <Routes>
-            <Route path='/' element={<Main/>}/>
-            <Route path="/mypage" element={<MyPage/>}/>
-            
-            <Route path="/signup" element={<Signup/>}/>
+            <Route path='/' element={<Main myLocation={myLocation}/>} />
+            <Route path="/mypage" element={<MyPage />} />
+
+            {/* signup */}
+            <Route path="/signup" element={<Signup />} />
             {/* Login */}
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/oauth/kakao/callback" element={<KaKaoLogin/>}/>
-            <Route path="/user/google/callback" element={<GoogleLogin/>}/>
-            <Route path="/user/naver/callback" element={<NaverLogin/>}/>
+            <Route path="/login" element={<Login />} />
+            <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
+            <Route path="/user/google/callback" element={<GoogleLogin />} />
+            <Route path="/user/naver/callback" element={<NaverLogin />} />
 
             {/* Admin Page */}
-            <Route path="/admin" element={<AdminPage/>}/>
+            <Route path="/admin" element={<AdminPage />} />
 
             {/** CafeDetail */}
-            <Route path='/:brand/:coffeename/:id' element={<CoffeeDetail/>}/>
+            <Route path='/:brand/:coffeename/:id' element={<CoffeeDetail />} />
+            {/* map */}
+            <Route path="/map/:brand" element={<Map myLocation={myLocation}/>}/>
+            {/* Search */}
+            <Route path="/search/:keyword" element={<Search/>}/>
+            <Route path="/search/board/:keyword" element={<SearchBoard/>}/>
+            <Route path="/search/coffee/:keyword" element={<SearchCoffee/>}/>
+            {/* Board */}
+            <Route path="/board" element={<Board/>}/>
+            <Route path="/board/:id" element={<BoardDetail/>}/>
+            <Route path="/board/write" element={<BoardWrite/>}/>
 
         </Routes>
     )

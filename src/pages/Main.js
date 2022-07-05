@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import Styled from 'styled-components';
 // components
-import  {BrandCard,ImgSlide,Map,RandomCoffee,Sadari}from '../components/main/mainIndex'
+import  {BrandCard, ImgSlide, Map, RandomCoffee, Sadari}from '../components/main/mainIndex'
+import { __loadCoffee, __loadCoffees } from '../redux/modules/coffee';
 import Header from './Header/Header';
 
 
 const Main = () => {
+  // const dispatch = useDispatch()
+  // const [coffee, setCoffee] = useState()
+  // const coffeeReducer = useSelector((state) => state.coffee.list);
+  // console.log(coffeeReducer)
+
+  // useEffect(()=>{
+  //   dispatch(__loadCoffees())  
+  // },[dispatch])
 
 
   return (
-    <>
+    <div style={{maxWidth:"1200px",width:"75%"}}>
       <Header/>
       <ScContainer>   
         <ScHR/>
@@ -23,7 +33,7 @@ const Main = () => {
         </ScMRSContainer>
         <BrandCard/>
       </ScContainer>
-    </>
+    </div>
     
   )
 }

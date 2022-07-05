@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 import {useDispatch,useSelector}from 'react-redux';
 import axios from 'axios';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
+import Header from './Header/Header';
+import styled from 'styled-components';
 
 
 
@@ -23,9 +25,8 @@ const CoffeeDetail = () => {
 console.log(data)
 console.log(pri)
 
-const coffeeReducer = useSelector((state) => state.coffee.list);
+const coffeeReducer = useSelector((state) => state.coffee.coffee);
 console.log(coffeeReducer)
-const pricePair = coffeeReducer.pricePair
 
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, id)) 
@@ -33,7 +34,8 @@ useEffect(()=>{
 
 
 return (
-    <>      
+    <Scwrap>   
+      <Header/>   
       <ScHR/>
       <ScContainer>
         <ImgCard 
@@ -45,11 +47,15 @@ return (
           <CommentCard />
         </ScReviewCommentBox>
       </ScContainer>
-      
-      
-    </>
+    </Scwrap>
   )
 }
+
+const Scwrap = Styled.div`
+ display: column;
+ max-width:1200px;
+ width:75%
+`
 
 const ScHR = Styled.hr`
   margin-top: 50px;
