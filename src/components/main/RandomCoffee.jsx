@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState,useEffect } from 'react'
 import Styled from 'styled-components'
 import apis from '../../shared/api/main'
@@ -32,11 +33,18 @@ const RandomCoffee = () => {
   useEffect(()=>{
 
     randomCoffee();
-  },[randomCoffee]);
+  },[]);
 
 
   return (
     <ScRandomWrap>
+      <ScTitle>랜덤 음료</ScTitle>
+        <ScBrand>
+          {coffeeBrand.map((item,index)=>{
+            <ScBrandTitle key={index}>{item.id}</ScBrandTitle>
+          })}
+                   
+        </ScBrand>
       <h2>{coffee}</h2>
       <button onClick={()=>{
         randomCoffee();
@@ -48,6 +56,19 @@ const RandomCoffee = () => {
 const ScRandomWrap = Styled.div`
     border: 2px solid black;
     margin: 20px;
+`;
+
+const ScTitle = Styled.h1`  
+  color: brown;
+`;
+
+const ScBrand = Styled.div`
+  display: flex;  
+  width: 100%;  
+`;
+
+const ScBrandTitle = Styled.p`
+
 `;
 
 export default RandomCoffee
