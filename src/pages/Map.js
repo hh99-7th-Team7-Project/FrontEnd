@@ -18,7 +18,7 @@ const Map = (props) => {
   useEffect(() => {
     const container = document.getElementById('map');
     let markers = [];
-
+    //  map.relayout() 
     if (!error) {
       const options = {
         center: new window.kakao.maps.LatLng(
@@ -31,6 +31,11 @@ const Map = (props) => {
 
       // 지도 생성
       const map = new window.kakao.maps.Map(container, options);
+
+      container.style.width = '800px';
+      container.style.height = '600px';
+      
+      map.relayout();
 
       // 장소 검색 객체를 생성
       const ps = new window.kakao.maps.services.Places();
@@ -272,9 +277,9 @@ const removeAllChildNods = (el) => {
   return (
     <div style={{ position: 'relative' }}>
     <div
-      className='w-full'
+      // className='w-full'
       id='map'
-      style={{ height: '700px', backgroundColor: 'grey' }}
+      style={{ height: '600px', backgroundColor: 'grey' }}
     >
       지도 
     </div>
