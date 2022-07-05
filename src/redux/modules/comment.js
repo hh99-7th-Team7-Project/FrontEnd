@@ -39,12 +39,13 @@ export const deleteComment = (payload) => {
 }
 
 export const updateComment = (payload) => {    
+    console.log("수정할거야", payload);
     return {
         type: UPDATE_COMMENT,
         payload
+        
     }
 }
-
 
 // middleware
 
@@ -69,11 +70,10 @@ export const __loadComment = () => async(dispatch, getState) => {
         console.log(posts.data); 
         dispatch(loadComment(posts.data))
         }
-        
     catch (error) {
         console.log(error)
     }
-}
+};
 
 
 export const __deleteComment = (payload) => async(dispatch, getState) => {
@@ -86,10 +86,16 @@ export const __deleteComment = (payload) => async(dispatch, getState) => {
     }
 }
 
-export const __updateComment = (payload, index) => async(dispatch, getState) => {
+export const __updateComment = (payload) => async(dispatch, getState) => {
+    
     try {
-        await axios.put("http://localhost:4000/Review");
-        dispatch(updateComment(payload));
+        console.log("확인", payload);
+        await axios.put(`http://localhost:4000/Review/${Number(payload.id)}`,{
+            Review: payload.Review
+        });    
+        console.log(payload);    
+        dispatch(updateComment(payload.id));
+        
     } catch (error) {
         console.log(error);
     }
@@ -100,7 +106,7 @@ export const __updateComment = (payload, index) => async(dispatch, getState) => 
 
 export default function postReducer (state = initialState, action) {
     switch (action.type){
-        case ADD_COMMENT:            
+        case ADD_COMMENT:
             return {
                 ...state, 
                 posts: [...state.posts, action.payload]
@@ -119,7 +125,13 @@ export default function postReducer (state = initialState, action) {
                 posts: [...new_comment_list]
             };
         case UPDATE_COMMENT:
-            return state;
+            const updateCommentList = state.posts.map((value)=>{
+                console.log(action.payload);
+                return value.id === Number(action.payload.id)?
+                action.payload.Review : value.Review;                
+            });
+
+            return {...state, posts: updateCommentList}
         default:
             return state;
         }

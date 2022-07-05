@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom';
 import { __deleteComment, __loadComment } from '../../redux/modules/comment';
 
 const CommentCard = (props) => {
 
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   
   const review_list = useSelector((state)=>state.comment.posts);  
 
@@ -18,18 +19,22 @@ const CommentCard = (props) => {
   },[dispatch])
 
 
+
+
     return (
         <ScWrap>
           {review_list.map((item, index) => {
             return (            
             <ScComment key={index}>{item.Review}            
               <ScHR/>              
-              <button>수정</button>
+              <button onClick={()=>{
+                navigate(`/angelinus/americano/review/update/${item.id}`);
+              }}>수정</button>
               <button onClick={()=>{
                 dispatch(__deleteComment(Number(item?.id)))                
                 dispatch(__loadComment());
               }}>삭제</button>
-            </ScComment>            
+            </ScComment>
           )})}
         </ScWrap>
         ) 

@@ -7,6 +7,8 @@ import store from './redux/configStore';
 import  GlobalStyle  from './GlobalStyle';
 import reportWebVitals from './reportWebVitals';
 
+import "swiper/css/bundle";
+
 
 
 
