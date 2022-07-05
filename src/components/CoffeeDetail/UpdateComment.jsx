@@ -42,10 +42,10 @@ const UpdateComment = (props) => {
                 <ScButton onClick={closeUpdate}>닫기</ScButton>
             </ScTBWrap>
             <input type="text" ref={reviewRef} />
-            <button onClick={()=>{
+            <ScUpdateBtn onClick={()=>{
                 onChange();
                 reviewRef.current.value=""
-            }}>수정하기</button>
+            }}>수정하기</ScUpdateBtn>
         </ScModal>
     </ScModalWrap>
   )
@@ -89,6 +89,12 @@ const ScButton = Styled.button`
     background-color: transparent;
     border: 0;
     font-size: 22px;
+    &:hover{
+        cursor: pointer;
+    }
+`;
+
+const ScUpdateBtn = Styled.button`
     &:hover{
         cursor: pointer;
     }

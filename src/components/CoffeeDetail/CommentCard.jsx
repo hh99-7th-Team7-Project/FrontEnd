@@ -30,11 +30,11 @@ const CommentCard = (props) => {
             return (            
             <ScComment key={index}>{item.Review}            
               <ScHR/>
-              <button onClick={openUpdate}>수정</button>
-              <button onClick={()=>{
+              <ScButton onClick={openUpdate}>수정</ScButton>
+              <ScButton onClick={()=>{
                 dispatch(__deleteComment(Number(item?.id)))                
                 dispatch(__loadComment());
-              }}>삭제</button>
+              }}>삭제</ScButton>
               {showUpdate === true ? (
             <UpdateComment
               showUpdate={showUpdate}
@@ -69,5 +69,11 @@ const ScComment = Styled.div`
 
 const ScHR = Styled.hr`
   margin-top: 5px;  
+`;
+
+const ScButton = Styled.button`
+  &:hover{
+    cursor: pointer;
+  }
 `;
 export default CommentCard
