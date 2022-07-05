@@ -13,6 +13,7 @@ import GoogleLogin from "../pages/Login/GoogleLogin";
 import NaverLogin from "../pages/Login/NaverLogin";
 import Signup from "../pages/Signup"
 import AdminPage from "../pages/AdminPage";
+import UpdateComment from "../components/CoffeeDetail/UpdateComment";
 import CommentCard from "../components/CoffeeDetail/CommentCard";
 
 
@@ -35,7 +36,7 @@ const Router = () => {
             <Route path="/admin" element={<AdminPage/>}/>
 
             {/** CafeDetail */}
-            <Route path='/angelinus/:coffeename/:id' element={<CoffeeDetail/>}/>
+            <Route path='/angelinus/:coffeename/:id/review' element={<CoffeeDetail/>}/>
             <Route path='/cafebene/:coffeename/:id/review' element={<CoffeeDetail/>}/>
             <Route path='/coffeebean/:coffeename/:id/review' element={<CoffeeDetail/>}/>
             <Route path='/compose/:coffeename/:id/review' element={<CoffeeDetail/>}/>
@@ -47,6 +48,7 @@ const Router = () => {
             <Route path='/starbucks/:coffeename/:id/review' element={<CoffeeDetail/>}/>
             <Route path='/theventi/:coffeename/:id/review' element={<CoffeeDetail/>}/>
             <Route path='/tomntoms/:coffeename/:id/review' element={<CoffeeDetail/>}/>
+            <Route path='/angelinus/:coffeename/review/update/:id' element={<UpdateComment/>}/>
         </Routes>
     )
 }
