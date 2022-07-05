@@ -10,6 +10,7 @@ const apis = {
     getCoffee: (brand) => api.get(`/coffee/${brand}`),
     getCoffeeDetail: (brand, id) => api.get(`/coffee/${brand}/${id}`),
     getCoffees: ()=> api.get("/coffee"),
+    getCoffeeCategory: (category) => api.get(`/coffee/sidebar?category= ${category}`),
     addCoffee: (brand, coffee) => instance.post(`/coffee/${brand}`,coffee),
     getRandomCoffee: ()=> api.get("/coffee/random?brand=스타벅스&category=coffee"),
 
