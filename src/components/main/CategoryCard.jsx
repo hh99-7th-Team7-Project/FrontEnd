@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CoffeeCard from './CoffeeCard';
-import { __loadCoffee,loadCoffee, loadBrand, __loadCoffees } from '../../redux/modules/coffee';
+import { __loadCoffee,loadCoffee, loadBrand, __loadCoffees, __loadCoffeeCategory } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -16,22 +16,22 @@ import { Navigation } from "swiper";
 import styled, {css, keyframes} from 'styled-components';
 
 
-const BrandCard = (props) => {
+const CategoryCard = (props) => {
     // const{coffeeReducer} = props
     const [color, setColor] = useState(false) 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const ediya = "스타벅스"
+    const coffee = "coffee"
     useEffect(()=>{
-  dispatch(__loadCoffee(ediya))  
+  dispatch(__loadCoffeeCategory(coffee))  
 },[dispatch])
 
     const coffeeReducer = useSelector((state) => state.coffee.list);
    
 
 
-   const brandList =[{brand:"스타벅스", id:0},{brand:"빽다방", id:1},
-   {brand:"커피빈", id:2},{brand:"이디야", id:3},{brand:"컴포즈커피", id:4},{brand:"드롭탑", id:5}, {brand:"탐앤탐스", id:6},{brand:"더벤티", id:7},{brand:"할리스", id:8},{brand:"폴바셋", id:9},{brand:"카페베네", id:10},{brand:"엔젤인어스", id:11}]
+   const categoryList =[{brand:"coffee", id:0},{brand:"nonCoffee", id:1},
+   {brand:"smoothie", id:2},{brand:"ade", id:3},{brand:"tea", id:4}]
 
 
 
@@ -75,7 +75,7 @@ const BrandCard = (props) => {
         }}
         className="mySwiper"
       >
-        {brandList.map((item, index) => {                    
+        {categoryList.map((item, index) => {                    
                     return (
                     <SwiperSlide key={index}
                       className="slide" 
@@ -85,7 +85,7 @@ const BrandCard = (props) => {
                         // e.target.style.background
                         console.log(item.id)
                       setColor(!color);
-                      dispatch(__loadCoffee(item?.brand))  
+                      dispatch(__loadCoffeeCategory(item?.brand))  
                   }}
                     >{item?.brand}</ScSlide>
                     </SwiperSlide>
@@ -167,4 +167,4 @@ const SCcardWrap = Styled.div`
 
 `;
 
-export default BrandCard
+export default CategoryCard

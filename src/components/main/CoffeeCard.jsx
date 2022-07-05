@@ -18,6 +18,7 @@ navigate(`/${item?.brand}/${item?.name}/${item?.id}`)
   return (
     <div>
         <SCcard color={item?.brand} onClick={moveOnclick}>
+        <SCprice>{pricePair[0].price}원</SCprice>
         <SCcoffeeImg src={item?.img}/>
         <SChover>
          <SCcardText>{item?.brand}</SCcardText>
@@ -35,7 +36,7 @@ export default CoffeeCard
 
 const SCcardText = styled.div`    
     margin: 20px auto;
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
 `;
 
@@ -43,6 +44,13 @@ const SCcardText = styled.div`
     width: 227px;
     height: 55%;
     margin: auto;
+  `
+
+  const SCprice = styled.div`
+    background-color: #3d3b3b;
+    color: white;
+    width: 60px;
+    text-align: center;
   `
   const SChover =styled.div`
       background-color: #808080e8;
@@ -53,7 +61,7 @@ const SCcardText = styled.div`
       opacity: 0;
       width: 100%;
       height: 100%;
-      border-radius: 30px;
+    
   `
 const SCcard = styled.div`
     position: relative;
@@ -72,17 +80,17 @@ const SCcard = styled.div`
         case "더벤티" : 
         return "rgb(123,0,155)"
         case "드롭탑" :
-          return"rgb(26,38,138)"
+       return"rgb(26,38,138)"
           case "컴포즈커피" :
-          return"rgb(254,217,0)"
+        return"rgb(254,217,0)"
           case "탐앤탐스" :
-          return"rgb(79,21,29)"
+        return"rgb(79,21,29)"
           case "빽다방" :
-          return"rgb(26,38,138)"
+         return"rgb(26,38,138)"
           case "폴바셋" :
-          return"rgb(41,31,32)"
+        return"rgb(41,31,32)"
           case "카페베네" :
-          return"rgb(121,98,80)"
+         return"rgb(121,98,80)"
 
       default:
         return "white"
@@ -91,11 +99,12 @@ const SCcard = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid #ddd;
-    width: 227px;
+    width: 90%;
+    /* width: 227px; */
     height: 401px;
     /* padding: 80px 0; */
-    margin: 50px;
-    border-radius: 30px;
+    margin: 30px;
+    /* border-radius: 30px; */
     &:hover {
         cursor: pointer;
       ${SChover}{
