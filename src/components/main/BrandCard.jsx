@@ -27,7 +27,7 @@ const BrandCard = (props) => {
 },[dispatch])
 
     const coffeeReducer = useSelector((state) => state.coffee.list);
-   console.log(coffeeReducer)
+   
 
 
    const brandList =[{brand:"스타벅스", id:0},{brand:"빽다방", id:1},

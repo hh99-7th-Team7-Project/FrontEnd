@@ -69,6 +69,9 @@ const ScReviewBtn = Styled.button`
     margin-left: 30px;
     width: 200px;
     height: 30px;
+    &:hover {
+      cursor: pointer;
+    }
 `;
 
 export default Comment
