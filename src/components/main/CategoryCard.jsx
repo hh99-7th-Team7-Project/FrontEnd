@@ -31,7 +31,7 @@ const CategoryCard = (props) => {
 
 
    const categoryList =[{brand:"coffee", id:0},{brand:"nonCoffee", id:1},
-   {brand:"smoothie", id:2},{brand:"ade", id:3},{brand:"tea", id:4}]
+   {brand:"smoothie", id:2},{brand:"aid", id:3},{brand:"tea", id:4}]
 
 
 

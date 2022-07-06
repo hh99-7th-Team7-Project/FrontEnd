@@ -11,7 +11,7 @@ let intialstate = {
 /* ----------------- 액션 타입 ------------------ */
 
 const LOAD_COFFEE = "coffee_reducer/LOAD";
-const LOAD_COFFEE_CATEGORY = "coffee_reducer/LOAD";
+const LOAD_COFFEE_CATEGORY = "coffee_reducer/CATEGORY";
 const LOAD_COFFEE_DETAIL = "coffee_reducer/DETAIL"
 const CREATE_COFFEE = "coffee_reducer/CREATE";
 const UPDATE_COFFEE = "coffee_reducer/UPDATE";
@@ -57,7 +57,7 @@ export const __loadCoffeeCategory = (category) => {
   return async function (dispatch) {
     const loadData = await apis.getCoffeeCategory(category);
     console.log(loadData.data);
-    dispatch(loadCoffeeDetail(loadData.data));
+    dispatch(loadCoffeeCategory(loadData.data));
   };
 };
 export const __loadCoffeeDetail = (brand,id) => {
@@ -84,7 +84,7 @@ export default function CoffeeReducer(state = intialstate, action) {
       return { list: action.payload };
     }
     case LOAD_COFFEE_CATEGORY: {
-      return {...state, brand_list : action.payload };
+      return {...state, list : action.payload };
     }
     case LOAD_COFFEE_DETAIL: {
       return { ...state, coffee: action.payload };
