@@ -1,7 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
 
 
@@ -9,7 +9,10 @@ const Comment = () => {
 
 
   const navigate = useNavigate();
+  const { brand , id } = useParams();
   const dispatch = useDispatch();
+
+  console.log("id는 왜?",brand ,id);
 
 
   const commentInputRef = React.useRef();
@@ -22,6 +25,9 @@ const Comment = () => {
     {
       dispatch(__addComment({
         Review: commentInputRef.current.value,
+        id,
+        brand,
+        
         
       })
     );    
@@ -32,12 +38,11 @@ const Comment = () => {
 
   return ( 
     <ScWrap>
-        <p>리뷰 작성하기</p>
         <ScInput type="text" placeholder="리뷰를 등록해주세요" ref={commentInputRef}/>
         
         <ScBtnWrap>
           <ScReviewBtn onClick={()=>{
-            addComment();
+            addComment(brand,id);
             commentInputRef.current.value=""
           }}>리뷰등록하기</ScReviewBtn>
         </ScBtnWrap>

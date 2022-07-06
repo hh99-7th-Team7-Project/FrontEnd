@@ -49,12 +49,11 @@ export const updateComment = (payload) => {
 
 // middleware
 
-export const __addComment = (payload) => async (dispatch, getState) => {
+export const __addComment = (payload,brand,id) => async (dispatch, getState) => {
     try {
-        const response = await axios.post("http://localhost:4000/Review",
-            
-            payload
-        );
+        console.log("??",payload,brand,id)
+        const response = await apis.postComment(payload, brand, id);    
+        // const response = await axios.post("http://localhost:4000/Review",payload);
         alert("Review 저장완료!")
         console.log(response);
         dispatch(addComment(response.data));
