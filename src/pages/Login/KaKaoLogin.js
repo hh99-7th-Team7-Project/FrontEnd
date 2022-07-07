@@ -19,6 +19,7 @@ const KaKaoLogin = () => {
          api
         .get(`/oauth/kakao/callback?code=${code}`)//DB에 코드전송
         .then((res) => {
+          console.log(res)
           const token = res.headers.authorization.split(" ");
           setCookie("token", token[1]);
           navigate("/");
