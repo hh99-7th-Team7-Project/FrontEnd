@@ -52,7 +52,7 @@ export const updateComment = (payload) => {
 export const __addComment = (payload) => async (dispatch, getState) => {
     try {
         console.log("add", payload);
-        const response = await apis.postComment( payload.brand, payload.id, payload.data );
+        const response = await apis.postComment( payload.brand, payload.boardId, payload.data );
         alert("Review 저장완료!")
         console.log(response);
         dispatch(addComment(response.data));
