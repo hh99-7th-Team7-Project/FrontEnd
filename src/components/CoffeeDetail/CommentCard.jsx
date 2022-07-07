@@ -17,11 +17,13 @@ const CommentCard = (props) => {
   }
   
   const review_list = useSelector((state)=>state.comment.posts);
-  console.log(review_list)
 
+  console.log(review_list);
+  
+  
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
-  },[dispatch])
+  },[boardId, brand, dispatch])
 
 
     return (
@@ -33,14 +35,16 @@ const CommentCard = (props) => {
               <ScHR/>
               <ScButton onClick={openUpdate}>수정</ScButton>
               <ScButton onClick={()=>{
-                dispatch(__deleteComment(Number(item?.id)))                
-                dispatch(__loadComment(item?.brand, item?.id));
+                dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
+                dispatch(__loadComment({brand, boardId}));
               }}>삭제</ScButton>
               {showUpdate === true ? (
             <UpdateComment
               showUpdate={showUpdate}
               setShowUpdate={setShowUpdate}
-              commentId={item?.id}          
+              commentId={Number(item?.id)}
+              boardId={boardId}
+              brand={brand}        
             />) : null}  
             </ScComment>
           )})}

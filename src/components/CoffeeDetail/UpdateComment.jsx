@@ -6,10 +6,12 @@ import { __loadComment, __updateComment } from '../../redux/modules/comment';
 
 const UpdateComment = (props) => {
 
-    const { showUpdate , setShowUpdate, commentId } = props;   
+    const { showUpdate , setShowUpdate, commentId, brand, boardId } = props;   
     
     const dispatch = useDispatch();   
     const reviewRef = React.useRef();
+
+    
 
 
     const onChange = (e) => {
@@ -18,11 +20,18 @@ const UpdateComment = (props) => {
           )
           {
             dispatch(__updateComment({                
-                Review: reviewRef.current.value,
-                id: commentId,
+                data:
+                {
+                    review: reviewRef.current.value,
+                    id: commentId,
+                    star: 5
+                },        
+                brand,
+                boardId,
+                commentId
             })
         );
-            dispatch(__loadComment());
+            dispatch(__loadComment({brand, boardId}));
             setShowUpdate(!showUpdate);
         } else {
             alert ("빈칸입니다.")
