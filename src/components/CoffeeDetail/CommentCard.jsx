@@ -17,12 +17,12 @@ const CommentCard = (props) => {
   }
   
   const review_list = useSelector((state)=>state.comment.posts);
-  console.log(review_list);
+  console.log(review_list)
 
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
-
   },[dispatch])
+
 
     return (
       <>

@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Styled from 'styled-components';
+import CategoryCard from '../components/main/CategoryCard';
 // components
 import  {BrandCard, ImgSlide, Map, RandomCoffee, Sadari}from '../components/main/mainIndex'
-import { __loadCoffee, __loadCoffees } from '../redux/modules/coffee';
 import Header from './Header/Header';
 
 
 const Main = () => {
-  // const dispatch = useDispatch()
-  // const [coffee, setCoffee] = useState()
-  // const coffeeReducer = useSelector((state) => state.coffee.list);
-  // console.log(coffeeReducer)
-
-  // useEffect(()=>{
-  //   dispatch(__loadCoffees())  
-  // },[dispatch])
-
+const [category, setCategory] = useState(true)
 
   return (
     <div style={{maxWidth:"1200px",width:"75%"}}>
@@ -31,7 +23,10 @@ const Main = () => {
           </ScMapRandomWrap>
           <Sadari/>
         </ScMRSContainer>
-        <BrandCard/>
+      <button onClick={()=>{setCategory(true)}}>브랜드별</button>
+      <button onClick={()=>{setCategory(false)}}>커피별</button>
+      {category?<BrandCard/>:<CategoryCard/>}
+        
       </ScContainer>
     </div>
     

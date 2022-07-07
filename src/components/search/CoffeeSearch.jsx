@@ -1,8 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { __loadCoffee, __loadCoffees } from '../../redux/modules/coffee'
+import CoffeeCard from '../main/CoffeeCard'
 
-const CoffeeSearch = () => {
+const CoffeeSearch = (props) => {
+  const {keyword} = props
+  console.log(keyword)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const coffeeReducer = useSelector((state) => state.coffee.list);
+  console.log(coffeeReducer)
+  //처음 4개만 보여주기위해서 검색결과에서 4개 짜름
+  const sliceCoffee = coffeeReducer.slice(0,4)
+  console.log(sliceCoffee)
+
+  //임시
+  useEffect(()=>{
+    dispatch(__loadCoffees())
+  },[dispatch])
+    
+
   return (
-    <div>CoffeeSearch</div>
+   
+    (coffeeReducer?
+     ( <>
+       <div style={{display:"flex"}}>
+      {sliceCoffee&&sliceCoffee.map((item,idx)=>{
+        return(<CoffeeCard key={idx} item={item}/>)
+      })} </div>
+      <button style={{marginLeft:"600px"}}
+      onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>더 보기</button></>):
+       ( <div>검색 결과가 없습니다</div>) 
+    )
+    
+
   )
 }
 

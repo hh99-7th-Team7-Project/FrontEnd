@@ -21,7 +21,7 @@ api.interceptors.request.use(
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   }
-);
+)
 
 //2-1. 요청 인터셉터 토큰포함(formdata)
 instance.interceptors.request.use(

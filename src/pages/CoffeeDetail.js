@@ -10,30 +10,38 @@ import axios from 'axios';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
 import Header from './Header/Header';
 import styled from 'styled-components';
+import { __loadComment } from '../redux/modules/comment';
 
 
 
 
 const CoffeeDetail = () => {
+
   const { brand } = useParams();
   const { coffeename } = useParams();
-  const { id } = useParams();
+  const { boardId } = useParams();
+console.log(boardId)
 
-  const boardId = Number(id);
-  
-
+ 
   const dispatch = useDispatch()
   const [data, setData] = useState()
   const [pri,setPri]=useState()
 console.log(data)
-console.log(pri)
+
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
 console.log(coffeeReducer)
 
+const commentReducer = useSelector((state)=>state.comment.posts)
+console.log(commentReducer)
+
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 
-},[])
+},[dispatch])
+
+useEffect(()=>{
+  dispatch(__loadComment({brand, boardId}));
+},[dispatch])
 
 
 return (
@@ -59,7 +67,7 @@ return (
 const Scwrap = Styled.div`
  display: column;
  max-width:1200px;
- width:75%
+ width:75%;
 `
 
 const ScHR = Styled.hr`

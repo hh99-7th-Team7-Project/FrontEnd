@@ -4,7 +4,7 @@ import { api } from '../../shared/api/core/api';
 import { apis } from '../../shared/api/main';
 import {useNavigate} from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
-import { setCookie } from '../../shared/Cookie';
+import { getCookie, setCookie } from '../../shared/Cookie';
 
 const KaKaoLogin = () => {
   const dispatch = useDispatch();
@@ -19,8 +19,11 @@ const KaKaoLogin = () => {
          api
         .get(`/oauth/kakao/callback?code=${code}`)//DB에 코드전송
         .then((res) => {
+          console.log(res)
           const token = res.headers.authorization.split(" ");
-          setCookie("token", token[1]);
+
+          setCookie("token", res.headers.authorization.split(" ")[1]);
+
           navigate("/");
           api
             .get("/user/islogin")//유저정보가져오는url

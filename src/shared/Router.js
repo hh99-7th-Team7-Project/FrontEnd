@@ -57,14 +57,14 @@ const Router = () => {
       {/* Login */}
       <Route path="/login" element={<Login />} />
       <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
-      <Route path="/user/google/callback" element={<GoogleLogin />} />
-      <Route path="/user/naver/callback" element={<NaverLogin />} />
+      <Route path="/oauth/google/callback" element={<GoogleLogin />} />
+      <Route path="/oauth/naver/callback" element={<NaverLogin />} />
 
       {/* Admin Page */}
       <Route path="/admin" element={<AdminPage />} />
 
       {/** CafeDetail */}
-      <Route path='/:brand/:coffeename/:id' element={<CoffeeDetail />} />
+      <Route path='/:brand/:coffeename/:boardId' element={<CoffeeDetail />} />
       {/* map */}
       <Route path="/map/:brand" element={<Map myLocation={myLocation} />} />
       {/* Search */}
