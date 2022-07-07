@@ -4,6 +4,7 @@ import Styled from 'styled-components';
 import CategoryCard from '../components/main/CategoryCard';
 // components
 import  {BrandCard, ImgSlide, Map, RandomCoffee, Sadari}from '../components/main/mainIndex'
+import PickCoffee from '../components/main/PickCoffee';
 import Header from './Header/Header';
 
 
@@ -21,7 +22,7 @@ const [category, setCategory] = useState(true)
             <Map/>
             <RandomCoffee />
           </ScMapRandomWrap>
-          <Sadari/>
+          <PickCoffee/>
         </ScMRSContainer>
       <button onClick={()=>{setCategory(true)}}>브랜드별</button>
       <button onClick={()=>{setCategory(false)}}>커피별</button>

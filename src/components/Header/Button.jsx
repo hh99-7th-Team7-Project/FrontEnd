@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styled from 'styled-components';
 import {Link} from 'react-router-dom'
+import {deleteCookie, getCookie} from "../../shared/Cookie"
 
 const Button = () => {
+const isLogin = getCookie("islogin")
+  const[onair, setonair] = useState(false)
+
+  React.useEffect(() => {
+    if (isLogin !== undefined) {
+      return setonair(true);
+    }
+  }, []);
+  const logOut = (e) =>{
+    deleteCookie("token");
+    deleteCookie("profileUrl");
+    deleteCookie("nickname")
+    deleteCookie("islogin")
+    alert("로그아웃 완료!")
+    setonair(false)
+  }
+
+
   return (
     <ScWrap>
-        <Link to="/login"><ScBtn>로그인</ScBtn></Link>
+      {onair?
+      (<>
+      <ScBtn onClick={logOut}>로그아웃</ScBtn>
+      <ScP> | </ScP>
+      <ScBtn>마이 프로필</ScBtn>
+      </>):
+      (<>
+      <Link to="/login"><ScBtn>로그인</ScBtn></Link>
         <ScP> | </ScP>
         <Link to="/signup"><ScBtn>회원가입</ScBtn></Link>
+        </> )}
     </ScWrap>
   )
 }
