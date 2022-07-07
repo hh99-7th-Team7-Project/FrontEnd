@@ -17,10 +17,10 @@ const CommentCard = (props) => {
   }
   
   const review_list = useSelector((state)=>state.comment.posts);
-  
+  console.log(review_list);
 
   useEffect(()=>{
-    dispatch(__loadComment(brand, boardId));
+    dispatch(__loadComment({brand, boardId}));
 
   },[dispatch])
 
@@ -29,7 +29,7 @@ const CommentCard = (props) => {
         <ScWrap>
           {review_list.map((item, index) => {
             return (            
-            <ScComment key={index}>{item.Review}            
+            <ScComment key={index}>{item.review}            
               <ScHR/>
               <ScButton onClick={openUpdate}>수정</ScButton>
               <ScButton onClick={()=>{
@@ -57,7 +57,6 @@ margin-top: 60px;
 margin-left: 20px;
 width: 70vw;
 height: 500px;
-
 overflow-z: scroll;
 `;
 
