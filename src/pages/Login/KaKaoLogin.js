@@ -21,7 +21,9 @@ const KaKaoLogin = () => {
         .then((res) => {
           console.log(res)
           const token = res.headers.authorization.split(" ");
-          setCookie("token", token[1]);
+          
+          setCookie("token", res.headers.authorization.split(" ")[1]);
+
           navigate("/");
           api
             .get("/user/islogin")//유저정보가져오는url

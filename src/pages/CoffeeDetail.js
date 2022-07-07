@@ -19,11 +19,13 @@ const CoffeeDetail = () => {
   const { coffeename } = useParams();
   const { id } = useParams();
 
+console.log(id)
+
   const dispatch = useDispatch()
   const [data, setData] = useState()
   const [pri,setPri]=useState()
 console.log(data)
-console.log(pri)
+
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
 console.log(coffeeReducer)
@@ -54,7 +56,7 @@ return (
 const Scwrap = Styled.div`
  display: column;
  max-width:1200px;
- width:75%
+ width:75%;
 `
 
 const ScHR = Styled.hr`

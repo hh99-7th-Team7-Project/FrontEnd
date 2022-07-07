@@ -19,7 +19,7 @@ const NaverLogin = () => {
         .get(`/oauth/naver/callback?code=${code}&state=${state}`)//DB에 코드전송
         .then((res) => {
           const token = res.headers.authorization.split(" ");
-          setCookie("token", token[1]);
+          setCookie("token", res.headers.authorization.split(" ")[1]);
           navigate("/");
           api
             .get("/user/islogin")//유저정보가져오는url
