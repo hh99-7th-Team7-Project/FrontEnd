@@ -4,7 +4,7 @@ import { api } from '../../shared/api/core/api';
 import { apis } from '../../shared/api/main';
 import {useNavigate} from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
-import { setCookie } from '../../shared/Cookie';
+import { getCookie, setCookie } from '../../shared/Cookie';
 
 const KaKaoLogin = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const KaKaoLogin = () => {
         .then((res) => {
           console.log(res)
           const token = res.headers.authorization.split(" ");
-          
+
           setCookie("token", res.headers.authorization.split(" ")[1]);
 
           navigate("/");

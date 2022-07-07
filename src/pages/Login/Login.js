@@ -37,7 +37,6 @@ const Login = () => {
       //쿠키설정
       setCookie("token", response.headers.authorization.split(" ")[1])
       setCookie("nickname", response.data.nickname)
-
       alert("환영합니다")
       navigate("/")
     }

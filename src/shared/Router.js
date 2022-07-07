@@ -64,7 +64,7 @@ const Router = () => {
       <Route path="/admin" element={<AdminPage />} />
 
       {/** CafeDetail */}
-      <Route path='/:brand/:coffeename/:id' element={<CoffeeDetail />} />
+      <Route path='/:brand/:coffeename/:boardId' element={<CoffeeDetail />} />
       {/* map */}
       <Route path="/map/:brand" element={<Map myLocation={myLocation} />} />
       {/* Search */}

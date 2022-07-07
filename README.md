@@ -13,9 +13,11 @@
   <tr>
     <td align="center"><b>최서현</b></td>
     <td align="center"><b>이윤진</b></td>
+    <td align="center"><b>안소진</b></td>
     
   </tr>
   <tr>
+    <td align="center"><b>🤩 Frontend 🤩 </b></td>
     <td align="center"><b>🤩 Frontend 🤩 </b></td>
     <td align="center"><b>🤩 Frontend 🤩 </b></td>
    
@@ -41,6 +43,8 @@
 <code>최서현</code> 
 
 <code>이윤진</code>
+
+<code>안소진</code>
 
 ## 🔨 Trouble Shooting
 

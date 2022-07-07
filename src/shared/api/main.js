@@ -16,8 +16,8 @@ const apis = {
 
 
 
-    postComment : (review) => api.post(`/coffee/hal/2/review`,review),
-    // getComment : () => api.get(`coffee/${brand}/${id}/review`),
+    postComment : (brand, id, data) => api.post(`coffee/${brand}/${id}/review`, data),
+    getComment : (brand, boardId) => api.get(`coffee/${brand}/${boardId}/review`),
 
 }
 

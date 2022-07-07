@@ -10,17 +10,19 @@ import axios from 'axios';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
 import Header from './Header/Header';
 import styled from 'styled-components';
+import { __loadComment } from '../redux/modules/comment';
 
 
 
 
 const CoffeeDetail = () => {
+
   const { brand } = useParams();
   const { coffeename } = useParams();
-  const { id } = useParams();
+  const { boardId } = useParams();
+console.log(boardId)
 
-console.log(id)
-
+ 
   const dispatch = useDispatch()
   const [data, setData] = useState()
   const [pri,setPri]=useState()
@@ -30,9 +32,16 @@ console.log(data)
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
 console.log(coffeeReducer)
 
+const commentReducer = useSelector((state)=>state.comment.posts)
+console.log(commentReducer)
+
 useEffect(()=>{
- dispatch(__loadCoffeeDetail(brand, id)) 
-},[])
+ dispatch(__loadCoffeeDetail(brand, boardId)) 
+},[dispatch])
+
+useEffect(()=>{
+  dispatch(__loadComment({brand, boardId}));
+},[dispatch])
 
 
 return (
@@ -46,7 +55,9 @@ return (
         <ScReviewCommentBox>
         <Review item={coffeeReducer}/>
           <Comment />          
-          <CommentCard />
+          <CommentCard 
+            boardId={boardId}
+            brand={brand} />
         </ScReviewCommentBox>
       </ScContainer>
     </Scwrap>
