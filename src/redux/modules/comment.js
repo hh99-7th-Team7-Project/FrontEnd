@@ -51,10 +51,9 @@ export const updateComment = (payload) => {
 
 export const __addComment = (payload) => async (dispatch, getState) => {
     try {
-        const response = await axios.post("http://localhost:4000/Review",
-            
-            payload
-        );
+        console.log("add",payload);
+        const response = await apis.postComment(payload.brand, payload.id,payload.data);
+        // const response = await axios.post("http://localhost:4000/Review",payload);
         alert("Review 저장완료!")
         console.log(response);
         dispatch(addComment(response.data));
@@ -63,11 +62,11 @@ export const __addComment = (payload) => async (dispatch, getState) => {
     }
 };
 
-export const __loadComment = () => async(dispatch, getState) => {
-    
+export const __loadComment = (payload) => async(dispatch, getState) => {
+
     try {
-        const posts = await axios.get("http://localhost:4000/Review");
-        
+        const posts = await apis.getComment(payload);
+        // const posts = await axios.get("http://localhost:4000/Review", payload);
         dispatch(loadComment(posts.data))
         }
     catch (error) {
