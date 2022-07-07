@@ -15,6 +15,17 @@
     {
       "Review": "수정",
       "id": 7
+    },
+    {
+      "Review": "sd",
+      "star": 5,
+      "id": 8
+    },
+    {
+      "review": "gh",
+      "star": 5,
+      "brand": "폴바셋",
+      "id": 1
     }
   ],
   "coffee": [

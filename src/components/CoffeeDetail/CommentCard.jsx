@@ -6,7 +6,8 @@ import { __deleteComment, __loadComment } from '../../redux/modules/comment';
 
 const CommentCard = (props) => {
 
-
+  const { brand, boardId } = props;
+  
   const dispatch = useDispatch();
 
   const [showUpdate, setShowUpdate ] = useState(false);
@@ -19,7 +20,7 @@ const CommentCard = (props) => {
   
 
   useEffect(()=>{
-    dispatch(__loadComment());
+    dispatch(__loadComment(brand, boardId));
 
   },[dispatch])
 
@@ -33,7 +34,7 @@ const CommentCard = (props) => {
               <ScButton onClick={openUpdate}>수정</ScButton>
               <ScButton onClick={()=>{
                 dispatch(__deleteComment(Number(item?.id)))                
-                dispatch(__loadComment());
+                dispatch(__loadComment(item?.brand, item?.id));
               }}>삭제</ScButton>
               {showUpdate === true ? (
             <UpdateComment

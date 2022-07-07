@@ -12,23 +12,22 @@ const Comment = () => {
   const { brand , id } = useParams();
   const dispatch = useDispatch();
 
-  console.log("id는 왜?",brand ,id);
-
-
+  
   const commentInputRef = React.useRef();
 
-  const addComment = (e) => {    
+  const addComment = (brand, id) => {    
 
     if (
       commentInputRef.current.value !== ""
     ) 
     {
       dispatch(__addComment({
-        Review: commentInputRef.current.value,
+        data: {
+          review: commentInputRef.current.value,
+          star: 5
+      },
         id,
-        brand,
-        
-        
+        brand,   
       })
     );    
     } else {
@@ -42,7 +41,7 @@ const Comment = () => {
         
         <ScBtnWrap>
           <ScReviewBtn onClick={()=>{
-            addComment(brand,id);
+            addComment(brand, id);
             commentInputRef.current.value=""
           }}>리뷰등록하기</ScReviewBtn>
         </ScBtnWrap>

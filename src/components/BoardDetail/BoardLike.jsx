@@ -4,16 +4,34 @@ import Styled from 'styled-components';
 const BoardLike = () => {
   return (
     <ScWrap>
-        <h3>6</h3>
-        <button>추천</button>
+        <ScH3>6</ScH3>
+        <ScBtnWrap>
+          <ScBtn>추천</ScBtn>
+        </ScBtnWrap>
     </ScWrap>
   )
 }
 
 const ScWrap = Styled.div`
-    margin: auto;
-    border: 1px solid black;
+    margin: 30px auto;
+    
     
 `;
+
+const ScBtnWrap = Styled.div`
+  border: 1px solid black;
+  margin: 20px auto;
+`;
+
+
+const ScH3 = Styled.h3`
+  text-align: center;
+`;
+
+const ScBtn = Styled.button`
+  
+`;
+
+
 
 export default BoardLike

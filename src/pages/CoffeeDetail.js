@@ -19,6 +19,9 @@ const CoffeeDetail = () => {
   const { coffeename } = useParams();
   const { id } = useParams();
 
+  const boardId = Number(id);
+  
+
   const dispatch = useDispatch()
   const [data, setData] = useState()
   const [pri,setPri]=useState()
@@ -29,7 +32,7 @@ const coffeeReducer = useSelector((state) => state.coffee.coffee);
 console.log(coffeeReducer)
 
 useEffect(()=>{
- dispatch(__loadCoffeeDetail(brand, id)) 
+ dispatch(__loadCoffeeDetail(brand, boardId)) 
 },[])
 
 
@@ -44,7 +47,9 @@ return (
         <ScReviewCommentBox>
         <Review item={coffeeReducer}/>
           <Comment />          
-          <CommentCard />
+          <CommentCard 
+            boardId={boardId}
+            brand={brand} />
         </ScReviewCommentBox>
       </ScContainer>
     </Scwrap>
