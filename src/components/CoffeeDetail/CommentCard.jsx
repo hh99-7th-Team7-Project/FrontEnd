@@ -57,7 +57,6 @@ margin-top: 60px;
 margin-left: 20px;
 width: 70vw;
 height: 500px;
-
 overflow-z: scroll;
 `;
 

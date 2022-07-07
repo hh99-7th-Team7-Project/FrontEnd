@@ -52,8 +52,7 @@ export const updateComment = (payload) => {
 export const __addComment = (payload) => async (dispatch, getState) => {
     try {
         console.log("add", payload);
-        const response = await apis.postComment(payload.brand, payload.id, payload.data);
-        // const response = await axios.post("http://localhost:4000/Review",payload);
+        const response = await apis.postComment( payload.brand, payload.id, payload.data );
         alert("Review 저장완료!")
         console.log(response);
         dispatch(addComment(response.data));
@@ -65,6 +64,7 @@ export const __addComment = (payload) => async (dispatch, getState) => {
 export const __loadComment = (payload) => async (dispatch, getState) => {
     console.log(payload)
     try {
+        console.log(payload);
         const posts = await apis.getComment(payload.brand, payload.boardId);
         dispatch(loadComment(posts.data))
     }
