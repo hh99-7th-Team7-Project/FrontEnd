@@ -18,6 +18,8 @@ const apis = {
 
     postComment : (brand, id, data) => api.post(`coffee/${brand}/${id}/review`, data),
     getComment : (brand, boardId) => api.get(`coffee/${brand}/${boardId}/review`),
+    deleteComment : (brand, boardId, reviewId) => api.delete(`/coffee/${brand}/${boardId}/review/${reviewId}`, reviewId),
+    updatecomment : (brand, boardId, reviewId, data) => api.put(`/coffee/${brand}/${boardId}/review/${reviewId}`, data)
 
 }
 

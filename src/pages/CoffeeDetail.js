@@ -41,7 +41,7 @@ useEffect(()=>{
 
 useEffect(()=>{
   dispatch(__loadComment({brand, boardId}));
-},[dispatch])
+},[boardId, brand, dispatch])
 
 
 return (

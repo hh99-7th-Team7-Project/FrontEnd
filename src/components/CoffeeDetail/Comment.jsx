@@ -9,8 +9,7 @@ const Comment = () => {
 
 
   const navigate = useNavigate();
-  const { brand , boardId } = useParams();
-  console.log(boardId)
+  const { brand , boardId } = useParams();  
   const dispatch = useDispatch();
 
   
