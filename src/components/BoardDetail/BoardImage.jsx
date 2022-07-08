@@ -13,8 +13,7 @@ const BoardImage = () => {
   )
 }
 
-const ScWrap = Styled.div`
-    border: 1px solid black;
+const ScWrap = Styled.div`    
     display: flex;
 `;
 
@@ -24,7 +23,7 @@ const ScImg = Styled.img`
 
 const ScHR = Styled.hr`
     margin-top: 40px;
-    margin-bottom: 20px;.
+    margin-bottom: 20px;
 `;
 
 export default BoardImage

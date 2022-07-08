@@ -91,8 +91,7 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
         console.log("수정", payload);
         const response = await apis.updatecomment(payload.brand, payload.boardId, payload.commentId, {
             review: payload.data.review,
-            id: payload.data.id,
-            star: 5,
+            star: 5,            
         });
         console.log(response);
         dispatch(updateComment(response.data));
@@ -114,7 +113,7 @@ export default function postReducer(state = initialState, action) {
         case LOAD_COMMENT:
             return {
                 ...state,
-                posts: [...action.payload.reverse()]
+                posts: [...action.payload]
             }
         case DELETE_COMMENT:
             const new_comment_list = state.posts.filter((item, index) => {                
