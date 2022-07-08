@@ -39,12 +39,10 @@ const CommentCard = (props) => {
                 setReviewId(item?.id)
                 console.log(reviewId)
               }}>수정</ScButton>
-               
               <ScButton onClick={()=>{
                 dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
                 dispatch(__loadComment({brand, boardId}));
               }}>삭제</ScButton>
-             
             </ScComment>
           )})}
            {showUpdate === true ? (

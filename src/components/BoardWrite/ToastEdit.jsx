@@ -8,21 +8,18 @@ import '@toast-ui/editor/dist/i18n/ko-kr'
 import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 import 'tui-color-picker/dist/tui-color-picker.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
+import { useDispatch,useSelector } from 'react-redux';
+import { loadBoard } from '../../redux/modules/board';
 
 const ToastEdit = () => {
   const editorRef = useRef();
   const [content,setContent] = useState()
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch()
+  const boardReducer = useSelector((state)=>state.board.list)
+  console.log(boardReducer)
 
-  useEffect(() => {  
-    const getMark = async () => {
-      const res = await axios.get("http://localhost:4000/Review")
-      console.log(res.data[3].data)
-      setContent(res.data[3].data)
-      console.log(content)
-    }
-    getMark()
-    console.log(content)
-  }, [])
+    // console.log(content)
 
   const handleRegisterButton = async() => {
     // 입력창에 입력한 내용을 HTML 태그 형태로 취득
@@ -41,6 +38,7 @@ const ToastEdit = () => {
       height="400px" // 에디터 창 높이
       initialEditType="markdown"
       useCommandShortcut={false} // 초기 입력모드 설정(디폴트 markdown)
+      previewHighlight={false}
       language="ko-KR"
       toolbarItems={[
         // 툴바 옵션 설정
