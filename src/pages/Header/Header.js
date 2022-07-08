@@ -5,19 +5,21 @@ import Category from '../../components/Header/Category';
 import HeaderInput from '../../components/Header/HeaderInput';
 import Button from '../../components/Header/Button';
 import { useNavigate } from 'react-router-dom';
+import Chat from '../../components/Header/Chat';
 
 const Header = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <ScHeaderBox>
-        <Logo />
-        <Category/>
-        <HeaderInput/>
-        <Button/>
+      <Logo />
+      <Chat />
+      <Category />
+      <HeaderInput />
+      <Button />
     </ScHeaderBox>
-  )
-}
+  );
+};
 
 const ScHeaderBox = Styled.header`    
     display: flex;
@@ -27,4 +29,4 @@ const ScHeaderBox = Styled.header`
     border: 1px red solid;
 `;
 
-export default Header
+export default Header;
