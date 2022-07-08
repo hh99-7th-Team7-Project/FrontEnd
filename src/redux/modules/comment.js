@@ -51,10 +51,10 @@ export const updateComment = (payload) => {
 
 export const __addComment = (payload) => async (dispatch, getState) => {
     try {
-        console.log("add", payload);
+        // console.log("add", payload);
         const response = await apis.postComment( payload.brand, payload.boardId, payload.data );
         alert("Review 저장완료!")
-        console.log(response);
+        // console.log(response);
         dispatch(addComment(response.data));
     } catch (error) {
         console.log(error);
@@ -64,7 +64,7 @@ export const __addComment = (payload) => async (dispatch, getState) => {
 export const __loadComment = (payload) => async (dispatch, getState) => {
     
     try {
-        console.log(payload);
+        // console.log(payload);
         const posts = await apis.getComment(payload.brand, payload.boardId);
         dispatch(loadComment(posts.data))
     }
@@ -76,8 +76,8 @@ export const __loadComment = (payload) => async (dispatch, getState) => {
 export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, getState) => {
     try {
         console.log("삭제", brand, boardId, reviewId);
-        const response = await apis.deleteComment(brand, boardId, reviewId);
-        console.log(response.data);
+        const response = await apis.deleteComment(brand,boardId,reviewId);
+        // console.log(response.data);
         dispatch(deleteComment(response.data));
         alert("삭제완료!");
     } catch (error) {
@@ -89,9 +89,9 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
 
     try {
         console.log("수정", payload);
-        const response = await apis.updatecomment(payload.brand, payload.boardId, payload.commentId, {
+        const response = await apis.updatecomment(payload.brand, parseInt(payload.boardId), parseInt(payload.commentId), {
             review: payload.data.review,
-            id: payload.data.id,
+            // id: payload.data.id,
             star: 5,
         });
         console.log(response);
@@ -114,7 +114,7 @@ export default function postReducer(state = initialState, action) {
         case LOAD_COMMENT:
             return {
                 ...state,
-                posts: [...action.payload.reverse()]
+                posts: [...action.payload]
             }
         case DELETE_COMMENT:
             const new_comment_list = state.posts.filter((item, index) => {                

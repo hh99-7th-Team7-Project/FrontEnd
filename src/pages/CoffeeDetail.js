@@ -20,20 +20,20 @@ const CoffeeDetail = () => {
   const { brand } = useParams();
   const { coffeename } = useParams();
   const { boardId } = useParams();
-console.log(boardId)
+// console.log(boardId)
 
  
   const dispatch = useDispatch()
   const [data, setData] = useState()
   const [pri,setPri]=useState()
-console.log(data)
+// console.log(data)
 
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
-console.log(coffeeReducer)
+// console.log(coffeeReducer)
 
 const commentReducer = useSelector((state)=>state.comment.posts)
-console.log(commentReducer)
+// console.log(commentReducer)
 
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 

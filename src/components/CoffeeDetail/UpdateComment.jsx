@@ -10,10 +10,6 @@ const UpdateComment = (props) => {
     
     const dispatch = useDispatch();   
     const reviewRef = React.useRef();
-
-    
-
-
     const onChange = (e) => {
         if (
             reviewRef.current.value !== ""
@@ -23,7 +19,6 @@ const UpdateComment = (props) => {
                 data:
                 {
                     review: reviewRef.current.value,
-                    id: commentId,
                     star: 5
                 },        
                 brand,

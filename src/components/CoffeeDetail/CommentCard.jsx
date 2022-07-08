@@ -11,10 +11,11 @@ const CommentCard = (props) => {
   const dispatch = useDispatch();
 
   const [showUpdate, setShowUpdate ] = useState(false);
+  const [reviewId,setReviewId] = useState()
 
-  const openUpdate = () => {
-    setShowUpdate(true);
-  }
+  // const openUpdate = (id) => {
+  //   setShowUpdate(true);
+  // }
   
   const review_list = useSelector((state)=>state.comment.posts);
 
@@ -23,7 +24,7 @@ const CommentCard = (props) => {
   
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
-  },[boardId, brand, dispatch])
+  },[dispatch])
 
 
     return (
@@ -31,23 +32,29 @@ const CommentCard = (props) => {
         <ScWrap>
           {review_list.map((item, index) => {
             return (            
-            <ScComment key={index}>{item.review}            
+            <ScComment key={index}>{item.id}:{item.review}            
               <ScHR/>
-              <ScButton onClick={openUpdate}>수정</ScButton>
+              <ScButton onClick={()=>{
+                setShowUpdate(true)
+                setReviewId(item?.id)
+                console.log(reviewId)
+              }}>수정</ScButton>
+               
               <ScButton onClick={()=>{
                 dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
                 dispatch(__loadComment({brand, boardId}));
               }}>삭제</ScButton>
-              {showUpdate === true ? (
-            <UpdateComment
-              showUpdate={showUpdate}
-              setShowUpdate={setShowUpdate}
-              commentId={Number(item?.id)}
-              boardId={boardId}
-              brand={brand}        
-            />) : null}  
+             
             </ScComment>
           )})}
+           {showUpdate === true ? (
+                  <UpdateComment
+                    showUpdate={showUpdate}
+                    setShowUpdate={setShowUpdate}
+                    commentId={reviewId}
+                    boardId={boardId}
+                    brand={brand}        
+                  />) : null} 
         </ScWrap>
               
         </>
