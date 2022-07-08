@@ -40,7 +40,9 @@ export const deleteComment = (payload) => {
 
 export const updateComment = (payload) => {
 
-    return {
+    console.log("수정할거야!")
+
+    return {        
         type: UPDATE_COMMENT,
         payload
 
@@ -61,11 +63,28 @@ export const __addComment = (payload) => async (dispatch, getState) => {
     }
 };
 
+export const __updateComment = (payload) => async (dispatch, getState) => {
+
+    try {
+        console.log("수정", payload);
+        const response = await apis.updatecomment(payload.brand, payload.boardId, payload.commentId, {
+            review: payload.data.review,
+            star: 5,
+            nickname: "abc"           
+        });
+        console.log(response);
+        dispatch(updateComment(response.data));      
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const __loadComment = (payload) => async (dispatch, getState) => {
     
     try {
         console.log(payload);
         const posts = await apis.getComment(payload.brand, payload.boardId);
+        console.log(posts.data);
         dispatch(loadComment(posts.data))
     }
     catch (error) {
@@ -77,28 +96,15 @@ export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, ge
     try {
         console.log("삭제", brand, boardId, reviewId);
         const response = await apis.deleteComment(brand, boardId, reviewId);
-        console.log(response.data);
-        dispatch(deleteComment(response.data));
+        console.log(response);
+        dispatch(deleteComment(response));
         alert("삭제완료!");
     } catch (error) {
         console.log(error);
     }
 }
 
-export const __updateComment = (payload) => async (dispatch, getState) => {
 
-    try {
-        console.log("수정", payload);
-        const response = await apis.updatecomment(payload.brand, payload.boardId, payload.commentId, {
-            review: payload.data.review,
-            star: 5,            
-        });
-        console.log(response);
-        dispatch(updateComment(response.data));
-    } catch (error) {
-        console.log(error);
-    }
-}
 
 
 // reducer
@@ -128,7 +134,10 @@ export default function postReducer(state = initialState, action) {
                 return value.id === Number(action.payload.commentId) ?
                     action.payload.data.review : value.review;
             });
-            return { ...state, posts: updateCommentList }
+            return {
+                ...state,
+                posts: updateCommentList
+            }
         default:
             return state;
     }

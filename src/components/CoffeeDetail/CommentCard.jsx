@@ -13,16 +13,9 @@ const CommentCard = (props) => {
   const [showUpdate, setShowUpdate ] = useState(false);
   const [ reviewId , setReviewId ] = useState();
   
-
- 
-  
   const review_list = useSelector((state)=>state.comment.posts);
 
-  console.log(review_list);
-
-
-  
-  
+ 
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
   },[boardId, brand, dispatch])
@@ -31,14 +24,14 @@ const CommentCard = (props) => {
     return (
       <>
         <ScWrap>
-          {review_list.map((item, index) => {
+          {review_list && review_list.map((item, index) => {
             return (            
             <ScComment key={index}>{item.id}.{item.review}            
               <ScHR/>
               <ScButton onClick={()=>{
                 setShowUpdate(true);
                 setReviewId(item?.id);
-                console.log(item?.id);
+                dispatch(__loadComment({brand, boardId}));                             
               }}>수정</ScButton>
               <ScButton onClick={()=>{
                 dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
@@ -48,7 +41,7 @@ const CommentCard = (props) => {
             <UpdateComment
               showUpdate={showUpdate}
               setShowUpdate={setShowUpdate}
-              commentId={Number(item?.id)}
+              commentId={Number(reviewId)}
               boardId={boardId}
               brand={brand}        
             />) : null}  
