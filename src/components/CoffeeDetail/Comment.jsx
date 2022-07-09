@@ -1,14 +1,13 @@
 import React from 'react'
 import Styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
 
 
 const Comment = () => {
 
 
-  const navigate = useNavigate();
   const { brand , boardId } = useParams();  
   const dispatch = useDispatch();
 

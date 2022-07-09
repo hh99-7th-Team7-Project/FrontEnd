@@ -39,10 +39,6 @@ useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 
 },[dispatch])
 
-useEffect(()=>{
-  dispatch(__loadComment({brand, boardId}));
-},[boardId, brand, dispatch])
-
 
 return (
     <Scwrap>   

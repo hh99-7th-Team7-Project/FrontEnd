@@ -3,7 +3,10 @@ import Styled from 'styled-components';
 import { GoChevronDown } from "react-icons/go";
 import CommentMap from './CommentMap';
 
+
 const BoardComment = () => {
+
+
   return (
     <>
       <ScWrap>
@@ -19,11 +22,7 @@ const BoardComment = () => {
           <ScHR/>
         <h3>댓글</h3>
       </ScWrap>
-      <CommentMap        
-        nickname="닉네임"
-        comment="아메리카노 좋아요"
-        day="7월7일"        
-      />
+      <CommentMap/>
     </>
   )
 }
