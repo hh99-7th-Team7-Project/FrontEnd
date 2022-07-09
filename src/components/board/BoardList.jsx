@@ -13,17 +13,24 @@ const BoardList = () => {
         <ScWrap>
             <ScContainer>
                 <ScInput id="dropdown" type="checkbox"/>      
-                <ScLabel htmlfor="dropdown">
+                <ScLabel for="dropdown">
                     <div>Category</div>
                     <GoChevronDown className="careIcon"/>
+                    <ScDropBox>
+                        <ScNickAlign>닉네임</ScNickAlign>
+                        <ScTitleAlign>제목</ScTitleAlign>
+                        <ScDateAlign>날짜</ScDateAlign>
+                        <ScLikesAlign>추천수</ScLikesAlign>
+                        <div>댓글수</div>
+                    </ScDropBox>
                 </ScLabel>
                 <ScContentBox>
                     <ScUl>
-                        <li>커피</li>
-                        <li>논커피</li>
-                        <li>스무디</li>
-                        <li>에이드</li>
-                        <li>차</li>
+                        <ScLi>커피</ScLi>
+                        <ScLi>논커피</ScLi>
+                        <ScLi>스무디</ScLi>
+                        <ScLi>에이드</ScLi>
+                        <ScLi>차</ScLi>
                     </ScUl>
                 </ScContentBox>
             </ScContainer>
@@ -68,6 +75,32 @@ const ScLabel = Styled.label`
 
 `;
 
+const ScDropBox = Styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const ScNickAlign = Styled.div`
+    margin-left: 10px;
+    display: fixed;
+`;
+
+const ScTitleAlign = Styled.div`
+    margin-left: 120px;
+    display: fixed;
+`;
+
+const ScDateAlign = Styled.div`
+    margin-left: 330px;
+    display: fixed;
+`;
+
+const ScLikesAlign = Styled.div`
+    margin-left: 330px;
+    display: fixed;
+`;
+
 const ScContentBox = Styled.div`
     display: none;
     position: absolute;
@@ -78,7 +111,13 @@ const ScContentBox = Styled.div`
 `;
 
 const ScUl = Styled.ul`
-    list-style: none;
+    list-style-type: none;
+    padding: 12px;
+    margin: 0;
+`;
+
+const ScLi = Styled.li`
+    margin: 0.8rem 0;
 `;
 
 
