@@ -24,28 +24,34 @@ const CommentCard = (props) => {
     return (
       <>
         <ScWrap>
-          {review_list && review_list.map((item, index) => {
-            return (            
-            <ScComment key={index}>{item.id}.{item.review}            
-              <ScHR/>
-              <ScButton onClick={()=>{
-                setShowUpdate(true);
-                setReviewId(item?.id);
-                dispatch(__loadComment({brand, boardId}));                             
-              }}>수정</ScButton>
-              <ScButton onClick={()=>{
-                dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
-                dispatch(__loadComment({brand, boardId}));
-              }}>삭제</ScButton>
-              {showUpdate === true ? (
-            <UpdateComment
-              showUpdate={showUpdate}
-              setShowUpdate={setShowUpdate}
-              commentId={Number(reviewId)}
-              boardId={boardId}
-              brand={brand}        
-            />) : null}  
-            </ScComment>
+          {review_list && review_list.map((item) => {
+            return (
+            <div>            
+              <ScComment key={item?.id}>
+                <div>
+                  <p>닉네임 : {item?.nickname}</p>
+                  <p>댓글 : {item?.review}</p>
+                </div>            
+                <ScHR/>
+                <ScButton onClick={()=>{
+                  setShowUpdate(true);
+                  setReviewId(item?.id);
+                  dispatch(__loadComment({brand, boardId}));                             
+                }}>수정</ScButton>
+                <ScButton onClick={()=>{
+                  dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
+                  dispatch(__loadComment({brand, boardId}));
+                }}>삭제</ScButton>
+                {showUpdate === true ? (
+              <UpdateComment
+                showUpdate={showUpdate}
+                setShowUpdate={setShowUpdate}
+                commentId={Number(reviewId)}
+                boardId={boardId}
+                brand={brand}        
+              />) : null}  
+              </ScComment>
+            </div>
           )})}
         </ScWrap>
               
@@ -61,12 +67,14 @@ margin-left: 20px;
 width: 70vw;
 height: 500px;
 overflow-z: scroll;
+padding: 20px;
+border: 1px solid black;
 `;
 
 const ScComment = Styled.div`
   font-size: 20px;
   color: brown;
-  margin-bottom: 5px;
+  margin-bottom: 5px;  
 `;
 
 
