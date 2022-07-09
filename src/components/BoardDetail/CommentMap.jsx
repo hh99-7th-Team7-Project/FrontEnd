@@ -7,7 +7,7 @@ const CommentMap = () => {
 
 
     const dispatch = useDispatch();
-    const comment_reducer = useSelector((state) => state.boardComment.boardcommentlist);
+    const comment_list = useSelector((state) => state.boardComment.boardcommentlist);
 
     useEffect(()=>{
         dispatch(__getBoardComment());
@@ -15,10 +15,9 @@ const CommentMap = () => {
     
 
     return (
-    <>
         <ScWrap>
             <ScTable>
-                {comment_reducer.map((item, index)=> (
+                {comment_list.map((item, index)=> (
                     <tbody key={index}>
                     <tr>
                         <td>{item?.nickname}</td>                        
@@ -26,11 +25,10 @@ const CommentMap = () => {
                         <td>{item?.day}</td>                        
                     </tr>                    
                 </tbody>
-                ))}                
+                ))}
             </ScTable>
             <ScHR/>
         </ScWrap>
-    </>
     )
 }
 
