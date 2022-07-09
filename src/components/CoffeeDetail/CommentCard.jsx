@@ -24,14 +24,14 @@ const CommentCard = (props) => {
     return (
       <>
         <ScWrap>
-          {review_list && review_list.map((item) => {
-            return (
+          {review_list && review_list.map((item, index) => {
+            return (              
             <div>            
-              <ScComment key={item?.id}>
+              <ScComment key={index}>
                 <div>
                   <p>닉네임 : {item?.nickname}</p>
                   <p>댓글 : {item?.review}</p>
-                </div>            
+                </div> 
                 <ScHR/>
                 <ScButton onClick={()=>{
                   setShowUpdate(true);
