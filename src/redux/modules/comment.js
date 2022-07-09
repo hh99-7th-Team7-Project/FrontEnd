@@ -45,7 +45,6 @@ export const updateComment = (payload) => {
     return {        
         type: UPDATE_COMMENT,
         payload
-
     }
 }
 
@@ -96,8 +95,8 @@ export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, ge
     try {
         console.log("삭제", brand, boardId, reviewId);
         const response = await apis.deleteComment(brand, boardId, reviewId);
-        console.log(response);
-        dispatch(deleteComment(response));
+        console.log(response.data);
+        dispatch(deleteComment(response.data));
         alert("삭제완료!");
     } catch (error) {
         console.log(error);
@@ -123,7 +122,7 @@ export default function postReducer(state = initialState, action) {
             }
         case DELETE_COMMENT:
             const new_comment_list = state.posts.filter((item, index) => {                
-                return action.payload.data.id !== state.posts.id;
+                return action.payload !== item.id;
             })
             return {
                 ...state,
