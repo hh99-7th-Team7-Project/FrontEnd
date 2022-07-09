@@ -113,5 +113,47 @@
       "star": "3.5",
       "coffeeimg": "https://ifh.cc/g/natCJQ.png"
     }
+  ],
+  "boardcomment":[
+    {
+      "nickname": "닉네임1",
+      "comment": "아메리카노 좋아요",
+      "day": "2022-07-09"
+    },
+    {
+      "nickname": "닉네임2",
+      "comment": "사진감성이 좋습니다.",
+      "day": "2022-07-09"
+    },
+    {
+      "nickname": "닉네임3",
+      "comment": "아메리카노 맛집",
+      "day": "2022-07-09"
+    },
+    {
+      "nickname": "닉네임4",
+      "comment": "최고",
+      "day": "2022-07-09"
+    },
+    {
+      "nickname": "닉네임5",
+      "comment": "테스트",
+      "day": "2022-07-09"
+    },
+    {
+      "nickname": "닉네임6",
+      "comment": "잘되나",
+      "day": "2022-07-09"
+    },
+    {
+      "nickname": "닉네임7",
+      "comment": "??",
+      "day": "2022-07-09"
+    },
+    {
+      "nickname": "닉네임8",
+      "comment": "mock data test",
+      "day": "2022-07-09"
+    }
   ]
 }
