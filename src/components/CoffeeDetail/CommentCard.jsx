@@ -15,6 +15,8 @@ const CommentCard = (props) => {
   
   const review_list = useSelector((state)=>state.comment.posts);
 
+  console.log(review_list);
+
  
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
@@ -24,10 +26,10 @@ const CommentCard = (props) => {
     return (
       <>
         <ScWrap>
-          {review_list && review_list.map((item, index) => {
+          {review_list && review_list.map((item) => {
             return (              
             <div>            
-              <ScComment key={index}>
+              <ScComment key={item?.id}>
                 <div>
                   <p>닉네임 : {item?.nickname}</p>
                   <p>댓글 : {item?.review}</p>
