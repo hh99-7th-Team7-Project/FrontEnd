@@ -1,7 +1,10 @@
 import React from 'react';
 import Styled from 'styled-components';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const BoardLike = () => {
+
+  const currentUrl = window.location.href;
   return (
     <>
       <ScWrap>
@@ -12,7 +15,11 @@ const BoardLike = () => {
             <ScBtn>추천</ScBtn>
           </ScBtnWrap>
           <ScBtnWrap2>
-            <ScBtn2>📢공유</ScBtn2>
+          <CopyToClipboard text={currentUrl}>
+					<ScBtn2 onClick={()=>{
+            alert("링크복사")
+          }}>📢공유</ScBtn2>
+				</CopyToClipboard>
             <ScBtn2>⚠️신고</ScBtn2>
           </ScBtnWrap2>
       </ScWrap>
@@ -40,12 +47,23 @@ const ScTitleWrap = Styled.div`
 const ScH3 = Styled.h3`
   font-size: 40px;
   margin: auto;
-  
-  
-  
-  
+
 `;
 
+const URLShareButton = Styled.button`
+	width: 90px;
+	height: 48px;
+	color: white;
+	border-radius: 24px;
+	border: 0px;
+	font-weight: 800;
+	font-size: 18px;
+	cursor: pointer;
+	background-color: #7362ff;
+	&:hover {
+		background-color: #a99fee;
+	}
+`;
 const ScBtnWrap = Styled.div`
   margin: 20px auto;  
   display: flex;

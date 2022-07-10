@@ -1,42 +1,27 @@
 import React from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 
-const BoardMap = ( { category,  nickname, title, day, likes, comment } ) => {
+const BoardMap = ( { item } ) => {
+    const navigate = useNavigate()
+console.log(item)
 
-
+const moveToBoard = (e) =>{
+    navigate(`/board/${item?.id}`)
+}
 
     return (
-        <>
-            <tbody>
-                <tr>
-                    <td>{category}</td>
-                    <td>{nickname}</td>
-                    <td>{title}</td>
-                    <td>{day}</td>
-                    <td>{likes}</td>
-                    <td>{comment}</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>{category}</td>
-                    <td>{nickname}</td>
-                    <td>{title}</td>
-                    <td>{day}</td>
-                    <td>{likes}</td>
-                    <td>{comment}</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>{category}</td>
-                    <td>{nickname}</td>
-                    <td>{title}</td>
-                    <td>{day}</td>
-                    <td>{likes}</td>
-                    <td>{comment}</td>
-                </tr>
-            </tbody>
-        </>
+        <div
+        style={{border:"1px #ddd solid"}}>
+                    <span>{item?.category}</span>
+                    {/* <td>{nickname}</td> */}
+                    <Link to ={`/board/${item?.id}`}>
+                    <span
+                    onclick={moveToBoard}>{item?.title}</span></Link>
+                    {/* <td>{day}</td> */}
+                    {/* <td>{likes}</td>
+                    <td>{comment}</td> */}
+              
+        </div>
     )
     }
 

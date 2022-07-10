@@ -20,6 +20,7 @@ import Search from "../pages/Search/Search";
 import SearchBoard from "../pages/Search/SearchBoard";
 import SearchCoffee from "../pages/Search/SearchCoffee";
 import Chat from "../pages/Chat";
+import BoardUpdate from "../pages/Board/BoardUpdate";
 
 const Router = () => {
 
@@ -64,7 +65,7 @@ const Router = () => {
       <Route path="/admin" element={<AdminPage />} />
 
       {/** CafeDetail */}
-      <Route path='/:brand/:coffeename/:boardId' element={<CoffeeDetail />} />
+      <Route path='/coffee/:brand/:coffeename/:boardId' element={<CoffeeDetail />} />
       {/* map */}
       <Route path="/map/:brand" element={<Map myLocation={myLocation} />} />
       {/* Search */}
@@ -73,8 +74,9 @@ const Router = () => {
       <Route path="/search/coffee/:keyword" element={<SearchCoffee />} />
       {/* Board */}
       <Route path="/board" element={<Board />} />
-      <Route path="/board/:id" element={<BoardDetail />} />
+      <Route path="/board/:boardId" element={<BoardDetail />} />
       <Route path="/board/write" element={<BoardWrite />} />
+      <Route path="/board/:boardId/update" element={<BoardUpdate/>}/>
     </Routes>
   )
 }

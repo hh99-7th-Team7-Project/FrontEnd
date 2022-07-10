@@ -4,7 +4,7 @@ import { getCookie } from '../../shared/Cookie'
 
 
 
-const BoardCategory = ({title, cate}) => {
+const BoardCategoryUpdate = ({title, cate, head}) => {
   const [x, setX] = useState()
 
   const nickname = getCookie("nickname")
@@ -25,6 +25,7 @@ const BoardCategory = ({title, cate}) => {
       value="카페 추천합니다" 
       checked={x ==="카페 추천합니다"}
       onChange={clickRadio}
+    
       />
      <span>카페 추천합니다</span>
     </ScRadioWrap>
@@ -53,14 +54,16 @@ const BoardCategory = ({title, cate}) => {
     type="text" 
     onChange={(e)=>{
       title(e.target.value)
-    }}/>
+    }}
+    defaultValue={head?.title}
+    />
     </div>
     <span>{nickname}</span>
     </>
   )
 }
 
-export default BoardCategory
+export default BoardCategoryUpdate
 
 const ScCategory = styled.div`
   margin: 10px 0;

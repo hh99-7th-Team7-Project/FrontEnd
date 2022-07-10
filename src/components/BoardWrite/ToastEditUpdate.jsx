@@ -12,21 +12,22 @@ import { useDispatch,useSelector } from 'react-redux';
 import { loadBoard } from '../../redux/modules/board';
 import { api, instance } from '../../shared/api/core/api';
 
-const ToastEdit = (props) => {
-  const { content } = props
+const ToastEditUpdate = (props) => {
+  const { content, prevContent } = props
   const editorRef = useRef();
-
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch()
-  const boardReducer = useSelector((state)=>state.board.list)
-  console.log(boardReducer)
+  console.log(prevContent)
+  //이전 내용 가져오기
+  useEffect(() => {
+    // 2. Editor DOM 내용에 HTML 주입
+    editorRef?.current?.getInstance()?.setMarkdown(prevContent);
+  }, [prevContent]);
 
 
   
   return (
     <div> 
       <h3>### Editor Toast</h3>
-    <Editor
+   {prevContent&& <Editor
       onChange={()=>{
         content(editorRef.current?.getInstance().getMarkdown())
       }}
@@ -67,10 +68,10 @@ const ToastEdit = (props) => {
           );
         },
       }}
-    />
+    />}
      {/* <button onClick={handleRegisterButton}>등록</button> */}
      </div>
   )
 }
 
-export default ToastEdit
+export default ToastEditUpdate
