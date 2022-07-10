@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
-import { useDispatch, useSelector }from 'react-redux';
+import { useDispatch }from 'react-redux';
 import { __loadComment, __updateComment } from '../../redux/modules/comment';
 
 
@@ -8,9 +8,11 @@ const UpdateComment = (props) => {
 
     const { showUpdate , setShowUpdate, commentId, brand, boardId } = props;   
     
-    const dispatch = useDispatch();   
+    const dispatch = useDispatch();
     const reviewRef = React.useRef();
-    const onChange = (e) => {
+
+
+    const commentUpdate = (e) => {
         if (
             reviewRef.current.value !== ""
           )
@@ -26,8 +28,8 @@ const UpdateComment = (props) => {
                 commentId
             })
         );
-            dispatch(__loadComment({brand, boardId}));
             setShowUpdate(!showUpdate);
+
         } else {
             alert ("빈칸입니다.")
         }
@@ -47,8 +49,8 @@ const UpdateComment = (props) => {
             </ScTBWrap>
             <input type="text" ref={reviewRef} />
             <ScUpdateBtn onClick={()=>{
-                onChange();
-                reviewRef.current.value=""
+                commentUpdate();
+                reviewRef.current.value=""                                
             }}>수정하기</ScUpdateBtn>
         </ScModal>
     </ScModalWrap>

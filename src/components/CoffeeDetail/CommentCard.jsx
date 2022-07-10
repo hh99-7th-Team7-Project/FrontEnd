@@ -15,46 +15,48 @@ const CommentCard = (props) => {
 
   const review_list = useSelector((state)=>state.comment.posts);
 
-  console.log(review_list);
+  console.log(review_list)
 
-
-  
-  
+ 
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
   },[dispatch])
 
 
     return (
-      <>
-        <ScWrap>
-          {review_list.map((item, index) => {
-            return (            
-            <ScComment key={index}>{item.id}:{item.review}            
-              <ScHR/>
-              <ScButton onClick={()=>{
-                setShowUpdate(true)
-                setReviewId(item?.id)
-                console.log(reviewId)
-              }}>수정</ScButton>
-              <ScButton onClick={()=>{
-                dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
-                dispatch(__loadComment({brand, boardId}));
-              }}>삭제</ScButton>
-            </ScComment>
-          )})}
-           {showUpdate === true ? (
-                  <UpdateComment
-                    showUpdate={showUpdate}
-                    setShowUpdate={setShowUpdate}
-                    commentId={reviewId}
-                    boardId={boardId}
-                    brand={brand}        
-                  />) : null} 
-        </ScWrap>
-              
+
+        <>
+          <ScWrap>
+            {review_list && review_list.map((item) => {
+              return (
+                <ScComment key={item?.id}>
+                  <div>
+                    <p>닉네임 : {item?.nickname}</p>
+                    <p>댓글 : {item?.review}</p>
+                  </div> 
+                  <ScHR/>
+                  <ScButton onClick={()=>{
+                    setShowUpdate(true);
+                    setReviewId(item?.id);
+                    dispatch(__loadComment({brand, boardId}));                             
+                  }}>수정</ScButton>
+                  <ScButton onClick={()=>{
+                    dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
+                    dispatch(__loadComment({brand, boardId}));
+                  }}>삭제</ScButton>
+                  {showUpdate === true ? (
+                <UpdateComment
+                  showUpdate={showUpdate}
+                  setShowUpdate={setShowUpdate}
+                  commentId={Number(reviewId)}
+                  boardId={boardId}
+                  brand={brand}        
+                />) : null}  
+                </ScComment>
+            )})}
+          </ScWrap>
         </>
-        )
+      )
         
   }
 
@@ -65,12 +67,13 @@ margin-left: 20px;
 width: 70vw;
 height: 500px;
 overflow-z: scroll;
+padding: 20px;
 `;
 
 const ScComment = Styled.div`
   font-size: 20px;
   color: brown;
-  margin-bottom: 5px;
+  margin-bottom: 5px;  
 `;
 
 
