@@ -38,7 +38,7 @@ const UpdateComment = (props) => {
     }
 
 
-  return (
+    return (
     <ScModalWrap>
         <ScModal>
             <ScTBWrap>
@@ -52,8 +52,8 @@ const UpdateComment = (props) => {
             }}>수정하기</ScUpdateBtn>
         </ScModal>
     </ScModalWrap>
-  )
-}
+    )
+    }
 
 const ScModalWrap = Styled.div`
     position: fixed;

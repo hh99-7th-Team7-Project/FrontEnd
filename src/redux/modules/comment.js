@@ -93,6 +93,7 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
             review: payload.data.review,
             // id: payload.data.id,
             star: 5,
+
         });
         console.log(response);
         dispatch(updateComment(response.data));

@@ -11,15 +11,13 @@ const CommentCard = (props) => {
   const dispatch = useDispatch();
 
   const [showUpdate, setShowUpdate ] = useState(false);
-  const [reviewId,setReviewId] = useState()
+  const [ reviewId , setReviewId ] = useState();
 
-  // const openUpdate = (id) => {
-  //   setShowUpdate(true);
-  // }
-  
   const review_list = useSelector((state)=>state.comment.posts);
 
   console.log(review_list);
+
+
   
   
   useEffect(()=>{
