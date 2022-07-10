@@ -52,10 +52,10 @@ export const updateComment = (payload) => {
 
 export const __addComment = (payload) => async (dispatch, getState) => {
     try {
-        console.log("add", payload);
+        // console.log("add", payload);
         const response = await apis.postComment( payload.brand, payload.boardId, payload.data );
         alert("Review 저장완료!")
-        console.log(response);
+        // console.log(response);
         dispatch(addComment(response.data));
     } catch (error) {
         console.log(error);
@@ -81,7 +81,7 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
 export const __loadComment = (payload) => async (dispatch, getState) => {
     
     try {
-        console.log(payload);
+        // console.log(payload);
         const posts = await apis.getComment(payload.brand, payload.boardId);
         console.log(posts.data);
         dispatch(loadComment(posts.data))
@@ -94,7 +94,7 @@ export const __loadComment = (payload) => async (dispatch, getState) => {
 export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, getState) => {
     try {
         console.log("삭제", brand, boardId, reviewId);
-        const response = await apis.deleteComment(brand, boardId, reviewId);
+        const response = await apis.deleteComment(brand,boardId,reviewId);
         console.log(response.data);
         dispatch(deleteComment(response.data));
         alert("삭제완료!");
@@ -102,6 +102,7 @@ export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, ge
         console.log(error);
     }
 }
+
 
 
 

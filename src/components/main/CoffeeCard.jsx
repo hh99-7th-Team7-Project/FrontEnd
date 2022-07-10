@@ -12,7 +12,7 @@ const pricePair = item.pricePair
 // console.log(pricePair)
 
 const moveOnclick = () => {
-navigate(`/${item?.brand}/${item?.name}/${item?.id}`)
+navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
 }
 
   return (

@@ -12,7 +12,7 @@ const CommentCard = (props) => {
 
   const [showUpdate, setShowUpdate ] = useState(false);
   const [ reviewId , setReviewId ] = useState();
-  
+
   const review_list = useSelector((state)=>state.comment.posts);
 
   console.log(review_list)
@@ -20,10 +20,11 @@ const CommentCard = (props) => {
  
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
-  },[boardId, brand, dispatch])
+  },[dispatch])
 
 
     return (
+
         <>
           <ScWrap>
             {review_list && review_list.map((item) => {

@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Styled from 'styled-components';
 import BoardMap from './BoardMap';
-
+import axios from "axios"
+import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components';
 
 const PopularBoard = () => {
+    const [loading, setLoading] = useState(false);
+    const [content, setContent] = useState();
+
+    const navigate = useNavigate()
+
+    console.log(content)
+      useEffect(() => {  
+        setLoading(true)
+          const getMark = async () => {
+              await axios.get("http://localhost:4000/Review")
+            .then((res)=>{
+                setContent(res.data)
+              })
+            }
+          getMark()
+        }, [loading])
+
+        
+
   return (
     <>
         <ScWrap>
             <h1>인기글 Top 10</h1>
             <ScBoard>
                 <ScTable>
-                    <BoardMap
-                        category="커피"
-                        nickname="CoFFind"
-                        title="아메리카노 좋아요"
-                        day="7월7일"
-                        likes="32"
-                        comment="23"
-                    />
+                    {content&&content.map((item,idx)=>{
+                        return <BoardMap 
+                        key={idx}
+                         item={item}/>
+                      
+                    })}
                 </ScTable>
             </ScBoard>
         </ScWrap>
@@ -44,5 +63,9 @@ const ScTable = Styled.table`
     width: 100%;
     margin: 30px auto;
 `;
+
+const ScListWrap = styled.div`
+    
+`
 
 export default PopularBoard

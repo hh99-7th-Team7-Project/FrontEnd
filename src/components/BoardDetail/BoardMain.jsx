@@ -1,20 +1,21 @@
 import React from 'react';
 import Styled from 'styled-components';
+import axios from 'axios';
+import {useNavigate, Link} from 'react-router-dom';
 
-const BoardMain = () => {
+const BoardMain = ({head, boardId}) => {
+    const navigate = useNavigate()
+    console.log(boardId)
 
 
   return (
     <ScWrap>
         <ScBtnWrap>
-            <Btn>All</Btn>
-            <Btn>카페추천합니다.</Btn>
-            <Btn>나만의 비밀레시피</Btn>
-            <Btn>기타</Btn>
+            <div>{head?.category}</div>
         </ScBtnWrap>
         <ScHR/>
         <ScTitleWrap>
-            <ScTitle>제목이 들어갑니다.</ScTitle>
+            <ScTitle>{head?.title}</ScTitle>
             <ScLike>추천 : 6</ScLike>
             <ScComment>댓글 : 1</ScComment>            
         </ScTitleWrap>
@@ -24,6 +25,12 @@ const BoardMain = () => {
             <br/>
             <p>21시 21분 23초</p>
         </div>
+       <Link to={`/board/${boardId}/update`}> <button>수정</button></Link>
+        <button onClick={async()=>{
+            await axios
+            .delete(`http://localhost:4000/Review/${boardId}`)
+            navigate("/board")
+        }}>삭제</button> 
         <ScHR/>
     </ScWrap>
   )

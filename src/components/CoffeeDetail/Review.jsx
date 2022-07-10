@@ -5,9 +5,9 @@ import Styled from 'styled-components';
 
 const Review = ( { item } ) => {
     const navigate = useNavigate()
-    console.log(item)
+    // console.log(item)
     const pricePair = item?.pricePair
-    console.log(pricePair)
+    // console.log(pricePair)
 
   return (
     <>

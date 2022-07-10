@@ -17,6 +17,7 @@ const REMOVE_BOARD = "board_reducer/REMOVE";
 
 /* ----------------- 액션 생성 함수 ------------------ */
 export function loadBoard(payload) {
+  console.log(payload)
   return { type: LOAD_BOARD, payload };
 }
 export function loadBoardDetail(payload) {
@@ -68,7 +69,8 @@ export default function BoardReducer(state = intialstate, action) {
   // 새로운 액션 타입 추가시 case 추가한다.
   switch (action.type) {
     case LOAD_BOARD: {
-      return { list: action.payload };
+      console.log(action.payload)
+      return { board: action.payload };
     }
     case LOAD_BOARD_DETAIL: {
       return { ...state, coffee: action.payload };
