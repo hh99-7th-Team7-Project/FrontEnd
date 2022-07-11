@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { __loadCoffee, __loadCoffees } from '../../redux/modules/coffee'
+import apis from '../../shared/api/main'
 import CoffeeCard from '../main/CoffeeCard'
 
 const CoffeeSearch = (props) => {
@@ -9,15 +11,23 @@ const CoffeeSearch = (props) => {
   console.log(keyword)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const coffeeReducer = useSelector((state) => state.coffee.list);
+  const [coffeeReducer, setCoffeeReducer] = useState()
+  // const coffeeReducer = useSelector((state) => state.coffee.list);
   console.log(coffeeReducer)
   //처음 4개만 보여주기위해서 검색결과에서 4개 짜름
-  const sliceCoffee = coffeeReducer.slice(0,4)
+  const sliceCoffee = coffeeReducer?.slice(0,4)
   console.log(sliceCoffee)
 
   //임시
   useEffect(()=>{
-    dispatch(__loadCoffees())
+    const search = async()=>{
+      apis.searchCoffee(keyword)
+          .then((res)=>{
+            console.log(res)
+            setCoffeeReducer(res?.data)
+          })
+    }
+    search()
   },[dispatch])
     
 
