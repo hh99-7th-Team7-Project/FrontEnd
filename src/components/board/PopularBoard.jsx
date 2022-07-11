@@ -4,24 +4,26 @@ import BoardMap from './BoardMap';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
+import apis from '../../shared/api/main';
 
 const PopularBoard = () => {
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState();
 
     const navigate = useNavigate()
-
+  console.log(content)
     console.log(content)
       useEffect(() => {  
         setLoading(true)
           const getMark = async () => {
-              await axios.get("http://localhost:4000/Review")
-            .then((res)=>{
-                setContent(res.data)
-              })
-            }
-          getMark()
-        }, [loading])
+              await apis.getBoards()
+                        .then((res)=>{
+                            console.log(res.data.slice(0,5))
+                            setContent(res.data.slice(0,5))
+                          })
+                        }
+                      getMark()
+                    }, [loading])
 
         
 
@@ -34,8 +36,7 @@ const PopularBoard = () => {
                     {content&&content.map((item,idx)=>{
                         return <BoardMap 
                         key={idx}
-                         item={item}/>
-                      
+                         content={item}/>
                     })}
                 </ScTable>
             </ScBoard>
@@ -58,7 +59,7 @@ const ScBoard = Styled.div`
     height: 100%;
 `;
 
-const ScTable = Styled.table`
+const ScTable = Styled.div`
     border: 1px solid black;
     width: 100%;
     margin: 30px auto;

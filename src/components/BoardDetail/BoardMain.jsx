@@ -2,6 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
+import apis from '../../shared/api/main';
 
 const BoardMain = ({head, boardId}) => {
     const navigate = useNavigate()
@@ -21,14 +22,13 @@ const BoardMain = ({head, boardId}) => {
         </ScTitleWrap>
         <div>
             <br/>
-            <p>닉네임</p>
+            <p>{head?.nickname}</p>
             <br/>
             <p>21시 21분 23초</p>
         </div>
        <Link to={`/board/${boardId}/update`}> <button>수정</button></Link>
         <button onClick={async()=>{
-            await axios
-            .delete(`http://localhost:4000/Review/${boardId}`)
+            await apis.deleteBoard(boardId)
             navigate("/board")
         }}>삭제</button> 
         <ScHR/>

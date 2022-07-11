@@ -36,7 +36,7 @@ const ScWrap = Styled.div`
 
 `;
 
-const ScTable = Styled.table`    
+const ScTable = Styled.div`    
     width: 100%;
     margin: 30px auto;
 `;
