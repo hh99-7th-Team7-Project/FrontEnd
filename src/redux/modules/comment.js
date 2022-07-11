@@ -66,7 +66,7 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
 
     try {
         console.log("수정", payload);
-        const response = await apis.updatecomment(payload.brand, payload.boardId, payload.commentId, {
+        const response = await apis.updateComment(payload.brand, payload.boardId, payload.commentId, {
             review: payload.data.review,
             star: 5,
             nickname: "abc"           
