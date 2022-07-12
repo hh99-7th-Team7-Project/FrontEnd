@@ -22,7 +22,7 @@ const CommentCard = (props) => {
  
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
-  },[dispatch])
+  },[setShowUpdate])
 
 
     return (
@@ -33,7 +33,7 @@ const CommentCard = (props) => {
               return (
                 <ScComment key={index}>
                   <div>
-                    <p>닉네임 : {nickname}</p>
+                    <p>닉네임 : {item?.nickname}</p>
                     <p>댓글 : {item?.review}</p>
                   </div> 
                   <ScHR/>
