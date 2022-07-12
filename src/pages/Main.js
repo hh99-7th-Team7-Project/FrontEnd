@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import Styled from 'styled-components';
 import CategoryCard from '../components/main/CategoryCard';
 // components
-import  {BrandCard, ImgSlide, Map, RandomCoffee, Sadari}from '../components/main/mainIndex'
-import PickCoffee from '../components/main/PickCoffee';
+import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint}from '../components/main/mainIndex'
 import Header from './Header/Header';
 
 
@@ -12,38 +12,53 @@ const Main = () => {
 const [category, setCategory] = useState(true)
 
   return (
-    <div style={{maxWidth:"1200px",width:"75%"}}>
-      <Header/>
-      <ScContainer>   
-        <ImgSlide/>
-        <ScMRSContainer>
+    <>
+    <div style={{margin:"auto"}}>
+      <Header />
+    </div>
+    <ImgSlide/>
+    <div style={{maxWidth:"1200px",width:"80vw", margin:"auto"}}>
           <ScMapRandomWrap>
-            <Map/>
             <RandomCoffee />
+            <LottoPoint/>
           </ScMapRandomWrap>
-          <PickCoffee/>
-        </ScMRSContainer>
-      <button onClick={()=>{setCategory(true)}}>브랜드별</button>
-      <button onClick={()=>{setCategory(false)}}>커피별</button>
+          <ScNavbarWrap>
+          <h1 style={{marginBottom:"46px"}}>데일리 커피 Menu</h1>
+          <ScButtonWrap>
+      <div onClick={()=>{setCategory(true)}}>브랜드</div>
+      <p>|</p>
+      <div onClick={()=>{setCategory(false)}}>음료</div>
+         </ScButtonWrap>
+       </ScNavbarWrap>
       {category?<BrandCard/>:<CategoryCard/>}
         
-      </ScContainer>
+
     </div>
-    
+    </>
   )
 }
 
-const ScContainer = Styled.div`
-  display: column;  
-`;
-const ScMapRandomWrap = Styled.div`
-  display: column;  
-  width: 50%;
+
+const ScMapRandomWrap = styled.div`
+  display: flex; 
+  flex-direction : row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 84px auto 79px;
 `;
 
-const ScMRSContainer = Styled.div`
-  display: flex;
-`;
+const ScButtonWrap = styled.div`
+display: flex;
+gap: 28px;
+font-size: 14pt;
+`
+
+const ScNavbarWrap =styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+`
 
 
 export default Main

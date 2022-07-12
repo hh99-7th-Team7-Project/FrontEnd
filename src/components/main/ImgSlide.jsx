@@ -3,6 +3,7 @@ import Styled from 'styled-components';
 import Paiks_Cream_Crape from '../../Image/MainBanner/Paiks_Cream_Crape.jpg';
 import Paiks_IceCream_Ratte from '../../Image/MainBanner/Paiks_IceCream_Ratte.jpg';
 import Compose from '../../Image/MainBanner/Compose.jpg';
+import styled from 'styled-components';
 
 const ImgSlide = () => {
     
@@ -23,7 +24,7 @@ const ImgSlide = () => {
         return (
             <ScWrap>
                 <ScImgSlideWrap img={img}>
-                    <ScImg src={Paiks_Cream_Crape} >
+                    <ScImg src="https://paikdabang.com/wp-content/uploads/2022/05/빽다방_홈페이지_main_5월_아이스크림라떼.jpg">
                         <ScContentWrap>
                             <ScDotAlign>
                                 <ScDotWrap>
@@ -34,7 +35,7 @@ const ImgSlide = () => {
                             </ScDotAlign>
                         </ScContentWrap>
                     </ScImg>
-                    <ScImg src={Paiks_IceCream_Ratte}>
+                    <ScImg src="https://paikdabang.com/wp-content/uploads/2022/06/빽다방_홈페이지_main_코코넛2종.jpg">
                         <ScContentWrap>
                                 <ScDotAlign>
                                     <ScDotWrap>
@@ -45,7 +46,7 @@ const ImgSlide = () => {
                                 </ScDotAlign>
                         </ScContentWrap>
                     </ScImg>
-                    <ScImg src={Compose}>
+                    <ScImg src="//admin.hollys.co.kr/upload/main/banner/mainBanner_202205240354532080.jpg">
                         <ScContentWrap>
                                 <ScDotAlign>
                                     <ScDotWrap>
@@ -76,14 +77,15 @@ const ScImgSlideWrap = Styled.div`
 `;
 
 
-const ScImg = Styled.div`
+const ScImg = styled.div`
     display: flex;
     justify-content: center;
     align-items: left;
     width: 100vw;
-    height: 50vh;
+    height: 500px;
     background-image: url(${props => props.src});
     background-size: cover;
+    background-repeat : no-repeat;
     float: left;
 `;
 
@@ -100,8 +102,8 @@ const ScContentWrap = Styled.div`
 
 const ScDotAlign = Styled.div`
     align-items: center;    
-    width: 700px;
-    
+    /* width: 700px; */
+    margin: auto;
 
 `;
 

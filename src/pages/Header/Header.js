@@ -12,9 +12,11 @@ const Header = () => {
 
   return (
     <ScHeaderBox>
+
         <Logo />
         <Category/>
         <HeaderInput/>
+
         <Button/>
     </ScHeaderBox>
   )
@@ -25,9 +27,14 @@ const ScHeaderBox = styled.div`
     flex-direction: row ;
     justify-content: space-between;
     align-items: center;
-    width:100vw;
-    border: 1px red solid;
+    min-width:1222px;
+  
     height: 96px;
 `;
+
+// const ScBar = styled.div`
+//     display: flex;
+//     gap: ;
+// `
 
 export default Header

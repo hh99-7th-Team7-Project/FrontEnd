@@ -7,6 +7,7 @@ const Category = () => {
 
     return (
         <ScCategoryBox>
+          <ScCategory>Menu</ScCategory>
         <ScCategory>모여라!(채팅)</ScCategory>
         <ScCategory onClick={()=>{navigate("/board")}}>커뮤니티</ScCategory>
         </ScCategoryBox>
@@ -15,12 +16,14 @@ const Category = () => {
 
 const ScCategoryBox = Styled.div`  
   display: flex;
-  font-size: 14pt;
+  font-size: 13pt;
+  gap: 31px;
+  margin: 0 61px 0 18px;
 `;
 
 const ScCategory = Styled.div` 
   background-color: white;
-  margin-left: 30px;
+  /* margin-left: 30px; */
   &: hover {
     cursor: pointer;
   }
