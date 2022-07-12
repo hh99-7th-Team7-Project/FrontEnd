@@ -137,7 +137,7 @@ export default function postReducer(state = initialState, action) {
         case UPDATE_COMMENT:
             const updateCommentList = state.posts.map((value, id) => {                
                 return id === Number(action.payload.commentId) ?
-                    action.payload.data.payload : value;
+                    action.payload : value;
             });
             return {
                 ...state,

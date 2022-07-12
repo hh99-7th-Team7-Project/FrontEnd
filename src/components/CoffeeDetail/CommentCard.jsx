@@ -22,7 +22,7 @@ const CommentCard = (props) => {
  
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
-  },[dispatch])
+  },[setShowUpdate])
 
 
     return (

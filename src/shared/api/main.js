@@ -24,10 +24,10 @@ const apis = {
     getCoffees: ()=> api.get("/coffees"),
 
 //리뷰
-    postComment : (brand, id, data) => api.post(`coffees/${brand}/${id}/review`, data),
-    getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/review`),
-    deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/review/${reviewId}`),
-    updateComment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/review/${reviewId}`, data),
+    postComment : (brand, id, data) => api.post(`coffees/${brand}/${id}/reviews`, data),
+    getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/reviews`),
+    deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/reviews/${reviewId}`),
+    updateComment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/reviews/${reviewId}`, data),
 
 
 //검색
