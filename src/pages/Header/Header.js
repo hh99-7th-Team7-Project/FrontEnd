@@ -19,12 +19,13 @@ const Header = () => {
   )
 }
 
-const ScHeaderBox = Styled.header`    
+const ScHeaderBox = Styled.div`    
     display: flex;
-    align-item: center;
-    max-width:1200px;
-    width:100%;
+    flex-direction: row ;
+    align-items: center;
+    width:100vw;
     border: 1px red solid;
+    height: 96px;
 `;
 
 export default Header
