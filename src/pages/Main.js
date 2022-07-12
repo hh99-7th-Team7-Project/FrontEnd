@@ -15,7 +15,6 @@ const [category, setCategory] = useState(true)
     <div style={{maxWidth:"1200px",width:"75%"}}>
       <Header/>
       <ScContainer>   
-        <ScHR/>
         <ImgSlide/>
         <ScMRSContainer>
           <ScMapRandomWrap>
@@ -37,13 +36,6 @@ const [category, setCategory] = useState(true)
 const ScContainer = Styled.div`
   display: column;  
 `;
-
-const ScHR = Styled.hr`
-  margin-top: 50px;
-  margin-bottom: 50px;
-`;
-
-
 const ScMapRandomWrap = Styled.div`
   display: column;  
   width: 50%;
