@@ -73,9 +73,8 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
         const response = await apis.updateComment(payload.brand, payload.boardId, payload.commentId, {
             review: payload.data.review,
             star: 5,
-            nickname: nickname,
-            id: payload.data.id
         });
+        
         console.log("response data", response.data);
         dispatch(updateComment(response.data));
     } catch (error) {
@@ -136,7 +135,7 @@ export default function postReducer(state = initialState, action) {
             };
         case UPDATE_COMMENT:
             const updateCommentList = state.posts.map((value, id) => {                
-                return id === Number(action.payload.commentId) ?
+                return value.id === Number(action.payload.id) ?
                     action.payload : value;
             });
             return {

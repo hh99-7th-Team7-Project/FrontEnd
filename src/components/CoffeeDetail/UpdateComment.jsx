@@ -21,18 +21,16 @@ const UpdateComment = (props) => {
             dispatch(__updateComment({                
                 data:
                 {
-                    id: commentId,
                     review: reviewRef.current.value,
                     star: 5,
-                    nickname: nickname
                 },        
                 brand,
                 boardId,
                 commentId
             })
         );
-            setShowUpdate(!showUpdate);
-            dispatch(__loadComment({brand, boardId}));
+          
+            // dispatch(__loadComment({brand, boardId}));
 
         } else {
             alert ("빈칸입니다.")
@@ -40,7 +38,7 @@ const UpdateComment = (props) => {
     }
 
     const closeUpdate = () => {
-        setShowUpdate(!showUpdate);
+        setShowUpdate(false);
     }
 
 
@@ -54,6 +52,7 @@ const UpdateComment = (props) => {
             <input type="text" ref={reviewRef} />
             <ScUpdateBtn onClick={()=>{
                 commentUpdate();
+                setShowUpdate(false);
                 reviewRef.current.value=""                                
             }}>수정하기</ScUpdateBtn>
         </ScModal>
