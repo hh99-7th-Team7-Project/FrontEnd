@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'
 import ToastEditUpdate from '../../components/BoardWrite/ToastEditUpdate';
 import BoardCategoryUpdate from '../../components/BoardWrite/BoardCategoryUpdate';
+import apis from '../../shared/api/main';
 
 const BoardUpdate = () => {
   const { boardId } = useParams()
@@ -20,15 +21,18 @@ const BoardUpdate = () => {
   console.log(content)
 
   const submitOnclick = async () => {
-    await axios.put(`http://localhost:4000/Review/${boardId}`,
-      { title: title, content: content, category: cate })
+    const data ={"title": title, "content": content, "category": cate}
+    await apis.updateBoard(
+      boardId,
+      data
+    )
     navigate("/board")
   }
 
   useEffect(() => {
     setLoading(true)
     const getMark = async () => {
-      await axios.get(`http://localhost:4000/Review/${boardId}`)
+      await apis.getBoard(boardId)
         .then((res) => {
           console.log(res)
           setPrevContent(res?.data?.content)

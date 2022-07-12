@@ -6,7 +6,7 @@ import Header from '../Header/Header'
 
 const Search = () => {
   const{ keyword }= useParams()
-
+  
   return (
     <div>
       <Header/>

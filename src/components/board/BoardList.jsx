@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Styled from 'styled-components';
 import '../../shared/css/dropdown.css';
 import BoardMap from './BoardMap';
 import { GoChevronDown } from "react-icons/go";
+import apis from '../../shared/api/main';
 
 const BoardList = () => {
+    const [content, setContent] = useState();
+    console.log(content)
 
+    useEffect(() => {  
+          const getMark = async () => {
+              await apis.getBoards()
+                        .then((res)=>{
+                            console.log(res.data)
+                            setContent(res.data)
+                          })
+                        }
+                      getMark()
+                    }, [])
 
 
   return (
@@ -13,7 +26,7 @@ const BoardList = () => {
         <ScWrap>
             <ScContainer>
                 <ScInput id="dropdown" type="checkbox"/>      
-                <ScLabel for="dropdown">
+                <ScLabel htmlFor="dropdown">
                     <div>Category</div>
                     <GoChevronDown className="careIcon"/>
                     <ScDropBox>
@@ -36,14 +49,13 @@ const BoardList = () => {
             </ScContainer>
             <ScBoard>
                 <ScTable>
-                    <BoardMap
-                        category="커피"
-                        nickname="CoFFind"
-                        title="아메리카노 좋아요"
-                        day="7월7일"
-                        likes="32"
-                        comment="23"
-                    />
+                    {content&&content.map((item,idx)=>{
+                        return(<BoardMap
+                       content={item}
+                       key={idx}
+                    />)
+                    })}
+                   
                 </ScTable>
             </ScBoard>
         </ScWrap>
@@ -126,7 +138,7 @@ const ScBoard = Styled.div`
     height: 100%;
 `;
 
-const ScTable = Styled.table`
+const ScTable = Styled.div`
     border: 1px solid black;
     width: 100%;
     margin: 30px auto;

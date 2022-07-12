@@ -1,28 +1,40 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-const BoardMap = ( { item } ) => {
+const BoardMap = (props) => {
     const navigate = useNavigate()
-console.log(item)
+    const {content} =props
+console.log(content)
 
+const create = content?.createdAt.split("T")[0]
 const moveToBoard = (e) =>{
-    navigate(`/board/${item?.id}`)
+    // navigate(`/board/${content?.id}`)
 }
 
     return (
-        <div
-        style={{border:"1px #ddd solid"}}>
-                    <span>{item?.category}</span>
-                    {/* <td>{nickname}</td> */}
-                    <Link to ={`/board/${item?.id}`}>
+        <ScBoardList style={{border:"1px #ddd solid"}}>
+                    <span>{content?.category}</span>
+                    <span>{content?.nickname}</span>
+                    {/* <Link to ={`/board/${content?.id}`}> */}
                     <span
-                    onclick={moveToBoard}>{item?.title}</span></Link>
-                    {/* <td>{day}</td> */}
+                    onClick={moveToBoard}>{content?.title}</span>
+                    {/* </Link> */}
+                    <span>{create}</span>
+                    <span>13</span>
+                    <span>10</span>
                     {/* <td>{likes}</td>
                     <td>{comment}</td> */}
               
-        </div>
+        </ScBoardList>
     )
     }
 
 export default BoardMap
+
+const ScBoardList = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: space-between;
+`

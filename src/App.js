@@ -18,5 +18,5 @@ export default App;
 
 const SCwrap = styled.div`
 display: flex;
-justify-content: center;
+
 `

@@ -64,16 +64,14 @@ const ImgSlide = () => {
 
 const ScWrap = Styled.div`
     overflow: hidden;
-    margin: 10px auto;
+    width: 100%; 
 `;
 
 const ScImgSlideWrap = Styled.div`
     position: relative;
     display: flex;
-    width: 300vw;    
-    overflow: hidden;
+    width: 500vw;    
     transition: 0.5s ease-in-out;
-    margin: auto;
     transform : translate(${props => props.img}vw);
 `;
 
@@ -102,7 +100,7 @@ const ScContentWrap = Styled.div`
 
 const ScDotAlign = Styled.div`
     align-items: center;    
-    width: 700px
+    width: 700px;
     
 
 `;

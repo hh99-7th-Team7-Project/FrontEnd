@@ -8,6 +8,7 @@ import BoardImage from '../../components/BoardDetail/BoardImage';
 import BoardLike from '../../components/BoardDetail/BoardLike';
 import BoardComment from '../../components/BoardDetail/BoardComment';
 import BoardContent from '../../components/BoardDetail/BoardImage';
+import apis from '../../shared/api/main';
 
 const BoardDetail = () => {
   const {boardId} = useParams()
@@ -19,14 +20,14 @@ const BoardDetail = () => {
     useEffect(() => {  
       setLoading(true)
         const getMark = async () => {
-            await axios.get(`http://localhost:4000/Review/${boardId}`)
-          .then((res)=>{
-            console.log(res)
-            setContent(res?.data?.content)
-            setHead(res?.data)
-            console.log(res?.data)
-            })
-          }
+            await apis.getBoard(boardId)
+              .then((res)=>{
+                    console.log(res)
+                    setContent(res?.data?.content)
+                    setHead(res?.data)
+                    console.log(res?.data)
+                    })
+                     }
         getMark()
       }, [loading])
 

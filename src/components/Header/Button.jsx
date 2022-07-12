@@ -14,9 +14,10 @@ const isLogin = getCookie("islogin")
   }, []);
   const logOut = (e) =>{
     deleteCookie("token");
-    deleteCookie("profileUrl");
+    deleteCookie("profileImg");
     deleteCookie("nickname")
     deleteCookie("islogin")
+    deleteCookie("userId")
     alert("로그아웃 완료!")
     setonair(false)
   }
@@ -28,7 +29,7 @@ const isLogin = getCookie("islogin")
       (<>
       <ScBtn onClick={logOut}>로그아웃</ScBtn>
       <ScP> | </ScP>
-      <ScBtn>마이 프로필</ScBtn>
+      <Link to="/mypage"><ScBtn>마이 프로필</ScBtn></Link>
       </>):
       (<>
       <Link to="/login"><ScBtn>로그인</ScBtn></Link>
