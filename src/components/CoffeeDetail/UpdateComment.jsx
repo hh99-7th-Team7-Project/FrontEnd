@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import { useDispatch }from 'react-redux';
 import { __loadComment, __updateComment } from '../../redux/modules/comment';
-
+import { getCookie } from '../../shared/Cookie';
 
 const UpdateComment = (props) => {
 
     const { showUpdate , setShowUpdate, commentId, brand, boardId } = props;   
     
     const dispatch = useDispatch();
+    const nickname = getCookie("nickname");
     const reviewRef = React.useRef();
 
 
@@ -20,8 +21,10 @@ const UpdateComment = (props) => {
             dispatch(__updateComment({                
                 data:
                 {
+                    id: commentId,
                     review: reviewRef.current.value,
-                    star: 5
+                    star: 5,
+                    nickname: nickname
                 },        
                 brand,
                 boardId,
@@ -29,6 +32,7 @@ const UpdateComment = (props) => {
             })
         );
             setShowUpdate(!showUpdate);
+            dispatch(__loadComment({brand, boardId}));
 
         } else {
             alert ("빈칸입니다.")
