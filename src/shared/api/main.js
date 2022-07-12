@@ -7,19 +7,19 @@ const apis = {
     addUser: (newUser) => instances.post("/api/signup", newUser),
     postLogin : (userdata) => api.post("/api/login", userdata),
 
-    getCoffee: (brand) => api.get(`/coffee/${brand}`),
-    getCoffeeDetail: (brand, id) => api.get(`/coffee/${brand}/${id}`),
-    getCoffees: ()=> api.get("/coffee"),
-    getCoffeeCategory: (category) => api.get(`/coffee/sidebar?category=${category}`),
-    addCoffee: (brand, coffee) => instance.post(`/coffee/${brand}`,coffee),
-    getRandomCoffee: ()=> api.get("/coffee/random?brand=스타벅스&category=coffee"),
+    getCoffee: (brand) => api.get(`/coffees/${brand}`),
+    getCoffeeDetail: (brand, id) => api.get(`/coffees/${brand}/${id}`),
+    getCoffees: ()=> api.get("/coffees"),
+    getCoffeeCategory: (category) => api.get(`/coffees/sidebar?category=${category}`),
+    addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`,coffee),
+    getRandomCoffee: (brand, coffee)=> api.get(`/coffees/random?${brand}=스타벅스&category=${coffee}`),
 
 
 
-    postComment : (brand, id, data) => api.post(`coffee/${brand}/${id}/review`, data),
-    getComment : (brand, boardId) => api.get(`coffee/${brand}/${boardId}/review`),
-    deleteComment : (brand, boardId, reviewId) => api.delete(`/coffee/${brand}/${boardId}/review/${reviewId}`),
-    updatecomment : (brand, boardId, reviewId, data) => api.put(`/coffee/${brand}/${boardId}/review/${reviewId}`, data)
+    postComment : (brand, id, data) => api.post(`coffees/${brand}/${id}/reviews`, data),
+    getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/reviews`),
+    deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/reviews/${reviewId}`),
+    updatecomment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/reviews/${reviewId}`, data)
 
 }
 

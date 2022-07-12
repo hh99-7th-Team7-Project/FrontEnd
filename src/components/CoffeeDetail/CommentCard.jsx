@@ -3,19 +3,21 @@ import Styled from 'styled-components';
 import UpdateComment from "./UpdateComment";
 import { useSelector, useDispatch } from "react-redux";
 import { __deleteComment, __loadComment } from '../../redux/modules/comment';
+import { getCookie } from '../../shared/Cookie';
 
 const CommentCard = (props) => {
 
   const { brand, boardId } = props;
   
   const dispatch = useDispatch();
+  const nickname = getCookie("nickname");
 
   const [showUpdate, setShowUpdate ] = useState(false);
   const [ reviewId , setReviewId ] = useState();
 
-  const review_list = useSelector((state)=>state.comment.posts);
+  const  posts  = useSelector((state)=>state.comment.posts);
 
-  console.log(review_list)
+  console.log(posts)
 
  
   useEffect(()=>{
@@ -27,11 +29,11 @@ const CommentCard = (props) => {
 
         <>
           <ScWrap>
-            {review_list && review_list.map((item) => {
+            {posts && posts.map((item, index) => {
               return (
-                <ScComment key={item?.id}>
+                <ScComment key={index}>
                   <div>
-                    <p>닉네임 : {item?.nickname}</p>
+                    <p>닉네임 : {nickname}</p>
                     <p>댓글 : {item?.review}</p>
                   </div> 
                   <ScHR/>
