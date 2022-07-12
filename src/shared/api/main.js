@@ -6,6 +6,7 @@ const apis = {
     checkEmail: (username) => api.post("/api/signup/checkID",username),
     checkNickName: (nickname) => api.post("/api/signup/nickID",nickname),
     addUser: (newUser) => instances.post("/api/signup", newUser),
+    addUserWO: (newUser) => api.post("/api/signup",newUser),
     postLogin : (userdata) => api.post("/api/login", userdata),
     postImg: (data)=> instance.post("/coffees/image",data),
 
@@ -24,10 +25,10 @@ const apis = {
     getCoffees: ()=> api.get("/coffees"),
 
 //리뷰
-    postComment : (brand, id, data) => api.post(`coffees/${brand}/${id}/review`, data),
-    getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/review`),
-    deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/review/${reviewId}`),
-    updateComment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/review/${reviewId}`, data),
+    postComment : (brand, id, data) => api.post(`coffees/${brand}/${id}/reviews`, data),
+    getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/reviews`),
+    deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/reviews/${reviewId}`),
+    updateComment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/reviews/${reviewId}`, data),
 
 
 //검색

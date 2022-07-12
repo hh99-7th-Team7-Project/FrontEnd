@@ -5,6 +5,7 @@ import Category from '../../components/Header/Category';
 import HeaderInput from '../../components/Header/HeaderInput';
 import Button from '../../components/Header/Button';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Header = () => {
   const navigate = useNavigate()
@@ -19,9 +20,10 @@ const Header = () => {
   )
 }
 
-const ScHeaderBox = Styled.div`    
+const ScHeaderBox = styled.div`    
     display: flex;
     flex-direction: row ;
+    justify-content: space-between;
     align-items: center;
     width:100vw;
     border: 1px red solid;

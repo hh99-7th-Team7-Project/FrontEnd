@@ -6,6 +6,7 @@ import Header from '../Header/Header'
 import { useDispatch,useSelector } from 'react-redux';
 import { loadBoard } from '../../redux/modules/board'
 import {useNavigate} from 'react-router-dom'
+import apis from '../../shared/api/main'
 
 const BoardWrite = () => {
   const navigate = useNavigate()
@@ -17,9 +18,11 @@ console.log(title)
 console.log(content)
 
 const submitOnclick = async()=>{
-  await axios.post("http://localhost:4000/Review",
-{title: title, content: content, category: cate})
-  navigate("/board")
+  await apis.postBoard({title: title, content: content, category: cate})
+            .then((res)=>{
+                navigate("/board")
+            })
+
 }
 
 
