@@ -9,7 +9,12 @@ const RandomCoffee = () => {
   const [ coffee, setCoffee ] = useState("");
   const [ selectValue , setSelectValue ] = useState();
 
-  const handleChange = (e) => {
+  const handleBrandChange = (e) => {
+    console.log(e.target.value);
+    setSelectValue(e.target.value);
+  }
+
+  const handleCategoryChange = (e) => {
     console.log(e.target.value);
     setSelectValue(e.target.value);
   }
@@ -56,7 +61,7 @@ const RandomCoffee = () => {
                     id="스타벅스" 
                     value="스타벅스" 
                     checked={selectValue === "스타벅스"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>스타벅스</span>
                 </ScBrandAlign>
@@ -66,7 +71,7 @@ const RandomCoffee = () => {
                     id="이디야" 
                     value="이디야"
                     checked={selectValue === "이디야"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>이디야</span>
                 </ScBrandAlign>
@@ -76,7 +81,7 @@ const RandomCoffee = () => {
                     id="탐앤탐스" 
                     value="탐앤탐스"
                     checked={selectValue === "탐앤탐스"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>탐앤탐스</span>
                 </ScBrandAlign>
@@ -86,7 +91,7 @@ const RandomCoffee = () => {
                     id="빽다방" 
                     value="빽다방" 
                     checked={selectValue === "빽다방"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>빽다방</span>
                 </ScBrandAlign>
@@ -96,7 +101,7 @@ const RandomCoffee = () => {
                     id="드롭탑" 
                     value="드롭탑" 
                     checked={selectValue === "드롭탑"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>드롭탑</span>
                 </ScBrandAlign>
@@ -106,7 +111,7 @@ const RandomCoffee = () => {
                     id="더벤티" 
                     value="더벤티" 
                     checked={selectValue === "더벤티"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>더벤티</span>
                 </ScBrandAlign>
@@ -116,7 +121,7 @@ const RandomCoffee = () => {
                     id="엔젤인어스" 
                     value="엔젤인어스" 
                     checked={selectValue === "엔젤인어스"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>엔젤인어스</span>
                 </ScBrandAlign>
@@ -126,7 +131,7 @@ const RandomCoffee = () => {
                     id="커피빈" 
                     value="커피빈" 
                     checked={selectValue === "커피빈"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>커피빈</span>
                 </ScBrandAlign>
@@ -136,7 +141,7 @@ const RandomCoffee = () => {
                     id="컴포즈커피" 
                     value="컴포즈커피" 
                     checked={selectValue === "컴포즈커피"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>컴포즈커피</span>
                 </ScBrandAlign>
@@ -146,7 +151,7 @@ const RandomCoffee = () => {
                     id="할리스" 
                     value="할리스" 
                     checked={selectValue === "할리스"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>할리스</span>
                 </ScBrandAlign>
@@ -156,7 +161,7 @@ const RandomCoffee = () => {
                     id="카페베네" 
                     value="카페베네" 
                     checked={selectValue === "카페베네"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>카페베네</span>
                 </ScBrandAlign>
@@ -166,7 +171,7 @@ const RandomCoffee = () => {
                     id="폴바셋" 
                     value="폴바셋" 
                     checked={selectValue === "폴바셋"}
-                    onChange={handleChange}
+                    onChange={handleBrandChange}
                     />
                   <span>폴바셋</span>
                 </ScBrandAlign>
@@ -181,7 +186,7 @@ const RandomCoffee = () => {
                   id="커피" 
                   value="커피" 
                   checked={selectValue === "커피"}
-                  onChange={handleChange}
+                  onChange={handleCategoryChange}
                   />
                 <span>커피</span>
                 <input 
@@ -189,7 +194,7 @@ const RandomCoffee = () => {
                   id="논커피" 
                   value="논커피" 
                   checked={selectValue === "논커피"}
-                  onChange={handleChange}
+                  onChange={handleCategoryChange}
                   />
                 <span>논커피</span>
                 <input 
@@ -197,7 +202,7 @@ const RandomCoffee = () => {
                   id="스무디" 
                   value="스무디"
                   checked={selectValue === "스무디"} 
-                  onChange={handleChange}
+                  onChange={handleCategoryChange}
                   />
                 <span>스무디</span>
                 <input 
@@ -205,7 +210,7 @@ const RandomCoffee = () => {
                   id="에이드" 
                   value="에이드" 
                   checked={selectValue === "에이드"}
-                  onChange={handleChange}
+                  onChange={handleCategoryChange}
                   />
                 <span>에이드</span>
                 <input 
@@ -213,7 +218,7 @@ const RandomCoffee = () => {
                   id="차" 
                   value="차" 
                   checked={selectValue === "차"}
-                  onChange={handleChange}
+                  onChange={handleCategoryChange}
                   />
                 <span>차</span>
               </ScCateAlign>
