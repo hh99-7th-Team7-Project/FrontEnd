@@ -3,11 +3,13 @@ import Styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
+import { getCookie } from '../../shared/Cookie';
 
 
 const Comment = () => {
 
 
+  const nickname = getCookie("nickname");
   const { brand , boardId } = useParams();  
   const dispatch = useDispatch();
 
@@ -22,7 +24,9 @@ const Comment = () => {
       dispatch(__addComment({
         data: {
           review: commentInputRef.current.value,
-          star: 5
+          star: 5,
+          nickname: nickname
+          
       },
         boardId,
         brand 

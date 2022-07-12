@@ -29,6 +29,7 @@ const apis = {
     deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/review/${reviewId}`),
     updateComment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/review/${reviewId}`, data),
 
+
 //검색
     searchCoffee : (keyword)=> api.get(`/coffees/searches?keyword=${keyword}`),
     searchBoard : (keyword) => api.get(`/posts/searches?keyword=${keyword}`),

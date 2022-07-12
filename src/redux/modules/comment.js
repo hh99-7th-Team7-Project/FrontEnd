@@ -1,5 +1,9 @@
 import axios from "axios";
 import apis from "../../shared/api/main";
+import { getCookie } from "../../shared/Cookie";
+
+
+const nickname = getCookie("nickname");
 
 // initialState 
 
@@ -69,10 +73,11 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
         const response = await apis.updateComment(payload.brand, payload.boardId, payload.commentId, {
             review: payload.data.review,
             star: 5,
-            nickname: "abc"           
+            nickname: nickname,
+            id: payload.data.id
         });
-        console.log(response);
-        dispatch(updateComment(response.data));      
+        console.log("response data", response.data);
+        dispatch(updateComment(response.data));
     } catch (error) {
         console.log(error);
     }
@@ -130,9 +135,9 @@ export default function postReducer(state = initialState, action) {
                 posts: [...new_comment_list]
             };
         case UPDATE_COMMENT:
-            const updateCommentList = state.posts.map((value) => {
-                return value.id === Number(action.payload.commentId) ?
-                    action.payload.data.review : value.review;
+            const updateCommentList = state.posts.map((value, id) => {                
+                return id === Number(action.payload.commentId) ?
+                    action.payload.data.payload : value;
             });
             return {
                 ...state,
