@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
 import { getCookie } from '../../shared/Cookie';
 
-
 const Comment = () => {
 
+
+  const [ select , setSelect ] = useState('');
+
+  const starSelect = (e) => {
+    setSelect(e.target.value);
+  }
 
   const nickname = getCookie("nickname");
   const { brand , boardId } = useParams();  
@@ -15,16 +20,19 @@ const Comment = () => {
 
   
   const commentInputRef = React.useRef();
+  const selectStarRef = React.useRef();
 
-  const addComment = () => {    
+  const addComment = () => {
+    
     if (
-      commentInputRef.current.value !== ""
+      commentInputRef.current.value !== "" &&
+      selectStarRef.current.value !== "공백"
     ) 
     {
       dispatch(__addComment({
         data: {
           review: commentInputRef.current.value,
-          star: 5,
+          star: selectStarRef.current.value,
           nickname: nickname
           
       },
@@ -33,14 +41,26 @@ const Comment = () => {
       })
     );    
     } else {
-      alert ("빈칸입니다.")
+      alert ("별점과 리뷰를 모두 등록해주세요.")
     }
   }
 
   return ( 
     <ScWrap>
-        <ScInput type="text" placeholder="리뷰를 등록해주세요" ref={commentInputRef}/>
-        
+        <ScStarWrap>
+          <ScStarContainer>
+            <ScStarTitle>별점: </ScStarTitle>
+            <ScStarSelect onChange={starSelect} ref={selectStarRef}>
+              <option value="공백">-----선택하기-----</option>
+              <option value="1">❤️</option>
+              <option value="2">❤️❤️</option>
+              <option value="3">❤️❤️❤️</option>
+              <option value="4">❤️❤️❤️❤️</option>
+              <option value="5">❤️❤️❤️❤️❤️</option>
+            </ScStarSelect>
+          </ScStarContainer>
+        </ScStarWrap>
+        <ScInput type="text" placeholder="리뷰를 등록해주세요" ref={commentInputRef}/>        
         <ScBtnWrap>
           <ScReviewBtn onClick={()=>{
             addComment();
@@ -61,9 +81,36 @@ const ScWrap = Styled.div`
 
 const ScInput = Styled.input`
     width: 55vw;
-    height: 30px;
+    height: 40px;
     margin: 30px auto;
+    border-radius: 20px;
+    border: 0.1em solid black;
+    font-size: 14px;
+    outline: none;
+    text-align: center;
     
+`;
+
+const ScStarWrap = Styled.div`  
+  width: 55vw;
+  height: 50px;
+  margin-top: 30px;
+`;
+
+const ScStarContainer = Styled.div`
+  margin-top: 10px;
+`;
+
+const ScStarTitle = Styled.label`
+  font-size: 20px;
+`;
+
+const ScStarSelect = Styled.select`
+  width: 130px;
+  height: 30px;
+  border-radius: 20px;
+  text-align: left;
+  font-size: 14px;
 `;
 
 const ScBtnWrap = Styled.div`  

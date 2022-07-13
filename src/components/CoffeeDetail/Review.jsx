@@ -1,13 +1,22 @@
 import React, {  useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Styled from 'styled-components';
+import { __getAverageStar } from '../../redux/modules/comment';
+import { useDispatch } from 'react-redux';
+
 
 
 const Review = ( { item } ) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { brand, boardId } = useParams();
     // console.log(item)
     const pricePair = item?.pricePair
     // console.log(pricePair)
+
+    useEffect(()=>{
+        dispatch(__getAverageStar(brand,boardId))
+    },[dispatch])
 
   return (
     <>
@@ -15,6 +24,7 @@ const Review = ( { item } ) => {
         <ScContentBox>
             <ScSubBox>
                 <ScH1>{item?.name}</ScH1>
+                <h3>전체평점</h3>
                 <ScLikeBtn>나만의 음료로 등록</ScLikeBtn>
             </ScSubBox>
             <ScH4>{item?.category}</ScH4>

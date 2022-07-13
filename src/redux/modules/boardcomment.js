@@ -1,52 +1,95 @@
 import apis from "../../shared/api/main"
-import axios from 'axios';
 
 
 let intialstate = {
-  boardcommentlist: [
-    {
-        nickname: "닉네임1",
-        comment: "아메리카노 좋아요",
-        day: "2022-07-09"
-        },
-        {
-        nickname: "닉네임2",
-        comment: "사진감성이 좋습니다.",
-        day: "2022-07-09"
-        },
-        {
-        nickname: "닉네임3",
-        comment: "아메리카노 맛집",
-        day: "2022-07-09"
-        },
-        {
-        nickname: "닉네임4",
-        comment: "최고",
-        day: "2022-07-09"
-        }
-  ],
-  
+  boardcommentlist: [],
 };
 /* ----------------- 액션 타입 ------------------ */
 
-const GET_BOARD_COMMENT = "boardcomment_reducer/LOAD";
+const GET_BOARD_COMMENT = "boardcomment_reducer/GET_BOARD_COMMENT";
+const ADD_BOARD_COMMENT = "boardcomment_reducer/ADD_BOARD_COMMENT";
+const DELETE_BOARD_COMMENT = "boardcomment_reducer/DELETE_BOARD_COMMENT";
+const UPDATE_BOARD_COMMENT = "boardcomment_reducer/UPDATE_BOARD_COMMENT";
 
 // const CREATE_HEART = "COFFEE_reducer/CREATE";
 
 /* ----------------- 액션 생성 함수 ------------------ */
 export function getBoardComment(payload) {
     console.log("comment를 가져올거야!");
-  return { type: GET_BOARD_COMMENT, payload };
+  return { 
+    type: GET_BOARD_COMMENT, 
+    payload 
+  };
+}
+
+export function addBoardComment(payload) {
+  return {
+    type: ADD_BOARD_COMMENT,
+    payload
+  };
+}
+
+export function deleteBoardComment(payload) {
+  return {
+    type: DELETE_BOARD_COMMENT,
+    payload
+  };
+}
+
+export function updateBoardComment (payload) {
+  return {
+    type: UPDATE_BOARD_COMMENT,
+    payload
+  }
 }
 
 /* ----------------- 미들웨어 ------------------ */
-export const __getBoardComment = (payload) => {
-  return async function (dispatch) {
-    const loadCommentData = await axios.get("http://localhost:4000/boardcomment", payload);
+export const __getBoardComment = (payload) => async (dispatch, getState) => {
+  console.log("댓글불러오기", payload);
+    try{
+    const loadCommentData = await apis.getBoardComment(payload);
     console.log(loadCommentData.data);
     dispatch(getBoardComment(loadCommentData.data));
-  };
+  } catch (error) {
+    console.log(error);
+  }
 };
+
+export const __addBoardComment = (payload) => async (dispatch, getState) => {
+  try {
+    console.log("댓글을 쓸거야",payload);
+    const response = await apis.postBoardComment(payload.boardId, payload.data);
+    alert("댓글 저장완료!")
+    dispatch(addBoardComment(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const __deleteBoardComment = (boardId, commentId) => async (dispatch, getState) => {
+  try {
+    console.log("삭제하기", boardId, commentId);
+    const response = await apis.deleteBoardComment(boardId, commentId);
+    console.log(response.data);
+    dispatch(deleteBoardComment(response.data));
+    alert("삭제완료!")
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const __updateBoardComment = (payload) => async (dispatch, getState) => {
+  try {
+    console.log("수정", payload);
+    const response = await apis.updateBoardComment(payload.boardId, payload.commentId, {
+      comment: payload.data.comment,
+    });
+    console.log("response data", response.data);
+    dispatch(updateBoardComment(response.data));
+  } catch (error){
+    console.log(error);
+  }
+}
 
 
 /* ----------------- 리듀서 ------------------ */
@@ -56,6 +99,34 @@ export default function boardCommentReducer(state = intialstate, action) {
     case GET_BOARD_COMMENT: {
         console.log("comment", action.payload);
       return { boardcommentlist: action.payload };
+    }
+
+    case ADD_BOARD_COMMENT: {
+      return {
+        ...state,
+        boardcommentlist: [...state.boardcommentlist, action.payload]
+      }
+    }
+
+    case DELETE_BOARD_COMMENT: {
+      const new_boardcomment_list = state.boardcommentlist.filter((item,index) => {
+        return action.payload !== item.id;
+      })
+      return {
+        ...state,
+        boardcommentlist: [...new_boardcomment_list]
+      };
+    }
+
+    case UPDATE_BOARD_COMMENT: {
+      const updateBoardCommentList = state.boardcommentlist.map((value, id) => {
+        return value.id === Number(action.payload.id) ?
+        action.payload : value;
+      });
+      return {
+        ...state,
+        boardcommentlist: updateBoardCommentList
+      }
     }
     default:
       return state;

@@ -28,6 +28,7 @@ const apis = {
     getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/reviews`),
     deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/reviews/${reviewId}`),
     updateComment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/reviews/${reviewId}`, data),
+    getAveComment : (brand, boardId) => api.get(`/coffees/${brand}/${boardId}/star`),
 
 
 //검색
@@ -42,7 +43,11 @@ const apis = {
     getBoard: (boardId)=> api.get(`/posts/${boardId}`),
     postBoard : (post)=> api.post('/posts',post),
     updateBoard: (boardId,data)=> api.put(`/posts/${boardId}`,data),
-    deleteBoard: (boardId)=> api.delete(`/posts/${boardId}`)
+    deleteBoard: (boardId)=> api.delete(`/posts/${boardId}`),
+    postBoardComment: (boardId, data) => api.post(`/posts/${boardId}/comments`, data),
+    getBoardComment: (boardId) => api.get(`/posts/${boardId}/comments`),
+    deleteBoardComment: (boardId, commentId) => api.delete(`/posts/${boardId}/comments/${commentId}`),
+    updateBoardComment: (boardId, commentId, data) => api.put(`/posts/${boardId}/comments/${commentId}`, data)
 }
 
 export default apis;
