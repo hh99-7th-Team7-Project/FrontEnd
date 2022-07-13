@@ -1,33 +1,31 @@
 import React, {  useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import Styled from 'styled-components';
-import { __getAverageStar } from '../../redux/modules/comment';
+// import { __getAverageStar } from '../../redux/modules/comment';
 import { useDispatch } from 'react-redux';
 
 
 
 const Review = ( { item } ) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const { brand, boardId } = useParams();
+    // const dispatch = useDispatch();
+    // const { brand, boardId } = useParams();
     // console.log(item)
     const pricePair = item?.pricePair
     // console.log(pricePair)
 
-    useEffect(()=>{
-        dispatch(__getAverageStar(brand,boardId))
-    },[dispatch])
+    // useEffect(()=>{
+    //     dispatch(__getAverageStar(brand,boardId))
+    // },[dispatch])
 
   return (
     <>
     <ScWrap>
         <ScContentBox>
             <ScSubBox>
-                <ScH1>{item?.name}</ScH1>
                 <h3>전체평점</h3>
                 <ScLikeBtn>나만의 음료로 등록</ScLikeBtn>
-            </ScSubBox>
-            <ScH4>{item?.category}</ScH4>
+            </ScSubBox>            
             <div>당장 이 {item?.name} 먹으러 갈래요? </div>
             <ScGotoMap onClick={()=>{
                 navigate(`/map/${item?.brand}`)
@@ -36,7 +34,6 @@ const Review = ( { item } ) => {
                     return (<div key={idx}>{price?.size}:{price?.price}</div>)
                 })}
         </ScContentBox>
-        <ScHR/>
     </ScWrap>
     </>
   )
@@ -71,9 +68,6 @@ const ScSubBox = Styled.div`
     justify-content: space-between;
 `;
 
-const ScH1 = Styled.h1`
-    padding-left: 20px;
-`;
 
 const ScLikeBtn = Styled.div`
     background-color: #004D40;
@@ -83,10 +77,6 @@ const ScLikeBtn = Styled.div`
     cursor : pointer;
 `;
 
-const ScH4 = Styled.h4`
-    color: gray;
-    padding-left: 20px;
-`;
 
 const ScHR = Styled.hr`
   margin-top: 50px;

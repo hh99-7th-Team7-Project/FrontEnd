@@ -41,12 +41,15 @@ useEffect(()=>{
 
 
 return (
-    <Scwrap>   
-      <Header/>   
-      <ScHR/>
+    <>
+      <div style={{margin:"auto"}}> 
+        <Header/>
+      </div>
+    <Scwrap>
       <ScContainer>
         <ImgCard 
             url={coffeeReducer?.img}
+            item={coffeeReducer}
         />
         <ScReviewCommentBox>
         <Review item={coffeeReducer}/>
@@ -57,22 +60,21 @@ return (
         </ScReviewCommentBox>
       </ScContainer>
     </Scwrap>
+    </>
   )
 }
 
 const Scwrap = Styled.div`
- display: column;
- max-width:1200px;
- width:75%;
-`
-
-const ScHR = Styled.hr`
-  margin-top: 50px;
-  margin-bottom: 50px;
+  display: column;
+  max-width:1200px;
+  width:80vw;
+  margin: auto;
+  
+  
 `;
 
 const ScContainer = Styled.div`
-  display: flex;
+  display: column;
 `;
 
 const ScReviewCommentBox = Styled.div`

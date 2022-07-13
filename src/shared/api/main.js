@@ -30,7 +30,7 @@ const apis = {
     getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/reviews`),
     deleteComment : (brand, boardId, reviewId) => api.delete(`/coffees/${brand}/${boardId}/reviews/${reviewId}`),
     updateComment : (brand, boardId, reviewId, data) => api.put(`/coffees/${brand}/${boardId}/reviews/${reviewId}`, data),
-    getAveComment : (brand, boardId) => api.get(`/coffees/${brand}/${boardId}/star`),
+    // getAveComment : (brand, boardId) => api.get(`/coffees/${brand}/${boardId}/star`),
 
 
 //검색
