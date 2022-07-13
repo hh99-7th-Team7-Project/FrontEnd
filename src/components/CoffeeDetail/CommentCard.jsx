@@ -35,13 +35,18 @@ const CommentCard = (props) => {
                 <ScComment key={index}>
                   <div>
                     <p>닉네임 : {item?.nickname}</p>
+                    {item?.star === 1 && <p>❤️🤍🤍🤍🤍</p>}
+                    {item?.star === 2 && <p>❤️❤️🤍🤍🤍</p>}
+                    {item?.star === 3 && <p>❤️❤️❤️🤍🤍</p>}
+                    {item?.star === 4 && <p>❤️❤️❤️❤️🤍</p>}
+                    {item?.star === 5 && <p>❤️❤️❤️❤️❤️</p>}
                     <p>댓글 : {item?.review}</p>
                   </div> 
                   <ScHR/>
                   <ScButton onClick={()=>{
                     setShowUpdate(true);
-                    setReviewId(item?.id);
-                    // dispatch(__loadComment({brand, boardId}));                             
+                    setReviewId(item?.id);    
+
                   }}>수정</ScButton>
                   <ScButton onClick={()=>{
                     dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
@@ -88,4 +93,9 @@ const ScButton = Styled.button`
     cursor: pointer;
   }
 `;
+
+const ScStar = Styled.p`
+  
+`;
+
 export default CommentCard

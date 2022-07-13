@@ -1,4 +1,3 @@
-import axios from "axios";
 import apis from "../../shared/api/main";
 import { getCookie } from "../../shared/Cookie";
 
@@ -14,9 +13,10 @@ const initialState = {
 // action 
 
 const ADD_COMMENT = "comment_reducer/ADD_COMMENT";
-const LOAD_COMMENT = "comment_reducer/LOAD_COMMENT"
-const DELETE_COMMENT = "comment_reducer/DELETE_COMMENT"
-const UPDATE_COMMENT = "comment_reducer/UPDATE_COMMENT"
+const LOAD_COMMENT = "comment_reducer/LOAD_COMMENT";
+const DELETE_COMMENT = "comment_reducer/DELETE_COMMENT";
+const UPDATE_COMMENT = "comment_reducer/UPDATE_COMMENT";
+const GET_AVE_STAR = "comment_reducer/GET_AVE_STAR";
 
 
 // action creator
@@ -52,11 +52,18 @@ export const updateComment = (payload) => {
     }
 }
 
+export const getAveStar = (payload) => {
+    return {
+        type: GET_AVE_STAR,
+        payload
+    }
+}
+
 // middleware
 
 export const __addComment = (payload) => async (dispatch, getState) => {
     try {
-        // console.log("add", payload);
+        console.log("add", payload);
         const response = await apis.postComment( payload.brand, payload.boardId, payload.data );
         alert("Review 저장완료!")
         // console.log(response);
@@ -77,6 +84,7 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
         
         console.log("response data", response.data);
         dispatch(updateComment(response.data));
+        
     } catch (error) {
         console.log(error);
     }
@@ -102,6 +110,17 @@ export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, ge
         console.log(response.data);
         dispatch(deleteComment(response.data));
         alert("삭제완료!");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const __getAverageStar = (brand, boardId) => async (dispatch, getState) => {
+    try {
+        console.log("평점 가져오기", brand, boardId);
+        const response = await apis.getAveComment(brand, boardId);
+        console.log(response);
+        dispatch(getAveStar(response));
     } catch (error) {
         console.log(error);
     }
