@@ -77,7 +77,6 @@ const CommentMap = () => {
                                     commentId={Number(commentId)}
                                 />) : null
                                 }
-                                
                             </div>
                         </div>
                     ))}

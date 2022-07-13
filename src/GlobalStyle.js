@@ -9,6 +9,9 @@ const GlobalStyle = createGlobalStyle `
   html, body {
     font-family: ‘SUIT Variable’;
   }
+  button, label, div {
+    font-family: ‘SUIT Variable’;
+  }
 input{
   &:focus{
     outline: none;

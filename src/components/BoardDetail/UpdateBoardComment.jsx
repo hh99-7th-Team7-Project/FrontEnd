@@ -9,9 +9,7 @@ const UpdateBoardComment = (props) => {
     const dispatch = useDispatch();
     const boardCommentInputRef = React.useRef();
 
-    console.log("아이디값확인",boardId, commentId);
-
-
+    
     const boardCommentUpdate = (e) => {
         if (
             boardCommentInputRef.current.value !== ""
