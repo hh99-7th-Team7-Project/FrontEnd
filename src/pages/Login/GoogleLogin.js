@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { apis } from '../../shared/api/main';
-import { api } from '../../shared/api/core/api';
+import { api, apin } from '../../shared/api/core/api';
 import { useNavigate } from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
 import { setCookie } from '../../shared/Cookie';
@@ -16,7 +16,7 @@ const GoogleLogin = () => {
   React.useEffect(() => {
     if (code) {
       const google = ()=>{
-         api
+         apin
         .get(`/oauth/google/callback?code=${code}`)//DB에 코드전송
         .then((res) => {
           console.log(res)
@@ -27,6 +27,7 @@ const GoogleLogin = () => {
           api
             .get("/user/islogin")//유저정보가져오는url
             .then((res) => {
+              console.log(res)
               dispatch(
                 setUser({
                   //유저정보를 다시 세팅

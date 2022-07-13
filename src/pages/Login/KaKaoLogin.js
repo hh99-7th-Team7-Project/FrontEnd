@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { api } from '../../shared/api/core/api';
+import { api, apin } from '../../shared/api/core/api';
 import { apis } from '../../shared/api/main';
 import {useNavigate} from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
@@ -16,14 +16,13 @@ const KaKaoLogin = () => {
   React.useEffect(() => {
     if (code) {
       const kakao = ()=>{
-         api
+         apin
         .get(`/oauth/kakao/callback?code=${code}`)//DB에 코드전송
         .then((res) => {
           console.log(res)
           const token = res.headers.authorization.split(" ");
-
-          setCookie("token", res.headers.authorization.split(" ")[1]);
-
+          console.log(token[1])
+          setCookie("token", token[1]);
           navigate("/");
           api
             .get("/user/islogin")//유저정보가져오는url

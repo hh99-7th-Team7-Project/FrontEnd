@@ -4,7 +4,7 @@ import { apis } from '../../shared/api/main';
 import {useNavigate} from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
 import { setCookie } from '../../shared/Cookie';
-import { api } from '../../shared/api/core/api';
+import { api, apin } from '../../shared/api/core/api';
 
 const NaverLogin = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const NaverLogin = () => {
     React.useEffect(() => {
     if (code) {
       const naver = ()=>{
-         api
+         apin
         .get(`/oauth/naver/callback?code=${code}&state=${state}`)//DB에 코드전송
         .then((res) => {
           const token = res.headers.authorization.split(" ");
@@ -24,6 +24,7 @@ const NaverLogin = () => {
           api
             .get("/user/islogin")//유저정보가져오는url
             .then((res) => {
+              console.log(res)
               dispatch(
                 setUser({
                   //유저정보를 다시 세팅
