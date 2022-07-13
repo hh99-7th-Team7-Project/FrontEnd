@@ -28,7 +28,7 @@ const apis = {
   getChatLists: () => api.get('/chatposts'),
 
   getOneChatItem: (id) => api.get(`/chatposts/detail/${id}`),
-  getChatDetail: (id) => api.get(`/chatposts/${id}`),
+  // getChatDetail: (id) => api.get(`/chatposts/${id}`),
   addChatItem: (data) => api.post('/chatposts', data),
   deleteChatItem: (id) => api.delete(`/chatposts/${id}`),
   updateChatItem: (data, id) => api.put(`/chatposts/${id}`, data),

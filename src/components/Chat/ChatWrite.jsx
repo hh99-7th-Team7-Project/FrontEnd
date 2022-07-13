@@ -10,20 +10,25 @@ import { ko } from 'date-fns/esm/locale';
 import 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import dayjs from 'dayjs';
+import { useEffect } from 'react';
 
 // import { actionCreators as chatlistActions } from '../../redux/modules/chatlist';
-import { __addChatItem, __updateChatItem } from '../../redux/modules/chat';
+import {
+  __addChatItem,
+  __updateChatItem,
+  __loadOneChatItem,
+} from '../../redux/modules/chat';
 
 const ChatWrite = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const is_edit = id ? true : false;
-  // useEffect(() => {
-  //   dispatch(__loadOneChatItem(id));
-  // }, []);
+  useEffect(() => {
+    dispatch(__loadOneChatItem(id));
+  }, [id]);
 
-  const ChatItem = useSelector((state) => state?.chat?.list);
+  const ChatItem = useSelector((state) => state?.chat?.one_list);
 
   //날짜
   const [count, setCount] = useState(3);
