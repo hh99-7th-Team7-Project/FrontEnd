@@ -4,12 +4,15 @@ const GlobalStyle = createGlobalStyle `
 * {
     margin: 0;
     padding: 0;
-    @media screen and (max-width: 768px){
-      div {        
-        justify-content: space-between;        
-      }
-    }
+  }
+input{
+  &:focus{
+    outline: none;
     
+  }
+  &::placeholder{
+    color: #ddd;
+  }
 }
 `;
 

@@ -80,9 +80,8 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
         const response = await apis.updateComment(payload.brand, payload.boardId, payload.commentId, {
             review: payload.data.review,
             star: 5,
-            nickname: nickname,
-            id: payload.data.id
         });
+        
         console.log("response data", response.data);
         dispatch(updateComment(response.data));
         

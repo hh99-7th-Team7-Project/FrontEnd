@@ -9,7 +9,7 @@ console.log(content)
 
 const create = content?.createdAt.split("T")[0]
 const moveToBoard = (e) =>{
-    // navigate(`/board/${content?.id}`)
+    navigate(`/board/${content?.id}`)
 }
 
     return (

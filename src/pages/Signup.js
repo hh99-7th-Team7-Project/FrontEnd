@@ -12,7 +12,7 @@ const SignUp = () => {
   const [fileImage, setFileImage] = React.useState("/프로필.PNG");
   const [ProfileImage, setProfileImage] = React.useState([])
   const [Selected, setSelected] = useState("");
-  const fileInputRef = React.useRef();
+  const fileInputRef = React.useRef("/프로필.PNG");
   const passwordRef = React.useRef();
   const password2Ref = React.useRef();
   const emailRef = React.useRef();
@@ -23,7 +23,7 @@ const SignUp = () => {
   const [oknickname, setokNickname] = React.useState(false);
 
 
-  console.log(fileImage)
+  console.log(fileInputRef.current.files?.length)
   // 이메일 중복 체크
   const dupEmail = async () => {
     if (!idCheck(Email+Selected)) {
@@ -84,7 +84,7 @@ console.log(Email+Selected)
     return regExp.test(email);
   };
   const nickCheck = (nick) => {
-    let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]{2,10}/;
+    let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]{2,8}/;
     //모두가능 2자에서10자
     return regExp.test(nick);
   };
@@ -96,8 +96,9 @@ console.log(Email+Selected)
       Email === "" ||
       Password === "" ||
       Password2 === "" ||
-      Nickname === "" ||
-      fileImage === ""
+      Nickname === ""
+      //  ||
+      // fileImage === ""
     ) {
       window.alert("아이디,비밀번호,닉네임을 모두 입력해주세요!");
       return;
@@ -114,18 +115,29 @@ console.log(Email+Selected)
       window.alert("중복체크를 모두 해주세요!")
     } else {
       const form = new FormData();
+      //사진이 들어가지 않았을 때와 들어갔을 때 구분해서 보내줌
       const datas = {
         username: emailRef.current.value+Selected,
         nickname: nicknameRef.current.value,
         password: passwordRef.current.value,
       }
+      const data = {
+        username: emailRef.current.value+Selected,
+        nickname: nicknameRef.current.value,
+        password: passwordRef.current.value,
+        profileImage: null
+      }
       form.append("signup", new Blob([JSON.stringify(datas)], {
         type: "application/json"
       }))
       form.append('profileImage', fileInputRef.current.files[0])
-      console.log(form)
-
-      const res = await apis.addUser(form);
+      // console.log(fileInputRef.current.files[0].name)
+      if(fileInputRef.current.files?.length===0){
+        const response = await apis.addUserWO(data)
+      }else{
+        const res = await apis.addUser(form);
+      }
+      
       navigate("/login")
     }
 
@@ -165,6 +177,7 @@ console.log(Email+Selected)
               <input
                 type="email"
                 placeholder="Email"
+           
                 ref={emailRef}
                 value={Email}
                 onChange={(event) => {
@@ -186,7 +199,7 @@ console.log(Email+Selected)
               
               <ScDuplicateButton onClick={dupEmail}>중복검사</ScDuplicateButton>
             </ScWrap>
-            <ScCondition>E-mail주소를 입력해 주세요</ScCondition>
+            {/* <ScCondition>E-mail주소를 입력해 주세요</ScCondition> */}
             <br />
             <ScWrap>
               <input
@@ -194,6 +207,7 @@ console.log(Email+Selected)
                 placeholder="Nickname"
                 ref={nicknameRef}
                 value={Nickname}
+                maxLength={8}
                 onChange={(event) => {
                   setNickname(event.target.value);
                 }}
@@ -201,7 +215,7 @@ console.log(Email+Selected)
               />
               <ScDuplicateButton onClick={dupNick}>중복검사</ScDuplicateButton>
             </ScWrap>
-            <ScCondition>당신이 불리고 싶은 이름을 입력해주세요</ScCondition>
+            <ScCondition>2자 이상 8자 이하의 닉네임을 작성해 주세요.</ScCondition>
             <br />
             <input
               type="password"

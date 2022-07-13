@@ -17,15 +17,26 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
 
   return (
     <div>
-        <SCcard color={item?.brand} onClick={moveOnclick}>
-        <SCprice>{pricePair[0].price}원</SCprice>
-        <SCcoffeeImg src={item?.img}/>
+        <SCcard color={item?.brand}>
+          <ScBeforeHover>
+            <SCcoffeeImg src={item?.img}/>
+            <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
+            <SCprice>₩{pricePair[0].price}</SCprice>
+          </ScBeforeHover>
         <SChover>
-         <SCcardText>{item?.brand}</SCcardText>
-        <SCcardText>{item?.name}</SCcardText>
-        {pricePair.map((price,idx)=>{
-          return(<SCcardText key={idx}>{price?.size}:{price?.price}</SCcardText> )
-        })}
+          <ScLogo></ScLogo>
+          <SCcardText style={{fontSize:'13px'}}>{item?.brand}</SCcardText>
+          <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
+          <SCcardPrice>₩{pricePair[0].price}</SCcardPrice>
+          {/* {pricePair.map((price,idx)=>{
+            return(<SCcardText key={idx}>{price?.size}:{price?.price}</SCcardText> )
+          })} */}
+          <ScStar>
+          <div style={{fontSize:'13px'}}>총별점</div>
+          <div style={{fontSize:'18px'}}>4.4</div>
+          <div>⭐⭐⭐⭐⭐</div>
+          </ScStar>
+          <ScZoomIn onClick={moveOnclick}>자세히 보러 가기</ScZoomIn>
         </SChover>
         </SCcard>
     </div>
@@ -35,37 +46,75 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
 export default CoffeeCard
 
 const SCcardText = styled.div`    
-    margin: 20px auto;
-    font-size: 30px;
-    text-align: center;
+    /* margin: 10px auto; */
+    /* font-size: 30px; */
 `;
 
+const ScBeforeHover = styled.div`
+  /* display: flex;
+  flex-direction: column; */
+  text-align: center;
+`
+const ScLogo = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  background-color: white;
+  margin: 42px 0 23px 0;
+`
+
+const ScStar = styled.div`
+  width: 105px;
+  height: 66px;
+  margin: 25px 0 21px 0;
+`
+const SCcardPrice = styled.div`
+  border: 1px white solid;
+  border-radius: 10px;
+  width: 76px;
+  height: 21px;
+`
   const SCcoffeeImg = styled.img`
     width: 227px;
-    height: 55%;
-    margin: auto;
+    max-height: 240px;
+    margin: 43px auto 40px;
   `
 
+const ScZoomIn = styled.div`
+    border: 1px white solid;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    opacity: 100%!important;
+`
   const SCprice = styled.div`
-    background-color: #3d3b3b;
-    color: white;
-    width: 60px;
-    text-align: center;
+     border: 1px black solid;
+    border-radius: 10px;
+   width: 76px;
+   height: 21px;
+   margin: 10px auto;
   `
   const SChover =styled.div`
-      background-color: #808080e8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      border-radius: 12px;
       position: absolute;
       transform: translate(-50%,-50%) ;
       top: 50%;
       left: 50%;
       opacity: 0;
       width: 100%;
-      height: 100%;
-    
+      height: 100%;   
+      text-align: center;
+      color: white;
   `
 const SCcard = styled.div`
     position: relative;
-    background-color: ${(props) => {
+    /* background-color: ${(props) => {
     switch(props.color){
       case "스타벅스":
         return "rgb(1,98,65)"
@@ -95,10 +144,10 @@ const SCcard = styled.div`
       default:
         return "white"
     }
-  }};
+  }}; */
     display: flex;
     flex-direction: column;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     width: 90%;
     /* width: 227px; */
     height: 401px;
@@ -106,9 +155,12 @@ const SCcard = styled.div`
     margin: 30px;
     /* border-radius: 30px; */
     &:hover {
-        cursor: pointer;
-      ${SChover}{
-        opacity: 1;
+      ${ScZoomIn}{
+        opacity: 100%;
       }
+      ${SChover}{
+        opacity: 80%;
+      }
+      
     }
     `
