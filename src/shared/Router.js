@@ -22,6 +22,8 @@ import SearchCoffee from '../pages/Search/SearchCoffee';
 import Chat from '../pages/Chat/Chat';
 import ChatDetail from '../pages/Chat/ChatDetail';
 import ChatWrite from '../pages/Chat/ChatWrite';
+import Party from '../pages/Party/Party';
+import PartyWrite from '../pages/Party/PartyWrite';
 
 const Router = () => {
   //내 현재위치 geolocation
@@ -76,8 +78,8 @@ const Router = () => {
       <Route path="/board/write" element={<BoardWrite />} />
 
       {/**Chat */}
-      <Route path="/chat" element={<Chat />} />
-      <Route path="/chat/:pid" element={<ChatDetail />} />
+      <Route path="/chatposts" element={<Chat />} />
+      <Route path="/chatposts/detail/:id" element={<ChatDetail />} />
       {/* <Route path="/chat/write" element={<ChatWrite />} /> */}
     </Routes>
   );

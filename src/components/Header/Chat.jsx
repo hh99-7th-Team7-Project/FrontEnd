@@ -7,7 +7,7 @@ const Chat = () => {
   return (
     <A
       onClick={() => {
-        navigate('/chat');
+        navigate('/chatposts');
       }}
     >
       채팅

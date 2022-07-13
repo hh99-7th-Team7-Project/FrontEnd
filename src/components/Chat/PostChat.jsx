@@ -2,18 +2,19 @@ import React, { useRef } from 'react';
 import Stomp, { over } from 'stompjs';
 import SockJs from 'sockjs-client';
 import styled from 'styled-components';
-import { actionCreators as chatActions } from '../../redux/modules/chat';
 import { useDispatch, useSelector } from 'react-redux';
 import { api } from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 
 let stompClient = null;
-const PostChat = ({ pid }) => {
+const PostChat = ({ id }) => {
   const dispatch = useDispatch();
   // const post_chat_list = useSelector((state) => state.chat.post_list);
 
   const messageRef = useRef();
-  const token = { Authorization: getCookie('token') };
+
+  const cookie = getCookie('token');
+  const token = { Authorization: `Bearer ${cookie}` };
   // console.log(token);
   // const token = {
   //   Authorization: getCookie('token') ? getCookie('token') : 'Authorization',
@@ -44,7 +45,7 @@ const PostChat = ({ pid }) => {
   const [user, setUser] = React.useState(0);
   const [chatScroll, setChatScroll] = React.useState(false);
   const [userData, setUserData] = React.useState({
-    // username: '',
+    username: '',
     message: '',
     opposingUserName: '',
   });
@@ -53,13 +54,13 @@ const PostChat = ({ pid }) => {
   //   scrollToBottom();
   // }, [publicChats, chatScroll]);
 
-  React.useEffect(() => {
-    dispatch(chatActions.prevPostChatDB(pid));
-    stompConnect();
-    return () => {
-      stompDisConnect();
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(chatActions.prevPostChatDB(pid));
+  //   stompConnect();
+  //   return () => {
+  //     stompDisConnect();
+  //   };
+  // }, []);
 
   const onKeyPress = (e) => {
     if (e.key == 'Enter') {
@@ -74,7 +75,7 @@ const PostChat = ({ pid }) => {
       stompClient.send('/app/postchat', token, JSON.stringify(user_join));
 
       stompClient.disconnect(() => {
-        stompClient.unsubscribe(`/topic/postchat/${pid}`);
+        stompClient.unsubscribe(`/topic/postchat/${id}`);
       }, token);
     } catch (err) {}
   };
@@ -88,6 +89,7 @@ const PostChat = ({ pid }) => {
     let socket = new SockJs('http://3.36.103.203:8080/ws-coala');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
+    console.log('stomp연결');
   };
 
   const onConnected = () => {
@@ -95,25 +97,27 @@ const PostChat = ({ pid }) => {
       // const user_join = { status: 'JOIN', pid };
       const user_join = {
         status: 'JOIN',
-        pid: pid,
+        pid: id,
         id: '1',
         senderName: 'username',
       };
       setConnected(true);
+      console.log(connected);
       setUserData({
         ...userData,
-        crareer: '5',
+        career: '5',
         senderName: 'username',
         status: 'JOIN',
-        pid: pid,
+        id: id,
       });
 
       stompClient.send('/app/postchat', token, JSON.stringify(user_join));
       stompClient.subscribe(
-        `/topic/postchat/${pid}`,
+        `/topic/postchat/${id}`,
         onPublicMessageReceived,
         token
       );
+      console.log(onPublicMessageReceived);
 
       if (chatScroll !== true) {
         setChatScroll(true);
@@ -149,17 +153,17 @@ const PostChat = ({ pid }) => {
   // };
 
   const sendPublicMessage = () => {
+    console.log(connected);
     if (stompClient) {
       if (!userData.message) {
         alert('', '내용을 입력해주세요!', 'error');
       } else {
         let chatMessage = {
           ...userData,
-          // senderName: username,
+          senderName: 'username',
           message: userData.message,
           status: 'MESSAGE',
-          pid: pid,
-          // uid: uid,
+          id: id,
         };
         // console.log(chatMessage);
 
@@ -180,6 +184,7 @@ const PostChat = ({ pid }) => {
           welcome.set(payloadData.message, []);
           setWelcome(new Map(welcome));
           setUser(payloadData.userCount);
+          console.log('join 완료');
         }
         break;
       case 'OUT':
