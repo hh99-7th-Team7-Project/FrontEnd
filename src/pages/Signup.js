@@ -84,7 +84,7 @@ console.log(Email+Selected)
     return regExp.test(email);
   };
   const nickCheck = (nick) => {
-    let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]{2,10}/;
+    let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]{2,8}/;
     //모두가능 2자에서10자
     return regExp.test(nick);
   };
@@ -177,6 +177,7 @@ console.log(Email+Selected)
               <input
                 type="email"
                 placeholder="Email"
+           
                 ref={emailRef}
                 value={Email}
                 onChange={(event) => {
@@ -198,7 +199,7 @@ console.log(Email+Selected)
               
               <ScDuplicateButton onClick={dupEmail}>중복검사</ScDuplicateButton>
             </ScWrap>
-            <ScCondition>E-mail주소를 입력해 주세요</ScCondition>
+            {/* <ScCondition>E-mail주소를 입력해 주세요</ScCondition> */}
             <br />
             <ScWrap>
               <input
@@ -206,6 +207,7 @@ console.log(Email+Selected)
                 placeholder="Nickname"
                 ref={nicknameRef}
                 value={Nickname}
+                maxLength={8}
                 onChange={(event) => {
                   setNickname(event.target.value);
                 }}
@@ -213,7 +215,7 @@ console.log(Email+Selected)
               />
               <ScDuplicateButton onClick={dupNick}>중복검사</ScDuplicateButton>
             </ScWrap>
-            <ScCondition>당신이 불리고 싶은 이름을 입력해주세요</ScCondition>
+            <ScCondition>2자 이상 8자 이하의 닉네임을 작성해 주세요.</ScCondition>
             <br />
             <input
               type="password"

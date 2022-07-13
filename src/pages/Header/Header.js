@@ -29,7 +29,7 @@ const ScHeaderBox = styled.div`
     align-items: center;
     min-width:1222px;
   
-    height: 96px;
+    height: 130px;
 `;
 
 // const ScBar = styled.div`

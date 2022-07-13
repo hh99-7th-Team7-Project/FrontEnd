@@ -63,9 +63,11 @@ const ImgSlide = () => {
     }
 
 
-const ScWrap = Styled.div`
+const ScWrap = styled.div`
     overflow: hidden;
     width: 100%; 
+    /* height: 500px; */
+
 `;
 
 const ScImgSlideWrap = Styled.div`

@@ -6,7 +6,12 @@ import svg from './svg/Logo.svg'
 
 const Logo = () => {
   const navigate = useNavigate()
-  return (<img src={svg} onClick={()=>{navigate("/")}} alt=""/>)
+  return (
+    <>
+  <img src={svg} onClick={()=>{navigate("/")}} alt=""/>
+  {/* <svg></svg> */}
+  </>
+  )
 }
 
 

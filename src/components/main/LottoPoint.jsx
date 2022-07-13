@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import star from '../../shared/svg/Star.svg'
 
 const LottoPoint = () => {
 
@@ -8,6 +9,8 @@ const LottoPoint = () => {
     <ScWrap>
     <h3>행운의 포인트 뽑기</h3>
     <ScSquare/>
+    <img src={star}/>
+    {/* <div>{star}</div> */}
     <ScButton>뽑기</ScButton>
     </ScWrap>
   )
@@ -28,14 +31,14 @@ const ScWrap = styled.div`
   margin-left: 30px;
 `
 
-const ScSquare =styled.img`
+const ScSquare = styled.img`
   border:  1px #ddd solid;
   height: 164px;
   width: 131px;
   background-color: #d9d9d9;
 `
 
-const ScButton =styled.h4`
+const ScButton = styled.h4`
   display: flex;
   align-items: center;
   justify-content: center;
