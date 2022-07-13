@@ -19,7 +19,8 @@ const CommentCard = (props) => {
 
   console.log(posts)
 
- 
+ console.log(showUpdate)
+
   useEffect(()=>{
     dispatch(__loadComment({brand, boardId}));
   },[setShowUpdate])
@@ -40,7 +41,7 @@ const CommentCard = (props) => {
                   <ScButton onClick={()=>{
                     setShowUpdate(true);
                     setReviewId(item?.id);
-                    dispatch(__loadComment({brand, boardId}));                             
+                    // dispatch(__loadComment({brand, boardId}));                             
                   }}>수정</ScButton>
                   <ScButton onClick={()=>{
                     dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
@@ -48,7 +49,6 @@ const CommentCard = (props) => {
                   }}>삭제</ScButton>
                   {showUpdate === true ? (
                 <UpdateComment
-                  showUpdate={showUpdate}
                   setShowUpdate={setShowUpdate}
                   commentId={Number(reviewId)}
                   boardId={boardId}

@@ -18,5 +18,6 @@ export default App;
 
 const SCwrap = styled.div`
 display: flex;
-
+flex-direction: column;
+/* justify-content: center; */
 `

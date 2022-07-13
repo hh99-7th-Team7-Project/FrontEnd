@@ -78,7 +78,6 @@ const Login = () => {
           <a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg" /></a>
         </ScSocialWrap>
       </ScLogin>
-      <ScImageBox />
     </ScWrap>
   )
 }
@@ -116,7 +115,9 @@ input{
   margin: 10px 0;
   border: 1px #ddd solid;
   background-color: rgb(233, 230, 230);
-}
+} input::placeholder{
+    color: black;
+  }
 `
 const ScText = styled.h3`
 display: flex;

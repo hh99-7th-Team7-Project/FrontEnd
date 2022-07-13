@@ -6,12 +6,14 @@ const apis = {
     checkEmail: (username) => api.post("/api/signup/checkID",username),
     checkNickName: (nickname) => api.post("/api/signup/nickID",nickname),
     addUser: (newUser) => instances.post("/api/signup", newUser),
+    addUserWO: (newUser) => api.post("/api/user/signup",newUser),
     postLogin : (userdata) => api.post("/api/login", userdata),
     postImg: (data)=> instance.post("/coffees/image",data),
 
 //마이페이지
     getMypage : (userId) => api.get(`/mypage/userInfo/${userId}`),
     updateMypage : (userId, data) => api.put(`/mypage/userInfo/${userId}`,data),
+    getMyBoard : (userId) => api.get(`/mypage/myboard/${userId}`),
 
 
 //커피정보

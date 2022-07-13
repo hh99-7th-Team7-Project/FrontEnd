@@ -239,7 +239,8 @@ const RandomCoffee = () => {
 
 const ScRandomWrap = Styled.div`
     border: 2px solid black;
-    margin: 20px;
+    width: 40vw;
+    height: 330px;
 `;
 
 const ScTitle = Styled.h1`  
@@ -247,7 +248,6 @@ const ScTitle = Styled.h1`
 `;
 
 const ScBrandWrap = Styled.div`
-  
   width: 300px;
   margin: 10px;
 `;

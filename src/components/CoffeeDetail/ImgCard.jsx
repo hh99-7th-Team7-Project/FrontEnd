@@ -13,9 +13,9 @@ const ImgCard = ( {url} ) => {
 
 
 const ScImgWrap = Styled.div`    
-    width: 500px;
+    /* width: 500px; */
     height: 500px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     justify-content: center;
 `;
 

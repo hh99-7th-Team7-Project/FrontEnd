@@ -87,7 +87,8 @@ const CategoryCard = (props) => {
                       setColor(!color);
                       dispatch(__loadCoffeeCategory(item?.brand))  
                   }}
-                    >{item?.brand}</ScSlide>
+                    ></ScSlide>
+                    <div>{item?.brand}</div>
                     </SwiperSlide>
                     
                     )
@@ -162,7 +163,7 @@ const SCcardWrap = Styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* height: 600px; */
 
 `;
