@@ -23,6 +23,9 @@ const CoffeeDetail = () => {
 
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
+const commentReducer = useSelector((state) => state.comment.posts);
+
+console.log(commentReducer);
 
 
 
@@ -43,7 +46,10 @@ return (
             item={coffeeReducer}
         />
         <ScReviewCommentBox>
-        <Review item={coffeeReducer}/>
+        <Review 
+          item={coffeeReducer}
+          reviewData={commentReducer}
+          />
           <Comment />          
           <CommentCard 
             boardId={boardId}
