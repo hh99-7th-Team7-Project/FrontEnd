@@ -13,6 +13,7 @@ import NaverLogin from './NaverLogin'
 import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL, NAVER_AUTH_URL } from '../../shared/SocialOAuth'
 
 import styled from 'styled-components'
+import character from '../../shared/svg/MainCharacter2.svg'
 
 const Login = () => {
 
@@ -50,8 +51,10 @@ const Login = () => {
   return (
     <ScWrap>
       <ScLogin>
-        <h1>로고</h1>
+        <ScHeadWrap>
+        <ScLogo src={character}/>
         <h2>환영 문구 또는 가입 문구</h2>
+        </ScHeadWrap>
         <ScInputWrap>
           <input
             type="email"
@@ -87,6 +90,18 @@ export default Login
 const ScWrap = styled.div`
 display: flex;
 width: 100%;
+`
+
+const ScLogo = styled.img`
+ width: 300px;
+ padding-right: 60px;
+
+`
+
+const ScHeadWrap = styled.div`
+/* background-color: yellow; */
+margin-bottom: 48px;
+text-align: center;
 `
 const ScLogin = styled.div`
 
