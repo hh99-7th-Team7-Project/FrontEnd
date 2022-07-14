@@ -1,17 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import star from '../../shared/svg/Star.svg'
+import character from '../../shared/svg/MainCharacter.svg'
 
 const LottoPoint = () => {
 
 
   return (
     <ScWrap>
-    <h3>행운의 포인트 뽑기</h3>
-    <ScSquare/>
-    <img src={star}/>
-    {/* <div>{star}</div> */}
+      <ScWordWrap>
+    <h3>Lucky Point Game!</h3>
     <ScButton>뽑기</ScButton>
+    </ScWordWrap>
+    <img src={character} style={{width:"240px"}}/>
+    
     </ScWrap>
   )
 }
@@ -20,15 +21,18 @@ export default LottoPoint
 
 const ScWrap = styled.div`
   display: flex;
-  flex-direction: column;
+  background-image: url('/checker.png');
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 40vw;
   height: 330px;
   border:1px #bbb solid;
   border-radius: 12px;
-  background-color: #989898;
   margin-left: 30px;
+`
+const ScWordWrap =styled.div`
+  
 `
 
 const ScSquare = styled.img`
@@ -43,9 +47,10 @@ const ScButton = styled.h4`
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px white solid;
+  border: 1px navy solid;
   border-radius: 8px;
-  background-color: white;
-  width: 201px;
+  background-color: navy;
+  color:white;
+  width: 170px;
   height: 47px;
 `

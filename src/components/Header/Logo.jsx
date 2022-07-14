@@ -8,7 +8,7 @@ const Logo = () => {
   const navigate = useNavigate()
   return (
     <>
-  <img src={svg} onClick={()=>{navigate("/")}} alt=""/>
+  <img src={svg} onClick={()=>{navigate("/")}} alt="" style={{width:"165px"}}/>
   {/* <svg></svg> */}
   </>
   )
