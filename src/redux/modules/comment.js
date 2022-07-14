@@ -93,7 +93,7 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
 export const __loadComment = (payload) => async (dispatch, getState) => {
     
     try {
-        // console.log(payload);
+        console.log(payload);
         const posts = await apis.getComment(payload.brand, payload.boardId);
         console.log(posts.data);
         dispatch(loadComment(posts.data))
