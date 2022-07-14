@@ -13,8 +13,10 @@ import NaverLogin from './NaverLogin'
 import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL, NAVER_AUTH_URL } from '../../shared/SocialOAuth'
 
 import styled from 'styled-components'
+import character from '../../shared/svg/MainCharacter2.svg'
+import { motion, AnimatePresence } from "framer-motion"
 
-const Login = () => {
+const Login = (props) => {
 
   const navigate = useNavigate()
   //ref
@@ -48,10 +50,24 @@ const Login = () => {
     }
   }
   return (
+    <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
     <ScWrap>
       <ScLogin>
-        <h1>로고</h1>
+      <motion.div
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+    >
+       <ScHeadWrap>
+        <ScLogo src={character} onClick={()=>{navigate('/')}}/>
         <h2>환영 문구 또는 가입 문구</h2>
+        </ScHeadWrap>
+    </motion.div>
+       
         <ScInputWrap>
           <input
             type="email"
@@ -79,6 +95,7 @@ const Login = () => {
         </ScSocialWrap>
       </ScLogin>
     </ScWrap>
+    </motion.div>
   )
 }
 
@@ -87,6 +104,18 @@ export default Login
 const ScWrap = styled.div`
 display: flex;
 width: 100%;
+`
+
+const ScLogo = styled.img`
+ width: 300px;
+ margin-top: 50px;
+ padding-right: 60px;
+`
+
+const ScHeadWrap = styled.div`
+/* background-color: yellow; */
+margin-bottom: 48px;
+text-align: center;
 `
 const ScLogin = styled.div`
 
@@ -127,7 +156,7 @@ font-weight: bolder;
 hr{
   width: 190px;
   border: none;
-  border-bottom: 1px gray solid;
+  border-bottom: 1px #bbb solid;
 }
 `
 const ScButtonWrap = styled.div`

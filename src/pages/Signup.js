@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import apis from "../shared/api/main";
 import styled from "styled-components";
+import { motion } from "framer-motion"
+import unchecked from '../shared/svg/Unchecked.svg'
+import checked from '../shared/svg/Checked.svg'
 
-const SignUp = () => {
+const SignUp = (props) => {
   const navigate = useNavigate();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -21,28 +24,25 @@ const SignUp = () => {
   const check = React.useRef();
   const [okid, setOkid] = React.useState(false);
   const [oknickname, setokNickname] = React.useState(false);
+  const [alert,setAlert] =React.useState("이거 만족 못했어")
+  const [emailCheck, setEmailCheck] = React.useState(true)
+  const [nicknameCheck, setNicknameCheck] = React.useState(true)
+  const [samePw, setSamePw] = React.useState(true)
 
-
-  console.log(fileInputRef.current.files?.length)
   // 이메일 중복 체크
   const dupEmail = async () => {
     if (!idCheck(Email+Selected)) {
-      window.alert("이메일 형식이 아닙니다")
+      setAlert("이메일 형식이 아닙니다")
     } else {
       await apis.checkEmail({ username: Email+Selected })
-        .then((res) => {
-          console.log(res)
-          if (res.data) {
-            window.alert("사용가능한 메일 입니다.");
-            setOkid(true);
-          } else {
-            window.alert("이미 사용중인 메일입니다.");
-          }
-        })
-        .catch((error) => {
-
-          // console.log("Login Error", error);
-        });
+                .then((res) => {
+                    setOkid(true);
+                    setEmailCheck(false)
+                })
+                .catch((error) => {
+                    setAlert("이미 사용중인 메일입니다.");
+                    setEmailCheck(true)
+                });
     }
 
   };
@@ -50,25 +50,33 @@ console.log(Email+Selected)
   // 닉네임 중복 체크
   const dupNick = async () => {
     if (!nickCheck(Nickname)) {
-      window.alert("올바른 닉네임 형식을 작성해주세요")
+      setAlert("올바른 닉네임 형식을 작성해주세요")
     } else {
       await apis.checkNickName({ nickname: Nickname })
         .then((res) => {
-          if (res.data) {
-            window.alert("사용가능한 닉네임 입니다.");
+           setNicknameCheck(false)
             setokNickname(true);
-          } else {
-            window.alert("이미 사용중인 닉네임입니다.");
-          }
-        })
+          })
+          .catch((err)=>{
+            setAlert("이미 사용중인 닉네임입니다.");
+            setokNickname(false)
+          })
     }
   };
-
-  if (Password && Password2 && Password === Password2) {
-    check.current.innerText = "✔";
-  } else if (Password !== Password2) {
-    check.current.innerText = "✖ 비밀번호가 일치하지 않습니다";
-  }
+console.log(samePw) 
+  useEffect(()=>{
+    if (Password && Password2 && Password === Password2) {
+        setSamePw(false)
+        check.current.innerText = "✔"; 
+      } 
+  },[setSamePw,check,password2Ref])
+  // if (Password && Password2 && Password === Password2) {
+  //   setSamePw(false) 
+  //   check.current.innerText = "✔";
+  // } else if (Password !== Password2) {
+  //   // setSamePw(true)
+  //   check.current.innerText = "✖ 비밀번호가 일치하지 않습니다";
+  // }
 
   //아이디,비번,닉네임 정규식
   const idCheck = (email) => {
@@ -100,19 +108,19 @@ console.log(Email+Selected)
       //  ||
       // fileImage === ""
     ) {
-      window.alert("아이디,비밀번호,닉네임을 모두 입력해주세요!");
+      setAlert("아이디,비밀번호,닉네임을 모두 입력해주세요!");
       return;
     }
     if (!pwCheck(Password, Password2)) {
-      window.alert("숫자 및 영어만 입력가능합니다.");
+      setAlert("비밀번호는 숫자 및 영어만 입력가능합니다.");
       return;
     }
     if (Password !== Password2) {
-      window.alert("비밀번호 불일치 : 고새 까먹었어?");
+      setAlert("비밀번호 불일치");
       return;
     }
     if (!(okid && oknickname)) {
-      window.alert("중복체크를 모두 해주세요!")
+      setAlert("중복체크를 모두 해주세요!")
     } else {
       const form = new FormData();
       //사진이 들어가지 않았을 때와 들어갔을 때 구분해서 보내줌
@@ -156,12 +164,16 @@ console.log(Email+Selected)
     setSelected(e.target.value);
   };
   return (
-    <div>
+    <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
       <ScWrap2>
           <ScSignupWrap>
-          {/* <h5>프로필 사진</h5> */}
+            <div>{alert}</div>
             <ScProfileImg style={{ backgroundImage:`url(${fileImage})`}}>
-            <img onClick={onClickImageUpload} src="./카메라.png" style={{width:"50px"}} />  
+            <img onClick={onClickImageUpload} src="./카메라.png" style={{width:"50px"}} alt=""/>  
             </ScProfileImg>
             <input
               name="imgUpload"
@@ -198,6 +210,7 @@ console.log(Email+Selected)
               </ScSelect>
               
               <ScDuplicateButton onClick={dupEmail}>중복검사</ScDuplicateButton>
+            {emailCheck?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>}  
             </ScWrap>
             {/* <ScCondition>E-mail주소를 입력해 주세요</ScCondition> */}
             <br />
@@ -214,22 +227,25 @@ console.log(Email+Selected)
                 style={{  width:"362px" }}
               />
               <ScDuplicateButton onClick={dupNick}>중복검사</ScDuplicateButton>
+              {nicknameCheck?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>} 
             </ScWrap>
             <ScCondition>2자 이상 8자 이하의 닉네임을 작성해 주세요.</ScCondition>
-            <br />
-            <input
-              type="password"
-              placeholder="Password"
-              value={Password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-              ref={passwordRef}
-            />
-            <ScCondition>비밀번호는 8자 이상 영문과 숫자로만 만들어 주세요</ScCondition>
-            <br />
-
-            <input
+              <ScWrap>
+              <input
+                type="password"
+                placeholder="Password"
+                value={Password}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+                ref={passwordRef}
+              />
+              {samePw?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>} 
+              </ScWrap>
+              <ScCondition>비밀번호는 8자 이상 영문과 숫자로만 만들어 주세요(영문, 숫자 필수 포함)</ScCondition>
+        
+              <ScWrap>
+              <input
               type="password"
               placeholder="Password check"
               value={Password2}
@@ -237,7 +253,9 @@ console.log(Email+Selected)
                 setPassword2(event.target.value);
               }}
               ref={password2Ref}
-            />
+              />
+              {samePw?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>} 
+              </ScWrap>
             <div ref={check} />
             <ScCondition>비밀번호를 다시 입력해주세요</ScCondition>
             <br />
@@ -246,7 +264,7 @@ console.log(Email+Selected)
           </ScSignupWrap>
           <ScImageBox/>
       </ScWrap2>
-    </div>
+    </motion.div>
 
   );
 };
@@ -255,11 +273,13 @@ const ScWrap2= styled.div`
 display: flex;
 width: 100%;
 `
+const ScCheck = styled.img`
+margin-left: 10px;
+`
 
 const ScImageBox = styled.div`
 flex: 4;
 height: 100vh;
-
 width: 100vh;
 background: url('https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/d818028e-d92a-4077-b35e-41f3c945e4a9.jpeg') center center no-repeat;
 background-size:cover;
@@ -273,11 +293,12 @@ justify-content:center;
 align-items:center;
 `
 const ScProfileImg =styled.div`
- width: 200px;
- height: 200px; 
+ width: 130px;
+ height: 130px; 
  border:1px #ddd solid;
  border-radius:50% ; 
 background-size:cover;
+margin-bottom: 40px;
 `
 
 
@@ -285,8 +306,10 @@ const ScSelect = styled.select`
 width:148px;
 border-radius:10px;
 height:60px;
+padding-left: 10px;
 option{
-  background-color: pink ;
+  background-color: #2C278C; 
+  color: white;
   font-size:15px;
   padding: 3px;
 }
@@ -300,9 +323,12 @@ input{
   width: 462px;
   height: 60px;
   border-radius: 10px;
-  margin: 8px 0;
+  /* margin: 8px 0; */
   border: 1px #ddd solid;
   background-color: rgb(233, 230, 230);
+  &::placeholder{
+    color: gray;
+  }
 }
 `
 
@@ -355,9 +381,7 @@ color: white;
 background-color: gray;
 `
 
-const ScCondition = styled.h6`
-  margin: 6px 0 10px 78px;
-  text-align: left;
-
+const ScCondition = styled.div`
+  font-size: 8pt;
 `
 export default SignUp;

@@ -16,25 +16,25 @@ const UserInfoUpdate = ({setNick}) => {
     return regExp.test(nick);
   };
 
-  const nickck = async()=>{
-       await apis.checkNickName({ nickname: nickInputRef?.current?.value })
-        .then((res) => {
-          if (res.data) {
-            setCondition("사용가능한 닉네임 입니다.");
-            setokNickname(true);
-          } else {
-            setCondition("이미 사용중인 닉네임입니다.");
-          }
-        })
-    }
+  // const nickck = async()=>{
+  //      await apis.checkNickName({ nickname: nickInputRef?.current?.value })
+  //       .then((res) => {
+  //         if (res.data) {
+  //           setCondition("사용가능한 닉네임 입니다.");
+  //           setokNickname(true);
+  //         } else {
+  //           setCondition("이미 사용중인 닉네임입니다.");
+  //         }
+  //       })
+  //   }
 
-  if(userName!==nickInputRef?.current?.value){
-    if (!nickCheck(nickInputRef?.current?.value)) {
-      setCondition("올바른 닉네임 형식을 작성해주세요")
-    } else {
-     nickck()
-    }
-  }
+  // if(userName!==nickInputRef?.current?.value){
+  //   if (!nickCheck(nickInputRef?.current?.value)) {
+  //     setCondition("올바른 닉네임 형식을 작성해주세요")
+  //   } else {
+  //    nickck()
+  //   }
+  // }
 
 
   return (
