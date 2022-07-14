@@ -16,7 +16,7 @@ const KaKaoLogin = () => {
   React.useEffect(() => {
     if (code) {
       const kakao = ()=>{
-         apin
+         api
         .get(`/oauth/kakao/callback?code=${code}`)//DB에 코드전송
         .then((res) => {
           console.log(res)
@@ -25,16 +25,13 @@ const KaKaoLogin = () => {
           setCookie("token", token[1]);
           navigate("/");
           api
-            .get("/user/islogin")//유저정보가져오는url
+            .get("/social/user/islogin")//유저정보가져오는url
             .then((res) => {
-              dispatch(
-                setUser({
-                  //유저정보를 다시 세팅
-                  nickname: res.data.nickname,
-                  imageUrl: res.data.imageUrl,
-                  userEmail: res.data.userEmail,
-                })
-              );
+              console.log(res)
+              setCookie("nickname", res?.data.nickname)
+              setCookie("islogin", res?.data.login)
+              setCookie("profileImg", res?.data?.profileImage)
+              setCookie("userId",res?.data?.userId)
             })
             .catch((error) => console.log("유저정보저장오류", error));
         })
