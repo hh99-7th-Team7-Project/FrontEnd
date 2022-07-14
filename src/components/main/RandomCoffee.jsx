@@ -51,7 +51,7 @@ const RandomCoffee = () => {
 
   return (
     <ScRandomWrap>
-      <ScTitle>랜덤 음료</ScTitle>
+      {/* <ScTitle>랜덤 음료</ScTitle> */}
       <ScBrandWrap>
           <button>브랜드별</button>
               <ScBrandRadioWrap>
@@ -238,7 +238,7 @@ const RandomCoffee = () => {
 }
 
 const ScRandomWrap = Styled.div`
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 40vw;
     height: 330px;
 `;

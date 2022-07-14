@@ -20,19 +20,16 @@ const NaverLogin = () => {
           .then((res) => {
             const token = res.headers.authorization.split(" ");
             setCookie("token", res.headers.authorization.split(" ")[1]);
-            navigate("/");
+            
             api
-              .get("/user/islogin")//유저정보가져오는url
+              .get("/social/user/islogin")//유저정보가져오는url
               .then((res) => {
                 console.log(res)
-                dispatch(
-                  setUser({
-                    //유저정보를 다시 세팅
-                    nickname: res.data.nickname,
-                    imageUrl: res.data.imageUrl,
-                    userEmail: res.data.userEmail,
-                  })
-                );
+                setCookie("nickname", res?.data.nickname)
+                setCookie("islogin", true)
+                setCookie("profileImg", res?.data?.profileImage)
+                setCookie("userId",res?.data?.userId)
+                navigate("/");
               })
               .catch((error) => console.log("유저정보저장오류", error));
           })

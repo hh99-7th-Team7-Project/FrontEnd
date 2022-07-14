@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Styled from 'styled-components';
-import CategoryCard from '../components/main/CategoryCard';
+
 // components
-import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint}from '../components/main/mainIndex'
+import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint, RandomPicker, CategoryCard}from '../components/main/A-mainIndex'
 import Header from './Header/Header';
 
 
@@ -17,9 +17,9 @@ const [category, setCategory] = useState(true)
       <Header />
     </div>
     <ImgSlide/>
-    <div style={{maxWidth:"1200px",width:"80vw", margin:"auto"}}>
+    <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
           <ScMapRandomWrap>
-            <RandomCoffee />
+            <RandomPicker />
             <LottoPoint/>
           </ScMapRandomWrap>
           <ScNavbarWrap>

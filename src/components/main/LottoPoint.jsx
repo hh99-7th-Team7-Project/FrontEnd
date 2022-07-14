@@ -1,19 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
 import character from '../../shared/svg/MainCharacter.svg'
+import "./flipcard.css"
+
 
 const LottoPoint = () => {
 
 
   return (
-    <ScWrap>
-      <ScWordWrap>
-    <h3>Lucky Point Game!</h3>
-    <ScButton>뽑기</ScButton>
-    </ScWordWrap>
-    <img src={character} style={{width:"240px"}}/>
-    
-    </ScWrap>
+    <div className='container'>
+              <ScWrap className='item front'>
+                <ScWordWrap>
+              <h1
+              style={{width:"100px", marginBottom:"20px"}}
+              >Lucky Point Game!</h1>
+              <ScButton>뽑기</ScButton>
+              </ScWordWrap>
+              <img src={character} style={{height:"240px"}}/>
+              </ScWrap>
+              
+              <ScWrap className='item back'>
+              <ScWordWrap>
+              <h1
+              style={{width:"100px", marginBottom:"20px"}}
+              >Lucky Point Game!</h1>
+              <ScButton>뽑기</ScButton>
+              </ScWordWrap>
+              <img src={character} style={{height:"240px"}}/>
+              </ScWrap>
+    </div>
   )
 }
 
@@ -24,8 +39,8 @@ const ScWrap = styled.div`
   background-image: url('/checker.png');
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 40vw;
+  justify-content: space-evenly;
+  width: 38vw;
   height: 330px;
   border:1px #bbb solid;
   border-radius: 12px;
@@ -51,6 +66,6 @@ const ScButton = styled.h4`
   border-radius: 8px;
   background-color: navy;
   color:white;
-  width: 170px;
+  width: 150px;
   height: 47px;
 `
