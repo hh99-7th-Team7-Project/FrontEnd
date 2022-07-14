@@ -63,7 +63,6 @@ const ScImgBookMark = styled.img`
 const ScH1 = styled.h1`
     padding: 20px auto;
     margin: 20px auto;
-    
 `;
 
 const ScSubTitle = styled.div`

@@ -30,9 +30,9 @@ const CommentCard = (props) => {
 
         <>
           <ScWrap>
-            {posts && posts.map((item, index) => {
+            {posts && posts.map((item) => {
               return (
-                <ScComment key={index}>
+                <ScComment key={item?.id}>
                   <div>
                     <p>닉네임 : {item?.nickname}</p>
                     {item?.star === 1 && <p>❤️🤍🤍🤍🤍</p>}
@@ -69,8 +69,7 @@ const CommentCard = (props) => {
 
 
 const ScWrap = Styled.div`
-margin-top: 60px;
-margin-left: 20px;
+margin: 20px auto;
 width: 70vw;
 height: 500px;
 overflow-z: scroll;

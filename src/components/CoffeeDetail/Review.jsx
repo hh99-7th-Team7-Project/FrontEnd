@@ -8,15 +8,14 @@ import { useDispatch } from 'react-redux';
 
 
 
-const Review = ( { item, reviewData } ) => {
+const Review = ( { item, reviewData, url } ) => {
     const navigate = useNavigate();
     // const dispatch = useDispatch();
     // const { brand, boardId } = useParams();
     // console.log(item)
 
     const pricePair = item?.pricePair;
-    
-    console.log(reviewData);
+
 
     // useEffect(()=>{
     //     dispatch(__getAverageStar(brand,boardId))
@@ -40,14 +39,38 @@ const Review = ( { item, reviewData } ) => {
             </ScBtnWrap>
             <ScStarPriceContainer>
                 <ScStarBox>
-                    <h3>총 별점</h3>
+                    <ScH3>총 별점</ScH3>
+                    <ScH2>4.4</ScH2>
+                    <ScH3>❤️❤️❤️❤️❤️</ScH3>                    
                 </ScStarBox>
                 <ScPriceBox>
+                    <ScH3>가격</ScH3>
                 {pricePair&&pricePair.map((price,idx)=>{
-                        return (<div key={idx}>{price?.size}:{price?.price}</div>)
+                        return (
+                            <div>
+                                
+                                <div key={idx}>
+                                    <PriceScH3> {price?.size}:￦{price?.price} </PriceScH3>
+                                </div>
+                            </div>
+                        )
                     })}
                 </ScPriceBox>
             </ScStarPriceContainer>
+            <ScImgWrap>
+                <div>
+                    <ScImg src={url} alt=""/>
+                    <PriceScH3>가격</PriceScH3>
+                </div>
+                <div>
+                    <ScImg src={url} alt=""/>
+                    <PriceScH3>가격</PriceScH3>
+                </div>
+                <div>
+                    <ScImg src={url} alt=""/>
+                    <PriceScH3>가격</PriceScH3>
+                </div>
+            </ScImgWrap>
         </ScContentBox>
     </ScWrap>
     </>
@@ -111,22 +134,57 @@ const ScSpan = styled.span`
 
 const ScStarPriceContainer = styled.div`
     display: flex;
+    width: 500px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    margin: auto;
 `;
 
 const ScStarBox = styled.div`
-    width: 105px;
-    height: 102px;
-    border: 1px solid black;
+    width: 180px;
+    height: 150px;
+    margin: auto;
+`;
+
+const ScH2 = styled.h2`
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+`;
+
+const ScH3 = styled.h2`
+    text-align: center;
+`;
+
+const PriceScH3 = styled.h2`
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 49.92px;
 `;
 
 const ScPriceBox = styled.div`
-    width: 105px;
-    height: 102px;
-    border: 1px solid black;
+    width: 180px;
+    height: 150px;
+    margin: auto;
+`;
+
+const ScImgWrap = styled.div`
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+
+`;
+
+const ScImg = styled.img`
+    width: 41px;
+    height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
 `;
 
 
