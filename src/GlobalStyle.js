@@ -17,14 +17,20 @@ const GlobalStyle = createGlobalStyle `
     line-height: 24.96px;
   }
 input{
+   font-family: ‘SUIT Variable’;
   &:focus{
     outline: none;
-    
   }
   &::placeholder{
     color: #ddd;
   }
   
+}
+select{
+  font-family: ‘SUIT Variable’;
+}
+button{
+  font-family: ‘SUIT Variable’;
 }
 `;
 
