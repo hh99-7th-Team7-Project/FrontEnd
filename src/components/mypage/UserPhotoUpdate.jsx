@@ -39,9 +39,9 @@ const UserPhotoUpdate = ({setNewProfileImg,setChangeImg}) => {
 export default UserPhotoUpdate
 
 const ScProfileImg =styled.div`
- width: 200px;
- height: 200px; 
- border:1px #ddd solid;
- border-radius:50% ; 
+width: 200px;
+height: 200px; 
+border:1px #ddd solid;
+border-radius:50% ; 
 background-size:cover;
 `

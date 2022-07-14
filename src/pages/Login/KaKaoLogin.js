@@ -23,15 +23,15 @@ const KaKaoLogin = () => {
           const token = res.headers.authorization.split(" ");
           console.log(token[1])
           setCookie("token", token[1]);
-          navigate("/");
           api
             .get("/social/user/islogin")//유저정보가져오는url
             .then((res) => {
               console.log(res)
               setCookie("nickname", res?.data.nickname)
-              setCookie("islogin", res?.data.login)
+              setCookie("islogin", true)
               setCookie("profileImg", res?.data?.profileImage)
               setCookie("userId",res?.data?.userId)
+               navigate("/");
             })
             .catch((error) => console.log("유저정보저장오류", error));
         })
