@@ -8,6 +8,13 @@ const GlobalStyle = createGlobalStyle `
   }
   html, body {
     font-family: ‘SUIT Variable’;
+    font-weight: 700;
+    line-height: 24.96px;
+  }
+  button, label, div {
+    font-family: ‘SUIT Variable’;
+    font-weight: 700;
+    line-height: 24.96px;
   }
 input{
    font-family: ‘SUIT Variable’;

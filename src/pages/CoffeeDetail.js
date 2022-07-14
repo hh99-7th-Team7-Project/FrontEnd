@@ -1,16 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import Styled from 'styled-components';
-import ImgCard from '../components/CoffeeDetail/ImgCard';
-import Review from '../components/CoffeeDetail/Review';
-import Comment from '../components/CoffeeDetail/Comment';
-import CommentCard from '../components/CoffeeDetail/CommentCard';
+import styled from 'styled-components';
+import Header from './Header/Header';
+import { Comment, CommentCard, ImgCard, Review } from '../components/CoffeeDetail/CoffeeDetailIndex';
 import { useParams } from 'react-router-dom';
 import {useDispatch,useSelector}from 'react-redux';
-import axios from 'axios';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
-import Header from './Header/Header';
-import styled from 'styled-components';
-import { __loadComment } from '../redux/modules/comment';
 
 
 
@@ -18,22 +12,22 @@ import { __loadComment } from '../redux/modules/comment';
 const CoffeeDetail = () => {
 
   const { brand } = useParams();
-  const { coffeename } = useParams();
   const { boardId } = useParams();
-// console.log(boardId)
+
 
  
   const dispatch = useDispatch()
   const [data, setData] = useState()
   const [pri,setPri]=useState()
-// console.log(data)
+
 
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
-// console.log(coffeeReducer)
+const commentReducer = useSelector((state) => state.comment.posts);
 
-const commentReducer = useSelector((state)=>state.comment.posts)
-// console.log(commentReducer)
+console.log(commentReducer);
+
+
 
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 
@@ -52,7 +46,10 @@ return (
             item={coffeeReducer}
         />
         <ScReviewCommentBox>
-        <Review item={coffeeReducer}/>
+        <Review 
+          item={coffeeReducer}
+          reviewData={commentReducer}
+          />
           <Comment />          
           <CommentCard 
             boardId={boardId}
@@ -64,7 +61,7 @@ return (
   )
 }
 
-const Scwrap = Styled.div`
+const Scwrap = styled.div`
   display: column;
   max-width:1200px;
   width:80vw;
@@ -73,11 +70,11 @@ const Scwrap = Styled.div`
   
 `;
 
-const ScContainer = Styled.div`
+const ScContainer = styled.div`
   display: column;
 `;
 
-const ScReviewCommentBox = Styled.div`
+const ScReviewCommentBox = styled.div`
   display: column;
 `;
 

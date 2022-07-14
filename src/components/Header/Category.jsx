@@ -19,6 +19,7 @@ const ScCategoryBox = Styled.div`
   font-size: 13pt;
   gap: 31px;
   margin: 0 61px 0 18px;
+  color: #2C278C;
 `;
 
 const ScCategory = Styled.div` 

@@ -47,11 +47,13 @@ const ScWrap = styled.div`
     display: flex; 
     justify-content: center;
     align-items: center;
+    color: #2C278C;
 `;
 
 const ScBtn = styled.div`
     margin: 20px;
     font-size: 13pt;
+    color: #2C278C;
 `;
 
 

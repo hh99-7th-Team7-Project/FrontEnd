@@ -1,8 +1,4 @@
 import React, { useState } from 'react'
-import Styled from 'styled-components';
-import Paiks_Cream_Crape from '../../Image/MainBanner/Paiks_Cream_Crape.jpg';
-import Paiks_IceCream_Ratte from '../../Image/MainBanner/Paiks_IceCream_Ratte.jpg';
-import Compose from '../../Image/MainBanner/Compose.jpg';
 import styled from 'styled-components';
 
 const ImgSlide = () => {
@@ -70,7 +66,7 @@ const ScWrap = styled.div`
 
 `;
 
-const ScImgSlideWrap = Styled.div`
+const ScImgSlideWrap = styled.div`
     position: relative;
     display: flex;
     width: 500vw;    
@@ -91,7 +87,7 @@ const ScImg = styled.div`
     float: left;
 `;
 
-const ScContentWrap = Styled.div`
+const ScContentWrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,14 +98,14 @@ const ScContentWrap = Styled.div`
     padding-top: 20px;
 `;
 
-const ScDotAlign = Styled.div`
+const ScDotAlign = styled.div`
     align-items: center;    
     /* width: 700px; */
     margin: auto;
 
 `;
 
-const ScDotWrap = Styled.div`
+const ScDotWrap = styled.div`
     display: flex;
     align-items: center;
     position: absolute;
@@ -119,7 +115,7 @@ const ScDotWrap = Styled.div`
     
 `;
 
-const ScDot = Styled.div`
+const ScDot = styled.div`
     width: 15px;
     height: 15px;
     border-radius: 50%;
