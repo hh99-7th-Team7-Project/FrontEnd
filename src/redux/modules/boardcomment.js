@@ -60,6 +60,7 @@ export const __addBoardComment = (payload) => async (dispatch, getState) => {
     console.log("댓글을 쓸거야",payload);
     const response = await apis.postBoardComment(payload.boardId, payload.data);
     alert("댓글 저장완료!")
+    console.log("게시판댓글 확인",response.data);
     dispatch(addBoardComment(response.data));
   } catch (error) {
     console.log(error);

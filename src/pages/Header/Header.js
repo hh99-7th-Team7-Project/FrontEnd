@@ -28,7 +28,6 @@ const ScHeaderBox = styled.div`
     justify-content: space-between;
     align-items: center;
     min-width:1222px;
-  
     height: 130px;
 `;
 

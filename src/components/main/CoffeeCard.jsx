@@ -11,6 +11,8 @@ const navigate = useNavigate()
 const pricePair = item.pricePair
 // console.log(pricePair)
 
+console.log(item);
+
 const moveOnclick = () => {
 navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
 }
@@ -33,8 +35,14 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
           })} */}
           <ScStar>
           <div style={{fontSize:'13px'}}>총별점</div>
-          <div style={{fontSize:'18px'}}>4.4</div>
-          <div>⭐⭐⭐⭐⭐</div>
+          <div style={{fontSize:'18px'}}>{item?.star.toFixed(1)}</div>
+          <div>
+            {Math.floor(item?.star) === 1 &&  <div>⭐</div>}
+            {Math.floor(item?.star) === 2 &&  <div>⭐⭐</div>}
+            {Math.floor(item?.star) === 3 &&  <div>⭐⭐⭐</div>}
+            {Math.floor(item?.star) === 4 &&  <div>⭐⭐⭐⭐</div>}
+            {Math.floor(item?.star) === 5 &&  <div>⭐⭐⭐⭐⭐</div>}
+          </div>
           </ScStar>
           <ScZoomIn onClick={moveOnclick}>자세히 보러 가기</ScZoomIn>
         </SChover>
