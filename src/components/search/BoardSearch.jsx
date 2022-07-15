@@ -25,18 +25,41 @@ const BoardSearch = (props) => {
   return (
     (boardReducer?
       ( <>
-        <div style={{display:"flex"}}>
-       {sliceBoard&&sliceBoard.map((item,idx)=>{
-         return(<BoardMap key={idx} content={item}/>)
-       })} </div>
-       <ScBtn style={{marginLeft:"600px"}}
-       onClick={()=>{navigate(`/search/board/${keyword}`)}}><ScBtnTitle>+더보기</ScBtnTitle></ScBtn></>):
+          <ScCoffeeWrap>
+          <ScCardContainer>
+            {sliceBoard&&sliceBoard.map((item,idx)=>{
+              return(
+                <BoardMap key={idx} content={item}/>
+                )
+              })} 
+          </ScCardContainer>
+          </ScCoffeeWrap>
+        <ScBtnWrap>
+          <ScBtn style={{marginLeft:"600px"}}
+            onClick={()=>{navigate(`/search/board/${keyword}`)}}>
+          <ScBtnTitle>+더보기</ScBtnTitle></ScBtn>
+        </ScBtnWrap>
+        </>):
         ( <div>검색 결과가 없습니다</div>) 
      )
      
  
    )
 }
+
+const ScCoffeeWrap = styled.div`
+  margin: auto; 
+`;
+
+const ScCardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ScBtnWrap = styled.div`
+  margin: auto;
+`;
 
 const ScBtn = styled.button`
   width: 136px;

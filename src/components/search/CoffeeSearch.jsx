@@ -37,11 +37,11 @@ const CoffeeSearch = (props) => {
     (coffeeReducer?
      ( <>
       <ScCoffeeWrap>
-        <div style={{display:"flex"}}>
+        <ScCardContainer>
         {sliceCoffee&&sliceCoffee.map((item,idx)=>{
           return(<CoffeeCard key={idx} item={item}/>)
         })} 
-        </div>
+        </ScCardContainer>
       </ScCoffeeWrap>
       <ScBtnWrap>
         <ScBtn style={{marginLeft:"600px"}}
@@ -50,13 +50,19 @@ const CoffeeSearch = (props) => {
         </ScBtn>
       </ScBtnWrap>
       </>):
-       ( <div>검색 결과가 없습니다</div>) 
+       ( <div style={{marginTop:"20px"}}>검색 결과가 없습니다</div>) 
     )
   )
 }
 
 const ScCoffeeWrap = styled.div`
-  margin: auto;
+  margin: auto; 
+`;
+
+const ScCardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ScBtnWrap = styled.div`
