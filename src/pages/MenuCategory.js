@@ -6,7 +6,7 @@ import { BrandCard, CategoryCard } from '../components/main/A-mainIndex.jsx';
 
 const MenuCategory = () => {
 
-    const [category, setCategory] = useState(true)
+    const [category, setCategory] = useState(true);
 
 
   return (

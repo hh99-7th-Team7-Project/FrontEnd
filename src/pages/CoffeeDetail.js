@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components';
 import Header from './Header/Header';
-import { Comment, CommentCard, ImgCard, Review } from '../components/CoffeeDetail/A-CoffeeDetailIndex';
+import { Comment, CommentCard, ImgCard, Review, CoffeeCategory } from '../components/CoffeeDetail/A-CoffeeDetailIndex';
 import { useParams } from 'react-router-dom';
 import {useDispatch,useSelector}from 'react-redux';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
@@ -11,6 +11,8 @@ const CoffeeDetail = () => {
 
   const { brand } = useParams();
   const { boardId } = useParams();
+
+  const [category, setCategory] = useState(true)
 
 
  
@@ -37,31 +39,32 @@ return (
       <div style={{margin:"auto"}}> 
         <Header/>
       </div>
-    <Scwrap>
-      <ScContainer>
-          <ImgCard 
-              url={coffeeReducer?.img}
-              item={coffeeReducer}
-          />
-        <ScReviewCommentBox>
-          <Review 
-            item={coffeeReducer}
-            reviewData={commentReducer}
-            url={coffeeReducer?.img}
+      <div>
+        <CoffeeCategory/>
+      </div>   
+      <Scwrap>
+        <ScContainer>
+            <ImgCard 
+                url={coffeeReducer?.img}
+                item={coffeeReducer}
             />
-        </ScReviewCommentBox>
-      </ScContainer>
-    </Scwrap>
-    <ScCommentBox>
-        <Comment 
-          item={coffeeReducer}
-        />          
-        <CommentCard 
-          boardId={boardId}
-          brand={brand} />
-    </ScCommentBox>
-          
-
+          <ScReviewCommentBox>
+            <Review 
+              item={coffeeReducer}
+              reviewData={commentReducer}
+              url={coffeeReducer?.img}
+              />
+          </ScReviewCommentBox>
+        </ScContainer>
+      </Scwrap>
+      <ScCommentBox>
+          <Comment 
+            item={coffeeReducer}
+          />          
+          <CommentCard 
+            boardId={boardId}
+            brand={brand} />
+      </ScCommentBox>
     </>
   )
 }
@@ -87,5 +90,6 @@ const ScCommentBox = styled.div`
   height: 1900px;
   background-color: #eee;
 `;
+
 
 export default CoffeeDetail;
