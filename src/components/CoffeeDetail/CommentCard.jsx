@@ -47,16 +47,12 @@ const CommentCard = (props) => {
                     </ScCardAlign1>
                     <ScCardAlign2>
                       <ScDateSpan>작성시간</ScDateSpan>
-                    </ScCardAlign2>
-                    <ScCardAlign3>
                       <ScNickSpan>{item?.nickname}</ScNickSpan>
-                    </ScCardAlign3>
-                    <ScCardAlign4>
                       <ScButton onClick={()=>{
                         dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
                         dispatch(__loadComment({brand, boardId}));
                           }}>삭제</ScButton>
-                    </ScCardAlign4>
+                      </ScCardAlign2>
                   </ScCommentCardWrap> 
                   <ScHR/>
                   <ScButton onClick={()=>{
@@ -85,7 +81,19 @@ margin: 20px auto;
 width: 70vw;
 height: 500px;
 padding: 20px;
-overflow-y: scroll;
+overflow-y: auto;
+border-top: 2px solid black;
+border-bottom: 2px solid black;
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {  
+  background-color: black;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #EEE;  
+}
 `;
 
 const ScComment = styled.div`
@@ -108,10 +116,10 @@ const ScButton = styled.button`
 
 const ScCommentCardWrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  
 `;
 
-const ScStar = styled.div`
+const ScStar = styled.div`  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,21 +127,17 @@ const ScStar = styled.div`
 `;
 
 const ScCardAlign1 = styled.div`
-  width: 200px;
+  width: 400px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 `;
 const ScCardAlign2 = styled.div`
   width: 200px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 `;
-const ScCardAlign3 = styled.div`
-  width: 200px;
-  padding: 10px;
-`;
-const ScCardAlign4 = styled.div`
-  padding: 10px;
-`;
-
 
 const ScCommentSpan = styled.span`
   color: #2C278C;
@@ -143,7 +147,6 @@ const ScCommentSpan = styled.span`
 
 const ScDateSpan = styled.span`
   color: #2C278C;
-
 `;
 
 const ScNickSpan = styled.span`
