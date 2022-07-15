@@ -32,6 +32,18 @@ select{
 button{
   font-family: ‘SUIT Variable’;
 }
+
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {  
+  background-color: #2c278c;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #EEE;  
+}
+
 `;
 
 export default GlobalStyle;
