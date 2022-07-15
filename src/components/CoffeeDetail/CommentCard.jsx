@@ -96,6 +96,11 @@ border-bottom: 2px solid black;
 }
 `;
 
+const ScCommentCardWrap = styled.div`
+  display: flex;
+  justify-content: space-between;  
+`;
+
 const ScComment = styled.div`
   font-size: 20px;
   margin-bottom: 5px;
@@ -114,10 +119,7 @@ const ScButton = styled.button`
   border: none;
 `;
 
-const ScCommentCardWrap = styled.div`
-  display: flex;
-  justify-content: space-between;  
-`;
+
 
 const ScStar = styled.div`  
   display: flex;
