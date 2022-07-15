@@ -15,6 +15,7 @@ const Review = ( { item, reviewData, url } ) => {
     // console.log(item)
 
     const pricePair = item?.pricePair;
+    console.log(pricePair);
 
 
     // useEffect(()=>{
@@ -41,17 +42,14 @@ const Review = ( { item, reviewData, url } ) => {
                 <ScStarBox>
                     <ScH3>총 별점</ScH3>
                     <ScH2>4.4</ScH2>
-                    <ScH3>❤️❤️❤️❤️❤️</ScH3>                    
+                    <ScH3>&#9733; &#9733; &#9733; &#9733;</ScH3>                    
                 </ScStarBox>
                 <ScPriceBox>
                     <ScH3>가격</ScH3>
                 {pricePair&&pricePair.map((price,idx)=>{
                         return (
-                            <div>
-                                
-                                <div key={idx}>
-                                    <PriceScH3> {price?.size}:￦{price?.price} </PriceScH3>
-                                </div>
+                            <div key={idx}>
+                                <PriceScH3> {price?.size}:￦{price?.price} </PriceScH3>
                             </div>
                         )
                     })}
