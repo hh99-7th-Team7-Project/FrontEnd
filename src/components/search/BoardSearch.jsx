@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import BoardMap from '../../components/board/BoardMap'
 import apis from '../../shared/api/main'
@@ -28,13 +29,32 @@ const BoardSearch = (props) => {
        {sliceBoard&&sliceBoard.map((item,idx)=>{
          return(<BoardMap key={idx} content={item}/>)
        })} </div>
-       <button style={{marginLeft:"600px"}}
-       onClick={()=>{navigate(`/search/board/${keyword}`)}}>더 보기</button></>):
+       <ScBtn style={{marginLeft:"600px"}}
+       onClick={()=>{navigate(`/search/board/${keyword}`)}}><ScBtnTitle>+더보기</ScBtnTitle></ScBtn></>):
         ( <div>검색 결과가 없습니다</div>) 
      )
      
  
    )
 }
+
+const ScBtn = styled.button`
+  width: 136px;
+  height: 46px;
+  background: #2c278c;
+  border-radius: 100px;
+  border: none;
+  
+`;
+
+const ScBtnTitle = styled.span`
+  width: 96px;
+  height: 30px;
+  color: white;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+`;
 
 export default BoardSearch
