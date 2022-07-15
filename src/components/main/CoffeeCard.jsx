@@ -37,7 +37,7 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
           <ScStar>
           <div style={{fontSize:'13px'}}>총별점</div>
           <div style={{fontSize:'18px'}}>{item?.star}</div>
-          <div>
+          <div>            
             {Math.floor(item?.star) === 1 &&  <div>⭐</div>}
             {Math.floor(item?.star) === 2 &&  <div>⭐⭐</div>}
             {Math.floor(item?.star) === 3 &&  <div>⭐⭐⭐</div>}
@@ -54,6 +54,7 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
 
 export default CoffeeCard
 
+
 const SCcardText = styled.div`    
     /* margin: 10px auto; */
     /* font-size: 30px; */
@@ -63,6 +64,7 @@ const ScBeforeHover = styled.div`
     /* display: flex;
     flex-direction: column; */
     text-align: center;
+    margin: auto;
 `
 const ScLogo = styled.img`
     width: 70px;
@@ -84,8 +86,8 @@ const SCcardPrice = styled.div`
     height: 21px;
 `
   const SCcoffeeImg = styled.img`
-    width: 227px;
-    max-height: 240px;
+    max-width: 240px;
+    height: 240px;
     margin: 43px auto 40px;
   `
 
