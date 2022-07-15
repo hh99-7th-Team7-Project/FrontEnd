@@ -12,9 +12,6 @@ const CoffeeDetail = () => {
   const { brand } = useParams();
   const { boardId } = useParams();
 
-  const [category, setCategory] = useState(true)
-
-
  
   const dispatch = useDispatch()
   const [data, setData] = useState()
@@ -24,9 +21,6 @@ const CoffeeDetail = () => {
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
 const commentReducer = useSelector((state) => state.comment.posts);
-
-console.log(commentReducer);
-
 
 
 useEffect(()=>{

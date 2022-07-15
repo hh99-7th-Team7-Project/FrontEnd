@@ -28,15 +28,15 @@ const Search = () => {
 }
 
 const Wrap = styled.div`
-  margin: 20px auto;
+  margin: 80px auto;
 `;
 
 const ScDrinkWrap = styled.div`
-  
+  margin: 20px auto;
 `;
 
 const ScBoardWrap = styled.div`
-
+  margin: 100px auto;
 `;
 
 export default Search
