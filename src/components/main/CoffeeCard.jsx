@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import Lens from './svg/Lens.svg';
 
 
 
@@ -44,7 +45,7 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
             {Math.floor(item?.star) === 5 &&  <div>⭐⭐⭐⭐⭐</div>}
           </div>
           </ScStar>
-          <ScZoomIn onClick={moveOnclick}>자세히 보러 가기</ScZoomIn>
+          <ScZoomIn onClick={moveOnclick}><ScLens src={Lens} alt=""/>자세히 보러 가기</ScZoomIn>
         </SChover>
         </SCcard>
     </div>
@@ -59,28 +60,28 @@ const SCcardText = styled.div`
 `;
 
 const ScBeforeHover = styled.div`
-  /* display: flex;
-  flex-direction: column; */
-  text-align: center;
+    /* display: flex;
+    flex-direction: column; */
+    text-align: center;
 `
 const ScLogo = styled.img`
-  width: 70px;
-  height: 70px;
-  border-radius: 100%;
-  background-color: white;
-  margin: 42px 0 23px 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: white;
+    margin: 42px 0 23px 0;
 `
 
 const ScStar = styled.div`
-  width: 105px;
-  height: 66px;
-  margin: 25px 0 21px 0;
+    width: 105px;
+    height: 66px;
+    margin: 25px 0 21px 0;
 `
 const SCcardPrice = styled.div`
-  border: 1px white solid;
-  border-radius: 10px;
-  width: 76px;
-  height: 21px;
+    border: 1px white solid;
+    border-radius: 10px;
+    width: 76px;
+    height: 21px;
 `
   const SCcoffeeImg = styled.img`
     width: 227px;
@@ -89,19 +90,29 @@ const SCcardPrice = styled.div`
   `
 
 const ScZoomIn = styled.div`
+    width: 148px;
+    height: 33px;
     border: 1px white solid;
-    border-radius: 10px;
-    background-color: white;
-    color: black;
+    border-radius: 20px;
+    background-color: #2c278c;
+    border-color: #2c278c;
+    color: white;
     cursor: pointer;
     opacity: 100%!important;
+    padding: 5px 2px 2px 2px;
 `
+
+const ScLens = styled.img`
+    margin-right: 5px;
+    width: 18px;
+`;
+
   const SCprice = styled.div`
-     border: 1px black solid;
+    border: 1px black solid;
     border-radius: 10px;
-   width: 76px;
-   height: 21px;
-   margin: 10px auto;
+    width: 76px;
+    height: 21px;
+    margin: 10px auto;
   `
   const SChover =styled.div`
       display: flex;
