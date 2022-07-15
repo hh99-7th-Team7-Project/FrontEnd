@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import styled from 'styled-components'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -35,17 +36,56 @@ const CoffeeSearch = (props) => {
    
     (coffeeReducer?
      ( <>
-       <div style={{display:"flex"}}>
-      {sliceCoffee&&sliceCoffee.map((item,idx)=>{
-        return(<CoffeeCard key={idx} item={item}/>)
-      })} </div>
-      <button style={{marginLeft:"600px"}}
-      onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>더 보기</button></>):
-       ( <div>검색 결과가 없습니다</div>) 
+      <ScCoffeeWrap>
+        <ScCardContainer>
+        {sliceCoffee&&sliceCoffee.map((item,idx)=>{
+          return(<CoffeeCard key={idx} item={item}/>)
+        })} 
+        </ScCardContainer>
+      </ScCoffeeWrap>
+      <ScBtnWrap>
+        <ScBtn style={{marginLeft:"600px"}}
+        onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>
+          <ScBtnTitle>+더보기</ScBtnTitle>
+        </ScBtn>
+      </ScBtnWrap>
+      </>):
+       ( <div style={{marginTop:"20px"}}>검색 결과가 없습니다</div>) 
     )
-    
-
   )
 }
+
+const ScCoffeeWrap = styled.div`
+  margin: auto; 
+`;
+
+const ScCardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ScBtnWrap = styled.div`
+  margin: auto;
+`;
+
+const ScBtn = styled.button`
+  width: 136px;
+  height: 46px;
+  background: #2c278c;
+  border-radius: 100px;
+  border: none;
+  
+`;
+
+const ScBtnTitle = styled.span`
+  width: 96px;
+  height: 30px;
+  color: white;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+`;
 
 export default CoffeeSearch

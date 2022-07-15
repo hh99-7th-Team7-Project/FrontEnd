@@ -48,18 +48,22 @@ const ScH3 = styled.h3`
 
 const ScCoffeeTitle = styled.div`  
   margin: auto;
-  width: 250px;
+  width: 400px;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+
 `;
 
 const ScImgBookMark = styled.img`
   margin: auto;
-  width: 30px;   
+  width: 30px;
+
 `;
 
 const ScH1 = styled.h1`
+    width: 500px;
     padding: 20px auto;
     margin: 20px auto;
 `;
