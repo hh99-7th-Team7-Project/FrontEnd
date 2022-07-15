@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { boardwrite } from '../../shared/svg/A-index'
 
 
+
 const Board = () => {
   const navigate = useNavigate()
   const [category, setCategory] = useState(0)

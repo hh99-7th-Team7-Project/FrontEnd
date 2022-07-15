@@ -16,7 +16,7 @@ const LottoPoint = () => {
               >Lucky Point Game!</h1>
               <ScButton>뽑기</ScButton>
               </ScWordWrap>
-              <img src={character} style={{height:"240px"}}/>
+              <img src={character} style={{height:"240px"}} alt=""/>
               </ScWrap>
               
               <ScWrap className='item back'>
@@ -26,7 +26,7 @@ const LottoPoint = () => {
               >Lucky Point Game!</h1>
               <ScButton>뽑기</ScButton>
               </ScWordWrap>
-              <img src={character} style={{height:"240px"}}/>
+              <img src={character} style={{height:"240px"}} alt=""/>
               </ScWrap>
     </div>
   )

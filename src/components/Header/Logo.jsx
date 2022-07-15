@@ -1,7 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import Styled from 'styled-components';
-import logo from '../../Image/Logo/logo.png'
 import svg from './svg/Logo.svg'
 
 const Logo = () => {

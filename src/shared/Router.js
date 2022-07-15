@@ -21,6 +21,7 @@ import SearchBoard from "../pages/Search/SearchBoard";
 import SearchCoffee from "../pages/Search/SearchCoffee";
 import Chat from "../pages/Chat";
 import BoardUpdate from "../pages/Board/BoardUpdate";
+import MenuCategory from "../pages/MenuCategory";
 
 const Router = () => {
 
@@ -64,6 +65,9 @@ const Router = () => {
 
       {/* Admin Page */}
       <Route path="/admin" element={<AdminPage />} />
+
+      {/* Main Page */}
+      <Route path="/MenuCategory" element={<MenuCategory/>}/>
 
       {/** CafeDetail */}
       <Route path='/coffee/:brand/:coffeename/:boardId' element={<CoffeeDetail />} />

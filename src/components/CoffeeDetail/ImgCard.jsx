@@ -28,7 +28,6 @@ const ImgCard = ( {url, item} ) => {
   )
 }
 
-
 const ScBrandTitle = styled.div`
   border: 2px solid black;
   width: 117px;

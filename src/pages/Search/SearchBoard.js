@@ -21,8 +21,10 @@ const SearchBoard = () => {
   },[keyword])
 
   return (
-    <div>
-    <Header/>
+        <div>
+        <div style={{margin:"auto"}}> 
+          <Header/>
+        </div>
         <div >
        {boardReducer&&boardReducer.map((item,idx)=>{
          return(<BoardMap key={idx} content={item}/>)

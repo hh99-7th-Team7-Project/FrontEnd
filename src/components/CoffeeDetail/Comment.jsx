@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
 import { getCookie } from '../../shared/Cookie';
 
+
 const Comment = ({item}) => {
 
 
@@ -60,13 +61,14 @@ const Comment = ({item}) => {
         <ScStarContainer>
             <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
               <option value="공백">-----선택하기-----</option>
-              <option value="1">⭐</option>
-              <option value="2">❤️❤️</option>
-              <option value="3">❤️❤️❤️</option>
-              <option value="4">❤️❤️❤️❤️</option>
-              <option value="5">❤️❤️❤️❤️❤️</option>
+
+              <option value="1">&#9733;</option>
+              <option value="2">&#9733;&#9733;</option>
+              <option value="3">&#9733;&#9733;&#9733;</option>
+              <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+              <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
             </ScStarSelect>
-            <ScInput type="text" placeholder="한줄평을 작성해주세요." ref={commentInputRef}/>
+            <ScInput type="text" placeholder="한줄평을 작성해주세요.(20자 이내로 작성해주세요.)" ref={commentInputRef} maxLength={20}/>
               <ScReviewBtn type="button" onClick={()=>{
                   addComment();
                   commentInputRef.current.value=""
@@ -126,13 +128,13 @@ const ScOneCommentTitle = styled.h2`
 
 
 const ScStarContainer = styled.div`
-  width: 1200px;
+  width: 1080px;
   height: 40px;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 100px auto;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
 `;
 
@@ -142,10 +144,8 @@ const ScInput = styled.input`
     margin: 30px auto;
     border: none;
     border-radius: 2px;
-    font-size: 14px;
-
+    font-size: 20px;
     text-align: center;
-
 `;
 
 
