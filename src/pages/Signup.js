@@ -24,10 +24,11 @@ const SignUp = (props) => {
   const check = React.useRef();
   const [okid, setOkid] = React.useState(false);
   const [oknickname, setokNickname] = React.useState(false);
-  const [alert,setAlert] =React.useState("이거 만족 못했어")
+  const [alert,setAlert] =React.useState("")
   const [emailCheck, setEmailCheck] = React.useState(true)
   const [nicknameCheck, setNicknameCheck] = React.useState(true)
   const [samePw, setSamePw] = React.useState(true)
+  const [goToSignup, setGoToSignup] = React.useState(true)
 
   // 이메일 중복 체크
   const dupEmail = async () => {
@@ -63,20 +64,18 @@ console.log(Email+Selected)
           })
     }
   };
-console.log(samePw) 
+
   useEffect(()=>{
     if (Password && Password2 && Password === Password2) {
         setSamePw(false)
-        check.current.innerText = "✔"; 
-      } 
-  },[setSamePw,check,password2Ref])
-  // if (Password && Password2 && Password === Password2) {
-  //   setSamePw(false) 
-  //   check.current.innerText = "✔";
-  // } else if (Password !== Password2) {
-  //   // setSamePw(true)
-  //   check.current.innerText = "✖ 비밀번호가 일치하지 않습니다";
-  // }
+      }  
+  },[setSamePw,Password2])
+ 
+  useEffect(()=>{
+    if (!samePw && !nicknameCheck && !nicknameCheck && !emailCheck && Password === Password2) {
+      setGoToSignup(false) 
+      }  
+  },[setSamePw,goToSignup,Password2])
 
   //아이디,비번,닉네임 정규식
   const idCheck = (email) => {
@@ -112,7 +111,7 @@ console.log(samePw)
       return;
     }
     if (!pwCheck(Password, Password2)) {
-      setAlert("비밀번호는 숫자 및 영어만 입력가능합니다.");
+      setAlert("비밀번호 형식을 지켜주세요.");
       return;
     }
     if (Password !== Password2) {
@@ -260,7 +259,9 @@ console.log(samePw)
             <ScCondition>비밀번호를 다시 입력해주세요</ScCondition>
             <br />
             </ScInputWrap>
-            <ScLoginButton onClick={onSubmitUserHandler}>가입하기</ScLoginButton>
+            {goToSignup? <ScLoginButton onClick={onSubmitUserHandler}>회원가입 하기</ScLoginButton>: <ScLoginButton onClick={onSubmitUserHandler} style={{backgroundColor:"black"}}>회원가입 하기</ScLoginButton>}
+            
+            <ScLoginButton onClick={()=>{navigate('/')}}style={{backgroundColor:"black"}}>돌아가기</ScLoginButton>
           </ScSignupWrap>
           <ScImageBox/>
       </ScWrap2>
@@ -375,7 +376,7 @@ height: 60px;
 border-radius: 10px;
 text-align: center;
 cursor: pointer;
-margin: 5px 0;
+margin: 5px 37px 5px 0;
 border: none;
 color: white;
 background-color: gray;
@@ -383,5 +384,6 @@ background-color: gray;
 
 const ScCondition = styled.div`
   font-size: 8pt;
+  margin-left: 10px;
 `
 export default SignUp;

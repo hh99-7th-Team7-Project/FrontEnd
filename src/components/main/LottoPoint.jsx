@@ -12,7 +12,7 @@ const LottoPoint = () => {
               <ScWrap className='item front'>
                 <ScWordWrap>
               <h1
-              style={{width:"100px", marginBottom:"20px"}}
+              style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}
               >Lucky Point Game!</h1>
               <ScButton>뽑기</ScButton>
               </ScWordWrap>

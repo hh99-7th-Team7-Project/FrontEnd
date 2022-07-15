@@ -24,7 +24,7 @@ const BoardList = () => {
   return (
     <>
         <ScWrap>
-            <ScContainer>
+            {/* <ScContainer>
                 <ScInput id="dropdown" type="checkbox"/>      
                 <ScLabel htmlFor="dropdown">
                     <div>Category</div>
@@ -46,7 +46,7 @@ const BoardList = () => {
                         <ScLi>차</ScLi>
                     </ScUl>
                 </ScContentBox>
-            </ScContainer>
+            </ScContainer> */}
             <ScBoard>
                 <ScTable>
                     {content&&content.map((item,idx)=>{
@@ -65,9 +65,10 @@ const BoardList = () => {
 }
 
 const ScWrap = Styled.div`
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 100%;
     height: 100%;
+
 `;
 
 const ScContainer = Styled.div`
@@ -119,7 +120,7 @@ const ScContentBox = Styled.div`
     width: 100%;
     left: 0;
     background-color: white;
-    border-shadow: 0 4px 5px 0 #00000026;    
+    /* border-shadow: 0 4px 5px 0 #00000026;     */
 `;
 
 const ScUl = Styled.ul`
@@ -139,7 +140,7 @@ const ScBoard = Styled.div`
 `;
 
 const ScTable = Styled.div`
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 100%;
     margin: 30px auto;
 `;

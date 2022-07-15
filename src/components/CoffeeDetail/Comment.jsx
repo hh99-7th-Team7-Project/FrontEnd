@@ -60,7 +60,7 @@ const Comment = ({item}) => {
         <ScStarContainer>
             <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
               <option value="공백">-----선택하기-----</option>
-              <option value="1">❤️</option>
+              <option value="1">⭐</option>
               <option value="2">❤️❤️</option>
               <option value="3">❤️❤️❤️</option>
               <option value="4">❤️❤️❤️❤️</option>

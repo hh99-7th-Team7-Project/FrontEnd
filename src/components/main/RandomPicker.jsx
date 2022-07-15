@@ -11,7 +11,8 @@ const RandomPicker = () => {
     <div className='container'>
             <ScWrap className='item front'>
               <ScWordWrap>
-            <h1 style={{width:"100px", marginBottom:"20px"}}>Today's coffee?</h1>
+            <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"
+}}>Today's coffee?</h1>
             <ScButton>골라보기</ScButton>
             </ScWordWrap>
             <img src={character} style={{height:"240px"}}/>

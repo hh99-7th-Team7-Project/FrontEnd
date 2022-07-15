@@ -7,6 +7,8 @@ import { useDispatch,useSelector } from 'react-redux';
 import { loadBoard } from '../../redux/modules/board'
 import {useNavigate} from 'react-router-dom'
 import apis from '../../shared/api/main'
+import styled from 'styled-components'
+
 
 const BoardWrite = () => {
   const navigate = useNavigate()
@@ -16,6 +18,8 @@ const BoardWrite = () => {
 console.log(cate)
 console.log(title)
 console.log(content)
+
+
 
 const submitOnclick = async()=>{
   await apis.postBoard({title: title, content: content, category: cate})
@@ -27,13 +31,22 @@ const submitOnclick = async()=>{
 
 
   return (
-    <div>
-      <Header/>
+    <>
+       <div style={{ margin: "auto" }}>
+        <Header />
+      </div>
+      <ScWrite>
       <BoardCategory title={setTitle} cate={setCate}/>
       <ToastEdit content={setContent}/>
       <button onClick={submitOnclick}>제출</button>
-    </div>
+      </ScWrite>
+    </>
   )
 }
 
 export default BoardWrite
+
+const ScWrite = styled.div`
+    min-width: 1200px;
+    margin: auto;
+`

@@ -20,7 +20,6 @@ const NaverLogin = () => {
           .then((res) => {
             const token = res.headers.authorization.split(" ");
             setCookie("token", res.headers.authorization.split(" ")[1]);
-            
             api
               .get("/social/user/islogin")//유저정보가져오는url
               .then((res) => {

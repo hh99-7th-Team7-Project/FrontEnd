@@ -88,7 +88,7 @@ const CategoryCard = (props) => {
                       dispatch(__loadCoffeeCategory(item?.brand))  
                   }}
                     ></ScSlide>
-                    <div>{item?.brand}</div>
+                    <div style={{textAlign:"center"}}>  {item?.brand}</div>
                     </SwiperSlide>
                     
                     )

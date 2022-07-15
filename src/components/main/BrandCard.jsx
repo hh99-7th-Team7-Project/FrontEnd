@@ -91,7 +91,7 @@ const BrandCard = (props) => {
                     >
                       {/* <img src={item?.logo} style={{width:"125px"}}/> */}
                       </ScSlide>
-                    {item?.brand}
+                   <div style={{textAlign:"center"}}>  {item?.brand}</div>
                     </SwiperSlide>
                     
                     )

@@ -8,8 +8,8 @@ const Category = () => {
     return (
         <ScCategoryBox>
           <ScCategory>Menu</ScCategory>
-        <ScCategory>모여라!(채팅)</ScCategory>
-        <ScCategory onClick={()=>{navigate("/board")}}>커뮤니티</ScCategory>
+        <ScCategory>커피모임</ScCategory>
+        <ScCategory onClick={()=>{navigate("/board")}}>커피연구소</ScCategory>
         </ScCategoryBox>
     )
 }
