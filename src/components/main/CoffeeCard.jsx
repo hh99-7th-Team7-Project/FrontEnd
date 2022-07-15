@@ -36,7 +36,7 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
           })} */}
           <ScStar>
           <div style={{fontSize:'13px'}}>총별점</div>
-          <div style={{fontSize:'18px'}}>{item?.star.toFixed(1)}</div>
+          <div style={{fontSize:'18px'}}>{item?.star}</div>
           <div>
             {Math.floor(item?.star) === 1 &&  <div>⭐</div>}
             {Math.floor(item?.star) === 2 &&  <div>⭐⭐</div>}

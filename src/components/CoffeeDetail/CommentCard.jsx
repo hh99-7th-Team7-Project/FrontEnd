@@ -46,7 +46,7 @@ const CommentCard = (props) => {
                       <ScCommentSpan>{item?.review}</ScCommentSpan>
                     </ScCardAlign1>
                     <ScCardAlign2>
-                      <ScDateSpan>작성시간</ScDateSpan>
+                      <ScDateSpan>{item?.createdAt}</ScDateSpan>
                       <ScNickSpan>{item?.nickname}</ScNickSpan>
                       <ScButton onClick={()=>{
                         dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
