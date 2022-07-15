@@ -72,9 +72,9 @@ const Brand = () => {
                         setColor(!color);
                         navigate('/menucategory');
                     }}
-                    // style={{ backgroundImage:`url(${item?.logo})`}}
+                    style={{ backgroundImage:`url(${item?.logo})`}}
                     >
-                        {/* <img src={item?.logo} style={{width:"125px"}}/> */}
+                        <img src={item?.logo} alt={item?.brand} style={{width:"125px"}}/>
                         </ScSlide>
                     <div style={{textAlign:"center"}}>  {item?.brand}</div>
                     </SwiperSlide>

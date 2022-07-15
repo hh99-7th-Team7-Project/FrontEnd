@@ -57,16 +57,13 @@ const Review = ( { item, reviewData, url } ) => {
             </ScStarPriceContainer>
             <ScImgWrap>
                 <div>
-                    <ScImg src={url} alt=""/>
-                    <PriceScH3>가격</PriceScH3>
+                    <ScImg src={url} alt=""/>                    
                 </div>
                 <div>
-                    <ScImg src={url} alt=""/>
-                    <PriceScH3>가격</PriceScH3>
+                    <ScImg src={url} alt=""/>                    
                 </div>
                 <div>
-                    <ScImg src={url} alt=""/>
-                    <PriceScH3>가격</PriceScH3>
+                    <ScImg src={url} alt=""/>                    
                 </div>
             </ScImgWrap>
         </ScContentBox>
@@ -174,13 +171,13 @@ const ScImgWrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px auto;
+    margin: 100px auto;
 
 `;
 
 const ScImg = styled.img`
-    width: 41px;
-    height: 70px;
+    width: 160px;
+    height: 160px;
     margin-left: 20px;
     margin-right: 20px;
 `;

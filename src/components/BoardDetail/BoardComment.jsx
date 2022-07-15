@@ -16,11 +16,6 @@ const BoardComment = () => {
               <ScLabelContent>최신순</ScLabelContent>            
               <GoChevronDown className="careIcon"/>
           </ScLabel>
-          <ScBtnwrap>
-            <ScBtn>✏️글쓰기</ScBtn>
-          </ScBtnwrap>
-          <ScHR/>
-        <h3>댓글</h3>
       </ScWrap>
       <CommentMap/>
     </>
@@ -50,33 +45,6 @@ const ScLabel = Styled.label`
     padding: 12px;
 `;
 
-const ScBtnwrap = Styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: right;
-`;
-
-const ScBtn = Styled.div`
-  padding: 20px;
-  width: 100px;
-  margin-right: 30px;
-  border-radius: 50px;
-  background-color: #EEE;
-  border-color: #EEE;
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  &:hover {
-    cursor: pointer;  
-    background-color: #212121;
-    color: white;
-  }
-`;
-
-const ScHR = Styled.hr`
-    margin-top: 40px;
-    margin-bottom: 20px;
-`;
 
 
 export default BoardComment
