@@ -35,8 +35,10 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
             return(<SCcardText key={idx}>{price?.size}:{price?.price}</SCcardText> )
           })} */}
           <ScStar>
-          <div style={{fontSize:'13px'}}>총별점</div>
-          <div style={{fontSize:'18px'}}>{item?.star}</div>
+          <div style={{fontSize:'13px'}}>총 별점</div>
+          {item?.star === "NaN" ? 
+          <div style={{fontSize:'18px'}}>0.0</div>:
+          <div style={{fontSize:'18px'}}>{item?.star.toFixed(1)}</div>}
           <div>            
             {Math.floor(item?.star) === 1 &&  <div>⭐</div>}
             {Math.floor(item?.star) === 2 &&  <div>⭐⭐</div>}
