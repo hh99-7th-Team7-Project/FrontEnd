@@ -7,7 +7,7 @@ const Category = () => {
 
     return (
         <ScCategoryBox>
-          <ScCategory>Menu</ScCategory>
+          <ScCategory onClick={()=>{navigate("/menucategory")}}>Menu</ScCategory>
         <ScCategory>커피모임</ScCategory>
         <ScCategory onClick={()=>{navigate("/board")}}>커피연구소</ScCategory>
         </ScCategoryBox>

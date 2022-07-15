@@ -67,7 +67,7 @@ const Router = () => {
       <Route path="/admin" element={<AdminPage />} />
 
       {/* Main Page */}
-      <Route path="/MenuCategory" element={<MenuCategory/>}/>
+      <Route path="/menucategory" element={<MenuCategory/>}/>
 
       {/** CafeDetail */}
       <Route path='/coffee/:brand/:coffeename/:boardId' element={<CoffeeDetail />} />
