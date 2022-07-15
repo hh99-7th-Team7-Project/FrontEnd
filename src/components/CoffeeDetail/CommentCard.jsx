@@ -52,13 +52,14 @@ const CommentCard = (props) => {
                         dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
                         dispatch(__loadComment({brand, boardId}));
                           }}>삭제</ScButton>
+                        <ScButton onClick={()=>{
+                          setShowUpdate(true);
+                          setReviewId(item?.id);
+                        }}>신고</ScButton>
                       </ScCardAlign2>
                   </ScCommentCardWrap> 
                   <ScHR/>
-                  <ScButton onClick={()=>{
-                    setShowUpdate(true);
-                    setReviewId(item?.id);
-                  }}>수정</ScButton>
+                  
                   
                   {showUpdate === true ? (
                 <UpdateComment
