@@ -60,7 +60,6 @@ const CommentCard = (props) => {
                   </ScCommentCardWrap> 
                   <ScHR/>
                   
-                  
                   {showUpdate === true ? (
                 <UpdateComment
                   setShowUpdate={setShowUpdate}
@@ -134,7 +133,7 @@ const ScCardAlign1 = styled.div`
   justify-content: space-between;
 `;
 const ScCardAlign2 = styled.div`
-  width: 200px;
+  width: 400px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
