@@ -24,12 +24,15 @@ const SearchCoffee = () => {
 
   return (
     <div>
-    <Header/>
-    <div style={{display:"flex",maxWidth:"1400px",flexWrap:"wrap"}}>
-      {coffeeReducer&&coffeeReducer.map((item,idx)=>{
-        return(<CoffeeCard key={idx} item={item}/>)
-      })} </div>
+      <div style={{margin:"auto"}}> 
+        <Header/>
       </div>
+      <div style={{display:"flex",maxWidth:"1400px",flexWrap:"wrap"}}>
+        {coffeeReducer&&coffeeReducer.map((item,idx)=>{
+          return(<CoffeeCard key={idx} item={item}/>)
+        })} 
+      </div>
+    </div>
   )
 }
 
