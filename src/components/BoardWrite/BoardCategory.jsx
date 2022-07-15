@@ -16,19 +16,25 @@ const BoardCategory = ({title, cate}) => {
     setX(e.target.value)
     cate(e.target.value)
     console.log(e.target.value)
-    setClick(!click)
+    setClick(true)
+    setClick2(false)
+    setClick3(false)
   } 
    const clickRadio2 = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
     console.log(e.target.value)
-    setClick2(!click2)
+    setClick(false)
+    setClick2(true)
+    setClick3(false)
   }
   const clickRadio3 = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
     console.log(e.target.value)
-    setClick3(!click3)
+    setClick(false)
+    setClick2(false)
+    setClick3(true)
   }
 
   return (
@@ -82,26 +88,21 @@ const BoardCategory = ({title, cate}) => {
 export default BoardCategory
 
 const ScCategory = styled.div`
-  margin: 10px 0;
   display: flex;
   align-items: center;
   gap: 8px;
+  height: 70px;
+  border-top: 1px solid #2C278C;
+  color: #2C278C;
 `
-const ScRadioWrap = styled.span`
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 30%;
-  input{
-    display: none;
-  };
-`
+
 const ScMyrecipe = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #F1E3E8;
+  background: ${(props) => (props.click ? "#F1E3E8" : "#ddd")};
   border-radius: 100px;
-  color: #D86F96;
+  color: ${(props) => (props.click ? "#D86F96" : "#7e7c7c")};
   border: ${(props) => (props.click ? "1px solid #D86F96" : "")};
   padding: 2px 12px;
   input{
@@ -112,10 +113,10 @@ const ScRecommend = styled.div`
  display: flex;
   align-items: center;
   justify-content: center;
-  background: #EDE2F2;
+  background: ${(props) => (props.click ? "#EDE2F2" : "#ddd")};
 border-radius: 100px;
 padding: 2px 12px;
-color: #A454CA;
+color: ${(props) => (props.click ? "#A454CA" : "#7e7c7c")};
 border: ${(props) => (props.click ? "1px solid #A454CA" : "")};
 input{
     display: none;
@@ -126,9 +127,9 @@ const ScEtc = styled.div`
   align-items: center;
   justify-content: center;
   padding: 2px 12px;
-  background: rgba(255, 201, 15, 0.2);
+  background: ${(props) => (props.click ? "rgba(255, 201, 15, 0.2)" : "#ddd")};
 border-radius: 100px;
-color: #F6C720;
+color: ${(props) => (props.click ? "#F6C720" : "#7e7c7c")};
 border: ${(props) => (props.click ? "1px solid #F6C720" : "")};
 input{
     display: none;
@@ -136,10 +137,16 @@ input{
 `
 const ScTitle =styled.div`
   display: flex;
+  align-items: center;
+  height: 70px;
+  color: #2C278C;
   justify-content: space-between;
+  border-top: 1px solid #2C278C;
+  border-bottom: 1px solid #2C278C;
+  margin-bottom: 40px;
   input{
    border: none;
    width: 850px;
   };
-  margin: 30px auto;
+
 `

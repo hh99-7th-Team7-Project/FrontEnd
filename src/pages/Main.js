@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import Styled from 'styled-components';
+import "../shared/css/flow.css"
 
 // components
 import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint, RandomPicker, CategoryCard}from '../components/main/A-mainIndex'
 import Header from './Header/Header';
+import {flow, flower} from "../shared/svg/A-index"
+import { Flower } from '../components/main/Flower';
+import { Footer } from '../components/Footer';
+import { Flow } from '../components/main/Flow';
 
 
 const Main = () => {
@@ -16,7 +20,9 @@ const [category, setCategory] = useState(true)
     <div style={{margin:"auto"}}>
       <Header />
     </div>
+<div style={{position:"relative"}}>
     <ImgSlide/>
+    <Flow/>
     <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
           <ScMapRandomWrap>
             <RandomPicker />
@@ -31,9 +37,11 @@ const [category, setCategory] = useState(true)
          </ScButtonWrap>
        </ScNavbarWrap>
       {category?<BrandCard/>:<CategoryCard/>}
-        
-
     </div>
+    <Flow/>
+    <Flower/>
+</div>    
+    <Footer/>
     </>
   )
 }

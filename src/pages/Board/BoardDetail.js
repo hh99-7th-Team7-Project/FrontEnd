@@ -9,6 +9,7 @@ import BoardLike from '../../components/BoardDetail/BoardLike';
 import BoardComment from '../../components/BoardDetail/BoardComment';
 import BoardContent from '../../components/BoardDetail/BoardImage';
 import apis from '../../shared/api/main';
+import styled from 'styled-components';
 
 const BoardDetail = () => {
   const {boardId} = useParams()
@@ -32,18 +33,24 @@ const BoardDetail = () => {
       }, [loading])
 
   return (
-    <ScWrap>
-      <Header/>
-      <BoardMain head ={head} boardId={boardId}/>
-      <BoardContent data={content}/>
-      <BoardLike/>
-      <BoardComment/>
-    </ScWrap>
+      <>
+      <div style={{ margin: "auto" }}>
+        <Header />
+      </div>
+      <ScWrap>
+        <BoardMain head ={head} boardId={boardId}/>
+        <BoardContent data={content}/>
+        <BoardLike/>
+        <BoardComment/>
+      </ScWrap>
+     </>
   )
 }
 
-const ScWrap = Styled.div`
+const ScWrap = styled.div`
   margin: 15px auto;
+  width: 1200px;
+  
 `;
 
 export default BoardDetail

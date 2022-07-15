@@ -23,15 +23,15 @@ const CategoryCard = (props) => {
     const dispatch = useDispatch();
     const coffee = "coffee"
     useEffect(()=>{
-  dispatch(__loadCoffeeCategory(coffee))  
+  dispatch(__loadCoffeeCategory("ADE"))  
 },[dispatch])
 
     const coffeeReducer = useSelector((state) => state.coffee.list);
    
 
 
-   const categoryList =[{brand:"coffee", id:0},{brand:"nonCoffee", id:1},
-   {brand:"smoothie", id:2},{brand:"aid", id:3},{brand:"tea", id:4}]
+   const categoryList =[{brand:"COFFEE", id:0},{brand:"NONCOFFEE", id:1},
+   {brand:"SMOOTHIE", id:2},{brand:"ADE", id:3},{brand:"TEA", id:4}]
 
 
 
@@ -77,18 +77,18 @@ const CategoryCard = (props) => {
       >
         {categoryList.map((item, index) => {                    
                     return (
-                    <SwiperSlide key={index}
-                      className="slide" 
-                    >
-                    <ScSlide  
-                      onClick={(e)=>{
-                        // e.target.style.background
-                        console.log(item.id)
-                      setColor(!color);
-                      dispatch(__loadCoffeeCategory(item?.brand))  
-                  }}
-                    ></ScSlide>
-                    <div style={{textAlign:"center"}}>  {item?.brand}</div>
+                    <SwiperSlide key={index} className="slide">
+                      <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+                      <ScSlide  
+                        onClick={(e)=>{
+                          // e.target.style.background
+                          console.log(item.id)
+                        setColor(!color);
+                        dispatch(__loadCoffeeCategory(item?.brand))  
+                    }}>
+                      </ScSlide>
+                      </div>
+                      <div style={{textAlign:"center"}}>{item?.brand}</div>
                     </SwiperSlide>
                     
                     )
@@ -119,12 +119,11 @@ const ScSlide = styled.div`
   font-size: 18px;
   width: 120px;
   height: 120px;
+  background: no-repeat center url("https://ifh.cc/g/0KKZCw.png");
+  background-size: cover ;
   transform: scale(0.9);
-  background: #fff;
   border-radius: 60px;
   border: 1px #ddd solid;
-  background-color: ${props => props.color};
-
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -148,14 +147,14 @@ const ScSlide = styled.div`
     border-bottom: 2px solid var(--aquaD);
   } */
 
-  &:active{
+  /* &:active{
     scale: 1.1;
     border: 1px #b46f6f solid;
     background: pink!important;
     ::after {
       background-color: #e73653!important;
     }
-  } 
+  }  */
 `
 const SCcardWrap = Styled.div`
     margin: 30px 0;

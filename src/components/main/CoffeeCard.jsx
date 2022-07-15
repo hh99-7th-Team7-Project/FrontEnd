@@ -12,7 +12,6 @@ const navigate = useNavigate()
 const pricePair = item.pricePair
 // console.log(pricePair)
 
-console.log(item);
 
 const moveOnclick = () => {
 navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
@@ -36,7 +35,7 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
           })} */}
           <ScStar>
           <div style={{fontSize:'13px'}}>총별점</div>
-          <div style={{fontSize:'18px'}}>{item?.star}</div>
+          {item?.star===NaN && <div style={{fontSize:'18px'}}>{item?.star}</div>}
           <div>
             {Math.floor(item?.star) === 1 &&  <div>⭐</div>}
             {Math.floor(item?.star) === 2 &&  <div>⭐⭐</div>}
@@ -149,7 +148,7 @@ const SCcard = styled.div`
         return "rgb(123,0,155)"
         case "드롭탑" :
        return"rgb(26,38,138)"
-          case "컴포즈커피" :
+          case "컴포즈" :
         return"rgb(254,217,0)"
           case "탐앤탐스" :
         return"rgb(79,21,29)"

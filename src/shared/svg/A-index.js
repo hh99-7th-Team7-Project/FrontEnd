@@ -6,5 +6,7 @@ import thumbup from "./Tumbup.svg"
 import boardwrite from "./Boardwrite.svg"
 import left from "./Left.svg"
 import right from "./Right.svg"
+import flow from "./Flow.svg"
+import flower from './FlowerBig.svg'
 
-export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right}
+export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right, flow,flower}
