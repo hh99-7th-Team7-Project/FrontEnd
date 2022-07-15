@@ -35,15 +35,15 @@ const PopularBoard = () => {
     }
 };
 
-useEffect(() => {
-  const timer = setInterval(() => {
-      setCount((prev) => (prev === TOTAL_SLIDES ? 0 : prev + 1));
-  }, 3000);
+// useEffect(() => {
+//   const timer = setInterval(() => {
+//       setCount((prev) => (prev === TOTAL_SLIDES ? 0 : prev + 1));
+//   }, 3000);
 
-  return () => {
-      clearInterval(timer);
-  };
-}, [count]);
+//   return () => {
+//       clearInterval(timer);
+//   };
+// }, [count]);
 
 useEffect(() => {
         console.log(curruntIdx);
@@ -52,8 +52,8 @@ useEffect(() => {
     }, [curruntIdx]);
 
     const navigate = useNavigate()
-  console.log(content)
-    console.log(content)
+  // console.log(content)
+  //   console.log(content)
       useEffect(() => {  
         setLoading(true)
           const getMark = async () => {

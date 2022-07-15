@@ -34,9 +34,9 @@ const moveToBoard = (e) =>{
                         <img src={bookmark}/>
                         <span>북마크</span>
                         <img src={thumbup}/>
-                        <span>13</span>
-                        <img src={eye}/>
                         <span>10</span>
+                        <img src={eye}/>
+                        <span>{content?.view}</span>
                     </Scbar>
                   </ScHeader>  
            

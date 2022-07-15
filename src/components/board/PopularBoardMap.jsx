@@ -41,7 +41,7 @@ const moveToBoard = (e) =>{
                         <img src={thumbup}/>
                         <span>13</span>
                         <img src={eye}/>
-                        <span>10</span>
+                        <span>{content?.view}</span>
                     </Scbar>
         </ScBoardList>
     )
@@ -68,7 +68,7 @@ const ScHeader =styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    
 `
 const Scbar =styled.div`
     display: flex;

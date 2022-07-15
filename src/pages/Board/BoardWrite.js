@@ -8,6 +8,7 @@ import { loadBoard } from '../../redux/modules/board'
 import {useNavigate} from 'react-router-dom'
 import apis from '../../shared/api/main'
 import styled from 'styled-components'
+import { getCookie } from '../../shared/Cookie'
 
 
 const BoardWrite = () => {
@@ -19,6 +20,15 @@ console.log(cate)
 console.log(title)
 console.log(content)
 
+//로그인 후 이용가능한 서비스 알람
+const islogin = getCookie("islogin")
+console.log(islogin)
+useEffect(()=>{
+  if(islogin===undefined){
+     window.alert("로그인 후 이용가능한 서비스입니다.")
+     navigate("/board")
+    } 
+},[])
 
 
 const submitOnclick = async()=>{
@@ -38,7 +48,10 @@ const submitOnclick = async()=>{
       <ScWrite>
       <BoardCategory title={setTitle} cate={setCate}/>
       <ToastEdit content={setContent}/>
-      <button onClick={submitOnclick}>제출</button>
+      <ScSubmit>
+      <div onClick={submitOnclick}>제출</div>
+      <div onClick={()=>{navigate("/board")}}>취소</div>
+      </ScSubmit>
       </ScWrite>
     </>
   )
@@ -49,4 +62,21 @@ export default BoardWrite
 const ScWrite = styled.div`
     min-width: 1200px;
     margin: auto;
+`
+const ScSubmit = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    font-size: 16px;
+    margin: 20px;
+    div{
+      background-color: #ddd;
+      width: 100px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+    }
 `

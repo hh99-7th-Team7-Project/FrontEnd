@@ -34,6 +34,7 @@ const BoardCategory = ({title, cate}) => {
   return (
     <>
     <ScCategory>
+      <div style={{width:"130px",textAlign:"right", marginRight:"40px"}}>카테고리 선택</div>
       <ScMyrecipe click={click} >
         <input 
         type="radio" 
@@ -64,14 +65,15 @@ const BoardCategory = ({title, cate}) => {
       </ScEtc>
     </ScCategory>
     <ScTitle>
+      <div style={{width:"130px",textAlign:"right"}}>제목</div>
     <input 
     type="text" 
     onChange={(e)=>{
       title(e.target.value)
     }}
-    placeholder="제목"
+    placeholder="제목을 입력해주세요"
     />
-    <span>{nickname}</span>
+    <span style={{marginRight:"20px"}}>{nickname}</span>
      </ScTitle>
     </>
   )
@@ -82,6 +84,7 @@ export default BoardCategory
 const ScCategory = styled.div`
   margin: 10px 0;
   display: flex;
+  align-items: center;
   gap: 8px;
 `
 const ScRadioWrap = styled.span`
@@ -135,8 +138,8 @@ const ScTitle =styled.div`
   display: flex;
   justify-content: space-between;
   input{
-   border: 1px #ddd solid;
-   width: 400px;
+   border: none;
+   width: 850px;
   };
   margin: 30px auto;
 `
