@@ -45,9 +45,10 @@ const submitOnclick = async()=>{
        <div style={{ margin: "auto" }}>
         <Header />
       </div>
-      <ScWrite>
+      <ScWrite> 
       <BoardCategory title={setTitle} cate={setCate}/>
       <ToastEdit content={setContent}/>
+       
       <ScSubmit>
       <div onClick={submitOnclick}>제출</div>
       <div onClick={()=>{navigate("/board")}}>취소</div>
@@ -61,7 +62,7 @@ export default BoardWrite
 
 const ScWrite = styled.div`
     min-width: 1200px;
-    margin: auto;
+    margin:  73px auto;
 `
 const ScSubmit = styled.div`
     display: flex;

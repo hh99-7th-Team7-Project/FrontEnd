@@ -25,7 +25,7 @@ const BoardContent = ({data}) => {
            {content&&<Viewer 
             events={['load','change']}
             initialValue={content}
-            
+
             />}
         </ScWrap>
         <ScHR/>

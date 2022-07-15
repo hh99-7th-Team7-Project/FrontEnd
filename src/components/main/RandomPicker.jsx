@@ -18,12 +18,12 @@ const RandomPicker = () => {
             <img src={character} style={{height:"240px"}}/>
             </ScWrap>
             <ScWrap className='item back'>
-              <RandomCoffee/>
-              {/* <ScWordWrap>
-            <h1 style={{width:"100px", marginBottom:"20px"}}>Today's coffee?</h1>
+              {/* <RandomCoffee/> */}
+              <ScWordWrap>
+            <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}>Today's coffee?</h1>
             <ScButton>골라보기</ScButton>
             </ScWordWrap>
-            <img src={character} style={{height:"240px"}}/> */}
+            <img src={character} style={{height:"240px"}}/>
             </ScWrap>
     </div>
   )

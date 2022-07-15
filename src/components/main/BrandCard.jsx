@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CoffeeCard from './CoffeeCard';
-import { __loadCoffee,loadCoffee, loadBrand, __loadCoffees } from '../../redux/modules/coffee';
+import { __loadCoffee} from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -14,6 +14,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import styled, {css, keyframes} from 'styled-components';
+
+
 
 
 const BrandCard = (props) => {
@@ -80,6 +82,7 @@ const BrandCard = (props) => {
                     <SwiperSlide key={index}
                       className="slide" 
                     >
+                    <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                     <ScSlide  
                       onClick={(e)=>{
                         // e.target.style.background
@@ -89,9 +92,9 @@ const BrandCard = (props) => {
                   }}
                   style={{ backgroundImage:`url(${item?.logo})`}}
                     >
-                      <img src={item?.logo} alt={item?.brand} style={{width:"125px"}}/>
                       </ScSlide>
                    <div style={{textAlign:"center"}}>  {item?.brand}</div>
+                    </div>
                     </SwiperSlide>
                     
                     )
@@ -124,7 +127,7 @@ const ScSlide = styled.div`
   background: #fff;
   border-radius: 60px;
   border: 1px #ddd solid;
-  background: no-repeat center;
+  background: no-repeat center url("https://ifh.cc/g/9yzKzy.png");
   background-size: cover ;
   /* Center slide text vertically */
   display: -webkit-box;
@@ -149,14 +152,14 @@ const ScSlide = styled.div`
     border-bottom: 2px solid var(--aquaD);
   } */
 
-  &:active{
+  /* &:active{
     scale: 1.1;
     border: 1px #b46f6f solid;
     background: pink!important;
     ::after {
       background-color: #e73653!important;
     }
-  } 
+  }  */
 `
 const SCcardWrap = Styled.div`
     margin: 30px 0;
