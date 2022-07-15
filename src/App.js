@@ -5,12 +5,13 @@ import styled from 'styled-components'
 import {AnimatePresence} from 'framer-motion'
 
 
+
 function App() {
   return (
     <SCwrap> 
       <AnimatePresence>
         <Router />
-        </AnimatePresence>
+      </AnimatePresence>
     </SCwrap>
   );
 }

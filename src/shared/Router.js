@@ -51,6 +51,7 @@ const Router = () => {
 
   return (
     <Routes>
+      
       <Route path='/' element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
 

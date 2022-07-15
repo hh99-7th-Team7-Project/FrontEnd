@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import {bookmark, bookmarkck, checked, eye, thumbup} from '../../shared/svg/A-index'
 
-const BoardMap = (props) => {
+const PopularBoardMap = (props) => {
     const navigate = useNavigate()
     // const [category,setCategory] = useState()
     const {content} =props
@@ -30,46 +30,45 @@ const moveToBoard = (e) =>{
                         {content?.category==="기타"&&<ScEtc>{content?.category}</ScEtc>}
                         {/* <span>{content?.nickname}</span> */}
                     </div>
-                    <Scbar>
-                        <img src={bookmark}/>
-                        <span>북마크</span>
-                        <img src={thumbup}/>
-                        <span>10</span>
-                        <img src={eye}/>
-                        <span>{content?.view}</span>
-                    </Scbar>
                   </ScHeader>  
-           
                     <ScTitle onClick={moveToBoard}>{content?.title}</ScTitle>
                     <ScBottom>
                         <span>{content?.nickname}</span>
-                        <span>{create}</span>
                     </ScBottom>
-
+                     <Scbar>
+                        <img src={bookmark}/>
+                        <span>북마크</span>
+                        <img src={thumbup}/>
+                        <span>13</span>
+                        <img src={eye}/>
+                        <span>{content?.view}</span>
+                    </Scbar>
         </ScBoardList>
     )
     }
 
-export default BoardMap
+export default PopularBoardMap
 
 const ScBoardList = styled.div`
     display: flex;
     flex-direction: column;
     justify-items: center;
     justify-content: space-between;
-    border: 1px #ddd solid;
-    width: 1200px;
-    height: 120px;
+    /* border: 1px #ddd solid; */
+    width: 220px;
+    height: 217px;
     padding: 17px 20px 15px 20px;
     border-radius: 12px;
     font-size: 14px;
-    margin: 24px auto;
+    margin: 24px 30px 24px 0;
+    background-color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.185);
 `
 const ScHeader =styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    
 `
 const Scbar =styled.div`
     display: flex;
@@ -85,6 +84,8 @@ const ScCategory =styled.span`
 const ScTitle =styled.div`
     font-size: 22px;
     font-weight: 600;
+    height: 83px;
+    overflow: hidden;
 `
 const ScBottom =styled.div`
      display: flex;
