@@ -9,7 +9,7 @@ const CommentCard = (props) => {
 
   const { brand, boardId } = props;
   
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
 
 
   const [showUpdate, setShowUpdate ] = useState(false);
@@ -46,7 +46,7 @@ const CommentCard = (props) => {
                       <ScCommentSpan>{item?.review}</ScCommentSpan>
                     </ScCardAlign1>
                     <ScCardAlign2>
-                      <ScDateSpan>{item?.createdAt}</ScDateSpan>
+                      <ScDateSpan>{item?.createdAt.split("T")[0]}</ScDateSpan>
                       <ScNickSpan>{item?.nickname}</ScNickSpan>
                       <ScButton onClick={()=>{
                         dispatch(__deleteComment(brand,boardId,Number(item?.id)))                

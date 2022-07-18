@@ -1,13 +1,8 @@
 import React,{ useEffect, useRef, useState } from 'react'
 import axios from "axios"
-import Styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
-import BoardMain from '../../components/BoardDetail/BoardMain';
-import BoardImage from '../../components/BoardDetail/BoardImage';
-import BoardLike from '../../components/BoardDetail/BoardLike';
-import BoardComment from '../../components/BoardDetail/BoardComment';
-import BoardContent from '../../components/BoardDetail/BoardImage';
+import { BoardComment, BoardContent, BoardLike, BoardMain } from "../../components/BoardDetail/A-BoardDetailIndex";
 import apis from '../../shared/api/main';
 import styled from 'styled-components';
 

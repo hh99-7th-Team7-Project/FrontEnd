@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import Header from './Header/Header';
 
 const Map = (props) => {
   const{ myLocation } = props
@@ -275,6 +276,10 @@ const removeAllChildNods = (el) => {
 
 
   return (
+    <>
+    <div style={{margin:"auto"}}>
+      <Header/>
+    </div>
     <div style={{ position: 'relative' }}>
     <div
       // className='w-full'
@@ -303,6 +308,7 @@ const removeAllChildNods = (el) => {
       {/* </div> */}
     </div>
   </div>
+  </>
   )
 }
 

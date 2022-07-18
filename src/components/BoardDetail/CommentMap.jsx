@@ -68,7 +68,7 @@ const CommentMap = () => {
                                     <ScSpan>{item?.comment}</ScSpan>
                                 </ScCommentAlign>
                                 <ScBtnAlign>                                   
-                                    <ScSpan>{item?.createdAt}</ScSpan>                             
+                                    <ScSpan>{item?.createdAt.split("T")[0]}</ScSpan>                             
                                     <div>
                                         <button onClick={()=>{
                                             setShowUpdate(true);
@@ -117,8 +117,7 @@ const ScInputWrap = styled.div`
   margin: 20px auto;  
   display: column;
   justify-content: start;
-  align-items: center;
-  border: 1px solid black;
+  align-items: center;  
 `;
 
 const ScInput = styled.input`
