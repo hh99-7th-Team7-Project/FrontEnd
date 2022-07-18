@@ -41,7 +41,8 @@ const CoffeeSearch = (props) => {
           {sliceCoffee&&sliceCoffee.map((item,idx)=>{
             return(<CoffeeCard key={idx} item={item}/>)
           })} 
-          <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox>
+          {sliceCoffee.length > 4 ? 
+          <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
         </ScCardContainer>
       </ScCoffeeWrap>
       <ScBtnWrap>
