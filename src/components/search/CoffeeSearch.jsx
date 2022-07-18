@@ -16,7 +16,7 @@ const CoffeeSearch = (props) => {
   // const coffeeReducer = useSelector((state) => state.coffee.list);
   console.log(coffeeReducer)
   //처음 4개만 보여주기위해서 검색결과에서 4개 짜름
-  const sliceCoffee = coffeeReducer?.slice(0,4)
+  const sliceCoffee = coffeeReducer?.slice(0,8)
   console.log(sliceCoffee)
 
   //임시
@@ -38,9 +38,10 @@ const CoffeeSearch = (props) => {
      ( <>
       <ScCoffeeWrap>
         <ScCardContainer>
-        {sliceCoffee&&sliceCoffee.map((item,idx)=>{
-          return(<CoffeeCard key={idx} item={item}/>)
-        })} 
+          {sliceCoffee&&sliceCoffee.map((item,idx)=>{
+            return(<CoffeeCard key={idx} item={item}/>)
+          })} 
+          <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox>
         </ScCardContainer>
       </ScCoffeeWrap>
       <ScBtnWrap>
@@ -56,17 +57,25 @@ const CoffeeSearch = (props) => {
 }
 
 const ScCoffeeWrap = styled.div`
-  margin: auto; 
+  margin: auto;  
+  width: 1200px;
 `;
 
 const ScCardContainer = styled.div`
+  position:relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 `;
 
+const ScBox = styled.div`
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFF 82.29%);
+`;
+
 const ScBtnWrap = styled.div`
   margin: auto;
+  position: absolute;
 `;
 
 const ScBtn = styled.button`

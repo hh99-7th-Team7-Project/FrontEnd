@@ -12,15 +12,13 @@ const CommentMap = () => {
 
     const dispatch = useDispatch();
     const { boardId }  = useParams();
-    const nickname = getCookie();
+    const nickname = getCookie("nickname");
     const comment_list = useSelector((state) => state.boardComment.boardcommentlist);
 
     const [ showUpdate, setShowUpdate ] = useState(false);
     const [ commentId , setCommentId ] = useState();
 
-    console.log(comment_list);
-
-
+    
     useEffect(()=>{
         dispatch(__getBoardComment(boardId));
     },[dispatch])
@@ -30,7 +28,7 @@ const CommentMap = () => {
     const commentAdd = () => {
 
         if (
-            boardCommentInputRef.current.value !== ""
+            boardCommentInputRef.current.value !== ""            
         )
         {
             dispatch(__addBoardComment({
@@ -41,58 +39,59 @@ const CommentMap = () => {
             })
         );
         } else {
-            alert ("댓글을 입력해주세요.")
+            alert ("댓글을 입력해주세요.");
         }
     }
     
 
     return (
+        <>
+            <ScCommentWrap>
+                <ScInputWrap>                        
+                    <ScInput type="text" placeholder="댓글을 입력해주세요" ref={boardCommentInputRef} />
+                    <ScBtn onClick={()=>{
+                        commentAdd();
+                        boardCommentInputRef.current.value=""
+                    }}>등록</ScBtn>
+                </ScInputWrap>
+            </ScCommentWrap>
             <ScWrap>
-                <ScCommentWrap>
-                    <ScInputWrap>                        
-                        <ScInput type="text" placeholder="댓글을 입력해주세요" ref={boardCommentInputRef} />
-                        <ScBtn onClick={()=>{
-                            commentAdd();
-                            boardCommentInputRef.current.value=""
-                        }}>등록</ScBtn>
-                    </ScInputWrap>
-                </ScCommentWrap>
-                    <ScTableWrap>
-                        {comment_list.map((item)=> (
-                            <div key={item?.id}>
-                            <ScTable>
-                                <ScNickAlign>
-                                    <ScSpan>{item?.nickname}</ScSpan>
-                                </ScNickAlign> 
-                                <ScCommentAlign>                       
-                                    <ScSpan>{item?.comment}</ScSpan>
-                                </ScCommentAlign>
-                                <ScBtnAlign>                                   
-                                    <ScSpan>{item?.createdAt.split("T")[0]}</ScSpan>                             
-                                    <div>
-                                        <button onClick={()=>{
-                                            setShowUpdate(true);
-                                            setCommentId(item?.id);
-                                        }}>수정</button>
-                                        <button onClick={()=>{
-                                            dispatch(__deleteBoardComment(boardId,Number(item?.id)))
-                                            dispatch(__getBoardComment(boardId));
-                                        }}>삭제</button>
-                                        {showUpdate === true ? (
-                                            <UpdateBoardComment
-                                            showUpdate={showUpdate}
-                                            setShowUpdate={setShowUpdate}
-                                            boardId={boardId}
-                                            commentId={Number(commentId)}
-                                        />) : null
-                                        }
-                                    </div>
-                                </ScBtnAlign>
-                            </ScTable>
-                        </div>
-                    ))}
-                </ScTableWrap>
-            </ScWrap>
+                <ScTableWrap>
+                    {comment_list.map((item)=> (
+                        <div key={item?.id}>
+                        <ScTable>
+                            <ScNickAlign>
+                                <ScSpan>{item?.nickname}</ScSpan>
+                            </ScNickAlign> 
+                            <ScCommentAlign>
+                                {showUpdate === true ? (
+                                    <UpdateBoardComment
+                                    showUpdate={showUpdate}
+                                    setShowUpdate={setShowUpdate}
+                                    boardId={boardId}
+                                    commentId={Number(commentId)}
+                                    comment={item?.comment}
+                                />) : <ScSpan>{item?.comment}</ScSpan>
+                                }
+                                { nickname === item?.nickname ?
+                                <ScButton onClick={()=>{
+                                dispatch(__deleteBoardComment(boardId,Number(item?.id)))
+                                dispatch(__getBoardComment(boardId));
+                                }}>삭제</ScButton> : null }
+                            </ScCommentAlign>                            
+                            <ScBtnAlign>                                   
+                                <ScSpan>{item?.createdAt.split("T")[0]}</ScSpan>
+                                <ScButton onClick={()=>{
+                                    setShowUpdate(true);
+                                    setCommentId(item?.id);
+                                }}>수정</ScButton>                                
+                            </ScBtnAlign>
+                        </ScTable>
+                    </div>
+                ))}
+            </ScTableWrap>
+        </ScWrap>
+        </>
     )
 }
 
@@ -120,7 +119,7 @@ const ScInputWrap = styled.div`
   align-items: center;  
 `;
 
-const ScInput = styled.input`
+const ScInput = styled.textarea`
     width: 800px;
     height: 40px;
     margin: 30px auto;
@@ -136,11 +135,17 @@ const ScNickAlign = styled.div`
 `;
 
 const ScCommentAlign = styled.div`
-
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
 `;
 
 const ScBtnAlign = styled.div`
-
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
 `;
 
 
@@ -176,6 +181,18 @@ const ScTable = styled.div`
 
 const ScSpan = styled.span`
     margin-left: 50px;
+`;
+
+
+
+const ScButton = styled.button`
+    &:hover{
+    cursor: pointer;
+  }
+  background-color: white;
+  color: black;
+  border: none;
+  
 `;
 
 

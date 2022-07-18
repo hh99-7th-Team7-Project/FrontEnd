@@ -31,7 +31,8 @@ const BoardSearch = (props) => {
               return(
                 <BoardMap key={idx} content={item}/>
                 )
-              })} 
+              })}
+              <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox>
           </ScCardContainer>
           </ScCoffeeWrap>
         <ScBtnWrap>
@@ -58,8 +59,13 @@ const ScCardContainer = styled.div`
   align-items: center;
 `;
 
+const ScBox = styled.div`
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFF 82.29%);
+`;
+
 const ScBtnWrap = styled.div`
   margin: auto;
+  position: absolute;
 `;
 
 const ScBtn = styled.button`

@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import UpdateComment from "./UpdateComment";
 import { useSelector, useDispatch } from "react-redux";
 import { __deleteComment, __loadComment } from '../../redux/modules/comment';
-
+import { getCookie } from '../../shared/Cookie';
 
 const CommentCard = (props) => {
 
   const { brand, boardId } = props;
   
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
+
+  const nickname = getCookie("nickname");
+
 
 
   const [showUpdate, setShowUpdate ] = useState(false);
@@ -44,14 +47,16 @@ const CommentCard = (props) => {
                     </ScStar>
                     <ScCardAlign1>
                       <ScCommentSpan>{item?.review}</ScCommentSpan>
+                      {nickname === item?.nickname ?
+                      <ScButton onClick={()=>{
+                        dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
+                        dispatch(__loadComment({brand, boardId}));
+                          }}>삭제</ScButton> : null}
                     </ScCardAlign1>
                     <ScCardAlign2>
                       <ScDateSpan>{item?.createdAt.split("T")[0]}</ScDateSpan>
                       <ScNickSpan>{item?.nickname}</ScNickSpan>
-                      <ScButton onClick={()=>{
-                        dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
-                        dispatch(__loadComment({brand, boardId}));
-                          }}>삭제</ScButton>
+                      
                         <ScButton onClick={()=>{
                           setShowUpdate(true);
                           setReviewId(item?.id);
