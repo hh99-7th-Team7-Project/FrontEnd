@@ -64,6 +64,9 @@ export const __addBoardComment = (payload) => async (dispatch, getState) => {
     dispatch(addBoardComment(response.data));
   } catch (error) {
     console.log(error);
+    if (error.response.status === 401) {
+      alert ("로그인해주세요!");
+  }
   }
 }
 
@@ -76,6 +79,9 @@ export const __deleteBoardComment = (boardId, commentId) => async (dispatch, get
     alert("삭제완료!")
   } catch (error) {
     console.log(error);
+    if (error.response.status === 500) {
+      alert ("내가 쓴 댓글만 삭제할 수 있습니다.");
+  }
   }
 }
 
@@ -89,6 +95,9 @@ export const __updateBoardComment = (payload) => async (dispatch, getState) => {
     dispatch(updateBoardComment(response.data));
   } catch (error){
     console.log(error);
+    if (error.response.status === 500) {
+      alert ("내가 쓴 댓글만 수정할 수 있습니다.");
+  }
   }
 }
 
