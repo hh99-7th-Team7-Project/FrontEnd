@@ -28,7 +28,7 @@ const BoardContent = ({data}) => {
 
             />}
         </ScWrap>
-        <ScHR/>
+
     </>
   )
 }
@@ -36,17 +36,6 @@ const BoardContent = ({data}) => {
 const ScWrap = styled.div`    
     display: flex;
     justify-content: center;
-
-
-`;
-
-const ScImg = Styled.img`
-    width: 50%;
-`;
-
-const ScHR = Styled.hr`
-    margin-top: 40px;
-    margin-bottom: 20px;
 `;
 
 export default BoardContent

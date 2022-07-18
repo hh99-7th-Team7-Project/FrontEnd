@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Styled from 'styled-components';
 import '../../shared/css/dropdown.css';
 import BoardMap from './BoardMap';
-import { GoChevronDown } from "react-icons/go";
 import apis from '../../shared/api/main';
 
 const BoardList = () => {
     const [content, setContent] = useState();
-    console.log(content)
+    // console.log(content)
 
     useEffect(() => {  
           const getMark = async () => {
