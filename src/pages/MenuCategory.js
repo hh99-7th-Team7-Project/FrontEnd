@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from './Header/Header';
 import { BrandCard, CategoryCard } from '../components/main/A-mainIndex.jsx';
+import { Flower } from '../components/main/Flower';
 
 
 const MenuCategory = () => {
@@ -11,7 +12,7 @@ const MenuCategory = () => {
 
   return (
     <>
-
+        <Flower/>
         <div style={{margin:"auto"}}>
             <Header/>
         </div>

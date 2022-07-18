@@ -16,6 +16,7 @@ const MyPage = () => {
   const [newProfileImg, setNewProfileImg] =useState(null)
   const [convertImg, setConvertImg] = useState(profileOrigin)
   const[changeImg,setChangeImg]=useState(false)
+  const [condition, setCondition] = useState("")
   
   console.log(changeImg)
 
@@ -53,25 +54,26 @@ const MyPage = () => {
                                   setCookie("profileImg", res?.data.img)
                                   setUpdate(false)
                               })
-      .catch((err)=>{
-        console.log(err)
-      })
+                              .catch((err)=>{
+                                setCondition(err.response.data.message)
+                              })
                  
               })
               .catch((err)=>{
-                console.log(err)
+                setCondition("알 수 없는 에러가 발생했습니다. 다시 시도 해주세요")
+
               }) 
                    }
     else{
-      const data = {nickname: nick, profileImage: profileOrigin} 
-      const update2 = apis.updateMypage(userId, data)
+            const data = {nickname: nick, profileImage: profileOrigin} 
+            const update2 = apis.updateMypage(userId, data)
                       .then((response)=>{
                           deleteCookie("nickname")
                           setCookie("nickname",nick)
                           setUpdate(false)
                       })
                       .catch((err)=>{
-                        console.log(err)
+                        setCondition(err.response.data.message)
                       })
     }
       
@@ -82,28 +84,35 @@ const MyPage = () => {
         <div style={{margin:"auto"}}>
           <Header />
         </div>
-    <div style={{margin:"auto"}}>
-    {update?(<ScMyprofile>
+   
+    {update?(
+
+    <ScMyprofile>
       <UserPhotoUpdate setNewProfileImg={setNewProfileImg} setChangeImg={setChangeImg}/>
       <UserInfoUpdate setNick={setNick} />
+      <div>{condition}</div>
+        <div>
         <button onClick={updateProfile}>수정완료</button>
        <button onClick={()=>{setUpdate(false)}}>취소하기</button>
+       </div>
       </ScMyprofile>):
       (<>
       <ScMyprofile>
       <UserPhoto/>
       <UserInfo email={email}/>
       <button onClick={()=>{setUpdate(true)}}>수정하러가기</button>
-    </ScMyprofile>
-     <button onClick={()=>{setMenu(1)}}>커피</button>
-    <button onClick={()=>{setMenu(2)}}>게시판</button>
-    <button onClick={()=>{setMenu(3)}}>내가쓴글</button>
-    {(menu===1)&&<UserBoardCoffee/>}    
-    {(menu===2)&&<UserBoardBoard/>}
-    {(menu===3)&&<UserBoardWrite/>}
+      </ScMyprofile>
+      <div>
+        <button onClick={()=>{setMenu(1)}}>커피</button>
+        <button onClick={()=>{setMenu(2)}}>게시판</button>
+        <button onClick={()=>{setMenu(3)}}>내가쓴글</button>
+        {(menu===1)&&<UserBoardCoffee/>}    
+        {(menu===2)&&<UserBoardBoard/>}
+        {(menu===3)&&<UserBoardWrite/>}
+      </div>
     </>
     )}
-    </div>
+    
    
     
     
@@ -119,4 +128,5 @@ display: flex;
 flex-direction: row;
 //justify-contents
 align-items: center;
+margin: auto;
 `
