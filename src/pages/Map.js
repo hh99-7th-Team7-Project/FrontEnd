@@ -282,7 +282,7 @@ const Map = (props) => {
       <div style={{ margin: "auto" }}>
         <Header />
       </div>
-      <div style={{ position: 'relative', margin:'auto' }}>
+      <div style={{ position: 'relative', margin: 'auto' }}>
         <ScMapWrap>
           <ScMap id='map'>
             지도
