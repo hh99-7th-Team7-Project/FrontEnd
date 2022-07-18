@@ -104,9 +104,7 @@ const BrandCard = (props) => {
         <div>
             <SCcardWrap>
              <div>{coffeeReducer?.brand}</div>
-                {coffeeReducer&&coffeeReducer.map((item, index) => {                    
-                    return (<CoffeeCard key={index} item={item}/>)
-                })}        
+                {coffeeReducer&&coffeeReducer.map((item, index) => {return (<CoffeeCard key={index} item={item}/>)})}        
             </SCcardWrap>
         </div>
     </>

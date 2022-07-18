@@ -112,8 +112,8 @@ const ScLens = styled.img`
 `;
 
   const SCprice = styled.div`
-    border: 1px black solid;
-    border-radius: 10px;
+    /* border: 1px black solid; */
+    /* border-radius: 10px; */
     width: 76px;
     height: 21px;
     margin: 10px auto;
@@ -171,8 +171,8 @@ const SCcard = styled.div`
     display: flex;
     flex-direction: column;
     /* border: 1px solid #ddd; */
-    width: 90%;
-    /* width: 227px; */
+    /* width: 100%; */
+    width: 247px;
     height: 401px;
     /* padding: 80px 0; */
     margin: 30px;

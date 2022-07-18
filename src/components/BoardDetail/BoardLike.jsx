@@ -1,6 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import styled from 'styled-components';
 
 const BoardLike = () => {
 
@@ -28,17 +29,19 @@ const BoardLike = () => {
   )
 }
 
-const ScWrap = Styled.div`
-    padding: 10px 10px 0px 10px;
+const ScWrap = styled.div`
     display: column;    
     justify-content: center;
     align-items: center;
-    
+    width: 175px;
+    border: 1px #ddd solid;
+    border-radius: 10px;
+    margin: 80px auto;
 `;
 
 const ScTitleWrap = Styled.div`
   width: 100%;
-  margin: auto;
+  margin: 27px auto 15px;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -72,17 +75,19 @@ const ScBtnWrap = Styled.div`
   
 `;
 
-const ScBtn = Styled.div`
-  padding: 20px;
+const ScBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px, 20px, 5px, 20px;
   margin: auto;
-  display: block;
-  width: 100px;
+  width: 75px;
+  height: 35px;
   border-radius: 50px;
   background-color: #EEE;
   border-color: #EEE;
-  text-align: center;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   &:hover {
     cursor: pointer;  
     background-color: #212121;
@@ -90,21 +95,24 @@ const ScBtn = Styled.div`
   }
 `;
 
-const ScBtnWrap2 = Styled.div`  
-  margin: 20px auto;
+const ScBtnWrap2 = styled.div`  
+  margin: 20px auto 0;
   display: flex;
   justify-content: center;
   text-align: center;
+  
 `;
 
-const ScBtn2 = Styled.div`
-  padding: 20px;
+const ScBtn2 = styled.div`
   margin: auto;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
-  border-radius: 50px;
-  background-color: #EEE;
-  border-color: #EEE;
+  border: 1px #ddd solid;
+  border-bottom: none;
+  border-right: none;
+  height: 40px;
   &:hover {
     cursor: pointer;  
     background-color: #212121;

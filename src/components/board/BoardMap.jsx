@@ -8,7 +8,7 @@ const BoardMap = (props) => {
     const navigate = useNavigate()
     // const [category,setCategory] = useState()
     const {content} =props
-console.log(content)
+// console.log(content)
 
     // if(content?.category==="나만의 비밀 레시피"){
     //     setCategory("비밀")
@@ -28,7 +28,6 @@ const moveToBoard = (e) =>{
                         {content?.category==="나만의 비밀 레시피"&&<ScMyrecipe>{content?.category}</ScMyrecipe>}
                         {content?.category==="카페 추천합니다"&&<ScRecommend>{content?.category}</ScRecommend>}
                         {content?.category==="기타"&&<ScEtc>{content?.category}</ScEtc>}
-                        {/* <span>{content?.nickname}</span> */}
                     </div>
                     <Scbar>
                         <img src={bookmark}/>

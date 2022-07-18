@@ -4,16 +4,21 @@ import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
 import apis from '../../shared/api/main';
 import BookMark from './svg/BookMark.svg';
+import { getCookie } from '../../shared/Cookie';
 
 const BoardMain = ({head, boardId}) => {
     const navigate = useNavigate()
-
+    const nickname = getCookie("nickname")
 
 
   return (
     <ScWrap>
         <ScBtnWrap>
-            <Btn>{head?.category}</Btn>
+        <div>
+                        {head?.category==="나만의 비밀 레시피"&&<ScMyrecipe>{head?.category}</ScMyrecipe>}
+                        {head?.category==="카페 추천합니다"&&<ScRecommend>{head?.category}</ScRecommend>}
+                        {head?.category==="기타"&&<ScEtc>{head?.category}</ScEtc>}
+                    </div>
         </ScBtnWrap>
         <ScHR/>
         <ScTitleWrap>
@@ -26,21 +31,25 @@ const BoardMain = ({head, boardId}) => {
                 <ScComment>댓글 : 1</ScComment>
             </ScBtnBox>            
         </ScTitleWrap>
-        <ScNickTimeBox>            
-            <span>{head?.nickname}</span>            
-            <span>21시 21분 23초</span>
-        </ScNickTimeBox>
-        <div style={{display:"flex",justifyContent:"space-between",width:"300px",marginTop:"20px"}}>
-            
-                <ScButton onClick={()=>{
-                    navigate(`/board/${boardId}/update`);
-                }}>수정</ScButton>
-            
-                <ScButton onClick={async()=>{
-                    await apis.deleteBoard(boardId)
-                    navigate("/board")
-                }}>삭제</ScButton>
-        </div>
+        <ScBottomBox>
+                <ScNickTimeBox>            
+                    <span>{head?.nickname}</span>            
+                    <span>21시 21분 23초</span>
+                </ScNickTimeBox>
+                {nickname===head?.nickname? <div style={{display:"flex",gap:"8px"}}>
+                        <ScButton onClick={()=>{
+                            navigate(`/board/${boardId}/update`);
+                        }}>수정</ScButton>
+                    
+                        <ScButton onClick={async()=>{
+                            await apis.deleteBoard(boardId)
+                            navigate("/board")
+                        }}>삭제</ScButton>
+                </div>:
+                null
+                }
+                
+        </ScBottomBox>      
         <ScHR/>
     </ScWrap>
   )
@@ -103,6 +112,35 @@ const ScBtnBox = styled.div`
     justify-content: space-between;    
 `;
 
+const ScMyrecipe = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F1E3E8;
+  border-radius: 100px;
+  color: #D86F96;
+  padding: 2px 12px;
+`
+const ScRecommend = styled.div`
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #EDE2F2;
+border-radius: 100px;
+padding: 2px 12px;
+color: #A454CA;
+
+`
+const ScEtc = styled.div`
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 12px;
+  background: rgba(255, 201, 15, 0.2);
+border-radius: 100px;
+color: #F6C720;
+
+`
 
 
 const ScLike = styled.h4`
@@ -113,16 +151,21 @@ const ScComment = styled.h4`
     
 `;
 
-const ScNickTimeBox = styled.div`    
-    width: 200px;
-    margin-top: 20px;
+const ScBottomBox =styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+`
+const ScNickTimeBox = styled.div`   
+    width: 230px;
     padding: 0px 5px 0px 5px;
     display: flex;
     justify-content: space-between;
 `;
 
 const ScButton = styled.div`
-    padding: 20px;
+    padding: 5px;
     margin: auto;
     display: block;
     width: 50px;

@@ -21,16 +21,3 @@
   /* 명시적으로 기본값 설정, 없어도 됨*/
   transform: rotateY(0deg);
 }
-
-.container:hover .item.front {
-  transform: rotateY(180deg);
-}
-
-.container .item.back {
-  /*y축을 중심으로 -180도 회전*/
-  transform: rotateY(-180deg);
-}
-
-.container:hover .item.back {
-  transform: rotateY(0deg);
-}

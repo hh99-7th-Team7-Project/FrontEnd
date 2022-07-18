@@ -8,7 +8,7 @@ const PopularBoardMap = (props) => {
     const navigate = useNavigate()
     // const [category,setCategory] = useState()
     const {content} =props
-console.log(content)
+// console.log(content)
 
     // if(content?.category==="나만의 비밀 레시피"){
     //     setCategory("비밀")

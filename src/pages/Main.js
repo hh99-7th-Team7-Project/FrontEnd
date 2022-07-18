@@ -31,7 +31,7 @@ const closeModal = () => {
       <Header />
     </div>
 <div style={{position:"relative"}}>
-    {/* <ImgSlide/> */}
+    <ImgSlide/>
     <Flow/>
     <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
           <ScMapRandomWrap>
