@@ -30,7 +30,7 @@ const BoardDetail = () => {
                     })
                      }
         getMark()
-      }, [loading])
+      }, [])
 
   return (
       <>

@@ -24,29 +24,6 @@ const BoardList = () => {
   return (
     <>
         <ScWrap>
-            {/* <ScContainer>
-                <ScInput id="dropdown" type="checkbox"/>      
-                <ScLabel htmlFor="dropdown">
-                    <div>Category</div>
-                    <GoChevronDown className="careIcon"/>
-                    <ScDropBox>
-                        <ScNickAlign>닉네임</ScNickAlign>
-                        <ScTitleAlign>제목</ScTitleAlign>
-                        <ScDateAlign>날짜</ScDateAlign>
-                        <ScLikesAlign>추천수</ScLikesAlign>
-                        <div>댓글수</div>
-                    </ScDropBox>
-                </ScLabel>
-                <ScContentBox>
-                    <ScUl>
-                        <ScLi>커피</ScLi>
-                        <ScLi>논커피</ScLi>
-                        <ScLi>스무디</ScLi>
-                        <ScLi>에이드</ScLi>
-                        <ScLi>차</ScLi>
-                    </ScUl>
-                </ScContentBox>
-            </ScContainer> */}
             <ScBoard>
                 <ScTable>
                     {content&&content.map((item,idx)=>{
@@ -70,70 +47,6 @@ const ScWrap = Styled.div`
     height: 100%;
 
 `;
-
-const ScContainer = Styled.div`
-    min-width: 150px;
-    box-shadow: 0 4px 5px 0 #00000026;
-    position: relative;
-`;
-
-const ScInput = Styled.input`
-    
-`;
-
-const ScLabel = Styled.label`
-    display: flex;
-    justify-content: start;
-    padding: 12px;
-
-`;
-
-const ScDropBox = Styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`;
-
-const ScNickAlign = Styled.div`
-    margin-left: 10px;
-    display: fixed;
-`;
-
-const ScTitleAlign = Styled.div`
-    margin-left: 120px;
-    display: fixed;
-`;
-
-const ScDateAlign = Styled.div`
-    margin-left: 330px;
-    display: fixed;
-`;
-
-const ScLikesAlign = Styled.div`
-    margin-left: 330px;
-    display: fixed;
-`;
-
-const ScContentBox = Styled.div`
-    display: none;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    background-color: white;
-    /* border-shadow: 0 4px 5px 0 #00000026;     */
-`;
-
-const ScUl = Styled.ul`
-    list-style-type: none;
-    padding: 12px;
-    margin: 0;
-`;
-
-const ScLi = Styled.li`
-    margin: 0.8rem 0;
-`;
-
-
 const ScBoard = Styled.div`    
     width: 100%;
     height: 100%;

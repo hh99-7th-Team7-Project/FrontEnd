@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 //router
 import { Link, useNavigate } from 'react-router-dom'
 //cookie
@@ -15,6 +15,7 @@ import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL, NAVER_AUTH_URL } from '../../shared/So
 import styled from 'styled-components'
 import character from '../../shared/svg/MainCharacter2.svg'
 import { motion, AnimatePresence } from "framer-motion"
+import Modal from '../../components/Modal'
 
 const Login = (props) => {
 
@@ -23,6 +24,14 @@ const Login = (props) => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
 
+const [showModal, setShowModal] = useState(false);
+
+const openModal = () => {
+  setShowModal(true);
+}
+const closeModal = () => {
+  setShowModal(false);
+}
   //로그인 onclick
   const loginClick = async () => {
     try {
@@ -86,7 +95,8 @@ const Login = (props) => {
             onClick={() => { navigate("/signup") }}
             style={{ backgroundColor: "grey", color: "white" }}>회원가입</button>
         </ScButtonWrap>
-
+        <button onClick={openModal}>모달 오쁜</button>
+        <Modal showModal={showModal} closeModal={closeModal}/>
         <ScText><hr />소셜 로그인<hr /></ScText>
         <ScSocialWrap>
           <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a>
