@@ -20,18 +20,18 @@ const NaverLogin = () => {
           .then((res) => {
             const token = res.headers.authorization.split(" ");
             setCookie("token", res.headers.authorization.split(" ")[1]);
-            api
-              .get("/social/user/islogin")//유저정보가져오는url
-              .then((res) => {
-                console.log(res)
-                setCookie("nickname", res?.data.nickname)
-                setCookie("islogin", true)
-                setCookie("profileImg", res?.data?.profileImage)
-                setCookie("userId",res?.data?.userId)
-                navigate("/");
-              })
-              .catch((error) => console.log("유저정보저장오류", error));
-          })
+                              api
+                                .get("/social/user/islogin")//유저정보가져오는url
+                                .then((res) => {
+                                  console.log(res)
+                                  setCookie("nickname", res?.data.nickname)
+                                  setCookie("islogin", true)
+                                  setCookie("profileImg", res?.data?.profileImage)
+                                  setCookie("userId",res?.data?.userId)
+                                  navigate("/");
+                                })
+                                .catch((error) => console.log("유저정보저장오류", error));
+                            })
           .catch((err) => {
             console.log("소셜로그인 에러", err);
             alert("로그인 실패 !");
@@ -43,7 +43,7 @@ const NaverLogin = () => {
   }, [code]);
 
   return (
-    <div>NaverLogin</div>
+    <div></div>
   )
 }
 

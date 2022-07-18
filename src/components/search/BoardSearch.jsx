@@ -32,7 +32,7 @@ const BoardSearch = (props) => {
                 <BoardMap key={idx} content={item}/>
                 )
               })}
-              {sliceBoard.length > 3 ? 
+              {sliceBoard?.length > 3 ? 
               <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
           </ScCardContainer>
           </ScCoffeeWrap>

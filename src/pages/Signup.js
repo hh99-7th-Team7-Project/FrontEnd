@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import apis from "../shared/api/main";
 import styled from "styled-components";
 import { motion } from "framer-motion"
 import unchecked from '../shared/svg/Unchecked.svg'
 import checked from '../shared/svg/Checked.svg'
+import Modal from '../components/Modal';
 
 const SignUp = (props) => {
   const navigate = useNavigate();
@@ -12,23 +13,34 @@ const SignUp = (props) => {
   const [Password, setPassword] = useState("");
   const [Password2, setPassword2] = useState("");
   const [Nickname, setNickname] = useState("");
-  const [fileImage, setFileImage] = React.useState("/프로필.PNG");
-  const [ProfileImage, setProfileImage] = React.useState([])
+  const [fileImage, setFileImage] = useState("/프로필.PNG");
   const [Selected, setSelected] = useState("");
-  const fileInputRef = React.useRef("/프로필.PNG");
-  const passwordRef = React.useRef();
-  const password2Ref = React.useRef();
-  const emailRef = React.useRef();
-  const emailSelect =React.useRef();
-  const nicknameRef = React.useRef();
-  const check = React.useRef();
-  const [okid, setOkid] = React.useState(false);
-  const [oknickname, setokNickname] = React.useState(false);
-  const [alert,setAlert] =React.useState("")
-  const [emailCheck, setEmailCheck] = React.useState(true)
-  const [nicknameCheck, setNicknameCheck] = React.useState(true)
-  const [samePw, setSamePw] = React.useState(true)
-  const [goToSignup, setGoToSignup] = React.useState(true)
+
+  const fileInputRef = useRef("/프로필.PNG");
+  const passwordRef = useRef();
+  const password2Ref = useRef();
+  const emailRef = useRef();
+  const nicknameRef = useRef();
+  const check = useRef();
+
+  const [okid, setOkid] = useState(false);
+  const [oknickname, setokNickname] = useState(false);
+
+  const [alert,setAlert] =useState("")
+
+  const [emailCheck, setEmailCheck] = useState(true)
+  const [nicknameCheck, setNicknameCheck] = useState(true)
+  const [samePw, setSamePw] = useState(true)
+  const [goToSignup, setGoToSignup] = useState(true)
+
+  const [modal, setModal]=useState(false)
+
+  const openModal = () => {
+    setModal(true);
+  }
+  const closeModal = () => {
+    setModal(false);
+  }
 
   // 이메일 중복 체크
   const dupEmail = async () => {
@@ -37,6 +49,7 @@ const SignUp = (props) => {
     } else {
       await apis.checkEmail({ username: Email+Selected })
                 .then((res) => {
+                  setAlert(" 사용 가능한 메일입니다.");
                     setOkid(true);
                     setEmailCheck(false)
                 })
@@ -53,6 +66,7 @@ console.log(Email+Selected)
     if (!nickCheck(Nickname)) {
       setAlert("올바른 닉네임 형식을 작성해주세요")
     } else {
+      setAlert("사용 가능한 닉네임입니다.");
       await apis.checkNickName({ nickname: Nickname })
         .then((res) => {
            setNicknameCheck(false)
@@ -60,6 +74,7 @@ console.log(Email+Selected)
           })
           .catch((err)=>{
             setAlert("이미 사용중인 닉네임입니다.");
+            setNicknameCheck(true)
             setokNickname(false)
           })
     }
@@ -103,9 +118,7 @@ console.log(Email+Selected)
       Email === "" ||
       Password === "" ||
       Password2 === "" ||
-      Nickname === ""
-      //  ||
-      // fileImage === ""
+      Nickname === "" 
     ) {
       setAlert("아이디,비밀번호,닉네임을 모두 입력해주세요!");
       return;
@@ -188,17 +201,22 @@ console.log(Email+Selected)
               <input
                 type="email"
                 placeholder="Email"
-           
                 ref={emailRef}
                 value={Email}
                 onChange={(event) => {
                   setEmail(event.target.value);
                 }}
+                onBlur={(e)=>{
+                  if(Selected&& e.currentTarget===e.target){dupEmail()} 
+                 }}
                 style={{width:"160px"}}
               />
               <h1 style={{width:"50px", textAlign:"center", fontSize:"23px"}}>@</h1>
 
-              <ScSelect onChange={handleSelect} value={Selected}>
+              <ScSelect onChange={handleSelect} value={Selected}   
+              onBlur={(e)=>{
+                 if(Email&&e.currentTarget===e.target){dupEmail()} 
+                }}>
                 <option value="email">--Email--</option>
                 <option value="@naver.com" >naver.com</option>
                 <option value="@hanmail.net">hanmail.net</option>
@@ -223,6 +241,9 @@ console.log(Email+Selected)
                 onChange={(event) => {
                   setNickname(event.target.value);
                 }}
+                onBlur={(e)=>{
+                  if(Nickname&& e.currentTarget===e.target){dupNick()} 
+                 }}
                 style={{  width:"362px" }}
               />
               <ScDuplicateButton onClick={dupNick}>중복검사</ScDuplicateButton>
@@ -259,8 +280,8 @@ console.log(Email+Selected)
             <ScCondition>비밀번호를 다시 입력해주세요</ScCondition>
             <br />
             </ScInputWrap>
-            {goToSignup? <ScLoginButton onClick={onSubmitUserHandler}>회원가입 하기</ScLoginButton>: <ScLoginButton onClick={onSubmitUserHandler} style={{backgroundColor:"black"}}>회원가입 하기</ScLoginButton>}
-            
+            {goToSignup? <ScLoginButton onClick={openModal}>회원가입 하기</ScLoginButton>: <ScLoginButton onClick={onSubmitUserHandler} style={{backgroundColor:"black"}}>회원가입 하기</ScLoginButton>}
+            <Modal showModal={modal} closeModal={closeModal}/>
             <ScLoginButton onClick={()=>{navigate('/')}}style={{backgroundColor:"black"}}>돌아가기</ScLoginButton>
           </ScSignupWrap>
           <ScImageBox/>

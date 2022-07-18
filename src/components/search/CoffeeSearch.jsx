@@ -42,7 +42,7 @@ const CoffeeSearch = (props) => {
           {sliceCoffee&&sliceCoffee.map((item,idx)=>{
             return(<CoffeeCard key={idx} item={item}/>)
           })} 
-          {sliceCoffee.length > 4 ? 
+          {sliceCoffee?.length > 4 ? 
           <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
         </ScCardContainer>
       </ScCoffeeWrap>
@@ -60,7 +60,7 @@ const CoffeeSearch = (props) => {
 
 const ScCoffeeWrap = styled.div`
   margin: auto;  
-  width: 1200px;
+  width: 1300px;
 `;
 
 const ScNothing = styled.div`

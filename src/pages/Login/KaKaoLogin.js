@@ -17,8 +17,8 @@ const KaKaoLogin = () => {
     if (code) {
       const kakao = ()=>{
          api
-        .get(`/oauth/kakao/callback?code=${code}`)//DB에 코드전송
-        .then((res) => {
+          .get(`/oauth/kakao/callback?code=${code}`)//DB에 코드전송
+         .then((res) => {
           console.log(res)
           const token = res.headers.authorization.split(" ");
           console.log(token[1])
@@ -46,7 +46,7 @@ const KaKaoLogin = () => {
   }, [code]);
 
   return (
-    <div>카카오로그인</div>
+    <div></div>
   )
 };
 
