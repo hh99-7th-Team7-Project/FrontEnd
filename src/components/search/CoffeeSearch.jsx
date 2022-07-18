@@ -39,9 +39,11 @@ const CoffeeSearch = (props) => {
      ( <div style={{display:"flex", flexDirection:"column",alignItems:"center", justifyContent:"center"}}>
       <ScCoffeeWrap>
         <ScCardContainer>
-        {sliceCoffee&&sliceCoffee.map((item,idx)=>{
-          return(<CoffeeCard key={idx} item={item}/>)
-        })} 
+          {sliceCoffee&&sliceCoffee.map((item,idx)=>{
+            return(<CoffeeCard key={idx} item={item}/>)
+          })} 
+          {sliceCoffee.length > 4 ? 
+          <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
         </ScCardContainer>
       </ScCoffeeWrap>
       <ScBtnWrap>
@@ -57,7 +59,8 @@ const CoffeeSearch = (props) => {
 }
 
 const ScCoffeeWrap = styled.div`
-  margin: auto; 
+  margin: auto;  
+  width: 1200px;
 `;
 
 const ScNothing = styled.div`
@@ -68,13 +71,22 @@ const ScNothing = styled.div`
   margin-top: 70px;
 `
 const ScCardContainer = styled.div`
+  position:relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 `;
 
+const ScBox = styled.div`
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFF 82.29%);
+`;
+
 const ScBtnWrap = styled.div`
+
+  margin: auto;
+  position: absolute;
 `;
 
 const ScBtn = styled.div`

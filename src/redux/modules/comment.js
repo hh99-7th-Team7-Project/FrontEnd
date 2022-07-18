@@ -1,8 +1,10 @@
+import { Navigate } from "react-router-dom";
 import apis from "../../shared/api/main";
 import { getCookie } from "../../shared/Cookie";
 
 
 const nickname = getCookie("nickname");
+
 
 // initialState 
 
@@ -70,6 +72,9 @@ export const __addComment = (payload) => async (dispatch, getState) => {
         dispatch(addComment(response.data));
     } catch (error) {
         console.log(error);
+        if (error.response.status === 401) {
+            alert ("로그인을 해주세요!");             
+        }
     }
 };
 
@@ -99,7 +104,7 @@ export const __loadComment = (payload) => async (dispatch, getState) => {
         dispatch(loadComment(posts.data))
     }
     catch (error) {
-        console.log(error)
+        console.log(error);        
     }
 };
 
@@ -112,6 +117,9 @@ export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, ge
         alert("삭제완료!");
     } catch (error) {
         console.log(error);
+        if (error.response.status === 500) {
+            alert ("내가 쓴 댓글만 삭제할 수 있습니다.");
+        }
     }
 }
 
