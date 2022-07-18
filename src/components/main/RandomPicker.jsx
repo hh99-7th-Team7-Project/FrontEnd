@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import character from '../../shared/svg/MainCharacter2.svg'
 import "./flipcard.css"
@@ -6,30 +6,40 @@ import RandomCoffee from './RandomCoffee'
 
 const RandomPicker = () => {
 
+  const [click, setClick] = useState(false)
 
   return (
-    <div className='container'>
+    <ScTotal className='container' click={click}>
             <ScWrap className='item front'>
               <ScWordWrap>
             <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"
 }}>Today's coffee?</h1>
-            <ScButton>골라보기</ScButton>
+            <ScButton onClick={()=>{setClick(!click)}}>골라보기</ScButton>
             </ScWordWrap>
             <img src={character} style={{height:"240px"}}/>
             </ScWrap>
             <ScWrap className='item back'>
               {/* <RandomCoffee/> */}
-              <ScWordWrap>
-            <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}>Today's coffee?</h1>
-            <ScButton>골라보기</ScButton>
-            </ScWordWrap>
-            <img src={character} style={{height:"240px"}}/>
+              {/* <ScWordWrap>
+            <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}>Today's coffee?</h1> */}
+            <ScButton onClick={()=>{setClick(!click)}}>골라보기</ScButton>
+            {/* </ScWordWrap>
+            <img src={character} style={{height:"240px"}}/> */}
             </ScWrap>
-    </div>
+    </ScTotal>
   )
 }
 
 export default RandomPicker
+
+const ScTotal =styled.div`
+  .item.front{
+    transform: ${(props) => (props.click ? "rotateY(180deg)" : "rotateY(0deg)")};;
+  }
+  .item.back{
+    transform: ${(props) => (props.click ? "rotateY(0deg)" : "rotateY(180deg)")};;
+  }
+`
 
 const ScWrap = styled.div`
   display: flex;
@@ -42,6 +52,7 @@ const ScWrap = styled.div`
   border:1px #bbb solid;
   border-radius: 12px;
   margin-left: 30px;
+  background-color: white;
 `
 const ScWordWrap =styled.div`
   

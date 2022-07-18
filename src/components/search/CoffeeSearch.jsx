@@ -14,28 +14,29 @@ const CoffeeSearch = (props) => {
   const navigate = useNavigate()
   const [coffeeReducer, setCoffeeReducer] = useState()
   // const coffeeReducer = useSelector((state) => state.coffee.list);
-  console.log(coffeeReducer)
+  console.log(coffeeReducer?.length)
   //처음 4개만 보여주기위해서 검색결과에서 4개 짜름
-  const sliceCoffee = coffeeReducer?.slice(0,4)
+  const sliceCoffee = coffeeReducer?.slice(0,8)
   console.log(sliceCoffee)
 
   //임시
   useEffect(()=>{
     const search = async()=>{
-      apis.searchCoffee(keyword)
+     await apis.searchCoffee(keyword)
           .then((res)=>{
             console.log(res)
             setCoffeeReducer(res?.data)
           })
+
     }
     search()
-  },[dispatch])
+  },[props])
     
 
   return (
    
-    (coffeeReducer?
-     ( <>
+    (coffeeReducer?.length!==0?
+     ( <div style={{display:"flex", flexDirection:"column",alignItems:"center", justifyContent:"center"}}>
       <ScCoffeeWrap>
         <ScCardContainer>
         {sliceCoffee&&sliceCoffee.map((item,idx)=>{
@@ -44,13 +45,13 @@ const CoffeeSearch = (props) => {
         </ScCardContainer>
       </ScCoffeeWrap>
       <ScBtnWrap>
-        <ScBtn style={{marginLeft:"600px"}}
+        <ScBtn 
         onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>
           <ScBtnTitle>+더보기</ScBtnTitle>
         </ScBtn>
       </ScBtnWrap>
-      </>):
-       ( <div style={{marginTop:"20px"}}>검색 결과가 없습니다</div>) 
+      </div>):
+       ( <ScNothing>검색 결과가 없습니다</ScNothing>) 
     )
   )
 }
@@ -59,26 +60,35 @@ const ScCoffeeWrap = styled.div`
   margin: auto; 
 `;
 
+const ScNothing = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+`
 const ScCardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 const ScBtnWrap = styled.div`
-  margin: auto;
 `;
 
-const ScBtn = styled.button`
+const ScBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 136px;
   height: 46px;
   background: #2c278c;
   border-radius: 100px;
   border: none;
-  
 `;
 
-const ScBtnTitle = styled.span`
+const ScBtnTitle = styled.div`
   width: 96px;
   height: 30px;
   color: white;

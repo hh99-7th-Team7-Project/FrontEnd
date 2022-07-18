@@ -74,7 +74,7 @@ useEffect(() => {
             <ScTop >
               <div>
                 <h1>베스트 게시물</h1>
-                <div style={{marginTop:"10px"}}>커파인러들이 가장 많이 본 게시물 Best 10!</div>
+                <div style={{marginTop:"10px"}}>커파인러들이 가장 많이 저장한 게시물 Best 10!</div>
               </div>
               <ScMoveButton style={{display:"flex"}}>
                 <div onClick={prevSlide}><img src={left}/></div>

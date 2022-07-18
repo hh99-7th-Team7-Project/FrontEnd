@@ -20,7 +20,8 @@ const ImgSlide = () => {
         return (
             <ScWrap>
                 <ScImgSlideWrap img={img}>
-                    <ScImg src="https://paikdabang.com/wp-content/uploads/2022/05/빽다방_홈페이지_main_5월_아이스크림라떼.jpg">
+                    {/* <ScImg src="https://paikdabang.com/wp-content/uploads/2022/05/빽다방_홈페이지_main_5월_아이스크림라떼.jpg"> */}
+                        <ScImg>
                         <ScContentWrap>
                             <ScDotAlign>
                                 <ScDotWrap>
@@ -31,7 +32,8 @@ const ImgSlide = () => {
                             </ScDotAlign>
                         </ScContentWrap>
                     </ScImg>
-                    <ScImg src="https://paikdabang.com/wp-content/uploads/2022/06/빽다방_홈페이지_main_코코넛2종.jpg">
+                    {/* <ScImg src="https://paikdabang.com/wp-content/uploads/2022/06/빽다방_홈페이지_main_코코넛2종.jpg"> */}
+                    <ScImg>
                         <ScContentWrap>
                                 <ScDotAlign>
                                     <ScDotWrap>
@@ -42,7 +44,8 @@ const ImgSlide = () => {
                                 </ScDotAlign>
                         </ScContentWrap>
                     </ScImg>
-                    <ScImg src="//admin.hollys.co.kr/upload/main/banner/mainBanner_202205240354532080.jpg">
+                    {/* <ScImg src="//admin.hollys.co.kr/upload/main/banner/mainBanner_202205240354532080.jpg"> */}
+                    <ScImg>
                         <ScContentWrap>
                                 <ScDotAlign>
                                     <ScDotWrap>
@@ -81,6 +84,7 @@ const ScImg = styled.div`
     align-items: left;
     width: 100vw;
     height: 500px;
+    background-color: aliceblue;
     background-image: url(${props => props.src});
     background-size: cover;
     background-repeat : no-repeat;

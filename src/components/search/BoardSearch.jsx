@@ -23,24 +23,25 @@ const BoardSearch = (props) => {
   },[keyword])
 
   return (
-    (boardReducer?
-      ( <>
+    (boardReducer?.length!==0?
+      (<div style={{display:"flex", flexDirection:"column"}}>
           <ScCoffeeWrap>
-          <ScCardContainer>
-            {sliceBoard&&sliceBoard.map((item,idx)=>{
-              return(
-                <BoardMap key={idx} content={item}/>
-                )
-              })} 
-          </ScCardContainer>
+              <ScCardContainer>
+                {sliceBoard&&sliceBoard.map((item,idx)=>{
+                  return(
+                    <BoardMap key={idx} content={item}/>
+                    )
+                  })} 
+              </ScCardContainer>
           </ScCoffeeWrap>
-        <ScBtnWrap>
-          <ScBtn style={{marginLeft:"600px"}}
-            onClick={()=>{navigate(`/search/board/${keyword}`)}}>
-          <ScBtnTitle>+더보기</ScBtnTitle></ScBtn>
-        </ScBtnWrap>
-        </>):
-        ( <div>검색 결과가 없습니다</div>) 
+          <ScBtnWrap>
+              <ScBtn 
+                onClick={()=>{navigate(`/search/board/${keyword}`)}}>
+              <ScBtnTitle>+더보기</ScBtnTitle>
+              </ScBtn>
+          </ScBtnWrap>
+        </div>):
+        (<ScNothing>검색 결과가 없습니다</ScNothing>) 
      )
      
  
@@ -48,7 +49,7 @@ const BoardSearch = (props) => {
 }
 
 const ScCoffeeWrap = styled.div`
-  margin: auto; 
+  /* margin: auto;  */
 `;
 
 const ScCardContainer = styled.div`
@@ -76,9 +77,18 @@ const ScBtnTitle = styled.span`
   height: 30px;
   color: white;
   font-style: normal;
-  font-size: 24px;
+  font-size: 23px;
   line-height: 30px;
   letter-spacing: 0.1em;
+  
 `;
+
+const ScNothing = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+`
 
 export default BoardSearch
