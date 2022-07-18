@@ -1,52 +1,62 @@
 import React from 'react';
-import Styled from 'styled-components';
+import styled from 'styled-components';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
 import apis from '../../shared/api/main';
+import BookMark from './svg/BookMark.svg';
 
 const BoardMain = ({head, boardId}) => {
     const navigate = useNavigate()
-    console.log(boardId)
+
 
 
   return (
     <ScWrap>
         <ScBtnWrap>
-            <div>{head?.category}</div>
+            <Btn>{head?.category}</Btn>
         </ScBtnWrap>
         <ScHR/>
         <ScTitleWrap>
-            <ScTitle>{head?.title}</ScTitle>
-            <ScLike>추천 : 6</ScLike>
-            <ScComment>댓글 : 1</ScComment>            
+            <ScBookMarkTitleBox>
+                <ScImg src={BookMark} alt="" />
+                <ScTitle>{head?.title}</ScTitle>
+            </ScBookMarkTitleBox>
+            <ScBtnBox>
+                <ScLike>추천 : 6</ScLike>
+                <ScComment>댓글 : 1</ScComment>
+            </ScBtnBox>            
         </ScTitleWrap>
-        <div>
-            <br/>
-            <p>{head?.nickname}</p>
-            <br/>
-            <p>21시 21분 23초</p>
+        <ScNickTimeBox>            
+            <span>{head?.nickname}</span>            
+            <span>21시 21분 23초</span>
+        </ScNickTimeBox>
+        <div style={{display:"flex",justifyContent:"space-between",width:"300px",marginTop:"20px"}}>
+            
+                <ScButton onClick={()=>{
+                    navigate(`/board/${boardId}/update`);
+                }}>수정</ScButton>
+            
+                <ScButton onClick={async()=>{
+                    await apis.deleteBoard(boardId)
+                    navigate("/board")
+                }}>삭제</ScButton>
         </div>
-       <Link to={`/board/${boardId}/update`}> <button>수정</button></Link>
-        <button onClick={async()=>{
-            await apis.deleteBoard(boardId)
-            navigate("/board")
-        }}>삭제</button> 
         <ScHR/>
     </ScWrap>
   )
 }
 
-const ScWrap = Styled.div`
+const ScWrap = styled.div`
     margin: 50px auto;
     width: 100%;
 `;
 
-const ScBtnWrap = Styled.div`
+const ScBtnWrap = styled.div`    
     display: flex;
     margin: 10px 10px;
 `;
 
-const Btn = Styled.button`
+const Btn = styled.button`
     margin: 10px;
     width: 150px;
     height: 30px;
@@ -57,30 +67,74 @@ const Btn = Styled.button`
         border-color: black;
         cursor: pointer;
     }
+    
     background-color: white;
     border-color: black;
+    padding: 0px 5px 0px 5px;
 `;
 
-const ScHR = Styled.hr`
+const ScHR = styled.hr`
     margin-top: 20px;
-    margin-bottom: 20px;.
+    margin-bottom: 20px;
 `;
 
-const ScTitleWrap = Styled.div`
+const ScTitleWrap = styled.div`
     display: flex;
     justify-content: space-between;
 `;
 
-const ScTitle = Styled.h2`
-    
-`;
-
-const ScLike = Styled.h4`
+const ScBookMarkTitleBox = styled.div`   
+      display: flex;
 
 `;
 
-const ScComment = Styled.h4`
+const ScImg = styled.img`
+    width: 25px;
+    height: 25px;
+`;
+
+const ScTitle = styled.h2`
+    margin-left: 10px;
+`;
+
+const ScBtnBox = styled.div`
+    width: 150px;
+    display: flex;
+    justify-content: space-between;    
+`;
+
+
+
+const ScLike = styled.h4`
     
+`;
+
+const ScComment = styled.h4`
+    
+`;
+
+const ScNickTimeBox = styled.div`    
+    width: 200px;
+    margin-top: 20px;
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const ScButton = styled.div`
+    padding: 20px;
+    margin: auto;
+    display: block;
+    width: 50px;
+    border-radius: 50px;
+    background-color: #EEE;
+    border-color: #EEE;
+    &:hover {
+    cursor: pointer;  
+    background-color: #212121;
+    color: white;
+    }
+    text-align: center;
 `;
 
 export default BoardMain
