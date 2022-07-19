@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { __getBoardComment, __addBoardComment, __deleteBoardComment } from '../../redux/modules/boardcomment';
+import { __getBoardComment, __deleteBoardComment } from '../../redux/modules/boardcomment';
 import UpdateBoardComment from './UpdateBoardComment';
 import { getCookie } from '../../shared/Cookie';
 
@@ -18,43 +18,9 @@ const CommentMap = () => {
     const [ showUpdate, setShowUpdate ] = useState(false);
     const [ commentId , setCommentId ] = useState();
 
-    
-    useEffect(()=>{
-        dispatch(__getBoardComment(boardId));
-    },[dispatch])
-
-    const boardCommentInputRef = React.useRef();
-
-    const commentAdd = () => {
-
-        if (
-            boardCommentInputRef.current.value !== ""            
-        )
-        {
-            dispatch(__addBoardComment({
-                    data: {
-                        comment: boardCommentInputRef.current.value
-                    },
-                    boardId
-            })
-        );
-        } else {
-            alert ("댓글을 입력해주세요.");
-        }
-    }
-    
 
     return (
         <>
-            <ScCommentWrap>
-                <ScInputWrap>                        
-                    <ScInput type="text" placeholder="댓글을 입력해주세요" ref={boardCommentInputRef} />
-                    <ScBtn onClick={()=>{
-                        commentAdd();
-                        boardCommentInputRef.current.value=""
-                    }}>등록</ScBtn>
-                </ScInputWrap>
-            </ScCommentWrap>
             <ScWrap>
                 <ScTableWrap>
                     {comment_list.map((item)=> (
@@ -81,16 +47,17 @@ const CommentMap = () => {
                             </ScCommentAlign>                            
                             <ScBtnAlign>                                   
                                 <ScSpan>{item?.createdAt.split("T")[0]}</ScSpan>
+                                { nickname === item?.nickname ? 
                                 <ScButton onClick={()=>{
                                     setShowUpdate(true);
                                     setCommentId(item?.id);
-                                }}>수정</ScButton>                                
+                                }}>수정</ScButton> : null }
                             </ScBtnAlign>
                         </ScTable>
-                    </div>
-                ))}
-            </ScTableWrap>
-        </ScWrap>
+                        </div>
+                    ))}
+                </ScTableWrap>
+            </ScWrap>
         </>
     )
 }
@@ -106,28 +73,7 @@ const ScWrap = styled.div`
 
 `;
 
-const ScCommentWrap = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-`;
 
-const ScInputWrap = styled.div`  
-  margin: 20px auto;  
-  display: column;
-  justify-content: start;
-  align-items: center;  
-`;
-
-const ScInput = styled.textarea`
-    width: 800px;
-    height: 40px;
-    margin: 30px auto;
-    /* border: none; */
-    border-radius: 2px;
-    font-size: 20px;
-    text-align: center;
-`;
 
 const ScNickAlign = styled.div`
     display: flex;
@@ -150,13 +96,7 @@ const ScBtnAlign = styled.div`
 
 
 
-const ScBtn = styled.button`
-    margin-left: 20px;
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    border: none;
-`;
+
 
 const ScTableWrap = styled.div`    
     margin: 30px auto;
@@ -192,6 +132,9 @@ const ScButton = styled.button`
   background-color: white;
   color: black;
   border: none;
+  margin-left: 50px;
+  width: 50px;
+  border: 1px solid black;
   
 `;
 

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import svg from './svg/MapMaker.svg';
 import svg1 from './svg/Write.svg';
+import { Link } from 'react-scroll';
 // import { __getAverageStar } from '../../redux/modules/comment';
 import { useDispatch } from 'react-redux';
 
@@ -35,7 +36,9 @@ const Review = ( { item, reviewData, url } ) => {
                 </ScGotoMap>
                 <ScGotoMap1>
                     <img src={svg1} alt=""/>
-                    <ScSpan>리뷰보기</ScSpan>
+                    <Link to="review" spy={true} smooth={true}>
+                        <ScSpan>리뷰보기</ScSpan>
+                    </Link>
                 </ScGotoMap1>
             </ScBtnWrap>
             <ScStarPriceContainer>
