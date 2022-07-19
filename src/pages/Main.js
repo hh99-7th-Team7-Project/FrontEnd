@@ -10,7 +10,7 @@ import {flow, flower} from "../shared/svg/A-index"
 import { Flower } from '../components/main/Flower';
 import { Footer } from '../components/Footer';
 import { Flow } from '../components/main/Flow';
-import Modal from '../components/Modal';
+import Modal from '../components/main/Modal';
 
 
 const Main = () => {

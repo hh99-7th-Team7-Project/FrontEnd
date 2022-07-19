@@ -15,7 +15,7 @@ import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL, NAVER_AUTH_URL } from '../../shared/So
 import styled from 'styled-components'
 import character from '../../shared/svg/MainCharacter2.svg'
 import { motion, AnimatePresence } from "framer-motion"
-import Modal from '../../components/Modal'
+import Modal from '../../components/main/Modal'
 
 const Login = (props) => {
 

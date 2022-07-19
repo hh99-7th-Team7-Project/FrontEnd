@@ -5,7 +5,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion"
 import unchecked from '../shared/svg/Unchecked.svg'
 import checked from '../shared/svg/Checked.svg'
-import Modal from '../components/Modal';
+import Modal from '../components/main/Modal';
+import SignupModal from '../components/Signup/SignupModal';
 
 const SignUp = (props) => {
   const navigate = useNavigate();
@@ -134,34 +135,39 @@ console.log(Email+Selected)
     if (!(okid && oknickname)) {
       setAlert("중복체크를 모두 해주세요!")
     } else {
-      const form = new FormData();
-      //사진이 들어가지 않았을 때와 들어갔을 때 구분해서 보내줌
-      const datas = {
-        username: emailRef.current.value+Selected,
-        nickname: nicknameRef.current.value,
-        password: passwordRef.current.value,
-      }
-      const data = {
-        username: emailRef.current.value+Selected,
-        nickname: nicknameRef.current.value,
-        password: passwordRef.current.value,
-        profileImage: null
-      }
-      form.append("signup", new Blob([JSON.stringify(datas)], {
-        type: "application/json"
-      }))
-      form.append('profileImage', fileInputRef.current.files[0])
-      // console.log(fileInputRef.current.files[0].name)
-      if(fileInputRef.current.files?.length===0){
-        const response = await apis.addUserWO(data)
-      }else{
-        const res = await apis.addUser(form);
-      }
-      
-      navigate("/login")
-    }
-
+     const verify = await apis.verifyEmail({username: emailRef.current.value+Selected})
+                              .then((res)=>{
+                                openModal()
+                              })
   };
+  }
+   //회원가입정보 전달
+   const signupAfter = async()=>{
+    const form = new FormData();
+    //사진이 들어가지 않았을 때와 들어갔을 때 구분해서 보내줌
+    const datas = {
+      username: emailRef.current.value+Selected,
+      nickname: nicknameRef.current.value,
+      password: passwordRef.current.value,
+    }
+    const data = {
+      username: emailRef.current.value+Selected,
+      nickname: nicknameRef.current.value,
+      password: passwordRef.current.value,
+      profileImage: null
+    }
+    form.append("signup", new Blob([JSON.stringify(datas)], {
+      type: "application/json"
+    }))
+    form.append('profileImage', fileInputRef.current.files[0])
+    // console.log(fileInputRef.current.files[0].name)
+    if(fileInputRef.current.files?.length===0){
+      const response = await apis.addUserWO(data)
+    }else{
+      const res = await apis.addUser(form);
+    }
+    navigate("/login")
+  }
   //프로필 사진 업로드
   const saveFileImage = async (e) => {
     setFileImage(URL.createObjectURL(e.target.files[0]));
@@ -280,8 +286,8 @@ console.log(Email+Selected)
             <ScCondition>비밀번호를 다시 입력해주세요</ScCondition>
             <br />
             </ScInputWrap>
-            {goToSignup? <ScLoginButton onClick={openModal}>회원가입 하기</ScLoginButton>: <ScLoginButton onClick={onSubmitUserHandler} style={{backgroundColor:"black"}}>회원가입 하기</ScLoginButton>}
-            <Modal showModal={modal} closeModal={closeModal}/>
+            {goToSignup? <ScLoginButton onClick={onSubmitUserHandler}>회원가입 하기</ScLoginButton>: <ScLoginButton onClick={onSubmitUserHandler} style={{backgroundColor:"black"}}>회원가입 하기</ScLoginButton>}
+            <SignupModal showModal={modal} closeModal={closeModal} signupAfter={signupAfter} email={emailRef?.current?.value+Selected}/>
             <ScLoginButton onClick={()=>{navigate('/')}}style={{backgroundColor:"black"}}>돌아가기</ScLoginButton>
           </ScSignupWrap>
           <ScImageBox/>

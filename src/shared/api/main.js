@@ -1,4 +1,4 @@
-import {api,instance,instances} from "./core/api";
+import {api,apin,instance,instances} from "./core/api";
 
 const apis = {
 
@@ -9,6 +9,8 @@ const apis = {
     addUserWO: (newUser) => api.post("/api/user/signup",newUser),
     postLogin : (userdata) => api.post("/api/login", userdata),
     postImg: (data)=> instance.post("/coffees/image",data),
+    verifyEmail: (data) => apin.post("/signup/emails",data),
+    verifyDone:(data)=> api.post("/signup/emails/checks",data),
 
 //마이페이지
     getMypage : (userId) => api.get(`/mypage/userInfo/${userId}`),
