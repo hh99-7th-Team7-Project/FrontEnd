@@ -51,9 +51,8 @@ const Comment = ({item}) => {
         <div>
           <ScBrandTitle>
             <ScH3>{item?.brand}</ScH3>
-            
           </ScBrandTitle>
-          <ScCoffeeTitle>
+          <ScCoffeeTitle id="review">
             <ScH1>"{item?.name}"</ScH1>
             <ScOneCommentTitle>한줄평을 남겨주세요!</ScOneCommentTitle>
           </ScCoffeeTitle>

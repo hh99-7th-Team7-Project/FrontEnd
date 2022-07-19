@@ -11,6 +11,8 @@ const BoardSearch = (props) => {
 
   const sliceBoard = boardReducer?.slice(0,5)
 
+  
+
   useEffect(()=>{
     const search = async()=>{
       apis.searchBoard(keyword)
@@ -30,24 +32,23 @@ const BoardSearch = (props) => {
             {sliceBoard&&sliceBoard.map((item,idx)=>{
               return(
                 <BoardMap key={idx} content={item}/>
-                )
-              })}
-              {sliceBoard.length > 3 ? 
+                )})}
+              {sliceBoard?.length > 3 ? 
               <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
           </ScCardContainer>
           </ScCoffeeWrap>
-          <ScBtnWrap>
-              <ScBtn 
-                onClick={()=>{navigate(`/search/board/${keyword}`)}}>
-              <ScBtnTitle>+더보기</ScBtnTitle>
-              </ScBtn>
-          </ScBtnWrap>
+          <ScBtnAlign>
+            <ScBtnWrap>
+                <ScBtn 
+                  onClick={()=>{navigate(`/search/board/${keyword}`)}}>
+                  <ScBtnTitle>+더보기</ScBtnTitle>
+                </ScBtn>
+            </ScBtnWrap>
+          </ScBtnAlign>
         </div>):
         (<ScNothing>검색 결과가 없습니다</ScNothing>) 
-     )
-     
- 
-   )
+    )
+  )
 }
 
 const ScCoffeeWrap = styled.div`
@@ -65,9 +66,14 @@ const ScBox = styled.div`
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFF 82.29%);
 `;
 
-const ScBtnWrap = styled.div`
-  margin: auto;
-  position: absolute;
+const ScBtnAlign = styled.div`  
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+`;
+
+const ScBtnWrap = styled.div`  
+  position: absolute;  
 `;
 
 const ScBtn = styled.button`
@@ -75,7 +81,7 @@ const ScBtn = styled.button`
   height: 46px;
   background: #2c278c;
   border-radius: 100px;
-  border: none;
+  border: none;  
   
 `;
 
@@ -87,6 +93,9 @@ const ScBtnTitle = styled.span`
   font-size: 23px;
   line-height: 30px;
   letter-spacing: 0.1em;
+  &:hover {
+    cursor: pointer;
+  }
   
 `;
 
