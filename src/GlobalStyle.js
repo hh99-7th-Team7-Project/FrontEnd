@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle `
     font-weight: 700;
     line-height: 24.96px;
   }
-  button, label, div,p {
+  button, label, div,p, textarea {
     font-family: ‘SUIT Variable’;
     font-weight: 700;
     line-height: 24.96px;

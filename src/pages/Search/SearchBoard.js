@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { useNavigate, useParams } from 'react-router-dom'
 import BoardMap from '../../components/board/BoardMap'
 import apis from '../../shared/api/main'
@@ -21,17 +22,26 @@ const SearchBoard = () => {
   },[keyword])
 
   return (
-        <div>
-        <div style={{margin:"auto"}}> 
-          <Header/>
-        </div>
-        <div >
-       {boardReducer&&boardReducer.map((item,idx)=>{
-         return(<BoardMap key={idx} content={item}/>)
-       })} </div>
-       </div>
+        <ScWrap>
+          <div style={{margin:"auto"}}> 
+            <Header/>
+          </div>
+          <ScBoardWrap>
+            {boardReducer&&boardReducer.map((item,idx)=>{
+              return(<BoardMap key={idx} content={item}/>)
+            })} 
+          </ScBoardWrap>
+       </ScWrap>
    )
   
 }
+
+const ScWrap = styled.div`
+  margin: auto;
+`;
+
+const ScBoardWrap = styled.div`
+  margin: 50px auto;
+`;
 
 export default SearchBoard

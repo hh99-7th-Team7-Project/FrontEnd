@@ -18,7 +18,6 @@ const CoffeeDetail = () => {
   const [pri,setPri]=useState()
 
 
-
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
 const commentReducer = useSelector((state) => state.comment.posts);
 
@@ -60,7 +59,8 @@ return (
           />          
           <CommentCard 
             boardId={boardId}
-            brand={brand} />
+            brand={brand}
+          />
       </ScCommentBox>
     </>
   )

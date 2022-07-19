@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import svg from './svg/MapMaker.svg';
 import svg1 from './svg/Write.svg';
+import { Link } from 'react-scroll';
 // import { __getAverageStar } from '../../redux/modules/comment';
 import { useDispatch } from 'react-redux';
 
@@ -16,6 +17,12 @@ const Review = ( { item, reviewData, url } ) => {
 
     const pricePair = item?.pricePair;
     console.log(pricePair);
+
+    console.log(item);
+
+    const starPoint = item?.star;
+
+    console.log(starPoint);
 
 
     // useEffect(()=>{
@@ -35,14 +42,21 @@ const Review = ( { item, reviewData, url } ) => {
                 </ScGotoMap>
                 <ScGotoMap1>
                     <img src={svg1} alt=""/>
-                    <ScSpan>리뷰보기</ScSpan>
+                    <Link to="review" spy={true} smooth={true}>
+                        <ScSpan>리뷰보기</ScSpan>
+                    </Link>
                 </ScGotoMap1>
             </ScBtnWrap>
             <ScStarPriceContainer>
                 <ScStarBox>
                     <ScH3>총 별점</ScH3>
-                    <ScH2>4.4</ScH2>
-                    <ScH3>&#9733; &#9733; &#9733; &#9733;</ScH3>                    
+                    { starPoint === "NaN" ? 
+                    <ScH2>0.0</ScH2> : <ScH2>{starPoint}</ScH2> }                    
+                    { Math.floor(starPoint) === 1 && <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 2 && <ScH3>&#9733; &#9733; &#9734; &#9734; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 3 && <ScH3>&#9733; &#9733; &#9733; &#9734; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 4 && <ScH3>&#9733; &#9733; &#9733; &#9733; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 5 && <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3> }                                        
                 </ScStarBox>
                 <ScPriceBox>
                     <ScH3>가격</ScH3>

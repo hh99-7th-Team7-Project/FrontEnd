@@ -54,6 +54,9 @@ const ScBtn = styled.div`
     margin: 20px;
     font-size: 13pt;
     color: #2C278C;
+    &:hover {
+    cursor: pointer;
+  }
 `;
 
 
