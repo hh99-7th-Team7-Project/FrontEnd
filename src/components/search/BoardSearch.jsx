@@ -93,6 +93,9 @@ const ScBtnTitle = styled.span`
   font-size: 23px;
   line-height: 30px;
   letter-spacing: 0.1em;
+  &:hover {
+    cursor: pointer;
+  }
   
 `;
 

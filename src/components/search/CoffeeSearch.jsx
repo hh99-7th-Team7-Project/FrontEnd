@@ -113,6 +113,9 @@ const ScBtnTitle = styled.div`
   line-height: 30px;
   letter-spacing: 0.1em;
   margin: auto;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default CoffeeSearch
