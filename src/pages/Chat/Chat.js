@@ -12,7 +12,7 @@ const Chat = () => {
   useEffect(() => {
     dispatch(__loadChatLists());
   }, []);
-
+  console.log('hi');
   const chatReducer = useSelector((state) => state?.chat?.list);
   console.log(chatReducer);
 
