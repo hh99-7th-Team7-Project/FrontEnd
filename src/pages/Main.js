@@ -11,12 +11,20 @@ import { Flower } from '../components/main/Flower';
 import { Footer } from '../components/Footer';
 import { Flow } from '../components/main/Flow';
 import Modal from '../components/main/Modal';
+import { getCookie } from '../shared/Cookie';
 
 
 const Main = () => {
 const [category, setCategory] = useState(true)
-
 const [showModal, setShowModal] = useState(true);
+
+const notModal = getCookie("not seen a day")
+
+useEffect(()=>{
+  if(notModal){
+    setShowModal(false)
+  }
+},[])
 
 const openModal = () => {
   setShowModal(true);

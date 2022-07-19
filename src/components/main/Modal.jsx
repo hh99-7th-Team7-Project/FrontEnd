@@ -1,14 +1,23 @@
 import React from 'react'
 import styled from 'styled-components';
+import { setCookie } from '../../shared/Cookie';
 
 const Modal = ({showModal,closeModal}) => {
+  const notSeenADay = ()=>{
+    setCookie("not seen a day",true)
+    closeModal()
+  }
+
+
   return (
     <div>{showModal ? 
       <Background>
       <ModalContainer>
+        <div>
       <span>Coffind에 오신걸 환영합니다!</span>
-      <span onClick={closeModal}>X</span>
-     <div>❤coffind를 100% 즐기기 위한 설명서❤</div>
+      <span onClick={closeModal}>❌</span>
+      </div>
+     <div>❤Coffind를 100% 즐기기 위한 설명서❤</div>
      <div>
 - 원하는 음료의 가격을 찾아보세요! 저희 coffind은 우리가 자주 찾는 12개의 대형 브랜드 커피숍들의 가격을 한눈에 찾아 볼 수 있는 사이트 입니다! 
 - brand 혹은 category를 사용해서 원하는 커피의 값을 알아보세요!
@@ -31,6 +40,7 @@ const Modal = ({showModal,closeModal}) => {
 - 가고 싶은 곳의 위치와 가고 싶은 날짜를 정해 커피 모임을 만들고 모임 원 끼리 채팅을 통해 협의해  함께 커피숍을 가봐요!
 </div>
 </div>
+<button onClick={notSeenADay}>오늘 하루 보지 않기</button>
      </ModalContainer>
      </Background> : null}</div>
   )

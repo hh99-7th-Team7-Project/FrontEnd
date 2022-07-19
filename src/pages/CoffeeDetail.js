@@ -14,7 +14,7 @@ const CoffeeDetail = () => {
 
  
   const dispatch = useDispatch()
-  const [data, setData] = useState()
+  const [like, setLike] = useState()
   const [pri,setPri]=useState()
 
 
@@ -25,6 +25,7 @@ const commentReducer = useSelector((state) => state.comment.posts);
 
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 
+  setLike(coffeeReducer?.love)
 },[dispatch])
 
 
@@ -41,6 +42,8 @@ return (
             <ImgCard 
                 url={coffeeReducer?.img}
                 item={coffeeReducer}
+                like={like}
+                setLike={setLike}
             />
           <ScReviewCommentBox>
             <Review 

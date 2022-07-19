@@ -26,7 +26,8 @@ const apis = {
     addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`,coffee),
     getRandomCoffee: ()=> api.get("/coffees/random?brand=스타벅스&category=coffee"),
     getCoffees: ()=> api.get("/coffees"),
-
+    likeCoffee:(brand, id)=>api.post(`/coffees/love/${brand}/${id}`),
+    
 //리뷰
     postComment : (brand, id, data) => api.post(`coffees/${brand}/${id}/reviews`, data),
     getComment : (brand, boardId) => api.get(`coffees/${brand}/${boardId}/reviews`),
