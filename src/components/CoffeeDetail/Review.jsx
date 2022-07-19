@@ -18,6 +18,12 @@ const Review = ( { item, reviewData, url } ) => {
     const pricePair = item?.pricePair;
     console.log(pricePair);
 
+    console.log(item);
+
+    const starPoint = item?.star;
+
+    console.log(starPoint);
+
 
     // useEffect(()=>{
     //     dispatch(__getAverageStar(brand,boardId))
@@ -44,8 +50,13 @@ const Review = ( { item, reviewData, url } ) => {
             <ScStarPriceContainer>
                 <ScStarBox>
                     <ScH3>총 별점</ScH3>
-                    <ScH2>4.4</ScH2>
-                    <ScH3>&#9733; &#9733; &#9733; &#9733;</ScH3>                    
+                    { starPoint === "NaN" ? 
+                    <ScH2>0.0</ScH2> : <ScH2>{starPoint}</ScH2> }                    
+                    { Math.floor(starPoint) === 1 && <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 2 && <ScH3>&#9733; &#9733; &#9734; &#9734; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 3 && <ScH3>&#9733; &#9733; &#9733; &#9734; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 4 && <ScH3>&#9733; &#9733; &#9733; &#9733; &#9734;</ScH3> }
+                    { Math.floor(starPoint) === 5 && <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3> }                                        
                 </ScStarBox>
                 <ScPriceBox>
                     <ScH3>가격</ScH3>
