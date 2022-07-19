@@ -2,12 +2,16 @@ import React from 'react';
 import './App.css';
 import Router from './shared/Router';
 import styled from 'styled-components'
+import {AnimatePresence} from 'framer-motion'
+
 
 
 function App() {
   return (
     <SCwrap> 
-        <Router/>
+      <AnimatePresence>
+        <Router />
+      </AnimatePresence>
     </SCwrap>
   );
 }
@@ -17,5 +21,7 @@ function App() {
 export default App;
 
 const SCwrap = styled.div`
-margin: 0 15%;
+display: flex;
+flex-direction: column;
+/* justify-content: center; */
 `

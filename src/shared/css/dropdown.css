@@ -1,0 +1,20 @@
+#dropdown {
+    left: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+#dropdown:checked + label + div {
+    display: block;
+    border-top: 1px solid #00000026;
+  }
+
+.careIcon {
+    transition: transform 250ms ease-out;
+}
+#dropdown:checked + label > .careIcon {
+    transform: rotate(-180deg);
+}
+
+
+

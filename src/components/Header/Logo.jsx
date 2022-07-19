@@ -1,26 +1,16 @@
 import React from 'react'
-import Styled from 'styled-components';
-import logo from '../../Image/Logo/logo.png'
+import { useNavigate } from 'react-router-dom';
+import svg from './svg/Logo.svg'
 
 const Logo = () => {
+  const navigate = useNavigate()
   return (
-    <ScWrap>
-        <ScImg src={logo}/>
-        <p>이건 예시입니다.</p>       
-    </ScWrap>
+    <>
+  <img src={svg} onClick={()=>{navigate("/")}} alt="" style={{width:"165px"}}/>
+  {/* <svg></svg> */}
+  </>
   )
 }
-
-const ScWrap = Styled.div`
-  margin-left: 40px;      
-  display: column;
-`;
-
-const ScImg = Styled.img`
-  width: 100px;
-  padding-top: 3px;
-  border-radius: 20px;
-`;
 
 
 export default Logo

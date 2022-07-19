@@ -1,55 +1,89 @@
-import React, {useEffect} from 'react'
-import Styled from 'styled-components';
-import ImgCard from '../components/CoffeeDetail/ImgCard';
-import Review from '../components/CoffeeDetail/Review';
-import Comment from '../components/CoffeeDetail/Comment';
-import CommentCard from '../components/CoffeeDetail/CommentCard';
-import { __loadComment } from '../redux/modules/comment';
-import { useDispatch } from 'react-redux';
+import React, {useEffect, useState} from 'react'
+import styled from 'styled-components';
+import Header from './Header/Header';
+import { Comment, CommentCard, ImgCard, Review, CoffeeCategory } from '../components/CoffeeDetail/A-CoffeeDetailIndex';
+import { useParams } from 'react-router-dom';
+import {useDispatch,useSelector}from 'react-redux';
+import { __loadCoffeeDetail } from '../redux/modules/coffee';
+
 
 const CoffeeDetail = () => {
 
-  const dispatch = useDispatch();
+  const { brand } = useParams();
+  const { boardId } = useParams();
 
-  useEffect(()=>{
-    dispatch(__loadComment());
-   },[dispatch])
+ 
+  const dispatch = useDispatch()
+  const [data, setData] = useState()
+  const [pri,setPri]=useState()
 
 
-  return (
-    <>      
-      <ScHR/>
-      <ScContainer>
-        <ImgCard 
-            url="https://www.angelinus.com/Data/Goods/48/DetailImage.png"
-        />
-        <ScReviewCommentBox>
-          <Review 
-              title="아메리카노"
-              subtitle="americano"
-          />
-          <Comment />          
-          <CommentCard/>
-        </ScReviewCommentBox>
-        
-      </ScContainer>
-      
-      
+
+const coffeeReducer = useSelector((state) => state.coffee.coffee);
+const commentReducer = useSelector((state) => state.comment.posts);
+
+
+useEffect(()=>{
+ dispatch(__loadCoffeeDetail(brand, boardId)) 
+},[dispatch])
+
+
+return (
+    <>
+      <div style={{margin:"auto"}}> 
+        <Header/>
+      </div>
+      <div>
+        <CoffeeCategory/>
+      </div>   
+      <Scwrap>
+        <ScContainer>
+            <ImgCard 
+                url={coffeeReducer?.img}
+                item={coffeeReducer}
+            />
+          <ScReviewCommentBox>
+            <Review 
+              item={coffeeReducer}
+              reviewData={commentReducer}
+              url={coffeeReducer?.img}
+              />
+          </ScReviewCommentBox>
+        </ScContainer>
+      </Scwrap>
+      <ScCommentBox>
+          <Comment 
+            item={coffeeReducer}
+          />          
+          <CommentCard 
+            boardId={boardId}
+            brand={brand} />
+      </ScCommentBox>
     </>
   )
 }
 
-const ScHR = Styled.hr`
-  margin-top: 50px;
-  margin-bottom: 50px;
+const Scwrap = styled.div`
+  display: column;
+  max-width:1200px;
+  width:80vw;
+  margin: auto;
 `;
 
-const ScContainer = Styled.div`
-  display: flex;
-`;
-
-const ScReviewCommentBox = Styled.div`
+const ScContainer = styled.div`
   display: column;
 `;
+
+const ScReviewCommentBox = styled.div`
+  display: column;
+`;
+
+const ScCommentBox = styled.div`
+  margin: 400px auto;
+  width: 1900px;
+  height: 1900px;
+  background-color: #eee;
+`;
+
 
 export default CoffeeDetail;

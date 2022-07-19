@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import Styled from 'styled-components';
-import Paiks_Cream_Crape from '../../Image/MainBanner/Paiks_Cream_Crape.jpg';
-import Paiks_IceCream_Ratte from '../../Image/MainBanner/Paiks_IceCream_Ratte.jpg';
-import Compose from '../../Image/MainBanner/Compose.jpg';
+import styled from 'styled-components';
 
 const ImgSlide = () => {
     
@@ -22,87 +19,107 @@ const ImgSlide = () => {
     
         return (
             <ScWrap>
-            <ScImgSlideWrap img={img}>
-                <ScImg src={Paiks_Cream_Crape} >
-                    <ScContentWrap>
-                        <ScDotWrap>
-                            <ScDot onClick={firstDot} img={img}/>
-                            <ScDot onClick={secondDot} img={img}/>
-                            <ScDot onClick={thirdDot} img={img}/>
-                        </ScDotWrap>
-                    </ScContentWrap>
-                </ScImg>
-                <ScImg src={Paiks_IceCream_Ratte}>
-                    <ScContentWrap>
-                            <ScDotWrap>
-                                <ScDot onClick={firstDot} img={img}/>
-                                <ScDot onClick={secondDot} img={img}/>
-                                <ScDot onClick={thirdDot} img={img}/>
-                            </ScDotWrap>
-                    </ScContentWrap>
-                </ScImg>
-                <ScImg src={Compose}>
-                    <ScContentWrap>
-                            <ScDotWrap>
-                                <ScDot onClick={firstDot} img={img}/>
-                                <ScDot onClick={secondDot} img={img}/>
-                                <ScDot onClick={thirdDot} img={img}/>
-                            </ScDotWrap>
-                    </ScContentWrap>
-                </ScImg>
-            </ScImgSlideWrap>
-        </ScWrap>
+                <ScImgSlideWrap img={img}>
+                    {/* <ScImg src="https://paikdabang.com/wp-content/uploads/2022/05/빽다방_홈페이지_main_5월_아이스크림라떼.jpg"> */}
+                        <ScImg>
+                        <ScContentWrap>
+                            <ScDotAlign>
+                                <ScDotWrap>
+                                    <ScDot onClick={firstDot} img={img}/>
+                                    <ScDot onClick={secondDot} img={img}/>
+                                    <ScDot onClick={thirdDot} img={img}/>
+                                </ScDotWrap>
+                            </ScDotAlign>
+                        </ScContentWrap>
+                    </ScImg>
+                    {/* <ScImg src="https://paikdabang.com/wp-content/uploads/2022/06/빽다방_홈페이지_main_코코넛2종.jpg"> */}
+                    <ScImg>
+                        <ScContentWrap>
+                                <ScDotAlign>
+                                    <ScDotWrap>
+                                        <ScDot onClick={firstDot} img={img}/>
+                                        <ScDot onClick={secondDot} img={img}/>
+                                        <ScDot onClick={thirdDot} img={img}/>
+                                    </ScDotWrap>
+                                </ScDotAlign>
+                        </ScContentWrap>
+                    </ScImg>
+                    {/* <ScImg src="//admin.hollys.co.kr/upload/main/banner/mainBanner_202205240354532080.jpg"> */}
+                    <ScImg>
+                        <ScContentWrap>
+                                <ScDotAlign>
+                                    <ScDotWrap>
+                                        <ScDot onClick={firstDot} img={img}/>
+                                        <ScDot onClick={secondDot} img={img}/>
+                                        <ScDot onClick={thirdDot} img={img}/>
+                                    </ScDotWrap>
+                                </ScDotAlign>
+                        </ScContentWrap>
+                    </ScImg>
+                </ScImgSlideWrap>
+            </ScWrap>
         )
     }
 
 
-const ScWrap = Styled.div`
+const ScWrap = styled.div`
     overflow: hidden;
-    margin: 10px auto;
+    width: 100%; 
+    /* height: 500px; */
+
 `;
 
-const ScImgSlideWrap = Styled.div`
+const ScImgSlideWrap = styled.div`
     position: relative;
     display: flex;
-    width: 300vw;
-    height: 50vh;
-    overflow: hidden;
+    width: 500vw;    
     transition: 0.5s ease-in-out;
-    margin: auto;
     transform : translate(${props => props.img}vw);
 `;
 
 
-const ScImg = Styled.div`
+const ScImg = styled.div`
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: left;
     width: 100vw;
-    height: 50vh;
+    height: 500px;
+    background-color: aliceblue;
     background-image: url(${props => props.src});
     background-size: cover;
+    background-repeat : no-repeat;
     float: left;
 `;
 
-const ScContentWrap = Styled.div`
+const ScContentWrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
     width: 100px;
     height: 70px;
     padding-top: 20px;
 `;
 
+const ScDotAlign = styled.div`
+    align-items: center;    
+    /* width: 700px; */
+    margin: auto;
 
-const ScDotWrap = Styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80px;    
 `;
 
-const ScDot = Styled.div`
+const ScDotWrap = styled.div`
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: space-between;
+    width: 80px;
+        
+    
+`;
+
+const ScDot = styled.div`
     width: 15px;
     height: 15px;
     border-radius: 50%;

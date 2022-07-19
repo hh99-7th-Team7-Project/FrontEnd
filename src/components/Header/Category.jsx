@@ -1,32 +1,30 @@
 import React from 'react';
 import Styled from 'styled-components';
+import {Link, useNavigate} from 'react-router-dom'
 
 const Category = () => {
+  const navigate = useNavigate()
+
     return (
         <ScCategoryBox>
-            <ScCategory>카테고리 1</ScCategory>
-            <ScCategory>카테고리 2</ScCategory>
-            <ScCategory>카테고리 3</ScCategory>
-            <ScCategory>카테고리 4</ScCategory>
+          <ScCategory onClick={()=>{navigate("/menucategory")}}>Menu</ScCategory>
+        <ScCategory>커피모임</ScCategory>
+        <ScCategory onClick={()=>{navigate("/board")}}>커피연구소</ScCategory>
         </ScCategoryBox>
     )
 }
 
 const ScCategoryBox = Styled.div`  
-  margin-left: 50px;
-  margin: 20px 30px auto;  
-  width: 550px;
-  padding: 10px;
   display: flex;
-  
-  
-  
+  font-size: 13pt;
+  gap: 31px;
+  margin: 0 61px 0 18px;
+  color: #2C278C;
 `;
 
 const ScCategory = Styled.div` 
-  width: 100px;
   background-color: white;
-  margin-left: 30px;
+  /* margin-left: 30px; */
   &: hover {
     cursor: pointer;
   }

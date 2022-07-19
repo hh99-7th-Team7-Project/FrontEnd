@@ -1,17 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from "react"
 import Styled from 'styled-components';
+import {useNavigate} from 'react-router-dom'
 
-const Map = () => {
+const Map = (props) => {
+  const navigate = useNavigate()
+
+
   return (
-    <ScMapWrap>
-        여기에 지도가 들어갑니다.
+    <ScMapWrap onClick={()=>{navigate('/map/커피숍')}}>
+           <div style={{ position: 'relative' }}>
+      <div
+        className='w-full'
+        id='map'
+        style={{ height: '300px', backgroundColor: 'grey' }}
+      >
+        지도 
+      </div>
+    </div>
     </ScMapWrap>
   )
 }
 
 const ScMapWrap = Styled.div`
     border: 2px solid black;
-
     margin: 20px;
 `;
 
