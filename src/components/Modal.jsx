@@ -5,9 +5,10 @@ const Modal = ({showModal,closeModal}) => {
   return (
     <div>{showModal ? 
       <Background>
+      
       <ModalContainer>
-      <span>Coffind에 오신걸 환영합니다!</span>
-      <span onClick={closeModal}>X</span>
+      <ScX onClick={closeModal}>X</ScX>
+      <p>Coffind에 오신걸 환영합니다!</p>    
      <div>Coffind를 100% 즐기기 위한 방법을 설명합니다!</div>
      </ModalContainer>
      </Background> : null}</div>
@@ -39,4 +40,12 @@ const ModalContainer = styled.div`
     background: rgb(25, 31, 44);
     border-radius: 10px;
     text-align: center;
+`;
+
+const ScX = styled.span`
+  &:hover {
+    cursor: pointer;
+  }
+  display: flex;
+  justify-content: flex-end;
 `;

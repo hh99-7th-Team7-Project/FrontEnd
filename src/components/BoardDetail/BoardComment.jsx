@@ -130,7 +130,6 @@ const ScTextArea = styled.textarea`
     text-align: center;
     &::placeholder {
         text-align: center;
-        
     }
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
 `;
@@ -141,6 +140,9 @@ const ScBtn = styled.button`
     height: 30px;
     border-radius: 20px;
     border: none;
+    &:hover {
+      cursor: pointer;
+    }
 `;
 
 const ScBtnBox = styled.div`
@@ -154,6 +156,9 @@ const ScCommentBtn = styled.button`
     height: 30px;
     border-radius: 20px;
     border: none;
+    &:hover {
+      cursor: pointer;
+    }
 `;
 
 const ScLabel = styled.label`
