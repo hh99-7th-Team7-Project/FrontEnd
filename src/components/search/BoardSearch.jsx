@@ -32,6 +32,7 @@ const BoardSearch = (props) => {
             {sliceBoard&&sliceBoard.map((item,idx)=>{
               return(
                 <BoardMap key={idx} content={item}/>
+
                 )})}
               {sliceBoard?.length > 3 ? 
               <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
