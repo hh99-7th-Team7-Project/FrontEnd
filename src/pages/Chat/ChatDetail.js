@@ -8,8 +8,9 @@ import { useParams } from 'react-router-dom';
 const ChatDetail = () => {
   const dispatch = useDispatch();
   const [chat, setChat] = useState(false);
+  const [click, setClick] = useState(false);
   const { id } = useParams();
-
+  console.log(id);
   useEffect(() => {
     dispatch(__loadOneChatItem(id));
   }, []);
@@ -21,9 +22,9 @@ const ChatDetail = () => {
     <div>
       <span>ChatDetail</span>
       <ChatDetailItem chatReducer={chatReducer}></ChatDetailItem>
-      <button>참여하기</button>
+      <button onClick={() => setClick(!click)}>참여하기</button>
       <button onClick={() => setChat(!chat)}>대화하기</button>
-      {chat === true ? <PostChat /> : null}
+      {chat === true ? <PostChat id={id} /> : null}
     </div>
   );
 };

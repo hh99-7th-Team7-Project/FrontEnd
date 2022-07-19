@@ -10,7 +10,7 @@ let stompClient = null;
 const PostChat = ({ id }) => {
   const dispatch = useDispatch();
   // const post_chat_list = useSelector((state) => state.chat.post_list);
-
+  console.log(id);
   const messageRef = useRef();
 
   const cookie = getCookie('token');
@@ -54,13 +54,13 @@ const PostChat = ({ id }) => {
   //   scrollToBottom();
   // }, [publicChats, chatScroll]);
 
-  // React.useEffect(() => {
-  //   dispatch(chatActions.prevPostChatDB(pid));
-  //   stompConnect();
-  //   return () => {
-  //     stompDisConnect();
-  //   };
-  // }, []);
+  React.useEffect(() => {
+    // dispatch(chatActions.prevPostChatDB(pid));
+    stompConnect();
+    return () => {
+      stompDisConnect();
+    };
+  }, []);
 
   const onKeyPress = (e) => {
     if (e.key == 'Enter') {
@@ -97,8 +97,8 @@ const PostChat = ({ id }) => {
       // const user_join = { status: 'JOIN', pid };
       const user_join = {
         status: 'JOIN',
-        pid: id,
-        id: '1',
+        pid: Number(id),
+        id: 1,
         senderName: 'username',
       };
       setConnected(true);
@@ -108,7 +108,7 @@ const PostChat = ({ id }) => {
         career: '5',
         senderName: 'username',
         status: 'JOIN',
-        id: id,
+        id: 1,
       });
 
       stompClient.send('/app/postchat', token, JSON.stringify(user_join));
@@ -153,7 +153,6 @@ const PostChat = ({ id }) => {
   // };
 
   const sendPublicMessage = () => {
-    console.log(connected);
     if (stompClient) {
       if (!userData.message) {
         alert('', '내용을 입력해주세요!', 'error');
@@ -163,9 +162,10 @@ const PostChat = ({ id }) => {
           senderName: 'username',
           message: userData.message,
           status: 'MESSAGE',
-          id: id,
+          pid: Number(id),
+          id: 1,
         };
-        // console.log(chatMessage);
+        console.log(chatMessage);
 
         stompClient.send('/app/postchat', token, JSON.stringify(chatMessage));
         setUserData({ ...userData, message: '' });
