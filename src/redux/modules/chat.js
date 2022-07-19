@@ -85,10 +85,10 @@ export const prevChatDB = (props) => {
   };
 };
 
-export const prevPostChatDB = (pid) => {
+export const prevPostChatDB = (chatpostId) => {
   return function (dispatch, getState) {
     apis
-      .prepostchat(pid)
+      .prepostchat(chatpostId)
       .then((res) => {
         const status = res.data;
         dispatch(prevPostChat(status));
@@ -129,6 +129,12 @@ export default function ChatReducer(state = initialState, action) {
     }
     case UPDATE_CHATITEM: {
       return { ...state, one_list: action.payload };
+    }
+    case PREV_CHAT: {
+      return { prev_list: action.payload.list };
+    }
+    case PREV_POST_CHAT: {
+      return { post_list: action.payload.list };
     }
     default:
       return state;

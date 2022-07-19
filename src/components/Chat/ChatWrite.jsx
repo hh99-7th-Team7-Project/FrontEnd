@@ -79,37 +79,9 @@ const ChatWrite = () => {
     setCount((prevCount) => (prevCount === 10 ? 10 : prevCount + 1));
   const downCount = () =>
     setCount((prevCount) => (prevCount === 3 ? 3 : prevCount - 1));
-  const inputCount = (e) => setCount(Number(e.target.value));
+  const inputCount = (e) => setCountValue(Number(e.target.value));
 
   const addChatItem = (date) => {
-    // if (
-    //   partyName === '' ||
-    //   mountValue === '검색' ||
-    //   mountAddValue === '' ||
-    //   dateValue === '선택' ||
-    //   timeValue === '선택' ||
-    //   partyContent === ''
-    // ) {
-    //   alert('입력되지 않은 부분이 있습니다!');
-    //   return;
-    // }
-    // if (is_edit) {
-    //   if (count < countValue) {
-    //     alert('현재 참가 인원수보다 적게 설정할 수 없습니다.');
-    //     return;
-    //   }
-    //   const num = parseInt(count);
-    //   const chatItem = {
-    //     title: chatName,
-    //     contents: chatContent,
-    //     calendar: dateValue,
-    //     map: '사당역',
-    //     totalcount: num,
-    //   };
-    //   dispatch(__updateChatItem(id, chatItem));
-    //   alert('수정 완료!');
-    //   return;
-    // }
     const num = parseInt(count);
     console.log(num);
     const chatItem = {
@@ -141,7 +113,7 @@ const ChatWrite = () => {
   };
 
   return (
-    <div>
+    <Wrap>
       {/* <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
@@ -153,86 +125,110 @@ const ChatWrite = () => {
       /> */}
       <DatePicker
         selected={startDate}
-        // onChange={(date) => setStartDate(date)}
         dateFormat="yyyy-MM-dd (eee)"
         showPopperArrow={false}
         inline
         locale={ko}
         // popperModifiers={{ preventOverflow: { enabled: true } }}
         popperPlacement="auto"
+        houldCloseOnSelect={false}
         minDate={new Date()}
         onChange={(date) => {
           const dateString = new Date(date).toLocaleDateString();
           setDateValue(dateString);
         }}
       />
-      <Title>제목</Title>
-      {is_edit ? (
-        <input
-          placeholder="제목을 입력해주세요"
-          value={chatName || ''}
-          onChange={inputTitle}
-        />
-      ) : (
-        <input
-          placeholder="제목을 입력해주세요"
-          value={chatName || ''}
-          onChange={inputTitle}
-        />
-      )}
-      <Title>시간</Title>
-      {is_edit ? (
-        <input value={timeValue || ''} onChange={inputTime} />
-      ) : (
-        <input value={timeValue || ''} onChange={inputTime} />
-      )}
+      <InputWrap>
+        <Title>제목</Title>
+        {is_edit ? (
+          <TitleInput
+            placeholder="제목을 입력해주세요"
+            value={chatName || ''}
+            onChange={inputTitle}
+          />
+        ) : (
+          <TitleInput
+            placeholder="제목을 입력해주세요"
+            value={chatName || ''}
+            onChange={inputTitle}
+          />
+        )}
+        <Title>시간</Title>
+        {is_edit ? (
+          <input value={timeValue || ''} onChange={inputTime} />
+        ) : (
+          <input value={timeValue || ''} onChange={inputTime} />
+        )}
 
-      <Title>활동내용</Title>
-      {is_edit ? (
-        <input value={chatContent || ''} onChange={inputContent} />
-      ) : (
-        <input value={chatContent || ''} onChange={inputContent} />
-      )}
-      <Title>카페 위치</Title>
+        <Title>활동내용</Title>
+        {is_edit ? (
+          <ContentInput value={chatContent || ''} onChange={inputContent} />
+        ) : (
+          <ContentInput value={chatContent || ''} onChange={inputContent} />
+        )}
+        <Title>카페 위치</Title>
 
-      {is_edit ? (
-        <input value={mapValue} onChange={inputMap}></input>
-      ) : (
-        <input value={mapValue} onChange={inputMap}></input>
-      )}
-      <Title>인원</Title>
-      {/* {is_edit ? (
+        {is_edit ? (
+          <input value={mapValue} onChange={inputMap}></input>
+        ) : (
+          <input value={mapValue} onChange={inputMap}></input>
+        )}
+        <Title>인원</Title>
+        {is_edit ? (
+          <div>
+            <Btn onClick={downCount}>-</Btn>
+            <CountInput onChange={inputCount} value={countValue}></CountInput>
+            <Btn onClick={upCount}>+</Btn>
+          </div>
+        ) : (
+          <div>
+            <Btn onClick={downCount}>-</Btn>
+            <CountInput onChange={inputCount} value={countValue}></CountInput>
+            <Btn onClick={upCount}>+</Btn>
+          </div>
+        )}
+        {/* 
         <div>
           <Btn onClick={downCount}>-</Btn>
-          <Count onChange={inputCount} value={count}></Count>
+          <CountInput onChange={inputCount} value={count}></CountInput>
           <Btn onClick={upCount}>+</Btn>
-        </div>
-      ) : (
-        <div>
-          <Btn onClick={downCount}>-</Btn>
-          <Count onChange={inputCount} value={count}></Count>
-          <Btn onClick={upCount}>+</Btn>
-        </div>
-      )} */}
+        </div> */}
+        {is_edit ? (
+          <MakeBtn onClick={editChatItem}>수정</MakeBtn>
+        ) : (
+          <MakeBtn onClick={addChatItem}>모임 만들기</MakeBtn>
+        )}
 
-      <div>
-        <Btn onClick={downCount}>-</Btn>
-        <Count onChange={inputCount} value={count}></Count>
-        <Btn onClick={upCount}>+</Btn>
-      </div>
-      {is_edit ? (
-        <MakeBtn onClick={editChatItem}>수정</MakeBtn>
-      ) : (
-        <MakeBtn onClick={addChatItem}>모임 만들기</MakeBtn>
-      )}
-
-      {/* <MakeBtn onClick={addChatItem}>모임 만들기</MakeBtn> */}
-    </div>
+        {/* <MakeBtn onClick={addChatItem}>모임 만들기</MakeBtn> */}
+      </InputWrap>
+    </Wrap>
   );
 };
 
+const Wrap = styled.div`
+  width: 1200px;
+  height: 500px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  margin: 50px;
+  display: flex;
+  padding: 30px;
+`;
+
+const InputWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  margin-left: 50px;
+  width: 600px;
+`;
+
 const Title = styled.span`
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 const Btn = styled.button`
@@ -240,10 +236,29 @@ const Btn = styled.button`
   height: 30px;
 `;
 
-const Count = styled.input`
+const CountInput = styled.input`
   width: 50px;
   height: 50px;
   border: 0px;
+`;
+
+const TitleInput = styled.input`
+  width: 100%;
+  height: 3em;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+  padding: 0px 0 0 5px;
+`;
+
+const ContentInput = styled.textarea`
+  width: 100%;
+  height: 6.25em;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+  padding: 10px 0 0 5px;
+  resize: none;
 `;
 
 const MakeBtn = styled.button`

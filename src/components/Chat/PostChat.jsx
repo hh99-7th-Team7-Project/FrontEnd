@@ -1,42 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Stomp, { over } from 'stompjs';
 import SockJs from 'sockjs-client';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { api } from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
+import { prevPostChatDB } from '../../redux/modules/chat';
+import ChatDetailItem from './ChatDetail';
 
 let stompClient = null;
-const PostChat = ({ id }) => {
+const PostChat = ({ chatReducer, chatpostId }) => {
   const dispatch = useDispatch();
-  // const post_chat_list = useSelector((state) => state.chat.post_list);
-  console.log(id);
+  const post_chat_list = useSelector((state) => state.chat.post_list);
   const messageRef = useRef();
 
   const cookie = getCookie('token');
+  const nickname = getCookie('nickname');
   const token = { Authorization: `Bearer ${cookie}` };
-  // console.log(token);
-  // const token = {
-  //   Authorization: getCookie('token') ? getCookie('token') : 'Authorization',
-  // };
-  // const token = {
-  //   Authorization: getCookie('token') ? getCookie('token') : 'Authorization',
-  // };
 
-  // const token = {
-  //   Authorization: localStorage.getItem('token')
-  //     ? localStorage.getItem('token')
-  //     : 'Authorization',
-  // };
+  // const chatReducer = useSelector((state) => state.chat.one_list);
 
-  // const test =
-  //   'BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NDkxMzc0MzgsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InRlc3RAdGVzdC5jb20ifQ.PwAp1O8o7tr7_tBjK-TChaar_T4dSheXfQJnW5hbZAA';
-  // const token = { Authorization: test };
+  // useEffect(() => {
+  //   dispatch(__loadChatLists());
+  // }, []);
 
-  // const username = useSelector((state) => state.user.user.nickname);
-  // const uid = useSelector((state) => state.user.user.uid);
-  // const crareer = useSelector((state) => state.user.user.career); -> 빠지고
-  // const is_login = useSelector((state) => state.user.user.isLogin);
+  // const userInfo = useSelector((state) => state.chat.list);
+  // console.log(userInfo);
 
   const [welcome, setWelcome] = React.useState(new Map());
   const [publicChats, setPublicChats] = React.useState([]);
@@ -50,12 +38,12 @@ const PostChat = ({ id }) => {
     opposingUserName: '',
   });
 
-  // React.useEffect(() => {
-  //   scrollToBottom();
-  // }, [publicChats, chatScroll]);
+  React.useEffect(() => {
+    scrollToBottom();
+  }, [publicChats, chatScroll]);
 
   React.useEffect(() => {
-    // dispatch(chatActions.prevPostChatDB(pid));
+    dispatch(prevPostChatDB(chatpostId));
     stompConnect();
     return () => {
       stompDisConnect();
@@ -75,7 +63,7 @@ const PostChat = ({ id }) => {
       stompClient.send('/app/postchat', token, JSON.stringify(user_join));
 
       stompClient.disconnect(() => {
-        stompClient.unsubscribe(`/topic/postchat/${id}`);
+        stompClient.unsubscribe(`/topic/postchat/${chatpostId}`);
       }, token);
     } catch (err) {}
   };
@@ -94,26 +82,25 @@ const PostChat = ({ id }) => {
 
   const onConnected = () => {
     try {
-      // const user_join = { status: 'JOIN', pid };
       const user_join = {
         status: 'JOIN',
-        pid: Number(id),
+        chatpostId: Number(chatpostId),
         id: 1,
-        senderName: 'username',
+        senderName: nickname,
       };
       setConnected(true);
       console.log(connected);
       setUserData({
         ...userData,
-        career: '5',
-        senderName: 'username',
+        // profileImage: profileImage,
+        senderName: nickname,
         status: 'JOIN',
         id: 1,
       });
 
       stompClient.send('/app/postchat', token, JSON.stringify(user_join));
       stompClient.subscribe(
-        `/topic/postchat/${id}`,
+        `/topic/postchat/${chatpostId}`,
         onPublicMessageReceived,
         token
       );
@@ -159,11 +146,11 @@ const PostChat = ({ id }) => {
       } else {
         let chatMessage = {
           ...userData,
-          senderName: 'username',
+          senderName: nickname,
           message: userData.message,
           status: 'MESSAGE',
-          pid: Number(id),
-          id: 1,
+          chatpostId: Number(chatpostId),
+          // id: id,
         };
         console.log(chatMessage);
 
@@ -215,6 +202,7 @@ const PostChat = ({ id }) => {
 
   return (
     <ChatDiv>
+      {/* <ChatDetailItem chatReducer={chatReducer}></ChatDetailItem> */}
       <ChatTab>
         <li
           onClick={() => {
@@ -226,7 +214,7 @@ const PostChat = ({ id }) => {
       </ChatTab>
       <ChatList ref={messageRef}>
         <ul>
-          {/* {post_chat_list &&
+          {post_chat_list &&
             post_chat_list.map((chat, index) => (
               <li
                 className={` ${chat.senderName === user ? 'self' : 'user'}`}
@@ -248,7 +236,7 @@ const PostChat = ({ id }) => {
                   </dd>
                 </dl>
               </li>
-            ))} */}
+            ))}
           {publicChats.map((chat, index) => (
             <li
               className={` ${chat.senderName === 1 ? 'self' : 'user'}`}
@@ -259,7 +247,7 @@ const PostChat = ({ id }) => {
                   <Profile />
                   <div>
                     <strong>{chat.senderName}</strong>
-                    {/* {userData.crareer && <i>{userData.crareer}</i>} */}
+                    {userData.profileImage && <i>{userData.profileImage}</i>}
                   </div>
                 </>
               )}
