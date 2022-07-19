@@ -17,7 +17,7 @@ const CoffeeSearch = (props) => {
   console.log(coffeeReducer?.length)
   //처음 4개만 보여주기위해서 검색결과에서 4개 짜름
   const sliceCoffee = coffeeReducer?.slice(0,8)
-  console.log(sliceCoffee)
+  console.log(sliceCoffee);
 
   //임시
   useEffect(()=>{
@@ -27,40 +27,40 @@ const CoffeeSearch = (props) => {
             console.log(res)
             setCoffeeReducer(res?.data)
           })
-
     }
     search()
   },[props])
     
 
   return (
-   
     (coffeeReducer?.length!==0?
-     ( <div style={{display:"flex", flexDirection:"column",alignItems:"center", justifyContent:"center"}}>
+      (<div style={{display:"flex", flexDirection:"column",alignItems:"center", justifyContent:"center"}}>
       <ScCoffeeWrap>
         <ScCardContainer>
           {sliceCoffee&&sliceCoffee.map((item,idx)=>{
             return(<CoffeeCard key={idx} item={item}/>)
           })} 
-          {sliceCoffee.length > 4 ? 
+          {sliceCoffee?.length > 4 ? 
           <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
         </ScCardContainer>
       </ScCoffeeWrap>
-      <ScBtnWrap>
-        <ScBtn 
-        onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>
-          <ScBtnTitle>+더보기</ScBtnTitle>
-        </ScBtn>
-      </ScBtnWrap>
+      <ScBtnAlign>
+        <ScBtnWrap>
+          <ScBtn 
+          onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>
+            <ScBtnTitle>+더보기</ScBtnTitle>
+          </ScBtn>
+        </ScBtnWrap>
+      </ScBtnAlign>
       </div>):
-       ( <ScNothing>검색 결과가 없습니다</ScNothing>) 
+      ( <ScNothing>검색 결과가 없습니다</ScNothing>) 
     )
   )
 }
 
 const ScCoffeeWrap = styled.div`
   margin: auto;  
-  width: 1200px;
+  width: 1300px;
 `;
 
 const ScNothing = styled.div`
@@ -83,13 +83,17 @@ const ScBox = styled.div`
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFF 82.29%);
 `;
 
-const ScBtnWrap = styled.div`
+const ScBtnAlign = styled.div`  
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+`;
 
-  margin: auto;
+const ScBtnWrap = styled.div`  
   position: absolute;
 `;
 
-const ScBtn = styled.div`
+const ScBtn = styled.div`  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,6 +112,10 @@ const ScBtnTitle = styled.div`
   font-size: 24px;
   line-height: 30px;
   letter-spacing: 0.1em;
+  margin: auto;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default CoffeeSearch

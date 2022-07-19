@@ -46,7 +46,7 @@ const GoogleLogin = () => {
   }, [code]);
 
   return (
-    <div>구구루로그인</div>
+    <div></div>
   )
 };
 

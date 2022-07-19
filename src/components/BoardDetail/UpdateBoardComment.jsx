@@ -35,7 +35,7 @@ const UpdateBoardComment = (props) => {
 
     return (
             <ScWrap>                
-                <textarea type="text" ref={boardCommentInputRef} defaultValue={comment} />
+                <ScTextArea type="text" ref={boardCommentInputRef} defaultValue={comment} maxlength={300}/>
                 <ScButton onClick={()=>{
                     boardCommentUpdate();
                     boardCommentInputRef.current.value=""                                
@@ -48,8 +48,15 @@ const UpdateBoardComment = (props) => {
     }
 
 const ScWrap = styled.div`
+    display: flex;    
+    justify-content: center;
+    align-items: center;
     
-`; 
+`;
+
+const ScTextArea = styled.textarea`
+        
+`;
 
 
 const ScButton = styled.button`

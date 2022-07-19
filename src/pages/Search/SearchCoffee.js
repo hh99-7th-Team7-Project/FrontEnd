@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import CoffeeCard from '../../components/main/CoffeeCard';
@@ -23,7 +24,7 @@ const SearchCoffee = () => {
   },[dispatch])
 
   return (
-    <div>
+    <ScWrap>
       <div style={{margin:"auto"}}> 
         <Header/>
       </div>
@@ -32,8 +33,12 @@ const SearchCoffee = () => {
           return(<CoffeeCard key={idx} item={item}/>)
         })} 
       </div>
-    </div>
+    </ScWrap>
   )
 }
+
+const ScWrap = styled.div`
+  margin: auto;
+`;
 
 export default SearchCoffee

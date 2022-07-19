@@ -112,8 +112,8 @@ const ScLens = styled.img`
 `;
 
   const SCprice = styled.div`
-    /* border: 1px black solid; */
-    /* border-radius: 10px; */
+    border: 1px black solid;
+    border-radius: 10px;
     width: 76px;
     height: 21px;
     margin: 10px auto;

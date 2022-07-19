@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import apis from '../../shared/api/main';
 import svg from './svg/BookMark.svg';
 
 
-const ImgCard = ( {url, item} ) => {
+const ImgCard = ( {url, item,like,setLike} ) => {
 
+  const likeCoffee =async()=>{
+    await apis.likeCoffee(item?.brand,item?.id)
+              .then((res)=>{
+                  if(item?.love===0){
+                    setLike(1)
+                  }else{
+                    setLike(0)
+                  }
+                 })
+  }
 
 
   return (
@@ -14,7 +25,7 @@ const ImgCard = ( {url, item} ) => {
             <ScH3>{item?.brand}</ScH3>
           </ScBrandTitle>
           <ScCoffeeTitle>
-            <ScImgBookMark src={svg} alt=""/>
+            {like===0?(<div onClick={likeCoffee}>저장스</div>):( <ScImgBookMark onClick={likeCoffee} src={svg} alt=""/>)}
             <ScH1>{item?.name}</ScH1>
           </ScCoffeeTitle>
           <ScSubTitle>

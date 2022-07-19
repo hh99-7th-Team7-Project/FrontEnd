@@ -96,7 +96,7 @@ const MyPage = () => {
        <button onClick={()=>{setUpdate(false)}}>취소하기</button>
        </div>
       </ScMyprofile>):
-      (<>
+      (<ScWrap>
       <ScMyprofile>
       <UserPhoto/>
       <UserInfo email={email}/>
@@ -110,13 +110,8 @@ const MyPage = () => {
         {(menu===2)&&<UserBoardBoard/>}
         {(menu===3)&&<UserBoardWrite/>}
       </div>
-    </>
+    </ScWrap>
     )}
-    
-   
-    
-    
- 
     </>
   )
 }
@@ -129,4 +124,10 @@ flex-direction: row;
 //justify-contents
 align-items: center;
 margin: auto;
+`
+const ScWrap = styled.div`
+display: flex;
+flex-direction:column;
+align-items: center;
+justify-content: center;
 `
