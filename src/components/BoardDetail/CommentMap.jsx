@@ -51,7 +51,7 @@ const CommentMap = () => {
                                 <ScButton onClick={()=>{
                                     setShowUpdate(true);
                                     setCommentId(item?.id);
-                                }}>수정</ScButton> : null }
+                                }}>댓글 수정</ScButton> : null }
                             </ScBtnAlign>
                         </ScTable>
                         </div>
@@ -70,14 +70,14 @@ const ScWrap = styled.div`
     overflow-y: auto;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-
 `;
 
 
 
 const ScNickAlign = styled.div`
     display: flex;
-
+    justify-content: center;
+    align-items: center;
 `;
 
 const ScCommentAlign = styled.div`
@@ -93,9 +93,6 @@ const ScBtnAlign = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-
-
-
 
 
 const ScTableWrap = styled.div`    
@@ -114,13 +111,13 @@ const ScTableWrap = styled.div`
 
 const ScTable = styled.div` 
     display: flex;
-    justify-content: space-between;
-
-
+    justify-content: space-between;    
+    margin-top: 10px;    
 `;
 
 const ScSpan = styled.span`
-    margin-left: 50px;
+    text-align: left;
+    width: 100px
 `;
 
 
@@ -133,9 +130,7 @@ const ScButton = styled.button`
   color: black;
   border: none;
   margin-left: 50px;
-  width: 50px;
-  border: 1px solid black;
-  
+  width: 100px;
 `;
 
 
