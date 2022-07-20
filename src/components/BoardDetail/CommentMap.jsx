@@ -37,13 +37,9 @@ const CommentMap = () => {
                                     boardId={boardId}
                                     commentId={Number(commentId)}
                                     comment={item?.comment}
-                                />) : <ScSpan>{item?.comment}</ScSpan>
+                                />) : <ScSpanComment>{item?.comment}</ScSpanComment>
                                 }
-                                { nickname === item?.nickname ?
-                                <ScButton onClick={()=>{
-                                dispatch(__deleteBoardComment(boardId,Number(item?.id)))
-                                dispatch(__getBoardComment(boardId));
-                                }}>삭제</ScButton> : null }
+                                
                             </ScCommentAlign>                            
                             <ScBtnAlign>                                   
                                 <ScSpan>{item?.createdAt.split("T")[0]}</ScSpan>
@@ -52,6 +48,11 @@ const CommentMap = () => {
                                     setShowUpdate(true);
                                     setCommentId(item?.id);
                                 }}>댓글 수정</ScButton> : null }
+                                { nickname === item?.nickname ?
+                                <ScButton onClick={()=>{
+                                dispatch(__deleteBoardComment(boardId,Number(item?.id)))
+                                dispatch(__getBoardComment(boardId));
+                                }}>댓글 삭제</ScButton> : null }
                             </ScBtnAlign>
                         </ScTable>
                         </div>
@@ -117,7 +118,12 @@ const ScTable = styled.div`
 
 const ScSpan = styled.span`
     text-align: left;
-    width: 100px
+    width: 100px;
+`;
+
+const ScSpanComment = styled.span`
+    text-align: left;
+    width: 600px;
 `;
 
 

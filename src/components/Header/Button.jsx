@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Styled from 'styled-components';
 import {Link, useNavigate} from 'react-router-dom'
 import {deleteCookie, getCookie} from "../../shared/Cookie"
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 const Button = () => {
   const navigate = useNavigate()
@@ -21,8 +21,13 @@ const isLogin = getCookie("islogin")
     deleteCookie("nickname")
     deleteCookie("islogin")
     deleteCookie("userId")
-    alert("로그아웃 완료!")
+    Swal.fire({
+      title: '로그아웃 완료!',
+      icon: 'success',
+      confirmButtonText: '확인'
+    })
     setonair(false)
+    navigate('/login')
   }
 
 

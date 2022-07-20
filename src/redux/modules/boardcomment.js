@@ -1,4 +1,8 @@
-import apis from "../../shared/api/main"
+import apis from "../../shared/api/main";
+import Swal from 'sweetalert2';
+
+
+
 
 
 let intialstate = {
@@ -65,7 +69,11 @@ export const __addBoardComment = (payload) => async (dispatch, getState) => {
   } catch (error) {
     console.log(error);
     if (error.response.status === 401) {
-      alert ("로그인해주세요!");
+      Swal.fire({
+        title: '로그인을 해주세요!',
+        icon: 'error',
+        confirmButtonText: '확인'
+      })
   }
   }
 }
