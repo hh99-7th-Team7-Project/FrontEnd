@@ -1,6 +1,6 @@
-import { Navigate } from "react-router-dom";
 import apis from "../../shared/api/main";
 import { getCookie } from "../../shared/Cookie";
+import Swal from 'sweetalert2';
 
 
 const nickname = getCookie("nickname");
@@ -73,7 +73,11 @@ export const __addComment = (payload) => async (dispatch, getState) => {
     } catch (error) {
         console.log(error);
         if (error.response.status === 401) {
-            alert ("로그인을 해주세요!");             
+            Swal.fire({
+                title: '로그인을 해주세요!',
+                icon: 'error',
+                confirmButtonText: '확인'
+                })            
         }
     }
 };

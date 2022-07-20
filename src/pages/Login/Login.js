@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { setCookie } from '../../shared/Cookie'
 //apis
 import apis from '../../shared/api/main'
+//swal
+import Swal from 'sweetalert2';
 
 //소셜로그인
 import KaKaoLogin from './KaKaoLogin'
@@ -51,7 +53,11 @@ const closeModal = () => {
       setCookie("islogin", response?.data.login)
       setCookie("profileImg", response?.data?.profileImage)
       setCookie("userId",response?.data?.userId)
-      alert("환영합니다")
+      Swal.fire({
+        title: '환영합니다.!',
+        icon: 'success',
+        confirmButtonText: '확인'
+      })
       navigate("/")
     }
     catch (err) {
