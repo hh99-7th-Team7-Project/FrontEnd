@@ -30,7 +30,7 @@ const CommentMap = () => {
                                 <ScSpan>{item?.nickname}</ScSpan>
                             </ScNickAlign> 
                             <ScCommentAlign>
-                                {showUpdate === true ? (
+                                {showUpdate === true && item?.id === commentId ? (
                                     <UpdateBoardComment
                                     showUpdate={showUpdate}
                                     setShowUpdate={setShowUpdate}
