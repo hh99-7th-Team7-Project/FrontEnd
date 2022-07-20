@@ -2,6 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 const BoardLike = () => {
 
@@ -18,7 +19,11 @@ const BoardLike = () => {
           <ScBtnWrap2>
           <CopyToClipboard text={currentUrl}>
 					<ScBtn2 onClick={()=>{
-            alert("링크복사")
+            Swal.fire({
+              title: '링크복사 완료!',
+              icon: 'success',
+              confirmButtonText: '확인'
+            })
           }}>📢공유</ScBtn2>
 				</CopyToClipboard>
             <ScBtn2>⚠️신고</ScBtn2>
