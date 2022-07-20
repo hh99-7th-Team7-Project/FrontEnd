@@ -22,11 +22,10 @@ const BoardContent = ({data}) => {
   return (
     <>
         <ScWrap>
-           {content&&<Viewer 
+          {content&&<Viewer 
             events={['load','change']}
             initialValue={content}
-
-            />}
+          />}
         </ScWrap>
 
     </>

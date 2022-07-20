@@ -39,7 +39,7 @@ const UpdateBoardComment = (props) => {
                 <ScButton onClick={()=>{
                     boardCommentUpdate();
                     boardCommentInputRef.current.value=""                                
-                }}>수정하기</ScButton>
+                }}>수정</ScButton>
                 <ScButton onClick={()=>{
                         setShowUpdate(false);
                     }}>취소</ScButton>
@@ -50,12 +50,21 @@ const UpdateBoardComment = (props) => {
 const ScWrap = styled.div`
     display: flex;    
     justify-content: center;
-    align-items: center;
+    align-items: center;    
+    width: 800px
     
 `;
 
 const ScTextArea = styled.textarea`
-        
+    width: 150px;
+    height: 30px;    
+    /* border: none; */
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
 `;
 
 
@@ -66,6 +75,7 @@ const ScButton = styled.button`
   background-color: white;
   color: black;
   border: none;
+  margin-left: 20px;
   
 `;
 

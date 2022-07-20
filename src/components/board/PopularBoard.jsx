@@ -87,7 +87,7 @@ useEffect(() => {
                 {content&&content.map((item,idx)=>{
                         return <ImageList key={idx}>
                         <PopularBoardMap 
-                         content={item}/></ImageList>
+                          content={item}/></ImageList>
                     })}
                 </ImageBox>
             </Container>

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { GoChevronDown } from "react-icons/go";
 import CommentMap from './CommentMap';
-import { getCookie } from '../../shared/Cookie';
 import { __getBoardComment, __addBoardComment } from '../../redux/modules/boardcomment';
 
 
@@ -18,12 +17,12 @@ const BoardComment = () => {
 
   const commentCardOpen = () => {
 
-    setCloseComment(true);
+    setCloseComment(false);
 }
 
 const commentCardClose = () => {
 
-    setCloseComment(false);
+    setCloseComment(true);
 }
 
   useEffect(()=>{
@@ -55,20 +54,15 @@ const commentAdd = () => {
     <>
       <ScWrap>
         <ScCommentWrap>
-              <ScInputWrap>                        
-                  <ScTextArea type="text" rows="1" placeholder="댓글을 입력해주세요" ref={boardCommentInputRef} maxlength={300} />
-                  <ScBtn onClick={()=>{
-                      commentAdd();
-                      boardCommentInputRef.current.value=""
-                  }}>등록</ScBtn>                    
-              </ScInputWrap>
-          </ScCommentWrap>
-        <ScInput id="dropdown" type="checkbox"/>      
-          <ScLabel htmlfor="dropdown">
-              <ScH3>전체 댓글</ScH3>
-              <ScLabelContent>최신순</ScLabelContent>            
-              <GoChevronDown className="careIcon"/>
-          </ScLabel>
+            <ScInputWrap>                        
+                <ScTextArea type="text" rows="1" placeholder="댓글을 입력해주세요" ref={boardCommentInputRef} maxlength={300} />
+                <ScBtn onClick={()=>{
+                    commentAdd();
+                    boardCommentInputRef.current.value=""
+                }}>등록</ScBtn>                    
+            </ScInputWrap>
+        </ScCommentWrap>
+        <ScH3>전체 댓글</ScH3>        
           <ScBtnBox>
               <ScCommentBtn onClick={()=>{
                   commentCardOpen();
@@ -78,8 +72,8 @@ const commentAdd = () => {
               }}>댓글닫기</ScCommentBtn>
           </ScBtnBox>
       </ScWrap>
-      { closeComment === true ?
-      <CommentMap/> : null }
+      { closeComment === false ?
+        <CommentMap/> : null }
     </>
   )
 }
@@ -93,20 +87,11 @@ const ScH3 = styled.h3`
   margin-right: 20px;
 `;
 
-const ScLabelContent = styled.div`
-  
-`;
-
-const ScInput = styled.input`
-    
-`;
-
 const ScCommentWrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center; 
 `;
-
 
 
 const ScInputWrap = styled.div`  

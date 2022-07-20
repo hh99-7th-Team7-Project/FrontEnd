@@ -1,3 +1,11 @@
+.container {
+    width: 100px;
+    height: 50px;
+    margin-top: 20px; 
+    box-shadow: 0 4px 5px 0 #00000026;
+    position: relative;
+}
+
 #dropdown {
     left: 0;
     visibility: hidden;

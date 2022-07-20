@@ -30,15 +30,14 @@ const moveToBoard = (e) =>{
                         {content?.category==="기타"&&<ScEtc>{content?.category}</ScEtc>}
                     </div>
                     <Scbar>
-                        <img src={bookmark}/>
+                        <img src={bookmark} alt=""/>
                         <span>북마크</span>
-                        <img src={thumbup}/>
+                        <img src={thumbup} alt="" />
                         <span>10</span>
-                        <img src={eye}/>
+                        <img src={eye} alt="" />
                         <span>{content?.view}</span>
                     </Scbar>
-                  </ScHeader>  
-           
+                </ScHeader>
                     <ScTitle onClick={moveToBoard}>{content?.title}</ScTitle>
                     <ScBottom>
                         <span>{content?.nickname}</span>

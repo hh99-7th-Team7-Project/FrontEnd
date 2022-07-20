@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
 import { getCookie } from '../../shared/Cookie';
+import Swal from 'sweetalert2';
 
 
 const Comment = ({item}) => {
@@ -42,7 +43,12 @@ const Comment = ({item}) => {
       })
     );    
     } else {
-      alert ("별점과 리뷰를 모두 등록해주세요.")
+      Swal.fire({
+        title: '등록을 할 수 없어요!',
+        text: '별점과 한줄평 모두 작성해주세요.',
+        icon: 'warning',
+        confirmButtonText: '확인'
+      })
     }
   }
 

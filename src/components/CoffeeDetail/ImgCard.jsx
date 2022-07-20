@@ -77,6 +77,7 @@ const ScH1 = styled.h1`
     width: 500px;
     padding: 20px auto;
     margin: 20px auto;
+    line-height: 70px;
 `;
 
 const ScSubTitle = styled.div`

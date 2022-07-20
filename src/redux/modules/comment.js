@@ -1,6 +1,6 @@
-import { Navigate } from "react-router-dom";
 import apis from "../../shared/api/main";
 import { getCookie } from "../../shared/Cookie";
+import Swal from 'sweetalert2';
 
 
 const nickname = getCookie("nickname");
@@ -67,13 +67,21 @@ export const __addComment = (payload) => async (dispatch, getState) => {
     try {
         console.log("add", payload);
         const response = await apis.postComment( payload.brand, payload.boardId, payload.data );
-        alert("Review 저장완료!")
+        Swal.fire({
+            title: '한줄평 등록 완료!!',
+            icon: 'success',
+            confirmButtonText: '확인'
+          })
         // console.log(response);
         dispatch(addComment(response.data));
     } catch (error) {
         console.log(error);
         if (error.response.status === 401) {
-            alert ("로그인을 해주세요!");             
+            Swal.fire({
+                title: '로그인을 해주세요!',
+                icon: 'error',
+                confirmButtonText: '확인'
+                })            
         }
     }
 };
@@ -114,7 +122,11 @@ export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, ge
         const response = await apis.deleteComment(brand,boardId,reviewId);
         console.log(response.data);
         dispatch(deleteComment(response.data));
-        alert("삭제완료!");
+        Swal.fire({
+            title: '삭제 완료!!',
+            icon: 'success',
+            confirmButtonText: '확인'
+          })
     } catch (error) {
         console.log(error);
         if (error.response.status === 500) {

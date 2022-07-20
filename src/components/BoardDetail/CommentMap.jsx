@@ -30,21 +30,15 @@ const CommentMap = () => {
                                 <ScSpan>{item?.nickname}</ScSpan>
                             </ScNickAlign> 
                             <ScCommentAlign>
-                                {showUpdate === true ? (
+                                {showUpdate === true && item?.id === commentId ? (
                                     <UpdateBoardComment
                                     showUpdate={showUpdate}
                                     setShowUpdate={setShowUpdate}
                                     boardId={boardId}
                                     commentId={Number(commentId)}
                                     comment={item?.comment}
-                                />
-                                ) : <ScSpan>{item?.comment}</ScSpan>
+                                     />) : <ScSpanComment>{item?.comment}</ScSpanComment>
                                 }
-                                { nickname === item?.nickname ?
-                                <ScButton onClick={()=>{
-                                dispatch(__deleteBoardComment(boardId,Number(item?.id)))
-                                dispatch(__getBoardComment(boardId));
-                                }}>삭제</ScButton> : null }
                             </ScCommentAlign>                            
                             <ScBtnAlign>                                   
                                 <ScSpan>{item?.createdAt.split("T")[0]}</ScSpan>
@@ -52,7 +46,12 @@ const CommentMap = () => {
                                 <ScButton onClick={()=>{
                                     setShowUpdate(true);
                                     setCommentId(item?.id);
-                                }}>수정</ScButton> : null }
+                                }}>댓글 수정</ScButton> : null }
+                                { nickname === item?.nickname ?
+                                <ScButton onClick={()=>{
+                                dispatch(__deleteBoardComment(boardId,Number(item?.id)))
+                                dispatch(__getBoardComment(boardId));
+                                }}>댓글 삭제</ScButton> : null }
                             </ScBtnAlign>
                         </ScTable>
                         </div>
@@ -72,14 +71,14 @@ const ScWrap = styled.div`
     overflow-y: auto;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-
 `;
 
 
 
 const ScNickAlign = styled.div`
     display: flex;
-
+    justify-content: center;
+    align-items: center;
 `;
 
 const ScCommentAlign = styled.div`
@@ -95,9 +94,6 @@ const ScBtnAlign = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-
-
-
 
 
 const ScTableWrap = styled.div`    
@@ -116,13 +112,18 @@ const ScTableWrap = styled.div`
 
 const ScTable = styled.div` 
     display: flex;
-    justify-content: space-between;
-
-
+    justify-content: space-between;    
+    margin-top: 10px;    
 `;
 
 const ScSpan = styled.span`
-    margin-left: 50px;
+    text-align: left;
+    width: 100px;
+`;
+
+const ScSpanComment = styled.span`
+    text-align: left;
+    width: 600px;
 `;
 
 
@@ -135,9 +136,7 @@ const ScButton = styled.button`
   color: black;
   border: none;
   margin-left: 50px;
-  width: 50px;
-  border: 1px solid black;
-  
+  width: 100px;
 `;
 
 
