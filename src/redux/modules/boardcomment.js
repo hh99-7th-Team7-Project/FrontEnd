@@ -61,10 +61,13 @@ export const __getBoardComment = (payload) => async (dispatch, getState) => {
 
 export const __addBoardComment = (payload) => async (dispatch, getState) => {
   try {
-    console.log("댓글을 쓸거야",payload);
+    
     const response = await apis.postBoardComment(payload.boardId, payload.data);
-    alert("댓글 저장완료!")
-    console.log("게시판댓글 확인",response.data);
+    Swal.fire({
+      title: '댓글 등록 완료!!',
+      icon: 'success',
+      confirmButtonText: '확인'
+    })    
     dispatch(addBoardComment(response.data));
   } catch (error) {
     console.log(error);
@@ -84,7 +87,11 @@ export const __deleteBoardComment = (boardId, commentId) => async (dispatch, get
     const response = await apis.deleteBoardComment(boardId, commentId);
     console.log(response.data);
     dispatch(deleteBoardComment(response.data));
-    alert("삭제완료!")
+    Swal.fire({
+      title: '삭제 완료!!',
+      icon: 'success',
+      confirmButtonText: '확인'
+    })
   } catch (error) {
     console.log(error);
     if (error.response.status === 500) {
