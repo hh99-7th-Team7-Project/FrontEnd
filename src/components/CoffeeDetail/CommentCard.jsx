@@ -56,7 +56,6 @@ const CommentCard = (props) => {
                     <ScCardAlign2>
                       <ScDateSpan>{item?.createdAt.split("T")[0]}</ScDateSpan>
                       <ScNickSpan>{item?.nickname}</ScNickSpan>
-                      
                         <ScButton onClick={()=>{
                           setShowUpdate(true);
                           setReviewId(item?.id);
