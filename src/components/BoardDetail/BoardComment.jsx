@@ -17,12 +17,12 @@ const BoardComment = () => {
 
   const commentCardOpen = () => {
 
-    setCloseComment(true);
+    setCloseComment(false);
 }
 
 const commentCardClose = () => {
 
-    setCloseComment(false);
+    setCloseComment(true);
 }
 
   useEffect(()=>{
@@ -72,8 +72,8 @@ const commentAdd = () => {
               }}>댓글닫기</ScCommentBtn>
           </ScBtnBox>
       </ScWrap>
-      { closeComment === true ?
-      <CommentMap/> : null }
+      { closeComment === false ?
+        <CommentMap/> : null }
     </>
   )
 }
