@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { __getBoardComment, __updateBoardComment } from '../../redux/modules/boardcomment';
+import Swal from 'sweetalert2';
 
 const UpdateBoardComment = (props) => {
 
@@ -28,7 +29,12 @@ const UpdateBoardComment = (props) => {
             dispatch(__getBoardComment(boardId));
 
         } else {
-            alert ("빈칸입니다.")
+            Swal.fire({
+                title: '빈칸입니다!',
+                text: '댓글을 확인해주세요',
+                icon: 'warning',
+                confirmButtonText: '확인'
+              })
         }
     }
 
