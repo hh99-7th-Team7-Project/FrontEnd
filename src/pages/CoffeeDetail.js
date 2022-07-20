@@ -15,7 +15,6 @@ const CoffeeDetail = () => {
  
   const dispatch = useDispatch()
   const [like, setLike] = useState()
-  const [pri,setPri]=useState()
 
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
@@ -24,7 +23,7 @@ const commentReducer = useSelector((state) => state.comment.posts);
 
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 
-  setLike(coffeeReducer?.love)
+  setLike(coffeeReducer?.loveCheck)
 },[dispatch])
 
 

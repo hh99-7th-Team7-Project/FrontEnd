@@ -165,6 +165,7 @@ const Map = (props) => {
 
         return el;
       };
+      
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
       const addMarker = (
         position,

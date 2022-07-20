@@ -35,7 +35,7 @@ const BoardDetail = () => {
       <ScWrap>
         <BoardMain head ={head} boardId={boardId}/>
         <BoardContent data={content}/>
-        <BoardLike/>
+        <BoardLike head ={head}/>
         <BoardComment/>
       </ScWrap>
      </>

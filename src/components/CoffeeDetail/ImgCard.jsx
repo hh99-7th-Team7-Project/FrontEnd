@@ -9,10 +9,10 @@ const ImgCard = ( {url, item,like,setLike} ) => {
   const likeCoffee =async()=>{
     await apis.likeCoffee(item?.brand,item?.id)
               .then((res)=>{
-                  if(item?.love===0){
-                    setLike(1)
+                  if(like===true){
+                    setLike(false)
                   }else{
-                    setLike(0)
+                    setLike(true)
                   }
                  })
   }
@@ -25,7 +25,7 @@ const ImgCard = ( {url, item,like,setLike} ) => {
             <ScH3>{item?.brand}</ScH3>
           </ScBrandTitle>
           <ScCoffeeTitle>
-            {like===0?(<div onClick={likeCoffee}>저장스</div>):( <ScImgBookMark onClick={likeCoffee} src={svg} alt=""/>)}
+            {like?( <ScImgBookMark onClick={likeCoffee} src={svg} alt=""/>):(<div onClick={likeCoffee}>저장스</div>)}
             <ScH1>{item?.name}</ScH1>
           </ScCoffeeTitle>
           <ScSubTitle>

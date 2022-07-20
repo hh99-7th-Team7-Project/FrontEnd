@@ -31,7 +31,6 @@ const BoardList = () => {
                        key={idx}
                     />)
                     })}
-                   
                 </ScTable>
             </ScBoard>
         </ScWrap>

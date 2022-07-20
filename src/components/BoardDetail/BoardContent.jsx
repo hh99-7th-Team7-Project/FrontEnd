@@ -36,6 +36,7 @@ const BoardContent = ({data}) => {
 const ScWrap = styled.div`    
     display: flex;
     justify-content: center;
+    align-items: center;
 `;
 
 export default BoardContent

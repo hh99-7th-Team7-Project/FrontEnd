@@ -23,12 +23,12 @@ const BoardMain = ({head, boardId}) => {
         <ScHR/>
         <ScTitleWrap>
             <ScBookMarkTitleBox>
-                <ScImg src={BookMark} alt="" />
+                {head?.bookMark ? (<div>야야</div>):(<ScImg src={BookMark} alt="" />)}
                 <ScTitle>{head?.title}</ScTitle>
             </ScBookMarkTitleBox>
             <ScBtnBox>
-                <ScLike>추천 : 6</ScLike>
-                <ScComment>댓글 : 1</ScComment>
+                <ScLike>추천 : {head?.totalLove}</ScLike>
+                <ScComment>댓글 : {head?.totalComment}</ScComment>
             </ScBtnBox>            
         </ScTitleWrap>
         <ScBottomBox>

@@ -37,7 +37,8 @@ const CommentMap = () => {
                                     boardId={boardId}
                                     commentId={Number(commentId)}
                                     comment={item?.comment}
-                                />) : <ScSpan>{item?.comment}</ScSpan>
+                                />
+                                ) : <ScSpan>{item?.comment}</ScSpan>
                                 }
                                 { nickname === item?.nickname ?
                                 <ScButton onClick={()=>{
@@ -56,6 +57,7 @@ const CommentMap = () => {
                         </ScTable>
                         </div>
                     ))}
+                    
                 </ScTableWrap>
             </ScWrap>
         </>

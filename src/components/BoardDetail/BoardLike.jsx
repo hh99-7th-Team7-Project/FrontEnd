@@ -3,17 +3,17 @@ import Styled from 'styled-components';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styled from 'styled-components';
 
-const BoardLike = () => {
+const BoardLike = ({head}) => {
 
   const currentUrl = window.location.href;
   return (
     <>
       <ScWrap>
           <ScTitleWrap>
-            <ScH3>6</ScH3>
+            <ScH3>{head?.totalLove}</ScH3>
           </ScTitleWrap>
           <ScBtnWrap>
-            <ScBtn>추천</ScBtn>
+            {head?.loveCheck?(<ScBtn style={{backgroundColor:"black", color:"white"}}>추천</ScBtn>):(<ScBtn>추천</ScBtn>)}
           </ScBtnWrap>
           <ScBtnWrap2>
           <CopyToClipboard text={currentUrl}>
