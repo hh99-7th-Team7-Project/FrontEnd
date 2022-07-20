@@ -5,6 +5,7 @@ import { api, apin } from '../../shared/api/core/api';
 import { useNavigate } from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
 import { setCookie } from '../../shared/Cookie';
+import Swal from 'sweetalert2';
 
 const GoogleLogin = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,11 @@ const GoogleLogin = () => {
               setCookie("islogin", true)
               setCookie("profileImg", res?.data?.profileImage)
               setCookie("userId",res?.data?.userId)
+              Swal.fire({
+                title: '환영합니다.!',
+                icon: 'success',
+                confirmButtonText: '확인'
+              })
               navigate("/");
             })
             .catch((error) => console.log("유저정보저장오류", error));
