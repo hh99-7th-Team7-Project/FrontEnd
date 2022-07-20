@@ -27,7 +27,7 @@ const isLogin = getCookie("islogin")
       confirmButtonText: '확인'
     })
     setonair(false)
-    navigate('/login')
+    navigate('/')
   }
 
 
