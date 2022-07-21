@@ -49,9 +49,9 @@ const closeModal = () => {
           <ScNavbarWrap>
           <h1 style={{marginBottom:"46px"}}>데일리 커피 Menu</h1>
           <ScButtonWrap>
-      <ScCatetory onClick={()=>{setCategory(true)}}>브랜드</ScCatetory>
+      <ScCategory onClick={()=>{setCategory(true)}}>브랜드</ScCategory>
       <p>|</p>
-      <ScCatetory onClick={()=>{setCategory(false)}}>음료</ScCatetory>
+      <ScCategory onClick={()=>{setCategory(false)}}>음료</ScCategory>
          </ScButtonWrap>
        </ScNavbarWrap>
       {category?<BrandCard/>:<CategoryCard/>}
@@ -86,7 +86,7 @@ justify-content: space-between;
 align-items: center;
 `;
 
-const ScCatetory = styled.div`
+const ScCategory = styled.div`
   &:hover {
     cursor: pointer;
   }
