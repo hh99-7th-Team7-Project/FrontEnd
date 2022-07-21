@@ -1,4 +1,4 @@
 @font-face {
     font-family: ‘SUIT Variable’;
-    src: url('../../../public/fonts/SUIT-Variable.ttf');
+    src: url('../../../public/fonts/SUIT-Variable.woff2')format("woff2");
 }
