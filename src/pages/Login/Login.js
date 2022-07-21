@@ -61,7 +61,11 @@ const closeModal = () => {
       navigate("/")
     }
     catch (err) {
-      alert("아이디와 비밀번호를 확인해주세요")
+      Swal.fire({
+        title: '이메일과 비밀번호를 확인해주세요',
+        icon: 'error',
+        confirmButtonText: '확인'
+      })
     }
   }
   return (

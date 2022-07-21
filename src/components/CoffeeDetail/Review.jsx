@@ -51,7 +51,8 @@ const Review = ( { item, reviewData, url } ) => {
                 <ScStarBox>
                     <ScH3>총 별점</ScH3>
                     { starPoint === "NaN" ? 
-                    <ScH2>0.0</ScH2> : <ScH2>{starPoint}</ScH2> }                    
+                    <ScH2>0.0</ScH2> : <ScH2>{starPoint?.toFixed(1)}</ScH2> }
+                    { starPoint === "NaN" && <ScH4>별점을 등록해주세요.</ScH4> }       
                     { Math.floor(starPoint) === 1 && <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3> }
                     { Math.floor(starPoint) === 2 && <ScH3>&#9733; &#9733; &#9734; &#9734; &#9734;</ScH3> }
                     { Math.floor(starPoint) === 3 && <ScH3>&#9733; &#9733; &#9733; &#9734; &#9734;</ScH3> }
@@ -164,6 +165,12 @@ const ScH2 = styled.h2`
 
 const ScH3 = styled.h2`
     text-align: center;
+`;
+
+const ScH4 = styled.h4`
+    text-align: center;
+    margin-top: 50px;
+    color: red;
 `;
 
 const PriceScH3 = styled.h2`

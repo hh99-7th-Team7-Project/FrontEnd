@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { GoChevronDown } from "react-icons/go";
 import CommentMap from './CommentMap';
 import { __getBoardComment, __addBoardComment } from '../../redux/modules/boardcomment';
+import Swal from 'sweetalert2';
 
 
 const BoardComment = () => {
@@ -45,7 +46,12 @@ const commentAdd = () => {
       })
   );
   } else {
-      alert ("댓글을 입력해주세요.");
+    Swal.fire({
+      title: '댓글을 등록해주세요!',
+      text: '빈칸입니다',
+      icon: 'warning',
+      confirmButtonText: '확인'
+    })
   }
 }
 
