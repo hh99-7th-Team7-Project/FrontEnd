@@ -26,7 +26,6 @@ const ToastEditUpdate = (props) => {
   
   return (
     <div> 
-      <h3>### Editor Toast</h3>
    {prevContent&& <Editor
       onChange={()=>{
         content(editorRef.current?.getInstance().getMarkdown())

@@ -1,4 +1,5 @@
 import apis from "../../shared/api/main"
+import { getCookie } from "../../shared/Cookie";
 
 
 let intialstate = {
@@ -61,9 +62,18 @@ export const __loadCoffeeCategory = (category) => {
 };
 export const __loadCoffeeDetail = (brand,id) => {
   return async function (dispatch) {
-    const loadData = await apis.getCoffeeDetail(brand,id);
-    console.log(loadData.data);
-    dispatch(loadCoffeeDetail(loadData.data));
+    const token = getCookie("token")
+    if(!token){
+       const loadData = await apis.getCoffeeDetail(brand,id);
+       console.log(loadData.data);
+      dispatch(loadCoffeeDetail(loadData.data));
+    }else{
+      const loadData = await apis.getCoffeeDetailLogin(brand,id);
+       console.log(loadData.data);
+      dispatch(loadCoffeeDetail(loadData.data));
+    }
+   
+    
   };
 };
 export const __createCoffee = () => {

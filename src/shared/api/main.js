@@ -16,11 +16,12 @@ const apis = {
     getMypage : (userId) => api.get(`/mypage/userInfo/${userId}`),
     updateMypage : (userId, data) => api.put(`/mypage/userInfo/${userId}`,data),
     getMyBoard : (userId) => api.get(`/mypage/myboard/${userId}`),
-
+    getMyCoffee: (userId) => api.get(`/mypage/coffee/like/${userId}`),
 
 //커피정보
     getCoffee: (brand) => api.get(`/coffees/${brand}`),
     getCoffeeDetail: (brand, id) => api.get(`/coffees/${brand}/${id}`),
+    getCoffeeDetailLogin: (brand, id) => api.get(`/coffeeslogin/${brand}/${id}`),
     getStar: (brand,id)=> api.get(`/coffee/${brand}/${id}/star`),
     getCoffeeCategory: (category) => api.get(`/coffees/sidebars?category=${category}`),
     addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`,coffee),
@@ -43,7 +44,9 @@ const apis = {
 
 //게시판
     getBoards: () => api.get('/posts'),
-    getBoardsLike: () => api.get('/posts?orders=like'),
+    getBoardsLogin: () => api.get('/postslogin'),
+    postBoardsLike: (category,id) => api.post(`/postlogin/postlove/${category}/${id}`),
+    postBoardsBookmark: (category,id) => api.post(`/coffees/bookmark/${category}/${id}`),
     getBoardsCategory: (category) => api.get(`/posts?category=${category}`),
     getBoard: (boardId)=> api.get(`/posts/${boardId}`),
     postBoard : (post)=> api.post('/posts',post),

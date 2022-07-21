@@ -7,11 +7,12 @@ import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import PopularBoardMap from './PopularBoardMap';
 import{left,right}from '../../shared/svg/A-index'
+import { getCookie } from '../../shared/Cookie';
 
 const PopularBoard = () => {
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState();
-
+    const token = getCookie("token")
 
     const TOTAL_SLIDES = 2; 
     const imgLength = 1000;
@@ -57,11 +58,19 @@ useEffect(() => {
       useEffect(() => {  
         setLoading(true)
           const getMark = async () => {
-              await apis.getBoards()
+            if(!token){
+               await apis.getBoards()
                         .then((res)=>{
                             console.log(res.data.slice(0,5))
                             setContent(res.data.slice(0,10))
                           })
+            }else{
+              await apis.getBoardsLogin()
+                      .then((res)=>{
+                          console.log(res.data)
+                          setContent(res.data)
+                        })
+          }
                         }
                       getMark()
                     }, [loading])

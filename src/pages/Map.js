@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getCookie } from '../shared/Cookie';
 import Header from './Header/Header';
+import { MapPin } from '../shared/svg/A-index';
 
 const Map = (props) => {
   const { myLocation } = props

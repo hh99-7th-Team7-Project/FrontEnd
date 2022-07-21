@@ -23,11 +23,13 @@ const commentReducer = useSelector((state) => state.comment.posts);
 
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 
+ console.log(coffeeReducer?.loveCheck)
   setLike(coffeeReducer?.loveCheck)
-},[dispatch])
-
+},[dispatch, like])
+console.log(like)
 
 return (
+
     <>
       <div style={{margin:"auto"}}> 
         <Header/>

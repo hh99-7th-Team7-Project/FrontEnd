@@ -9,7 +9,11 @@ import { getCookie } from '../../shared/Cookie';
 const BoardMain = ({head, boardId}) => {
     const navigate = useNavigate()
     const nickname = getCookie("nickname")
+    
 
+    const bookmark = async()=>{
+        await apis.postBoardsBookmark(head?.category,boardId)
+    }
 
   return (
     <ScWrap>
@@ -23,7 +27,7 @@ const BoardMain = ({head, boardId}) => {
         <ScHR/>
         <ScTitleWrap>
             <ScBookMarkTitleBox>
-                {head?.bookMark ? (<div>야야</div>):(<ScImg src={BookMark} alt="" />)}
+                {head?.bookmark ? (<div onClick={bookmark} >야야</div>):(<ScImg src={BookMark} alt="" onClick={bookmark} />)}
                 <ScTitle>{head?.title}</ScTitle>
             </ScBookMarkTitleBox>
             <ScBtnBox>

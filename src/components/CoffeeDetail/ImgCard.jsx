@@ -5,16 +5,14 @@ import svg from './svg/BookMark.svg';
 
 
 const ImgCard = ( {url, item,like,setLike} ) => {
+console.log(like)
 
   const likeCoffee =async()=>{
     await apis.likeCoffee(item?.brand,item?.id)
               .then((res)=>{
-                  if(like===true){
-                    setLike(false)
-                  }else{
-                    setLike(true)
-                  }
-                 })
+                console.log(res.data)
+                    setLike(res.data)
+                  })
   }
 
 
@@ -25,7 +23,7 @@ const ImgCard = ( {url, item,like,setLike} ) => {
             <ScH3>{item?.brand}</ScH3>
           </ScBrandTitle>
           <ScCoffeeTitle>
-            {like?( <ScImgBookMark onClick={likeCoffee} src={svg} alt=""/>):(<div onClick={likeCoffee}>저장스</div>)}
+            { item?.loveCheck ?( <ScImgBookMark onClick={likeCoffee} src={svg} alt=""/>):(<div onClick={likeCoffee}>저장스</div>)}
             <ScH1>{item?.name}</ScH1>
           </ScCoffeeTitle>
           <ScSubTitle>

@@ -3,18 +3,30 @@ import Styled from 'styled-components';
 import '../../shared/css/dropdown.css';
 import BoardMap from './BoardMap';
 import apis from '../../shared/api/main';
+import { getCookie } from '../../shared/Cookie';
 
 const BoardList = () => {
     const [content, setContent] = useState();
     // console.log(content)
+    const token = getCookie("token")
 
     useEffect(() => {  
+        
           const getMark = async () => {
-              await apis.getBoards()
+            if(!token){
+                await apis.getBoards()
                         .then((res)=>{
                             console.log(res.data)
                             setContent(res.data)
                           })
+            }else{
+                await apis.getBoardsLogin()
+                        .then((res)=>{
+                            console.log(res.data)
+                            setContent(res.data)
+                          })
+            }
+              
                         }
                       getMark()
                     }, [])
