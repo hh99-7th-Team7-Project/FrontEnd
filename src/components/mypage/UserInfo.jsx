@@ -5,9 +5,9 @@ const UserInfo = ({email}) => {
   const userName = getCookie("nickname")
 
   return (
-    <div>
-      {userName}
-      <div>{email}</div>
+    <div >
+      <div style={{fontSize:'22px'}}>{userName}</div>
+      <div style={{fontSize:'14px'}}>{email}</div>
     </div>
   )
 }
