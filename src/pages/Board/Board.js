@@ -20,7 +20,7 @@ const Board = () => {
       </div>
       <ScWrap>
         <ScTopCard>
-          <div style={{ margin: "167px 536px 159px 1081px" }}>
+          <div style={{ margin: "167px 35% 159px 60%" }}>
             <ScMainTitle>커피를 사랑하는 사람들의 커피 연구소</ScMainTitle>
             <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} />글쓰러 가기</Scwrite>
           </div>
@@ -53,7 +53,7 @@ const ScTopCard = styled.div`
 
 `
 const ScMainTitle = styled.div`
-width: 303px;
+width: 190%;
 height: 74px;
 font-weight: 700;
 font-size: 30px;

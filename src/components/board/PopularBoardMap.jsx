@@ -36,7 +36,7 @@ const moveToBoard = (e) =>{
                     <span>{content?.nickname}</span>
                 </ScBottom>
                     <Scbar>
-                    <img src={bookmark} alt=""/>
+                    {content?.bookmark ? (<img src={bookmarkck} alt=""/>):(<img src={bookmark} alt=""/>)}
                     <span>북마크</span>
                     <img src={thumbup} alt=""/>
                     <span>{content?.totalLove}</span>

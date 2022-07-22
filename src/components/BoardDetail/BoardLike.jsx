@@ -5,10 +5,13 @@ import styled from 'styled-components';
 import Swal from 'sweetalert2';
 import apis from '../../shared/api/main';
 
-const BoardLike = ({head, boardId}) => {
+const BoardLike = ({head, boardId, like2,setLike}) => {
 
   const like = async()=>{
     await apis.postBoardsLike(head?.category,boardId)
+              .then((res)=>{
+                setLike(res.data)
+              })
 }
 
   const currentUrl = window.location.href;

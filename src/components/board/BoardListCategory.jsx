@@ -17,7 +17,11 @@ const BoardListCategory = ({category}) => {
                       setContent(res.data)
                     })
       }else{
-        
+        await apis.getBoardsCategoryLogin(category)
+        .then((res)=>{
+            console.log(res.data)
+            setContent(res.data)
+          })
       }
         
                   }

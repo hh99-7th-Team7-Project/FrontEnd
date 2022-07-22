@@ -1,4 +1,5 @@
 import apis from "../../shared/api/main"
+import { getCookie } from "../../shared/Cookie";
 
 
 let intialstate = {
@@ -48,11 +49,19 @@ export const __loadBoards = () => {
     dispatch(loadBoard(loadData.data));
   };
 };
-export const __loadBoardDetail = (brand,id) => {
+export const __loadBoardDetail = (boardId) => {
   return async function (dispatch) {
-    const loadData = await apis.getBoardDetail(brand,id);
+    const token = getCookie("token")
+    if(!token){
+       const loadData = await apis.getBoard(boardId);
     console.log(loadData.data);
     dispatch(loadBoardDetail(loadData.data));
+    }else{
+      const loadData = await apis.getBoardLogin(boardId);
+      console.log(loadData.data);
+      dispatch(loadBoardDetail(loadData.data));
+    }
+   
   };
 };
 export const __createBoard = () => {
@@ -73,7 +82,7 @@ export default function BoardReducer(state = intialstate, action) {
       return { board: action.payload };
     }
     case LOAD_BOARD_DETAIL: {
-      return { ...state, coffee: action.payload };
+      return { ...state, board: action.payload };
     }
     case CREATE_BOARD: {
       return { ...state, list: [...state.list, action.payload] };

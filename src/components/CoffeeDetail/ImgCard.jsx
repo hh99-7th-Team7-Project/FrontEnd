@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import svg from './svg/BookMark.svg';
+import {bookmark, bookmarkck} from '../../shared/svg/A-index'
 
 
-const ImgCard = ( {url, item,like,setLike} ) => {
+const ImgCard = ( {url, item, like, setLike} ) => {
 console.log(like)
 
   const likeCoffee =async()=>{
@@ -23,7 +24,7 @@ console.log(like)
             <ScH3>{item?.brand}</ScH3>
           </ScBrandTitle>
           <ScCoffeeTitle>
-            { item?.loveCheck ?( <ScImgBookMark onClick={likeCoffee} src={svg} alt=""/>):(<div onClick={likeCoffee}>저장스</div>)}
+            { item?.loveCheck ?(<ScImgBookMark onClick={likeCoffee} src={bookmarkck} alt="" style={{width:"39px"}}/>):(<ScImgBookMark onClick={likeCoffee} src={bookmark} alt="" style={{width:"50px"}}/>)}
             <ScH1>{item?.name}</ScH1>
           </ScCoffeeTitle>
           <ScSubTitle>

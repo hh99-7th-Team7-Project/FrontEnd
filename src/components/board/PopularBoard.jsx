@@ -36,16 +36,6 @@ const PopularBoard = () => {
     }
 };
 
-// useEffect(() => {
-//   const timer = setInterval(() => {
-//       setCount((prev) => (prev === TOTAL_SLIDES ? 0 : prev + 1));
-//   }, 3000);
-
-//   return () => {
-//       clearInterval(timer);
-//   };
-// }, [count]);
-
 useEffect(() => {
         console.log(curruntIdx);
         slideRef.current.style.transition = `all 0.5s ease-in-out`;
@@ -110,7 +100,8 @@ useEffect(() => {
 const ScWrap = styled.div` 
     /* border: 1px solid black; */
     margin: 33px auto 62px;
-    width: 1200px;
+    max-width: 1200px;
+    width: 85%;
     height: 410px;
     background-color: #F4F1FF;
     border-radius: 20px;
@@ -130,7 +121,8 @@ const ScMoveButton =styled.div`
   gap: 24px;
 `
 const Container = styled.div`
-    width: 1150px;
+    max-width: 1150px;
+    width: 100%;
     height: 500px;
     margin: 0 auto;
     overflow: hidden;
