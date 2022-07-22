@@ -21,20 +21,19 @@ const CoffeeCategory = () => {
     <div style={{maxWidth:"1230px",width:"84vw", margin:"auto", position:"relative"}}>
             <ScNavbarWrap>
                 <ScButtonWrap>
-                    {brandVisible ? 
+                    
                     <ScCategoryBox onClick={()=>{
                         setBrandVisible(!brandVisible);
-                        }}>브랜드</ScCategoryBox> : null }
+                        }}>브랜드</ScCategoryBox>
                     <p>|</p>
-                    {categoryVisible ? 
                     <ScCategoryBox onClick={()=>{
                         setCategoryVisible(!categoryVisible);
-                        }}>음료</ScCategoryBox> : null }
+                        }}>음료</ScCategoryBox>
 
                 </ScButtonWrap>
             </ScNavbarWrap>
-            {category  ? <Brand open={brandVisible} setOpen={setBrandVisible} />: <Coffee open={categoryVisible} setOpen={setCategoryVisible}/> } 
-                     
+            {brandVisible  ? <Brand open={brandVisible} setOpen={setBrandVisible} />: null } 
+            {categoryVisible  ? <Coffee open={categoryVisible} setOpen={setCategoryVisible} /> : null }          
     </div>
     )
 }
