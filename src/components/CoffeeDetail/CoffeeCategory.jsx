@@ -13,6 +13,7 @@ const CoffeeCategory = () => {
   // 버튼 온클릭을 누르면
 
   return (
+
     <div
       style={{
         maxWidth: '1230px',
@@ -49,6 +50,7 @@ const CoffeeCategory = () => {
       ) : (
         <Coffee open={categoryVisible} setOpen={setCategoryVisible} />
       )}
+
     </div>
   );
 };
