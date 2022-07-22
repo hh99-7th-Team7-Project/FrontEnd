@@ -31,7 +31,7 @@ export default UserPhoto
 const ScProfileImg =styled.div`
  width: 140px;
  height: 140px; 
- border:1px #ddd solid;
+ border:7px #4147D5 solid;
  border-radius:50% ; 
 background-size:cover;
 `

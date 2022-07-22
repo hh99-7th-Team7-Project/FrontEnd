@@ -105,8 +105,6 @@ const closeModal = () => {
             onClick={() => { navigate("/signup") }}
             style={{ backgroundColor: "grey", color: "white" }}>회원가입</button>
         </ScButtonWrap>
-        <button onClick={openModal}>모달 오쁜</button>
-        <Modal showModal={showModal} closeModal={closeModal}/>
         <ScText><hr />소셜 로그인<hr /></ScText>
         <ScSocialWrap>
           <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a>

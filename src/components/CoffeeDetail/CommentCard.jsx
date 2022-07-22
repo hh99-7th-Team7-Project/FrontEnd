@@ -4,6 +4,8 @@ import UpdateComment from "./UpdateComment";
 import { useSelector, useDispatch } from "react-redux";
 import { __deleteComment, __loadComment } from '../../redux/modules/comment';
 import { getCookie } from '../../shared/Cookie';
+import { FillStar } from './svg/FillStar.svg';
+import { BlankStar } from './svg/BlankStar.svg';
 
 const CommentCard = (props) => {
 
@@ -39,7 +41,7 @@ const CommentCard = (props) => {
                 <ScComment key={item?.id}>
                   <ScCommentCardWrap>
                     <ScStar>
-                      {item?.star === 1 && <p>&#9733;&#9734;&#9734;&#9734;&#9734; </p>}
+                      {item?.star === 1 && <p>&#9733;&#9734;&#9734;&#9734;&#9734;</p>}
                       {item?.star === 2 && <p>&#9733;&#9733;&#9734;&#9734;&#9734;</p>}
                       {item?.star === 3 && <p>&#9733;&#9733;&#9733;&#9734;&#9734;</p>}
                       {item?.star === 4 && <p>&#9733;&#9733;&#9733;&#9733;&#9734;</p>}
@@ -61,8 +63,7 @@ const CommentCard = (props) => {
                           setReviewId(item?.id);
                         }}>신고</ScButton>
                       </ScCardAlign2>
-                  </ScCommentCardWrap> 
-                  <ScHR/>
+                  </ScCommentCardWrap>
                   
                   {showUpdate === true ? (
                 <UpdateComment
@@ -81,6 +82,7 @@ const CommentCard = (props) => {
 
 
 const ScWrap = styled.div`
+position: relative;
 margin: 20px auto;
 width: 70vw;
 height: 500px;
@@ -129,7 +131,7 @@ const ScStar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #2C278C;
+  color: black;
 `;
 
 const ScCardAlign1 = styled.div`
@@ -146,17 +148,17 @@ const ScCardAlign2 = styled.div`
 `;
 
 const ScCommentSpan = styled.span`
-  color: #2C278C;
+  color: black;
   text-align: left;
   left: 0;
 `;
 
 const ScDateSpan = styled.span`
-  color: #2C278C;
+  color: black;
 `;
 
 const ScNickSpan = styled.span`
-  color: #2C278C;
+  color: black;
 `;
 
 

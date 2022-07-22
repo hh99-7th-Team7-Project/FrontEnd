@@ -81,7 +81,6 @@ useEffect(() => {
               </ScMoveButton>
             </ScTop>
             <Container>
-                
                 <ImageBox ref={slideRef} count={count}>
                 {content&&content.map((item,idx)=>{
                         return <ImageList key={idx}>

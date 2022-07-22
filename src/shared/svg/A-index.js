@@ -9,5 +9,8 @@ import right from "./Right.svg"
 import flow from "./Flow.svg"
 import flower from './FlowerBig.svg'
 import MapPin from './MapPin.svg'
+import Pencil from './Pencil.svg'
+import Write from './Write.svg'
+import Moiim from './Moiim.svg'
 
-export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right, flow,flower,MapPin}
+export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right, flow,flower,MapPin,Pencil, Write,Moiim}

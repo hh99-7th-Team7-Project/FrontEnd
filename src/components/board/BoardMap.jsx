@@ -63,6 +63,7 @@ const ScBoardList = styled.div`
     border-radius: 12px;
     font-size: 14px;
     margin: 24px auto;
+    background-color: white;
 `
 const ScHeader =styled.div`
     display: flex;

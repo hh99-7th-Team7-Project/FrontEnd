@@ -92,7 +92,8 @@ export default Review
 const ScWrap = styled.div`
     width: 1000px;
     height: 150px;
-    margin: auto; 
+    margin: auto;
+    position: relative;
 `;
 
 const ScContentBox = styled.div`    
