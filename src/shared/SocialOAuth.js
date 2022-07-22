@@ -6,6 +6,7 @@ const CLIENT_ID = process.env.REACT_APP_KAKAO_ID;
 const REDIRECT_URI = "https://coffind.co.kr/oauth/kakao/callback";
 //const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
 
+
 // google Login
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_ID;
 const GOOGLE_REDIRECT_URI = "http://localhost:3000/oauth/google/callback";
