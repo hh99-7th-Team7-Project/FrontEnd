@@ -25,7 +25,7 @@ useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId))
  console.log(coffeeReducer?.loveCheck)
 },[like])
-console.log(like)
+console.log(coffeeReducer)
 
 //불려올때마다 재설정되서 처음 불려올때만 like설정하게 바꿔둠
 useEffect(()=>{

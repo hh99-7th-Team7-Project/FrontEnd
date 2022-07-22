@@ -45,8 +45,8 @@ const apis = {
 
 
 //게시판
-    getBoards: () => api.get('/posts'),
-    getBoardsLogin: () => api.get('/postslogin'),
+    getBoards: () => api.get(`/posts?page=0`),
+    getBoardsLogin: () => api.get('/auths/posts?page=0'),
     postBoardsLike: (category,id) => api.post(`/postslogin/postlove/${category}/${id}`),
     postBoardsBookmark: (category,id) => api.post(`/posts/bookmark/${category}/${id}`),
     getBoardsCategory: (category) => api.get(`/posts?category=${category}`),
@@ -54,7 +54,7 @@ const apis = {
     getBoardsLike:()=> api.get("/posts?category=like"),
     getBoardsLikeLogin:()=> api.get("/posts?category=like"),///아직
     getBoard: (boardId)=> api.get(`/posts/${boardId}`),
-    getBoardLogin: (boardId)=> api.get(`/postslogin/${boardId}`),
+    getBoardLogin: (boardId)=> api.get(`/auths/posts/${boardId}`),
     postBoard : (post)=> api.post('/posts',post),
     updateBoard: (boardId,data)=> api.put(`/posts/${boardId}`,data),
     deleteBoard: (boardId)=> api.delete(`/posts/${boardId}`),

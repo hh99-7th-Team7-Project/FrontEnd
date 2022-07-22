@@ -6,7 +6,7 @@ import {bookmark, bookmarkck} from '../../shared/svg/A-index'
 
 
 const ImgCard = ( {url, item, like, setLike} ) => {
-console.log(like)
+console.log(item)
 
   const likeCoffee =async()=>{
     await apis.likeCoffee(item?.brand,item?.id)
