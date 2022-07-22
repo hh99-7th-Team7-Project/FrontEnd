@@ -22,7 +22,7 @@ const apis = {
 //커피정보
     getCoffee: (brand) => api.get(`/coffees/${brand}`),
     getCoffeeDetail: (brand, id) => api.get(`/coffees/${brand}/${id}`),
-    getCoffeeDetailLogin: (brand, id) => api.get(`/coffeeslogin/${brand}/${id}`),
+    getCoffeeDetailLogin: (brand, id) => api.get(`/auths/coffees/${brand}/${id}`),
     getStar: (brand,id)=> api.get(`/coffee/${brand}/${id}/star`),
     getCoffeeCategory: (category) => api.get(`/coffees/sidebars?category=${category}`),
     addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`,coffee),
@@ -41,7 +41,7 @@ const apis = {
 //검색
     searchCoffee : (keyword)=> api.get(`/coffees/searches?keyword=${keyword}`),
     searchBoard : (keyword) => api.get(`/posts/searches?keyword=${keyword}`),
-    searchBoardLogin : (keyword) => api.get(`/postslogin/searches?keyword=${keyword}`),
+    searchBoardLogin : (keyword) => api.get(`/posts/searches?keyword=${keyword}&page=0`),
 
 
 //게시판
