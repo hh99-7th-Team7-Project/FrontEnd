@@ -54,7 +54,7 @@ const closeModal = () => {
       setCookie("profileImg", response?.data?.profileImage)
       setCookie("userId",response?.data?.userId)
       Swal.fire({
-        title: '환영합니다.!',
+        title: '환영합니다!',
         icon: 'success',
         confirmButtonText: '확인'
       })
@@ -83,7 +83,7 @@ const closeModal = () => {
     >
        <ScHeadWrap>
         <ScLogo src={character} onClick={()=>{navigate('/')}}/>
-        <h2>환영 문구 또는 가입 문구</h2>
+        <div style={{fontFamily: 'SUIT bold', fontSize:"24px"}}>커파인러님 환영합니다!</div>
         </ScHeadWrap>
     </motion.div>
        
@@ -125,9 +125,10 @@ width: 100%;
 `
 
 const ScLogo = styled.img`
- width: 300px;
+ width: 260px;
  margin-top: 50px;
  padding-right: 60px;
+ margin-bottom: 20px;
 `
 
 const ScHeadWrap = styled.div`
