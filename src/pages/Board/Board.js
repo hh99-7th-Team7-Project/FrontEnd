@@ -68,6 +68,9 @@ margin-bottom: 30px;
 
 const ScBoardWrite = styled.span`
   font-family: 'SUIT Heavy';
+  &:hover {
+    cursor: pointer;
+  }
   
 `;
 

@@ -9,6 +9,7 @@ import {useNavigate} from 'react-router-dom'
 import apis from '../../shared/api/main'
 import styled from 'styled-components'
 import { getCookie } from '../../shared/Cookie'
+import Swal from 'sweetalert2';
 
 
 const BoardWrite = () => {
@@ -25,7 +26,11 @@ const islogin = getCookie("islogin")
 console.log(islogin)
 useEffect(()=>{
   if(islogin===undefined){
-     window.alert("로그인 후 이용가능한 서비스입니다.")
+    Swal.fire({
+      title: '로그인 후 이용가능 합니다.',
+      icon: 'error',
+      confirmButtonText: '확인'
+    })
      navigate("/board")
     } 
 },[])
