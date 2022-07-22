@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 import styled from 'styled-components';
 
 // Import Swiper styles
@@ -11,14 +11,11 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import {css, keyframes} from 'styled-components';
 
-const Brand = ({open}) => {
+const Brand = () => {
 
     const [color, setColor] = useState(false) 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    console.log("??", open);
-
 
 
     const brandList =[{brand:"스타벅스", id:0, logo:"/brandlogo/스타벅스.png"},{brand:"빽다방", id:1, logo:"/brandlogo/빽다방.png"},
@@ -29,7 +26,7 @@ const Brand = ({open}) => {
 
   return (
         <>
-          
+
           <div style={{display:"flex",justifyContent:"center"}}>
             <ScWrap>
               <ScList  style={{listStyle:"none"}}>
