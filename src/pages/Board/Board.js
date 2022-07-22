@@ -23,7 +23,7 @@ const Board = () => {
           <img src={BoardLogo} alt="" style={{width:"100%"}}/>
           <ScTopWord style={{ margin: "167px 35% 159px 60%" }}>
             <ScMainTitle>커피를 사랑하는 사람들의 커피 연구소</ScMainTitle>
-            <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} />글쓰러 가기</Scwrite>
+            <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt=""/><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
           </ScTopWord>
          </ScTopCard> 
           <PopularBoard />
@@ -65,6 +65,11 @@ font-size: 30px;
 line-height: 37px;
 margin-bottom: 30px;
 `
+
+const ScBoardWrite = styled.span`
+  font-family: 'SUIT Heavy';
+  
+`;
 
 const Scwrite = styled.div`
   display: flex;

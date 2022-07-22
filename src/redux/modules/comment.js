@@ -130,7 +130,11 @@ export const __deleteComment = (brand, boardId, reviewId) => async (dispatch, ge
     } catch (error) {
         console.log(error);
         if (error.response.status === 500) {
-            alert ("내가 쓴 댓글만 삭제할 수 있습니다.");
+            Swal.fire({
+                title: '내가 쓴 한줄평만 삭제할 수 있습니다.',
+                icon: 'error',
+                confirmButtonText: '확인'
+              })
         }
     }
 }
