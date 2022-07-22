@@ -8,7 +8,7 @@ export const Footer = () => {
 }
 
 const ScFooter = styled.div`
-  height: 429px;
+  height: 209px;
   background-color: #313131;
   margin-top: 186px;
 `

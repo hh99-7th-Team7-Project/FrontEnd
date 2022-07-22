@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getCookie } from '../shared/Cookie';
+import "../shared/css/HoverBubble.css"
 import Header from './Header/Header';
-import { MapPin } from '../shared/svg/A-index';
+import { MapPin, Info, Pointer } from '../shared/svg/A-index';
 
 const Map = (props) => {
   const { myLocation } = props
@@ -43,6 +44,7 @@ const Map = (props) => {
 
       // 장소 검색 객체를 생성
       const ps = new window.kakao.maps.services.Places();
+      console.log(ps)
       // 키워드 검색 완료 시 호출되는 콜백함수
       const placesSearchCB = (data, status, _pagination) => {
         if (status === window.kakao.maps.services.Status.OK) {
@@ -74,7 +76,7 @@ const Map = (props) => {
         const listEl = document.getElementById('placesList'),
           fragment = document.createDocumentFragment(),
           bounds = new window.kakao.maps.LatLngBounds();
-
+          console.log(listEl)
         // 검색 결과 목록에 추가된 항목들을 제거합니다
         removeAllChildNods(listEl);
 
@@ -287,15 +289,28 @@ const Map = (props) => {
       </div>
       <div style={{ position: 'relative', margin: 'auto' }}>
         <ScMapWrap>
+          <div style={{display:"flex", alignItems:"center", marginBottom:'10px',gap:"5px"}}>
+          <div style={{fontSize:"26px"}}>내주변 카페</div>
+            <div id='menu'>
+              <div> 
+                <span><img src={Info} alt=""/></span>
+                <p className="arrow_box">반경 20KM 안에있는 카페 결과입니다.</p>
+               </div>
+            </div>
+
+          </div>
           <ScMap id='map'>
             지도
           </ScMap>
           <div>
             <div>
-              <button onClick={() => { setMap(true) }}>내주변커피숍 보기</button>
+              <ScButton onClick={() => { setMap(true) }}>
+                <img src={Pointer} alt=""/>
+                내주변 카페 찾기
+                </ScButton>
               <div>
-                {nickname === undefined ? (<p>커파인러님 주변에 있는</p>) : (<p>{`${nickname}님 주변에 있는`}</p>)}
-                <p><span>{brand}</span>매장 정보예요</p>
+                {/* {nickname === undefined ? (<p>커파인러님 주변에 있는</p>) : (<p>{`${nickname}님 주변에 있는`}</p>)}
+                <p><span>{brand}</span>매장 정보예요</p> */}
               </div>
               <hr />
               <ScList id='placesList'>목록</ScList>
@@ -319,8 +334,23 @@ height: 600px;
  /* border: 1px solid #2c278c; */
  box-shadow: 0 7px 6px 0 #00000026;
 `
-const ScList = styled.ul`
+const ScList = styled.div`
 overflow-y: scroll;
-height: 520px;
-
+height: 300px;
+li{
+  list-style: none;
+}
+`
+const ScButton =styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+width: 200px;
+height: 41px;
+color: white;
+background-color: #2C278C;
+border-radius: 50px;
+font-weight: 600;
+font-size: 20px;
+margin: 20px 0;
 `
