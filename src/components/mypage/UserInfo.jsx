@@ -7,7 +7,7 @@ const UserInfo = ({email}) => {
   return (
     <div>
       {userName}
-      ({email})
+      <div>{email}</div>
     </div>
   )
 }

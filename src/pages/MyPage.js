@@ -84,7 +84,7 @@ const MyPage = () => {
         <div style={{margin:"auto"}}>
           <Header />
         </div>
-   
+    <ScsecondHead/>
     {update?(
 
     <ScMyprofile>
@@ -101,15 +101,22 @@ const MyPage = () => {
       <UserPhoto/>
       <UserInfo email={email}/>
       <button onClick={()=>{setUpdate(true)}}>수정하러가기</button>
+      <ScMywrite> <button onClick={()=>{setMenu(3)}}>내가쓴글</button></ScMywrite>
+      <ScChat></ScChat>
       </ScMyprofile>
+      <ScBookmark>
+      <div>북마크</div>
       <div>
-        <button onClick={()=>{setMenu(1)}}>커피</button>
-        <button onClick={()=>{setMenu(2)}}>게시판</button>
-        <button onClick={()=>{setMenu(3)}}>내가쓴글</button>
+        <div style={{ display:"flex", gap:"10px"}}>
+        <ScBookmarkCategory onClick={()=>{setMenu(1)}}>음료</ScBookmarkCategory>
+        <div style={{border:"1px solid black"}}></div>
+        <ScBookmarkCategory onClick={()=>{setMenu(2)}}>게시판</ScBookmarkCategory>
+        </div>
         {(menu===1)&&<UserBoardCoffee/>}    
         {(menu===2)&&<UserBoardBoard/>}
         {(menu===3)&&<UserBoardWrite/>}
       </div>
+      </ScBookmark>
     </ScWrap>
     )}
     </>
@@ -118,16 +125,45 @@ const MyPage = () => {
 
 export default MyPage
 
+const ScsecondHead =styled.div`
+height: 135px;
+background-color: #ddd;
+
+`
+
 const ScMyprofile = styled.div`
 display: flex;
 flex-direction: row;
+gap: 30px;
 //justify-contents
 align-items: center;
-margin: auto;
+margin: 50px auto 0 auto;
+`
+
+const ScBookmark =styled.div`
+font-size: 24px;
+`
+const ScBookmarkCategory =styled.div`
+font-size: 22px;
+cursor: pointer;
 `
 const ScWrap = styled.div`
 display: flex;
 flex-direction:column;
 align-items: center;
 justify-content: center;
+`
+
+const ScMywrite = styled.div`
+width: 277px;
+height: 214px;
+background-color: #EDE2F2;
+border-radius: 10px;
+`
+
+const ScChat = styled.div`
+width: 277px;
+height: 214px;
+background-color: #FEEEF4;
+border-radius: 10px;
 `
