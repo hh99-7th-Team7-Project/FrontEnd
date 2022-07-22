@@ -2,3 +2,9 @@
     font-family: ‘SUIT Variable’;
     src: url('../../../public/fonts/SUIT-Variable.woff2')format("woff2");
 }
+
+@font-face {
+	font-family: 'SUIT Heavy';
+	font-weight: 900;
+	src: url('../../../public/fonts/SUIT-Heavy.woff2') format('woff2');
+}
