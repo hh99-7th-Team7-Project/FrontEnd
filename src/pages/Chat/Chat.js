@@ -9,8 +9,6 @@ import { boardwrite } from '../../shared/svg/A-index';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 
 const Chat = () => {
-  const dispatch = useDispatch();
-
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(6);
   const [page, setPage] = useState(1);

@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 24.96px;
   }
 input{
-   font-family: ‘SUIT Variable’;
+  font-family: ‘SUIT Variable’;
   &:focus{
     outline: none;
   }

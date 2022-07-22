@@ -51,6 +51,7 @@ const apis = {
     api.put(`/coffees/${brand}/${boardId}/reviews/${reviewId}`, data),
   // getAveComment : (brand, boardId) => api.get(`/coffees/${brand}/${boardId}/star`),
 
+  //채팅
   getOneChatItem: (id) => api.get(`/chatposts/detail/${id}`),
   addChatItem: (data) => api.post('/chatposts', data),
   deleteChatItem: (id) => api.delete(`/chatposts/${id}`),

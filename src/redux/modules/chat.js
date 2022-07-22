@@ -10,7 +10,7 @@ const LOAD_ONE_CHATITEM = 'chat_reducer/LOADCHAT';
 const ADD_CHATITEM = 'chat_reducer/ADD';
 const UPDATE_CHATITEM = 'chat_reducer/UPDATE';
 const DELETE_CHATITEM = 'chat_reducer/DELETE';
-// const PREV_CHAT = 'PREV_CHAT';
+
 const PREV_POST_CHAT = 'PREV_POST_CHAT';
 
 /* ----------------- 액션 생성 함수 ------------------ */
