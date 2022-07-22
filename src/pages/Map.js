@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getCookie } from '../shared/Cookie';
 import Header from './Header/Header';
+import { MapPin } from '../shared/svg/A-index';
 
 const Map = (props) => {
   const { myLocation } = props
@@ -35,8 +36,8 @@ const Map = (props) => {
       // 지도 생성
       const map = new window.kakao.maps.Map(container, options);
 
-      container.style.width = '800px';
-      container.style.height = '600px';
+      container.style.width = '1100px';
+      container.style.height = '300px';
 
       map.relayout();
 
@@ -138,7 +139,7 @@ const Map = (props) => {
         el.style.borderBottom = '2px solid #e5e5e5';
         el.style.paddingBottom = '20px';
         el.style.paddingTop = '15px';
-
+        console.log(places.info_pannel)
         if (places.road_address_name) {
           itemStr +=
             '    <span style="color:grey;font-size:14px">' +
@@ -146,7 +147,8 @@ const Map = (props) => {
             '</span>' +
             '   <span class="jibun gray" style="color:grey;font-size:14px">' +
             places.address_name +
-            '</span>';
+            '</span>'
+         ;
         } else {
           itemStr +=
             '    <span style="color:grey;font-size:14px">' +
@@ -165,6 +167,7 @@ const Map = (props) => {
 
         return el;
       };
+      
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
       const addMarker = (
         position,
@@ -297,7 +300,6 @@ const Map = (props) => {
               <hr />
               <ScList id='placesList'>목록</ScList>
             </div>
-            {/* </div> */}
           </div>
         </ScMapWrap>
       </div>
@@ -308,7 +310,7 @@ const Map = (props) => {
 export default Map
 
 const ScMapWrap = styled.div`
-display: flex;
+/* display: flex; */
 gap: 30px;
 `
 const ScMap = styled.div`

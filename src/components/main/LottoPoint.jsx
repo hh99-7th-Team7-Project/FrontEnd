@@ -9,25 +9,25 @@ const LottoPoint = () => {
 
   return (
     <div className='container'>
-              <ScWrap className='item front'>
-                <ScWordWrap>
-              <h1
-              style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}
-              >Lucky Point Game!</h1>
-              <ScButton>뽑기</ScButton>
-              </ScWordWrap>
-              <img src={character} style={{height:"240px"}} alt=""/>
-              </ScWrap>
-              
-              <ScWrap className='item back'>
-              <ScWordWrap>
-              <h1
-              style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}
-              >Lucky Point Game!</h1>
-              <ScButton>뽑기</ScButton>
-              </ScWordWrap>
-              <img src={character} style={{height:"240px"}} alt=""/>
-              </ScWrap>
+        <ScWrap className='item front'>
+          <ScWordWrap>
+        <h1
+        style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}
+        >Lucky Point Game!</h1>
+        <ScButton>뽑기</ScButton>
+        </ScWordWrap>
+        <img src={character} style={{height:"240px"}} alt=""/>
+        </ScWrap>
+        
+        <ScWrap className='item back'>
+        <ScWordWrap>
+        <h1
+        style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}
+        >Lucky Point Game!</h1>
+        <ScButton>뽑기</ScButton>
+        </ScWordWrap>
+        <img src={character} style={{height:"240px"}} alt=""/>
+        </ScWrap>
     </div>
   )
 }

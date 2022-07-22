@@ -23,6 +23,7 @@ import Chat from "../pages/Chat";
 import BoardUpdate from "../pages/Board/BoardUpdate";
 import MenuCategory from "../pages/MenuCategory";
 
+
 const Router = () => {
 
   //내 현재위치 geolocation
@@ -51,7 +52,7 @@ const Router = () => {
 
   return (
     <Routes>
-      
+
       <Route path='/' element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
 

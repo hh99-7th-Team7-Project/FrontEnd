@@ -23,26 +23,26 @@ const moveToBoard = (e) =>{
 
     return (
         <ScBoardList>
-                <ScHeader>
-                    <div>
-                        {content?.category==="나만의 비밀 레시피"&&<ScMyrecipe>{content?.category}</ScMyrecipe>}
-                        {content?.category==="카페 추천합니다"&&<ScRecommend>{content?.category}</ScRecommend>}
-                        {content?.category==="기타"&&<ScEtc>{content?.category}</ScEtc>}
-                        {/* <span>{content?.nickname}</span> */}
-                    </div>
-                  </ScHeader>  
-                    <ScTitle onClick={moveToBoard}>{content?.title}</ScTitle>
-                    <ScBottom>
-                        <span>{content?.nickname}</span>
-                    </ScBottom>
-                     <Scbar>
-                        <img src={bookmark}/>
-                        <span>북마크</span>
-                        <img src={thumbup}/>
-                        <span>13</span>
-                        <img src={eye}/>
-                        <span>{content?.view}</span>
-                    </Scbar>
+            <ScHeader>
+                <div>
+                    {content?.category==="나만의 비밀 레시피"&&<ScMyrecipe>{content?.category}</ScMyrecipe>}
+                    {content?.category==="카페 추천합니다"&&<ScRecommend>{content?.category}</ScRecommend>}
+                    {content?.category==="기타"&&<ScEtc>{content?.category}</ScEtc>}
+                    {/* <span>{content?.nickname}</span> */}
+                </div>
+                </ScHeader>  
+                <ScTitle onClick={moveToBoard}>{content?.title}</ScTitle>
+                <ScBottom>
+                    <span>{content?.nickname}</span>
+                </ScBottom>
+                    <Scbar>
+                    {content?.bookmark ? (<img src={bookmarkck} alt=""/>):(<img src={bookmark} alt=""/>)}
+                    <span>북마크</span>
+                    <img src={thumbup} alt=""/>
+                    <span>{content?.totalLove}</span>
+                    <img src={eye} alt=""/>
+                    <span>{content?.view}</span>
+                </Scbar>
         </ScBoardList>
     )
     }

@@ -2,17 +2,28 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import BoardMap from './BoardMap';
 import apis from '../../shared/api/main';
+import { getCookie } from '../../shared/Cookie';
 
 const BoardListCategory = ({category}) => {
   const [content, setContent] = useState();
+  const token = getCookie("token")
 
   useEffect(() => {  
     const getMark = async () => {
+      if(!token){
         await apis.getBoardsCategory(category)
                   .then((res)=>{
                       console.log(res.data)
                       setContent(res.data)
                     })
+      }else{
+        await apis.getBoardsCategoryLogin(category)
+        .then((res)=>{
+            console.log(res.data)
+            setContent(res.data)
+          })
+      }
+        
                   }
                 getMark()
               }, [category])

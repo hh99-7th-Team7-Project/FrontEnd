@@ -10,22 +10,16 @@ const RandomPicker = () => {
 
   return (
     <ScTotal className='container' click={click}>
-            <ScWrap className='item front'>
-              <ScWordWrap>
-            <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"
-}}>Today's coffee?</h1>
+        <ScWrap className='item front'>
+          <ScWordWrap>
+            <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}>Today's coffee?</h1>
             <ScButton onClick={()=>{setClick(!click)}}>골라보기</ScButton>
-            </ScWordWrap>
-            <img src={character} style={{height:"240px"}}/>
-            </ScWrap>
-            <ScWrap className='item back'>
-              {/* <RandomCoffee/> */}
-              {/* <ScWordWrap>
-            <h1 style={{width:"100px", marginBottom:"20px",lineHeight: "37px"}}>Today's coffee?</h1> */}
-            <ScButton onClick={()=>{setClick(!click)}}>골라보기</ScButton>
-            {/* </ScWordWrap>
-            <img src={character} style={{height:"240px"}}/> */}
-            </ScWrap>
+          </ScWordWrap>
+          <img src={character} style={{height:"240px"}} alt=""/>
+        </ScWrap>
+        <ScWrap className='item back'>
+        <ScButton onClick={()=>{setClick(!click)}}>골라보기</ScButton>
+        </ScWrap>
     </ScTotal>
   )
 }

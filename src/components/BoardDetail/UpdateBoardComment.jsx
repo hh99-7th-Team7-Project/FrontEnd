@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { __getBoardComment, __updateBoardComment } from '../../redux/modules/boardcomment';
+import Swal from 'sweetalert2';
 
 const UpdateBoardComment = (props) => {
 
@@ -28,7 +29,12 @@ const UpdateBoardComment = (props) => {
             dispatch(__getBoardComment(boardId));
 
         } else {
-            alert ("빈칸입니다.")
+            Swal.fire({
+                title: '빈칸입니다!',
+                text: '댓글을 확인해주세요',
+                icon: 'warning',
+                confirmButtonText: '확인'
+              })
         }
     }
 
@@ -39,7 +45,7 @@ const UpdateBoardComment = (props) => {
                 <ScButton onClick={()=>{
                     boardCommentUpdate();
                     boardCommentInputRef.current.value=""                                
-                }}>수정하기</ScButton>
+                }}>수정</ScButton>
                 <ScButton onClick={()=>{
                         setShowUpdate(false);
                     }}>취소</ScButton>
@@ -50,12 +56,21 @@ const UpdateBoardComment = (props) => {
 const ScWrap = styled.div`
     display: flex;    
     justify-content: center;
-    align-items: center;
+    align-items: center;    
+    width: 800px
     
 `;
 
 const ScTextArea = styled.textarea`
-        
+    width: 150px;
+    height: 30px;    
+    /* border: none; */
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
 `;
 
 
@@ -66,6 +81,7 @@ const ScButton = styled.button`
   background-color: white;
   color: black;
   border: none;
+  margin-left: 20px;
   
 `;
 

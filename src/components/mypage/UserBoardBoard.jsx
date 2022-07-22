@@ -11,7 +11,7 @@ const UserBoardBoard = () => {
 
   //내가쓴글
   useEffect(()=>{
-    apis.getMyBoard(userId)
+    apis.getMyBoardBookmark(userId)
         .then((res)=>{
         console.log(res.data)
         setContent(res.data)

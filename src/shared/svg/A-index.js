@@ -8,5 +8,6 @@ import left from "./Left.svg"
 import right from "./Right.svg"
 import flow from "./Flow.svg"
 import flower from './FlowerBig.svg'
+import MapPin from './MapPin.svg'
 
-export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right, flow,flower}
+export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right, flow,flower,MapPin}

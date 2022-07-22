@@ -30,15 +30,14 @@ const moveToBoard = (e) =>{
                         {content?.category==="기타"&&<ScEtc>{content?.category}</ScEtc>}
                     </div>
                     <Scbar>
-                        <img src={bookmark}/>
+                    {content?.bookmark ? (<img src={bookmarkck} alt=""/>):(<img src={bookmark} alt=""/>)}
                         <span>북마크</span>
-                        <img src={thumbup}/>
-                        <span>10</span>
-                        <img src={eye}/>
+                        <img src={thumbup} alt="" />
+                        <span>{content?.totalLove}</span>
+                        <img src={eye} alt="" />
                         <span>{content?.view}</span>
                     </Scbar>
-                  </ScHeader>  
-           
+                </ScHeader>
                     <ScTitle onClick={moveToBoard}>{content?.title}</ScTitle>
                     <ScBottom>
                         <span>{content?.nickname}</span>
@@ -57,7 +56,8 @@ const ScBoardList = styled.div`
     justify-items: center;
     justify-content: space-between;
     border: 1px #ddd solid;
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     height: 120px;
     padding: 17px 20px 15px 20px;
     border-radius: 12px;

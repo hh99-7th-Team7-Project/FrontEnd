@@ -7,11 +7,12 @@ import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import PopularBoardMap from './PopularBoardMap';
 import{left,right}from '../../shared/svg/A-index'
+import { getCookie } from '../../shared/Cookie';
 
 const PopularBoard = () => {
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState();
-
+    const token = getCookie("token")
 
     const TOTAL_SLIDES = 2; 
     const imgLength = 1000;
@@ -35,16 +36,6 @@ const PopularBoard = () => {
     }
 };
 
-// useEffect(() => {
-//   const timer = setInterval(() => {
-//       setCount((prev) => (prev === TOTAL_SLIDES ? 0 : prev + 1));
-//   }, 3000);
-
-//   return () => {
-//       clearInterval(timer);
-//   };
-// }, [count]);
-
 useEffect(() => {
         console.log(curruntIdx);
         slideRef.current.style.transition = `all 0.5s ease-in-out`;
@@ -57,11 +48,19 @@ useEffect(() => {
       useEffect(() => {  
         setLoading(true)
           const getMark = async () => {
-              await apis.getBoards()
+            if(!token){
+               await apis.getBoards()
                         .then((res)=>{
                             console.log(res.data.slice(0,5))
                             setContent(res.data.slice(0,10))
                           })
+            }else{
+              await apis.getBoardsLogin()
+                      .then((res)=>{
+                          console.log(res.data)
+                          setContent(res.data)
+                        })
+          }
                         }
                       getMark()
                     }, [loading])
@@ -87,7 +86,7 @@ useEffect(() => {
                 {content&&content.map((item,idx)=>{
                         return <ImageList key={idx}>
                         <PopularBoardMap 
-                         content={item}/></ImageList>
+                          content={item}/></ImageList>
                     })}
                 </ImageBox>
             </Container>
@@ -101,7 +100,8 @@ useEffect(() => {
 const ScWrap = styled.div` 
     /* border: 1px solid black; */
     margin: 33px auto 62px;
-    width: 1200px;
+    max-width: 1200px;
+    width: 85%;
     height: 410px;
     background-color: #F4F1FF;
     border-radius: 20px;
@@ -121,7 +121,8 @@ const ScMoveButton =styled.div`
   gap: 24px;
 `
 const Container = styled.div`
-    width: 1150px;
+    max-width: 1150px;
+    width: 100%;
     height: 500px;
     margin: 0 auto;
     overflow: hidden;
