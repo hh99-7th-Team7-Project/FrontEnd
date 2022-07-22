@@ -38,6 +38,7 @@ const SearchBoard = () => {
           <div style={{margin:"auto"}}> 
             <Header/>
           </div>
+          <ScTitle>"{keyword}"에 대한 검색 결과입니다.</ScTitle>
           <ScBoardWrap>
             {boardReducer&&boardReducer.map((item,idx)=>{
               return(<BoardMap key={idx} content={item}/>)
@@ -55,5 +56,11 @@ const ScWrap = styled.div`
 const ScBoardWrap = styled.div`
   margin: 50px auto;
 `;
+
+const ScTitle =styled.div`
+  margin-top: 50px;
+  margin-left: 20px;
+  font-size: 24px;
+`
 
 export default SearchBoard
