@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import {css, keyframes} from 'styled-components';
 
-const Coffee = ({open, setOpen}) => {
+const Coffee = () => {
 
     const [color, setColor] = useState(false) 
     const navigate = useNavigate();
@@ -23,6 +23,7 @@ const Coffee = ({open, setOpen}) => {
 
   return (
     <>
+
       <div style={{display:"flex",justifyContent:"center"}}>
             <ScWrap>
               <ScList  style={{listStyle:"none"}}>

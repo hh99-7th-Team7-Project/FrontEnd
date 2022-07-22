@@ -11,11 +11,13 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import {css, keyframes} from 'styled-components';
 
-const Brand = ({open, setOpen}) => {
+const Brand = ({open}) => {
 
     const [color, setColor] = useState(false) 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    console.log("??", open);
 
 
 
@@ -27,6 +29,7 @@ const Brand = ({open, setOpen}) => {
 
   return (
         <>
+          
           <div style={{display:"flex",justifyContent:"center"}}>
             <ScWrap>
               <ScList  style={{listStyle:"none"}}>
