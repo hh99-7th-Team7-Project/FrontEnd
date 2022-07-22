@@ -1,86 +1,92 @@
 import React, {useEffect, useState} from 'react'
-import Styled from 'styled-components';
-import ImgCard from '../components/CoffeeDetail/ImgCard';
-import Review from '../components/CoffeeDetail/Review';
-import Comment from '../components/CoffeeDetail/Comment';
-import CommentCard from '../components/CoffeeDetail/CommentCard';
+import styled from 'styled-components';
+import Header from './Header/Header';
+import { Comment, CommentCard, ImgCard, Review, CoffeeCategory } from '../components/CoffeeDetail/A-CoffeeDetailIndex';
 import { useParams } from 'react-router-dom';
 import {useDispatch,useSelector}from 'react-redux';
-import axios from 'axios';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
-import Header from './Header/Header';
-import styled from 'styled-components';
-import { __loadComment } from '../redux/modules/comment';
-
-
 
 
 const CoffeeDetail = () => {
 
   const { brand } = useParams();
-  const { coffeename } = useParams();
   const { boardId } = useParams();
-console.log(boardId)
 
  
   const dispatch = useDispatch()
-  const [data, setData] = useState()
+  const [like, setLike] = useState()
   const [pri,setPri]=useState()
-console.log(data)
 
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
-console.log(coffeeReducer)
+const commentReducer = useSelector((state) => state.comment.posts);
 
-const commentReducer = useSelector((state)=>state.comment.posts)
-console.log(commentReducer)
 
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId)) 
+  setLike(coffeeReducer?.love)
 },[dispatch])
-
-useEffect(()=>{
-  dispatch(__loadComment({brand, boardId}));
-},[boardId, brand, dispatch])
 
 
 return (
-    <Scwrap>   
-      <Header/>   
-      <ScHR/>
-      <ScContainer>
-        <ImgCard 
-            url={coffeeReducer?.img}
-        />
-        <ScReviewCommentBox>
-        <Review item={coffeeReducer}/>
-          <Comment />          
+    <>
+      <div style={{margin:"auto"}}> 
+        <Header/>
+      </div>
+      <div>
+        <CoffeeCategory/>
+      </div>   
+      <Scwrap>
+        <ScContainer>
+            <ImgCard 
+                url={coffeeReducer?.img}
+                item={coffeeReducer}
+                like={like}
+                setLike={setLike}
+            />
+          <ScReviewCommentBox>
+            <Review 
+              item={coffeeReducer}
+              reviewData={commentReducer}
+              url={coffeeReducer?.img}
+              />
+          </ScReviewCommentBox>
+        </ScContainer>
+      </Scwrap>
+      <ScCommentBox>
+          <Comment 
+            item={coffeeReducer}
+          />          
           <CommentCard 
             boardId={boardId}
-            brand={brand} />
-        </ScReviewCommentBox>
-      </ScContainer>
-    </Scwrap>
+            brand={brand}
+          />
+      </ScCommentBox>
+    </>
   )
 }
 
-const Scwrap = Styled.div`
- display: column;
- max-width:1200px;
- width:75%;
-`
-
-const ScHR = Styled.hr`
-  margin-top: 50px;
-  margin-bottom: 50px;
+const Scwrap = styled.div`
+  display: column;
+  max-width:1200px;
+  width:80vw;
+  margin: auto;
 `;
 
-const ScContainer = Styled.div`
-  display: flex;
-`;
-
-const ScReviewCommentBox = Styled.div`
+const ScContainer = styled.div`
   display: column;
 `;
+
+const ScReviewCommentBox = styled.div`
+  display: column;
+`;
+
+const ScCommentBox = styled.div`
+  margin: 400px auto;
+  width: 1900px;
+  height: 1900px;
+  background-color: #eee;
+`;
+
 
 export default CoffeeDetail;

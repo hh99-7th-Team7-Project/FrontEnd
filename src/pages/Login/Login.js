@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 //router
 import { Link, useNavigate } from 'react-router-dom'
 //cookie
@@ -13,14 +13,25 @@ import NaverLogin from './NaverLogin'
 import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL, NAVER_AUTH_URL } from '../../shared/SocialOAuth'
 
 import styled from 'styled-components'
+import character from '../../shared/svg/MainCharacter2.svg'
+import { motion, AnimatePresence } from "framer-motion"
+import Modal from '../../components/main/Modal'
 
-const Login = () => {
+const Login = (props) => {
 
   const navigate = useNavigate()
   //ref
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
 
+const [showModal, setShowModal] = useState(false);
+
+const openModal = () => {
+  setShowModal(true);
+}
+const closeModal = () => {
+  setShowModal(false);
+}
   //로그인 onclick
   const loginClick = async () => {
     try {
@@ -36,7 +47,10 @@ const Login = () => {
 
       //쿠키설정
       setCookie("token", response.headers.authorization.split(" ")[1])
-      setCookie("nickname", response.data.nickname)
+      setCookie("nickname", response?.data.nickname)
+      setCookie("islogin", response?.data.login)
+      setCookie("profileImg", response?.data?.profileImage)
+      setCookie("userId",response?.data?.userId)
       alert("환영합니다")
       navigate("/")
     }
@@ -45,48 +59,75 @@ const Login = () => {
     }
   }
   return (
+    <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
     <ScWrap>
       <ScLogin>
-            <h1>로고</h1>
-            <h2>환영 문구 또는 가입 문구</h2>
-            <ScInputWrap>
-            <input
-              type="email"
-              placeholder="Email"
-              ref={emailRef}/>
-            <input
-                type="password"
-                placeholder="Password"
-                ref={passwordRef}/>
-            </ScInputWrap>  
-            <ScButtonWrap>  
-            <button 
-            onClick={loginClick} 
-            style={{backgroundColor:"black",color:"white"}}>로그인</button>
-            <button 
-            onClick={()=>{navigate("/signup")}}
-            style={{backgroundColor:"grey",color:"white"}}>회원가입</button>
-            </ScButtonWrap>
-
-            <ScText><hr/>소셜 로그인<hr/></ScText>
-          <ScSocialWrap> 
-            <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg"/></a>
-            <a href={NAVER_AUTH_URL}><ScImg src="/네이버.png"/></a>
-            <a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg"/></a>
-          </ScSocialWrap>
-    </ScLogin>
-    <ScImageBox/>
+      <motion.div
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+    >
+       <ScHeadWrap>
+        <ScLogo src={character} onClick={()=>{navigate('/')}}/>
+        <h2>환영 문구 또는 가입 문구</h2>
+        </ScHeadWrap>
+    </motion.div>
+       
+        <ScInputWrap>
+          <input
+            type="email"
+            placeholder="Email"
+            ref={emailRef} />
+          <input
+            type="password"
+            placeholder="Password"
+            ref={passwordRef} />
+        </ScInputWrap>
+        <ScButtonWrap>
+          <button
+            onClick={loginClick}
+            style={{ backgroundColor: "black", color: "white" }}>로그인</button>
+          <button
+            onClick={() => { navigate("/signup") }}
+            style={{ backgroundColor: "grey", color: "white" }}>회원가입</button>
+        </ScButtonWrap>
+        <button onClick={openModal}>모달 오쁜</button>
+        <Modal showModal={showModal} closeModal={closeModal}/>
+        <ScText><hr />소셜 로그인<hr /></ScText>
+        <ScSocialWrap>
+          <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a>
+          <a href={NAVER_AUTH_URL}><ScImg src="/네이버.png" /></a>
+          <a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg" /></a>
+        </ScSocialWrap>
+      </ScLogin>
     </ScWrap>
+    </motion.div>
   )
 }
 
 export default Login
 
-const ScWrap= styled.div`
+const ScWrap = styled.div`
 display: flex;
 width: 100%;
 `
-const ScLogin =styled.div`
+
+const ScLogo = styled.img`
+ width: 300px;
+ margin-top: 50px;
+ padding-right: 60px;
+`
+
+const ScHeadWrap = styled.div`
+/* background-color: yellow; */
+margin-bottom: 48px;
+text-align: center;
+`
+const ScLogin = styled.div`
 
 display: flex;
 flex: 6;
@@ -102,7 +143,7 @@ background: url('https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1
 background-size:cover;
 `
 
-const ScInputWrap =styled.div`
+const ScInputWrap = styled.div`
 display: flex;
 flex-direction: column;
 input{
@@ -113,7 +154,9 @@ input{
   margin: 10px 0;
   border: 1px #ddd solid;
   background-color: rgb(233, 230, 230);
-}
+} input::placeholder{
+    color: black;
+  }
 `
 const ScText = styled.h3`
 display: flex;
@@ -123,10 +166,10 @@ font-weight: bolder;
 hr{
   width: 190px;
   border: none;
-  border-bottom: 1px gray solid;
+  border-bottom: 1px #bbb solid;
 }
 `
-const ScButtonWrap =styled.div`
+const ScButtonWrap = styled.div`
 display: flex;
 flex-direction: column;
 margin-top: 50px;
@@ -141,7 +184,7 @@ border: none;
 }
 `
 
-const ScSocialWrap =styled.div`
+const ScSocialWrap = styled.div`
 display: flex;
 justify-content: center;
 width: 300px;

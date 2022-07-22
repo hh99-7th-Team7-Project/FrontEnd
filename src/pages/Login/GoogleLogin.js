@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { apis } from '../../shared/api/main';
-import { api } from '../../shared/api/core/api';
+import { api, apin } from '../../shared/api/core/api';
 import { useNavigate } from 'react-router-dom'
 import { setUser } from '../../redux/modules/users';
 import { setCookie } from '../../shared/Cookie';
@@ -16,25 +16,22 @@ const GoogleLogin = () => {
   React.useEffect(() => {
     if (code) {
       const google = ()=>{
-         api
+         apin
         .get(`/oauth/google/callback?code=${code}`)//DB에 코드전송
         .then((res) => {
           console.log(res)
           const token = res.headers.authorization.split(" ");
           console.log(token[1])
           setCookie("token",res.headers.authorization.split(" ")[1]);
-          navigate("/");
           api
-            .get("/user/islogin")//유저정보가져오는url
+            .get("/social/user/islogin")//유저정보가져오는url
             .then((res) => {
-              dispatch(
-                setUser({
-                  //유저정보를 다시 세팅
-                  nickname: res.data.nickname,
-                  imageUrl: res.data.imageUrl,
-                  userEmail: res.data.userEmail,
-                })
-              );
+              console.log(res)
+              setCookie("nickname", res?.data.nickname)
+              setCookie("islogin", true)
+              setCookie("profileImg", res?.data?.profileImage)
+              setCookie("userId",res?.data?.userId)
+              navigate("/");
             })
             .catch((error) => console.log("유저정보저장오류", error));
         })
@@ -49,7 +46,7 @@ const GoogleLogin = () => {
   }, [code]);
 
   return (
-    <div>구구루로그인</div>
+    <div></div>
   )
 };
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import Styled from 'styled-components';
-import Logo from '../../components/Header/Logo';
-import Category from '../../components/Header/Category';
-import HeaderInput from '../../components/Header/HeaderInput';
-import Button from '../../components/Header/Button';
+import {
+  Button,
+  Category,
+  HeaderInput,
+  Logo,
+} from '../../components/Header/A-HeaderIndex';
 import { useNavigate } from 'react-router-dom';
-import Chat from '../../components/Header/Chat';
+import styled from 'styled-components';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,7 +14,6 @@ const Header = () => {
   return (
     <ScHeaderBox>
       <Logo />
-      <Chat />
       <Category />
       <HeaderInput />
       <Button />
@@ -21,12 +21,13 @@ const Header = () => {
   );
 };
 
-const ScHeaderBox = Styled.header`    
-    display: flex;
-    align-item: center;
-    max-width:1200px;
-    width:100%;
-    border: 1px red solid;
+const ScHeaderBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 1222px;
+  height: 130px;
 `;
 
 export default Header;

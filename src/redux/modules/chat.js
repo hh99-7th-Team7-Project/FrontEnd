@@ -10,7 +10,7 @@ const LOAD_ONE_CHATITEM = 'chat_reducer/LOADCHAT';
 const ADD_CHATITEM = 'chat_reducer/ADD';
 const UPDATE_CHATITEM = 'chat_reducer/UPDATE';
 const DELETE_CHATITEM = 'chat_reducer/DELETE';
-const PREV_CHAT = 'PREV_CHAT';
+// const PREV_CHAT = 'PREV_CHAT';
 const PREV_POST_CHAT = 'PREV_POST_CHAT';
 
 /* ----------------- 액션 생성 함수 ------------------ */
@@ -37,18 +37,18 @@ export function deleteChatItem(payload) {
   return { type: DELETE_CHATITEM, payload };
 }
 
-export function prevChat(payload) {
-  return { type: PREV_CHAT, payload };
-}
+// export function prevChat(payload) {
+//   return { type: PREV_CHAT, payload };
+// }
 
 export function prevPostChat(payload) {
   return { type: PREV_POST_CHAT, payload };
 }
 
 /* ----------------- 미들웨어 ------------------ */
-export const __loadChatLists = () => {
+export const __loadChatLists = (page) => {
   return async function (dispatch) {
-    const loadData = await apis.getChatLists();
+    const loadData = await apis.getChatLists(page);
     console.log(loadData.data);
     dispatch(loadChatLists(loadData.data));
   };
@@ -70,32 +70,11 @@ export const __addChatItem = (chatitem) => {
   };
 };
 
-export const prevChatDB = (props) => {
-  return function (dispatch, getState, { history }) {
-    apis
-      .prechat()
-      .then((res) => {
-        const status = res.data;
-        dispatch(prevChat(status));
-        console.log(status);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
-
-export const prevPostChatDB = (chatpostId) => {
-  return function (dispatch, getState) {
-    apis
-      .prepostchat(chatpostId)
-      .then((res) => {
-        const status = res.data;
-        dispatch(prevPostChat(status));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+export const __prevPostChat = (chatpostId) => {
+  return async function (dispatch) {
+    const loadData = await apis.prepostchat(chatpostId);
+    console.log(loadData);
+    dispatch(prevPostChat(loadData.data));
   };
 };
 
@@ -118,7 +97,6 @@ export default function ChatReducer(state = initialState, action) {
       return { list: action.payload };
     }
     case LOAD_ONE_CHATITEM: {
-      console.log(action.payload);
       return { ...state, one_list: action.payload };
     }
     case ADD_CHATITEM: {
@@ -130,11 +108,11 @@ export default function ChatReducer(state = initialState, action) {
     case UPDATE_CHATITEM: {
       return { ...state, one_list: action.payload };
     }
-    case PREV_CHAT: {
-      return { prev_list: action.payload.list };
-    }
+    // case PREV_CHAT: {
+    //   return { prev_list: action.payload.list };
+    // }
     case PREV_POST_CHAT: {
-      return { post_list: action.payload.list };
+      return { post_list: action.payload };
     }
     default:
       return state;

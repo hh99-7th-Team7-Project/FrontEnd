@@ -11,7 +11,9 @@
 
 .careIcon {
     transition: transform 250ms ease-out;
-    
+}
+#dropdown:checked + label > .careIcon {
+    transform: rotate(-180deg);
 }
 
 

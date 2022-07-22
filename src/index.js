@@ -8,6 +8,7 @@ import  GlobalStyle  from './GlobalStyle';
 import reportWebVitals from './reportWebVitals';
 
 import "swiper/css/bundle";
+import ScrollToTop from './shared/ScrollToTop';
 
 
 
@@ -17,6 +18,7 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <GlobalStyle/>
+      <ScrollToTop/>
         <App />
     </BrowserRouter>
   </Provider>

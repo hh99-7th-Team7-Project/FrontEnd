@@ -7,6 +7,7 @@ import Main from '../pages/Main';
 import CoffeeDetail from '../pages/CoffeeDetail';
 import Map from '../pages/Map';
 import MyPage from '../pages/MyPage';
+
 import Login from '../pages/Login/Login';
 import KaKaoLogin from '../pages/Login/KaKaoLogin';
 import GoogleLogin from '../pages/Login/GoogleLogin';
@@ -21,9 +22,8 @@ import SearchBoard from '../pages/Search/SearchBoard';
 import SearchCoffee from '../pages/Search/SearchCoffee';
 import Chat from '../pages/Chat/Chat';
 import ChatDetail from '../pages/Chat/ChatDetail';
-import ChatWrite from '../pages/Chat/ChatWrite';
-import Party from '../pages/Party/Party';
-import PartyWrite from '../pages/Party/PartyWrite';
+import BoardUpdate from '../pages/Board/BoardUpdate';
+import MenuCategory from '../pages/MenuCategory';
 
 const Router = () => {
   //내 현재위치 geolocation
@@ -51,6 +51,7 @@ const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Main myLocation={myLocation} />} />
+
       <Route path="/mypage" element={<MyPage />} />
 
       {/* signup */}
@@ -64,8 +65,15 @@ const Router = () => {
       {/* Admin Page */}
       <Route path="/admin" element={<AdminPage />} />
 
+      {/* Main Page */}
+      <Route path="/menucategory" element={<MenuCategory />} />
+
       {/** CafeDetail */}
-      <Route path="/:brand/:coffeename/:boardId" element={<CoffeeDetail />} />
+      <Route
+        path="/coffee/:brand/:coffeename/:boardId"
+        element={<CoffeeDetail />}
+      />
+
       {/* map */}
       <Route path="/map/:brand" element={<Map myLocation={myLocation} />} />
       {/* Search */}
@@ -74,13 +82,14 @@ const Router = () => {
       <Route path="/search/coffee/:keyword" element={<SearchCoffee />} />
       {/* Board */}
       <Route path="/board" element={<Board />} />
-      <Route path="/board/:id" element={<BoardDetail />} />
+      <Route path="/board/:boardId" element={<BoardDetail />} />
       <Route path="/board/write" element={<BoardWrite />} />
 
       {/**Chat */}
       <Route path="/chatposts" element={<Chat />} />
       <Route path="/chatposts/detail/:id" element={<ChatDetail />} />
-      {/* <Route path="/chat/write" element={<ChatWrite />} /> */}
+
+      <Route path="/board/:boardId/update" element={<BoardUpdate />} />
     </Routes>
   );
 };

@@ -1,28 +1,44 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import CoffeeCard from '../../components/main/CoffeeCard';
 import { __loadCoffees } from '../../redux/modules/coffee';
+import apis from '../../shared/api/main';
 import Header from '../Header/Header';
 
 const SearchCoffee = () => {
-  const {keyword} = useParams;
+  const {keyword} = useParams();
   const dispatch = useDispatch()
-  const coffeeReducer = useSelector((state) => state.coffee.list);
+  const [coffeeReducer, setCoffeeReducer] = useState()
 
   useEffect(()=>{
-    dispatch(__loadCoffees())
+    const search = async()=>{
+      apis.searchCoffee(keyword)
+          .then((res)=>{
+            console.log(res)
+            setCoffeeReducer(res?.data)
+          })
+    }
+    search()
   },[dispatch])
 
   return (
-    <div>
-    <Header/>
-    <div style={{display:"flex",maxWidth:"1400px",flexWrap:"wrap"}}>
-      {coffeeReducer&&coffeeReducer.map((item,idx)=>{
-        return(<CoffeeCard key={idx} item={item}/>)
-      })} </div>
+    <ScWrap>
+      <div style={{margin:"auto"}}> 
+        <Header/>
       </div>
+      <div style={{display:"flex",maxWidth:"1400px",flexWrap:"wrap"}}>
+        {coffeeReducer&&coffeeReducer.map((item,idx)=>{
+          return(<CoffeeCard key={idx} item={item}/>)
+        })} 
+      </div>
+    </ScWrap>
   )
 }
+
+const ScWrap = styled.div`
+  margin: auto;
+`;
 
 export default SearchCoffee

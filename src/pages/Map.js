@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { getCookie } from '../shared/Cookie';
+import Header from './Header/Header';
 
 const Map = (props) => {
-  const{ myLocation } = props
-  const {brand} = useParams()
+  const { myLocation } = props
+  const { brand } = useParams()
   const [map, setMap] = useState(false)
   const [error, setError] = useState('');
 
@@ -34,7 +37,7 @@ const Map = (props) => {
 
       container.style.width = '800px';
       container.style.height = '600px';
-      
+
       map.relayout();
 
       // 장소 검색 객체를 생성
@@ -68,7 +71,6 @@ const Map = (props) => {
       // 검색 결과 목록과 마커를 표출하는 함수입니다
       const displayPlaces = (places) => {
         const listEl = document.getElementById('placesList'),
-          menuEl = document.getElementById('menu_wrap'),
           fragment = document.createDocumentFragment(),
           bounds = new window.kakao.maps.LatLngBounds();
 
@@ -117,138 +119,138 @@ const Map = (props) => {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
       };
- // 검색결과 항목을 Element로 반환하는 함수입니다
- const getListItem = (index, places) => {
-  // eslint-disable-next-line prefer-const
-  let el = document.createElement('li'),
-    itemStr =
-      '<span class="markerbg marker_' +
-      (index + 1) +
-      '"></span>' +
-      '<div class="info">' +
-      '   <a href="' +
-      places.place_url +
-      '" target="_blank">' +
-      places.place_name +
-      '</a>';
+      // 검색결과 항목을 Element로 반환하는 함수입니다
+      const getListItem = (index, places) => {
+        // eslint-disable-next-line prefer-const
+        let el = document.createElement('li'),
+          itemStr =
+            '<span class="markerbg marker_' +
+            (index + 1) +
+            '"></span>' +
+            '<div class="info">' +
+            '   <a href="' +
+            places.place_url +
+            '" target="_blank">' +
+            places.place_name +
+            '</a>';
 
-  el.style.marginBottom = '';
-  el.style.borderBottom = '2px solid #e5e5e5';
-  el.style.paddingBottom = '20px';
-  el.style.paddingTop = '15px';
+        el.style.marginBottom = '';
+        el.style.borderBottom = '2px solid #e5e5e5';
+        el.style.paddingBottom = '20px';
+        el.style.paddingTop = '15px';
 
-  if (places.road_address_name) {
-    itemStr +=
-      '    <span style="color:grey;font-size:14px">' +
-      places.road_address_name +
-      '</span>' +
-      '   <span class="jibun gray" style="color:grey;font-size:14px">' +
-      places.address_name +
-      '</span>';
-  } else {
-    itemStr +=
-      '    <span style="color:grey;font-size:14px">' +
-      places.address_name +
-      '</span>';
-  }
+        if (places.road_address_name) {
+          itemStr +=
+            '    <span style="color:grey;font-size:14px">' +
+            places.road_address_name +
+            '</span>' +
+            '   <span class="jibun gray" style="color:grey;font-size:14px">' +
+            places.address_name +
+            '</span>';
+        } else {
+          itemStr +=
+            '    <span style="color:grey;font-size:14px">' +
+            places.address_name +
+            '</span>';
+        }
 
-  itemStr +=
-    '  <span class="tel" style="color:grey;font-size:14px">' +
-    places.phone +
-    '</span>' +
-    '</div>';
+        itemStr +=
+          '  <span class="tel" style="color:grey;font-size:14px">' +
+          places.phone +
+          '</span>' +
+          '</div>';
 
-  el.innerHTML = itemStr;
-  el.className = 'item';
+        el.innerHTML = itemStr;
+        el.className = 'item';
 
-  return el;
-};
- // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
- const addMarker = (
-  position,
-  idx,
-  title,
-  url
-) => {
-  const imageSrc =
-      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-    imageSize = new window.kakao.maps.Size(36, 37), // 마커 이미지의 크기
-    imgOptions = {
-      spriteSize: new window.kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-      spriteOrigin: new window.kakao.maps.Point(0, idx * 46 + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-      offset: new window.kakao.maps.Point(13, 37), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-    },
-    markerImage = new window.kakao.maps.MarkerImage(
-      imageSrc,
-      imageSize,
-      imgOptions 
-    ),
-    marker = new window.kakao.maps.Marker({
-      position: position, // 마커의 위치
-      image: markerImage,
-    });
+        return el;
+      };
+      // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+      const addMarker = (
+        position,
+        idx,
+        title,
+        url
+      ) => {
+        const imageSrc =
+          'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+          imageSize = new window.kakao.maps.Size(36, 37), // 마커 이미지의 크기
+          imgOptions = {
+            spriteSize: new window.kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+            spriteOrigin: new window.kakao.maps.Point(0, idx * 46 + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            offset: new window.kakao.maps.Point(13, 37), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+          },
+          markerImage = new window.kakao.maps.MarkerImage(
+            imageSrc,
+            imageSize,
+            imgOptions
+          ),
+          marker = new window.kakao.maps.Marker({
+            position: position, // 마커의 위치
+            image: markerImage,
+          });
 
-  marker.setMap(map); // 지도 위에 마커를 표출합니다
-  markers.push(marker); // 배열에 생성된 마커를 추가합니다
+        marker.setMap(map); // 지도 위에 마커를 표출합니다
+        markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
-  // 마커 클릭 이벤트 부분
-  const iwContent =
-      '<div style="color:grey;font-size:14px;padding:17px">' +
-      title +
-      '<br><a href="' +
-      url +
-      '" style="color:blue;text-decoration:none;color:#964b00;font-weight:500;" target="_blank">링크 바로가기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    iwPosition = new window.kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+        // 마커 클릭 이벤트 부분
+        const iwContent =
+          '<div style="color:grey;font-size:14px;padding:17px">' +
+          title +
+          '<br><a href="' +
+          url +
+          '" style="color:blue;text-decoration:none;color:#2c278c;font-weight:500;" target="_blank">자세히 보러 가기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+          iwPosition = new window.kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
-  // 인포윈도우에 닫기 x버튼 추가
-  const iwRemoveable = true;
+        // 인포윈도우에 닫기 x버튼 추가
+        const iwRemoveable = true;
 
-  // 인포윈도우를 생성합니다
-  const infowindow = new window.kakao.maps.InfoWindow({
-    position: iwPosition,
-    content: iwContent,
-    removable: iwRemoveable,
-  });
+        // 인포윈도우를 생성합니다
+        const infowindow = new window.kakao.maps.InfoWindow({
+          position: iwPosition,
+          content: iwContent,
+          removable: iwRemoveable,
+        });
 
-  // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-  // infowindow.open(map, marker);
+        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+        // infowindow.open(map, marker);
 
-  window.kakao.maps.event.addListener(marker, 'click', function () {
-    // 마커 위에 인포윈도우를 표시합니다
-    infowindow.open(map, marker);
-  });
+        window.kakao.maps.event.addListener(marker, 'click', function () {
+          // 마커 위에 인포윈도우를 표시합니다
+          infowindow.open(map, marker);
+        });
 
-  // 마커 클립 이벤트 부분 end
+        // 마커 클립 이벤트 부분 end
 
-  return marker;
-};
+        return marker;
+      };
 
-// 지도 위에 표시되고 있는 마커를 모두 제거합니다
-const removeMarker = () => {
-  for (let i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
-  markers = [];
-};
+      // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+      const removeMarker = () => {
+        for (let i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+      };
 
-// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-// 인포윈도우에 장소명을 표시합니다
-const displayInfowindow = (marker, title) => {
-  const content =
-    '<div style="padding:5px;z-index:1;">' + title + '</div>';
+      // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+      // 인포윈도우에 장소명을 표시합니다
+      const displayInfowindow = (marker, title) => {
+        const content =
+          '<div style="padding:5px;z-index:1;">' + title + '</div>';
 
-  infowindow.setContent(content);
-  infowindow.open(map, marker);
-};
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+      };
 
-// 검색결과 목록의 자식 Element를 제거하는 함수입니다
-const removeAllChildNods = (el) => {
-  while (el.hasChildNodes()) {
-    el.removeChild(el.lastChild);
-  }
-};
+      // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+      const removeAllChildNods = (el) => {
+        while (el.hasChildNodes()) {
+          el.removeChild(el.lastChild);
+        }
+      };
 
- // 유저 현위치 마커 생성
+      // 유저 현위치 마커 생성
       // eslint-disable-next-line
       const marker = new window.kakao.maps.Marker({
         position: new window.kakao.maps.LatLng(
@@ -268,42 +270,55 @@ const removeAllChildNods = (el) => {
       // eslint-disable-next-line
       const marker = new window.kakao.maps.Marker({
         position: new window.kakao.maps.LatLng(33.450701, 126.570667),
-        map: map, 
+        map: map,
       });
-    } 
+    }
   }, [map]);
 
+  const nickname = getCookie("nickname")
 
   return (
-    <div style={{ position: 'relative' }}>
-    <div
-      // className='w-full'
-      id='map'
-      style={{ height: '600px', backgroundColor: 'grey' }}
-    >
-      지도 
-    </div>
-    <div>
-      {/* <div
-        id='menu_wrap'
-        className='bg-white no-scrollbar w-full h-72 fixed bottom-0 overflow-y-auto bg-[rgba(255,255,255,1)] text-black rounded-t-30px pt-5 px-6 z-[100]'
-      > */}
-        <div>
-          <button onClick={()=>{setMap(true)}}>내주변커피숍 보기</button>
+    <>
+      <div style={{ margin: "auto" }}>
+        <Header />
+      </div>
+      <div style={{ position: 'relative', margin: 'auto' }}>
+        <ScMapWrap>
+          <ScMap id='map'>
+            지도
+          </ScMap>
           <div>
-             <p>{`님 주변에 있는`}</p>
-            <p>
-              <span>{brand}</span>
-               매장 정보예요
-            </p>
+            <div>
+              <button onClick={() => { setMap(true) }}>내주변커피숍 보기</button>
+              <div>
+                {nickname === undefined ? (<p>커파인러님 주변에 있는</p>) : (<p>{`${nickname}님 주변에 있는`}</p>)}
+                <p><span>{brand}</span>매장 정보예요</p>
+              </div>
+              <hr />
+              <ScList id='placesList'>목록</ScList>
+            </div>
+            {/* </div> */}
           </div>
-          <hr />
-          <ul id='placesList'>목록</ul>
-        </div>
-      {/* </div> */}
-    </div>
-  </div>
+        </ScMapWrap>
+      </div>
+    </>
   )
 }
 
 export default Map
+
+const ScMapWrap = styled.div`
+display: flex;
+gap: 30px;
+`
+const ScMap = styled.div`
+height: 600px;
+ background-color: grey;
+ /* border: 1px solid #2c278c; */
+ box-shadow: 0 7px 6px 0 #00000026;
+`
+const ScList = styled.ul`
+overflow-y: scroll;
+height: 520px;
+
+`

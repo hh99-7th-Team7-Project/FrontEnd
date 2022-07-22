@@ -6,6 +6,10 @@ export const api = axios.create({
   baseURL: process.env.REACT_APP_URL,
   // withCredentials: false,
 });
+export const apin =axios.create({
+  baseURL: process.env.REACT_APP_URL,
+  // withCredentials: false,
+});
 //폼데이터 전송 두가지 토큰O/X
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_URL,

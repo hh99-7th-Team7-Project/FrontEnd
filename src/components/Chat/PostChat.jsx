@@ -4,27 +4,32 @@ import SockJs from 'sockjs-client';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCookie } from '../../shared/Cookie';
-import { prevPostChatDB } from '../../redux/modules/chat';
+import { __prevPostChat, __loadOneChatItem } from '../../redux/modules/chat';
 import ChatDetailItem from './ChatDetail';
 
 let stompClient = null;
-const PostChat = ({ chatReducer, chatpostId }) => {
+const PostChat = ({ chatpostId }) => {
   const dispatch = useDispatch();
-  const post_chat_list = useSelector((state) => state.chat.post_list);
+
   const messageRef = useRef();
 
   const cookie = getCookie('token');
   const nickname = getCookie('nickname');
+  const userId = getCookie('userId');
   const token = { Authorization: `Bearer ${cookie}` };
+  const profileImg = getCookie('profileImg');
+  console.log(userId);
 
-  // const chatReducer = useSelector((state) => state.chat.one_list);
+  React.useEffect(() => {
+    dispatch(__prevPostChat(chatpostId));
+    stompConnect();
+    return () => {
+      stompDisConnect();
+    };
+  }, []);
 
-  // useEffect(() => {
-  //   dispatch(__loadChatLists());
-  // }, []);
-
-  // const userInfo = useSelector((state) => state.chat.list);
-  // console.log(userInfo);
+  const post_chat_list = useSelector((state) => state.chat.post_list);
+  console.log(post_chat_list);
 
   const [welcome, setWelcome] = React.useState(new Map());
   const [publicChats, setPublicChats] = React.useState([]);
@@ -33,22 +38,13 @@ const PostChat = ({ chatReducer, chatpostId }) => {
   const [user, setUser] = React.useState(0);
   const [chatScroll, setChatScroll] = React.useState(false);
   const [userData, setUserData] = React.useState({
-    username: '',
+    nickname: '',
     message: '',
-    opposingUserName: '',
   });
 
   React.useEffect(() => {
     scrollToBottom();
   }, [publicChats, chatScroll]);
-
-  React.useEffect(() => {
-    dispatch(prevPostChatDB(chatpostId));
-    stompConnect();
-    return () => {
-      stompDisConnect();
-    };
-  }, []);
 
   const onKeyPress = (e) => {
     if (e.key == 'Enter') {
@@ -59,7 +55,7 @@ const PostChat = ({ chatReducer, chatpostId }) => {
   const stompDisConnect = () => {
     try {
       // const user_join = { status: 'OUT', senderName: username };
-      const user_join = { status: 'OUT' };
+      const user_join = { status: 'OUT', senderName: nickname };
       stompClient.send('/app/postchat', token, JSON.stringify(user_join));
 
       stompClient.disconnect(() => {
@@ -74,7 +70,7 @@ const PostChat = ({ chatReducer, chatpostId }) => {
   };
 
   const stompConnect = () => {
-    let socket = new SockJs('http://3.36.103.203:8080/ws-coala');
+    let socket = new SockJs('https://sparta-gi.shop/ws-coala');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
     console.log('stomp연결');
@@ -85,17 +81,16 @@ const PostChat = ({ chatReducer, chatpostId }) => {
       const user_join = {
         status: 'JOIN',
         chatpostId: Number(chatpostId),
-        id: 1,
+        id: userId,
         senderName: nickname,
       };
       setConnected(true);
       console.log(connected);
       setUserData({
         ...userData,
-        // profileImage: profileImage,
+        profileImg: profileImg,
         senderName: nickname,
         status: 'JOIN',
-        id: 1,
       });
 
       stompClient.send('/app/postchat', token, JSON.stringify(user_join));
@@ -114,31 +109,6 @@ const PostChat = ({ chatReducer, chatpostId }) => {
     }
   };
 
-  // const sendPublicMessage = () => {
-  //   if (is_login) {
-  //     if (stompClient) {
-  //       if (!userData.message) {
-  //         alert('', '내용을 입력해주세요!', 'error');
-  //       } else {
-  //         let chatMessage = {
-  //           ...userData,
-  //           // senderName: username,
-  //           message: userData.message,
-  //           status: 'MESSAGE',
-  //           pid: pid,
-  //           // uid: uid,
-  //         };
-
-  //         stompClient.send('/app/postchat', token, JSON.stringify(chatMessage));
-  //         setUserData({ ...userData, message: '' });
-  //       }
-  //     }
-  //     return;
-  //   } else {
-  //     alert('', '로그인 후 사용할 수 있습니다:)', 'error');
-
-  // };
-
   const sendPublicMessage = () => {
     if (stompClient) {
       if (!userData.message) {
@@ -150,7 +120,7 @@ const PostChat = ({ chatReducer, chatpostId }) => {
           message: userData.message,
           status: 'MESSAGE',
           chatpostId: Number(chatpostId),
-          // id: id,
+          id: userId,
         };
         console.log(chatMessage);
 
@@ -202,14 +172,13 @@ const PostChat = ({ chatReducer, chatpostId }) => {
 
   return (
     <ChatDiv>
-      {/* <ChatDetailItem chatReducer={chatReducer}></ChatDetailItem> */}
       <ChatTab>
         <li
           onClick={() => {
             setTab('CHATROOM');
           }}
         >
-          채팅 {user}
+          채팅
         </li>
       </ChatTab>
       <ChatList ref={messageRef}>
@@ -217,17 +186,14 @@ const PostChat = ({ chatReducer, chatpostId }) => {
           {post_chat_list &&
             post_chat_list.map((chat, index) => (
               <li
-                className={` ${chat.senderName === user ? 'self' : 'user'}`}
+                className={` ${chat.senderName === nickname ? 'self' : 'user'}`}
                 key={index}
               >
-                {chat.senderName !== user && (
-                  <>
-                    <Profile />
-                    <div>
-                      <strong>{chat.senderName}</strong>
-                      {userData.crareer && <i>{userData.crareer}</i>}
-                    </div>
-                  </>
+                {chat.senderName !== nickname && (
+                  <Wrap>
+                    <Profile src={chat.profileImage} />
+                    <strong>{chat.senderName}</strong>
+                  </Wrap>
                 )}
                 <dl>
                   <dt className="message-data">{chat.message}</dt>
@@ -239,18 +205,9 @@ const PostChat = ({ chatReducer, chatpostId }) => {
             ))}
           {publicChats.map((chat, index) => (
             <li
-              className={` ${chat.senderName === 1 ? 'self' : 'user'}`}
+              className={` ${chat.senderName === nickname ? 'self' : 'user'}`}
               key={index}
             >
-              {chat.senderName !== 2 && (
-                <>
-                  <Profile />
-                  <div>
-                    <strong>{chat.senderName}</strong>
-                    {userData.profileImage && <i>{userData.profileImage}</i>}
-                  </div>
-                </>
-              )}
               <dl>
                 <dt className="message-data">{chat.message}</dt>
                 <dd className="me">
@@ -280,25 +237,30 @@ const PostChat = ({ chatReducer, chatpostId }) => {
   );
 };
 
-const Profile = styled.image`
-  width: 50px;
-  height: 50px;
+const Wrap = styled.div``;
+
+const Profile = styled.img`
+  /* position: absolute; */
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
-  background-color: black;
+  margin-right: 8px;
 `;
 const SendSvg = styled.button`
   width: 100px;
   height: 50px;
-  background-color: black;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 12px;
 `;
 
 const ChatDiv = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 124px - 224px - 18px - 18px);
-  background-color: #f9f8ff;
-  border-radius: 8px;
+  height: 100%;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 30%);
 `;
 
 const ChatTab = styled.ul`
@@ -308,18 +270,18 @@ const ChatTab = styled.ul`
   li {
     width: 74px;
     text-align: center;
-    margin: 0 12px;
+    /* margin: 0 12px; */
     font-size: 18px;
     font-weight: 700;
     line-height: 58px;
-    color: #5e45f2;
-    border-bottom: solid 3px #5e45f2;
+    color: #000000;
+    list-style: none;
   }
 `;
 
 const ChatList = styled.div`
   flex: auto;
-  padding: 0 10px;
+  padding: 0 8px;
   overflow: auto;
   ul {
     padding-top: 30px;
@@ -332,18 +294,18 @@ const ChatList = styled.div`
     }
     &.user {
       position: relative;
-      padding-left: 36px;
+      padding-left: 15px;
       padding-right: 10px;
       margin: 12px 0;
       strong {
         font-size: 14px;
-        color: #5e45f2;
+        color: #000;
       }
       dt {
-        margin-top: 8px;
+        margin: 8px 0px 12px 0px;
         color: #333;
         background-color: #fff;
-        box-shadow: 0 4px 14px 0 rgba(65, 0, 131, 0.06);
+        box-shadow: 0 4px 14px 0 rgb(84 70 170 / 33%);
       }
       dd {
         text-align: start;
@@ -357,7 +319,7 @@ const ChatList = styled.div`
       }
       dt {
         color: #fff;
-        background-color: #7966ff;
+        background-color: #2c278c;
       }
       dd {
         text-align: end;
@@ -369,7 +331,7 @@ const ChatList = styled.div`
     align-items: flex-end;
     gap: 4px;
     dt {
-      width: 80%;
+      width: 80vh;
       padding: 8px;
       word-break: break-all;
       border-radius: 8px;
@@ -415,29 +377,36 @@ const ChatList = styled.div`
     font-style: normal;
     text-align: end;
   }
+  div {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const ChatInput = styled.div`
   padding: 24px 16px;
-  background-color: #f9f8ff;
-  box-shadow: 0 -4px 10px 0 rgba(133, 47, 243, 0.05);
+  background-color: #2c278c12;
   > div {
     display: flex;
     align-items: center;
     height: 42px;
-    padding: 8px 14px;
+    padding: 7px 0px 7px 11px;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: inset 0 2px 6px 0 rgba(60, 4, 105, 0.08);
-    background-color: #fff;
+    box-shadow: inset 0 2px 6px 0 rgba(65, 65, 65, 20%);
   }
   input {
     flex: auto;
     padding: 0;
     background-color: transparent;
+    border: none;
+    ::placeholder {
+      color: #000;
+    }
   }
   button {
     flex: none;
+    border: none;
     svg {
       vertical-align: middle;
     }

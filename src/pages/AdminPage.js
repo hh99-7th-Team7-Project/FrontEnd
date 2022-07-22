@@ -69,7 +69,7 @@ const AdminPage = () => {
                         <option>빽다방</option>
                         <option>커피빈</option>
                         <option>이디야</option>
-                        <option>컴포즈커피</option>
+                        <option>컴포즈</option>
                         <option>드롭탑</option>
                         <option>탐앤탐스</option>
                         <option>더벤티</option>
