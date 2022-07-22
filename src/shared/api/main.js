@@ -50,9 +50,9 @@ const apis = {
     postBoardsLike: (category,id) => api.post(`/postslogin/postlove/${category}/${id}`),
     postBoardsBookmark: (category,id) => api.post(`/posts/bookmark/${category}/${id}`),
     getBoardsCategory: (category) => api.get(`/posts?category=${category}`),
-    getBoardsCategoryLogin: (category) => api.get(`/posts?category=${category}`),//안만들었대
-    getBoardsLike:()=> api.get("/posts?category=like"),
-    getBoardsLikeLogin:()=> api.get("/posts?category=like"),///아직
+    getBoardsCategoryLogin: (category) => api.get(`/posts?category=${category}`),
+    getBoardsLike:()=> api.get("/posts?category=love&page=0"),
+    getBoardsLikeLogin:()=> api.get("/posts/auths/searches?category=love&page=0~"),
     getBoard: (boardId)=> api.get(`/posts/${boardId}`),
     getBoardLogin: (boardId)=> api.get(`/auths/posts/${boardId}`),
     postBoard : (post)=> api.post('/posts',post),

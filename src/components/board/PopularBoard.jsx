@@ -49,13 +49,13 @@ useEffect(() => {
         setLoading(true)
           const getMark = async () => {
             if(!token){
-               await apis.getBoards()
+               await apis.getBoardsLike()
                         .then((res)=>{
                             console.log(res.data.slice(0,5))
                             setContent(res.data.slice(0,10))
                           })
             }else{
-              await apis.getBoardsLogin()
+              await apis.getBoardsLikeLogin()
                       .then((res)=>{
                           console.log(res.data)
                           setContent(res.data)
