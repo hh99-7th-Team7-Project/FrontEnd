@@ -41,7 +41,7 @@ const apis = {
 //검색
     searchCoffee : (keyword)=> api.get(`/coffees/searches?keyword=${keyword}`),
     searchBoard : (keyword) => api.get(`/posts/searches?keyword=${keyword}`),
-    searchBoardLogin : (keyword) => api.get(`/postslogin/searches?keyword=${keyword}`),
+    searchBoardLogin : (keyword) => api.get(`/posts/searches?keyword=${keyword}&page=0`),
 
 
 //게시판

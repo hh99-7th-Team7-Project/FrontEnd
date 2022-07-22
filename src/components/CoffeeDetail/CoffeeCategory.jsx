@@ -8,17 +8,26 @@ const CoffeeCategory = () => {
 
     const [category, setCategory] = useState(true);
 
+    const [ brandVisible , setBrandVisible ] = useState(false);
+    const [ categoryVisible , setCategoryVisible ] = useState(false);
+
+
 
   return (
-    <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
+    <div style={{maxWidth:"1230px",width:"84vw", margin:"auto", position:"relative"}}>
           <ScNavbarWrap>
               <ScButtonWrap>
-                  <div onClick={()=>{setCategory(true)}}>브랜드</div>
+                  <ScCategoryBox onClick={()=>{
+                    setBrandVisible(!brandVisible)                 
+                    }}>브랜드</ScCategoryBox>
                   <p>|</p>
-                  <div onClick={()=>{setCategory(false)}}>음료</div>
+                  <ScCategoryBox onClick={()=>{
+                    setCategoryVisible(!categoryVisible)                    
+                    }}>음료</ScCategoryBox>
               </ScButtonWrap>
           </ScNavbarWrap>
-          {category?<Brand/>:<Coffee/>}
+          {brandVisible ? <Brand open={brandVisible} />: null } 
+          {categoryVisible ? <Coffee open={categoryVisible} /> : null }          
     </div>
   )
 }
@@ -37,6 +46,11 @@ const ScNavbarWrap =styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+`;
+
+const ScCategoryBox = styled.div`
+    position: relative;
+    
 `;
 
 export default CoffeeCategory

@@ -89,7 +89,7 @@ const ScCommentBox = styled.div`
   margin: 400px auto;
   width: 1900px;
   height: 1900px;
-  background-color: #eee;
+  background-color: rgb(44,39,140,10%);
 `;
 
 
