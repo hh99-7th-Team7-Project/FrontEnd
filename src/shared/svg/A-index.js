@@ -12,5 +12,8 @@ import MapPin from './MapPin.svg'
 import Pencil from './Pencil.svg'
 import Write from './Write.svg'
 import Moiim from './Moiim.svg'
+import Info from './Info.svg'
+import Pointer from './Pointer.svg'
+import BoardLogo from './BoardLogo.svg'
 
-export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right, flow,flower,MapPin,Pencil, Write,Moiim}
+export {bookmark, bookmarkck, checked, eye, thumbup,boardwrite, left,right, flow,flower,MapPin,Pencil, Write, Moiim, Info, Pointer,BoardLogo}

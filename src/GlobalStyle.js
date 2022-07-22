@@ -45,6 +45,10 @@ button{
   background-color: #EEE;  
 }
 
+:root{
+  --main: #2C278C
+}
+
 `;
 
 export default GlobalStyle;
