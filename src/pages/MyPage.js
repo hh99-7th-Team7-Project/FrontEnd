@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { deleteCookie, getCookie, setCookie } from '../shared/Cookie'
 import Header from './Header/Header'
 import  {UserBoardBoard, UserBoardWrite, UserInfo, UserPhoto, UserBoardCoffee, UserInfoUpdate, UserPhotoUpdate} from '../components/mypage/index'
 import styled from 'styled-components'
 import apis from '../shared/api/main'
+import { Pencil, Write, Moiim, left, right } from '../shared/svg/A-index'
 
 const MyPage = () => {
   const userId = getCookie("userId")//아직설정안해쓰
@@ -78,6 +79,8 @@ const MyPage = () => {
     }
       
                                         }
+  const userName = getCookie("nickname")
+
 
   return (
     <>
@@ -85,8 +88,9 @@ const MyPage = () => {
           <Header />
         </div>
     <ScsecondHead/>
+    <ScWrap>
+      <div style={{display:"flex", justifyContent:"space-between", alignItems:"center",marginBottom:"40px"}}>
     {update?(
-
     <ScMyprofile>
       <UserPhotoUpdate setNewProfileImg={setNewProfileImg} setChangeImg={setChangeImg}/>
       <UserInfoUpdate setNick={setNick} />
@@ -96,29 +100,55 @@ const MyPage = () => {
        <button onClick={()=>{setUpdate(false)}}>취소하기</button>
        </div>
       </ScMyprofile>):
-      (<ScWrap>
-      <ScMyprofile>
+      (<ScMyprofile>
       <UserPhoto/>
-      <UserInfo email={email}/>
-      <button onClick={()=>{setUpdate(true)}}>수정하러가기</button>
-      <ScMywrite> <button onClick={()=>{setMenu(3)}}>내가쓴글</button></ScMywrite>
-      <ScChat></ScChat>
-      </ScMyprofile>
-      <ScBookmark>
-      <div>북마크</div>
-      <div>
-        <div style={{ display:"flex", gap:"10px"}}>
-        <ScBookmarkCategory onClick={()=>{setMenu(1)}}>음료</ScBookmarkCategory>
-        <div style={{border:"1px solid black"}}></div>
-        <ScBookmarkCategory onClick={()=>{setMenu(2)}}>게시판</ScBookmarkCategory>
-        </div>
-        {(menu===1)&&<UserBoardCoffee/>}    
-        {(menu===2)&&<UserBoardBoard/>}
-        {(menu===3)&&<UserBoardWrite/>}
+      {/* <UserInfo email={email}/> */}
+      <div style={{display:"flex", flexDirection:"column"}}>
+      <div style={{display:"flex"}}>
+      <div style={{fontSize:'22px'}}>{userName}</div>
+        <img src={Pencil} alt="" onClick={()=>{setUpdate(true)}}/>
       </div>
+      <div style={{fontSize:'14px'}}>{email}</div>
+      </div>
+   </ScMyprofile>)}
+      <div style={{display:"flex" ,gap:"23px", flexDirection:"row"}}>
+        <ScMywrite> 
+          <ScMyWriteBtn>
+          <img alt='' src={Write} style={{width:"26px"}}/>
+          </ScMyWriteBtn>
+          <div style={{color:"#9A2ACC", marginLeft:"34px"}}>
+          <ScMyTitle>내가 쓴 글 갯수</ScMyTitle>
+          <div style={{fontSize:"32px"}}>100</div>
+         </div>
+      </ScMywrite>
+      <ScChat>
+          <ScMyWriteBtn>
+          <img alt='' src={Moiim} style={{width:"26px"}}/>
+          </ScMyWriteBtn>
+          <div style={{color:"#F91D6F", marginLeft:"34px"}}>
+          <ScMyTitle>내가 참여한 모임수</ScMyTitle>
+          <div style={{fontSize:"32px"}}>100</div>
+          </div>
+      </ScChat>
+      </div>
+      </div>
+      <ScBookmark>
+        <div style={{fontSize:"24px", fontWeight:"700"}}>북마크</div>
+        <div style={{maxWidth:"1200px"}}>
+          <ScBookmarkwrap>
+          <ScBookmarkCategory onClick={()=>{setMenu(1)}}>음료</ScBookmarkCategory>
+          <div style={{border:"1px solid black"}}></div>
+          <ScBookmarkCategory onClick={()=>{setMenu(2)}}>게시판</ScBookmarkCategory>
+          </ScBookmarkwrap>
+          <ScBookWrap>
+          {(menu===1)&&<UserBoardCoffee />}    
+          {(menu===2)&&<UserBoardBoard/>}
+          {/* {(menu===3)&&<UserBoardWrite/>} */}
+          </ScBookWrap>
+        </div>
       </ScBookmark>
     </ScWrap>
-    )}
+  
     </>
   )
 }
@@ -128,30 +158,58 @@ export default MyPage
 const ScsecondHead =styled.div`
 height: 135px;
 background-color: #ddd;
+margin-bottom: 40px;
+`
 
+const ScBookmarkwrap =styled.div`
+  display:flex;
+ gap: 20px;
+ margin-left: 10px;
+ margin-top: 20px;
+width: 140px;
+`
+const ScMyTitle = styled.div`
+font-size: 22px;
+margin-bottom: 10px;
 `
 
 const ScMyprofile = styled.div`
 display: flex;
-flex-direction: row;
 gap: 30px;
-//justify-contents
 align-items: center;
-margin: 50px auto 0 auto;
+
 `
 
 const ScBookmark =styled.div`
-font-size: 24px;
+display: flex;
+/* justify-content: center; */
+/* align-items: flex-start; */
+/* left: 0; */
+/* font-size: 24px; */
 `
+const ScBookWrap =styled.div`
+background-color: #ddd;
+position: relative;
+border-radius: 10px;
+height: 315px;
+/* min-width: 1200px; */
+width: 100%;
+`
+
 const ScBookmarkCategory =styled.div`
 font-size: 22px;
 cursor: pointer;
+font-weight: 600;
+
 `
 const ScWrap = styled.div`
 display: flex;
 flex-direction:column;
 align-items: center;
 justify-content: center;
+max-width: 1200px;
+width: 63%;
+margin: auto;
 `
 
 const ScMywrite = styled.div`
@@ -159,6 +217,16 @@ width: 277px;
 height: 214px;
 background-color: #EDE2F2;
 border-radius: 10px;
+`
+const ScMyWriteBtn = styled.div`
+width:60px; 
+height:60px;
+ background-color:white;
+  border-radius:10px; 
+  display:flex;
+  align-items:center;
+   justify-content:center;
+   margin: 24px 0 34px 24px;
 `
 
 const ScChat = styled.div`

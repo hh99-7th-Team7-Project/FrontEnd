@@ -33,19 +33,19 @@ const ScBeforeHover = styled.div`
     /* display: flex;
     flex-direction: column; */
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
 `
 const ScLogo = styled.img`
     width: 70px;
     height: 70px;
     border-radius: 100%;
     background-color: white;
-    margin: 42px 0 23px 0;
+    margin: 20px 0 23px 0;
 `
   const SCcoffeeImg = styled.img`
-    max-width: 240px;
-    height: 240px;
-    margin: 43px auto 40px;
+    max-width: 202px;
+    height: 182px;
+    /* margin: 10px auto 10px; */
   `
 
 const ScZoomIn = styled.div`
@@ -74,14 +74,15 @@ const ScLens = styled.img`
       background-color: #000;
       border-radius: 12px;
       position: absolute;
-      transform: translate(-50%,-50%) ;
+      transform: translate(-50%,-63%) ;
       top: 50%;
       left: 50%;
       opacity: 0;
       width: 100%;
-      height: 100%;   
+      height: 90%;   
       text-align: center;
       color: white;
+      padding: 10px;
   `
 const SCcard = styled.div`
     position: relative;
@@ -120,8 +121,8 @@ const SCcard = styled.div`
     flex-direction: column;
     /* border: 1px solid #ddd; */
     /* width: 100%; */
-    width: 247px;
-    height: 401px;
+    width: 202px;
+    height: 291px;
     /* padding: 80px 0; */
     margin: 30px;
     /* border-radius: 30px; */

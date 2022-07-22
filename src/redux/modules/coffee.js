@@ -66,12 +66,12 @@ export const __loadCoffeeDetail = (brand,id) => {
     const token = getCookie("token")
     if(!token){
        const loadData = await apis.getCoffeeDetail(brand,id);
-       console.log(loadData.data[0]);
-      dispatch(loadCoffeeDetail(loadData.data[0]));
+       console.log(loadData.data);
+      dispatch(loadCoffeeDetail(loadData.data));
     }else{
       const loadData = await apis.getCoffeeDetailLogin(brand,id);
        console.log(loadData.data);
-      dispatch(loadCoffeeDetail(loadData.data[0]));
+      dispatch(loadCoffeeDetail(loadData.data));
     }
   };
 };

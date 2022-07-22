@@ -9,7 +9,7 @@ const REDIRECT_URI = "https://coffind.co.kr/oauth/kakao/callback";
 
 // google Login
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_ID;
-const GOOGLE_REDIRECT_URI = "http://localhost:3000/oauth/google/callback";
+const GOOGLE_REDIRECT_URI = "https://coffind.co.kr/oauth/google/callback";
 //const GOOGLE_REDIRECT_URI = "http://localhost:3000/user/google/callback";
 
 // naver Login

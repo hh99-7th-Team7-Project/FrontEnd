@@ -22,9 +22,9 @@ const apis = {
 //커피정보
     getCoffee: (brand) => api.get(`/coffees/${brand}`),
     getCoffeeDetail: (brand, id) => api.get(`/coffees/${brand}/${id}`),
-    getCoffeeDetailLogin: (brand, id) => api.get(`/coffeeslogin/${brand}/${id}`),
+    getCoffeeDetailLogin: (brand, id) => api.get(`/auths/coffees/${brand}/${id}`),
     getStar: (brand,id)=> api.get(`/coffee/${brand}/${id}/star`),
-    getCoffeeCategory: (category) => api.get(`/coffees/sidebars?category=${category}`),
+    getCoffeeCategory: (category) => api.get(`/coffees/sidebars/${category}`),
     addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`,coffee),
     getRandomCoffee: ()=> api.get("/coffees/random?brand=스타벅스&category=coffee"),
     getCoffees: ()=> api.get("/coffees"),
