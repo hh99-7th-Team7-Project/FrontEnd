@@ -21,7 +21,7 @@ const UserBoardBoard = () => {
         .then((res)=>{
         console.log(res.data)
         setContent(res.data)
-        setSlide(Math.floor(res?.data?.length/4)-1)
+        setSlide(Math.floor(res?.data?.length/4))
     })
   },[])
 
@@ -69,48 +69,40 @@ export default UserBoardBoard
 
 const ScWrap = styled.div`
     /* border: 1px solid black; */
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-
+    margin: 23px auto 0 auto;
+   width: 1200px;
+    /* width: 100%; */
+    height:  300px;
+    background-color: #ddd;
+    border-radius: 20px;
+    padding: 10px;
+    position: relative;
 `
 const Container = styled.div`
     max-width: 1200px;
     width: 100%;
-    height: 500px;
-    margin: 0 auto;
+    height: 350px;
     overflow: hidden;
-    /* position: relative; */
+   
 `;
 
 const ImageBox = styled.ul`
-   margin: 0 0 0 10px;
+   margin: 0 0 0 30px;
     padding: 0;
     display: flex;
     width: 100%;
-    justify-content: center;
+    /* justify-content: center; */
     transition: ${(props) => (!props.count ? '' : 'all 1s ease-in-out')};
     transform: ${(props) => 'translateX(-' + props.count * 1000 + 'px)'};
 `;
 const ImageList = styled.li`
     list-style: none;
-
 `;
-
 const ScMoveButton =styled.div`
   display: flex;
-  margin: 30px 38px 0 0 ;
+  position: absolute;
+  margin: 5px 38px 0 0 ;
   gap: 24px;
+  right: 2%;
+  top: -15%;
 `
-const ScBoard = styled.div`    
-    width: 100%;
-    height: 100%;
-`;
-
-const ScTable = styled.div`
-    /* border: 1px solid black; */
-    display: flex;
-    width: 100%;
-    margin: 30px auto;
-`;

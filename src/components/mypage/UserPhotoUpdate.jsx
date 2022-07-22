@@ -20,7 +20,7 @@ const UserPhotoUpdate = ({setNewProfileImg,setChangeImg}) => {
     fileInputRef.current.click();
   };
 
-  return (<>
+  return (<div>
     <ScProfileImg style={{ backgroundImage:`url(${fileImage})`}}>
             <img onClick={onClickImageUpload} src="./카메라.png" style={{width:"50px"}} alt="" />  
             </ScProfileImg>
@@ -32,16 +32,16 @@ const UserPhotoUpdate = ({setNewProfileImg,setChangeImg}) => {
               onChange={saveFileImage}
               style={{ display: "none" }}
             />
-            </>
+            </div>
   )
 }
 
 export default UserPhotoUpdate
 
 const ScProfileImg =styled.div`
-width: 130px;
-height: 130px; 
-border:1px #ddd solid;
+width: 140px;
+height: 140px; 
+border: 7px #4147D5 solid;
 border-radius:50% ; 
 background-size:cover;
 `

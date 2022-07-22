@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie'
 
@@ -17,7 +18,7 @@ const UserInfoUpdate = ({setNick}) => {
   };
   return (
     <div>
-      <input 
+      <ScUpdate 
         ref={nickInputRef}
         defaultValue={userName}
         onChange={()=>{
@@ -27,5 +28,14 @@ const UserInfoUpdate = ({setNick}) => {
     </div>
   )
 }
+
+const ScUpdate = styled.input`
+  height: 40px;
+  width: 140px;
+  border-radius: 10px;
+  border: 1px solid #4147D5;
+  color: #4147D5;
+  padding: 0 0 0 10px;
+`
 
 export default UserInfoUpdate

@@ -13,7 +13,9 @@ const MyCoffeeCard = ({item}) => {
     <div>
     <SCcard color={item?.brand}>
       <ScBeforeHover>
+        <div style={{width:"175px", marginBottom:"8px"}}>
         <SCcoffeeImg src={item?.img}/>
+        </div>
         <div style={{fontSize:'17px'}}>{item?.name}</div>
       </ScBeforeHover>
     <SChover>
@@ -45,6 +47,7 @@ const ScLogo = styled.img`
   const SCcoffeeImg = styled.img`
     max-width: 202px;
     height: 182px;
+    /* width: 150px; */
     /* margin: 10px auto 10px; */
   `
 
@@ -74,7 +77,7 @@ const ScLens = styled.img`
       background-color: #000;
       border-radius: 12px;
       position: absolute;
-      transform: translate(-50%,-63%) ;
+      transform: translate(-50%,-60%) ;
       top: 50%;
       left: 50%;
       opacity: 0;
