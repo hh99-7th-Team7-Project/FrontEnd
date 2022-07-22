@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle `
   }
   html, body {
     font-family: ‘SUIT Variable’;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 24.96px;
   }
   button, label, div,p, textarea {
