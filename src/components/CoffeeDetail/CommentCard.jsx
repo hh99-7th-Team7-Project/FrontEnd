@@ -35,7 +35,7 @@ const CommentCard = (props) => {
     return (
 
         <>
-          <ScWrap>
+          <ScWrap>            
             {posts && posts.map((item) => {
               return (
                 <ScComment key={item?.id}>
@@ -48,20 +48,20 @@ const CommentCard = (props) => {
                       {item?.star === 5 && <p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>}
                     </ScStar>
                     <ScCardAlign1>
-                      <ScCommentSpan>{item?.review}</ScCommentSpan>
-                      {nickname === item?.nickname ?
-                      <ScButton onClick={()=>{
-                        dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
-                        dispatch(__loadComment({brand, boardId}));
-                          }}>삭제</ScButton> : null}
+                      <ScCommentSpan>{item?.review}</ScCommentSpan>                      
                     </ScCardAlign1>
                     <ScCardAlign2>
                       <ScDateSpan>{item?.createdAt.split("T")[0]}</ScDateSpan>
                       <ScNickSpan>{item?.nickname}</ScNickSpan>
-                        <ScButton onClick={()=>{
+                        {/* <ScButton onClick={()=>{
                           setShowUpdate(true);
                           setReviewId(item?.id);
-                        }}>신고</ScButton>
+                        }}>신고</ScButton> */}
+                        
+                      <ScButton onClick={()=>{
+                        dispatch(__deleteComment(brand,boardId,Number(item?.id)))                
+                        dispatch(__loadComment({brand, boardId}));
+                          }}>삭제</ScButton>
                       </ScCardAlign2>
                   </ScCommentCardWrap>
                   
@@ -84,6 +84,7 @@ const CommentCard = (props) => {
 const ScWrap = styled.div`
 position: relative;
 margin: 20px auto;
+margin-top: -90px;
 width: 70vw;
 height: 500px;
 padding: 20px;
@@ -114,15 +115,13 @@ const ScComment = styled.div`
 `;
 
 
-const ScHR = styled.hr`
-  margin-top: 5px;  
-`;
 
 const ScButton = styled.button`
   &:hover{
     cursor: pointer;
   }
   border: none;
+  background-color: rgb(44,39,140,0%);
 `;
 
 
@@ -139,6 +138,7 @@ const ScCardAlign1 = styled.div`
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  
 `;
 const ScCardAlign2 = styled.div`
   width: 400px;
