@@ -83,7 +83,7 @@ const ScImg = styled.div`
     justify-content: center;
     align-items: left;
     width: 100vw;
-    height: 500px;
+    height: 250px;
     background-color: aliceblue;
     background-image: url(${props => props.src});
     background-size: cover;
@@ -93,17 +93,17 @@ const ScImg = styled.div`
 
 const ScContentWrap = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
     position: fixed;
     width: 100px;
     height: 70px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 `;
 
 const ScDotAlign = styled.div`
-    align-items: center;    
+    /* align-items: center;     */
     /* width: 700px; */
     margin: auto;
 
@@ -111,17 +111,16 @@ const ScDotAlign = styled.div`
 
 const ScDotWrap = styled.div`
     display: flex;
-    align-items: center;
-    position: absolute;
+    /* align-items: center; */
+    /* position: fixed; */
     justify-content: space-between;
-    width: 80px;
-        
-    
+    width: 70px;
+    bottom: 30px;
 `;
 
 const ScDot = styled.div`
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background-color: black;    
     &:hover{

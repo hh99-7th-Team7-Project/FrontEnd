@@ -17,6 +17,8 @@ import { getCookie } from '../shared/Cookie';
 const Main = () => {
 const [category, setCategory] = useState(true)
 const [showModal, setShowModal] = useState(true);
+const [color, setColor] = useState('var(--main)');
+const [color2, setColor2] = useState('rgba(44, 39, 140, 0.4)');
 
 const notModal = getCookie("not seen a day")
 
@@ -33,25 +35,47 @@ const closeModal = () => {
   setShowModal(false);
 }
 
+const changeColor = ()=>{
+ if(color2 === 'var(--main)'){
+  setColor2('rgba(44, 39, 140, 0.4)') 
+  setColor('var(--main)')}
+}
+
+const changeColor2 = ()=>{
+  if(color === 'var(--main)'){
+   setColor('rgba(44, 39, 140, 0.4)') 
+   setColor2('var(--main)')}
+ }
+
   return (
     <>
+    
     <div style={{margin:"auto"}}>
       <Header />
     </div>
+    <Flow/>
 <div style={{position:"relative"}}>
     <ImgSlide/>
     <Flow/>
     <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
-          <ScMapRandomWrap>
+          {/* <ScMapRandomWrap>
             <RandomPicker />
             <LottoPoint/>
-          </ScMapRandomWrap>
+          </ScMapRandomWrap> */}
           <ScNavbarWrap>
-          <h1 style={{marginBottom:"46px"}}>데일리 커피 Menu</h1>
+          <h1 style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)"}}>데일리 커피 Menu</h1>
           <ScButtonWrap>
-      <ScCategory onClick={()=>{setCategory(true)}}>브랜드</ScCategory>
+      <ScCategory color={color}
+      onClick={()=>{
+        setCategory(true)
+        changeColor()
+        }}>브랜드</ScCategory>
       <p>|</p>
-      <ScCategory onClick={()=>{setCategory(false)}}>음료</ScCategory>
+      <ScCategory2
+      color2={color2}
+      onClick={()=>{setCategory(false)
+        changeColor2()
+      }}>음료</ScCategory2>
          </ScButtonWrap>
        </ScNavbarWrap>
       {category?<BrandCard/>:<CategoryCard/>}
@@ -85,9 +109,18 @@ const ScNavbarWrap =styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
+margin-top: 60px;
 `;
 
 const ScCategory = styled.div`
+color: ${props => props.color};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ScCategory2 = styled.div`
+color: ${props => props.color2};
   &:hover {
     cursor: pointer;
   }
