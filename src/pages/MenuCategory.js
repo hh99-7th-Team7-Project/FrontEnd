@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from './Header/Header';
-import { BrandCard, CategoryCard } from '../components/main/A-mainIndex.jsx';
+import { BrandCard , CategoryCard } from '../components/main/A-mainIndex'; 
 import { Flower } from '../components/main/Flower';
 
 
@@ -19,12 +19,13 @@ const MenuCategory = () => {
         <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
             <ScNavbarWrap>
                 <ScButtonWrap>
-                    <div onClick={()=>{setCategory(true)}}>브랜드</div>
+                    <div onClick={()=>{setCategory(!category)}}>브랜드</div>
                     <p>|</p>
-                    <div onClick={()=>{setCategory(false)}}>음료</div>
+                    <div onClick={()=>{setCategory(!category)}}>음료</div>
                 </ScButtonWrap>
             </ScNavbarWrap>
-            {category?<BrandCard/>:<CategoryCard/>}
+            {category  ? <BrandCard />: <CategoryCard /> }
+             
         </div>
         
     </>

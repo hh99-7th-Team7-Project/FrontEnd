@@ -80,6 +80,18 @@ const Comment = ({item}) => {
                 }}>등록
               </ScReviewBtn>
         </ScStarContainer>
+        <ScCardTitie>
+          <ScCardAlign1>
+            <span>별점</span>
+          </ScCardAlign1>
+          <ScCardAlign2>
+            <ScCommentSpan>내용</ScCommentSpan>
+          </ScCardAlign2>
+          <ScCardAlign3>
+            <ScDateSpan>날짜</ScDateSpan>
+            <ScNickSpan>닉네임</ScNickSpan>
+          </ScCardAlign3>
+        </ScCardTitie>
     </ScWrap>
   )
 }
@@ -174,6 +186,54 @@ const ScReviewBtn = styled.button`
     &:hover {
       cursor: pointer;
     }
+`;
+
+const ScCardTitie = styled.div`
+  position: relative;
+  margin: 20px auto;
+  width: 70vw;
+  padding: 20px;
+  border-top: 2px solid black; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ScCardAlign1 = styled.div`
+  display: flex;
+  width: 30px;
+  padding:2px 20px;
+  justify-content: center;
+  align-items: center;
+  color: black;
+`;
+
+const ScCardAlign2 = styled.div`
+  width: 230px;
+  padding:2px 20px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ScCardAlign3 = styled.div`
+  width: 400px;
+  padding: 2px 80px;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const ScCommentSpan = styled.span`
+  color: black;
+  text-align: left;
+  left: 0;
+`;
+
+const ScDateSpan = styled.span`
+  color: black;
+`;
+
+const ScNickSpan = styled.span`
+  color: black;
 `;
 
 export default Comment

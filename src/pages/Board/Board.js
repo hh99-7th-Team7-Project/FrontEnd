@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
 import { BoardList, PopularBoard,BoardListCategory } from "../../components/board/A-boardindex"
 import styled from 'styled-components';
-import { boardwrite } from '../../shared/svg/A-index'
+import { boardwrite,BoardLogo } from '../../shared/svg/A-index'
 
 
 
@@ -20,10 +20,11 @@ const Board = () => {
       </div>
       <ScWrap>
         <ScTopCard>
-          <div style={{ margin: "167px 35% 159px 60%" }}>
+          <img src={BoardLogo} alt="" style={{width:"100%"}}/>
+          <ScTopWord style={{ margin: "167px 35% 159px 60%" }}>
             <ScMainTitle>커피를 사랑하는 사람들의 커피 연구소</ScMainTitle>
-            <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} />글쓰러 가기</Scwrite>
-          </div>
+            <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt=""/><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
+          </ScTopWord>
          </ScTopCard> 
           <PopularBoard />
           <div style={{display:"flex", flexDirection:"column"}}>
@@ -49,8 +50,12 @@ const ScWrap = Styled.div`
 const ScTopCard = styled.div`
    display: flex;
   height: 400px;
-  background-color: #ddd;
+  position: relative;
+  /* background-color: #ddd; */
+`
 
+const ScTopWord = styled.div`
+position: absolute;
 `
 const ScMainTitle = styled.div`
 width: 190%;
@@ -60,6 +65,14 @@ font-size: 30px;
 line-height: 37px;
 margin-bottom: 30px;
 `
+
+const ScBoardWrite = styled.span`
+  font-family: 'SUIT Heavy';
+  &:hover {
+    cursor: pointer;
+  }
+  
+`;
 
 const Scwrite = styled.div`
   display: flex;

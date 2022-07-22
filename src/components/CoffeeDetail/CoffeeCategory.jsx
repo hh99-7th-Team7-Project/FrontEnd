@@ -11,25 +11,31 @@ const CoffeeCategory = () => {
     const [ brandVisible , setBrandVisible ] = useState(false);
     const [ categoryVisible , setCategoryVisible ] = useState(false);
 
+    // 브랜드 버튼을 누르면 ? 브랜드 드롭다운이 열리고, 음료 드롭다운이 숨겨진다.?
+    // 음료 버튼을 누르면 ?  음료 드롭다운이 열리고 , 브랜드 드롭다운이 숨겨진다..? 
+    // 버튼 온클릭을 누르면 
+    
 
 
   return (
     <div style={{maxWidth:"1230px",width:"84vw", margin:"auto", position:"relative"}}>
-          <ScNavbarWrap>
-              <ScButtonWrap>
-                  <ScCategoryBox onClick={()=>{
-                    setBrandVisible(!brandVisible)                 
-                    }}>브랜드</ScCategoryBox>
-                  <p>|</p>
-                  <ScCategoryBox onClick={()=>{
-                    setCategoryVisible(!categoryVisible)                    
-                    }}>음료</ScCategoryBox>
-              </ScButtonWrap>
-          </ScNavbarWrap>
-          {brandVisible ? <Brand open={brandVisible} />: null } 
-          {categoryVisible ? <Coffee open={categoryVisible} /> : null }          
+            <ScNavbarWrap>
+                <ScButtonWrap>
+                    
+                    <ScCategoryBox onClick={()=>{
+                        setBrandVisible(!brandVisible);
+                        }}>브랜드</ScCategoryBox>
+                    <p>|</p>
+                    <ScCategoryBox onClick={()=>{
+                        setCategoryVisible(!categoryVisible);
+                        }}>음료</ScCategoryBox>
+
+                </ScButtonWrap>
+            </ScNavbarWrap>
+            {brandVisible  ? <Brand open={brandVisible} setOpen={setBrandVisible} />: null } 
+            {categoryVisible  ? <Coffee open={categoryVisible} setOpen={setCategoryVisible} /> : null }          
     </div>
-  )
+    )
 }
 
 const ScButtonWrap = styled.div`

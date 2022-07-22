@@ -30,8 +30,8 @@ const CategoryCard = (props) => {
    
 
 
-   const categoryList =[{brand:"COFFEE", id:0},{brand:"NONCOFFEE", id:1},
-   {brand:"SMOOTHIE", id:2},{brand:"ADE", id:3},{brand:"TEA", id:4}]
+   const categoryList =[{brand:"COFFEE", id:0, logo:"/category/커피.png"},{brand:"NONCOFFEE", id:1, logo:"/category/논커피.png"},
+   {brand:"SMOOTHIE", id:2, logo:"/category/스무디.png"},{brand:"ADE", id:3, logo:"/category/에이드.png"},{brand:"TEA", id:4, logo:"/category/티.png"}]
 
 
 
@@ -52,7 +52,6 @@ const CategoryCard = (props) => {
         // }}
         navigation={true}
         modules={[Navigation]}
-  
         breakpoints={{
           0:{
             slidesPerView :2,
@@ -85,7 +84,9 @@ const CategoryCard = (props) => {
                           console.log(item.id)
                         setColor(!color);
                         dispatch(__loadCoffeeCategory(item?.brand))  
-                    }}>
+                    }}
+                    style={{ backgroundImage:`url(${item?.logo})`}}
+                    >
                       </ScSlide>
                       </div>
                       <div style={{textAlign:"center"}}>{item?.brand}</div>
@@ -119,11 +120,11 @@ const ScSlide = styled.div`
   font-size: 18px;
   width: 120px;
   height: 120px;
-  background: no-repeat center url("https://ifh.cc/g/0KKZCw.png");
+  background: no-repeat center;
+  border: 1px solid var(--main);
   background-size: cover ;
   transform: scale(0.9);
   border-radius: 60px;
-  border: 1px #ddd solid;
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -138,7 +139,6 @@ const ScSlide = styled.div`
   -webkit-align-items: center;
   align-items: center;
  &:hover {
-  border: 1px #242222 solid;
 
   animation: ${animation} 0.5s ;
   }
