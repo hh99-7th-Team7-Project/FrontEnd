@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import BoardMap from '../../components/board/BoardMap'
 import apis from '../../shared/api/main'
+import { getCookie } from '../../shared/Cookie'
 
 const BoardSearch = (props) => {
   const {keyword} = props
@@ -11,15 +12,24 @@ const BoardSearch = (props) => {
 
   const sliceBoard = boardReducer?.slice(0,5)
 
-  
+  const token = getCookie("token")
 
   useEffect(()=>{
     const search = async()=>{
-      apis.searchBoard(keyword)
+      if(!token){
+        apis.searchBoard(keyword)
           .then((res)=>{
             console.log(res)
             setBoardReducer(res?.data)
           })
+      }else{
+        apis.searchBoardLogin(keyword)
+          .then((res)=>{
+            console.log(res)
+            setBoardReducer(res?.data)
+          })
+      }
+      
     }
     search()
   },[keyword])

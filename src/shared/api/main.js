@@ -16,11 +16,13 @@ const apis = {
     getMypage : (userId) => api.get(`/mypage/userInfo/${userId}`),
     updateMypage : (userId, data) => api.put(`/mypage/userInfo/${userId}`,data),
     getMyBoard : (userId) => api.get(`/mypage/myboard/${userId}`),
-
+    getMyCoffee: (userId) => api.get(`/mypage/coffee/like/${userId}`),
+    getMyBoardBookmark : (userId) => api.get(`mypage/posts/bookmarks/${userId}`),
 
 //커피정보
     getCoffee: (brand) => api.get(`/coffees/${brand}`),
     getCoffeeDetail: (brand, id) => api.get(`/coffees/${brand}/${id}`),
+    getCoffeeDetailLogin: (brand, id) => api.get(`/coffeeslogin/${brand}/${id}`),
     getStar: (brand,id)=> api.get(`/coffee/${brand}/${id}/star`),
     getCoffeeCategory: (category) => api.get(`/coffees/sidebars?category=${category}`),
     addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`,coffee),
@@ -39,13 +41,20 @@ const apis = {
 //검색
     searchCoffee : (keyword)=> api.get(`/coffees/searches?keyword=${keyword}`),
     searchBoard : (keyword) => api.get(`/posts/searches?keyword=${keyword}`),
+    searchBoardLogin : (keyword) => api.get(`/postslogin/searches?keyword=${keyword}`),
 
 
 //게시판
     getBoards: () => api.get('/posts'),
-    getBoardsLike: () => api.get('/posts?orders=like'),
+    getBoardsLogin: () => api.get('/postslogin'),
+    postBoardsLike: (category,id) => api.post(`/postslogin/postlove/${category}/${id}`),
+    postBoardsBookmark: (category,id) => api.post(`/posts/bookmark/${category}/${id}`),
     getBoardsCategory: (category) => api.get(`/posts?category=${category}`),
+    getBoardsCategoryLogin: (category) => api.get(`/posts?category=${category}`),//안만들었대
+    getBoardsLike:()=> api.get("/posts?category=like"),
+    getBoardsLikeLogin:()=> api.get("/posts?category=like"),///아직
     getBoard: (boardId)=> api.get(`/posts/${boardId}`),
+    getBoardLogin: (boardId)=> api.get(`/postslogin/${boardId}`),
     postBoard : (post)=> api.post('/posts',post),
     updateBoard: (boardId,data)=> api.put(`/posts/${boardId}`,data),
     deleteBoard: (boardId)=> api.delete(`/posts/${boardId}`),

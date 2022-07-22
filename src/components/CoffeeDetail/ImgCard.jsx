@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import svg from './svg/BookMark.svg';
+import {bookmark, bookmarkck} from '../../shared/svg/A-index'
 
 
-const ImgCard = ( {url, item,like,setLike} ) => {
+const ImgCard = ( {url, item, like, setLike} ) => {
+console.log(like)
 
   const likeCoffee =async()=>{
     await apis.likeCoffee(item?.brand,item?.id)
               .then((res)=>{
-                  if(item?.love===0){
-                    setLike(1)
-                  }else{
-                    setLike(0)
-                  }
-                 })
+                console.log(res.data)
+                    setLike(res.data)
+                  })
   }
 
 
@@ -25,7 +24,7 @@ const ImgCard = ( {url, item,like,setLike} ) => {
             <ScH3>{item?.brand}</ScH3>
           </ScBrandTitle>
           <ScCoffeeTitle>
-            {like===0?(<div onClick={likeCoffee}>저장스</div>):( <ScImgBookMark onClick={likeCoffee} src={svg} alt=""/>)}
+            { item?.loveCheck ?(<ScImgBookMark onClick={likeCoffee} src={bookmarkck} alt="" style={{width:"39px"}}/>):(<ScImgBookMark onClick={likeCoffee} src={bookmark} alt="" style={{width:"50px"}}/>)}
             <ScH1>{item?.name}</ScH1>
           </ScCoffeeTitle>
           <ScSubTitle>

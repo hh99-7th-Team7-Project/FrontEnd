@@ -50,7 +50,7 @@ const closeModal = () => {
       //쿠키설정
       setCookie("token", response.headers.authorization.split(" ")[1])
       setCookie("nickname", response?.data.nickname)
-      setCookie("islogin", response?.data.login)
+      setCookie("islogin", true)
       setCookie("profileImg", response?.data?.profileImage)
       setCookie("userId",response?.data?.userId)
       Swal.fire({

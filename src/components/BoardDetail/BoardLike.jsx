@@ -3,18 +3,26 @@ import Styled from 'styled-components';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
+import apis from '../../shared/api/main';
 
-const BoardLike = () => {
+const BoardLike = ({head, boardId, like2,setLike}) => {
+
+  const like = async()=>{
+    await apis.postBoardsLike(head?.category,boardId)
+              .then((res)=>{
+                setLike(res.data)
+              })
+}
 
   const currentUrl = window.location.href;
   return (
     <>
       <ScWrap>
           <ScTitleWrap>
-            <ScH3>6</ScH3>
+            <ScH3>{head?.totalLove}</ScH3>
           </ScTitleWrap>
           <ScBtnWrap>
-            <ScBtn>추천</ScBtn>
+            {head?.loveCheck?(<ScBtn style={{backgroundColor:"black", color:"white"}} onClick={like}>추천</ScBtn>):(<ScBtn onClick={like}>추천</ScBtn>)}
           </ScBtnWrap>
           <ScBtnWrap2>
           <CopyToClipboard text={currentUrl}>

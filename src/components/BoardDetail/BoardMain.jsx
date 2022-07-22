@@ -3,13 +3,20 @@ import styled from 'styled-components';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
 import apis from '../../shared/api/main';
-import BookMark from './svg/BookMark.svg';
+import {bookmark, bookmarkck, checked, eye, thumbup} from '../../shared/svg/A-index'
 import { getCookie } from '../../shared/Cookie';
 
-const BoardMain = ({head, boardId}) => {
+const BoardMain = ({ head, boardId , bookmark2 , setBookmark}) => {
     const navigate = useNavigate()
     const nickname = getCookie("nickname")
+    
 
+    const bookmarkfunc = async()=>{
+        await apis.postBoardsBookmark(head?.category,boardId)
+                .then((res)=>{
+                    setBookmark(res.data)
+                })
+    }
 
   return (
     <ScWrap>
@@ -23,12 +30,12 @@ const BoardMain = ({head, boardId}) => {
         <ScHR/>
         <ScTitleWrap>
             <ScBookMarkTitleBox>
-                <ScImg src={BookMark} alt="" />
+                {head?.bookmark ? (<ScImg src={bookmarkck} alt="" onClick={bookmarkfunc} />):(<ScImg src={bookmark} alt="" onClick={bookmarkfunc} />)}
                 <ScTitle>{head?.title}</ScTitle>
             </ScBookMarkTitleBox>
             <ScBtnBox>
-                <ScLike>추천 : 6</ScLike>
-                <ScComment>댓글 : 1</ScComment>
+                <ScLike>추천 : {head?.totalLove}</ScLike>
+                <ScComment>댓글 : {head?.totalComment}</ScComment>
             </ScBtnBox>            
         </ScTitleWrap>
         <ScBottomBox>

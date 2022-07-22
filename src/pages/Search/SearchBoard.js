@@ -4,19 +4,31 @@ import { useNavigate, useParams } from 'react-router-dom'
 import BoardMap from '../../components/board/BoardMap'
 import apis from '../../shared/api/main'
 import Header from '../Header/Header'
+import { getCookie } from '../../shared/Cookie'
 
 const SearchBoard = () => {
   const {keyword} = useParams()
   const navigate = useNavigate()
   const [boardReducer, setBoardReducer] = useState()
 
+  const token = getCookie("token")
+
   useEffect(()=>{
     const search = async()=>{
-      apis.searchBoard(keyword)
+      if(!token){
+        apis.searchBoard(keyword)
           .then((res)=>{
             console.log(res)
             setBoardReducer(res?.data)
           })
+      }else{
+        apis.searchBoardLogin(keyword)
+          .then((res)=>{
+            console.log(res)
+            setBoardReducer(res?.data)
+          })
+      }
+      
     }
     search()
   },[keyword])

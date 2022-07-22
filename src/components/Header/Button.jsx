@@ -6,28 +6,30 @@ import Swal from 'sweetalert2';
 
 const Button = () => {
   const navigate = useNavigate()
-const isLogin = getCookie("islogin")
+  const isLogin = getCookie("islogin")
   const[onair, setonair] = useState(false)
+  console.log(onair)
 
   React.useEffect(() => {
-    if (isLogin !== undefined) {
+    if (isLogin) {
       return setonair(true);
     }
-  }, []);
+  }, [isLogin]);
 
-  const logOut = (e) =>{
+  const logOut = () =>{
     deleteCookie("token");
     deleteCookie("profileImg");
     deleteCookie("nickname")
     deleteCookie("islogin")
     deleteCookie("userId")
+    setonair(false)
     Swal.fire({
       title: '로그아웃 완료!',
       icon: 'success',
       confirmButtonText: '확인'
     })
-    setonair(false)
-    navigate('/')
+   
+    navigate("/")
   }
 
 

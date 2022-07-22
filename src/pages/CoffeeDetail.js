@@ -15,20 +15,24 @@ const CoffeeDetail = () => {
  
   const dispatch = useDispatch()
   const [like, setLike] = useState()
-  const [pri,setPri]=useState()
 
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
 const commentReducer = useSelector((state) => state.comment.posts);
 
-
+//Like자체 바뀔때마다 바뀌게 설정
 useEffect(()=>{
- dispatch(__loadCoffeeDetail(brand, boardId)) 
-  setLike(coffeeReducer?.love)
-},[dispatch])
+ dispatch(__loadCoffeeDetail(brand, boardId))
+ console.log(coffeeReducer?.loveCheck)
+},[like])
+console.log(like)
 
-
+//불려올때마다 재설정되서 처음 불려올때만 like설정하게 바꿔둠
+useEffect(()=>{
+setLike(coffeeReducer?.loveCheck)
+},[])
 return (
+
     <>
       <div style={{margin:"auto"}}> 
         <Header/>

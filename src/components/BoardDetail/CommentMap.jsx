@@ -37,9 +37,8 @@ const CommentMap = () => {
                                     boardId={boardId}
                                     commentId={Number(commentId)}
                                     comment={item?.comment}
-                                />) : <ScSpanComment>{item?.comment}</ScSpanComment>
+                                     />) : <ScSpanComment>{item?.comment}</ScSpanComment>
                                 }
-                                
                             </ScCommentAlign>                            
                             <ScBtnAlign>                                   
                                 <ScSpan>{item?.createdAt.split("T")[0]}</ScSpan>
@@ -57,6 +56,7 @@ const CommentMap = () => {
                         </ScTable>
                         </div>
                     ))}
+                    
                 </ScTableWrap>
             </ScWrap>
         </>

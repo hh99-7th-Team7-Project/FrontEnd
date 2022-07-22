@@ -17,13 +17,6 @@ const ToastEdit = (props) => {
   const { content } = props
   const editorRef = useRef();
 
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch()
-  const boardReducer = useSelector((state)=>state.board.list)
-  console.log(boardReducer)
-
-
-  
   return (
     <div> 
     <Editor
