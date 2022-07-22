@@ -288,6 +288,7 @@ const ChatList = styled.div`
     overflow: hidden;
   }
   li {
+    list-style: none;
     width: 286px;
     &.welcome {
       color: #5e45f2;
