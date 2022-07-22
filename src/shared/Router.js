@@ -7,7 +7,6 @@ import Main from '../pages/Main';
 import CoffeeDetail from '../pages/CoffeeDetail';
 import Map from '../pages/Map';
 import MyPage from '../pages/MyPage';
-
 import Login from '../pages/Login/Login';
 import KaKaoLogin from '../pages/Login/KaKaoLogin';
 import GoogleLogin from '../pages/Login/GoogleLogin';
@@ -51,7 +50,6 @@ const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Main myLocation={myLocation} />} />
-
       <Route path="/mypage" element={<MyPage />} />
 
       {/* signup */}
@@ -66,6 +64,7 @@ const Router = () => {
       <Route path="/admin" element={<AdminPage />} />
 
       {/* Main Page */}
+
       <Route path="/menucategory" element={<MenuCategory />} />
 
       {/** CafeDetail */}

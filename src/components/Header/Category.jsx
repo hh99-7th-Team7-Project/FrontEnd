@@ -14,13 +14,7 @@ const Category = () => {
       >
         Menu
       </ScCategory>
-      <ScCategory
-        onClick={() => {
-          navigate('/chatposts');
-        }}
-      >
-        커피모임
-      </ScCategory>
+      <ScCategory>커피모임</ScCategory>
       <ScCategory
         onClick={() => {
           navigate('/board');

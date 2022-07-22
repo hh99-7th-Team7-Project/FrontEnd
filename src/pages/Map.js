@@ -1,47 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getCookie } from '../shared/Cookie';
+import '../shared/css/HoverBubble.css';
 import Header from './Header/Header';
+import { MapPin, Info, Pointer } from '../shared/svg/A-index';
 
 const Map = (props) => {
-  const { myLocation } = props
-  const { brand } = useParams()
-  const [map, setMap] = useState(false)
+  const { myLocation } = props;
+  const { brand } = useParams();
+  const [map, setMap] = useState(false);
   const [error, setError] = useState('');
-
-
 
   // 마커를 클릭하면 장소명을 표출할 인포윈도우
   const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
 
-
-  console.log(map)
+  console.log(map);
 
   useEffect(() => {
     const container = document.getElementById('map');
     let markers = [];
-    //  map.relayout() 
+    //  map.relayout()
     if (!error) {
       const options = {
-        center: new window.kakao.maps.LatLng(
-          myLocation?.lat,
-          myLocation?.lng
-        ),
+        center: new window.kakao.maps.LatLng(myLocation?.lat, myLocation?.lng),
         level: 3,
       };
-      console.log(options)
+      console.log(options);
 
       // 지도 생성
       const map = new window.kakao.maps.Map(container, options);
-
-      container.style.width = '800px';
-      container.style.height = '600px';
+      container.style.width = '1100px';
+      container.style.height = '300px';
 
       map.relayout();
 
       // 장소 검색 객체를 생성
       const ps = new window.kakao.maps.services.Places();
+      console.log(ps);
       // 키워드 검색 완료 시 호출되는 콜백함수
       const placesSearchCB = (data, status, _pagination) => {
         if (status === window.kakao.maps.services.Status.OK) {
@@ -58,7 +54,6 @@ const Map = (props) => {
         }
       };
 
-
       ps.keywordSearch(`${brand}`, placesSearchCB, {
         // 반지름 m단위
         radius: 10000,
@@ -73,7 +68,7 @@ const Map = (props) => {
         const listEl = document.getElementById('placesList'),
           fragment = document.createDocumentFragment(),
           bounds = new window.kakao.maps.LatLngBounds();
-
+        console.log(listEl);
         // 검색 결과 목록에 추가된 항목들을 제거합니다
         removeAllChildNods(listEl);
 
@@ -83,9 +78,9 @@ const Map = (props) => {
         for (let i = 0; i < places.length; i++) {
           // 마커를 생성하고 지도에 표시합니다
           const placePosition = new window.kakao.maps.LatLng(
-            places[i].y,
-            places[i].x
-          ),
+              places[i].y,
+              places[i].x
+            ),
             marker = addMarker(
               placePosition,
               i,
@@ -139,6 +134,7 @@ const Map = (props) => {
         el.style.paddingBottom = '20px';
         el.style.paddingTop = '15px';
 
+        console.log(places.info_pannel);
         if (places.road_address_name) {
           itemStr +=
             '    <span style="color:grey;font-size:14px">' +
@@ -165,15 +161,11 @@ const Map = (props) => {
 
         return el;
       };
+
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-      const addMarker = (
-        position,
-        idx,
-        title,
-        url
-      ) => {
+      const addMarker = (position, idx, title, url) => {
         const imageSrc =
-          'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+            'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
           imageSize = new window.kakao.maps.Size(36, 37), // 마커 이미지의 크기
           imgOptions = {
             spriteSize: new window.kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
@@ -195,11 +187,11 @@ const Map = (props) => {
 
         // 마커 클릭 이벤트 부분
         const iwContent =
-          '<div style="color:grey;font-size:14px;padding:17px">' +
-          title +
-          '<br><a href="' +
-          url +
-          '" style="color:blue;text-decoration:none;color:#2c278c;font-weight:500;" target="_blank">자세히 보러 가기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            '<div style="color:grey;font-size:14px;padding:17px">' +
+            title +
+            '<br><a href="' +
+            url +
+            '" style="color:blue;text-decoration:none;color:#2c278c;font-weight:500;" target="_blank">자세히 보러 가기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
           iwPosition = new window.kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
         // 인포윈도우에 닫기 x버튼 추가
@@ -249,7 +241,6 @@ const Map = (props) => {
           el.removeChild(el.lastChild);
         }
       };
-
       // 유저 현위치 마커 생성
       // eslint-disable-next-line
       const marker = new window.kakao.maps.Marker({
@@ -275,50 +266,88 @@ const Map = (props) => {
     }
   }, [map]);
 
-  const nickname = getCookie("nickname")
+  const nickname = getCookie('nickname');
 
   return (
     <>
-      <div style={{ margin: "auto" }}>
+      <div style={{ margin: 'auto' }}>
         <Header />
       </div>
       <div style={{ position: 'relative', margin: 'auto' }}>
         <ScMapWrap>
-          <ScMap id='map'>
-            지도
-          </ScMap>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: '10px',
+              gap: '5px',
+            }}
+          >
+            <div style={{ fontSize: '26px' }}>내주변 카페</div>
+            <div id="menu">
+              <div>
+                <span>
+                  <img src={Info} alt="" />
+                </span>
+                <p className="arrow_box">반경 20KM 안에있는 카페 결과입니다.</p>
+              </div>
+            </div>
+          </div>
+          <ScMap id="map">지도</ScMap>
           <div>
             <div>
-              <button onClick={() => { setMap(true) }}>내주변커피숍 보기</button>
+              <ScButton
+                onClick={() => {
+                  setMap(true);
+                }}
+              >
+                <img src={Pointer} alt="" />
+                내주변 카페 찾기
+              </ScButton>
               <div>
-                {nickname === undefined ? (<p>커파인러님 주변에 있는</p>) : (<p>{`${nickname}님 주변에 있는`}</p>)}
-                <p><span>{brand}</span>매장 정보예요</p>
+                {/* {nickname === undefined ? (<p>커파인러님 주변에 있는</p>) : (<p>{`${nickname}님 주변에 있는`}</p>)}
+                <p><span>{brand}</span>매장 정보예요</p> */}
               </div>
               <hr />
-              <ScList id='placesList'>목록</ScList>
+              <ScList id="placesList">목록</ScList>
             </div>
-            {/* </div> */}
           </div>
         </ScMapWrap>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Map
+export default Map;
 
 const ScMapWrap = styled.div`
-display: flex;
-gap: 30px;
-`
+  /* display: flex; */
+  gap: 30px;
+`;
 const ScMap = styled.div`
-height: 600px;
- background-color: grey;
- /* border: 1px solid #2c278c; */
- box-shadow: 0 7px 6px 0 #00000026;
-`
-const ScList = styled.ul`
-overflow-y: scroll;
-height: 520px;
+  height: 600px;
+  background-color: grey;
+  /* border: 1px solid #2c278c; */
+  box-shadow: 0 7px 6px 0 #00000026;
+`;
 
-`
+const ScList = styled.div`
+  overflow-y: scroll;
+  height: 300px;
+  li {
+    list-style: none;
+  }
+`;
+const ScButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 41px;
+  color: white;
+  background-color: #2c278c;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 20px 0;
+`;

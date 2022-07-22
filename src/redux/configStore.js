@@ -2,7 +2,6 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 // import rootReducer from './modules';
-
 import userReducer from './modules/users';
 import commentReducer from './modules/comment';
 import coffeeReducer from './modules/coffee';
@@ -17,6 +16,7 @@ const rootReducer = combineReducers({
   comment: commentReducer,
   coffee: coffeeReducer,
   board: boardReducer,
+
   chat: chatReducer,
   boardComment: boardCommentReducer,
 });

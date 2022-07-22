@@ -1,42 +1,65 @@
 import React from 'react';
 import Styled from 'styled-components';
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
+import apis from '../../shared/api/main';
 
-const BoardLike = () => {
-
+const BoardLike = ({ head, boardId, like2, setLike }) => {
+  const like = async () => {
+    await apis.postBoardsLike(head?.category, boardId).then((res) => {
+      setLike(res.data);
+    });
+  };
   const currentUrl = window.location.href;
   return (
     <>
       <ScWrap>
-          <ScTitleWrap>
-            <ScH3>6</ScH3>
-          </ScTitleWrap>
-          <ScBtnWrap>
-            <ScBtn>추천</ScBtn>
-          </ScBtnWrap>
-          <ScBtnWrap2>
+        <ScTitleWrap>
+          <ScH3>{head?.totalLove}</ScH3>
+        </ScTitleWrap>
+        <ScBtnWrap>
+          {head?.loveCheck ? (
+            <ScBtn
+              style={{ backgroundColor: 'black', color: 'white' }}
+              onClick={like}
+            >
+              추천
+            </ScBtn>
+          ) : (
+            <ScBtn onClick={like}>추천</ScBtn>
+          )}
+        </ScBtnWrap>
+        <ScBtnWrap2>
           <CopyToClipboard text={currentUrl}>
-					<ScBtn2 onClick={()=>{
-            alert("링크복사")
-          }}>📢공유</ScBtn2>
-				</CopyToClipboard>
-            <ScBtn2>⚠️신고</ScBtn2>
-          </ScBtnWrap2>
+            <ScBtn2
+              onClick={() => {
+                Swal.fire({
+                  title: '링크복사 완료!',
+                  icon: 'success',
+                  confirmButtonText: '확인',
+                });
+              }}
+            >
+              📢공유
+            </ScBtn2>
+          </CopyToClipboard>
+          <ScBtn2>⚠️신고</ScBtn2>
+        </ScBtnWrap2>
       </ScWrap>
-      <ScHR/>
+      <ScHR />
     </>
-  )
-}
+  );
+};
 
 const ScWrap = styled.div`
-    display: column;    
-    justify-content: center;
-    align-items: center;
-    width: 175px;
-    border: 1px #ddd solid;
-    border-radius: 10px;
-    margin: 80px auto;
+  display: column;
+  justify-content: center;
+  align-items: center;
+  width: 175px;
+  border: 1px #ddd solid;
+  border-radius: 10px;
+  margin: 80px auto;
 `;
 
 const ScTitleWrap = Styled.div`
@@ -84,23 +107,22 @@ const ScBtn = styled.div`
   width: 75px;
   height: 35px;
   border-radius: 50px;
-  background-color: #EEE;
-  border-color: #EEE;
+  background-color: #eee;
+  border-color: #eee;
   font-weight: bold;
   font-size: 20px;
   &:hover {
-    cursor: pointer;  
+    cursor: pointer;
     background-color: #212121;
     color: white;
   }
 `;
 
-const ScBtnWrap2 = styled.div`  
+const ScBtnWrap2 = styled.div`
   margin: 20px auto 0;
   display: flex;
   justify-content: center;
   text-align: center;
-  
 `;
 
 const ScBtn2 = styled.div`
@@ -114,7 +136,7 @@ const ScBtn2 = styled.div`
   border-right: none;
   height: 40px;
   &:hover {
-    cursor: pointer;  
+    cursor: pointer;
     background-color: #212121;
     color: white;
   }
@@ -125,6 +147,4 @@ const ScHR = Styled.hr`
     margin-bottom: 20px;
 `;
 
-
-
-export default BoardLike
+export default BoardLike;

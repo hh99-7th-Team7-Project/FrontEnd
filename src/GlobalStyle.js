@@ -1,14 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
 import './shared/css/font.css';
 
-const GlobalStyle = createGlobalStyle `
+const GlobalStyle = createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
+
+  
+    font-display:block;
   }
   html, body {
     font-family: ‘SUIT Variable’;
-    font-weight: 700;
+    font-weight: 600;
+
     line-height: 24.96px;
   }
   button, label, div,p, textarea {
@@ -42,6 +46,10 @@ button{
 }
 ::-webkit-scrollbar-track {
   background-color: #EEE;  
+}
+
+:root{
+  --main: #2C278C
 }
 
 `;
