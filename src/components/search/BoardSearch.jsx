@@ -1,66 +1,72 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
-import BoardMap from '../../components/board/BoardMap'
-import apis from '../../shared/api/main'
-import { getCookie } from '../../shared/Cookie'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import BoardMap from '../../components/board/BoardMap';
+import apis from '../../shared/api/main';
+import { getCookie } from '../../shared/Cookie';
 
 const BoardSearch = (props) => {
-  const {keyword} = props
-  const navigate = useNavigate()
-  const [boardReducer, setBoardReducer] = useState()
+  const { keyword } = props;
+  const navigate = useNavigate();
+  const [boardReducer, setBoardReducer] = useState();
 
-  const sliceBoard = boardReducer?.slice(0,5)
+  const sliceBoard = boardReducer?.slice(0, 5);
 
-  const token = getCookie("token")
+  const token = getCookie('token');
 
-  useEffect(()=>{
-    const search = async()=>{
-      if(!token){
-        apis.searchBoard(keyword)
-          .then((res)=>{
-            console.log(res)
-            setBoardReducer(res?.data)
-          })
-      }else{
-        apis.searchBoardLogin(keyword)
-          .then((res)=>{
-            console.log(res)
-            setBoardReducer(res?.data)
-          })
+  useEffect(() => {
+    const search = async () => {
+      if (!token) {
+        apis.searchBoard(keyword).then((res) => {
+          console.log(res);
+          setBoardReducer(res?.data);
+        });
+      } else {
+        apis.searchBoardLogin(keyword).then((res) => {
+          console.log(res);
+          setBoardReducer(res?.data);
+        });
       }
-      
-    }
-    search()
-  },[keyword])
+    };
+    search();
+  }, [keyword]);
 
-  return (
-    (boardReducer?.length!==0?
-      (<div style={{display:"flex", flexDirection:"column"}}>
-          <ScCoffeeWrap>
-          <ScCardContainer>
-            {sliceBoard&&sliceBoard.map((item,idx)=>{
-              return(
-                <BoardMap key={idx} content={item}/>
-
-                )})}
-              {sliceBoard?.length > 3 ? 
-              <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
-          </ScCardContainer>
-          </ScCoffeeWrap>
-          <ScBtnAlign>
-            <ScBtnWrap>
-                <ScBtn 
-                  onClick={()=>{navigate(`/search/board/${keyword}`)}}>
-                  <ScBtnTitle>+더보기</ScBtnTitle>
-                </ScBtn>
-            </ScBtnWrap>
-          </ScBtnAlign>
-        </div>):
-        (<ScNothing>검색 결과가 없습니다</ScNothing>) 
-    )
-  )
-}
+  return boardReducer?.length !== 0 ? (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <ScCoffeeWrap>
+        <ScCardContainer>
+          {sliceBoard &&
+            sliceBoard.map((item, idx) => {
+              return <BoardMap key={idx} content={item} />;
+            })}
+          {sliceBoard?.length > 3 ? (
+            <ScBox
+              style={{
+                width: '1200px',
+                position: 'absolute',
+                height: '500px',
+                marginTop: '450px',
+              }}
+            ></ScBox>
+          ) : null}
+        </ScCardContainer>
+      </ScCoffeeWrap>
+      <ScBtnAlign>
+        <ScBtnWrap>
+          <ScBtn
+            onClick={() => {
+              navigate(`/search/board/${keyword}`);
+            }}
+          >
+            <ScBtnTitle>+더보기</ScBtnTitle>
+          </ScBtn>
+        </ScBtnWrap>
+      </ScBtnAlign>
+    </div>
+  ) : (
+    <ScNothing>검색 결과가 없습니다</ScNothing>
+  );
+};
 
 const ScCoffeeWrap = styled.div`
   /* margin: auto;  */
@@ -74,17 +80,17 @@ const ScCardContainer = styled.div`
 `;
 
 const ScBox = styled.div`
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFF 82.29%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 82.29%);
 `;
 
-const ScBtnAlign = styled.div`  
-  display: flex;  
+const ScBtnAlign = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const ScBtnWrap = styled.div`  
-  position: absolute;  
+const ScBtnWrap = styled.div`
+  position: absolute;
 `;
 
 const ScBtn = styled.button`
@@ -92,8 +98,7 @@ const ScBtn = styled.button`
   height: 46px;
   background: #2c278c;
   border-radius: 100px;
-  border: none;  
-  
+  border: none;
 `;
 
 const ScBtnTitle = styled.span`
@@ -107,7 +112,6 @@ const ScBtnTitle = styled.span`
   &:hover {
     cursor: pointer;
   }
-  
 `;
 
 const ScNothing = styled.div`
@@ -116,6 +120,6 @@ const ScNothing = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 70px;
-`
+`;
 
-export default BoardSearch
+export default BoardSearch;

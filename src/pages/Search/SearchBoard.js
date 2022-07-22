@@ -1,52 +1,52 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { useNavigate, useParams } from 'react-router-dom'
-import BoardMap from '../../components/board/BoardMap'
-import apis from '../../shared/api/main'
-import Header from '../Header/Header'
-import { getCookie } from '../../shared/Cookie'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { useNavigate, useParams } from 'react-router-dom';
+import BoardMap from '../../components/board/BoardMap';
+import apis from '../../shared/api/main';
+import Header from '../Header/Header';
+import { getCookie } from '../../shared/Cookie';
 
 const SearchBoard = () => {
-  const {keyword} = useParams()
-  const navigate = useNavigate()
-  const [boardReducer, setBoardReducer] = useState()
+  const { keyword } = useParams();
+  const navigate = useNavigate();
+  const [boardReducer, setBoardReducer] = useState();
 
-  const token = getCookie("token")
+  const token = getCookie('token');
 
-  useEffect(()=>{
-    const search = async()=>{
-      if(!token){
-        apis.searchBoard(keyword)
-          .then((res)=>{
-            console.log(res)
-            setBoardReducer(res?.data)
-          })
-      }else{
-        apis.searchBoardLogin(keyword)
-          .then((res)=>{
-            console.log(res)
-            setBoardReducer(res?.data)
-          })
+  useEffect(() => {
+    const search = async () => {
+      if (!token) {
+        apis
+          .searchBoard(keyword)
+
+          .then((res) => {
+            console.log(res);
+            setBoardReducer(res?.data);
+          });
+      } else {
+        apis.searchBoardLogin(keyword).then((res) => {
+          console.log(res);
+          setBoardReducer(res?.data);
+        });
       }
-      
-    }
-    search()
-  },[keyword])
+    };
+    search();
+  }, [keyword]);
 
   return (
-        <ScWrap>
-          <div style={{margin:"auto"}}> 
-            <Header/>
-          </div>
-          <ScBoardWrap>
-            {boardReducer&&boardReducer.map((item,idx)=>{
-              return(<BoardMap key={idx} content={item}/>)
-            })} 
-          </ScBoardWrap>
-       </ScWrap>
-   )
-  
-}
+    <ScWrap>
+      <div style={{ margin: 'auto' }}>
+        <Header />
+      </div>
+      <ScBoardWrap>
+        {boardReducer &&
+          boardReducer.map((item, idx) => {
+            return <BoardMap key={idx} content={item} />;
+          })}
+      </ScBoardWrap>
+    </ScWrap>
+  );
+};
 
 const ScWrap = styled.div`
   margin: auto;
@@ -56,4 +56,4 @@ const ScBoardWrap = styled.div`
   margin: 50px auto;
 `;
 
-export default SearchBoard
+export default SearchBoard;
