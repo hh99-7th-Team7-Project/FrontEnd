@@ -170,7 +170,7 @@ const ScInput = styled.input`
   border: none;
   border-radius: 2px;
   font-size: 20px;
-  text-align: center;
+  text-align: left;
 
 `;
 
