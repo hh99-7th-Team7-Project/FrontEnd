@@ -5,7 +5,6 @@ import calendar from '../../Image/Chat/calendar.svg';
 import IconTime from '../../Image/Chat/time.svg';
 import coffee from '../../Image/Chat/coffee.svg';
 import person from '../../Image/Chat/person.png';
-import { colorSyntax } from '@toast-ui/editor-plugin-color-syntax';
 
 const ChatList = (data) => {
   const navigate = useNavigate();
@@ -14,25 +13,27 @@ const ChatList = (data) => {
 
   return (
     <Container>
-      <div className="all">
+      <InnerContainer className="all">
         <Wrap>
           {completed === false ? <span>모집 완료</span> : <span>모집 중</span>}
-          <p>{data.data.beforeTime}</p>
+          <p style={{color:"grey"}}>{data.data.beforeTime}</p>
         </Wrap>
         <Title>{data.data.title}</Title>
         <Contents>{data.data.contents}</Contents>
         <br />
 
-        <InfoWrap>
+        <InfoWrap style={{marginBottom:'9px'}}>
           <div>
             <ICON src={calendar}></ICON>
-            <span>{data.data.calendar}</span>
+            <span style={{marginRight:"20px"}}>{data.data.calendar}</span>
           </div>
           <div>
             <ICON src={IconTime}></ICON>
             <span>{data.data.meettime}</span>
           </div>
         </InfoWrap>
+
+        <div style={{display:"flex", justifyContent:'space-between'}}>
         <InfoWrap>
           <div>
             <ICON src={coffee}></ICON>
@@ -44,62 +45,76 @@ const ChatList = (data) => {
           <InfoWrap>
             <div>
               <ICON src={person}></ICON>
-              <p>
+              <span>
                 {data.data.count}/ {data.data.totalcount}
-              </p>
+              </span>
             </div>
           </InfoWrap>
-          <Btn onClick={() => navigate(`/chatposts/detail/${id}`)}>
-            <span>모집 내용 확인하기</span>
+
+        {completed?(
+           <Btn onClick={() => navigate(`/chatposts/detail/${id}`)} >
+          자세히 보기 {'>'}
           </Btn>
+        ):(
+          <Btn style={{color:"rgba(0, 0, 0, 0.2)"}}>
+          모집 완료 {'>'}
+          </Btn>
+        )}
+         
         </BtnWrap>
-      </div>
+        </div>
+      </InnerContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
-  height: 265px;
-  padding: 20px;
+  height: 236px;
   margin: 20px;
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0px 4px 20px rgb(0 0 0 / 30%);
+  /* overflow: hidden; */
+  border: 1px rgba(0, 0, 0, 0.2) solid;
+
   & p {
     /* font-size: 12px; */
     color: #3c3b3b;
   }
-  & .all {
+  /* & .all {
     width: 100%;
     height: 100%;
-  }
+  } */
 `;
+
+const InnerContainer =styled.div`
+  height: 90%;
+  width: 90%;
+  margin: 10px auto;
+`
 
 const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
+  font-size: 16px;
   & span {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
   }
 `;
 
-const Title = styled.span`
-  display: inline-block;
-  font-size: 30px;
-  font-weight: 700;
-  margin: 15px 0;
-  padding-top: 5px;
+const Title = styled.div`
+  font-size: 20px;
+  margin: 9px 0 10px 0;
   width: 400px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: 'SUIT ExtraBold';
 `;
 
 const Contents = styled.span`
   font-size: 16px;
-  width: 500px;
-  height: 75px;
+ 
+  height: 55px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -109,38 +124,26 @@ const Contents = styled.span`
 
 const InfoWrap = styled.div`
   display: flex;
-  margin-bottom: 5px;
   & div {
     display: flex;
-    margin-right: 20px;
     height: 24px;
-  }
-  & span {
-    margin-left: 3px;
-  }
-  & p {
-    margin-left: 3px;
   }
 `;
 
 const ICON = styled.img`
-  display: inline-block;
-  margin-right: 5px;
+margin-right: 5px;
 `;
 
 const BtnWrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: flex-end;
 `;
 
-const Btn = styled.button`
+const Btn = styled.div`
   display: flex;
-  font-size: 20px;
-  border: none;
-  justify-content: space-around;
-  align-items: center;
-  color: #2c278c;
-  background-color: #fff;
+  font-size: 16px;
+  margin-left: 6px;
+  /* align-items: center; */
   font-weight: 700;
 `;
 
