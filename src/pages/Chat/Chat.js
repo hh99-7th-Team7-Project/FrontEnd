@@ -53,7 +53,7 @@ console.log(posts)
               }}
             >
               <img src={Chatimoji} alt='' />
-              모임만들기
+              <span>모임만들기</span>
             </Scwrite>
           </div>
         </ScTopCard>
@@ -135,6 +135,9 @@ const Scwrite = styled.div`
   font-size: 20px;
   border-radius: 10px;
   gap:7px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Wrap = styled.div`

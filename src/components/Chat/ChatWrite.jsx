@@ -18,6 +18,7 @@ import {
   __loadOneChatItem,
   __loadChatLists,
 } from '../../redux/modules/chat';
+import Swal from 'sweetalert2';
 
 const ChatWrite = ({ setWrite, write }) => {
   const navigate = useNavigate();
@@ -92,7 +93,11 @@ const ChatWrite = ({ setWrite, write }) => {
     const value = e.target.value;
     const onlyNumber = value.replace(/[^0-9]/g, '');
     -2 < onlyNumber < 60
-      ? alert('60이하의 숫자를 입력 해주세요😥')
+      ? Swal.fire({
+        title: '60자 이내로 작성해주세요.!',
+        icon: 'info',
+        confirmButtonText: '확인',
+      })
       : setMinuteValue(onlyNumber);
   };
 
@@ -117,7 +122,11 @@ const ChatWrite = ({ setWrite, write }) => {
     dispatch(__addChatItem(chatItem));
     setWrite(!write);
     navigate('/chatposts');
-    alert('저장 완료!');
+    Swal.fire({
+      title: '저장 완료!',
+      icon: 'success',
+      confirmButtonText: '확인',
+    });
   };
 
   const editChatItem = () => {
@@ -133,7 +142,11 @@ const ChatWrite = ({ setWrite, write }) => {
     dispatch(__updateChatItem(chatitem, id));
     // dispatch(__loadOneChatItem(id));
     setWrite(!write);
-    alert('수정 완료!');
+    Swal.fire({
+      title: '수정 완료!',
+      icon: 'success',
+      confirmButtonText: '확인',
+    });
   };
 
   return (
@@ -298,12 +311,12 @@ const ChatWrite = ({ setWrite, write }) => {
           <MakeBtn>
             {is_edit ? (
               <button onClick={editChatItem}>
-                <img src={boardwrite} />
+                <img src={boardwrite} alt="" />
                 수정
               </button>
             ) : (
               <button onClick={addChatItem}>
-                <img src={boardwrite} />
+                <img src={boardwrite} alt="" />
                 모임 만들기
               </button>
             )}

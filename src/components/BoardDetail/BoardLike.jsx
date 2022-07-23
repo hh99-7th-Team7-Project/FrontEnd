@@ -44,7 +44,13 @@ const BoardLike = ({ head, boardId, like2, setLike }) => {
               📢공유
             </ScBtn2>
           </CopyToClipboard>
-          <ScBtn2>⚠️신고</ScBtn2>
+          <ScBtn2 onClick={()=>{
+            Swal.fire({
+              title: '준비중입니다.',
+              icon: 'info',
+              confirmButtonText: '확인',
+            });
+          }}>⚠️신고</ScBtn2>
         </ScBtnWrap2>
       </ScWrap>
       <ScHR />

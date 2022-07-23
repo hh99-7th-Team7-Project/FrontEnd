@@ -145,6 +145,9 @@ const Btn = styled.div`
   margin-left: 6px;
   /* align-items: center; */
   font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default ChatList;
