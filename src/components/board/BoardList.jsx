@@ -4,24 +4,37 @@ import '../../shared/css/dropdown.css';
 import BoardMap from './BoardMap';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
+import BoardPagination from './Pagination/BoardPagination';
+
+
 
 const BoardList = () => {
   const [content, setContent] = useState();
   // console.log(content)
   const token = getCookie('token');
 
+  
+  const [ posts, setPosts ] = useState([]);
+  const [ page, setPage ] = useState(1);
+
+
+
+  const totalPage = posts?.totalPage;
+
+
+
+
   useEffect(() => {
     const getMark = async () => {
       if (!token) {
         await apis
-          .getBoards()
-
+          .getBoards(page)
           .then((res) => {
             console.log(res.data);
-            setContent(res.data);
+            setContent(res.data);            
           });
       } else {
-        await apis.getBoardsLogin().then((res) => {
+        await apis.getBoardsLogin(page).then((res) => {
           console.log(res.data);
           setContent(res.data);
         });
@@ -30,11 +43,14 @@ const BoardList = () => {
     getMark();
   }, []);
 
+
+
+
   return (
     <>
       <ScWrap>
-        <ScBoard>
-          <ScTable>
+        <ScBoard>        
+          <ScTable>            
             {content &&
               content.map((item, idx) => {
                 return <BoardMap content={item} key={idx} />;
@@ -42,6 +58,14 @@ const BoardList = () => {
           </ScTable>
         </ScBoard>
       </ScWrap>
+      <footer>
+        <BoardPagination 
+          total={totalPage}              
+          page={page}
+          setPage={setPage}
+        />
+      </footer> 
+                    
     </>
   );
 };
