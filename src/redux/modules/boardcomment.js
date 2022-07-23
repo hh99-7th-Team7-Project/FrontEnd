@@ -130,7 +130,7 @@ export default function boardCommentReducer(state = intialstate, action) {
     case ADD_BOARD_COMMENT: {
       return {
         ...state,
-        boardcommentlist: [...state.boardcommentlist, action.payload],
+        boardcommentlist: [action.payload, ...state.boardcommentlist ],
       };
     }
 
