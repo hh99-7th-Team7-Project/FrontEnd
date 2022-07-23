@@ -22,7 +22,7 @@ const Board = () => {
         <ScTopCard>
           <img src={BoardLogo} alt="" style={{ width: "100%" }} />
           <ScTopWord style={{ margin: "167px 35% 159px 60%" }}>
-            <ScMainTitle>커피를 사랑하는 사람들의 커피 연구소</ScMainTitle>
+            <ScMainTitle>커피를 사랑하는<br/> 사람들의 커피 연구소</ScMainTitle>
             <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt="" /><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
           </ScTopWord>
         </ScTopCard>
@@ -56,18 +56,20 @@ const ScTopCard = styled.div`
 
 const ScTopWord = styled.div`
 position: absolute;
+
+
 `
 const ScMainTitle = styled.div`
 width: 190%;
 height: 74px;
 font-weight: 700;
-font-size: 30px;
-line-height: 37px;
+font-size: 34px;
+line-height: 43px;
 margin-bottom: 30px;
+font-family: "SUIT ExtraBold";
 `
 
 const ScBoardWrite = styled.span`
-  font-family: 'SUIT Heavy';
   &:hover {
     cursor: pointer;
   }

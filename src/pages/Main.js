@@ -63,7 +63,7 @@ const changeColor2 = ()=>{
             <LottoPoint/>
           </ScMapRandomWrap> */}
           <ScNavbarWrap>
-          <h1 style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)"}}>데일리 커피 Menu</h1>
+          <div style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</div>
           <ScButtonWrap>
       <ScCategory color={color}
       onClick={()=>{
