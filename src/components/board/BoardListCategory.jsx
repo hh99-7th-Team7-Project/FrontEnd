@@ -4,9 +4,12 @@ import BoardMap from './BoardMap';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 
+
 const BoardListCategory = ({ category }) => {
   const [content, setContent] = useState();
   const token = getCookie('token');
+
+
 
   useEffect(() => {
     const getMark = async () => {
@@ -25,6 +28,8 @@ const BoardListCategory = ({ category }) => {
     getMark();
   }, [category]);
 
+
+
   return (
     <>
       <ScWrap>
@@ -36,7 +41,7 @@ const BoardListCategory = ({ category }) => {
               })}
           </ScTable>
         </ScBoard>
-      </ScWrap>
+      </ScWrap>  
     </>
   );
 };
