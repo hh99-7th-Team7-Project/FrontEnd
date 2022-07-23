@@ -27,13 +27,13 @@ const ChatWrite = ({ setWrite, write }) => {
   const is_edit = id ? true : false;
   useEffect(() => {
     dispatch(__loadOneChatItem(id));
-  }, [id]);
+  }, [dispatch]);
 
   const ChatItem = useSelector((state) => state?.chat?.one_list);
 
   //날짜
 
-  const map = ChatItem?.map.split(' ');
+  const map = ChatItem?.map;
   const time = ChatItem?.meettime.split(':');
 
   const [page, setPage] = React.useState(1);
@@ -55,7 +55,7 @@ const ChatWrite = ({ setWrite, write }) => {
   const [countValue, setCountValue] = React.useState(
     is_edit ? ChatItem?.totalcount : 3
   );
-  const [mapfValue, setmapfValue] = React.useState(is_edit ? map[0] : '');
+  const [mapfValue, setmapfValue] = React.useState(is_edit ? map : '');
   const [mapsValue, setmapsValue] = React.useState(is_edit ? map[1] : '');
   const [maptValue, setmaptValue] = React.useState(is_edit ? map[2] : '');
 
@@ -72,12 +72,12 @@ const ChatWrite = ({ setWrite, write }) => {
   const inputMapF = (e) => {
     setmapfValue(e.target.value);
   };
-  const inputMapS = (e) => {
-    setmapsValue(e.target.value);
-  };
-  const inputMapT = (e) => {
-    setmaptValue(e.target.value);
-  };
+  // const inputMapS = (e) => {
+  //   setmapsValue(e.target.value);
+  // };
+  // const inputMapT = (e) => {
+  //   setmaptValue(e.target.value);
+  // };
 
   const inputHour = (e) => {
     // const value = e.target.value;
@@ -115,13 +115,21 @@ const ChatWrite = ({ setWrite, write }) => {
       title: chatName,
       contents: chatContent,
       calendar: dateValue,
-      map: mapfValue + ' ' + mapsValue + ' ' + maptValue,
+      map: mapfValue,
       totalcount: num,
       meettime: hourValue + '~' + hourValue2,
     };
-    dispatch(__addChatItem(chatItem));
+    if(chatName!==""&&chatContent!==""&&dateValue!==""&&mapfValue!==""&&num!==""&&hourValue!==""&&minuteValue!==""){
+         dispatch(__addChatItem(chatItem));
     setWrite(!write);
-    navigate('/chatposts');    
+    navigate('/chatposts');  
+    }else{
+      Swal.fire({
+        title: '빈칸 없이 작성해주세요!',
+        icon: 'error',
+      });
+    }
+   
   };
 
   const editChatItem = () => {
@@ -130,11 +138,12 @@ const ChatWrite = ({ setWrite, write }) => {
       title: chatName,
       contents: chatContent,
       calendar: dateValue,
-      map: mapfValue + ' ' + mapsValue + ' ' + maptValue,
+      map: mapfValue,
       totalcount: num,
       meettime: hourValue + ':' + minuteValue,
     };
-    dispatch(__updateChatItem(chatitem, id));
+    if(chatName!==""&&chatContent!==""&&dateValue!==""&&mapfValue!==""&&num!==""&&hourValue!==""&&minuteValue!==""){
+       dispatch(__updateChatItem(chatitem, id));
     // dispatch(__loadOneChatItem(id));
     setWrite(!write);
     Swal.fire({
@@ -142,6 +151,13 @@ const ChatWrite = ({ setWrite, write }) => {
       icon: 'success',
       confirmButtonText: '확인',
     });
+    }else{
+      Swal.fire({
+        title: '빈칸 없이 작성해주세요!',
+        icon: 'error',
+      });
+    }
+   
   };
 
   return (
@@ -168,12 +184,12 @@ const ChatWrite = ({ setWrite, write }) => {
         <Title>시간</Title>
         {is_edit ? (
           <div>
-            <TimeInput value={hourValue} onChange={inputHour} type="Number" />
+            <TimeInput value={hourValue} onChange={inputHour}  type="time" />
             <span>시</span>
             <TimeInput
               value={minuteValue || ''}
               onChange={inputMinute}
-              type={Number}
+              type="time"
             />
           </div>
         ) : (
@@ -221,25 +237,13 @@ const ChatWrite = ({ setWrite, write }) => {
           placeholder='간단한 자기소개와 함께 커파인러 분들과 함께 이야기 하고 싶은 주제에 대해 설명해주세요.'
           value={chatContent || ''} onChange={inputContent} />
         )}
-        <Title>카페 위치</Title>
+        <Title>카페 위치<span style={{color:"#8f8d8db7"}}>(명확한 상호명을 적어주세요 (ex)이태원 챔프커피)</span></Title>
 
         {is_edit ? (
           <div>
             <MapInput
               value={mapfValue}
               onChange={inputMapF}
-              placeholder={'시'}
-            ></MapInput>
-            <span>시</span>
-            <MapInput
-              value={mapsValue}
-              onChange={inputMapS}
-              placeholder={'동네명'}
-            ></MapInput>
-            <span>동네</span>
-            <MapInput
-              value={maptValue}
-              onChange={inputMapT}
               placeholder={'카페명'}
             ></MapInput>
           </div>
@@ -248,21 +252,8 @@ const ChatWrite = ({ setWrite, write }) => {
             <MapInput
               value={mapfValue}
               onChange={inputMapF}
-              placeholder={'시'}
-            ></MapInput>
-            <span>시</span>
-            <MapInput
-              value={mapsValue}
-              onChange={inputMapS}
-              placeholder={'동네명'}
-            ></MapInput>
-            <span>동네</span>
-            <MapInput
-              value={maptValue}
-              onChange={inputMapT}
               placeholder={'카페명'}
             ></MapInput>
-            <span>카페명</span>
           </div>
         )}
 
@@ -343,7 +334,7 @@ const InputWrap = styled.div`
 `;
 
 const MapInput = styled.input`
-  width: 25%;
+  width: 98%;
   height: 3em;
   border: 1px solid gray;
   border-radius: 10px;

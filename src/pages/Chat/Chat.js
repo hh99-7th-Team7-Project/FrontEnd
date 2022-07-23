@@ -7,6 +7,7 @@ import Header from '../Header/Header';
 import styled from 'styled-components';
 import { boardwrite, ChatLogo, Chatimoji, ChatLogoSmall } from '../../shared/svg/A-index';
 import Pagination from '../../components/Pagination/Pagination.jsx';
+import apis from '../../shared/api/main';
 
 const Chat = () => {
   const [posts, setPosts] = useState([]);
@@ -14,10 +15,8 @@ const Chat = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch(`https://sparta-gi.shop/chatposts/${page}`)
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
-    // dispatch(__loadChatLists(page));
+    apis.getChatLists(page)
+      .then((data) => setPosts(data.data));
     console.log(page);
   }, [page]);
 
@@ -101,7 +100,7 @@ const ScTopCard = styled.div`
 const ScTopCard2 = styled.div`
   display: flex;
   height: 135px;
-  background-color: #ddd;
+  background-color:#F5EABB;
   font-size: 24px;
   margin-bottom: 74px;
 `;

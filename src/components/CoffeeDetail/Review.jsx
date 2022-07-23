@@ -17,7 +17,7 @@ const Review = ({ item, reviewData, url }) => {
   // console.log(item)
 
   const pricePair = item?.pricePair;
-  console.log(pricePair);
+
 
   console.log(item);
 
@@ -51,13 +51,15 @@ const Review = ({ item, reviewData, url }) => {
           </ScBtnWrap>
           <ScStarPriceContainer>
             <ScStarBox>
-              <ScH3>총 별점</ScH3>
+              <Sctitle>총 별점</Sctitle>
               {starPoint === 'NaN' ? (
                 <ScH2>0.0</ScH2>
               ) : (
                 <ScH2>{starPoint?.toFixed(1)}</ScH2>
               )}
-              {starPoint === 'NaN' && null }
+              {starPoint === 'NaN' &&(
+                <ScH3>&#9734; &#9734; &#9734; &#9734; &#9734;</ScH3>
+              ) }
 
               {Math.floor(starPoint) === 1 && (
                 <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3>
@@ -76,31 +78,44 @@ const Review = ({ item, reviewData, url }) => {
               )}
             </ScStarBox>
             <ScPriceBox>
-              <ScH3>가격</ScH3>
-              {pricePair &&
-                pricePair.map((price, idx) => {
-                  return (
-                    <div key={idx}>
-                      <PriceScH3>
-                        {' '}
-                        {price?.size}:￦{price?.price}{' '}
-                      </PriceScH3>
-                    </div>
-                  );
-                })}
+              <Sctitle>가격</Sctitle>
+             {pricePair&&<PriceScH3 style={{fontSize:'30px'}}>￦{pricePair[0]?.price}</PriceScH3>} 
             </ScPriceBox>
           </ScStarPriceContainer>
-          <ScImgWrap>
-            <div>
-              <ScSmallImg src={Small} alt="" />
-            </div>
-            <div>
-              <ScMediumImg src={Medium} alt="" />
-            </div>
-            <div>
-              <ScLargeImg src={Large} alt="" />
-            </div>
-          </ScImgWrap>
+          {pricePair &&(pricePair?.length===3) &&
+                      <ScImgWrap>
+                          <ScSmallWrap>
+                            <ScSmallImg src={Small} alt="" />
+                            <div>￦{pricePair[0]?.price}</div>
+                          </ScSmallWrap>
+                          <ScSmallWrap>
+                            <ScMediumImg src={Medium} alt="" />
+                            <div>￦{pricePair[1]?.price}</div>
+                          </ScSmallWrap>
+                          <ScSmallWrap>
+                            <ScLargeImg src={Large} alt="" />
+                            <div>￦{pricePair[2]?.price}</div>
+                          </ScSmallWrap>
+                          </ScImgWrap>}
+          {pricePair &&(pricePair?.length===2) &&
+                        <ScImgWrap>
+                            <ScSmallWrap>
+                              <ScMediumImg src={Medium} alt="" />
+                              <div>￦{pricePair[0]?.price}</div>
+                            </ScSmallWrap>
+                            <ScSmallWrap>
+                              <ScLargeImg src={Large} alt="" />
+                              <div>￦{pricePair[1]?.price}</div>
+                            </ScSmallWrap>
+                            </ScImgWrap>}
+          {pricePair &&(pricePair?.length===1) &&
+                        <ScImgWrap>
+                            <ScSmallWrap>
+                              <ScMediumImg src={Medium} alt="" />
+                              <div>￦{pricePair[0]?.price}</div>
+                            </ScSmallWrap>
+                            </ScImgWrap>}
+         
         </ScContentBox>
       </ScWrap>
     </>
@@ -117,6 +132,19 @@ const ScWrap = styled.div`
   position: relative;
 `;
 
+const ScSmallWrap =styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  div{
+    margin-top: 20px;
+  }
+`
+
+const Sctitle =styled.div`
+  font-size: 18px;
+`
 const ScContentBox = styled.div`
   margin: 20px;
 `;
@@ -167,16 +195,17 @@ const ScSpan = styled.span`
 const ScStarPriceContainer = styled.div`
   display: flex;
   width: 500px;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 50px 0 0 200px;
+  gap:10px
 `;
 
 const ScStarBox = styled.div`
   width: 180px;
   height: 150px;
   margin: auto;
+  text-align: center;
 `;
 
 const ScH2 = styled.h2`
@@ -206,7 +235,8 @@ const PriceScH3 = styled.h2`
 const ScPriceBox = styled.div`
   width: 180px;
   height: 150px;
-  margin: auto;
+  /* margin: auto 0 0; */
+  text-align: center;
 `;
 
 const ScImgWrap = styled.div`
@@ -215,6 +245,10 @@ const ScImgWrap = styled.div`
   margin: 30px auto;
   vertical-align: bottom;
   align-items: flex-end;
+  justify-content: center;
+  div{
+    color: var(--main);
+  }
 `;
 
 
