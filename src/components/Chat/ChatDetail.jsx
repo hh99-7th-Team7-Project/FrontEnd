@@ -14,6 +14,7 @@ import left from '../../Image/Chat/left.png';
 import IconChat from '../../Image/Chat/chat.png';
 import Check from './svg/Check.svg';
 import Chating from './svg/Chating.svg';
+import ChatMap from './ChatMap';
 
 const ChatDetail = () => {
   const dispatch = useDispatch();
@@ -86,9 +87,9 @@ const ChatDetail = () => {
                   <span>모집 완료</span>
                 )} */}
                 {data?.count === data?.totalcount ? (
-                 <div style={{display:"flex", gap:"900px"}}> <span>모집 완료</span> <Time>{data?.beforeTime}</Time></div>
+                 <div style={{display:"flex"}}> <span>모집 완료</span> <Time>{data?.beforeTime}</Time></div>
                 ) : (
-                  <div style={{display:"flex", gap:"900px"}}> <div>모집 중</div> <Time>{data?.beforeTime}</Time></div>
+                  <div style={{display:"flex"}}> <div>모집 중</div> <Time>{data?.beforeTime}</Time></div>
                 )}
               </div>
               {chat === true ? null : _checkUser === data?.nickname ? (
@@ -112,7 +113,9 @@ const ChatDetail = () => {
             ></ChatAttend>
             <div style={{display:"column"}}>
               <ContentWrap content={content}>
-                <Map map={map}></Map>
+                <Map map={map}>
+                  <ChatMap location={data?.map}/>
+                </Map>
                 <div>
                   <TitleWrap>
                     <span>{data?.title}</span>
@@ -133,17 +136,22 @@ const ChatDetail = () => {
                   </Contents>                                   
                 </div>
                 </ContentWrap>
-                <AttendBtnWrap>
+                {members&&
+                  <AttendBtnWrap>
                   {check === 'true' ? ( 
                       <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}> 
-                        <AttendBtn1 onClick={upCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                      {_checkUser===members[0].userTitle?( <AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                          <ScChatImg src={Chating} alt=""/>
+                          <span>채팅하러가기</span>
+                        </AttendBtn2>):(<><AttendBtn1 onClick={upCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                           <ScCheckImg src={Check} alt=""/>
                           <span>참여하지않기</span>
                         </AttendBtn1>
                         <AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                           <ScChatImg src={Chating} alt=""/>
                           <span>채팅하러가기</span>
-                        </AttendBtn2>
+                        </AttendBtn2></>)}
+                        
                       </div>
                   ) : (
                     <div style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
@@ -158,6 +166,8 @@ const ChatDetail = () => {
                     </div>
                   )}
                     </AttendBtnWrap> 
+                }
+              
                   
               
             </div>
@@ -191,7 +201,7 @@ const Time = styled.div`
 `;
 
 const Container = styled.div`
-  width: ${(props) => (props.content === true ? '100%' : '85%')};
+  width: ${(props) => (props.content === true ? '100%' : '55%')};
   border-radius: 12px;
   /* border: solid 1.5px #0d0b0b; */
   box-shadow: 0px 4px 20px rgb(0 0 0 / 30%);
@@ -233,7 +243,7 @@ const ContentWrap = styled.div`
 `;
 
 const Map = styled.div`
-  width: ${(props) => (props.map === true ? '100%' : '85%')};
+  width: ${(props) => (props.map === true ? '100%' : '100%')};
   height: ${(props) => (props.map === true ? '42vh' : '15vh')};
   background-color: #c4e8ff;
   border-radius: 10px;
@@ -307,8 +317,8 @@ const Contents = styled.div`
 
 const AttendBtnWrap = styled.div`
   display: flex;
-  justify-content: start;
-  margin: 30px auto;
+  justify-content: end;
+  margin: 50px 20px 0 0;
   margin-left: 30px;
   & img {
     width: 20px;

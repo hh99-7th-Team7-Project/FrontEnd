@@ -137,6 +137,9 @@ const ScSmallWrap =styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  div{
+    margin-top: 20px;
+  }
 `
 
 const Sctitle =styled.div`
@@ -192,10 +195,10 @@ const ScSpan = styled.span`
 const ScStarPriceContainer = styled.div`
   display: flex;
   width: 500px;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 50px 0 0 200px;
+  gap:10px
 `;
 
 const ScStarBox = styled.div`
@@ -232,7 +235,7 @@ const PriceScH3 = styled.h2`
 const ScPriceBox = styled.div`
   width: 180px;
   height: 150px;
-  margin: auto;
+  /* margin: auto 0 0; */
   text-align: center;
 `;
 

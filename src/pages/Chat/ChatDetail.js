@@ -33,7 +33,7 @@ export default ChatDetail;
 const ScTopCard2 = styled.div`
   display: flex;
   height: 135px;
-  background-color: #ddd;
+  background-color:#F5EABB;
   font-size: 24px;
 `;
 const ScTopWord = styled.div`

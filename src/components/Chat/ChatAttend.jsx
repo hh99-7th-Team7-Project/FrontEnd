@@ -7,10 +7,14 @@ const ChatAttend = ({ members, count, totalcount }) => {
 
   return (
     <ChatTop>
-      <div>        
-        <span>
+      <div  style={{display:"flex",justifyContent:"space-between", alignItems:"center"}}> 
+        <div style={{display:"flex",justifyContent:"space-between", alignItems:"center"}}>
+      {members &&<div style={{display:"flex",gap:"20px", alignItems:"center"}}> <Profile src={members[0]?.userProfile}></Profile> <span>{members[0]?.userTitle}</span> </div>} 
+        </div> 
+        <div style={{display:"flex",gap:"20px", alignItems:"center"}}>   
+        <span >
           {count} / {totalcount} 명
-        </span>
+        </span >
         {members &&
           members.map((data, k) => {
             return (
@@ -22,24 +26,15 @@ const ChatAttend = ({ members, count, totalcount }) => {
               </div>
             );
           })}
+          </div> 
         </div>
     </ChatTop>
   );
 };
 
 const ChatTop = styled.div`
-  display: flex;
-  justify-content: flex-end;
   width: 90%;
-  & span {
-    font-size: 20px;
-    margin-right: 5px;
-  }
-  & div {
-    display: flex;
-    align-items: center;
-  }
-
+  margin: auto;
 `;
 
 const Wrap = styled.div`
