@@ -212,17 +212,13 @@ console.log(Email+Selected)
                 onChange={(event) => {
                   setEmail(event.target.value);
                 }}
-                onBlur={(e)=>{
-                  if(Selected&& e.currentTarget===e.target){dupEmail()} 
-                 }}
+               
                 style={{width:"160px"}}
               />
               <h1 style={{width:"50px", textAlign:"center", fontSize:"23px"}}>@</h1>
 
               <ScSelect onChange={handleSelect} value={Selected}   
-              onBlur={(e)=>{
-                 if(Email&&e.currentTarget===e.target){dupEmail()} 
-                }}>
+             >
                 <option value="email">--Email--</option>
                 <option value="@naver.com" >naver.com</option>
                 <option value="@hanmail.net">hanmail.net</option>
@@ -247,9 +243,6 @@ console.log(Email+Selected)
                 onChange={(event) => {
                   setNickname(event.target.value);
                 }}
-                onBlur={(e)=>{
-                  if(Nickname&& e.currentTarget===e.target){dupNick()} 
-                 }}
                 style={{  width:"362px" }}
               />
               <ScDuplicateButton onClick={dupNick}>중복검사</ScDuplicateButton>

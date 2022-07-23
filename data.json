@@ -128,5 +128,21 @@
       "star": "3.5",
       "coffeeimg": "https://ifh.cc/g/natCJQ.png"
     }
+  ],
+  "chat": [
+    {
+      "userId": 1,
+      "chatpostId": 38,
+      "nickname": "닉네임",
+      "title": "커피두잔하실뿐",
+      "contents": "자유롭게 두잔해요",
+      "calendar": "02월18일",
+      "map": "부천역",
+      "totalcount": 4,
+      "count": 1,
+      "completed": true,
+      "beforeTime": "0분 전",
+      "createdAt": null
+    }
   ]
 }

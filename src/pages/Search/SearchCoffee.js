@@ -28,7 +28,8 @@ const SearchCoffee = () => {
       <div style={{margin:"auto"}}> 
         <Header/>
       </div>
-      <div style={{display:"flex",maxWidth:"1400px",flexWrap:"wrap"}}>
+      <ScTitle>"{keyword}"에 대한 검색 결과입니다.</ScTitle>
+      <div style={{display:"flex",maxWidth:"1400px",flexWrap:"wrap", justifyContent:"center"}}>
         {coffeeReducer&&coffeeReducer.map((item,idx)=>{
           return(<CoffeeCard key={idx} item={item}/>)
         })} 
@@ -40,5 +41,11 @@ const SearchCoffee = () => {
 const ScWrap = styled.div`
   margin: auto;
 `;
+
+const ScTitle =styled.div`
+  margin-top: 50px;
+  margin-left: 100px;
+  font-size: 24px;
+`
 
 export default SearchCoffee

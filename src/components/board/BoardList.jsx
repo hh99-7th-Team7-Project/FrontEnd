@@ -6,50 +6,45 @@ import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 
 const BoardList = () => {
-    const [content, setContent] = useState();
-    // console.log(content)
-    const token = getCookie("token")
+  const [content, setContent] = useState();
+  // console.log(content)
+  const token = getCookie('token');
 
-    useEffect(() => {  
-        
-          const getMark = async () => {
-            if(!token){
-                await apis.getBoards()
-                        .then((res)=>{
-                            console.log(res.data)
-                            setContent(res.data)
-                          })
-            }else{
-                await apis.getBoardsLogin()
-                        .then((res)=>{
-                            console.log(res.data)
-                            setContent(res.data)
-                          })
-            }
-              
-                        }
-                      getMark()
-                    }, [])
+  useEffect(() => {
+    const getMark = async () => {
+      if (!token) {
+        await apis
+          .getBoards()
 
+          .then((res) => {
+            console.log(res.data);
+            setContent(res.data);
+          });
+      } else {
+        await apis.getBoardsLogin().then((res) => {
+          console.log(res.data);
+          setContent(res.data);
+        });
+      }
+    };
+    getMark();
+  }, []);
 
   return (
     <>
-        <ScWrap>
-            <ScBoard>
-                <ScTable>
-                    {content&&content.map((item,idx)=>{
-                        return(<BoardMap
-                       content={item}
-                       key={idx}
-                    />)
-                    })}
-                </ScTable>
-            </ScBoard>
-        </ScWrap>
-        
+      <ScWrap>
+        <ScBoard>
+          <ScTable>
+            {content &&
+              content.map((item, idx) => {
+                return <BoardMap content={item} key={idx} />;
+              })}
+          </ScTable>
+        </ScBoard>
+      </ScWrap>
     </>
-  )
-}
+  );
+};
 
 const ScWrap = Styled.div`
     /* border: 1px solid black; */
@@ -68,5 +63,4 @@ const ScTable = Styled.div`
     margin: 30px auto;
 `;
 
-
-export default BoardList
+export default BoardList;

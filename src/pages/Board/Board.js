@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import Styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
-import { BoardList, PopularBoard,BoardListCategory } from "../../components/board/A-boardindex"
+import { BoardList, PopularBoard, BoardListCategory } from "../../components/board/A-boardindex"
 import styled from 'styled-components';
-import { boardwrite,BoardLogo } from '../../shared/svg/A-index'
+import { boardwrite, BoardLogo } from '../../shared/svg/A-index'
 
 
 
@@ -20,23 +20,23 @@ const Board = () => {
       </div>
       <ScWrap>
         <ScTopCard>
-          <img src={BoardLogo} alt="" style={{width:"100%"}}/>
+          <img src={BoardLogo} alt="" style={{ width: "100%" }} />
           <ScTopWord style={{ margin: "167px 35% 159px 60%" }}>
-            <ScMainTitle>커피를 사랑하는 사람들의 커피 연구소</ScMainTitle>
-            <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt=""/><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
+            <ScMainTitle>커피를 사랑하는<br/> 사람들의 커피 연구소</ScMainTitle>
+            <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt="" /><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
           </ScTopWord>
-         </ScTopCard> 
-          <PopularBoard />
-          <div style={{display:"flex", flexDirection:"column"}}>
+        </ScTopCard>
+        <PopularBoard />
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <ScCategory>
-           
-          <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
-          <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 레시피</ScMyrecipe>
-          <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
-          <ScEtc onClick={() => { setCategory("기타") }}>사담</ScEtc>
-        </ScCategory>
-       {category===0&& <BoardList />}
-       {category!==0&& <BoardListCategory category={category}/>}
+
+            <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
+            <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 레시피</ScMyrecipe>
+            <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
+            <ScEtc onClick={() => { setCategory("기타") }}>사담</ScEtc>
+          </ScCategory>
+          {category === 0 && <BoardList />}
+          {category !== 0 && <BoardListCategory category={category} />}
         </div>
       </ScWrap>
     </>
@@ -56,18 +56,20 @@ const ScTopCard = styled.div`
 
 const ScTopWord = styled.div`
 position: absolute;
+
+
 `
 const ScMainTitle = styled.div`
 width: 190%;
 height: 74px;
 font-weight: 700;
-font-size: 30px;
-line-height: 37px;
+font-size: 34px;
+line-height: 43px;
 margin-bottom: 30px;
+font-family: "SUIT ExtraBold";
 `
 
 const ScBoardWrite = styled.span`
-  font-family: 'SUIT Heavy';
   &:hover {
     cursor: pointer;
   }
