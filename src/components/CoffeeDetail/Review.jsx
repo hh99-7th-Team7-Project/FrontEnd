@@ -57,7 +57,7 @@ const Review = ({ item, reviewData, url }) => {
               ) : (
                 <ScH2>{starPoint?.toFixed(1)}</ScH2>
               )}
-              {starPoint === 'NaN' && <ScH4>별점을 등록해주세요.</ScH4>}
+              {starPoint === 'NaN' && null }
 
               {Math.floor(starPoint) === 1 && (
                 <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3>
@@ -212,9 +212,9 @@ const ScPriceBox = styled.div`
 const ScImgWrap = styled.div`
   width: 500px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 100px auto;
+  margin: 30px auto;
+  vertical-align: bottom;
+  align-items: flex-end;
 `;
 
 

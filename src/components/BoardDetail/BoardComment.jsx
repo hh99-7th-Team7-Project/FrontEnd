@@ -72,27 +72,9 @@ const BoardComment = () => {
             </ScBtn>
           </ScInputWrap>
         </ScCommentWrap>
-        <ScH3>전체 댓글</ScH3>
-
-        <ScBtnBox>
-          <ScCommentBtn
-            onClick={() => {
-              commentCardOpen();
-            }}
-          >
-            댓글열기
-          </ScCommentBtn>
-          <ScCommentBtn
-            onClick={() => {
-              commentCardClose();
-            }}
-          >
-            댓글닫기
-          </ScCommentBtn>
-        </ScBtnBox>
+        <ScH3>전체 댓글</ScH3>        
       </ScWrap>
-
-      {closeComment === false ? <CommentMap /> : null}
+      <CommentMap/>
     </>
   );
 };

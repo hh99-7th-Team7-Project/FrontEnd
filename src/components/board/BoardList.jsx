@@ -13,14 +13,7 @@ const BoardList = () => {
   // console.log(content)
   const token = getCookie('token');
 
-  
-  const [ posts, setPosts ] = useState([]);
-  const [ page, setPage ] = useState(1);
-
-
-
-  const totalPage = posts?.totalPage;
-
+ 
 
 
 
@@ -28,13 +21,13 @@ const BoardList = () => {
     const getMark = async () => {
       if (!token) {
         await apis
-          .getBoards(page)
+          .getBoards()
           .then((res) => {
             console.log(res.data);
             setContent(res.data);            
           });
       } else {
-        await apis.getBoardsLogin(page).then((res) => {
+        await apis.getBoardsLogin().then((res) => {
           console.log(res.data);
           setContent(res.data);
         });
@@ -59,10 +52,7 @@ const BoardList = () => {
         </ScBoard>
       </ScWrap>
       <footer>
-        <BoardPagination 
-          total={totalPage}              
-          page={page}
-          setPage={setPage}
+        <BoardPagination           
         />
       </footer> 
                     
