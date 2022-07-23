@@ -5,11 +5,21 @@ import calendar from '../../Image/Chat/calendar.svg';
 import IconTime from '../../Image/Chat/time.svg';
 import coffee from '../../Image/Chat/coffee.svg';
 import person from '../../Image/Chat/person.png';
+import { getCookie } from '../../shared/Cookie';
 
 const ChatList = (data) => {
   const navigate = useNavigate();
   const id = data.data.chatpostId;
   const completed = data.data.completed;
+  const token = getCookie("token")
+
+  const ckLogin = ()=>{
+    if(token){
+      navigate(`/chatposts/detail/${id}`)
+    }else{
+      alert("로그인하세요")
+    }
+  }
 
   return (
     <Container>
@@ -52,7 +62,7 @@ const ChatList = (data) => {
           </InfoWrap>
 
         {completed?(
-           <Btn onClick={() => navigate(`/chatposts/detail/${id}`)} >
+           <Btn onClick={ckLogin} >
           자세히 보기 {'>'}
           </Btn>
         ):(
@@ -101,24 +111,23 @@ const Wrap = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.p`
   font-size: 20px;
   margin: 9px 0 10px 0;
-  width: 400px;
-  white-space: nowrap;
+  width: 300px;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: 'SUIT ExtraBold';
 `;
 
-const Contents = styled.span`
+const Contents = styled.p`
   font-size: 16px;
- 
-  height: 55px;
+  height: 53px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 `;
 

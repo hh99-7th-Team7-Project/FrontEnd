@@ -117,7 +117,7 @@ const ChatWrite = ({ setWrite, write }) => {
       calendar: dateValue,
       map: mapfValue + ' ' + mapsValue + ' ' + maptValue,
       totalcount: num,
-      meettime: hourValue + ':' + minuteValue,
+      meettime: hourValue + '~' + hourValue2,
     };
     dispatch(__addChatItem(chatItem));
     setWrite(!write);
@@ -148,8 +148,6 @@ const ChatWrite = ({ setWrite, write }) => {
     <Wrap>
       <div>
       <DatePicker
-        fixedHeight="300px"
-        
         selected={startDate}
         dateFormat="yyyy-MM-dd (eee)"
         showPopperArrow={false}
@@ -164,12 +162,10 @@ const ChatWrite = ({ setWrite, write }) => {
           setDateValue(dateString);
         }}
       />
-      <div>
+      <div style={{
+        margin:"60px 0"
+      }}>
         <Title>시간</Title>
-        <div>
-          <TimeBtn>오전</TimeBtn>
-          <TimeBtn>오후</TimeBtn>
-        </div>
         {is_edit ? (
           <div>
             <TimeInput value={hourValue} onChange={inputHour} type="Number" />
@@ -179,7 +175,6 @@ const ChatWrite = ({ setWrite, write }) => {
               onChange={inputMinute}
               type={Number}
             />
-            <span>분</span>
           </div>
         ) : (
           <div style={{display:"flex"}}>
@@ -196,7 +191,6 @@ const ChatWrite = ({ setWrite, write }) => {
               onChange={inputHour2}
               type="time"
             />
-            <span>분</span>
             </div>
           </div>
         )}
@@ -219,11 +213,13 @@ const ChatWrite = ({ setWrite, write }) => {
             maxLength={30}
           />
         )}
-        <Title>활동내용</Title>
+        <Title>활동 내용</Title>
         {is_edit ? (
           <ContentInput value={chatContent || ''} onChange={inputContent} />
         ) : (
-          <ContentInput value={chatContent || ''} onChange={inputContent} />
+          <ContentInput
+          placeholder='간단한 자기소개와 함께 커파인러 분들과 함께 이야기 하고 싶은 주제에 대해 설명해주세요.'
+          value={chatContent || ''} onChange={inputContent} />
         )}
         <Title>카페 위치</Title>
 
@@ -246,7 +242,6 @@ const ChatWrite = ({ setWrite, write }) => {
               onChange={inputMapT}
               placeholder={'카페명'}
             ></MapInput>
-            <span>카페명</span>
           </div>
         ) : (
           <div>
@@ -312,7 +307,7 @@ const ChatWrite = ({ setWrite, write }) => {
             ) : (
               <button onClick={addChatItem}>
                 <img src={boardwrite} alt="" />
-                모임 만들기
+                 모임 만들기
               </button>
             )}
           </MakeBtn>
@@ -332,8 +327,8 @@ const Wrap = styled.div`
   border-radius: 12px;
   display: flex;
   margin: auto;
-  border: 1px #ddd solid;
-  padding: 50px 35px;
+  border: 1px #B6B6B6 solid;
+  padding: 50px 35px 20px;
 `;
 
 const InputWrap = styled.div`
@@ -354,16 +349,17 @@ const MapInput = styled.input`
   border-radius: 10px;
   margin: 5px 5px 20px 5px;
   padding: 0px 0 0 5px;
+  border: 1px solid #B6B6B6;
+    background-color: #F3F3F3;
 `;
 
 const TimeInput = styled.input`
-
   width: 100px;
   height: 3em;
   border: 1px solid #B6B6B6;
   background-color: #F3F3F3;
   border-radius: 10px;
-  margin: auto;
+  margin: 10px auto;
   padding: 0px 0 0 5px;
   color: #5a5858;
 `;
@@ -375,18 +371,18 @@ const Title = styled.span`
 
 
 
-const TimeBtn = styled.button`
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: none;
-  margin: 10px 10px 10px 0;
-  cursor: pointer;
-  & .active {
-    background-color: lightblue;
-  }
-`;
+// const TimeBtn = styled.button`
+//   display: inline-block;
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 12px;
+//   border: none;
+//   margin: 10px 10px 10px 0;
+//   cursor: pointer;
+//   & .active {
+//     background-color: lightblue;
+//   }
+// `;
 
 const Btn = styled.button`
   width: 30px;
@@ -422,30 +418,43 @@ const MakeBtn = styled.div`
 const CountInput = styled.input`
   width: 50px;
   height: 50px;
-  border: 0px;
+  border: none;
   padding-left: 40px;
   font-weight: 600;
   font-size: 15px;
+    color: #5a5858;
 `;
 
 const Input = styled.input`
-  width: 100%;
   height: 4em;
-  border: 1px solid gray;
+  border: 1px solid #B6B6B6;
+  background-color: #F3F3F3;
   border-radius: 10px;
   margin: 5px 0 20px 0;
-  padding: 0px 0 0 5px;
+  padding: 0px 0 0 10px;
+  color: #5a5858;
+  font-size: 16px;
+  color: #5a5858;
 `;
 
 const ContentInput = styled.textarea`
-  width: 100%;
   height: 10em;
-  border: 1px solid gray;
+  border: 1px solid #B6B6B6;
+  background-color: #F3F3F3;
   border-radius: 10px;
   margin: 5px 0 20px 0;
-  padding: 10px 0 0 5px;
+  padding: 10px;
   resize: none;
   white-space: pre-wrap;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5a5858;
+  &:focus{
+    outline: none;
+  }
+  &::placeholder{
+    color: #ddd;
+  }
 `;
 
 const BttomWrap = styled.div`

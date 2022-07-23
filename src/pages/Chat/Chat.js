@@ -95,7 +95,7 @@ const ScTopCard = styled.div`
   display: flex;
   height: 400px;
   background-color:#F5EABB;
-  margin-bottom: 74px;
+
 `;
 
 const ScTopCard2 = styled.div`
@@ -159,7 +159,7 @@ const ListWrap = styled.div`
   grid-template-columns: 50% 50%;
   /* grid-template-rows: 230px 230px; */
   justify-content: space-around;
-  margin: auto;
+  margin: 40px auto 0;
 `;
 
 export default Chat;

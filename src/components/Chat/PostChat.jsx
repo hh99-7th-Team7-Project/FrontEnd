@@ -179,6 +179,8 @@ const PostChat = ({ chatpostId }) => {
     }
   };
 
+  console.log(publicChats)
+
   return (
     <ChatDiv>
       <ChatTab>
@@ -220,7 +222,7 @@ const PostChat = ({ chatpostId }) => {
               <dl>
                 <dt className="message-data">{chat.message}</dt>
                 <dd className="me">
-                  {chat.createdAt.split('T')[1].split('.')[0]}
+                  {chat.createdAt.split(' ')[1]}
                 </dd>
               </dl>
             </li>
