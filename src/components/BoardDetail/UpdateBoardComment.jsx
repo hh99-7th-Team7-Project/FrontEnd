@@ -70,15 +70,13 @@ const ScWrap = styled.div`
 `;
 
 const ScTextArea = styled.textarea`
-  width: 150px;
-  height: 30px;
+  width: 300px;
+  height: 100px;
   /* border: none; */
-  border: none;
+  border: 1px solid black;
   outline: none;
-  resize: none;
-  font-size: 20px;
-  text-align: center;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+  resize: none;  
+  text-align: left;
 `;
 
 const ScButton = styled.button`

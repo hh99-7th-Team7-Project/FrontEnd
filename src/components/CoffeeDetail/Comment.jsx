@@ -19,6 +19,8 @@ const Comment = ({ item }) => {
 
   const commentInputRef = React.useRef();
   const selectStarRef = React.useRef();
+  
+
 
   const addComment = () => {
     if (
@@ -48,6 +50,8 @@ const Comment = ({ item }) => {
 
   return (
     <ScWrap>
+
+
       <div>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
@@ -60,6 +64,7 @@ const Comment = ({ item }) => {
       <ScStarContainer>
         <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
           <option value="공백">-----선택하기-----</option>
+
 
           <option value="1">&#9733;</option>
           <option value="2">&#9733;&#9733;</option>
@@ -158,13 +163,15 @@ const ScStarContainer = styled.div`
 `;
 
 const ScInput = styled.input`
+
   width: 800px;
   height: 40px;
   margin: 30px auto;
   border: none;
   border-radius: 2px;
   font-size: 20px;
-  text-align: center;
+  text-align: left;
+
 `;
 
 const ScStarSelect = styled.select`

@@ -3,6 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import svg from './svg/MapMaker.svg';
 import svg1 from './svg/Write.svg';
+import  Large  from './svg/Large.svg';
+import  Medium  from './svg/Medium.svg';
+import  Small  from './svg/Small.svg'
 import { Link } from 'react-scroll';
 // import { __getAverageStar } from '../../redux/modules/comment';
 import { useDispatch } from 'react-redux';
@@ -54,7 +57,7 @@ const Review = ({ item, reviewData, url }) => {
               ) : (
                 <ScH2>{starPoint?.toFixed(1)}</ScH2>
               )}
-              {starPoint === 'NaN' && <ScH4>별점을 등록해주세요.</ScH4>}
+              {starPoint === 'NaN' && null }
 
               {Math.floor(starPoint) === 1 && (
                 <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3>
@@ -89,13 +92,13 @@ const Review = ({ item, reviewData, url }) => {
           </ScStarPriceContainer>
           <ScImgWrap>
             <div>
-              <ScImg src={url} alt="" />
+              <ScSmallImg src={Small} alt="" />
             </div>
             <div>
-              <ScImg src={url} alt="" />
+              <ScMediumImg src={Medium} alt="" />
             </div>
             <div>
-              <ScImg src={url} alt="" />
+              <ScLargeImg src={Large} alt="" />
             </div>
           </ScImgWrap>
         </ScContentBox>
@@ -209,14 +212,29 @@ const ScPriceBox = styled.div`
 const ScImgWrap = styled.div`
   width: 500px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 100px auto;
+  margin: 30px auto;
+  vertical-align: bottom;
+  align-items: flex-end;
 `;
 
-const ScImg = styled.img`
-  width: 160px;
-  height: 160px;
-  margin-left: 20px;
-  margin-right: 20px;
+
+const ScSmallImg = styled.img`
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+`;
+
+const ScMediumImg = styled.img`
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+    margin-right: 20px;
+`;
+
+const ScLargeImg = styled.img`
+    width: 160px;
+    height: 160px;
+    margin-left: 20px;
+    margin-right: 20px;
 `;

@@ -6,6 +6,7 @@ import axios from 'axios'
 import ToastEditUpdate from '../../components/BoardWrite/ToastEditUpdate';
 import BoardCategoryUpdate from '../../components/BoardWrite/BoardCategoryUpdate';
 import apis from '../../shared/api/main';
+import styled from 'styled-components';
 
 const BoardUpdate = () => {
   const { boardId } = useParams()
@@ -48,13 +49,41 @@ const BoardUpdate = () => {
 
 
   return (
-    <div>
-      <Header />
+    <>
+      <div style={{ margin: 'auto' }}>
+        <Header />
+      </div>
+      <ScWrite>
       <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
       <ToastEditUpdate content={setContent} prevContent={prevContent} />
-      <button onClick={submitOnclick}>제출</button>
-    </div>
+      <ScSubmit>
+      <div onClick={submitOnclick}>제출</div>
+      </ScSubmit>
+      </ScWrite>
+    </>
   )
 }
 
 export default BoardUpdate
+
+const ScWrite = styled.div`
+  min-width: 1200px;
+  margin: 73px auto;
+`;
+const ScSubmit = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  font-size: 16px;
+  margin: 20px;
+  div {
+    background-color: #ddd;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+  }
+`;

@@ -8,6 +8,8 @@ import apis from '../../shared/api/main';
 import PopularBoardMap from './PopularBoardMap';
 import{left,right}from '../../shared/svg/A-index'
 import { getCookie } from '../../shared/Cookie';
+import { Pagination } from 'swiper';
+import BoardPagination from './Pagination/BoardPagination';
 
 const PopularBoard = () => {
     const [loading, setLoading] = useState(false);
@@ -19,6 +21,7 @@ const PopularBoard = () => {
     const [curruntIdx, setCurrentIdx] = useState(0);
     const [count, setCount] = useState(0);
     const slideRef = useRef(null);
+  
 
     const nextSlide = () => {
       if (curruntIdx >= TOTAL_SLIDES) {
@@ -49,16 +52,18 @@ useEffect(() => {
         setLoading(true)
           const getMark = async () => {
             if(!token){
-               await apis.getBoardsLike()
+               await apis.getBoardsLike(0)
                         .then((res)=>{
-                            console.log(res.data.slice(0,5))
-                            setContent(res.data.slice(0,10))
+                            console.log(res.data)
+                            setContent(res.data.post.slice(0,10))
+                          
                           })
             }else{
-              await apis.getBoardsLikeLogin()
+              await apis.getBoardsLikeLogin(0)
                       .then((res)=>{
                           console.log(res.data)
-                          setContent(res.data)
+                          setContent(res.data.post.slice(0,10))
+                      
                         })
           }
                         }
@@ -76,8 +81,8 @@ useEffect(() => {
                 <div style={{marginTop:"10px"}}>커파인러들이 가장 많이 저장한 게시물 Best 10!</div>
               </div>
               <ScMoveButton style={{display:"flex"}}>
-                <div onClick={prevSlide}><img src={left}/></div>
-                <div onClick={nextSlide}><img src={right}/></div>
+                <div onClick={prevSlide}><img src={left} alt=""/></div>
+                <div onClick={nextSlide}><img src={right} alt=""/></div>
               </ScMoveButton>
             </ScTop>
             <Container>
@@ -89,7 +94,6 @@ useEffect(() => {
                     })}
                 </ImageBox>
             </Container>
-          
         </ScWrap>
         
     </>

@@ -52,7 +52,7 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
       <ScBottomBox>
         <ScNickTimeBox>
           <span>{head?.nickname}</span>
-          <span>21시 21분 23초</span>
+          <span>{head?.createdAt.split('T')[0]}</span>
         </ScNickTimeBox>
         {nickname === head?.nickname ? (
           <div style={{ display: 'flex', gap: '8px' }}>
@@ -127,13 +127,14 @@ const ScImg = styled.img`
 `;
 
 const ScTitle = styled.h2`
-  margin-left: 10px;
+  margin-left: 30px;
+  width: 90%;
 `;
 
 const ScBtnBox = styled.div`
-  width: 150px;
+  width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const ScMyrecipe = styled.div`
@@ -179,6 +180,7 @@ const ScNickTimeBox = styled.div`
   padding: 0px 5px 0px 5px;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px
 `;
 
 const ScButton = styled.div`

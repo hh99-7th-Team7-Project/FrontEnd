@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
 import { BoardList, PopularBoard, BoardListCategory } from "../../components/board/A-boardindex"
 import styled from 'styled-components';
 import { boardwrite, BoardLogo } from '../../shared/svg/A-index'
+import BoardPagination from '../../components/board/Pagination/BoardPagination';
 
 
 
 const Board = () => {
   const navigate = useNavigate()
   const [category, setCategory] = useState(0)
-  console.log(category)
 
+
+
+    
   return (
     <>
       <div style={{ margin: "auto" }}>
@@ -34,10 +37,10 @@ const Board = () => {
             <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 레시피</ScMyrecipe>
             <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
             <ScEtc onClick={() => { setCategory("기타") }}>사담</ScEtc>
-          </ScCategory>
-          {category === 0 && <BoardList />}
-          {category !== 0 && <BoardListCategory category={category} />}
-        </div>
+          </ScCategory>       
+                {category === 0 && <BoardList/>}            
+                {category !== 0 && <BoardListCategory category={category}/>}
+          </div>
       </ScWrap>
     </>
   )
@@ -51,7 +54,7 @@ const ScTopCard = styled.div`
    display: flex;
   height: 400px;
   position: relative;
-  /* background-color: #ddd; */
+  background-color: #FFE4E0;
 `
 
 const ScTopWord = styled.div`

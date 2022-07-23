@@ -4,37 +4,47 @@ import '../../shared/css/dropdown.css';
 import BoardMap from './BoardMap';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
+import BoardPagination from './Pagination/BoardPagination';
+
+
 
 const BoardList = () => {
   const [content, setContent] = useState();
   // console.log(content)
   const token = getCookie('token');
 
+
+
+  const [totalpage , settotalPage ]= useState(0)
+  const [page, setPage] =useState(0)
+
   useEffect(() => {
     const getMark = async () => {
       if (!token) {
         await apis
-          .getBoards()
-
+          .getBoards(page)
           .then((res) => {
             console.log(res.data);
-            setContent(res.data);
+            setContent(res.data.post); 
+            settotalPage(res?.data.totalPage)           
           });
       } else {
-        await apis.getBoardsLogin().then((res) => {
+        await apis.getBoardsLogin(page).then((res) => {
           console.log(res.data);
-          setContent(res.data);
+          setContent(res.data.post);
+          settotalPage(res?.data.totalPage) 
         });
       }
     };
     getMark();
-  }, []);
+  }, [page]);
+
 
   return (
     <>
       <ScWrap>
-        <ScBoard>
-          <ScTable>
+        <ScBoard>        
+          <ScTable>            
             {content &&
               content.map((item, idx) => {
                 return <BoardMap content={item} key={idx} />;
@@ -42,6 +52,15 @@ const BoardList = () => {
           </ScTable>
         </ScBoard>
       </ScWrap>
+      <footer>
+
+        <BoardPagination 
+          total={totalpage}              
+          page={page}
+          setPage={setPage}
+        />
+      </footer> 
+                    
     </>
   );
 };

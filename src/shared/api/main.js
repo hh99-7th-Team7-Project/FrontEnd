@@ -18,6 +18,10 @@ const apis = {
   getMyBoard: (userId) => api.get(`/mypage/myboard/${userId}`),
   getMyCoffee: (userId) => api.get(`/mypage/coffee/like/${userId}`),
   getMyBoardBookmark: (userId) => api.get(`mypage/posts/bookmarks/${userId}`),
+  getMyBoardCount: (userId) => api.get(`/mypage/myboards/${userId}`),
+  getMyChatCount: (userId) => api.get(`/mypage/myChat/${userId}`),
+ 
+
 
   //커피정보
   getCoffee: (brand) => api.get(`/coffees/${brand}`),
@@ -52,14 +56,14 @@ const apis = {
 
 
 //게시판
-    getBoards: () => api.get(`/posts?page=0`),
-    getBoardsLogin: () => api.get('/auths/posts?page=0'),
+    getBoards: (page) => api.get(`/posts?page=${page}`),
+    getBoardsLogin: (page) => api.get(`/auths/posts?page=${page}`),
     postBoardsLike: (category,id) => api.post(`/postslogin/postlove/${category}/${id}`),
     postBoardsBookmark: (category,id) => api.post(`/posts/bookmark/${category}/${id}`),
-    getBoardsCategory: (category) => api.get(`/posts?category=${category}`),
-    getBoardsCategoryLogin: (category) => api.get(`/posts?category=${category}`),
-    getBoardsLike:()=> api.get("/posts?category=love&page=0"),
-    getBoardsLikeLogin:()=> api.get("/auths/posts?category=love&page=0"),
+    getBoardsCategory: (category, page) => api.get(`/posts?category=${category}&page=${page}`),
+    getBoardsCategoryLogin: (category,page) => api.get(`/auths/posts/?category=${category}&page=${page}`),
+    getBoardsLike:(page)=> api.get(`/posts?category=love&page=${page}`),
+    getBoardsLikeLogin:(page)=> api.get(`/auths/posts?category=love&page=${page}`),
     getBoard: (boardId)=> api.get(`/posts/${boardId}`),
     getBoardLogin: (boardId)=> api.get(`/auths/posts/${boardId}`),
     postBoard : (post)=> api.post('/posts',post),
@@ -72,8 +76,8 @@ const apis = {
 
   //검색
   searchCoffee: (keyword) => api.get(`/coffees/searches?keyword=${keyword}`),
-  searchBoard: (keyword) => api.get(`/posts/searches?keyword=${keyword}`),
-  searchBoardLogin: (keyword) => api.get(`/posts/searches?keyword=${keyword}&page=0`),
+  searchBoard: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
+  searchBoardLogin: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
 };
 
 

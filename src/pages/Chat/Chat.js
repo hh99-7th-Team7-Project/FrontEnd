@@ -5,7 +5,7 @@ import { __loadChatLists } from '../../redux/modules/chat';
 import ChatWrite from '../../components/Chat/ChatWrite';
 import Header from '../Header/Header';
 import styled from 'styled-components';
-import { boardwrite } from '../../shared/svg/A-index';
+import { boardwrite, ChatLogo, Chatimoji, ChatLogoSmall } from '../../shared/svg/A-index';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 
 const Chat = () => {
@@ -23,7 +23,7 @@ const Chat = () => {
 
   const chatpostList = posts?.chatpostList;
   const totalPage = posts?.totalPage;
-
+console.log(posts)
   console.log(chatpostList, page);
 
   // const chatReducer = useSelector((state) => state?.chat?.list);
@@ -44,36 +44,26 @@ const Chat = () => {
       </div>
       {write === false ? (
         <ScTopCard>
-          <div style={{ margin: '167px 536px 159px 1081px' }}>
-            <ScMainTitle>커피를 사랑하는 사람들의 커피 모임</ScMainTitle>
+          <img alt='' src={ChatLogo} style={{ width: "100%" }} />
+          <div style={{ margin: '167px 536px 159px 1081px', position: "absolute" }}>
+            <ScMainTitle>우리 같이<br /> 커피마셔요!</ScMainTitle>
             <Scwrite
               onClick={() => {
                 setWrite(!write);
               }}
             >
-              <img src={boardwrite} />
-              모임만들기
+              <img src={Chatimoji} alt='' />
+              <span>모임만들기</span>
             </Scwrite>
           </div>
         </ScTopCard>
       ) : (
-        <div
-          style={{
-            width: '1920px',
-            height: '135px',
-            background: 'lightblue',
-            marginBottom: '30px',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '30px',
-              padding: '60px 50px 60px 600px',
-            }}
-          >
-            우리 커피 한잔 같이 마셔요!
-          </div>
-        </div>
+        <ScTopCard2>
+          <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
+          <ScTopWord style={{ margin: '60px 70% 60px 20%' }}>
+              우리 같이 커피마셔요!
+          </ScTopWord>
+        </ScTopCard2>
       )}
 
       <Wrap>
@@ -104,17 +94,34 @@ const Chat = () => {
 const ScTopCard = styled.div`
   display: flex;
   height: 400px;
-  background-color: #ddd;
+  background-color:#F5EABB;
+
 `;
+
+const ScTopCard2 = styled.div`
+  display: flex;
+  height: 135px;
+  background-color: #ddd;
+  font-size: 24px;
+  margin-bottom: 74px;
+`;
+
 const ScMainTitle = styled.div`
   width: 303px;
   height: 74px;
   font-weight: 700;
-  font-size: 30px;
-  line-height: 37px;
+  font-size: 34px;
+  line-height: 43px;
   margin-bottom: 30px;
+  font-family: "SUIT ExtraBold";
 `;
 
+
+const ScTopWord = styled.div`
+position: absolute;
+font-family: "SUIT ExtraBold";
+width: 209px;
+`
 const Scwrite = styled.div`
   display: flex;
   align-items: center;
@@ -127,6 +134,10 @@ const Scwrite = styled.div`
   height: 49px;
   font-size: 20px;
   border-radius: 10px;
+  gap:7px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Wrap = styled.div`
@@ -148,8 +159,7 @@ const ListWrap = styled.div`
   grid-template-columns: 50% 50%;
   /* grid-template-rows: 230px 230px; */
   justify-content: space-around;
-
-  margin: auto;
+  margin: 40px auto 0;
 `;
 
 export default Chat;

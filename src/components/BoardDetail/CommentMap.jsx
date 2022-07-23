@@ -8,6 +8,8 @@ import {
 } from '../../redux/modules/boardcomment';
 import UpdateBoardComment from './UpdateBoardComment';
 import { getCookie } from '../../shared/Cookie';
+import Dot from './svg/Dot.svg';
+import DotDrop from './DotDropDown/DotDrop';
 
 const CommentMap = () => {
   const dispatch = useDispatch();
@@ -17,8 +19,15 @@ const CommentMap = () => {
     (state) => state.boardComment.boardcommentlist
   );
 
+  console.log(comment_list)
+
+  const imgRef = React.useRef();
   const [showUpdate, setShowUpdate] = useState(false);
   const [commentId, setCommentId] = useState();
+  const [ buttonVisible , setButtonVisible ] = useState(false);
+  const [ showToggle , setShowToggle ] = useState(false);
+
+  console.log(commentId);
 
   return (
     <>
@@ -43,8 +52,10 @@ const CommentMap = () => {
                     <ScSpanComment>{item?.comment}</ScSpanComment>
                   )}
                 </ScCommentAlign>
+                
+                
                 <ScBtnAlign>
-                  <ScSpan>{item?.createdAt.split('T')[0]}</ScSpan>
+                  <ScSpan>{item?.createdAt.split('T')[0]}</ScSpan> 
                   {nickname === item?.nickname ? (
                     <ScButton
                       onClick={() => {
@@ -66,11 +77,18 @@ const CommentMap = () => {
                     >
                       댓글 삭제
                     </ScButton>
-                  ) : null}
+                  ) : null}                
+                  {/* <div>
+                    {buttonVisible === true && item?.id === commentId ? <DotDrop/> : null}
+                    <img src={Dot} alt="" onClick={()=>{
+                      setButtonVisible(!buttonVisible);                      
+                    }}/>
+                  </div> */}
                 </ScBtnAlign>
               </ScTable>
             </div>
           ))}
+          
         </ScTableWrap>
       </ScWrap>
     </>
@@ -134,7 +152,7 @@ const ScSpan = styled.span`
 
 const ScSpanComment = styled.span`
   text-align: left;
-  width: 600px;
+  width: 400px;
 `;
 
 const ScButton = styled.button`

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCookie } from '../../shared/Cookie';
 import { __prevPostChat, __loadOneChatItem } from '../../redux/modules/chat';
 import ChatDetailItem from './ChatDetail';
+import Swal from 'sweetalert2';
 
 let stompClient = null;
 const PostChat = ({ chatpostId }) => {
@@ -112,7 +113,11 @@ const PostChat = ({ chatpostId }) => {
   const sendPublicMessage = () => {
     if (stompClient) {
       if (!userData.message) {
-        alert('', '내용을 입력해주세요!', 'error');
+        Swal.fire({
+          title: '내용을 입력해주세요.!',
+          icon: 'error',
+          confirmButtonText: '확인',
+        });
       } else {
         let chatMessage = {
           ...userData,
@@ -128,7 +133,11 @@ const PostChat = ({ chatpostId }) => {
         setUserData({ ...userData, message: '' });
       }
     } else {
-      alert('', '로그인 후 사용할 수 있습니다:)', 'error');
+      Swal.fire({
+        title: '로그인 후 사용할 수 있습니다.!',
+        icon: 'error',
+        confirmButtonText: '확인',
+      });
     }
   };
   //subscribe의 함수
@@ -155,7 +164,7 @@ const PostChat = ({ chatpostId }) => {
         publicChats.push(payloadData);
         setPublicChats([...publicChats]);
         setUser(payloadData.userCount);
-        break;
+         break;
     }
   };
 
@@ -169,6 +178,8 @@ const PostChat = ({ chatpostId }) => {
       messageRef.current.scrollTop = messageRef.current.scrollHeight;
     }
   };
+
+  console.log(publicChats)
 
   return (
     <ChatDiv>
@@ -211,7 +222,7 @@ const PostChat = ({ chatpostId }) => {
               <dl>
                 <dt className="message-data">{chat.message}</dt>
                 <dd className="me">
-                  {chat.createdAt.split('T')[1].split('.')[0]}
+                  {chat.createdAt.split(' ')[1]}
                 </dd>
               </dl>
             </li>
@@ -224,7 +235,7 @@ const PostChat = ({ chatpostId }) => {
             type="text"
             name="message"
             value={userData.message}
-            placeholder="댓글을 입력해주세요 :)"
+            placeholder="채팅을 입력해주세요 :)"
             onChange={handleValue}
             onKeyPress={onKeyPress}
           />

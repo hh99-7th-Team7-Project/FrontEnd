@@ -18,6 +18,7 @@ import {
   __loadOneChatItem,
   __loadChatLists,
 } from '../../redux/modules/chat';
+import Swal from 'sweetalert2';
 
 const ChatWrite = ({ setWrite, write }) => {
   const navigate = useNavigate();
@@ -47,6 +48,9 @@ const ChatWrite = ({ setWrite, write }) => {
     is_edit ? ChatItem?.calendar : ''
   );
   const [hourValue, setHourValue] = React.useState(is_edit ? time[0] : '');
+  const [hourValue2, setHourValue2] = React.useState(is_edit ? time[0] : '');
+
+  console.log(hourValue2)
   const [minuteValue, setMinuteValue] = React.useState(is_edit ? time[1] : '');
   const [countValue, setCountValue] = React.useState(
     is_edit ? ChatItem?.totalcount : 3
@@ -80,11 +84,20 @@ const ChatWrite = ({ setWrite, write }) => {
     setHourValue(e.target.value);
   };
 
+  const inputHour2 = (e) => {
+    // const value = e.target.value;
+    setHourValue2(e.target.value);
+  };
+
   const inputMinute = (e) => {
     const value = e.target.value;
     const onlyNumber = value.replace(/[^0-9]/g, '');
     -2 < onlyNumber < 60
-      ? alert('60이하의 숫자를 입력 해주세요😥')
+      ? Swal.fire({
+        title: '60자 이내로 작성해주세요.!',
+        icon: 'info',
+        confirmButtonText: '확인',
+      })
       : setMinuteValue(onlyNumber);
   };
 
@@ -104,12 +117,11 @@ const ChatWrite = ({ setWrite, write }) => {
       calendar: dateValue,
       map: mapfValue + ' ' + mapsValue + ' ' + maptValue,
       totalcount: num,
-      meettime: hourValue + ':' + minuteValue,
+      meettime: hourValue + '~' + hourValue2,
     };
     dispatch(__addChatItem(chatItem));
     setWrite(!write);
-    navigate('/chatposts');
-    alert('저장 완료!');
+    navigate('/chatposts');    
   };
 
   const editChatItem = () => {
@@ -125,11 +137,16 @@ const ChatWrite = ({ setWrite, write }) => {
     dispatch(__updateChatItem(chatitem, id));
     // dispatch(__loadOneChatItem(id));
     setWrite(!write);
-    alert('수정 완료!');
+    Swal.fire({
+      title: '수정 완료!',
+      icon: 'success',
+      confirmButtonText: '확인',
+    });
   };
 
   return (
     <Wrap>
+      <div>
       <DatePicker
         selected={startDate}
         dateFormat="yyyy-MM-dd (eee)"
@@ -145,6 +162,40 @@ const ChatWrite = ({ setWrite, write }) => {
           setDateValue(dateString);
         }}
       />
+      <div style={{
+        margin:"60px 0"
+      }}>
+        <Title>시간</Title>
+        {is_edit ? (
+          <div>
+            <TimeInput value={hourValue} onChange={inputHour} type="Number" />
+            <span>시</span>
+            <TimeInput
+              value={minuteValue || ''}
+              onChange={inputMinute}
+              type={Number}
+            />
+          </div>
+        ) : (
+          <div style={{display:"flex"}}>
+            <div>
+            <TimeInput
+              value={hourValue || ''}
+              onChange={inputHour}
+              type="time"
+            />
+            <span>~</span></div>
+            <div>
+            <TimeInput
+              value={hourValue2 || ''}
+              onChange={inputHour2}
+              type="time"
+            />
+            </div>
+          </div>
+        )}
+        </div>
+        </div>
       <InputWrap>
         <Title>제목</Title>
         {is_edit ? (
@@ -162,44 +213,13 @@ const ChatWrite = ({ setWrite, write }) => {
             maxLength={30}
           />
         )}
-        <Title>시간</Title>
-        <div>
-          <TimeBtn>오전</TimeBtn>
-          <TimeBtn>오후</TimeBtn>
-        </div>
-        {is_edit ? (
-          <div>
-            <TimeInput value={hourValue} onChange={inputHour} type="Number" />
-            <span>시</span>
-            <TimeInput
-              value={minuteValue || ''}
-              onChange={inputMinute}
-              type={Number}
-            />
-            <span>분</span>
-          </div>
-        ) : (
-          <div>
-            <TimeInput
-              value={hourValue || ''}
-              onChange={inputHour}
-              type="Number"
-            />
-            <span>시</span>
-            <TimeInput
-              value={minuteValue || ''}
-              onChange={inputMinute}
-              type="Number"
-            />
-            <span>분</span>
-          </div>
-        )}
-
-        <Title>활동내용</Title>
+        <Title>활동 내용</Title>
         {is_edit ? (
           <ContentInput value={chatContent || ''} onChange={inputContent} />
         ) : (
-          <ContentInput value={chatContent || ''} onChange={inputContent} />
+          <ContentInput
+          placeholder='간단한 자기소개와 함께 커파인러 분들과 함께 이야기 하고 싶은 주제에 대해 설명해주세요.'
+          value={chatContent || ''} onChange={inputContent} />
         )}
         <Title>카페 위치</Title>
 
@@ -222,7 +242,6 @@ const ChatWrite = ({ setWrite, write }) => {
               onChange={inputMapT}
               placeholder={'카페명'}
             ></MapInput>
-            <span>카페명</span>
           </div>
         ) : (
           <div>
@@ -282,13 +301,13 @@ const ChatWrite = ({ setWrite, write }) => {
           <MakeBtn>
             {is_edit ? (
               <button onClick={editChatItem}>
-                <img src={boardwrite} />
+                <img src={boardwrite} alt="" />
                 수정
               </button>
             ) : (
               <button onClick={addChatItem}>
-                <img src={boardwrite} />
-                모임 만들기
+                <img src={boardwrite} alt="" />
+                 모임 만들기
               </button>
             )}
           </MakeBtn>
@@ -303,11 +322,13 @@ const ChatWrite = ({ setWrite, write }) => {
 const Wrap = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 107vh;
+  width: 107vw;
   height: 59vh;
   border-radius: 12px;
   display: flex;
   margin: auto;
+  border: 1px #B6B6B6 solid;
+  padding: 50px 35px 20px;
 `;
 
 const InputWrap = styled.div`
@@ -328,34 +349,40 @@ const MapInput = styled.input`
   border-radius: 10px;
   margin: 5px 5px 20px 5px;
   padding: 0px 0 0 5px;
+  border: 1px solid #B6B6B6;
+    background-color: #F3F3F3;
 `;
 
 const TimeInput = styled.input`
-  width: 44.5%;
+  width: 100px;
   height: 3em;
-  border: 1px solid gray;
+  border: 1px solid #B6B6B6;
+  background-color: #F3F3F3;
   border-radius: 10px;
-  margin: 5px 5px 20px 5px;
+  margin: 10px auto;
   padding: 0px 0 0 5px;
+  color: #5a5858;
 `;
 
 const Title = styled.span`
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 600;
 `;
 
-const TimeBtn = styled.button`
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: none;
-  margin: 10px 10px 10px 0;
-  cursor: pointer;
-  & .active {
-    background-color: lightblue;
-  }
-`;
+
+
+// const TimeBtn = styled.button`
+//   display: inline-block;
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 12px;
+//   border: none;
+//   margin: 10px 10px 10px 0;
+//   cursor: pointer;
+//   & .active {
+//     background-color: lightblue;
+//   }
+// `;
 
 const Btn = styled.button`
   width: 30px;
@@ -391,30 +418,43 @@ const MakeBtn = styled.div`
 const CountInput = styled.input`
   width: 50px;
   height: 50px;
-  border: 0px;
+  border: none;
   padding-left: 40px;
   font-weight: 600;
   font-size: 15px;
+    color: #5a5858;
 `;
 
 const Input = styled.input`
-  width: 100%;
   height: 4em;
-  border: 1px solid gray;
+  border: 1px solid #B6B6B6;
+  background-color: #F3F3F3;
   border-radius: 10px;
   margin: 5px 0 20px 0;
-  padding: 0px 0 0 5px;
+  padding: 0px 0 0 10px;
+  color: #5a5858;
+  font-size: 16px;
+  color: #5a5858;
 `;
 
 const ContentInput = styled.textarea`
-  width: 100%;
   height: 10em;
-  border: 1px solid gray;
+  border: 1px solid #B6B6B6;
+  background-color: #F3F3F3;
   border-radius: 10px;
   margin: 5px 0 20px 0;
-  padding: 10px 0 0 5px;
+  padding: 10px;
   resize: none;
   white-space: pre-wrap;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5a5858;
+  &:focus{
+    outline: none;
+  }
+  &::placeholder{
+    color: #ddd;
+  }
 `;
 
 const BttomWrap = styled.div`

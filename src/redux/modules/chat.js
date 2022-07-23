@@ -1,4 +1,5 @@
 import apis from '../../shared/api/main';
+import Swal from 'sweetalert2';
 
 const initialState = {};
 
@@ -64,9 +65,14 @@ export const __loadOneChatItem = (id) => {
 
 export const __addChatItem = (chatitem) => {
   return async function (dispatch) {
-    const loadData = await apis.addChatItem(chatitem);
-    console.log(loadData);
-    dispatch(addChatItem(loadData.data));
+    const loadData = await apis.addChatItem(chatitem)
+    console.log(loadData)
+    .then((res) => dispatch(addChatItem(loadData.data)))
+    Swal.fire({
+      title: '저장 완료!',
+      icon: 'success',
+      confirmButtonText: '확인',
+    });
   };
 };
 

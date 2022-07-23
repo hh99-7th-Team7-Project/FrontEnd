@@ -16,6 +16,8 @@ const ImgCard = ({ url, item, like, setLike }) => {
 
   return (
     <>
+
+
       <div>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
@@ -44,8 +46,9 @@ const ImgCard = ({ url, item, like, setLike }) => {
         </ScSubTitle>
       </div>
       <ScImgWrap>
-        <ScImg src={url} />
+            {item?.brand === "더벤티" || item?.brand === "컴포즈"? <ScImgVenti src={url} /> : <ScImg src={url} /> }
       </ScImgWrap>
+
     </>
   );
 };
@@ -108,9 +111,15 @@ const ScImgWrap = styled.div`
   align-items: center;
 `;
 
+const ScImgVenti = styled.img`
+  width: 300px;
+  height: 400px;
+`;
+
 const ScImg = styled.img`
   width: 500px;
   height: 500px;
 `;
+
 
 export default ImgCard;

@@ -11,6 +11,7 @@ const Map = (props) => {
   const { brand } = useParams();
   const [map, setMap] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate()
 
   // 마커를 클릭하면 장소명을 표출할 인포윈도우
   const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
@@ -46,7 +47,7 @@ const Map = (props) => {
 
           displayPlaces(data);
         } else if (status === window.kakao.maps.services.Status.ZERO_RESULT) {
-          alert('주변 20km내에 매장이 없습니다.');
+          alert('주변 5km내에 매장이 없습니다.');
           return;
         } else if (status === window.kakao.maps.services.Status.ERROR) {
           alert('검색 결과 중 오류가 발생했습니다.');
@@ -56,7 +57,7 @@ const Map = (props) => {
 
       ps.keywordSearch(`${brand}`, placesSearchCB, {
         // 반지름 m단위
-        radius: 10000,
+        radius: 5000,
         location: new window.kakao.maps.LatLng(
           myLocation?.lat,
           myLocation?.lng
@@ -280,18 +281,27 @@ const Map = (props) => {
               display: 'flex',
               alignItems: 'center',
               marginBottom: '10px',
+              justifyContent: "space-between",
               gap: '5px',
             }}
           >
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: '10px',
+              gap: '5px',
+            }}>
             <div style={{ fontSize: '26px' }}>내주변 카페</div>
             <div id="menu">
               <div>
                 <span>
                   <img src={Info} alt="" />
                 </span>
-                <p className="arrow_box">반경 20KM 안에있는 카페 결과입니다.</p>
+                <p className="arrow_box">반경 5KM 안에있는 카페 결과입니다.</p>
               </div>
             </div>
+            </div>
+            <div onClick={()=>{navigate(-1)}}>✖</div>
           </div>
           <ScMap id="map">지도</ScMap>
           <div>
