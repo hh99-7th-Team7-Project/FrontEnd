@@ -29,12 +29,11 @@ const BrandCard = (props) => {
   const brandList = [
     { brand: '스타벅스', id: 0, logo: '/brandlogo/스타벅스.png' },
     { brand: '빽다방', id: 1, logo: '/brandlogo/빽다방.png' },
-
     { brand: '커피빈', id: 2, logo: '/brandlogo/커피빈.png' },
     { brand: '이디야', id: 3, logo: '/brandlogo/이디야.png' },
     { brand: '컴포즈', id: 4, logo: '/brandlogo/컴포즈.png' },
     { brand: '드롭탑', id: 5, logo: '/brandlogo/드롭탑.png' },
-    { brand: '탐앤탐스', id: 6, logo: '/brandlogo/탐앤탐스.png' },
+    { brand: '탐앤탐스', id: 6, logo: '/brandlogo/탐앤탐스.jpg' },
     { brand: '더벤티', id: 7, logo: '/brandlogo/더벤티.png' },
     { brand: '할리스', id: 8, logo: '/brandlogo/할리스.jpg' },
     { brand: '폴바셋', id: 9, logo: '/brandlogo/폴바셋.png' },

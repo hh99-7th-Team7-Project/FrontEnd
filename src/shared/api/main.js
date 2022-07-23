@@ -26,8 +26,7 @@ const apis = {
   getStar: (brand, id) => api.get(`/coffee/${brand}/${id}/star`),
   getCoffeeCategory: (category) => api.get(`/coffees/sidebars/${category}`),
   addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`, coffee),
-  getRandomCoffee: () =>
-    api.get('/coffees/random?brand=스타벅스&category=coffee'),
+  getRandomCoffee: () => api.get('/coffees/random?brand=스타벅스&category=coffee'),
   getCoffees: () => api.get('/coffees'),
   likeCoffee: (brand, id) => api.post(`/coffees/love/${brand}/${id}`),
 
@@ -60,7 +59,7 @@ const apis = {
     getBoardsCategory: (category) => api.get(`/posts?category=${category}`),
     getBoardsCategoryLogin: (category) => api.get(`/posts?category=${category}`),
     getBoardsLike:()=> api.get("/posts?category=love&page=0"),
-    getBoardsLikeLogin:()=> api.get("/posts/auths/searches?category=love&page=0~"),
+    getBoardsLikeLogin:()=> api.get("/auths/posts?category=love&page=0"),
     getBoard: (boardId)=> api.get(`/posts/${boardId}`),
     getBoardLogin: (boardId)=> api.get(`/auths/posts/${boardId}`),
     postBoard : (post)=> api.post('/posts',post),
@@ -75,8 +74,7 @@ const apis = {
   searchCoffee: (keyword) => api.get(`/coffees/searches?keyword=${keyword}`),
   searchBoard: (keyword) => api.get(`/posts/searches?keyword=${keyword}`),
   searchBoardLogin: (keyword) => api.get(`/posts/searches?keyword=${keyword}&page=0`),
-
-
 };
+
 
 export default apis;
