@@ -9,20 +9,19 @@ import {
   __addBoardComment,
 } from '../../redux/modules/boardcomment';
 import Swal from 'sweetalert2';
+import { getCookie } from '../../shared/Cookie';
 
-const BoardComment = () => {
+const BoardComment = ({head}) => {
   const dispatch = useDispatch();
   const { boardId } = useParams();
+  const nickname = getCookie("nickname");
 
-  const [closeComment, setCloseComment] = useState(false);
+  console.log(head);
 
-  const commentCardOpen = () => {
-    setCloseComment(false);
-  };
+  const total = head?.totalComment;
 
-  const commentCardClose = () => {
-    setCloseComment(true);
-  };
+  console.log(total);
+
 
   useEffect(() => {
     dispatch(__getBoardComment(boardId));
@@ -55,6 +54,7 @@ const BoardComment = () => {
       <ScWrap>
         <ScCommentWrap>
           <ScInputWrap>
+            <ScSpan>{nickname}</ScSpan>
             <ScTextArea
               type="text"
               rows="1"
@@ -72,7 +72,7 @@ const BoardComment = () => {
             </ScBtn>
           </ScInputWrap>
         </ScCommentWrap>
-        <ScH3>전체 댓글</ScH3>        
+        <ScH3>전체 댓글 : {total}</ScH3>        
       </ScWrap>
       <CommentMap/>
     </>
@@ -100,6 +100,13 @@ const ScInputWrap = styled.div`
   align-items: center;
 `;
 
+const ScSpan = styled.span`
+  width: 100px;
+  text-align: center;
+  font-size: 20px;
+  margin: 10px auto;
+`;
+
 const ScTextArea = styled.textarea`
   width: 986px;
   height: 146px;
@@ -122,28 +129,9 @@ const ScBtn = styled.button`
   &:hover {
     cursor: pointer;
   }
+  background-color: black;
+  color: white;
 `;
 
-const ScBtnBox = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const ScCommentBtn = styled.button`
-  margin-left: 20px;
-  width: 100px;
-  height: 30px;
-  border-radius: 20px;
-  border: none;
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-const ScLabel = styled.label`
-  display: flex;
-  justify-content: start;
-  padding: 12px;
-`;
 
 export default BoardComment;
