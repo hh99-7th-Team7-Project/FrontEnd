@@ -67,7 +67,7 @@ export const __loadCoffeeDetail = (brand,id) => {
     if(!token){
        const loadData = await apis.getCoffeeDetail(brand,id);
        console.log(loadData.data);
-      dispatch(loadCoffeeDetail(loadData.data));
+      dispatch(loadCoffeeDetail(loadData.data[0]));
     }else{
       const loadData = await apis.getCoffeeDetailLogin(brand,id);
        console.log(loadData.data);

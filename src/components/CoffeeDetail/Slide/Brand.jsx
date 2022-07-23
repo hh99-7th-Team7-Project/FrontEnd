@@ -22,7 +22,7 @@ const Brand = () => {
     { brand: '이디야', id: 3, logo: '/brandlogo/이디야.png' },
     { brand: '컴포즈', id: 4, logo: '/brandlogo/컴포즈.png' },
     { brand: '드롭탑', id: 5, logo: '/brandlogo/드롭탑.png' },
-    { brand: '탐앤탐스', id: 6, logo: '/brandlogo/탐앤탐스.png' },
+    { brand: '탐앤탐스', id: 6, logo: '/brandlogo/탐앤탐스.jpg' },
     { brand: '더벤티', id: 7, logo: '/brandlogo/더벤티.png' },
     { brand: '할리스', id: 8, logo: '/brandlogo/할리스.png' },
     { brand: '폴바셋', id: 9, logo: '/brandlogo/폴바셋.png' },

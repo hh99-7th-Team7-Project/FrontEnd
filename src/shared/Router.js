@@ -68,10 +68,7 @@ const Router = () => {
       <Route path="/menucategory" element={<MenuCategory />} />
 
       {/** CafeDetail */}
-      <Route
-        path="/coffee/:brand/:coffeename/:boardId"
-        element={<CoffeeDetail />}
-      />
+      <Route path="/coffee/:brand/:coffeename/:boardId" element={<CoffeeDetail />} />
 
       {/* map */}
       <Route path="/map/:brand" element={<Map myLocation={myLocation} />} />
@@ -83,12 +80,13 @@ const Router = () => {
       <Route path="/board" element={<Board />} />
       <Route path="/board/:boardId" element={<BoardDetail />} />
       <Route path="/board/write" element={<BoardWrite />} />
+      <Route path="/board/:boardId/update" element={<BoardUpdate />} />
 
       {/**Chat */}
       <Route path="/chatposts" element={<Chat />} />
       <Route path="/chatposts/detail/:id" element={<ChatDetail />} />
 
-      <Route path="/board/:boardId/update" element={<BoardUpdate />} />
+
     </Routes>
   );
 };

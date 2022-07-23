@@ -4,7 +4,13 @@
 }
 
 @font-face {
-  font-family: 'SUIT Heavy';
-  font-weight: 900;
-  src: url('../../../public/fonts/SUIT-Heavy.woff2') format('woff2');
+
+	font-family: 'SUIT Heavy';
+	src: url('../../../public/fonts/SUIT-Heavy.woff2') format('woff2');
 }
+
+@font-face {
+	font-family: 'SUIT ExtraBold';
+	src: url('../../../public/fonts/SUIT-ExtraBold.woff2') format('woff2');
+}
+

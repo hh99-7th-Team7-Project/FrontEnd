@@ -34,19 +34,22 @@ const SearchBoard = () => {
   }, [keyword]);
 
   return (
-    <ScWrap>
-      <div style={{ margin: 'auto' }}>
-        <Header />
-      </div>
-      <ScBoardWrap>
-        {boardReducer &&
-          boardReducer.map((item, idx) => {
-            return <BoardMap key={idx} content={item} />;
-          })}
-      </ScBoardWrap>
-    </ScWrap>
-  );
-};
+
+        <ScWrap>
+          <div style={{margin:"auto"}}> 
+            <Header/>
+          </div>
+          <ScTitle>"{keyword}"에 대한 검색 결과입니다.</ScTitle>
+          <ScBoardWrap>
+            {boardReducer&&boardReducer.map((item,idx)=>{
+              return(<BoardMap key={idx} content={item}/>)
+            })} 
+          </ScBoardWrap>
+       </ScWrap>
+   )
+  
+}
+
 
 const ScWrap = styled.div`
   margin: auto;
@@ -56,4 +59,12 @@ const ScBoardWrap = styled.div`
   margin: 50px auto;
 `;
 
-export default SearchBoard;
+
+const ScTitle =styled.div`
+  margin-top: 50px;
+  margin-left: 20px;
+  font-size: 24px;
+`
+
+export default SearchBoard
+
