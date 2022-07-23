@@ -52,8 +52,8 @@ const apis = {
 
 
 //게시판
-    getBoards: () => api.get(`/posts?page=0`),
-    getBoardsLogin: () => api.get('/auths/posts?page=0'),
+    getBoards: (page) => api.get(`/posts?page=${page}`),
+    getBoardsLogin: (page) => api.get(`/auths/posts?page=${page}`),
     postBoardsLike: (category,id) => api.post(`/postslogin/postlove/${category}/${id}`),
     postBoardsBookmark: (category,id) => api.post(`/posts/bookmark/${category}/${id}`),
     getBoardsCategory: (category) => api.get(`/posts?category=${category}`),
