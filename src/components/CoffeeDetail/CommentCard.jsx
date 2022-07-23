@@ -122,6 +122,7 @@ const ScButton = styled.button`
   }
   border: none;
   background-color: rgb(44,39,140,0%);
+  font-weight: 400;
 `;
 
 
@@ -131,6 +132,7 @@ const ScStar = styled.div`
   justify-content: center;
   align-items: center;
   color: black;
+  
 `;
 
 const ScCardAlign1 = styled.div`
@@ -151,14 +153,17 @@ const ScCommentSpan = styled.span`
   color: black;
   text-align: left;
   left: 0;
+  font-weight: 400;
 `;
 
 const ScDateSpan = styled.span`
   color: black;
+  font-weight: 400;
 `;
 
 const ScNickSpan = styled.span`
   color: black;
+  font-weight: 400;
 `;
 
 

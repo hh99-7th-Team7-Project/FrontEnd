@@ -32,7 +32,7 @@ console.log(item)
           </ScSubTitle>
         </div>
         <ScImgWrap>            
-            <ScImg src={url}/>
+            <ScImg src={url}/>            
         </ScImgWrap>
     </>
   )

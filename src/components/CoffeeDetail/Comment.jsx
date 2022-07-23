@@ -23,6 +23,8 @@ const Comment = ({item}) => {
   
   const commentInputRef = React.useRef();
   const selectStarRef = React.useRef();
+  
+
 
   const addComment = () => {
     
@@ -64,7 +66,7 @@ const Comment = ({item}) => {
           </ScCoffeeTitle>
         </div>
         <ScStarContainer>
-            <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
+            <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef} >
               <option value="공백">-----선택하기-----</option>
 
               <option value="1">&#9733;</option>
@@ -162,7 +164,7 @@ const ScInput = styled.input`
     border: none;
     border-radius: 2px;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
 `;
 
 
