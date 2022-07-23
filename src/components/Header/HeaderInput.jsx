@@ -2,19 +2,28 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import zoom from './svg/Zoom.svg'
+import Swal from 'sweetalert2';
 
 const HeaderInput = () => {
   const searchRef = useRef()
   const navigate = useNavigate()
   const [keyword, setKeyword]=useState()
-  console.log(keyword)
 
   const onClick1 =()=>{
     navigate(`/search/${keyword}`)
   }
 
   const onKeyPress1=(e)=>{
-    if(e.key==="Enter"){
+    
+    if (searchRef.current.value === "") {
+      Swal.fire({
+        title: '검색어를 입력해주세요!',
+        text: '빈칸입니다',
+        icon: 'warning',
+        confirmButtonText: '확인',
+      });      
+    }
+    else if(e.key==="Enter"){
       onClick1()
     }
   }

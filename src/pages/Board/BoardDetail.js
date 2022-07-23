@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import { getCookie } from '../../shared/Cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { __loadBoardDetail } from '../../redux/modules/board';
+import BoardImg from './svg/BoardMain.svg';
 
 const BoardDetail = () => {
   const { boardId } = useParams();
@@ -47,6 +48,12 @@ const BoardDetail = () => {
       <div style={{ margin: 'auto' }}>
         <Header />
       </div>
+      <ScImgContainer>
+        <div style={{display:"flex", height:"135px", position:"relative"}}>
+          <ScImg src={BoardImg} alt="" />
+          <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
+        </div>
+      </ScImgContainer>
       <ScWrap>
         <BoardMain
           head={boardReducer}
@@ -66,6 +73,26 @@ const BoardDetail = () => {
     </>
   );
 };
+
+
+
+const ScImgContainer = styled.div`
+  display: column;
+`;
+
+const ScImg = styled.img`
+`;
+
+const ScTitle = styled.div`
+  position: absolute;
+  width: 377px;
+  line-height: 30px;
+  margin: 40px auto;
+  font-size: 24px;
+  font-weight: 500;
+  font-family: 'SUIT Heavy';
+  margin-left: 350px;
+`;
 
 const ScWrap = styled.div`
   margin: 15px auto;
