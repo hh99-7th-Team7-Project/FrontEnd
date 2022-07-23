@@ -3,7 +3,6 @@ import './App.css';
 import Router from './shared/Router';
 import styled from 'styled-components'
 import {AnimatePresence} from 'framer-motion'
-import ReactGA from 'react-ga';
 
 
 
