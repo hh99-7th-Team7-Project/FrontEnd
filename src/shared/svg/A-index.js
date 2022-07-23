@@ -16,8 +16,14 @@ import Moiim from './Moiim.svg';
 import Info from './Info.svg';
 import Pointer from './Pointer.svg';
 import BoardLogo from './BoardLogo.svg';
+import ChatLogo from './ChatLogo.svg'
+import Chatimoji from './Chatimoji.svg'
+import ChatLogoSmall from './ChatLogoSmall.svg'
 
 export {
+  ChatLogoSmall,
+  Chatimoji,
+  ChatLogo,
   bookmark,
   bookmarkck,
   checked,

@@ -47,6 +47,9 @@ const ChatWrite = ({ setWrite, write }) => {
     is_edit ? ChatItem?.calendar : ''
   );
   const [hourValue, setHourValue] = React.useState(is_edit ? time[0] : '');
+  const [hourValue2, setHourValue2] = React.useState(is_edit ? time[0] : '');
+
+  console.log(hourValue2)
   const [minuteValue, setMinuteValue] = React.useState(is_edit ? time[1] : '');
   const [countValue, setCountValue] = React.useState(
     is_edit ? ChatItem?.totalcount : 3
@@ -78,6 +81,11 @@ const ChatWrite = ({ setWrite, write }) => {
   const inputHour = (e) => {
     // const value = e.target.value;
     setHourValue(e.target.value);
+  };
+
+  const inputHour2 = (e) => {
+    // const value = e.target.value;
+    setHourValue2(e.target.value);
   };
 
   const inputMinute = (e) => {
@@ -130,7 +138,10 @@ const ChatWrite = ({ setWrite, write }) => {
 
   return (
     <Wrap>
+      <div>
       <DatePicker
+        fixedHeight="300px"
+        
         selected={startDate}
         dateFormat="yyyy-MM-dd (eee)"
         showPopperArrow={false}
@@ -145,23 +156,7 @@ const ChatWrite = ({ setWrite, write }) => {
           setDateValue(dateString);
         }}
       />
-      <InputWrap>
-        <Title>제목</Title>
-        {is_edit ? (
-          <Input
-            placeholder="제목을 입력해주세요"
-            value={chatName || ''}
-            onChange={inputTitle}
-            maxLength={30}
-          />
-        ) : (
-          <Input
-            placeholder="제목을 입력해주세요"
-            value={chatName || ''}
-            onChange={inputTitle}
-            maxLength={30}
-          />
-        )}
+      <div>
         <Title>시간</Title>
         <div>
           <TimeBtn>오전</TimeBtn>
@@ -179,22 +174,43 @@ const ChatWrite = ({ setWrite, write }) => {
             <span>분</span>
           </div>
         ) : (
-          <div>
+          <div style={{display:"flex"}}>
+            <div>
             <TimeInput
               value={hourValue || ''}
               onChange={inputHour}
-              type="Number"
+              type="time"
             />
-            <span>시</span>
+            <span>~</span></div>
+            <div>
             <TimeInput
-              value={minuteValue || ''}
-              onChange={inputMinute}
-              type="Number"
+              value={hourValue2 || ''}
+              onChange={inputHour2}
+              type="time"
             />
             <span>분</span>
+            </div>
           </div>
         )}
-
+        </div>
+        </div>
+      <InputWrap>
+        <Title>제목</Title>
+        {is_edit ? (
+          <Input
+            placeholder="제목을 입력해주세요"
+            value={chatName || ''}
+            onChange={inputTitle}
+            maxLength={30}
+          />
+        ) : (
+          <Input
+            placeholder="제목을 입력해주세요"
+            value={chatName || ''}
+            onChange={inputTitle}
+            maxLength={30}
+          />
+        )}
         <Title>활동내용</Title>
         {is_edit ? (
           <ContentInput value={chatContent || ''} onChange={inputContent} />
@@ -303,11 +319,13 @@ const ChatWrite = ({ setWrite, write }) => {
 const Wrap = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 107vh;
+  width: 107vw;
   height: 59vh;
   border-radius: 12px;
   display: flex;
   margin: auto;
+  border: 1px #ddd solid;
+  padding: 50px 35px;
 `;
 
 const InputWrap = styled.div`
@@ -331,18 +349,23 @@ const MapInput = styled.input`
 `;
 
 const TimeInput = styled.input`
-  width: 44.5%;
+
+  width: 100px;
   height: 3em;
-  border: 1px solid gray;
+  border: 1px solid #B6B6B6;
+  background-color: #F3F3F3;
   border-radius: 10px;
-  margin: 5px 5px 20px 5px;
+  margin: auto;
   padding: 0px 0 0 5px;
+  color: #5a5858;
 `;
 
 const Title = styled.span`
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 600;
 `;
+
+
 
 const TimeBtn = styled.button`
   display: inline-block;
