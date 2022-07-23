@@ -46,8 +46,7 @@ const ImgCard = ({ url, item, like, setLike }) => {
         </ScSubTitle>
       </div>
       <ScImgWrap>
-            {item?.brand === "더벤티" ? <ScImgVenti src={url} /> :
-        <ScImg src={url} /> }
+            {item?.brand === "더벤티" || item?.brand === "컴포즈"? <ScImgVenti src={url} /> : <ScImg src={url} /> }
       </ScImgWrap>
 
     </>
@@ -121,5 +120,6 @@ const ScImg = styled.img`
   width: 500px;
   height: 500px;
 `;
+
 
 export default ImgCard;

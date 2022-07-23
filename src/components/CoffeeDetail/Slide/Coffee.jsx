@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
 import { css, keyframes } from 'styled-components';
 
-const Coffee = () => {
+const Coffee = ({ref}) => {
   const [color, setColor] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();

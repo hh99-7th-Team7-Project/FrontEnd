@@ -40,7 +40,7 @@ return (
         <Header/>
       </div>
       <div>
-        <CoffeeCategory/>
+        {/* <CoffeeCategory/> */}
       </div>   
       <Scwrap>
         <ScContainer>
