@@ -121,12 +121,7 @@ const ChatWrite = ({ setWrite, write }) => {
     };
     dispatch(__addChatItem(chatItem));
     setWrite(!write);
-    navigate('/chatposts');
-    Swal.fire({
-      title: '저장 완료!',
-      icon: 'success',
-      confirmButtonText: '확인',
-    });
+    navigate('/chatposts');    
   };
 
   const editChatItem = () => {
