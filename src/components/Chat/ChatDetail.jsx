@@ -70,11 +70,10 @@ const ChatDetail = () => {
         {write === true ? (
           <WriteWrap>
             <Wrap>
-              <Btn onClick={changeContent}>수정</Btn>
-            </Wrap>
-            <div>
+              {/* <Btn onClick={changeContent}>수정</Btn> */}
               <ChatWrite write={write} setWrite={setWrite} />
-            </div>
+            </Wrap>
+              
           </WriteWrap>
         ) : (
           <>
@@ -87,9 +86,9 @@ const ChatDetail = () => {
                   <span>모집 완료</span>
                 )} */}
                 {data?.count === data?.totalcount ? (
-                  <span>모집 완료</span>
+                 <div style={{display:"flex", gap:"900px"}}> <span>모집 완료</span> <Time>{data?.beforeTime}</Time></div>
                 ) : (
-                  <span>모집 중</span>
+                  <div style={{display:"flex", gap:"900px"}}> <div>모집 중</div> <Time>{data?.beforeTime}</Time></div>
                 )}
               </div>
               {chat === true ? null : _checkUser === data?.nickname ? (
@@ -105,7 +104,7 @@ const ChatDetail = () => {
                 </div>
               ) : null} */}
             </BtnWrap>
-            <Time>{data?.beforeTime}</Time>
+           
             <ChatAttend
               members={members}
               count={data?.count}
@@ -136,27 +135,27 @@ const ChatDetail = () => {
                 </ContentWrap>
                 <AttendBtnWrap>
                   {check === 'true' ? ( 
-                      <> 
-                        <AttendBtn1 onClick={upCount} none={none}>
+                      <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}> 
+                        <AttendBtn1 onClick={upCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                           <ScCheckImg src={Check} alt=""/>
-                          <span>참여완료</span>
+                          <span>참여하지않기</span>
                         </AttendBtn1>
-                        <AttendBtn2 onClick={joinChat}>
+                        <AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                           <ScChatImg src={Chating} alt=""/>
                           <span>채팅하러가기</span>
                         </AttendBtn2>
-                      </>
+                      </div>
                   ) : (
-                    <>
-                      <AttendBtn1 onClick={upCount}>
+                    <div style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                      <AttendBtn1 onClick={upCount} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                         <ScCheckImg src={Check} alt=""/>
                         <span>참여하기</span>
                       </AttendBtn1>
-                      <AttendBtn2 onClick={joinChat} disabled>
+                      {/* <AttendBtn2 onClick={joinChat} disabled style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                         <ScChatImg src={Chating} alt=""/>
                         <span>참여완료</span>
-                      </AttendBtn2>
-                    </>
+                      </AttendBtn2> */}
+                    </div>
                   )}
                     </AttendBtnWrap> 
                   
@@ -186,10 +185,9 @@ const WriteWrap = styled.div`
   height: 100vh;
 `;
 
-const Time = styled.p`
+const Time = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 5px;
 `;
 
 const Container = styled.div`
@@ -199,6 +197,7 @@ const Container = styled.div`
   box-shadow: 0px 4px 20px rgb(0 0 0 / 30%);
   padding: 20px;
   margin-right: 30px;
+  margin-top: 20px;
 `;
 
 const BtnWrap = styled.div`
@@ -280,7 +279,7 @@ const TitleWrap = styled.div`
   margin: 10px 0;
   & span {
     display: inline-block;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     margin: 10px 0 15px 0;
   }
@@ -374,13 +373,13 @@ const ScCheckImg = styled.img`
   width: 24px;
   height: 24px;
   margin-right: 10px;
-  margin-top: 5px;
+
 `;
 
 const ScChatImg = styled.img`
   width: 24px;
   height: 24px;
   margin-right: 10px;
-  margin-top: 5px;
+
 `;
 export default ChatDetail;
