@@ -2,16 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ChatAttend = ({ members, count, totalcount }) => {
+
+
+
   return (
     <ChatTop>
-      <div>
+      <div>        
         <span>
-          {count} /{totalcount}
+          {count} / {totalcount} 명
         </span>
         {members &&
           members.map((data, k) => {
             return (
-              <div key={k}>
+              <div key={k} style={{display:"flex",justifyContent:"center"}}>
                 <Wrap>
                   <Profile src={data?.userProfile}></Profile>
                   {/* <p>{data?.userTitle}</p> */}
@@ -19,7 +22,7 @@ const ChatAttend = ({ members, count, totalcount }) => {
               </div>
             );
           })}
-      </div>
+        </div>
     </ChatTop>
   );
 };
@@ -27,7 +30,7 @@ const ChatAttend = ({ members, count, totalcount }) => {
 const ChatTop = styled.div`
   display: flex;
   justify-content: flex-end;
-  /* margin-top: 10px; */
+  width: 90%;
   & span {
     font-size: 20px;
     margin-right: 5px;
@@ -36,6 +39,7 @@ const ChatTop = styled.div`
     display: flex;
     align-items: center;
   }
+
 `;
 
 const Wrap = styled.div`

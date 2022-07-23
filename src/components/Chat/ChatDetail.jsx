@@ -12,6 +12,8 @@ import calendar from '../../Image/Chat/calendar.svg';
 import IconTime from '../../Image/Chat/time.svg';
 import left from '../../Image/Chat/left.png';
 import IconChat from '../../Image/Chat/chat.png';
+import Check from './svg/Check.svg';
+import Chating from './svg/Chating.svg';
 
 const ChatDetail = () => {
   const dispatch = useDispatch();
@@ -78,7 +80,7 @@ const ChatDetail = () => {
           <>
             <BtnWrap>
               <div>
-                <img src={left} onClick={() => navigate('/chatposts')}></img>
+                <ScLeftImg src={left} alt="" onClick={() => navigate('/chatposts')}></ScLeftImg>
                 {/* {data?.completed === true ? (
                   <span>모집 중</span>
                 ) : (
@@ -109,7 +111,7 @@ const ChatDetail = () => {
               count={data?.count}
               totalcount={data?.totalcount}
             ></ChatAttend>
-            <div>
+            <div style={{display:"column"}}>
               <ContentWrap content={content}>
                 <Map map={map}></Map>
                 <div>
@@ -129,29 +131,36 @@ const ChatDetail = () => {
                   <Contents content={content}>
                     <span>상세 내용</span>
                     <p>{data?.contents}</p>
-                  </Contents>
+                  </Contents>                                   
                 </div>
-              </ContentWrap>
-              <AttendBtnWrap>
-                <div>
-                  {check === 'true' ? (
-                    <div>
-                      <AttendBtn onClick={upCount} none={none}>
-                        참여완료
-                      </AttendBtn>
-
-                      <AttendBtn onClick={joinChat}>대화하기</AttendBtn>
-                    </div>
+                </ContentWrap>
+                <AttendBtnWrap>
+                  {check === 'true' ? ( 
+                      <> 
+                        <AttendBtn1 onClick={upCount} none={none}>
+                          <ScCheckImg src={Check} alt=""/>
+                          <span>참여완료</span>
+                        </AttendBtn1>
+                        <AttendBtn2 onClick={joinChat}>
+                          <ScChatImg src={Chating} alt=""/>
+                          <span>채팅하러가기</span>
+                        </AttendBtn2>
+                      </>
                   ) : (
                     <>
-                      <AttendBtn onClick={upCount}>참여 하기</AttendBtn>
-                      <AttendBtn onClick={joinChat} disabled>
-                        대화하기
-                      </AttendBtn>
+                      <AttendBtn1 onClick={upCount}>
+                        <ScCheckImg src={Check} alt=""/>
+                        <span>참여하기</span>
+                      </AttendBtn1>
+                      <AttendBtn2 onClick={joinChat} disabled>
+                        <ScChatImg src={Chating} alt=""/>
+                        <span>참여완료</span>
+                      </AttendBtn2>
                     </>
                   )}
-                </div>
-              </AttendBtnWrap>
+                    </AttendBtnWrap> 
+                  
+              
             </div>
           </>
         )}
@@ -206,6 +215,12 @@ const BtnWrap = styled.div`
   & span {
     font-size: 20px;
     margin-left: 20px;
+  }
+`;
+
+const ScLeftImg = styled.img`
+  &:hover {
+    cursor: pointer;
   }
 `;
 
@@ -278,36 +293,38 @@ const TitleWrap = styled.div`
 `;
 
 const Contents = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
   & span {
     display: inline-block;
     font-size: 20px;
     margin-bottom: 10px;
-  }
+  }  
   & p {
     font-size: 16px;
     height: ${(props) => (props.content === true ? '150px;' : '95px')};
-    overflow-y: scroll;
+    overflow-y: scroll;    
   }
 `;
 
 const AttendBtnWrap = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin: 3vh 0;
+  justify-content: start;
+  margin: 30px auto;
+  margin-left: 30px;
   & img {
     width: 20px;
     height: 20px;
   }
 `;
-const AttendBtn = styled.button`
-  width: 100px;
+
+const AttendBtn1 = styled.div`
+  box-sizing: border-box;
+  width: 150px;
   height: 40px;
-  border: none;
+  border: 1.5px solid #2c278c;
   background-color: #2c278c;
   color: #fff;
-  border: none;
-  border-radius: 12px;
+  border-radius: 100px;
   margin-left: 10px;
   display: ${(props) => (props.none === false ? 'none' : '')};
   & .disabled {
@@ -315,6 +332,31 @@ const AttendBtn = styled.button`
     color: #000;
   }
   background-color: ${(props) => (props.none === true ? '#000' : '#2c278c')};
+  &:hover {
+    cursor: pointer;
+  }
+  text-align: center;
+`;
+
+const AttendBtn2 = styled.div`
+  box-sizing: border-box;
+  width: 150px;
+  height: 40px;
+  border: 1.5px solid #2c278c;
+  background-color: #2c278c;
+  color: #fff;
+  border-radius: 100px;
+  margin-left: 10px;
+  display: ${(props) => (props.none === false ? 'none' : '')};
+  & .disabled {
+    background-color: #4e4e4e;
+    color: #000;
+  }
+  background-color: ${(props) => (props.none === true ? '#000' : '#2c278c')};
+  &:hover {
+    cursor: pointer;
+  }
+  text-align: center;
 `;
 
 const ChatWrap = styled.div`
@@ -326,5 +368,19 @@ const Profile = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 100%;
+`;
+
+const ScCheckImg = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  margin-top: 5px;
+`;
+
+const ScChatImg = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  margin-top: 5px;
 `;
 export default ChatDetail;
