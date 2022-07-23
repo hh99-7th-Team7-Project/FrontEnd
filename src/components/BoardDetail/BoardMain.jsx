@@ -52,7 +52,7 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
       <ScBottomBox>
         <ScNickTimeBox>
           <span>{head?.nickname}</span>
-          <span>21시 21분 23초</span>
+          <span>{head?.createdAt}</span>
         </ScNickTimeBox>
         {nickname === head?.nickname ? (
           <div style={{ display: 'flex', gap: '8px' }}>

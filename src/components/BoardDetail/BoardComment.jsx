@@ -105,16 +105,12 @@ const ScTextArea = styled.textarea`
   height: 146px;
   margin: 30px auto;
   /* border: none; */
-  border-radius: 2px;
-  border: none;
+  border: 1px solid black;
   outline: none;
   resize: none;
-  font-size: 20px;
-  text-align: center;
-  &::placeholder {
-    text-align: center;
-  }
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  
+  
 `;
 
 const ScBtn = styled.button`
