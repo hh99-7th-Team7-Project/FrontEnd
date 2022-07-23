@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRef } from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 import apis from '../../shared/api/main';
 
@@ -20,7 +21,11 @@ const SignupModal = ({showModal,closeModal,signupAfter,email}) => {
   const resendEmail =async()=>{
    const resend = await apis.verifyEmail({username:email})
               .then((res)=>{
-                alert("인증번호를 재전송 했습니다")
+                Swal.fire({
+                  title: '인증번호를 재 전송 하였습니다!',
+                  icon: 'success',
+                  confirmButtonText: '확인'
+                })
               }).catch((err)=>{
                 alert("인증번호 전송에 실패 했습니다.")
               })
@@ -29,15 +34,20 @@ const SignupModal = ({showModal,closeModal,signupAfter,email}) => {
     <div>{showModal ? 
       <Background>
       <ModalContainer>
-      <span>{email}로 인증번호 전송이 완료되었습니다.</span>
-      <span onClick={closeModal}>X</span>
+        <ScWrap>
+      <div>"{email}"로 <br/>인증번호 전송이 완료되었습니다.</div>
+      <ScClose onClick={closeModal}>✖</ScClose>
      <input
+     style={{height:"30px",width:'200px',borderRadius:"10px", border:"none", paddingLeft:"10px", marginTop:"20px"}}
      type="text"
      placeholder="인증번호를 입력해주세요"
      ref={verifyRef}
      />
-     <button onClick={sendVerify}>제출하고 가입완료하기</button>
-     <button>인증번호 재전송하기</button>
+     <div style={{display:"flex", gap:"10px"}}>
+      <ScButton onClick={resendEmail}>인증번호 재전송하기</ScButton>
+     <ScButton onClick={sendVerify}>제출하고 가입완료하기</ScButton>
+     </div>
+     </ScWrap>
      </ModalContainer>
      </Background> : null}</div>
   )
@@ -51,7 +61,7 @@ const Background = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.30);
+    background-color: rgba(0,0,0,0.60);
     z-index: 1;
 `;
 
@@ -65,7 +75,35 @@ const ModalContainer = styled.div`
     width: 20rem;
     height: 50%;
     padding: 16px;
-    background: rgb(25, 31, 44);
+    background: var(--main);
     border-radius: 10px;
     text-align: center;
 `;
+
+const ScWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 25% auto;
+  div{
+    margin-top: 20px;
+  }
+`
+
+const ScClose =styled.div`
+  position: absolute;
+  top: 0;
+  right: -6%;
+`
+const ScButton =styled.div`
+  height: 40px;
+  width: 130px;
+  font-size: 14px;
+  font-weight: 300;
+  border: 1px white solid;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

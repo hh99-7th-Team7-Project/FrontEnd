@@ -1,59 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from 'styled-components';
 
 // Import Swiper styles
 import 'swiper/css';
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Navigation } from "swiper";
-import {css, keyframes} from 'styled-components';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper';
+import { css, keyframes } from 'styled-components';
 
 const Coffee = () => {
+  const [color, setColor] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const [color, setColor] = useState(false) 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    const categoryList =[{brand:"coffee", id:0},{brand:"nonCoffee", id:1},
-   {brand:"smoothie", id:2},{brand:"aid", id:3},{brand:"tea", id:4}]
-
+  const categoryList = [
+    { brand: 'coffee', id: 0 },
+    { brand: 'nonCoffee', id: 1 },
+    { brand: 'smoothie', id: 2 },
+    { brand: 'aid', id: 3 },
+    { brand: 'tea', id: 4 },
+  ];
 
   return (
     <>
-
-      <div style={{display:"flex",justifyContent:"center"}}>
-            <ScWrap>
-              <ScList  style={{listStyle:"none"}}>
-                  <ScBrandBox>
-                    <ScBrandTitle>
-                      <ScH2>Coffee</ScH2>
-                    </ScBrandTitle>
-                    <ScBrandTitle>
-                      <ScH2>NonCoffee</ScH2>
-                    </ScBrandTitle>
-                    <ScBrandTitle>
-                      <ScH2>Smoothie</ScH2>
-                    </ScBrandTitle>
-                    <ScBrandTitle>
-                      <ScH2>Ade</ScH2>
-                    </ScBrandTitle>
-                    <ScBrandTitle>
-                      <ScH2>Tea</ScH2>
-                    </ScBrandTitle>                    
-                  </ScBrandBox>                  
-              </ScList>
-            </ScWrap>
-          </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <ScWrap>
+          <ScList style={{ listStyle: 'none' }}>
+            <ScBrandBox>
+              <ScBrandTitle>
+                <ScH2>Coffee</ScH2>
+              </ScBrandTitle>
+              <ScBrandTitle>
+                <ScH2>NonCoffee</ScH2>
+              </ScBrandTitle>
+              <ScBrandTitle>
+                <ScH2>Smoothie</ScH2>
+              </ScBrandTitle>
+              <ScBrandTitle>
+                <ScH2>Ade</ScH2>
+              </ScBrandTitle>
+              <ScBrandTitle>
+                <ScH2>Tea</ScH2>
+              </ScBrandTitle>
+            </ScBrandBox>
+          </ScList>
+        </ScWrap>
+      </div>
     </>
-  )
-}
+  );
+};
 
 const ScWrap = styled.div`
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0px 5px 13px rgba(0,0,0,0.14);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
   width: 95px;
   height: 186px;
@@ -62,9 +64,7 @@ const ScWrap = styled.div`
   background: #fff;
 `;
 
-const ScList = styled.ul`
-  
-`;
+const ScList = styled.ul``;
 const ScBrandBox = styled.li`
   display: flex;
   flex-direction: column;
@@ -74,7 +74,6 @@ const ScBrandBox = styled.li`
   width: 95px;
   height: 153.62px;
 `;
-
 
 const ScBrandTitle = styled.div`
   box-sizing: border-box;
@@ -87,7 +86,7 @@ const ScBrandTitle = styled.div`
   gap: 10px;
   width: 95px;
   height: 37px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -99,11 +98,9 @@ const ScH2 = styled.h2`
   line-height: 17px;
   color: #000000;
   &:hover {
-    color: #4147D5;
+    color: #4147d5;
     cursor: pointer;
   }
 `;
 
-
-
-export default Coffee
+export default Coffee;

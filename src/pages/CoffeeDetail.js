@@ -31,6 +31,8 @@ console.log(coffeeReducer)
 useEffect(()=>{
 setLike(coffeeReducer?.loveCheck)
 },[])
+
+
 return (
 
     <>

@@ -49,13 +49,13 @@ useEffect(() => {
         setLoading(true)
           const getMark = async () => {
             if(!token){
-               await apis.getBoards()
+               await apis.getBoardsLike()
                         .then((res)=>{
                             console.log(res.data.slice(0,5))
                             setContent(res.data.slice(0,10))
                           })
             }else{
-              await apis.getBoardsLogin()
+              await apis.getBoardsLikeLogin()
                       .then((res)=>{
                           console.log(res.data)
                           setContent(res.data)
@@ -72,7 +72,7 @@ useEffect(() => {
         <ScWrap>
             <ScTop >
               <div>
-                <h1>베스트 게시물</h1>
+                <div style={{fontFamily:"SUIT ExtraBold", fontSize:"30px"}}>베스트 게시물</div>
                 <div style={{marginTop:"10px"}}>커파인러들이 가장 많이 저장한 게시물 Best 10!</div>
               </div>
               <ScMoveButton style={{display:"flex"}}>
