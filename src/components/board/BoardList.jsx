@@ -18,25 +18,18 @@ const BoardList = () => {
   const [totalpage , settotalPage ]= useState(0)
   const [page, setPage] =useState(0)
 
-
-
-
-
-
-
-
   useEffect(() => {
     const getMark = async () => {
       if (!token) {
         await apis
-          .getBoards()
+          .getBoards(page)
           .then((res) => {
             console.log(res.data);
-            setContent(res.data.post);  
-            settotalPage(res?.data.totalPage)          
+            setContent(res.data.post); 
+            settotalPage(res?.data.totalPage)           
           });
       } else {
-        await apis.getBoardsLogin().then((res) => {
+        await apis.getBoardsLogin(page).then((res) => {
           console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
@@ -45,8 +38,6 @@ const BoardList = () => {
     };
     getMark();
   }, [page]);
-
-
 
 
   return (
@@ -67,7 +58,6 @@ const BoardList = () => {
           total={totalpage}              
           page={page}
           setPage={setPage}
-
         />
       </footer> 
                     
