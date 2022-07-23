@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { MainCard1 } from '../../shared/svg/A-index';
 
 const ImgSlide = () => {
   // 이미지 슬라이드 버튼
@@ -18,8 +19,9 @@ const ImgSlide = () => {
   return (
     <ScWrap>
       <ScImgSlideWrap img={img}>
-        {/* <ScImg src="https://paikdabang.com/wp-content/uploads/2022/05/빽다방_홈페이지_main_5월_아이스크림라떼.jpg"> */}
-        <ScImg>
+        <a href='https://www.naver.com'>
+        <ScImg src={MainCard1}>
+          
           <ScContentWrap>
             <ScDotAlign>
               <ScDotWrap>
@@ -29,7 +31,9 @@ const ImgSlide = () => {
               </ScDotWrap>
             </ScDotAlign>
           </ScContentWrap>
+         
         </ScImg>
+         </a>
         {/* <ScImg src="https://paikdabang.com/wp-content/uploads/2022/06/빽다방_홈페이지_main_코코넛2종.jpg"> */}
         <ScImg>
           <ScContentWrap>
@@ -78,7 +82,7 @@ const ScImg = styled.div`
   justify-content: center;
   align-items: left;
   width: 100vw;
-  height: 250px;
+  height: 500px;
   background-color: aliceblue;
   background-image: url(${(props) => props.src});
   background-size: cover;

@@ -54,7 +54,7 @@ const ScTopCard = styled.div`
    display: flex;
   height: 400px;
   position: relative;
-  /* background-color: #ddd; */
+  background-color: #FFE4E0;
 `
 
 const ScTopWord = styled.div`
