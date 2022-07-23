@@ -50,20 +50,8 @@ const Comment = ({ item }) => {
 
   return (
     <ScWrap>
-<<<<<<< HEAD
-        <div>
-          <ScBrandTitle>
-            <ScH3>{item?.brand}</ScH3>
-          </ScBrandTitle>
-          <ScCoffeeTitle id="review">
-            <ScH1>"{item?.name}"</ScH1>
-            <ScOneCommentTitle>한줄평을 남겨주세요!</ScOneCommentTitle>
-          </ScCoffeeTitle>
-        </div>
-        <ScStarContainer>
-            <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef} >
-              <option value="공백">-----선택하기-----</option>
-=======
+
+
       <div>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
@@ -76,7 +64,7 @@ const Comment = ({ item }) => {
       <ScStarContainer>
         <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
           <option value="공백">-----선택하기-----</option>
->>>>>>> 1f439019f991b8c5feb614f70030f322cc580ee3
+
 
           <option value="1">&#9733;</option>
           <option value="2">&#9733;&#9733;</option>
@@ -175,15 +163,7 @@ const ScStarContainer = styled.div`
 `;
 
 const ScInput = styled.input`
-<<<<<<< HEAD
-    width: 800px;
-    height: 40px;
-    margin: 30px auto;
-    border: none;
-    border-radius: 2px;
-    font-size: 20px;
-    text-align: left;
-=======
+
   width: 800px;
   height: 40px;
   margin: 30px auto;
@@ -191,7 +171,7 @@ const ScInput = styled.input`
   border-radius: 2px;
   font-size: 20px;
   text-align: center;
->>>>>>> 1f439019f991b8c5feb614f70030f322cc580ee3
+
 `;
 
 const ScStarSelect = styled.select`

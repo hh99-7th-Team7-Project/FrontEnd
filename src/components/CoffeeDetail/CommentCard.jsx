@@ -131,22 +131,15 @@ const ScButton = styled.button`
     cursor: pointer;
   }
   border: none;
-<<<<<<< HEAD
   background-color: rgb(44,39,140,0%);
   font-weight: 400;
-=======
-
-  background-color: rgb(44, 39, 140, 0%);
->>>>>>> 1f439019f991b8c5feb614f70030f322cc580ee3
 `;
 
 const ScStar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  color: black;
-  
+  color: black;  
 `;
 
 const ScCardAlign1 = styled.div`

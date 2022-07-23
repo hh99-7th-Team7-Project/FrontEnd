@@ -16,23 +16,8 @@ const ImgCard = ({ url, item, like, setLike }) => {
 
   return (
     <>
-<<<<<<< HEAD
-        <div>
-          <ScBrandTitle>
-            <ScH3>{item?.brand}</ScH3>
-          </ScBrandTitle>
-          <ScCoffeeTitle>
-            { item?.loveCheck ?(<ScImgBookMark onClick={likeCoffee} src={bookmarkck} alt="" style={{width:"39px"}}/>):(<ScImgBookMark onClick={likeCoffee} src={bookmark} alt="" style={{width:"50px"}}/>)}
-            <ScH1>{item?.name}</ScH1>
-          </ScCoffeeTitle>
-          <ScSubTitle>
-            <ScH4>{item?.category}</ScH4>
-          </ScSubTitle>
-        </div>
-        <ScImgWrap>            
-            <ScImg src={url}/>            
-        </ScImgWrap>
-=======
+
+
       <div>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
@@ -63,7 +48,7 @@ const ImgCard = ({ url, item, like, setLike }) => {
       <ScImgWrap>
         <ScImg src={url} />
       </ScImgWrap>
->>>>>>> 1f439019f991b8c5feb614f70030f322cc580ee3
+
     </>
   );
 };
