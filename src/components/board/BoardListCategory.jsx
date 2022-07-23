@@ -3,30 +3,36 @@ import styled from 'styled-components';
 import BoardMap from './BoardMap';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
+import BoardPagination from './Pagination/BoardPagination';
 
 
 const BoardListCategory = ({ category }) => {
   const [content, setContent] = useState();
   const token = getCookie('token');
 
-
+  const [totalpage , settotalPage ]= useState(0)
+  const [page, setPage] =useState(0)
 
   useEffect(() => {
     const getMark = async () => {
       if (!token) {
-        await apis.getBoardsCategory(category).then((res) => {
+        await apis.getBoardsCategory(category , Number(page))
+        .then((res) => {
           console.log(res.data);
-          setContent(res.data);
+          setContent(res.data.post);
+          settotalPage(res?.data.totalPage) 
         });
       } else {
-        await apis.getBoardsCategoryLogin(category).then((res) => {
+        await apis.getBoardsCategoryLogin(category, Number(page))
+        .then((res) => {
           console.log(res.data);
-          setContent(res.data);
+          setContent(res.data.post);
+          settotalPage(res?.data.totalPage) 
         });
       }
     };
     getMark();
-  }, [category]);
+  }, [category,page]);
 
 
 
@@ -42,6 +48,14 @@ const BoardListCategory = ({ category }) => {
           </ScTable>
         </ScBoard>
       </ScWrap>  
+      <footer>
+
+        <BoardPagination 
+          total={totalpage}              
+          page={page}
+          setPage={setPage}
+        />
+      </footer>
     </>
   );
 };

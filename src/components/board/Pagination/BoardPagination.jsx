@@ -17,7 +17,7 @@ const BoardPagination = ({total, page, setPage}) => {
                 .map((_, i)=>(
                     <ScButton
                         key={i}
-                        onClick={()=>setPage(i )}
+                        onClick={()=>setPage(i)}
                         aria-current={page === i ? "page" : null}> {i +1 }
                     </ScButton>
                 ))}

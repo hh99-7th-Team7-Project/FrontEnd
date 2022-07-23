@@ -35,11 +35,18 @@ const BoardWrite = () => {
   }, []);
 
   const submitOnclick = async () => {
-    await apis
+    if(title!==" "&& content!==" "&& cate!==" "){
+       await apis
       .postBoard({ title: title, content: content, category: cate })
       .then((res) => {
         navigate('/board');
+        Swal.fire({
+          title: '등록에 성공 했습니다.',
+          icon: 'success',
+          confirmButtonText: '확인',
+        });
       });
+    }
   };
 
   return (
