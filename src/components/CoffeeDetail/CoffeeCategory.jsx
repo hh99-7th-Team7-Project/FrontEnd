@@ -11,29 +11,52 @@ const CoffeeCategory = () => {
     const [ brandVisible , setBrandVisible ] = useState(false);
     const [ categoryVisible , setCategoryVisible ] = useState(false);
 
+    const [ showOption , setShowOption ] = useState(false);
+
+    const ref = useRef();
+
+    const handleToggleOption = () => setShowOption((prev)=>!prev)
+
+    const handleClickOutside = (e) => {
+        console.log(ref.current.contain(e.target))
+        if (showOption && !ref.current.contains(e.target)){
+            setShowOption(false)
+        }
+    }
+    
+    useEffect(()=>{
+        if (showOption) document.addEventListener('mousedown', handleClickOutside)
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    },[])
+
 
 
   return (
     <div style={{maxWidth:"1230px",width:"84vw", margin:"auto", position:"relative"}}>
             <ScNavbarWrap>
-                <ScButtonWrap>
-                    
-                    
-                    <ScCategoryBox onClick={()=>{
+                <ScButtonWrap >
+                    <ScCategoryBox  ref={ref} onClick={()=>{
                         setBrandVisible(!brandVisible);
                         setCategory(true);
+                        handleToggleOption();
                         }}>브랜드</ScCategoryBox>
                     <p>|</p>
-                    <ScCategoryBox onClick={()=>{
+                    <ScCategoryBox  onClick={()=>{
                         setCategoryVisible(!categoryVisible);
                         setCategory(false);
+                        handleToggleOption();
                         }}>음료</ScCategoryBox>
 
                 </ScButtonWrap>
             </ScNavbarWrap>
             
-            {brandVisible ?  <Brand/>: null } 
-            {categoryVisible ? <Coffee/>: null}
+            <div>
+                {brandVisible ?  <Brand />: null }
+            </div>
+                {categoryVisible ? <Coffee ref={ref} />: null}
+            
     </div>
     )
 }

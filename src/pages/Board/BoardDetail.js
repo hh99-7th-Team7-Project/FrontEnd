@@ -68,7 +68,9 @@ const BoardDetail = () => {
           like2={like}
           setLike={setLike}
         />
-        <BoardComment />
+        <BoardComment 
+          head={boardReducer}
+        />
       </ScWrap>
     </>
   );
