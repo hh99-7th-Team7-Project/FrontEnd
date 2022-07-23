@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -6,100 +6,103 @@ import { __addComment } from '../../redux/modules/comment';
 import { getCookie } from '../../shared/Cookie';
 import Swal from 'sweetalert2';
 
-
-const Comment = ({item}) => {
-
-
-  const [ select , setSelect ] = useState('');
+const Comment = ({ item }) => {
+  const [select, setSelect] = useState('');
 
   const starSelect = (e) => {
     setSelect(e.target.value);
-  }
+  };
 
-  const nickname = getCookie("nickname");
-  const { brand , boardId } = useParams();  
+  const nickname = getCookie('nickname');
+  const { brand, boardId } = useParams();
   const dispatch = useDispatch();
 
-  
   const commentInputRef = React.useRef();
   const selectStarRef = React.useRef();
 
   const addComment = () => {
-    
     if (
-      commentInputRef.current.value !== "" &&
-      selectStarRef.current.value !== "공백"
-    ) 
-    {
-      dispatch(__addComment({
-        data: {
-          review: commentInputRef.current.value,
-          star: selectStarRef.current.value,
-          nickname: nickname
-          
-      },
-        boardId,
-        brand 
-      })
-    );    
+      commentInputRef.current.value !== '' &&
+      selectStarRef.current.value !== '공백'
+    ) {
+      dispatch(
+        __addComment({
+          data: {
+            review: commentInputRef.current.value,
+            star: selectStarRef.current.value,
+            nickname: nickname,
+          },
+          boardId,
+          brand,
+        })
+      );
     } else {
       Swal.fire({
         title: '등록을 할 수 없어요!',
         text: '별점과 한줄평 모두 작성해주세요.',
         icon: 'warning',
-        confirmButtonText: '확인'
-      })
+        confirmButtonText: '확인',
+      });
     }
-  }
+  };
 
-  return ( 
+  return (
     <ScWrap>
-        <div>
-          <ScBrandTitle>
-            <ScH3>{item?.brand}</ScH3>
-          </ScBrandTitle>
-          <ScCoffeeTitle id="review">
-            <ScH1>"{item?.name}"</ScH1>
-            <ScOneCommentTitle>한줄평을 남겨주세요!</ScOneCommentTitle>
-          </ScCoffeeTitle>
-        </div>
-        <ScStarContainer>
-            <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
-              <option value="공백">-----선택하기-----</option>
+      <div>
+        <ScBrandTitle>
+          <ScH3>{item?.brand}</ScH3>
+        </ScBrandTitle>
+        <ScCoffeeTitle id="review">
+          <ScH1>"{item?.name}"</ScH1>
+          <ScOneCommentTitle>한줄평을 남겨주세요!</ScOneCommentTitle>
+        </ScCoffeeTitle>
+      </div>
+      <ScStarContainer>
+        <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
+          <option value="공백">-----선택하기-----</option>
 
-              <option value="1">&#9733;</option>
-              <option value="2">&#9733;&#9733;</option>
-              <option value="3">&#9733;&#9733;&#9733;</option>
-              <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
-              <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-            </ScStarSelect>
-            <ScInput type="text" placeholder="한줄평을 작성해주세요.(20자 이내로 작성해주세요.)" ref={commentInputRef} maxLength={20}/>
-              <ScReviewBtn type="button" onClick={()=>{
-                  addComment();
-                  commentInputRef.current.value=""
-                }}>등록
-              </ScReviewBtn>
-        </ScStarContainer>
-        <ScCardTitie>
-          <ScCardAlign1>
-            <span>별점</span>
-          </ScCardAlign1>
-          <ScCardAlign2>
-            <ScCommentSpan>내용</ScCommentSpan>
-          </ScCardAlign2>
-          <ScCardAlign3>
-            <ScDateSpan>날짜</ScDateSpan>
-            <ScNickSpan>닉네임</ScNickSpan>
-          </ScCardAlign3>
-        </ScCardTitie>
+          <option value="1">&#9733;</option>
+          <option value="2">&#9733;&#9733;</option>
+          <option value="3">&#9733;&#9733;&#9733;</option>
+          <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+          <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+        </ScStarSelect>
+        <ScInput
+          type="text"
+          placeholder="한줄평을 작성해주세요.(20자 이내로 작성해주세요.)"
+          ref={commentInputRef}
+          maxLength={20}
+        />
+        <ScReviewBtn
+          type="button"
+          onClick={() => {
+            addComment();
+            commentInputRef.current.value = '';
+          }}
+        >
+          등록
+        </ScReviewBtn>
+      </ScStarContainer>
+
+      <ScCardTitie>
+        <ScCardAlign1>
+          <span>별점</span>
+        </ScCardAlign1>
+        <ScCardAlign2>
+          <ScCommentSpan>내용</ScCommentSpan>
+        </ScCardAlign2>
+        <ScCardAlign3>
+          <ScDateSpan>날짜</ScDateSpan>
+          <ScNickSpan>닉네임</ScNickSpan>
+        </ScCardAlign3>
+      </ScCardTitie>
     </ScWrap>
-  )
-}
+  );
+};
 
-
-const ScWrap = styled.div`   
-    margin: 100px auto;
-    width: auto;
+const ScWrap = styled.div`
+  margin: 100px auto;
+  width: auto;
 `;
 
 const ScBrandTitle = styled.div`
@@ -113,7 +116,7 @@ const ScBrandTitle = styled.div`
   gap: 10px;
 `;
 
-const ScCoffeeTitle = styled.div`  
+const ScCoffeeTitle = styled.div`
   margin: 20px auto;
   width: 500px;
   display: column;
@@ -122,12 +125,12 @@ const ScCoffeeTitle = styled.div`
 `;
 
 const ScH1 = styled.h1`
-    padding: 20px auto;
-    margin: 30px auto;
-    text-align: center;
-    font-size: 40px;
-    line-height: 49.92px;
-    width: 500px;
+  padding: 20px auto;
+  margin: 30px auto;
+  text-align: center;
+  font-size: 40px;
+  line-height: 49.92px;
+  width: 500px;
 `;
 
 const ScH3 = styled.h3`
@@ -143,7 +146,6 @@ const ScOneCommentTitle = styled.h2`
   text-align: center;
 `;
 
-
 const ScStarContainer = styled.div`
   width: 1080px;
   height: 40px;
@@ -156,15 +158,14 @@ const ScStarContainer = styled.div`
 `;
 
 const ScInput = styled.input`
-    width: 800px;
-    height: 40px;
-    margin: 30px auto;
-    border: none;
-    border-radius: 2px;
-    font-size: 20px;
-    text-align: center;
+  width: 800px;
+  height: 40px;
+  margin: 30px auto;
+  border: none;
+  border-radius: 2px;
+  font-size: 20px;
+  text-align: center;
 `;
-
 
 const ScStarSelect = styled.select`
   width: 130px;
@@ -176,16 +177,16 @@ const ScStarSelect = styled.select`
 `;
 
 const ScReviewBtn = styled.button`
-    margin: auto;
-    width: 45px;
-    height: 30px;
-    border-radius: 4px;
-    padding: 7px, 10px, 7px, 10px;
-    background-color: #000;
-    color: white;
-    &:hover {
-      cursor: pointer;
-    }
+  margin: auto;
+  width: 45px;
+  height: 30px;
+  border-radius: 4px;
+  padding: 7px, 10px, 7px, 10px;
+  background-color: #000;
+  color: white;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ScCardTitie = styled.div`
@@ -193,7 +194,7 @@ const ScCardTitie = styled.div`
   margin: 20px auto;
   width: 70vw;
   padding: 20px;
-  border-top: 2px solid black; 
+  border-top: 2px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -202,7 +203,7 @@ const ScCardTitie = styled.div`
 const ScCardAlign1 = styled.div`
   display: flex;
   width: 30px;
-  padding:2px 20px;
+  padding: 2px 20px;
   justify-content: center;
   align-items: center;
   color: black;
@@ -210,7 +211,7 @@ const ScCardAlign1 = styled.div`
 
 const ScCardAlign2 = styled.div`
   width: 230px;
-  padding:2px 20px;
+  padding: 2px 20px;
   display: flex;
   justify-content: space-between;
 `;
@@ -236,4 +237,4 @@ const ScNickSpan = styled.span`
   color: black;
 `;
 
-export default Comment
+export default Comment;

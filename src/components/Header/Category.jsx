@@ -1,18 +1,36 @@
 import React from 'react';
 import Styled from 'styled-components';
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 const Category = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    return (
-        <ScCategoryBox>
-          <ScCategory onClick={()=>{navigate("/menucategory")}}>Menu</ScCategory>
-        <ScCategory>커피모임</ScCategory>
-        <ScCategory onClick={()=>{navigate("/board")}}>커피연구소</ScCategory>
-        </ScCategoryBox>
-    )
-}
+  return (
+    <ScCategoryBox>
+      <ScCategory
+        onClick={() => {
+          navigate('/menucategory');
+        }}
+      >
+        Menu
+      </ScCategory>
+      <ScCategory
+        onClick={() => {
+          navigate('/chatposts');
+        }}
+      >
+        커피모임
+      </ScCategory>
+      <ScCategory
+        onClick={() => {
+          navigate('/board');
+        }}
+      >
+        커피연구소
+      </ScCategory>
+    </ScCategoryBox>
+  );
+};
 
 const ScCategoryBox = Styled.div`  
   display: flex;
@@ -30,4 +48,4 @@ const ScCategory = Styled.div`
   }
 `;
 
-export default Category
+export default Category;

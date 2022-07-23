@@ -1,9 +1,10 @@
 @font-face {
-    font-family: ‘SUIT Variable’;
-    src: url('../../../public/fonts/SUIT-Variable.woff2')format("woff2");
+  font-family: ‘SUIT Variable’;
+  src: url('../../../public/fonts/SUIT-Variable.woff2') format('woff2');
 }
 
 @font-face {
+
 	font-family: 'SUIT Heavy';
 	src: url('../../../public/fonts/SUIT-Heavy.woff2') format('woff2');
 }
@@ -12,3 +13,4 @@
 	font-family: 'SUIT Bold';
 	src: url('../../../public/fonts/SUIT-ExtraBold.woff2') format('woff2');
 }
+

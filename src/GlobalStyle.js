@@ -1,15 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
 import './shared/css/font.css';
 
-const GlobalStyle = createGlobalStyle `
+const GlobalStyle = createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
+
+  
     font-display:block;
   }
   html, body {
     font-family: ‘SUIT Variable’;
     font-weight: 600;
+
     line-height: 24.96px;
   }
   button, label, div,p, textarea {
@@ -18,7 +21,7 @@ const GlobalStyle = createGlobalStyle `
     line-height: 24.96px;
   }
 input{
-   font-family: ‘SUIT Variable’;
+  font-family: ‘SUIT Variable’;
   &:focus{
     outline: none;
   }

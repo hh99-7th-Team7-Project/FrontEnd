@@ -9,26 +9,18 @@ const HeaderInput = () => {
   const [keyword, setKeyword]=useState()
   console.log(keyword)
 
-const onClick1 =()=>{
-  navigate(`/search/${keyword}`)
-}
 
-const onKeyPress1=(e)=>{
-  if(e.key==="Enter"){
-    onClick1()
-  }
-}
 
   return (
     <ScWrap>
-        <img onClick={onClick1} src={zoom} alt=""style={{cursor:"pointer"}}/>
+        <img onClick={()=>{navigate(`/search/${keyword}`)}} src={zoom} alt=""
+        style={{cursor:"pointer"}}/>
         <ScInput type="search"
          ref={searchRef}
          placeholder="궁금하신 내용을 검색해보세요!"
         onChange={(event) => {
           setKeyword(event.target.value);
         }}
-        onKeyPress={onKeyPress1}
         />
         
     </ScWrap>
