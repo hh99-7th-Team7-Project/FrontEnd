@@ -3,6 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import svg from './svg/MapMaker.svg';
 import svg1 from './svg/Write.svg';
+import  Large  from './svg/Large.svg';
+import  Medium  from './svg/Medium.svg';
+import  Small  from './svg/Small.svg'
 import { Link } from 'react-scroll';
 // import { __getAverageStar } from '../../redux/modules/comment';
 import { useDispatch } from 'react-redux';
@@ -89,13 +92,13 @@ const Review = ({ item, reviewData, url }) => {
           </ScStarPriceContainer>
           <ScImgWrap>
             <div>
-              <ScImg src={url} alt="" />
+              <ScSmallImg src={Small} alt="" />
             </div>
             <div>
-              <ScImg src={url} alt="" />
+              <ScMediumImg src={Medium} alt="" />
             </div>
             <div>
-              <ScImg src={url} alt="" />
+              <ScLargeImg src={Large} alt="" />
             </div>
           </ScImgWrap>
         </ScContentBox>
@@ -214,9 +217,24 @@ const ScImgWrap = styled.div`
   margin: 100px auto;
 `;
 
-const ScImg = styled.img`
-  width: 160px;
-  height: 160px;
-  margin-left: 20px;
-  margin-right: 20px;
+
+const ScSmallImg = styled.img`
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+`;
+
+const ScMediumImg = styled.img`
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+    margin-right: 20px;
+`;
+
+const ScLargeImg = styled.img`
+    width: 160px;
+    height: 160px;
+    margin-left: 20px;
+    margin-right: 20px;
 `;

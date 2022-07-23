@@ -131,16 +131,15 @@ const ScButton = styled.button`
     cursor: pointer;
   }
   border: none;
-
-  background-color: rgb(44, 39, 140, 0%);
+  background-color: rgb(44,39,140,0%);
+  font-weight: 400;
 `;
 
 const ScStar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  color: black;
+  color: black;  
 `;
 
 const ScCardAlign1 = styled.div`
@@ -161,14 +160,17 @@ const ScCommentSpan = styled.span`
 
   text-align: left;
   left: 0;
+  font-weight: 400;
 `;
 
 const ScDateSpan = styled.span`
   color: black;
+  font-weight: 400;
 `;
 
 const ScNickSpan = styled.span`
   color: black;
+  font-weight: 400;
 `;
 
 export default CommentCard;
