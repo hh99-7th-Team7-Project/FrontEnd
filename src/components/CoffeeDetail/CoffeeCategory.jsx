@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Brand from './Slide/Brand';
 import Coffee from './Slide/Coffee';
@@ -6,15 +6,11 @@ import Coffee from './Slide/Coffee';
 
 const CoffeeCategory = () => {
 
-    const [category, setCategory] = useState(true);
+    const [category, setCategory] = useState(false);
 
     const [ brandVisible , setBrandVisible ] = useState(false);
     const [ categoryVisible , setCategoryVisible ] = useState(false);
 
-    // 브랜드 버튼을 누르면 ? 브랜드 드롭다운이 열리고, 음료 드롭다운이 숨겨진다.?
-    // 음료 버튼을 누르면 ?  음료 드롭다운이 열리고 , 브랜드 드롭다운이 숨겨진다..? 
-    // 버튼 온클릭을 누르면 
-    
 
 
   return (
@@ -22,18 +18,22 @@ const CoffeeCategory = () => {
             <ScNavbarWrap>
                 <ScButtonWrap>
                     
+                    
                     <ScCategoryBox onClick={()=>{
                         setBrandVisible(!brandVisible);
+                        setCategory(true);
                         }}>브랜드</ScCategoryBox>
                     <p>|</p>
                     <ScCategoryBox onClick={()=>{
                         setCategoryVisible(!categoryVisible);
+                        setCategory(false);
                         }}>음료</ScCategoryBox>
 
                 </ScButtonWrap>
             </ScNavbarWrap>
-            {brandVisible  ? <Brand open={brandVisible} setOpen={setBrandVisible} />: null } 
-            {categoryVisible  ? <Coffee open={categoryVisible} setOpen={setCategoryVisible} /> : null }          
+            
+            {brandVisible ?  <Brand/>: null } 
+            {categoryVisible ? <Coffee/>: null}
     </div>
     )
 }

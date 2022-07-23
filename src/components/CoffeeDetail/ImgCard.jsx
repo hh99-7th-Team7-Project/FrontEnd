@@ -16,6 +16,8 @@ const ImgCard = ({ url, item, like, setLike }) => {
 
   return (
     <>
+
+
       <div>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
@@ -46,6 +48,7 @@ const ImgCard = ({ url, item, like, setLike }) => {
       <ScImgWrap>
         <ScImg src={url} />
       </ScImgWrap>
+
     </>
   );
 };
