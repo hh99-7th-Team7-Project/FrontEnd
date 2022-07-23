@@ -27,6 +27,8 @@ const MyPage = () => {
   const [convertImg, setConvertImg] = useState(profileOrigin);
   const [changeImg, setChangeImg] = useState(false);
   const [condition, setCondition] = useState('');
+  const [countBoard,setCountBoard] =useState()
+  const [countChat,setCountChat] =useState()
 
   console.log(changeImg);
 
@@ -39,6 +41,23 @@ const MyPage = () => {
     };
     profile();
   }, [setUpdate]);
+
+  useEffect(()=>{
+    const boardCount = async ()=>{
+      await apis.getMyBoardCount(userId)
+      .then((res)=>{
+        setCountBoard(res.data)
+      })
+    }
+    const chatCount =  async ()=>{
+      await apis.getMyChatCount(userId)
+      .then((res)=>{
+        setCountChat(res.data)
+      })
+    }
+    boardCount()
+    chatCount()
+  },[])
 
   console.log(nick);
   console.log(newProfileImg);
@@ -161,7 +180,7 @@ const MyPage = () => {
               </ScMyWriteBtn>
               <div style={{ color: '#9A2ACC', marginLeft: '34px' }}>
                 <ScMyTitle>내가 쓴 글 갯수</ScMyTitle>
-                <div style={{ fontSize: '32px' }}>100</div>
+                <div style={{ fontSize: '32px' }}>{countBoard}</div>
               </div>
             </ScMywrite>
             <ScChat>
@@ -170,7 +189,7 @@ const MyPage = () => {
               </ScMyWriteBtn>
               <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
                 <ScMyTitle>내가 참여한 모임수</ScMyTitle>
-                <div style={{ fontSize: '32px' }}>100</div>
+                <div style={{ fontSize: '32px' }}>{countChat}</div>
               </div>
             </ScChat>
           </div>

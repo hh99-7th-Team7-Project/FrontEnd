@@ -5,11 +5,14 @@ import BoardMap from '../../components/board/BoardMap';
 import apis from '../../shared/api/main';
 import Header from '../Header/Header';
 import { getCookie } from '../../shared/Cookie';
+import BoardPagination from '../../components/board/Pagination/BoardPagination';
 
 const SearchBoard = () => {
   const { keyword } = useParams();
   const navigate = useNavigate();
   const [boardReducer, setBoardReducer] = useState();
+  const [totalpage , settotalPage ]= useState(0)
+  const [page, setPage] =useState(0)
 
   const token = getCookie('token');
 
@@ -17,16 +20,18 @@ const SearchBoard = () => {
     const search = async () => {
       if (!token) {
         apis
-          .searchBoard(keyword)
-
+          .searchBoard(keyword, page)
           .then((res) => {
             console.log(res);
-            setBoardReducer(res?.data);
+            setBoardReducer(res?.data.post);
+            settotalPage(res?.data.totalPage)  
           });
       } else {
-        apis.searchBoardLogin(keyword).then((res) => {
+        apis.searchBoardLogin(keyword,page)
+        .then((res) => {
           console.log(res);
-          setBoardReducer(res?.data);
+          setBoardReducer(res?.data.post);
+          settotalPage(res?.data.totalPage) 
         });
       }
     };
@@ -34,7 +39,7 @@ const SearchBoard = () => {
   }, [keyword]);
 
   return (
-
+<>
         <ScWrap>
           <div style={{margin:"auto"}}> 
             <Header/>
@@ -46,6 +51,14 @@ const SearchBoard = () => {
             })} 
           </ScBoardWrap>
        </ScWrap>
+       <footer>
+        <BoardPagination 
+          total={totalpage}              
+          page={page}
+          setPage={setPage}
+        />
+      </footer> 
+       </>
    )
   
 }

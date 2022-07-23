@@ -17,14 +17,14 @@ const BoardSearch = (props) => {
   useEffect(() => {
     const search = async () => {
       if (!token) {
-        apis.searchBoard(keyword).then((res) => {
+        apis.searchBoard(keyword,0).then((res) => {
           console.log(res);
-          setBoardReducer(res?.data);
+          setBoardReducer(res?.data.post);
         });
       } else {
-        apis.searchBoardLogin(keyword).then((res) => {
+        apis.searchBoardLogin(keyword,0).then((res) => {
           console.log(res);
-          setBoardReducer(res?.data);
+          setBoardReducer(res?.data.post);
         });
       }
     };
