@@ -19,8 +19,10 @@ import BoardLogo from './BoardLogo.svg';
 import ChatLogo from './ChatLogo.svg'
 import Chatimoji from './Chatimoji.svg'
 import ChatLogoSmall from './ChatLogoSmall.svg'
+import MainCard1 from './MainCard1.svg'
 
 export {
+  MainCard1,
   ChatLogoSmall,
   Chatimoji,
   ChatLogo,

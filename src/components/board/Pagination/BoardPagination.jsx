@@ -9,20 +9,20 @@ const BoardPagination = ({total, page, setPage}) => {
         <ScNav>
             <ScButton 
                 onClick={()=>setPage(page - 1)}
-                disabled={page === 1}>
+                disabled={page === 0}>
                 &lt;
             </ScButton>
             {Array(total)
                 .fill()
                 .map((_, i)=>(
                     <ScButton
-                        key={i + 1}
-                        onClick={()=>setPage(i + 1)}
-                        aria-current={page === i + 1? "page" : null}> {i + 1}
+                        key={i}
+                        onClick={()=>setPage(i )}
+                        aria-current={page === i ? "page" : null}> {i +1 }
                     </ScButton>
                 ))}
             <ScButton 
-                onClick={()=>setPage(page + 1)}
+                onClick={()=>setPage(page +1)}
                 disabled={page === total}>
                 &gt;
             </ScButton>

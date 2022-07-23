@@ -94,7 +94,7 @@ console.log(posts)
 const ScTopCard = styled.div`
   display: flex;
   height: 400px;
-  background-color: #ddd;
+  background-color:#F5EABB;
   margin-bottom: 74px;
 `;
 

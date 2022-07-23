@@ -13,7 +13,15 @@ const BoardList = () => {
   // console.log(content)
   const token = getCookie('token');
 
- 
+
+
+  const [totalpage , settotalPage ]= useState(0)
+  const [page, setPage] =useState(0)
+
+
+
+
+
 
 
 
@@ -24,17 +32,19 @@ const BoardList = () => {
           .getBoards()
           .then((res) => {
             console.log(res.data);
-            setContent(res.data);            
+            setContent(res.data.post);  
+            settotalPage(res?.data.totalPage)          
           });
       } else {
         await apis.getBoardsLogin().then((res) => {
           console.log(res.data);
-          setContent(res.data);
+          setContent(res.data.post);
+          settotalPage(res?.data.totalPage) 
         });
       }
     };
     getMark();
-  }, []);
+  }, [page]);
 
 
 
@@ -52,7 +62,12 @@ const BoardList = () => {
         </ScBoard>
       </ScWrap>
       <footer>
-        <BoardPagination           
+
+        <BoardPagination 
+          total={totalpage}              
+          page={page}
+          setPage={setPage}
+
         />
       </footer> 
                     
