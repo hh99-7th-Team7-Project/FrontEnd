@@ -30,7 +30,7 @@ const ImgSlide = () => {
                 <ScDot onClick={secondDot} img={img} />
                 <ScDot onClick={thirdDot} img={img} />
               </ScDotWrap>
-            </ScDotAlign>
+             </ScDotAlign>
           </ScContentWrap>
          
         </ScImg>
@@ -59,6 +59,7 @@ const ImgSlide = () => {
             </ScDotAlign>
           </ScContentWrap>
         </ScImg>
+
       </ScImgSlideWrap>
     </ScWrap>
   );
@@ -67,13 +68,13 @@ const ImgSlide = () => {
 const ScWrap = styled.div`
   overflow: hidden;
   width: 100%;
-  /* height: 500px; */
 `;
 
 const ScImgSlideWrap = styled.div`
+  overflow: hidden;
   position: relative;
   display: flex;
-  width: 500vw;
+  width: 100%;
   transition: 0.5s ease-in-out;
   transform: translate(${(props) => props.img}vw);
 `;
@@ -87,7 +88,7 @@ const ScImg = styled.div`
   display: flex;
   justify-content: center;
   align-items: left;
-  width: 100vw;
+  width: 100%;
   height: 500px;
   background-color: aliceblue;
   background-image: url(${(props) => props.src});
@@ -104,6 +105,7 @@ const ScContentWrap = styled.div`
   position: fixed;
   width: 100px;
   height: 70px;
+  
   /* padding-top: 20px; */
 `;
 

@@ -151,6 +151,7 @@ const ScSlide = styled.div`
   align-items: center;
   &:hover {
     animation: ${animation} 0.5s;
+    cursor: pointer;
   }
 `;
 const SCcardWrap = Styled.div`
