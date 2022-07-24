@@ -46,7 +46,7 @@ const SearchBoard = () => {
   return (
     <>
       <ScWrap>
-        <div style={{ margin: "auto", width: "62%" }}>
+        <div style={{ margin: "auto", width: "80%" }}>
           <Header />
         </div>
         <ScTitle>"{keyword}"에 대한 검색 결과입니다.</ScTitle>
