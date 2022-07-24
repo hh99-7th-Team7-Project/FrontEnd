@@ -31,7 +31,7 @@ const token = getCookie("token")
     <>
 
 
-      <div>
+      <div style={{display:"flex", flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
         </ScBrandTitle>
@@ -77,7 +77,7 @@ const ScBrandTitle = styled.div`
   gap: 10px;
 `;
 
-const ScH3 = styled.h3`
+const ScH3 = styled.div`
   text-align: center;
   margin: 10px auto;  
 `;
@@ -88,7 +88,8 @@ const ScCoffeeTitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  font-size: 1.75em;
+  transform: translateX(-5%);
 `;
 
 const ScImgBookMark = styled.img`
@@ -96,7 +97,7 @@ const ScImgBookMark = styled.img`
   width: 30px;
 `;
 
-const ScH1 = styled.h1`
+const ScH1 = styled.div`
   width: 500px;
   padding: 20px auto;
   margin: 20px auto;
@@ -109,7 +110,7 @@ const ScSubTitle = styled.div`
   margin: auto;
 `;
 
-const ScH4 = styled.h4`
+const ScH4 = styled.div`
   color: gray;
   width: 80px;
   text-align: center;
