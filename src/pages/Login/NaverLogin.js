@@ -6,6 +6,7 @@ import { setUser } from '../../redux/modules/users';
 import { setCookie } from '../../shared/Cookie';
 import { api, apin } from '../../shared/api/core/api';
 
+
 import Swal from 'sweetalert2';
 
 const NaverLogin = () => {
@@ -13,7 +14,7 @@ const NaverLogin = () => {
   const navigate = useNavigate();
   let code = new URL(window.location.href).searchParams.get('code');
   let state = new URL(window.location.href).searchParams.get('state');
-  console.log(code);
+
   React.useEffect(() => {
     if (code) {
       const naver = () => {
