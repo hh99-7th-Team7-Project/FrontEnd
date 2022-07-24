@@ -18,40 +18,52 @@ const Board = () => {
     
   return (
     <>
-     <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      <ScWrap>
-        <ScTopCard>
-          <img src={BoardLogo} alt="" style={{ width: "100%" }} />
-          <ScTopWord style={{ margin: "167px 35% 159px 60%" }}>
-            <ScMainTitle>커피를 사랑하는<br/> 사람들의 커피 연구소</ScMainTitle>
-            <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt="" /><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
-          </ScTopWord>
-        </ScTopCard>
-        <PopularBoard />
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <ScCategory>
+    <ScMobile>
+      <div style={{margin:"auto", width:"62%"}}>
+          <Header />
+        </div>
+        <ScWrap>
+          <ScTopCard>
+            <img src={BoardLogo} alt="" style={{ width: "100%" }} />
+            <ScTopWord style={{ margin: "167px 35% 159px 60%" }}>
+              <ScMainTitle>커피를 사랑하는<br/> 사람들의 커피 연구소</ScMainTitle>
+              <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt="" /><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
+            </ScTopWord>
+          </ScTopCard>
+          <PopularBoard />
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <ScCategory>
 
-            <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
-            <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 레시피</ScMyrecipe>
-            <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
-            <ScEtc onClick={() => { setCategory("기타") }}>사담</ScEtc>
-          </ScCategory>       
-                {category === 0 && <BoardList/>}            
-                {category !== 0 && <BoardListCategory category={category}/>}
-          </div>
-      </ScWrap>
+              <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
+              <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 레시피</ScMyrecipe>
+              <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
+              <ScEtc onClick={() => { setCategory("기타") }}>사담</ScEtc>
+            </ScCategory>       
+                  {category === 0 && <BoardList/>}            
+                  {category !== 0 && <BoardListCategory category={category}/>}
+            </div>
+          </ScWrap>
+      </ScMobile>
     </>
   )
 }
 
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
+
 const ScWrap = Styled.div`
-  display: column;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 const ScTopCard = styled.div`
-   display: flex;
+  display: flex;
   height: 400px;
   position: relative;
   background-color: #FFE4E0;
