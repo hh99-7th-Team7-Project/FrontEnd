@@ -25,7 +25,7 @@ const Board = () => {
         <ScWrap>
           <ScTopCard>
             <img src={BoardLogo} alt="" style={{ width: "100%" }} />
-            <ScTopWord style={{ margin: "57px 35% 159px 60%" }}>
+            <ScTopWord style={{ margin: "80px 35% 159px 60%" }}>
               <ScMainTitle>커피를 사랑하는<br /> 사람들의 커피 연구소</ScMainTitle>
               <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt="" /><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
             </ScTopWord>
