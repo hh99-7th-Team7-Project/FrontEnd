@@ -5,9 +5,10 @@ import styled from "styled-components";
 import { motion } from "framer-motion"
 import unchecked from '../shared/svg/Unchecked.svg'
 import checked from '../shared/svg/Checked.svg'
-import Modal from '../components/main/Modal';
 import SignupModal from '../components/Signup/SignupModal';
+import { useMediaQuery } from 'react-responsive';
 import * as Sentry from "@sentry/react";
+
 
 const SignUp = (props) => {
   const navigate = useNavigate();
@@ -36,6 +37,10 @@ const SignUp = (props) => {
   const [goToSignup, setGoToSignup] = useState(true)
 
   const [modal, setModal]=useState(false)
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
 
   const openModal = () => {
     setModal(true);
@@ -296,7 +301,7 @@ const SignUp = (props) => {
             <SignupModal showModal={modal} closeModal={closeModal} signupAfter={signupAfter} email={emailRef?.current?.value+Selected}/>
             <ScLoginButton onClick={()=>{navigate('/')}}style={{backgroundColor:"black"}}>돌아가기</ScLoginButton>
           </ScSignupWrap>
-          <ScImageBox/>
+          {isMobile ? null : <ScImageBox/> }
       </ScWrap2>
     </motion.div>
 

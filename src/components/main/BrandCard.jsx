@@ -46,6 +46,7 @@ const BrandCard = (props) => {
   // }
 
   return (
+
     <div style={{position:'relative'}}>
  
       <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
@@ -121,11 +122,13 @@ const BrandCard = (props) => {
             coffeeReducer.map((item, index) => {
               return <CoffeeCard key={index} item={item} />;
             })}
-        </SCcardWrap>
+          </SCcardWrap>
+        </div>
       </div>
-    </div>
   );
 };
+
+
 
 const animation = keyframes`
   50% {

@@ -40,12 +40,21 @@ const BoardComment = ({head}) => {
         })
       );
     } else {
-      Swal.fire({
-        title: '댓글을 등록해주세요!',
-        text: '빈칸입니다',
-        icon: 'warning',
-        confirmButtonText: '확인',
-      });
+      if (!nickname) {
+        Swal.fire({
+          title: '아직 회원이 아니신가요?',
+          text: '로그인을 해주세요!',
+          icon: 'warning',
+          confirmButtonText: '확인',
+        });
+      } else {
+        Swal.fire({
+          title: '댓글을 등록해주세요!',
+          text: '빈칸입니다',
+          icon: 'warning',
+          confirmButtonText: '확인',
+        });
+      }      
     }
   };
 

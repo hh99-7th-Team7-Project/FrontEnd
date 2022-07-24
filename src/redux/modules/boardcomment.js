@@ -72,8 +72,9 @@ export const __addBoardComment = (payload) => async (dispatch, getState) => {
     console.log(error);
     if (error.response.status === 401) {
       Swal.fire({
-        title: '로그인을 해주세요!',
-        icon: 'error',
+        title: '아직 회원이 아니신가요?',
+        text: '로그인을 해주세요!',
+        icon: 'warning',
         confirmButtonText: '확인',
       });
     }

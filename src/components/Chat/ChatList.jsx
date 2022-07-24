@@ -6,6 +6,7 @@ import IconTime from '../../Image/Chat/time.svg';
 import coffee from '../../Image/Chat/coffee.svg';
 import person from '../../Image/Chat/person.png';
 import { getCookie } from '../../shared/Cookie';
+import Swal from 'sweetalert2';
 
 const ChatList = (data) => {
   const navigate = useNavigate();
@@ -17,7 +18,12 @@ const ChatList = (data) => {
     if(token){
       navigate(`/chatposts/detail/${id}`)
     }else{
-      alert("로그인하세요")
+      Swal.fire({
+        title: '아직 회원이 아니신가요?',
+        text: '로그인을 해주세요!',
+        icon: 'warning',
+        confirmButtonText: '확인',
+      });
     }
   }
 

@@ -98,7 +98,7 @@ const ScWrap = styled.div`
   position: relative;
   margin: 20px auto;
   margin-top: -90px;
-  width: 70vw;
+  width: 70%;
   height: 500px;
   padding: 20px;
   overflow-y: auto;
@@ -113,6 +113,11 @@ const ScWrap = styled.div`
   }
   ::-webkit-scrollbar-track {
     background-color: #eee;
+  }
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
   }
 `;
 
