@@ -69,7 +69,7 @@ const ScBtn = styled.div`
   border: none;
   color: #000000;
   width: 130px;
-  height: 50px;
+  top: 450px;
   font-weight: 100;
   border-radius: 10px;
   position: absolute;

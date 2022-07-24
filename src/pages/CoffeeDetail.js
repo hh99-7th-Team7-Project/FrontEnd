@@ -36,8 +36,8 @@ setLike(coffeeReducer?.loveCheck)
 return (
 
     <>
-      <div style={{margin:"auto"}}> 
-        <Header/>
+    <div style={{margin:"auto", width:"62%"}}>
+        <Header />
       </div>
       <div>
         {/* <CoffeeCategory/> */}

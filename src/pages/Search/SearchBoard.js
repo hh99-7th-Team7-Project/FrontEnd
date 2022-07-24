@@ -41,9 +41,9 @@ const SearchBoard = () => {
   return (
 <>
         <ScWrap>
-          <div style={{margin:"auto"}}> 
-            <Header/>
-          </div>
+        <div style={{margin:"auto", width:"62%"}}>
+        <Header />
+      </div>
           <ScTitle>"{keyword}"에 대한 검색 결과입니다.</ScTitle>
           <ScBoardWrap>
             {boardReducer&&boardReducer.map((item,idx)=>{

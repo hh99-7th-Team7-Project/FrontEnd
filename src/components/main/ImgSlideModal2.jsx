@@ -14,10 +14,10 @@ const ImgSlideModal2 = () => {
   return (
     <>
     <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-      <SwiperSlide><img src="/mainmodal/1.jpg" alt=""/></SwiperSlide>
-      <SwiperSlide><img src="/mainmodal/2.jpg" alt=""/></SwiperSlide>
-      <SwiperSlide><img src="/mainmodal/3.jpg" alt=""/></SwiperSlide>
-      <SwiperSlide><img src="/mainmodal/4.jpg" alt=""/></SwiperSlide>
+      <SwiperSlide><img src="/mainmodal/1.webp" alt=""/></SwiperSlide>
+      <SwiperSlide><img src="/mainmodal/2.webp" alt=""/></SwiperSlide>
+      <SwiperSlide><img src="/mainmodal/3.webp" alt=""/></SwiperSlide>
+      <SwiperSlide><img src="/mainmodal/4.webp" alt=""/></SwiperSlide>
     </Swiper>
   </>
   )

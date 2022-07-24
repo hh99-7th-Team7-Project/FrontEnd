@@ -40,12 +40,11 @@ const CategoryCard = (props) => {
     { brand: 'TEA', id: 4, logo: '/category/티.png' },
   ];
 
-  // const coffeeLoad =(e)=>{
-  //   <add className ="active" here>
-  // }
 
   return (
-    <>
+    <div style={{position:'relative'}}>
+      <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
+      <div className="next" style={{fontSize:"30px"}}>&gt;</div>
       <Swiper
         slidesPerView={8}
         spaceBetween={10}
@@ -55,7 +54,9 @@ const CategoryCard = (props) => {
         // pagination={{
         //   clickable: true,
         // }}
-        navigation={true}
+        navigation={{
+          prevEl: '.prev',
+           nextEl: '.next', }}
         modules={[Navigation]}
         breakpoints={{
           0: {
@@ -77,7 +78,7 @@ const CategoryCard = (props) => {
             slidesPerView: 9,
           },
         }}
-        className="mySwiper"
+        className="mySwiper2"
       >
         {categoryList.map((item, index) => {
           return (
@@ -98,8 +99,8 @@ const CategoryCard = (props) => {
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
                 ></ScSlide>
-              </div>
               <div style={{ textAlign: 'center' }}>{item?.brand}</div>
+              </div>
             </SwiperSlide>
           );
         })}
@@ -114,7 +115,7 @@ const CategoryCard = (props) => {
             })}
         </SCcardWrap>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -125,15 +126,15 @@ const animation = keyframes`
 `;
 
 const ScSlide = styled.div`
-  text-align: center;
-  font-size: 18px;
+  /* text-align: center; */
+  /* font-size: 18px; */
   width: 120px;
   height: 120px;
-
+  transform: scale(0.9);
   background: no-repeat center;
   border: 1px solid var(--main);
   background-size: cover;
-  transform: scale(0.9);
+
   border-radius: 60px;
 
   /* Center slide text vertically */
