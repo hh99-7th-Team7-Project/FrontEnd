@@ -50,8 +50,6 @@ const Comment = ({ item }) => {
 
   return (
     <ScWrap>
-
-
       <div>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
@@ -107,7 +105,12 @@ const Comment = ({ item }) => {
 
 const ScWrap = styled.div`
   margin: 100px auto;
-  width: auto;
+  width: 100%;
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
 `;
 
 const ScBrandTitle = styled.div`
@@ -152,7 +155,7 @@ const ScOneCommentTitle = styled.h2`
 `;
 
 const ScStarContainer = styled.div`
-  width: 1080px;
+  width: 70%;
   height: 40px;
   background-color: white;
   display: flex;
@@ -160,17 +163,20 @@ const ScStarContainer = styled.div`
   align-items: center;
   margin: 100px auto;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+  
 `;
 
 const ScInput = styled.input`
 
-  width: 800px;
+  width: 60%;
   height: 40px;
   margin: 30px auto;
   border: none;
   border-radius: 2px;
   font-size: 20px;
   text-align: left;
+  
+  
 
 `;
 
@@ -199,7 +205,7 @@ const ScReviewBtn = styled.button`
 const ScCardTitie = styled.div`
   position: relative;
   margin: 20px auto;
-  width: 70vw;
+  width: 70%;
   padding: 20px;
   border-top: 2px solid black;
   display: flex;
