@@ -18,7 +18,7 @@ const Board = () => {
     
   return (
     <>
-      <div style={{ margin: "auto" }}>
+     <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>
       <ScWrap>

@@ -46,7 +46,10 @@ const BrandCard = (props) => {
   // }
 
   return (
-    <>
+    <div style={{position:'relative'}}>
+ 
+      <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
+      <div className="next" style={{fontSize:"30px"}}>&gt;</div>
       <Swiper
         slidesPerView={8}
         spaceBetween={10}
@@ -56,7 +59,9 @@ const BrandCard = (props) => {
         // pagination={{
         //   clickable: true,
         // }}
-        navigation={true}
+        navigation={{
+           prevEl: '.prev',
+            nextEl: '.next', }}
         modules={[Navigation]}
         breakpoints={{
           0: {
@@ -78,8 +83,9 @@ const BrandCard = (props) => {
             slidesPerView: 9,
           },
         }}
-        className="mySwiper"
+        className="mySwiper2"
       >
+   
         {brandList.map((item, index) => {
           return (
             <SwiperSlide key={index} className="slide">
@@ -99,12 +105,14 @@ const BrandCard = (props) => {
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
                 ></ScSlide>
+                
                 <div style={{ textAlign: 'center' }}> {item?.brand}</div>
               </div>
             </SwiperSlide>
           );
         })}
       </Swiper>
+   
 
       <div>
         <SCcardWrap>
@@ -115,7 +123,7 @@ const BrandCard = (props) => {
             })}
         </SCcardWrap>
       </div>
-    </>
+    </div>
   );
 };
 
