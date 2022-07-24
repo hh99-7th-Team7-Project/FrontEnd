@@ -108,7 +108,15 @@ const closeModal = () => {
         <ScText><hr />소셜 로그인<hr /></ScText>
         <ScSocialWrap>
           <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a>
-          <a href={NAVER_AUTH_URL}><ScImg src="/네이버.png" /></a>
+          {/* <a href={NAVER_AUTH_URL}> */}
+          <ScImg src="/네이버.png" onClick={()=>{
+            Swal.fire({
+              title: '준비중입니다.',
+              icon: 'info',
+              confirmButtonText: '확인',
+            })
+          }} />
+          {/* </a> */}
           <a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg" /></a>
         </ScSocialWrap>
       </ScLogin>

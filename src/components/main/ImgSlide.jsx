@@ -18,10 +18,11 @@ const ImgSlide = () => {
 
   return (
     <ScWrap>
-      <ScImgSlideWrap img={img}>
-        <a href='https://www.naver.com'></a>
-        <ScImg src={MainCard1}>
-           
+      <ScImgSlideWrap img={img}>        
+          <ScA href='https://forms.gle/yGy74NsTZwQJWycVA' target="_blank">
+            <div style={{backgroudColor:"red",width:"100vw",height:"450px",position:"absolute",zIndex:"99", top: "60px"}}></div>
+          </ScA>        
+        <ScImg src={MainCard1}>           
           <ScContentWrap>
             <ScDotAlign>
               <ScDotWrap>
@@ -76,6 +77,11 @@ const ScImgSlideWrap = styled.div`
   transition: 0.5s ease-in-out;
   transform: translate(${(props) => props.img}vw);
 `;
+
+const ScA = styled.a`
+  position: absolute;
+`;
+
 
 const ScImg = styled.div`
   display: flex;
