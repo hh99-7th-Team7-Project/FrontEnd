@@ -7,15 +7,15 @@ import Header from '../Header/Header';
 const ChatDetail = () => {
   return (
     <>
-  <div style={{margin:"auto", width:"62%"}}>
+      <div style={{ margin: "auto", width: "62%" }}>
         <Header />
       </div>
       <ScTopCard2>
-          <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
-          <ScTopWord style={{ margin: '60px 70% 60px 20%' }}>
-              우리 같이 커피마셔요!
-          </ScTopWord>
-        </ScTopCard2>
+        <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
+        <ScTopWord style={{ margin: '60px 70% 60px 20%' }}>
+          우리 같이 커피마셔요!
+        </ScTopWord>
+      </ScTopCard2>
       <ChatDetailItem></ChatDetailItem>
     </>
   );
@@ -27,7 +27,7 @@ const ScTopCard2 = styled.div`
   display: flex;
   height: 135px;
   background-color:#F5EABB;
-  font-size: 24px;
+  font-size: 1.5em;
 `;
 const ScTopWord = styled.div`
 position: absolute;

@@ -59,7 +59,7 @@ export default CoffeeCard
 
 const SCcardText = styled.div`    
     /* margin: 10px auto; */
-    /* font-size: 30px; */
+    /* font-size: 1.875em; */
 `;
 
 const ScBeforeHover = styled.div`

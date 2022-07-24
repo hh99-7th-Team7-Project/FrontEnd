@@ -18,13 +18,13 @@ const BoardUpdate = () => {
   const [loading, setLoading] = useState(false)
   const [prevContent, setPrevContent] = useState()
   const [head, setHead] = useState()
-  
+
   // console.log(cate)
   // console.log(title)
   // console.log(content)
 
   const submitOnclick = async () => {
-    const data ={"title": title, "content": content, "category": cate}
+    const data = { "title": title, "content": content, "category": cate }
     await apis.updateBoard(
       boardId,
       data
@@ -45,7 +45,7 @@ const BoardUpdate = () => {
           setCate(res?.data?.category)
         }).catch(e => {
           Sentry.captureException(e);
-      });
+        });
     }
     getMark()
   }, [loading])
@@ -55,15 +55,15 @@ const BoardUpdate = () => {
   return (
     <>
       <ScMobile>
-        <div style={{margin:"auto", width:"100%"}}>
+        <div style={{ margin: "auto", width: "100%" }}>
           <Header />
         </div>
         <ScWrite>
-        <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
-        <ToastEditUpdate content={setContent} prevContent={prevContent} />
-        <ScSubmit>
-        <div onClick={submitOnclick}>제출</div>
-        </ScSubmit>
+          <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
+          <ToastEditUpdate content={setContent} prevContent={prevContent} />
+          <ScSubmit>
+            <div onClick={submitOnclick}>제출</div>
+          </ScSubmit>
         </ScWrite>
       </ScMobile>
     </>
@@ -89,7 +89,7 @@ const ScSubmit = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
-  font-size: 16px;
+  font-size: 1em;
   margin: 20px;
   div {
     background-color: #ddd;

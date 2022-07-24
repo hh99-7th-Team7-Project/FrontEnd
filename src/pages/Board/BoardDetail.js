@@ -44,17 +44,17 @@ const BoardDetail = () => {
       setContent(res?.data.content);
     }).catch(e => {
       Sentry.captureException(e);
-  });;
+    });;
   }, []);
 
   return (
     <>
       <ScMobile>
-        <div style={{margin:"auto", width:"62%"}}>
+        <div style={{ margin: "auto", width: "62%" }}>
           <Header />
         </div>
         <ScImgContainer>
-          <div style={{display:"flex", height:"135px", position:"relative"}}>
+          <div style={{ display: "flex", height: "135px", position: "relative" }}>
             <ScImg src={BoardImg} alt="" />
             <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
           </div>
@@ -73,7 +73,7 @@ const BoardDetail = () => {
             like2={like}
             setLike={setLike}
           />
-          <BoardComment 
+          <BoardComment
             head={boardReducer}
           />
         </ScWrap>
@@ -102,7 +102,7 @@ const ScTitle = styled.div`
   width: 377px;
   line-height: 30px;
   margin: 40px auto;
-  font-size: 24px;
+  font-size: 1.5em;
   font-weight: 500;
   font-family: 'SUIT Heavy';
   margin-left: 350px;

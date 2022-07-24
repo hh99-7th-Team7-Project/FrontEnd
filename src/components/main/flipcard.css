@@ -9,7 +9,7 @@
   width: 30.5vw;
   height: 330px;
   border: 1px solid #828282;
-  /* font-size: 35px; */
+  /* font-size: 2.1875em; */
   /*카드의 뒷면을 안보이게 처리-카드가 뒤집히면 뒷면이 안보임*/
   backface-visibility: hidden;
   transition: 1s;
