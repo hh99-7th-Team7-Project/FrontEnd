@@ -13,12 +13,14 @@ const Chat = () => {
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(6);
   const [page, setPage] = useState(1);
+ const [write, setWrite] = useState(false);
 
   useEffect(() => {
-    apis.getChatLists(page)
+   const Loading =async()=> await apis.getChatLists(page)
       .then((data) => setPosts(data.data));
     console.log(page);
-  }, [page]);
+    Loading()
+  }, [page, write]);
 
   const chatpostList = posts?.chatpostList;
   const totalPage = posts?.totalPage;
@@ -27,7 +29,7 @@ console.log(posts)
 
   // const chatReducer = useSelector((state) => state?.chat?.list);
 
-  const [write, setWrite] = useState(false);
+ 
 
   return (
     <div>
