@@ -53,7 +53,7 @@ const ModalContainer = styled.div`
 
     border-radius: 10px;
     text-align: center;
-    font-size: 16px;
+    font-size: 1em;
 `;
 const ScX =styled.div`
   position: absolute;

@@ -226,7 +226,7 @@ const BtnWrap = styled.div`
     display: flex;
   }
   & span {
-    font-size: 20px;
+    font-size: 1.25em;
     margin-left: 20px;
   }
 `;
@@ -293,12 +293,12 @@ const TitleWrap = styled.div`
   margin: 10px 0;
   & span {
     display: inline-block;
-    font-size: 25px;
+    font-size: 1.5625em;
     font-weight: 700;
     margin: 10px 0 15px 0;
   }
   & p {
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: 700;
     color: #000;
     margin-bottom: 5px;
@@ -309,11 +309,11 @@ const Contents = styled.div`
   margin-top: 30px;
   & span {
     display: inline-block;
-    font-size: 20px;
+    font-size: 1.25em;
     margin-bottom: 10px;
   }  
   & p {
-    font-size: 16px;
+    font-size: 1em;
     height: ${(props) => (props.content === true ? '150px;' : '95px')};
     overflow-y: scroll;    
   }

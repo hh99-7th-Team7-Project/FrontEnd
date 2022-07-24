@@ -112,7 +112,7 @@ const ScInputWrap = styled.div`
 const ScSpan = styled.span`
   width: 100px;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25em;
   margin: 10px auto;
 `;
 

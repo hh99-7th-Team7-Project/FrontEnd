@@ -161,7 +161,7 @@ const PartyDetail = (props) => {
                     size="12px"
                     nowrap
                     color="#5E5E5E"
-                    // ellipsis="1"
+                  // ellipsis="1"
                   >
                     {curtParty?.beforeTime}
                   </Text>
@@ -198,8 +198,8 @@ const PartyDetail = (props) => {
                   <Grid width="18px">
                     <Icon
                       type="partyPeople"
-                      width="16px"
-                      height="16px"
+                      width="1em"
+                      height="1em"
                       margin="0 auto"
                       fill="#43CA3B"
                     />
@@ -216,14 +216,14 @@ const PartyDetail = (props) => {
                   {/* <Icon type="detailBtn" width="8px" height="13" margin="auto" _onClick={()=>{alert("참여인원정보 확인?")}} /> */}
                 </Grid>
                 <Grid padding="45px 0">
-                  <Text margin="0" size="16px" bold="500" wordBreak="break-all">
+                  <Text margin="0" size="1em" bold="500" wordBreak="break-all">
                     {curtParty?.partyContent}
                   </Text>
                 </Grid>
               </Grid>
             </Grid>
             <Grid padding="12px 14px 18px" margin="0" height="auto" bg="#fff">
-              <Text margin="0" size="16px" bold="600">
+              <Text margin="0" size="1em" bold="600">
                 참여인원
               </Text>
               {partymember?.map((p, idx) => {

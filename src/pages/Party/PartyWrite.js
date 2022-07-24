@@ -529,7 +529,7 @@
 //     border: 0.45em solid transparent;
 //   }
 //   .fomrmatDate {
-//     font-size: 22px;
+//     font-size: 1.375em;
 //     font-weight: 500;
 //   }
 //   .react-datepicker__day--selected {

@@ -9,7 +9,7 @@
 #menu span {
   display: flex;
   width: 200px;
-  /* padding: 2px 16px; */
+  /* padding: 2px 1em; */
   cursor: pointer;
 }
 
@@ -25,7 +25,7 @@
   border-radius: 8px;
   background: #333;
   color: #fff;
-  font-size: 14px;
+  font-size: 0.875em;
   z-index: 2;
 }
 

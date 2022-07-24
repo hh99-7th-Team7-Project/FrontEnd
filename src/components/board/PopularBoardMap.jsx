@@ -65,7 +65,7 @@ const ScBoardList = styled.div`
   height: 217px;
   padding: 17px 20px 15px 20px;
   border-radius: 12px;
-  font-size: 14px;
+  font-size: 0.875em;
   margin: 24px 30px 24px 0;
   background-color: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.185);
@@ -84,10 +84,10 @@ const ScCategory = styled.span`
   color: #2c278c;
   border-radius: 100px;
   padding: 2px 12px;
-  font-size: 14px;
+  font-size: 0.875em;
 `;
 const ScTitle = styled.div`
-  font-size: 22px;
+  font-size: 1.375em;
   font-weight: 600;
   height: 83px;
   overflow: hidden;

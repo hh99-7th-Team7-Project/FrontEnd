@@ -136,7 +136,7 @@ const ScH1 = styled.h1`
   padding: 20px auto;
   margin: 30px auto;
   text-align: center;
-  font-size: 40px;
+  font-size: 2.5em;
   line-height: 49.92px;
   width: 500px;
 `;
@@ -148,7 +148,7 @@ const ScH3 = styled.h3`
 
 const ScOneCommentTitle = styled.h2`
   width: 500px;
-  font-size: 40px;
+  font-size: 2.5em;
   font-weight: 700;
   line-height: 49.92px;
   text-align: center;
@@ -173,7 +173,7 @@ const ScInput = styled.input`
   margin: 30px auto;
   border: none;
   border-radius: 2px;
-  font-size: 20px;
+  font-size: 1.25em;
   text-align: left;
   
   
@@ -185,7 +185,7 @@ const ScStarSelect = styled.select`
   height: 30px;
   border-radius: 20px;
   text-align: left;
-  font-size: 14px;
+  font-size: 0.875em;
   border: none;
 `;
 

@@ -15,18 +15,18 @@ const Board = () => {
 
 
 
-    
+
   return (
     <>
       <ScMobile>
-        <div style={{margin:"auto", width:"62%"}}>
+        <div style={{ margin: "auto", width: "62%" }}>
           <Header />
         </div>
         <ScWrap>
           <ScTopCard>
             <img src={BoardLogo} alt="" style={{ width: "100%" }} />
             <ScTopWord style={{ margin: "57px 35% 159px 60%" }}>
-              <ScMainTitle>커피를 사랑하는<br/> 사람들의 커피 연구소</ScMainTitle>
+              <ScMainTitle>커피를 사랑하는<br /> 사람들의 커피 연구소</ScMainTitle>
               <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt="" /><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
             </ScTopWord>
           </ScTopCard>
@@ -38,11 +38,11 @@ const Board = () => {
               <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 레시피</ScMyrecipe>
               <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
               <ScEtc onClick={() => { setCategory("기타") }}>사담</ScEtc>
-            </ScCategory>       
-                  {category === 0 && <BoardList/>}            
-                  {category !== 0 && <BoardListCategory category={category}/>}
-            </div>
-          </ScWrap>
+            </ScCategory>
+            {category === 0 && <BoardList />}
+            {category !== 0 && <BoardListCategory category={category} />}
+          </div>
+        </ScWrap>
       </ScMobile>
     </>
   )
@@ -78,7 +78,7 @@ const ScMainTitle = styled.div`
 width: 190%;
 height: 74px;
 font-weight: 700;
-font-size: 34px;
+font-size: 2.125em;
 line-height: 43px;
 margin-bottom: 30px;
 font-family: "SUIT ExtraBold";
@@ -102,12 +102,12 @@ const Scwrite = styled.div`
   color: white;
   width: 166px;
   height: 49px;
-  font-size: 20px;
+  font-size: 1.25em;
   border-radius: 10px;
 `
 const ScCategory = styled.div`
 display: flex;
-font-size: 14px;
+font-size: 0.875em;
 font-weight: 700;
 width: 332px;
 margin: 0 0 0 18%;

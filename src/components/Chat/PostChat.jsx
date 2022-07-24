@@ -282,7 +282,7 @@ const ChatTab = styled.ul`
     width: 74px;
     text-align: center;
     /* margin: 0 12px; */
-    font-size: 18px;
+    font-size: 1.125em;
     font-weight: 700;
     line-height: 58px;
     color: #000000;
@@ -310,7 +310,7 @@ const ChatList = styled.div`
       padding-right: 10px;
       margin: 12px 0;
       strong {
-        font-size: 14px;
+        font-size: 0.875em;
         color: #000;
       }
       dt {
@@ -396,7 +396,7 @@ const ChatList = styled.div`
 `;
 
 const ChatInput = styled.div`
-  padding: 24px 16px;
+  padding: 24px 1em;
   background-color: #2c278c12;
   > div {
     display: flex;

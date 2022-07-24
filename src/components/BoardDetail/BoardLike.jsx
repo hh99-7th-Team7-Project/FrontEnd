@@ -93,7 +93,7 @@ const ScTitleWrap = Styled.div`
 `;
 
 const ScH3 = Styled.h3`
-  font-size: 40px;
+  font-size: 2.5em;
   margin: auto;
 
 `;
@@ -105,7 +105,7 @@ const URLShareButton = Styled.button`
 	border-radius: 24px;
 	border: 0px;
 	font-weight: 800;
-	font-size: 18px;
+	font-size: 1.125em;
 	cursor: pointer;
 	background-color: #7362ff;
 	&:hover {
@@ -132,7 +132,7 @@ const ScBtn = styled.div`
   background-color: #eee;
   border-color: #eee;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.25em;
   &:hover {
     cursor: pointer;
     background-color: #212121;

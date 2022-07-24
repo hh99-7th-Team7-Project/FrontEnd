@@ -79,9 +79,9 @@ const Map = (props) => {
         for (let i = 0; i < places.length; i++) {
           // 마커를 생성하고 지도에 표시합니다
           const placePosition = new window.kakao.maps.LatLng(
-              places[i].y,
-              places[i].x
-            ),
+            places[i].y,
+            places[i].x
+          ),
             marker = addMarker(
               placePosition,
               i,
@@ -166,7 +166,7 @@ const Map = (props) => {
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
       const addMarker = (position, idx, title, url) => {
         const imageSrc =
-            'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+          'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
           imageSize = new window.kakao.maps.Size(36, 37), // 마커 이미지의 크기
           imgOptions = {
             spriteSize: new window.kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
@@ -188,11 +188,11 @@ const Map = (props) => {
 
         // 마커 클릭 이벤트 부분
         const iwContent =
-            '<div style="color:grey;font-size:14px;padding:17px">' +
-            title +
-            '<br><a href="' +
-            url +
-            '" style="color:blue;text-decoration:none;color:#2c278c;font-weight:500;" target="_blank">자세히 보러 가기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+          '<div style="color:grey;font-size:14px;padding:17px">' +
+          title +
+          '<br><a href="' +
+          url +
+          '" style="color:blue;text-decoration:none;color:#2c278c;font-weight:500;" target="_blank">자세히 보러 가기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
           iwPosition = new window.kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
         // 인포윈도우에 닫기 x버튼 추가
@@ -271,7 +271,7 @@ const Map = (props) => {
 
   return (
     <>
-       <div style={{margin:"auto", width:"62%"}}>
+      <div style={{ margin: "auto", width: "62%" }}>
         <Header />
       </div>
       <div style={{ position: 'relative', margin: 'auto' }}>
@@ -291,17 +291,17 @@ const Map = (props) => {
               marginBottom: '10px',
               gap: '5px',
             }}>
-            <div style={{ fontSize: '26px' }}>내주변 카페</div>
-            <div id="menu">
-              <div>
-                <span>
-                  <img src={Info} alt="" />
-                </span>
-                <p className="arrow_box">반경 5KM 안에있는 카페 결과입니다.</p>
+              <div style={{ fontSize: '26px' }}>내주변 카페</div>
+              <div id="menu">
+                <div>
+                  <span>
+                    <img src={Info} alt="" />
+                  </span>
+                  <p className="arrow_box">반경 5KM 안에있는 카페 결과입니다.</p>
+                </div>
               </div>
             </div>
-            </div>
-            <div onClick={()=>{navigate(-1)}}>✖</div>
+            <div onClick={() => { navigate(-1) }}>✖</div>
           </div>
           <ScMap id="map">지도</ScMap>
           <div>
@@ -358,6 +358,6 @@ const ScButton = styled.div`
   background-color: #2c278c;
   border-radius: 50px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25em;
   margin: 20px 0;
 `;
