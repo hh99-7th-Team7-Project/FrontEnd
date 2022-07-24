@@ -5,7 +5,7 @@ const ChatMap = ({location}) => {
   const [info, setInfo] = useState()
   const [markers, setMarkers] = useState([])
   const [map, setMap] = useState()
-
+console.log(location)
   const { kakao } = window;
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const ChatMap = ({location}) => {
         map.setBounds(bounds)
       }
     })
-  }, [map])
+  }, [map, location])
 
   return (
     <Map // 로드뷰를 표시할 Container
