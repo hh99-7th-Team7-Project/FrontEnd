@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef } from 'react';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
-
+import * as Sentry from "@sentry/react";
 import apis from '../../shared/api/main';
 
 const SignupModal = ({showModal,closeModal,signupAfter,email}) => {
@@ -15,6 +15,7 @@ const SignupModal = ({showModal,closeModal,signupAfter,email}) => {
                 })
                 .catch((err)=>{
                   alert("인증에 실패하였습니다 다시 시도해 주세요.")
+                  Sentry.captureException(err);
                 })
   }
 
@@ -28,6 +29,7 @@ const SignupModal = ({showModal,closeModal,signupAfter,email}) => {
                 })
               }).catch((err)=>{
                 alert("인증번호 전송에 실패 했습니다.")
+                Sentry.captureException(err);
               })
   }
   return (
@@ -38,14 +40,14 @@ const SignupModal = ({showModal,closeModal,signupAfter,email}) => {
       <div>"{email}"로 <br/>인증번호 전송이 완료되었습니다.</div>
       <ScClose onClick={closeModal}>✖</ScClose>
      <input
-     style={{height:"30px",width:'200px',borderRadius:"10px", border:"none", paddingLeft:"10px", marginTop:"20px"}}
+     style={{height:"30px",width:'200px',borderRadius:"10px", backgroundColor:"#dddddd65", paddingLeft:"10px",border:"none", marginTop:"20px"}}
      type="text"
      placeholder="인증번호를 입력해주세요"
      ref={verifyRef}
      />
      <div style={{display:"flex", gap:"10px"}}>
-      <ScButton onClick={resendEmail}>인증번호 재전송하기</ScButton>
-     <ScButton onClick={sendVerify}>제출하고 가입완료하기</ScButton>
+      <ScButton onClick={resendEmail}>인증번호 재전송</ScButton>
+     <ScButton onClick={sendVerify}>가입완료</ScButton>
      </div>
      </ScWrap>
      </ModalContainer>
@@ -69,15 +71,16 @@ const ModalContainer = styled.div`
     position: fixed;
     left: 50%;
     top: 50%;
-    color: white;
+    color: var(--main);
     transform: translate(-50%, -50%);
     max-height: 80%;
     width: 20rem;
     height: 50%;
     padding: 16px;
-    background: var(--main);
+    background: white;
     border-radius: 10px;
     text-align: center;
+  
 `;
 
 const ScWrap = styled.div`
@@ -85,7 +88,10 @@ const ScWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 25% auto;
+  /* margin: 25% auto; */
+  height: 99%;
+  border-radius: 10px;
+  border: 3px solid var(--main);
   div{
     margin-top: 20px;
   }
@@ -106,4 +112,7 @@ const ScButton =styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid white;
+  background-color: var(--main);
+  color: white;
 `

@@ -1,5 +1,6 @@
 import apis from '../../shared/api/main';
 import Swal from 'sweetalert2';
+import * as Sentry from "@sentry/react";
 
 const initialState = {};
 
@@ -49,16 +50,19 @@ export function prevPostChat(payload) {
 /* ----------------- 미들웨어 ------------------ */
 export const __loadChatLists = (page) => {
   return async function (dispatch) {
-    const loadData = await apis.getChatLists(page);
-    console.log(loadData.data);
-    dispatch(loadChatLists(loadData.data));
+    try{const loadData = await apis.getChatLists(page);
+    // console.log(loadData.data);
+    dispatch(loadChatLists(loadData.data));}
+    catch(error){
+      Sentry.captureException(error);
+    }
   };
 };
 
 export const __loadOneChatItem = (id) => {
   return async function (dispatch) {
     const loadData = await apis.getOneChatItem(id);
-    console.log(loadData.data);
+    // console.log(loadData.data);
     dispatch(loadOneChatItem(loadData.data));
   };
 };
@@ -67,35 +71,39 @@ export const __addChatItem = (chatitem) => {
   return async function (dispatch) {
     try{
       const loadData = await apis.addChatItem(chatitem)
-      console.log(loadData)
+      // console.log(loadData)
       dispatch(addChatItem(loadData.data))
        Swal.fire({
       title: '저장 완료!',
       icon: 'success',
       confirmButtonText: '확인',
     });
-    }catch{
-
+    }catch(error){
+      Sentry.captureException(error);
     }
   };
 };
 
 export const __prevPostChat = (chatpostId) => {
   return async function (dispatch) {
-    const loadData = await apis.prepostchat(chatpostId);
-    console.log(loadData);
-    dispatch(prevPostChat(loadData.data));
+   try{ const loadData = await apis.prepostchat(chatpostId);
+    // console.log(loadData);
+    dispatch(prevPostChat(loadData.data));}
+    catch(error){
+      Sentry.captureException(error);
+    }
   };
 };
 
 export const __updateChatItem = (data, id) => async (dispatch, getState) => {
   try {
-    console.log('수정', data, id);
+    // console.log('수정', data, id);
     const response = await apis.updateChatItem(data, id);
-    console.log('response data', response.data);
+    // console.log('response data', response.data);
     dispatch(updateChatItem(response.data));
     dispatch(loadOneChatItem(response.data));
   } catch (error) {
+    Sentry.captureException(error);
     console.log(error);
   }
 };

@@ -54,7 +54,7 @@ const ChatWrite = ({ setWrite, write }) => {
   const [hourValue, setHourValue] = React.useState(is_edit ? time[0] : '');
   const [hourValue2, setHourValue2] = React.useState(is_edit ? time[0] : '');
 
-  console.log(hourValue2)
+  // console.log(hourValue2)
   const [minuteValue, setMinuteValue] = React.useState(is_edit ? time[1] : '');
   const [countValue, setCountValue] = React.useState(
     is_edit ? ChatItem?.totalcount : 3
@@ -63,7 +63,7 @@ const ChatWrite = ({ setWrite, write }) => {
   const [mapsValue, setmapsValue] = React.useState(is_edit ? map[1] : '');
   const [maptValue, setmaptValue] = React.useState(is_edit ? map[2] : '');
 
-  console.log(hourValue, minuteValue);
+  // console.log(hourValue, minuteValue);
   //input 값
   const inputTitle = (e) => {
     setChatName(e.target.value);

@@ -43,7 +43,7 @@ const ToastEdit = (props) => {
             let formData = new FormData();
             formData.append('imgUrl', blob);
             const image_data = await apis.postImg(formData);
-            console.log(image_data?.data.img);
+            // console.log(image_data?.data.img);
 
             callback(`${image_data?.data.img}`, `${blob.name.split('.')[0]}`);
           },

@@ -8,8 +8,6 @@ import {
 } from '../../redux/modules/boardcomment';
 import UpdateBoardComment from './UpdateBoardComment';
 import { getCookie } from '../../shared/Cookie';
-import Dot from './svg/Dot.svg';
-import DotDrop from './DotDropDown/DotDrop';
 
 const CommentMap = () => {
   const dispatch = useDispatch();
@@ -19,7 +17,7 @@ const CommentMap = () => {
     (state) => state.boardComment.boardcommentlist
   );
 
-  console.log(comment_list)
+  // console.log(comment_list)
 
   const imgRef = React.useRef();
   const [showUpdate, setShowUpdate] = useState(false);
@@ -27,7 +25,7 @@ const CommentMap = () => {
   const [ buttonVisible , setButtonVisible ] = useState(false);
   const [ showToggle , setShowToggle ] = useState(false);
 
-  console.log(commentId);
+  // console.log(commentId);
 
   return (
     <>

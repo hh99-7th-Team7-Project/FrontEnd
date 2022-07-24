@@ -16,11 +16,11 @@ const BoardComment = ({head}) => {
   const { boardId } = useParams();
   const nickname = getCookie("nickname");
 
-  console.log(head);
+  // console.log(head);
 
   const total = head?.totalComment;
 
-  console.log(total);
+  // console.log(total);
 
 
   useEffect(() => {

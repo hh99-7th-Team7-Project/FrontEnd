@@ -44,8 +44,8 @@ const closeModal = () => {
         }
       )
 
-      console.log(response)
-      console.log(response.headers)
+      // console.log(response)
+      // console.log(response.headers)
 
       //쿠키설정
       setCookie("token", response.headers.authorization.split(" ")[1])

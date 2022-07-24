@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import BoardMap from '../../components/board/BoardMap';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
+import * as Sentry from "@sentry/react";
 
 const BoardSearch = (props) => {
   const { keyword } = props;
@@ -18,14 +19,18 @@ const BoardSearch = (props) => {
     const search = async () => {
       if (!token) {
         apis.searchBoard(keyword,0).then((res) => {
-          console.log(res);
+          // console.log(res);
           setBoardReducer(res?.data.post);
-        });
+        }).catch(e => {
+          Sentry.captureException(e);
+      });;
       } else {
         apis.searchBoardLogin(keyword,0).then((res) => {
-          console.log(res);
+          // console.log(res);
           setBoardReducer(res?.data.post);
-        });
+        }).catch(e => {
+          Sentry.captureException(e);
+      });
       }
     };
     search();

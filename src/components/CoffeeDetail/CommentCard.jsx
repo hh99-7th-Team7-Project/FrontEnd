@@ -19,9 +19,9 @@ const CommentCard = (props) => {
 
   const posts = useSelector((state) => state.comment.posts);
 
-  console.log(posts);
+  // console.log(posts);
 
-  console.log(showUpdate);
+  // console.log(showUpdate);
 
   useEffect(() => {
     dispatch(__loadComment({ brand, boardId }));

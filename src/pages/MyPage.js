@@ -13,6 +13,7 @@ import {
 import styled from 'styled-components';
 import apis from '../shared/api/main';
 import { Pencil, Write, Moiim, left, right } from '../shared/svg/A-index';
+import * as Sentry from "@sentry/react";
 
 const MyPage = () => {
   const userId = getCookie('userId'); //아직설정안해쓰
@@ -30,14 +31,16 @@ const MyPage = () => {
   const [countBoard,setCountBoard] =useState()
   const [countChat,setCountChat] =useState()
 
-  console.log(changeImg);
+  // console.log(changeImg);
 
   useEffect(() => {
     const profile = async () => {
       await apis.getMypage(userId).then((res) => {
-        console.log(res);
+        // console.log(res);
         setEmail(res.data.username);
-      });
+      }).catch(e => {
+        Sentry.captureException(e);
+    });;
     };
     profile();
   }, [setUpdate]);
@@ -47,27 +50,31 @@ const MyPage = () => {
       await apis.getMyBoardCount(userId)
       .then((res)=>{
         setCountBoard(res.data)
-      })
+      }).catch(e => {
+        Sentry.captureException(e);
+    });
     }
     const chatCount =  async ()=>{
       await apis.getMyChatCount(userId)
       .then((res)=>{
         setCountChat(res.data)
-      })
+      }).catch(e => {
+        Sentry.captureException(e);
+    });
     }
     boardCount()
     chatCount()
   },[])
 
-  console.log(nick);
-  console.log(newProfileImg);
+  // console.log(nick);
+  // console.log(newProfileImg);
 
   const updateProfile = async (e) => {
     e.preventDefault();
     //formdata로 이미지 변환
     const form = new FormData();
     form.append('imgUrl', newProfileImg);
-    console.log(form);
+    // console.log(form);
     //만약 이미지값이 변경 되었다면 이미지 변환성공하면 그 url값 받아서 수정정보에 넣어서 보내줌 put
 
     if (changeImg) {
@@ -86,10 +93,12 @@ const MyPage = () => {
               setUpdate(false);
             })
             .catch((err) => {
+              Sentry.captureException(err);
               setCondition(err.response.data.message);
             });
         })
         .catch((err) => {
+          Sentry.captureException(err);
           setCondition('알 수 없는 에러가 발생했습니다. 다시 시도 해주세요');
         });
     } else {
@@ -102,6 +111,7 @@ const MyPage = () => {
           setUpdate(false);
         })
         .catch((err) => {
+          Sentry.captureException(err);
           setCondition(err.response.data.message);
         });
     }

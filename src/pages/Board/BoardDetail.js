@@ -14,10 +14,12 @@ import { getCookie } from '../../shared/Cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { __loadBoardDetail } from '../../redux/modules/board';
 import BoardImg from './svg/BoardMain.svg';
+import * as Sentry from "@sentry/react";
+
 
 const BoardDetail = () => {
   const { boardId } = useParams();
-  console.log(boardId);
+  // console.log(boardId);
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState();
   const [head, setHead] = useState();
@@ -40,7 +42,9 @@ const BoardDetail = () => {
     setLike(boardReducer?.loveCheck);
     apis.getBoard(boardId).then((res) => {
       setContent(res?.data.content);
-    });
+    }).catch(e => {
+      Sentry.captureException(e);
+  });;
   }, []);
 
   return (

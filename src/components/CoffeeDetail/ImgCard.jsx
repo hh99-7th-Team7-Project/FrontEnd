@@ -3,15 +3,28 @@ import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import svg from './svg/BookMark.svg';
 import { bookmark, bookmarkck } from '../../shared/svg/A-index';
+import { getCookie } from '../../shared/Cookie';
+import Swal from 'sweetalert2';
 
 const ImgCard = ({ url, item, like, setLike }) => {
-  console.log(item);
+  // console.log(item);
+
+const token = getCookie("token")
 
   const likeCoffee = async () => {
-    await apis.likeCoffee(item?.brand, item?.id).then((res) => {
-      console.log(res.data);
+    if(token){
+       await apis.likeCoffee(item?.brand, item?.id).then((res) => {
+      // console.log(res.data);
       setLike(res.data);
     });
+    }else{
+      Swal.fire({
+        title: '로그인 후 이용해주세요!',
+        icon: 'warning',
+        confirmButtonText: '확인',
+      });
+    }
+   
   };
 
   return (

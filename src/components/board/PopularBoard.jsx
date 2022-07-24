@@ -1,15 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Styled from 'styled-components';
-import BoardMap from './BoardMap';
-import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import PopularBoardMap from './PopularBoardMap';
-import{left,right}from '../../shared/svg/A-index'
+import{ left,right }from '../../shared/svg/A-index'
 import { getCookie } from '../../shared/Cookie';
-import { Pagination } from 'swiper';
-import BoardPagination from './Pagination/BoardPagination';
+import * as Sentry from "@sentry/react";
 
 const PopularBoard = () => {
     const [loading, setLoading] = useState(false);
@@ -40,38 +36,36 @@ const PopularBoard = () => {
 };
 
 useEffect(() => {
-        console.log(curruntIdx);
         slideRef.current.style.transition = `all 0.5s ease-in-out`;
         slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
     }, [curruntIdx]);
 
     const navigate = useNavigate()
-  // console.log(content)
-  //   console.log(content)
+
       useEffect(() => {  
         setLoading(true)
           const getMark = async () => {
             if(!token){
                await apis.getBoardsLike(0)
                         .then((res)=>{
-                            console.log(res.data)
+                            // console.log(res.data)
                             setContent(res.data.post.slice(0,10))
                           
+                          }).catch((e)=>{
+                            Sentry.captureException(e);
                           })
             }else{
               await apis.getBoardsLikeLogin(0)
                       .then((res)=>{
-                          console.log(res.data)
+                          // console.log(res.data)
                           setContent(res.data.post.slice(0,10))
-                      
+                        }).catch((e)=>{
+                          Sentry.captureException(e);
                         })
           }
                         }
                       getMark()
                     }, [loading])
-
-        
-
   return (
     <>
         <ScWrap>

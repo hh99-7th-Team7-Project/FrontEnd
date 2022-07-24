@@ -10,12 +10,12 @@ const RandomCoffee = () => {
   const [ selectValue , setSelectValue ] = useState();
 
   const handleBrandChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setSelectValue(e.target.value);
   }
 
   const handleCategoryChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setSelectValue(e.target.value);
   }
 

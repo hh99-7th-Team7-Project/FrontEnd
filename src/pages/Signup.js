@@ -5,9 +5,10 @@ import styled from "styled-components";
 import { motion } from "framer-motion"
 import unchecked from '../shared/svg/Unchecked.svg'
 import checked from '../shared/svg/Checked.svg'
-import Modal from '../components/main/Modal';
 import SignupModal from '../components/Signup/SignupModal';
 import { useMediaQuery } from 'react-responsive';
+import * as Sentry from "@sentry/react";
+
 
 const SignUp = (props) => {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ const SignUp = (props) => {
     }
 
   };
-console.log(Email+Selected)
+// console.log(Email+Selected)
   // 닉네임 중복 체크
   const dupNick = async () => {
     if (!nickCheck(Nickname)) {
@@ -143,7 +144,9 @@ console.log(Email+Selected)
      const verify = await apis.verifyEmail({username: emailRef.current.value+Selected})
                               .then((res)=>{
                                 openModal()
-                              })
+                              }).catch(e => {
+                                Sentry.captureException(e);
+                            });
   };
   }
    //회원가입정보 전달
@@ -168,8 +171,18 @@ console.log(Email+Selected)
     // console.log(fileInputRef.current.files[0].name)
     if(fileInputRef.current.files?.length===0){
       const response = await apis.addUserWO(data)
+      .then(response => {
+      })
+    .catch(e => {
+        Sentry.captureException(e);
+    });
     }else{
-      const res = await apis.addUser(form);
+      const res = await apis.addUser(form)
+                  .then(response => {
+                  })
+                .catch(e => {
+                    Sentry.captureException(e);
+                });
     }
     navigate("/login")
   }
@@ -306,8 +319,8 @@ margin-left: 10px;
 const ScImageBox = styled.div`
 flex: 4;
 height: 100vh;
-width: 100vh;
-background: url('https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/d818028e-d92a-4077-b35e-41f3c945e4a9.jpeg') center center no-repeat;
+width: 100vw;
+background: url('https://ifh.cc/g/HLP6cl.jpg') center center no-repeat;
 background-size:cover;
 `
 
