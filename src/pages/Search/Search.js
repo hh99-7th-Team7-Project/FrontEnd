@@ -10,7 +10,7 @@ const Search = () => {
   return (
     <>
       <ScMobile>
-        <div style={{margin:"auto", width:"100%"}}>
+        <div style={{margin:"auto", width:"80%"}}>
           <Header />
         </div>
         <Wrap>      
