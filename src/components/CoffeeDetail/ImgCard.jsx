@@ -79,7 +79,7 @@ const ScBrandTitle = styled.div`
 
 const ScH3 = styled.h3`
   text-align: center;
-  margin: 10px auto;
+  margin: 10px auto;  
 `;
 
 const ScCoffeeTitle = styled.div`
@@ -100,8 +100,8 @@ const ScH1 = styled.h1`
   width: 500px;
   padding: 20px auto;
   margin: 20px auto;
-
   line-height: 70px;
+  text-align: center;
 `;
 
 const ScSubTitle = styled.div`
@@ -112,7 +112,8 @@ const ScSubTitle = styled.div`
 const ScH4 = styled.h4`
   color: gray;
   width: 80px;
-  padding-left: 20px;
+  text-align: center;
+  
 `;
 
 const ScImgWrap = styled.div`
