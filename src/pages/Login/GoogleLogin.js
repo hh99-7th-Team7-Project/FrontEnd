@@ -33,16 +33,13 @@ const GoogleLogin = () => {
                 setCookie('islogin', true);
                 setCookie('profileImg', res?.data?.profileImage);
                 setCookie('userId', res?.data?.userId);
-                 navigate('/');
+               
                 Swal.fire({
                   title: '환영합니다.!',
                   icon: 'success',
                   confirmButtonText: '확인',
-                }).catch(e => {
-                  Sentry.captureException(e);
-              });
-
-               
+                })
+                navigate('/');
               })
               .catch((error) => 
               Sentry.captureException(error)
