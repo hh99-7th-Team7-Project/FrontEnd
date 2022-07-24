@@ -33,14 +33,7 @@ console.log(posts)
 
   return (
     <div>
-      <div
-        style={{
-          Width: '1222px',
-          margin: 'auto',
-          display: 'flex',
-          justifyContent: 'space-around',
-        }}
-      >
+     <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>
       {write === false ? (

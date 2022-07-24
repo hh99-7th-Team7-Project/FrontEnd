@@ -71,6 +71,7 @@ const Button = () => {
 
 const ScWrap = styled.div`
   display: flex;
+  width: 30%;
   justify-content: center;
   align-items: center;
   color: #2c278c;

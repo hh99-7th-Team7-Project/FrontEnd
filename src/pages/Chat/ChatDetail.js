@@ -6,15 +6,8 @@ import Header from '../Header/Header';
 
 const ChatDetail = () => {
   return (
-    <div>
-      <div
-        style={{
-          Width: '1222px',
-          margin: 'auto',
-          display: 'flex',
-          justifyContent: 'space-around',
-        }}
-      >
+    <>
+  <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>
       <ScTopCard2>
@@ -24,7 +17,7 @@ const ChatDetail = () => {
           </ScTopWord>
         </ScTopCard2>
       <ChatDetailItem></ChatDetailItem>
-    </div>
+    </>
   );
 };
 

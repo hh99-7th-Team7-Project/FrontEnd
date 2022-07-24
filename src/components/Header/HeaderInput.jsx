@@ -44,7 +44,7 @@ const HeaderInput = () => {
 }
 
 const ScWrap = styled.div`    
-    width: 483px;
+    width: 40%;
     height: 38px;
     display: flex;
     border: 1px solid #bbb;
@@ -57,7 +57,8 @@ const ScWrap = styled.div`
 const ScInput = styled.input`
     border: none;
     height: 32px;
-    width: 443px;
+
+    width: 80%;
     padding: 0 8px;
     font-size: 12pt;
     &::placeholder{

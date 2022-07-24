@@ -1,6 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Category = () => {
   const navigate = useNavigate();
@@ -32,11 +33,15 @@ const Category = () => {
   );
 };
 
-const ScCategoryBox = Styled.div`  
+const ScCategoryBox = styled.div`  
   display: flex;
+  justify-content:center;
+  width: 40% ;
   font-size: 13pt;
-  gap: 31px;
-  margin: 0 61px 0 18px;
+  /* margin: auto; */
+  /* justify-content: space-between; */
+  gap:11%;
+  /* margin: 0 0 0 40px; */
   color: #2C278C;
 `;
 

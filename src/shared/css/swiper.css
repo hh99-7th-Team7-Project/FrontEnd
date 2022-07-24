@@ -3,6 +3,11 @@
   height: 100%;
 }
 
+.swiper .mySwiper {
+  width: 90%;
+  height: 100%;
+}
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -31,4 +36,23 @@
 }
 .swiper-pagination-bullet-active{
   background-color: var(--main);
+}
+
+.mySwiper2{
+  /* padding: 0 50px; */
+  
+}
+
+.next{
+  position: absolute;
+  top:40%;
+  right: -4%;
+  /* 허리가 중간에 감 */
+  transform: translateY(-50%);
+}
+.prev{
+  position: absolute;
+  left: -4%;
+  top:40%;
+  transform: translateY(-50%);
 }

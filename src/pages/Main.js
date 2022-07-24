@@ -57,7 +57,7 @@ const changeColor2 = ()=>{
 
   return (
     <>      
-      <div style={{margin:"auto"}}>
+      <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>
       <div style={{position:"relative"}}>
