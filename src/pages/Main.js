@@ -56,43 +56,42 @@ const changeColor2 = ()=>{
  }
 
   return (
-    <>
-    
-    <div style={{margin:"auto"}}>
-      <Header />
-    </div>
-   
-<div style={{position:"relative"}}>
-    {/* <ImgSlide/> */}
-    <ImgSlide2/>
-    <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
-          {/* <ScMapRandomWrap>
-            <RandomPicker />
-            <LottoPoint/>
-          </ScMapRandomWrap> */}
-          <ScNavbarWrap>
-          <div style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</div>
-          <ScButtonWrap>
-      <ScCategory color={color}
-      onClick={()=>{
-        setCategory(true)
-        changeColor()
-        }}>브랜드</ScCategory>
-      <p>|</p>
-      <ScCategory2
-      color2={color2}
-      onClick={()=>{setCategory(false)
-        changeColor2()
-      }}>음료</ScCategory2>
-         </ScButtonWrap>
-       </ScNavbarWrap>
-      {category?<BrandCard/>:<CategoryCard/>}
-    </div>
-    { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
-    {/* <Flow/> */}
-    <Flower/>
-</div>    
-    <Footer/>
+    <>      
+      <div style={{margin:"auto"}}>
+        <Header />
+      </div>
+      <div style={{position:"relative"}}>
+      <ImgSlide2/>
+  
+        <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
+            {/* <ScMapRandomWrap>
+              <RandomPicker />
+              <LottoPoint/>
+            </ScMapRandomWrap> */}
+            <ScNavbarWrap>
+            <ScMobile style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</ScMobile>
+              <ScButtonWrap>
+                <ScCategory color={color}
+                  onClick={()=>{
+                  setCategory(true)
+                  changeColor()
+                  }}>브랜드</ScCategory>
+                <p>|</p>
+                <ScCategory2
+                  color2={color2}
+                  onClick={()=>{setCategory(false)
+                  changeColor2()
+                  }}>음료</ScCategory2>
+              </ScButtonWrap>
+            </ScNavbarWrap>
+            {category?<BrandCard/>:<CategoryCard/>}
+        </div>
+        { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
+          {/* <Flow/> */}
+      <Flower/>
+      </div>    
+      <Footer/>
+
     </>
   )
 }
@@ -134,5 +133,11 @@ color: ${props => props.color2};
   }
 `;
 
+const ScMobile = styled.div`
+  @media screen and (max-width: 768px) {
+    max-width: 1230px;
+    width: 90%;
+  }
+`;
 
 export default Main
