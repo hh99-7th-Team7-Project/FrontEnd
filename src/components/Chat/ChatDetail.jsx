@@ -314,7 +314,7 @@ const Contents = styled.div`
   }  
   & p {
     font-size: 1em;
-    height: ${(props) => (props.content === true ? '150px;' : '95px')};
+    height: ${(props) => (props.content === true ? '150px;' : '90px')};
     overflow-y: scroll;    
   }
 `;
