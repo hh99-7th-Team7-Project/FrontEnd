@@ -129,10 +129,11 @@ const ScDotAlign = styled.div`
 const ScDotWrap = styled.div`
   display: flex;
   /* align-items: center; */
-  /* position: fixed; */
+  position: absolute;
   justify-content: space-between;
   width: 70px;
-  bottom: 30px;
+  top: 460px;
+  left: 15px;
 `;
 
 const ScDot = styled.div`

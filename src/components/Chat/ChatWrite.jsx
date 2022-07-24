@@ -25,8 +25,12 @@ const ChatWrite = ({ setWrite, write }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const is_edit = id ? true : false;
+
+  //수정눌렀을 시에만 하나 불러옴
   useEffect(() => {
-    dispatch(__loadOneChatItem(id));
+    if(is_edit){
+       dispatch(__loadOneChatItem(id));
+    }
   }, [dispatch]);
 
   const ChatItem = useSelector((state) => state?.chat?.one_list);
@@ -119,9 +123,10 @@ const ChatWrite = ({ setWrite, write }) => {
       totalcount: num,
       meettime: hourValue + '~' + hourValue2,
     };
-    if(chatName!==""&&chatContent!==""&&dateValue!==""&&mapfValue!==""&&num!==""&&hourValue!==""&&minuteValue!==""){
-         dispatch(__addChatItem(chatItem));
-    setWrite(!write);
+    if(chatName!==""&&chatContent!==""&&dateValue!==""&&mapfValue!==""&&num!==""&&hourValue!==" "&&minuteValue!==" "){
+        dispatch(__loadChatLists(1))
+        dispatch(__addChatItem(chatItem));
+        setWrite(!write);
     navigate('/chatposts');  
     }else{
       Swal.fire({
