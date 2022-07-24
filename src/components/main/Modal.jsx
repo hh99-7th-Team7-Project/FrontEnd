@@ -69,13 +69,10 @@ const ScBtn = styled.div`
   border: none;
   color: #000000;
   width: 130px;
-  top: 450px;
   font-weight: 100;
   border-radius: 10px;
   position: absolute;
-
 z-index: 99;
-  bottom: 130px;
   right: 20px;
   &:hover{
     cursor: pointer;

@@ -16,7 +16,7 @@ const SearchCoffee = () => {
     const search = async()=>{
       apis.searchCoffee(keyword)
           .then((res)=>{
-            console.log(res)
+            // console.log(res)
             setCoffeeReducer(res?.data)
           })
     }

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { setUser } from '../../redux/modules/users';
 import { setCookie } from '../../shared/Cookie';
 import { api, apin } from '../../shared/api/core/api';
+import * as Sentry from "@sentry/react";
 
 
 import Swal from 'sweetalert2';
@@ -26,7 +27,7 @@ const NaverLogin = () => {
             api
               .get('/social/user/islogin') //유저정보가져오는url
               .then((res) => {
-                console.log(res);
+                // console.log(res);
                 setCookie('nickname', res?.data.nickname);
                 setCookie('islogin', true);
                 setCookie('profileImg', res?.data?.profileImage);
@@ -40,10 +41,10 @@ const NaverLogin = () => {
 
                 navigate('/');
               })
-              .catch((error) => console.log('유저정보저장오류', error));
+              .catch((error) => {Sentry.captureException(error);});
           })
           .catch((err) => {
-            console.log('소셜로그인 에러', err);
+            Sentry.captureException(err);
             alert('로그인 실패 !');
             navigate('/');
           });

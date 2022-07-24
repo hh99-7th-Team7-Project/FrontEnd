@@ -1,5 +1,6 @@
 import apis from '../../shared/api/main';
 import Swal from 'sweetalert2';
+import * as Sentry from "@sentry/react";
 
 let intialstate = {
   boardcommentlist: [],
@@ -15,7 +16,7 @@ const UPDATE_BOARD_COMMENT = 'boardcomment_reducer/UPDATE_BOARD_COMMENT';
 
 /* ----------------- 액션 생성 함수 ------------------ */
 export function getBoardComment(payload) {
-  console.log('comment를 가져올거야!');
+  // console.log('comment를 가져올거야!');
   return {
     type: GET_BOARD_COMMENT,
     payload,
@@ -45,12 +46,13 @@ export function updateBoardComment(payload) {
 
 /* ----------------- 미들웨어 ------------------ */
 export const __getBoardComment = (payload) => async (dispatch, getState) => {
-  console.log('댓글불러오기', payload);
+  // console.log('댓글불러오기', payload);
   try {
     const loadCommentData = await apis.getBoardComment(payload);
-    console.log(loadCommentData.data);
+    // console.log(loadCommentData.data);
     dispatch(getBoardComment(loadCommentData.data));
   } catch (error) {
+    Sentry.captureException(error);
     console.log(error);
   }
 };
@@ -66,6 +68,7 @@ export const __addBoardComment = (payload) => async (dispatch, getState) => {
 
     dispatch(addBoardComment(response.data));
   } catch (error) {
+    Sentry.captureException(error);
     console.log(error);
     if (error.response.status === 401) {
       Swal.fire({
@@ -80,9 +83,9 @@ export const __addBoardComment = (payload) => async (dispatch, getState) => {
 export const __deleteBoardComment =
   (boardId, commentId) => async (dispatch, getState) => {
     try {
-      console.log('삭제하기', boardId, commentId);
+      // console.log('삭제하기', boardId, commentId);
       const response = await apis.deleteBoardComment(boardId, commentId);
-      console.log(response.data);
+      // console.log(response.data);
       dispatch(deleteBoardComment(response.data));
 
       Swal.fire({
@@ -91,6 +94,7 @@ export const __deleteBoardComment =
         confirmButtonText: '확인',
       });
     } catch (error) {
+      Sentry.captureException(error);
       console.log(error);
       if (error.response.status === 500) {
         alert('내가 쓴 댓글만 삭제할 수 있습니다.');
@@ -100,7 +104,7 @@ export const __deleteBoardComment =
 
 export const __updateBoardComment = (payload) => async (dispatch, getState) => {
   try {
-    console.log('수정', payload);
+    // console.log('수정', payload);
     const response = await apis.updateBoardComment(
       payload.boardId,
       payload.commentId,
@@ -108,9 +112,10 @@ export const __updateBoardComment = (payload) => async (dispatch, getState) => {
         comment: payload.data.comment,
       }
     );
-    console.log('response data', response.data);
+    // console.log('response data', response.data);
     dispatch(updateBoardComment(response.data));
   } catch (error) {
+    Sentry.captureException(error);
     console.log(error);
     if (error.response.status === 500) {
       alert('내가 쓴 댓글만 수정할 수 있습니다.');
@@ -123,7 +128,7 @@ export default function boardCommentReducer(state = intialstate, action) {
   // 새로운 액션 타입 추가시 case 추가한다.
   switch (action.type) {
     case GET_BOARD_COMMENT: {
-      console.log('comment', action.payload);
+      // console.log('comment', action.payload);
       return { boardcommentlist: action.payload };
     }
 

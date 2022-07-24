@@ -4,6 +4,7 @@ import BoardMap from './BoardMap';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import BoardPagination from './Pagination/BoardPagination';
+import * as Sentry from "@sentry/react";
 
 
 const BoardListCategory = ({ category }) => {
@@ -18,17 +19,21 @@ const BoardListCategory = ({ category }) => {
       if (!token) {
         await apis.getBoardsCategory(category , Number(page))
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
-        });
+        }).catch((e)=>{
+          Sentry.captureException(e);
+        })
       } else {
         await apis.getBoardsCategoryLogin(category, Number(page))
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
-        });
+        }).catch((e)=>{
+          Sentry.captureException(e);
+        })
       }
     };
     getMark();

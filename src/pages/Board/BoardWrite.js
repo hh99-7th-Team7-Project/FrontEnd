@@ -10,19 +10,20 @@ import apis from '../../shared/api/main';
 import styled from 'styled-components';
 import { getCookie } from '../../shared/Cookie';
 import Swal from 'sweetalert2';
+import * as Sentry from "@sentry/react";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [cate, setCate] = useState('카페 추천합니다');
   const [content, setContent] = useState('');
-  console.log(cate);
-  console.log(title);
-  console.log(content);
+  // console.log(cate);
+  // console.log(title);
+  // console.log(content);
 
   //로그인 후 이용가능한 서비스 알람
   const islogin = getCookie('islogin');
-  console.log(islogin);
+  // console.log(islogin);
   useEffect(() => {
     if (islogin === undefined) {
       Swal.fire({
@@ -44,7 +45,9 @@ const BoardWrite = () => {
           title: '등록에 성공 했습니다.',
           icon: 'success',
           confirmButtonText: '확인',
-        });
+        }).catch(e => {
+          Sentry.captureException(e);
+      });;
       });
     }
   };

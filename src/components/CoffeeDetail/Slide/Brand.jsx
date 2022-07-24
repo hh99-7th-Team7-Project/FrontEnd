@@ -30,7 +30,7 @@ const Brand = () => {
     { brand: '엔젤인어스', id: 11, logo: '/brandlogo/엔제리너스.png' },
   ];
 
-  console.log(brandList);
+  // console.log(brandList);
 
   return (
     <>

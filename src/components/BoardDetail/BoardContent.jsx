@@ -12,17 +12,17 @@ import { loadBoard } from '../../redux/modules/board';
 import styled from 'styled-components';
 
 const BoardContent = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const [content, setContent] = useState();
-  console.log(content);
+  // console.log(content);
   useEffect(() => {
     setContent(data);
     return () => {
       setContent();
-      console.log('청소');
+      // console.log('청소');
     };
   }, [data]);
-  console.log(content);
+  // console.log(content);
 
   return (
     <>

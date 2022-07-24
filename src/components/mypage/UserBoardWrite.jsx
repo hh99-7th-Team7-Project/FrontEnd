@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import apis from '../../shared/api/main'
 import { getCookie } from '../../shared/Cookie'
 import BoardMap from '../board/BoardMap'
+import * as Sentry from "@sentry/react";
 
 const UserBoardWrite = () => {
   const [content, setContent] = useState()
@@ -11,9 +12,11 @@ const UserBoardWrite = () => {
   useEffect(()=>{
     apis.getMyBoard(userId)
         .then((res)=>{
-        console.log(res.data)
+        // console.log(res.data)
         setContent(res.data)
-    })
+    }).catch(e => {
+        Sentry.captureException(e);
+    });
   },[])
 
   return (

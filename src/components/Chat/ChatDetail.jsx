@@ -15,6 +15,7 @@ import IconChat from '../../Image/Chat/chat.png';
 import Check from './svg/Check.svg';
 import Chating from './svg/Chating.svg';
 import ChatMap from './ChatMap';
+import * as Sentry from "@sentry/react";
 
 const ChatDetail = () => {
   const dispatch = useDispatch();
@@ -48,10 +49,12 @@ const ChatDetail = () => {
 
   const upCount = async () => {
     const item = await apis.attendChatMember(chatpostId).then((res) => {
-      console.log(res.data.result);
+      // console.log(res.data.result);
       setCheck(res.data.result);
       // return dispatch(__loadOneChatItem(id));
-    });
+    }).catch((e)=>{
+      Sentry.captureException(e);
+    })
   };
 
   const joinChat = () => {

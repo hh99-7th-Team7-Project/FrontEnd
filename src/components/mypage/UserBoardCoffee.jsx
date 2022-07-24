@@ -4,6 +4,7 @@ import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import MyCoffeeCard from './MyCoffeeCard';
 import { left, right } from '../../shared/svg/A-index';
+import * as Sentry from "@sentry/react";
 
 const UserBoardCoffee = ({}) => {
   const [content, setContent] = useState();
@@ -16,14 +17,17 @@ const UserBoardCoffee = ({}) => {
   const [curruntIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
-    apis.getMyCoffee(userId).then((res) => {
-      console.log(res.data?.length);
+    apis.getMyCoffee(userId)
+    .then((res) => {
+      // console.log(res.data?.length);
       setContent(res.data);
       setSlide(Math.floor(res?.data?.length / 4));
-    });
+    }).catch(e => {
+      Sentry.captureException(e);
+  });
   }, []);
 
-  console.log(slide);
+  // console.log(slide);
 
   const nextSlide = () => {
     if (curruntIdx >= slide) {
@@ -42,7 +46,7 @@ const UserBoardCoffee = ({}) => {
   };
 
   useEffect(() => {
-    console.log(curruntIdx);
+    // console.log(curruntIdx);
     slideRef.current.style.transition = `all 0.5s ease-in-out`;
     slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
   }, [curruntIdx]);

@@ -12,22 +12,9 @@ import { useDispatch } from 'react-redux';
 
 const Review = ({ item, reviewData, url }) => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const { brand, boardId } = useParams();
-  // console.log(item)
-
   const pricePair = item?.pricePair;
-
-
-  console.log(item);
-
   const starPoint = item?.star;
 
-  console.log(starPoint);
-
-  // useEffect(()=>{
-  //     dispatch(__getAverageStar(brand,boardId))
-  // },[dispatch])
 
   return (
     <>

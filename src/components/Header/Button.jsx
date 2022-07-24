@@ -8,7 +8,7 @@ const Button = () => {
   const navigate = useNavigate();
   const isLogin = getCookie('islogin');
   const [onair, setonair] = useState(false);
-  console.log(onair);
+  // console.log(onair);
 
   React.useEffect(() => {
     if (isLogin) {

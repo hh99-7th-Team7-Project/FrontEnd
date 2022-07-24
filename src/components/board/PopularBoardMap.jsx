@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
   bookmark,
   bookmarkck,
-  checked,
   eye,
   thumbup,
 } from '../../shared/svg/A-index';
 
 const PopularBoardMap = (props) => {
   const navigate = useNavigate();
-  // const [category,setCategory] = useState()
   const { content } = props;
-  // console.log(content)
 
-  // if(content?.category==="나만의 비밀 레시피"){
-  //     setCategory("비밀")
-  // }else if(content?.category==="카페 추천합니다"){
-
-  // }
 
   const create = content?.createdAt.split('T')[0];
   const moveToBoard = (e) => {
