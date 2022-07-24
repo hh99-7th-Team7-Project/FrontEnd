@@ -28,11 +28,12 @@ const ChatDetail = () => {
   const [content, setContent] = React.useState(true);
   const [none, setNone] = React.useState('true');
 
+
   const _checkUser = getCookie('nickname');
 
   useEffect(() => {
     dispatch(__loadOneChatItem(id));
-  }, [chat]);
+  }, [chat,write]);
 
   const data = useSelector((state) => state.chat.one_list);
 
@@ -49,7 +50,7 @@ const ChatDetail = () => {
     const item = await apis.attendChatMember(chatpostId).then((res) => {
       console.log(res.data.result);
       setCheck(res.data.result);
-      return dispatch(__loadOneChatItem(id));
+      // return dispatch(__loadOneChatItem(id));
     });
   };
 

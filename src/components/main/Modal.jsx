@@ -58,12 +58,13 @@ const ScX =styled.div`
   }
 `
 
-const ScBtn = styled.button`
-  background-color: #2c278c;
+const ScBtn = styled.div`
+  /* background-color: #2c278c; */
   border: none;
-  color: white;
+  color: #000000;
   width: 130px;
   height: 50px;
+  font-weight: 100;
   border-radius: 10px;
   position: absolute;
   bottom: 130px;
