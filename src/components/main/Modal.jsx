@@ -53,6 +53,9 @@ const ScX =styled.div`
   position: absolute;
   top:0px;
   right: -30px;
+  &:hover{
+    cursor: pointer;
+  }
 `
 
 const ScBtn = styled.div`
@@ -65,5 +68,8 @@ const ScBtn = styled.div`
   border-radius: 10px;
   position: absolute;
   bottom: 130px;
-  right: 25px;
+  right: 20px;
+  &:hover{
+    cursor: pointer;
+  }
 `;
