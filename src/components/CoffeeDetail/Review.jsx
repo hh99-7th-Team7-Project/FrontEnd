@@ -130,7 +130,7 @@ const ScSmallWrap =styled.div`
 `
 
 const Sctitle =styled.div`
-  font-size: 18px;
+  font-size: 1.125em;
 `
 const ScContentBox = styled.div`
   margin: 20px;
@@ -176,7 +176,7 @@ const ScGotoMap1 = styled.div`
 
 const ScSpan = styled.span`
   margin-left: 5px;
-  font-size: 20px;
+  font-size: 1.25em;
 `;
 
 const ScStarPriceContainer = styled.div`
@@ -215,7 +215,7 @@ const PriceScH3 = styled.h2`
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 1.125em;
   line-height: 49.92px;
 `;
 

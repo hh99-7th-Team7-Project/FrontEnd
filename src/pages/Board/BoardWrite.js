@@ -36,26 +36,26 @@ const BoardWrite = () => {
   }, []);
 
   const submitOnclick = async () => {
-    if(title!==" "&& content!==" "&& cate!==" "){
-       await apis
-      .postBoard({ title: title, content: content, category: cate })
-      .then((res) => {
-        navigate('/board');
-        Swal.fire({
-          title: '등록에 성공 했습니다.',
-          icon: 'success',
-          confirmButtonText: '확인',
-        }).catch(e => {
-          Sentry.captureException(e);
-      });;
-      });
+    if (title !== " " && content !== " " && cate !== " ") {
+      await apis
+        .postBoard({ title: title, content: content, category: cate })
+        .then((res) => {
+          navigate('/board');
+          Swal.fire({
+            title: '등록에 성공 했습니다.',
+            icon: 'success',
+            confirmButtonText: '확인',
+          }).catch(e => {
+            Sentry.captureException(e);
+          });;
+        });
     }
   };
 
   return (
     <>
       <ScMobile>
-        <div style={{margin:"auto", width:"100%"}}>
+        <div style={{ margin: "auto", width: "100%" }}>
           <Header />
         </div>
         <ScWrite>
@@ -71,8 +71,8 @@ const BoardWrite = () => {
               취소
             </div>
           </ScSubmit>
-          </ScWrite>
-        </ScMobile>
+        </ScWrite>
+      </ScMobile>
     </>
   );
 };
@@ -97,7 +97,7 @@ const ScSubmit = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
-  font-size: 16px;
+  font-size: 1em;
   margin: 20px;
   div {
     background-color: #ddd;

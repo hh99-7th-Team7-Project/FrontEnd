@@ -14,30 +14,30 @@ const Chat = () => {
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(6);
   const [page, setPage] = useState(1);
- const [write, setWrite] = useState(false);
+  const [write, setWrite] = useState(false);
 
   useEffect(() => {
-   const Loading =async()=> await apis.getChatLists(page)
+    const Loading = async () => await apis.getChatLists(page)
       .then((data) => setPosts(data.data))
       .catch(e => {
         Sentry.captureException(e);
-    });;
+      });;
     // console.log(page);
     Loading()
   }, [page, write]);
 
   const chatpostList = posts?.chatpostList;
   const totalPage = posts?.totalPage;
-// console.log(posts)
+  // console.log(posts)
   // console.log(chatpostList, page);
 
   // const chatReducer = useSelector((state) => state?.chat?.list);
 
- 
+
 
   return (
     <ScMobile>
-      <div style={{margin:"auto", width:"62%"}}>
+      <div style={{ margin: "auto", width: "62%" }}>
         <Header />
       </div>
       {write === false ? (
@@ -59,7 +59,7 @@ const Chat = () => {
         <ScTopCard2>
           <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
           <ScTopWord style={{ margin: '60px 70% 60px 20%' }}>
-              우리 같이 커피마셔요!
+            우리 같이 커피마셔요!
           </ScTopWord>
         </ScTopCard2>
       )}
@@ -117,7 +117,7 @@ const ScTopCard2 = styled.div`
   display: flex;
   height: 135px;
   background-color:#F5EABB;
-  font-size: 24px;
+  font-size: 1.5em;
   margin-bottom: 74px;
   @media screen and (min-width: 350px){
     display: flex;
@@ -132,7 +132,7 @@ const ScMainTitle = styled.div`
   
   height: 74px;
   font-weight: 700;
-  font-size: 34px;
+  font-size: 2.125em;
   line-height: 43px;
   margin-bottom: 30px;
   font-family: "SUIT ExtraBold";
@@ -155,7 +155,7 @@ const Scwrite = styled.div`
   color: white;
   width: 166px;
   height: 49px;
-  font-size: 20px;
+  font-size: 1.25em;
   border-radius: 10px;
   gap:7px;
   &:hover {

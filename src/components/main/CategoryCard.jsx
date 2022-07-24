@@ -127,7 +127,7 @@ const animation = keyframes`
 
 const ScSlide = styled.div`
   /* text-align: center; */
-  /* font-size: 18px; */
+  /* font-size: 1.125em; */
   width: 120px;
   height: 120px;
   transform: scale(0.9);

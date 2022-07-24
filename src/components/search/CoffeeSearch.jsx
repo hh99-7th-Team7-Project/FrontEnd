@@ -112,7 +112,7 @@ const ScBtnTitle = styled.div`
   height: 30px;
   color: white;
   font-style: normal;
-  font-size: 24px;
+  font-size: 1.5em;
   line-height: 30px;
   letter-spacing: 0.1em;
   margin: auto;

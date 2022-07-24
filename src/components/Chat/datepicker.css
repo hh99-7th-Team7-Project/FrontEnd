@@ -3,7 +3,7 @@
   border: none;
   border-radius: 10px;
   background-color: #F1F1F1;
-  font-size: 18px;
+  font-size: 1.125em;
   padding-bottom: 20px;
 }
 .react-datepicker__day-name{
@@ -13,7 +13,7 @@
   padding-top: 0.8em;
   background-color: #F1F1F1;
   border-bottom: none;
-  font-size: 18px;
+  font-size: 1.125em;
 }
 .react-datepicker__month {
   margin: 0em 2em;

@@ -110,15 +110,15 @@ const InnerContainer =styled.div`
 const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: 1em;
   & span {
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 600;
   }
 `;
 
 const Title = styled.p`
-  font-size: 20px;
+  font-size: 1.25em;
   margin: 9px 0 10px 0;
   width: 300px;
   /* white-space: nowrap; */
@@ -128,7 +128,7 @@ const Title = styled.p`
 `;
 
 const Contents = styled.p`
-  font-size: 16px;
+  font-size: 1em;
   height: 53px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -156,7 +156,7 @@ const BtnWrap = styled.div`
 
 const Btn = styled.div`
   display: flex;
-  font-size: 16px;
+  font-size: 1em;
   margin-left: 6px;
   /* align-items: center; */
   font-weight: 700;

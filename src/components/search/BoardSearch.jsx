@@ -111,7 +111,7 @@ const ScBtnTitle = styled.span`
   height: 30px;
   color: white;
   font-style: normal;
-  font-size: 23px;
+  font-size: 1.4375em;
   line-height: 30px;
   letter-spacing: 0.1em;
   &:hover {

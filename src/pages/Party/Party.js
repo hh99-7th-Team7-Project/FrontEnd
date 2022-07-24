@@ -136,10 +136,10 @@ const Party = (props) => {
                 key={idx}
                 // bg="#FAFAFA"
                 shadow="1px 3px 10px rgba(69, 69, 69, 0.2)"
-                radius="16px"
+                radius="1em"
                 width="auto"
                 height="275px"
-                padding="17px 16px"
+                padding="17px 1em"
                 margin="0 0 24px"
                 flexColumn
                 bgImg={cardImg}
