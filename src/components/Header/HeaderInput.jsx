@@ -14,7 +14,7 @@ const HeaderInput = () => {
   }
 
   const onKeyPress1=(e)=>{
-    if (searchRef.current.value === " ") {
+    if (searchRef?.current.value === "") {
       Swal.fire({
         title: '검색어를 입력해주세요!',
         text: '빈칸입니다',
@@ -26,6 +26,8 @@ const HeaderInput = () => {
       onClick1()
     }
   }
+
+
 
   return (
     <ScWrap>
