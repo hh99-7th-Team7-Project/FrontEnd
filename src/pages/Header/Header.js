@@ -17,22 +17,25 @@ const Header = () => {
   });
 
   return (
-    <ScHeaderBox>
-      <Logo />
-      <Category />
-      { isMobile ? null: <HeaderInput />}
-      <Button />
-    </ScHeaderBox>
+
+        <ScHeaderBox>
+          <Logo />
+          <Category />
+          { isMobile ? null: <HeaderInput />}
+          <Button />
+        </ScHeaderBox>
+
   );
 };
 
+
 const ScHeaderBox = styled.div`
   display: flex;
-  flex-direction: row;
-  
+  flex-direction: row;  
   align-items: center;
   /* min-width: 1222px; */
-  height: 130px;
+  height: 130px; 
+
 `;
 
 // const ScBar = styled.div`

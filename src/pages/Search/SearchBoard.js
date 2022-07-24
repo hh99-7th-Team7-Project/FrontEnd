@@ -6,6 +6,7 @@ import apis from '../../shared/api/main';
 import Header from '../Header/Header';
 import { getCookie } from '../../shared/Cookie';
 import BoardPagination from '../../components/board/Pagination/BoardPagination';
+import * as Sentry from "@sentry/react";
 
 const SearchBoard = () => {
   const { keyword } = useParams();
@@ -22,17 +23,21 @@ const SearchBoard = () => {
         apis
           .searchBoard(keyword, page)
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             setBoardReducer(res?.data.post);
             settotalPage(res?.data.totalPage)  
-          });
+          }).catch(e => {
+            Sentry.captureException(e);
+        });;
       } else {
         apis.searchBoardLogin(keyword,page)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setBoardReducer(res?.data.post);
           settotalPage(res?.data.totalPage) 
-        });
+        }).catch(e => {
+          Sentry.captureException(e);
+      });;
       }
     };
     search();

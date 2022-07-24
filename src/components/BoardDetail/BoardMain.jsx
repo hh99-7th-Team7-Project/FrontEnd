@@ -1,24 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import * as Sentry from "@sentry/react";
+import { useNavigate } from 'react-router-dom';
 import apis from '../../shared/api/main';
 import {
   bookmark,
-  bookmarkck,
-  checked,
-  eye,
-  thumbup,
+  bookmarkck
 } from '../../shared/svg/A-index';
 import { getCookie } from '../../shared/Cookie';
+import Swal from 'sweetalert2';
 
 const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
   const navigate = useNavigate();
   const nickname = getCookie('nickname');
   const bookmarkfunc = async () => {
-    await apis.postBoardsBookmark(head?.category, boardId).then((res) => {
+    if(nickname){
+        await apis.postBoardsBookmark(head?.category, boardId)
+        .then((res) => {
       setBookmark(res.data);
-    });
+    }).catch((e)=>{
+      Sentry.captureException(e);
+    })
+    }else{
+      Swal.fire({
+        title: '로그인 후 이용해 주세요!',
+        icon: 'warning',
+        confirmButtonText: '확인',
+      });
+    }
+  
   };
 
   return (

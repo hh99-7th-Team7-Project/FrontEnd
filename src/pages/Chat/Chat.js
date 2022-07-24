@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { boardwrite, ChatLogo, Chatimoji, ChatLogoSmall } from '../../shared/svg/A-index';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import apis from '../../shared/api/main';
+import * as Sentry from "@sentry/react";
 
 const Chat = () => {
   const [posts, setPosts] = useState([]);
@@ -17,23 +18,26 @@ const Chat = () => {
 
   useEffect(() => {
    const Loading =async()=> await apis.getChatLists(page)
-      .then((data) => setPosts(data.data));
-    console.log(page);
+      .then((data) => setPosts(data.data))
+      .catch(e => {
+        Sentry.captureException(e);
+    });;
+    // console.log(page);
     Loading()
   }, [page, write]);
 
   const chatpostList = posts?.chatpostList;
   const totalPage = posts?.totalPage;
-console.log(posts)
-  console.log(chatpostList, page);
+// console.log(posts)
+  // console.log(chatpostList, page);
 
   // const chatReducer = useSelector((state) => state?.chat?.list);
 
  
 
   return (
-    <div>
-     <div style={{margin:"auto", width:"62%"}}>
+    <ScMobile>
+      <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>
       {write === false ? (
@@ -81,40 +85,65 @@ console.log(posts)
           />
         </footer>
       </Wrap>
-    </div>
+    </ScMobile>
   );
 };
 
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
+
 const ScTopCard = styled.div`
+  width: 100%;
   display: flex;
   height: 400px;
   background-color:#F5EABB;
+  width: 100%;
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
 `;
 
 const ScTopCard2 = styled.div`
+  width: 100%;
   display: flex;
   height: 135px;
   background-color:#F5EABB;
   font-size: 24px;
   margin-bottom: 74px;
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
 `;
 
 const ScMainTitle = styled.div`
-  width: 303px;
+  
   height: 74px;
   font-weight: 700;
   font-size: 34px;
   line-height: 43px;
   margin-bottom: 30px;
   font-family: "SUIT ExtraBold";
+  
 `;
 
 
 const ScTopWord = styled.div`
 position: absolute;
 font-family: "SUIT ExtraBold";
-width: 209px;
+width: 100%;
 `
 const Scwrite = styled.div`
   display: flex;

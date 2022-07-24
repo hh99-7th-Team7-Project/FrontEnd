@@ -9,7 +9,7 @@ const UserInfoUpdate = ({ setNick }) => {
   const [oknickname, setokNickname] = React.useState(false);
   const [condition, setCondition] = React.useState('값이 나오나');
 
-  console.log(condition);
+  // console.log(condition);
 
   const nickCheck = (nick) => {
     let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]{2,10}/;

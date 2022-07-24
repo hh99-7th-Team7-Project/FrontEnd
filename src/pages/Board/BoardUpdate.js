@@ -7,6 +7,7 @@ import ToastEditUpdate from '../../components/BoardWrite/ToastEditUpdate';
 import BoardCategoryUpdate from '../../components/BoardWrite/BoardCategoryUpdate';
 import apis from '../../shared/api/main';
 import styled from 'styled-components';
+import * as Sentry from "@sentry/react";
 
 const BoardUpdate = () => {
   const { boardId } = useParams()
@@ -17,9 +18,10 @@ const BoardUpdate = () => {
   const [loading, setLoading] = useState(false)
   const [prevContent, setPrevContent] = useState()
   const [head, setHead] = useState()
-  console.log(cate)
-  console.log(title)
-  console.log(content)
+  
+  // console.log(cate)
+  // console.log(title)
+  // console.log(content)
 
   const submitOnclick = async () => {
     const data ={"title": title, "content": content, "category": cate}
@@ -35,13 +37,15 @@ const BoardUpdate = () => {
     const getMark = async () => {
       await apis.getBoard(boardId)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           setPrevContent(res?.data?.content)
           setHead(res?.data)
-          console.log(res?.data)
+          // console.log(res?.data)
           setTitle(res?.data?.title)
           setCate(res?.data?.category)
-        })
+        }).catch(e => {
+          Sentry.captureException(e);
+      });
     }
     getMark()
   }, [loading])
@@ -50,21 +54,31 @@ const BoardUpdate = () => {
 
   return (
     <>
-    <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      <ScWrite>
-      <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
-      <ToastEditUpdate content={setContent} prevContent={prevContent} />
-      <ScSubmit>
-      <div onClick={submitOnclick}>제출</div>
-      </ScSubmit>
-      </ScWrite>
+      <ScMobile>
+        <div style={{margin:"auto", width:"100%"}}>
+          <Header />
+        </div>
+        <ScWrite>
+        <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
+        <ToastEditUpdate content={setContent} prevContent={prevContent} />
+        <ScSubmit>
+        <div onClick={submitOnclick}>제출</div>
+        </ScSubmit>
+        </ScWrite>
+      </ScMobile>
     </>
   )
 }
 
 export default BoardUpdate
+
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
 
 const ScWrite = styled.div`
   min-width: 1200px;

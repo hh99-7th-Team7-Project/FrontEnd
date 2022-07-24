@@ -23,9 +23,9 @@ const commentReducer = useSelector((state) => state.comment.posts);
 //Like자체 바뀔때마다 바뀌게 설정
 useEffect(()=>{
  dispatch(__loadCoffeeDetail(brand, boardId))
- console.log(coffeeReducer?.loveCheck)
+//  console.log(coffeeReducer?.loveCheck)
 },[like])
-console.log(coffeeReducer)
+// console.log(coffeeReducer)
 
 //불려올때마다 재설정되서 처음 불려올때만 like설정하게 바꿔둠
 useEffect(()=>{
@@ -36,46 +36,58 @@ setLike(coffeeReducer?.loveCheck)
 return (
 
     <>
-    <div style={{margin:"auto", width:"62%"}}>
+    <ScMobile>
+      <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>
-      <div>
-        {/* <CoffeeCategory/> */}
-      </div>   
-      <Scwrap>
-        <ScContainer>
-            <ImgCard 
-                url={coffeeReducer?.img}
-                item={coffeeReducer}
-                like={like}
-                setLike={setLike}
-            />
-          <ScReviewCommentBox>
-            <Review 
-              item={coffeeReducer}
-              reviewData={commentReducer}
-              url={coffeeReducer?.img}
+      
+        <div>
+          {/* <CoffeeCategory/> */}
+        </div>   
+        <Scwrap>
+          <ScContainer>
+              <ImgCard 
+                  url={coffeeReducer?.img}
+                  item={coffeeReducer}
+                  like={like}
+                  setLike={setLike}
               />
-          </ScReviewCommentBox>
-        </ScContainer>
-      </Scwrap>
-      <ScCommentBox>
-          <Comment 
-            item={coffeeReducer}
-          />          
-          <CommentCard 
-            boardId={boardId}
-            brand={brand}
-          />
-      </ScCommentBox>
+            <ScReviewCommentBox>
+              <Review 
+                item={coffeeReducer}
+                reviewData={commentReducer}
+                url={coffeeReducer?.img}
+                />
+            </ScReviewCommentBox>
+          </ScContainer>
+        </Scwrap>
+        <ScCommentBox>
+            <Comment 
+              item={coffeeReducer}
+            />          
+            <CommentCard 
+              boardId={boardId}
+              brand={brand}
+            />
+        </ScCommentBox>
+      </ScMobile>
     </>
   )
 }
 
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
+
 const Scwrap = styled.div`
-  display: column;
+  display: flex;
+  flex-direction: column;
   max-width:1200px;
-  width:80vw;
+  width:100%;
   margin: auto;
 `;
 

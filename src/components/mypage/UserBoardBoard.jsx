@@ -4,6 +4,7 @@ import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import PopularBoardMap from '../board/PopularBoardMap';
 import { left, right } from '../../shared/svg/A-index';
+import * as Sentry from "@sentry/react";
 
 const UserBoardBoard = () => {
   const [content, setContent] = useState();
@@ -14,14 +15,18 @@ const UserBoardBoard = () => {
   const [slide, setSlide] = useState();
   const imgLength = 1000;
   const [curruntIdx, setCurrentIdx] = useState(0);
+  
 
   //내가쓴글
   useEffect(() => {
-    apis.getMyBoardBookmark(userId).then((res) => {
-      console.log(res.data);
+    apis.getMyBoardBookmark(userId)
+    .then((res) => {
+      // console.log(res.data);
       setContent(res.data);
       setSlide(Math.floor(res?.data?.length / 4));
-    });
+    }).catch((e)=>{
+      Sentry.captureException(e);
+    })
   }, []);
 
   const nextSlide = () => {

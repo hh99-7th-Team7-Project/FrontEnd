@@ -18,7 +18,7 @@ const CoffeeCategory = () => {
     const handleToggleOption = () => setShowOption((prev)=>!prev)
 
     const handleClickOutside = (e) => {
-        console.log(ref.current.contain(e.target))
+        // console.log(ref.current.contain(e.target))
         if (showOption && !ref.current.contains(e.target)){
             setShowOption(false)
         }

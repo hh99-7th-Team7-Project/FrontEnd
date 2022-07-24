@@ -2,14 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import ChatAttend from './ChatAttend';
-import PostChat from '../../components/Chat/PostChat';
-import ChatWrite from './ChatWrite';
-import { __loadOneChatItem } from '../../redux/modules/chat';
-import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import * as Sentry from "@sentry/react";
 
 const ChatCard = ({ data, chatpostId }) => {
-  const [chat, setChat] = useState(false);
+
   const [count, setCount] = useState(1);
 
   const members = data?.chatPostMember;
@@ -19,7 +15,9 @@ const ChatCard = ({ data, chatpostId }) => {
   const upCount = async () => {
     const item = await apis.attendChatMember(chatpostId).then((res) => {
       return;
-    });
+    }).catch((e)=>{
+      Sentry.captureException(e);
+    })
   };
 
   return (
