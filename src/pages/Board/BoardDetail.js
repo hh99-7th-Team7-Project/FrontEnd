@@ -73,8 +73,7 @@ const BoardDetail = () => {
             like2={like}
             setLike={setLike}
           />
-          <BoardComment
-            head={boardReducer}
+          <BoardComment            
           />
         </ScWrap>
       </ScMobile>

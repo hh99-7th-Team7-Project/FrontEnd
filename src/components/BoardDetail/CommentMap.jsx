@@ -49,11 +49,11 @@ const CommentMap = () => {
                   ) : (
                     <ScSpanComment>{item?.comment}</ScSpanComment>
                   )}
+                  <ScSpan>{item?.createdAt.split('T')[0]}</ScSpan> 
                 </ScCommentAlign>
                 
                 
-                <ScBtnAlign>
-                  <ScSpan>{item?.createdAt.split('T')[0]}</ScSpan> 
+                <ScBtnAlign>                  
                   {nickname === item?.nickname ? (
                     <ScButton
                       onClick={() => {
@@ -85,8 +85,7 @@ const CommentMap = () => {
                 </ScBtnAlign>
               </ScTable>
             </div>
-          ))}
-          
+          ))}          
         </ScTableWrap>
       </ScWrap>
     </>
@@ -110,17 +109,17 @@ const ScNickAlign = styled.div`
 `;
 
 const ScCommentAlign = styled.div`
-  width: 400px;
-  padding: 10px;
+  width: 70%;
+  padding: 30px;
   display: flex;
   justify-content: space-between;
+
 `;
 
 const ScBtnAlign = styled.div`
-  width: 400px;
-  padding: 10px;
+  width: 150px;  
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  
 `;
 
 const ScTableWrap = styled.div`
@@ -146,11 +145,15 @@ const ScTable = styled.div`
 const ScSpan = styled.span`
   text-align: left;
   width: 100px;
+  color: rgb(44,39,140, 80%);
+
 `;
 
 const ScSpanComment = styled.span`
   text-align: left;
-  width: 400px;
+  width: 70%;
+  color: rgb(44,39,140, 80%);
+
 `;
 
 const ScButton = styled.button`
