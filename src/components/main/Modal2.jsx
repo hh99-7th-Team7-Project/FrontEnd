@@ -4,7 +4,7 @@ import { setCookie } from '../../shared/Cookie';
 import ImgSlideModal from './ImgSlideModal';
 import ImgSlideModal2 from './ImgSlideModal2';
 
-const Modal = ({showModal,closeModal}) => {
+const Modal2 = ({showModal,closeModal}) => {
   const notSeenADay = ()=>{
     setCookie("not seen a day",true)
     closeModal()
@@ -16,7 +16,7 @@ const Modal = ({showModal,closeModal}) => {
       <Background>
       <ModalContainer>
       {/* <ImgSlideModal/> */}
-      <ImgSlideModal2/>
+      <ImgSlideModal/>
       <ScX onClick={closeModal}>✖</ScX>
       <ScBtn onClick={notSeenADay}>오늘 하루 보지 않기</ScBtn>
      </ModalContainer>
@@ -24,7 +24,7 @@ const Modal = ({showModal,closeModal}) => {
   )
 }
 
-export default Modal
+export default Modal2
 
 const Background = styled.div`
     position: fixed;
@@ -46,7 +46,7 @@ const ModalContainer = styled.div`
     /* color: #2c278c; */
     transform: translate(-50%, -50%);
     /* max-height: 80%; */
-    max-width: 960px;
+    max-width: 300px;
     width: 80%;
     /* height: 65%; */
     /* padding: 20px; */
@@ -59,9 +59,6 @@ const ScX =styled.div`
   position: absolute;
   top:0px;
   right: -30px;
-  &:hover{
-    cursor: pointer;
-  }
 `
 
 const ScBtn = styled.div`
@@ -73,12 +70,7 @@ const ScBtn = styled.div`
   font-weight: 100;
   border-radius: 10px;
   position: absolute;
-
-z-index: 99;
-  bottom: 130px;
-  right: 20px;
-  &:hover{
-    cursor: pointer;
-  }
-
+  /* bottom: 130px; */
+  right: 25px;
+  z-index: 99;
 `;
