@@ -29,14 +29,14 @@ const SignUp = (props) => {
   const [okid, setOkid] = useState(false);
   const [oknickname, setokNickname] = useState(false);
 
-  const [alert,setAlert] =useState("")
+  const [alert, setAlert] = useState("")
 
   const [emailCheck, setEmailCheck] = useState(true)
   const [nicknameCheck, setNicknameCheck] = useState(true)
   const [samePw, setSamePw] = useState(true)
   const [goToSignup, setGoToSignup] = useState(true)
 
-  const [modal, setModal]=useState(false)
+  const [modal, setModal] = useState(false)
 
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
@@ -51,53 +51,56 @@ const SignUp = (props) => {
 
   // 이메일 중복 체크
   const dupEmail = async () => {
-    if (!idCheck(Email+Selected)) {
+    if (!idCheck(Email + Selected)) {
       setAlert("이메일 형식이 아닙니다")
     } else {
-      await apis.checkEmail({ username: Email+Selected })
-                .then((res) => {
-                  setAlert(" 사용 가능한 메일입니다.");
-                    setOkid(true);
-                    setEmailCheck(false)
-                })
-                .catch((error) => {
-                    setAlert("이미 사용중인 메일입니다.");
-                    setEmailCheck(true)
-                });
+      await apis.checkEmail({ username: Email + Selected })
+        .then((res) => {
+          setAlert(" 사용 가능한 메일입니다.");
+          setOkid(true);
+          setEmailCheck(false)
+        })
+        .catch((error) => {
+          setAlert("이미 사용중인 메일입니다.");
+          setEmailCheck(true)
+        });
     }
 
   };
-// console.log(Email+Selected)
+  // console.log(Email+Selected)
   // 닉네임 중복 체크
   const dupNick = async () => {
     if (!nickCheck(Nickname)) {
       setAlert("올바른 닉네임 형식을 작성해주세요")
-    } else {
+    }else if(Nickname.includes(" ")){
+      setAlert("공백은 허용되지 않습니다.")
+    } 
+    else {
       setAlert("사용 가능한 닉네임입니다.");
       await apis.checkNickName({ nickname: Nickname })
         .then((res) => {
-           setNicknameCheck(false)
-            setokNickname(true);
-          })
-          .catch((err)=>{
-            setAlert("이미 사용중인 닉네임입니다.");
-            setNicknameCheck(true)
-            setokNickname(false)
-          })
+          setNicknameCheck(false)
+          setokNickname(true);
+        })
+        .catch((err) => {
+          setAlert("이미 사용중인 닉네임입니다.");
+          setNicknameCheck(true)
+          setokNickname(false)
+        })
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     if (Password && Password2 && Password === Password2) {
-        setSamePw(false)
-      }  
-  },[setSamePw,Password2])
- 
-  useEffect(()=>{
+      setSamePw(false)
+    }
+  }, [setSamePw, Password2])
+
+  useEffect(() => {
     if (!samePw && !nicknameCheck && !nicknameCheck && !emailCheck && Password === Password2) {
-      setGoToSignup(false) 
-      }  
-  },[setSamePw,goToSignup,Password2])
+      setGoToSignup(false)
+    }
+  }, [setSamePw, goToSignup, Password2])
 
   //아이디,비번,닉네임 정규식
   const idCheck = (email) => {
@@ -125,7 +128,7 @@ const SignUp = (props) => {
       Email === "" ||
       Password === "" ||
       Password2 === "" ||
-      Nickname === "" 
+      Nickname === ""
     ) {
       setAlert("아이디,비밀번호,닉네임을 모두 입력해주세요!");
       return;
@@ -141,25 +144,25 @@ const SignUp = (props) => {
     if (!(okid && oknickname)) {
       setAlert("중복체크를 모두 해주세요!")
     } else {
-     const verify = await apis.verifyEmail({username: emailRef.current.value+Selected})
-                              .then((res)=>{
-                                openModal()
-                              }).catch(e => {
-                                Sentry.captureException(e);
-                            });
-  };
+      const verify = await apis.verifyEmail({ username: emailRef.current.value + Selected })
+        .then((res) => {
+          openModal()
+        }).catch(e => {
+          Sentry.captureException(e);
+        });
+    };
   }
-   //회원가입정보 전달
-   const signupAfter = async()=>{
+  //회원가입정보 전달
+  const signupAfter = async () => {
     const form = new FormData();
     //사진이 들어가지 않았을 때와 들어갔을 때 구분해서 보내줌
     const datas = {
-      username: emailRef.current.value+Selected,
+      username: emailRef.current.value + Selected,
       nickname: nicknameRef.current.value,
       password: passwordRef.current.value,
     }
     const data = {
-      username: emailRef.current.value+Selected,
+      username: emailRef.current.value + Selected,
       nickname: nicknameRef.current.value,
       password: passwordRef.current.value,
       profileImage: null
@@ -169,20 +172,20 @@ const SignUp = (props) => {
     }))
     form.append('profileImage', fileInputRef.current.files[0])
     // console.log(fileInputRef.current.files[0].name)
-    if(fileInputRef.current.files?.length===0){
+    if (fileInputRef.current.files?.length === 0) {
       const response = await apis.addUserWO(data)
-      .then(response => {
-      })
-    .catch(e => {
-        Sentry.captureException(e);
-    });
-    }else{
+        .then(response => {
+        })
+        .catch(e => {
+          Sentry.captureException(e);
+        });
+    } else {
       const res = await apis.addUser(form)
-                  .then(response => {
-                  })
-                .catch(e => {
-                    Sentry.captureException(e);
-                });
+        .then(response => {
+        })
+        .catch(e => {
+          Sentry.captureException(e);
+        });
     }
     navigate("/login")
   }
@@ -191,7 +194,7 @@ const SignUp = (props) => {
     setFileImage(URL.createObjectURL(e.target.files[0]));
     // setProfileImage(e.target.files)
   };
-//input창 숨기고 사진 넣기
+  //input창 숨기고 사진 넣기
   const onClickImageUpload = () => {
     fileInputRef.current.click();
   };
@@ -201,26 +204,26 @@ const SignUp = (props) => {
   };
   return (
     <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <ScWrap2>
-          <ScSignupWrap>
-            <div>{alert}</div>
-            <ScProfileImg style={{ backgroundImage:`url(${fileImage})`}}>
-            <img onClick={onClickImageUpload} src="./카메라.png" style={{width:"50px"}} alt=""/>  
-            </ScProfileImg>
-            <input
-              name="imgUpload"
-              type="file"
-              accept="image/*"
-              ref={fileInputRef}
-              onChange={saveFileImage}
-              style={{ display: "none" }}
-            />
+        <ScSignupWrap>
+          <div>{alert}</div>
+          <ScProfileImg style={{ backgroundImage: `url(${fileImage})` }}>
+            <img onClick={onClickImageUpload} src="./카메라.png" style={{ width: "50px" }} alt="" />
+          </ScProfileImg>
+          <input
+            name="imgUpload"
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={saveFileImage}
+            style={{ display: "none" }}
+          />
 
-            <ScInputWrap>
+          <ScInputWrap>
             <ScWrap>
               <input
                 type="email"
@@ -230,13 +233,13 @@ const SignUp = (props) => {
                 onChange={(event) => {
                   setEmail(event.target.value);
                 }}
-               
-                style={{width:"160px"}}
-              />
-              <h1 style={{width:"50px", textAlign:"center", fontSize:"23px"}}>@</h1>
 
-              <ScSelect onChange={handleSelect} value={Selected}   
-             >
+                style={{ width: "160px" }}
+              />
+              <h1 style={{ width: "50px", textAlign: "center", fontSize: "23px" }}>@</h1>
+
+              <ScSelect onChange={handleSelect} value={Selected}
+              >
                 <option value="email">--Email--</option>
                 <option value="@naver.com" >naver.com</option>
                 <option value="@hanmail.net">hanmail.net</option>
@@ -245,9 +248,9 @@ const SignUp = (props) => {
                 <option value="@korea.com">korea.com</option>
                 <option value="@gmail.com">gmail.com</option>
               </ScSelect>
-              
+
               <ScDuplicateButton onClick={dupEmail}>중복검사</ScDuplicateButton>
-            {emailCheck?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>}  
+              {emailCheck ? <ScCheck src={unchecked} alt="" /> : <ScCheck src={checked} alt="" />}
             </ScWrap>
             {/* <ScCondition>E-mail주소를 입력해 주세요</ScCondition> */}
             <br />
@@ -261,13 +264,13 @@ const SignUp = (props) => {
                 onChange={(event) => {
                   setNickname(event.target.value);
                 }}
-                style={{  width:"362px" }}
+                style={{ width: "362px" }}
               />
               <ScDuplicateButton onClick={dupNick}>중복검사</ScDuplicateButton>
-              {nicknameCheck?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>} 
+              {nicknameCheck ? <ScCheck src={unchecked} alt="" /> : <ScCheck src={checked} alt="" />}
             </ScWrap>
             <ScCondition>2자 이상 8자 이하의 닉네임을 작성해 주세요.</ScCondition>
-              <ScWrap>
+            <ScWrap>
               <input
                 type="password"
                 placeholder="Password"
@@ -277,38 +280,38 @@ const SignUp = (props) => {
                 }}
                 ref={passwordRef}
               />
-              {samePw?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>} 
-              </ScWrap>
-              <ScCondition>비밀번호는 8자 이상 영문과 숫자로만 만들어 주세요(영문, 숫자 필수 포함)</ScCondition>
-        
-              <ScWrap>
+              {samePw ? <ScCheck src={unchecked} alt="" /> : <ScCheck src={checked} alt="" />}
+            </ScWrap>
+            <ScCondition>비밀번호는 8자 이상 영문과 숫자로만 만들어 주세요(영문, 숫자 필수 포함)</ScCondition>
+
+            <ScWrap>
               <input
-              type="password"
-              placeholder="Password check"
-              value={Password2}
-              onChange={(event) => {
-                setPassword2(event.target.value);
-              }}
-              ref={password2Ref}
+                type="password"
+                placeholder="Password check"
+                value={Password2}
+                onChange={(event) => {
+                  setPassword2(event.target.value);
+                }}
+                ref={password2Ref}
               />
-              {samePw?<ScCheck src={unchecked} alt=""/>:<ScCheck src={checked} alt=""/>} 
-              </ScWrap>
+              {samePw ? <ScCheck src={unchecked} alt="" /> : <ScCheck src={checked} alt="" />}
+            </ScWrap>
             <div ref={check} />
             <ScCondition>비밀번호를 다시 입력해주세요</ScCondition>
             <br />
-            </ScInputWrap>
-            {goToSignup? <ScLoginButton onClick={onSubmitUserHandler}>회원가입 하기</ScLoginButton>: <ScLoginButton onClick={onSubmitUserHandler} style={{backgroundColor:"black"}}>회원가입 하기</ScLoginButton>}
-            <SignupModal showModal={modal} closeModal={closeModal} signupAfter={signupAfter} email={emailRef?.current?.value+Selected}/>
-            <ScLoginButton onClick={()=>{navigate('/')}}style={{backgroundColor:"black"}}>돌아가기</ScLoginButton>
-          </ScSignupWrap>
-          {isMobile ? null : <ScImageBox/> }
+          </ScInputWrap>
+          {goToSignup ? <ScLoginButton onClick={onSubmitUserHandler}>회원가입 하기</ScLoginButton> : <ScLoginButton onClick={onSubmitUserHandler} style={{ backgroundColor: "black" }}>회원가입 하기</ScLoginButton>}
+          <SignupModal showModal={modal} closeModal={closeModal} signupAfter={signupAfter} email={emailRef?.current?.value + Selected} />
+          <ScLoginButton onClick={() => { navigate('/') }} style={{ backgroundColor: "black" }}>돌아가기</ScLoginButton>
+        </ScSignupWrap>
+        {isMobile ? null : <ScImageBox />}
       </ScWrap2>
     </motion.div>
 
   );
 };
 
-const ScWrap2= styled.div`
+const ScWrap2 = styled.div`
 display: flex;
 width: 100%;
 `
@@ -331,7 +334,7 @@ flex-direction: column;
 justify-content:center;
 align-items:center;
 `
-const ScProfileImg =styled.div`
+const ScProfileImg = styled.div`
  width: 130px;
  height: 130px; 
  border:1px #ddd solid;
@@ -354,7 +357,7 @@ option{
 }
 `
 
-const ScInputWrap =styled.div`
+const ScInputWrap = styled.div`
 display: flex;
 flex-direction: column;
 input{
@@ -380,7 +383,7 @@ const ScDuplicateButton = styled.div`
   width: 94px;
   height: 60px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 0.875em;
   font-weight: bold;
   margin-left: 10px;
   /* margin: 0 30px 0 0; */

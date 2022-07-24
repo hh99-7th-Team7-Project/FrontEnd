@@ -88,16 +88,16 @@ const Comment = ({ item }) => {
       </ScStarContainer>
 
       <ScCardTitie>
-        <ScCardAlign1>
-          <span>별점</span>
-        </ScCardAlign1>
-        <ScCardAlign2>
-          <ScCommentSpan>내용</ScCommentSpan>
-        </ScCardAlign2>
-        <ScCardAlign3>
-          <ScDateSpan>날짜</ScDateSpan>
-          <ScNickSpan>닉네임</ScNickSpan>
-        </ScCardAlign3>
+          <ScCardAlign1>
+            별점
+          </ScCardAlign1>
+          <ScCardAlign2>
+            내용
+          </ScCardAlign2>
+          <div style={{display:"flex", width:"30%", gap:"45%"}}>
+            <ScDateSpan>날짜</ScDateSpan>
+            <ScNickSpan>닉네임</ScNickSpan>
+          </div>
       </ScCardTitie>
     </ScWrap>
   );
@@ -136,7 +136,7 @@ const ScH1 = styled.h1`
   padding: 20px auto;
   margin: 30px auto;
   text-align: center;
-  font-size: 40px;
+  font-size: 2.5em;
   line-height: 49.92px;
   width: 500px;
 `;
@@ -148,7 +148,7 @@ const ScH3 = styled.h3`
 
 const ScOneCommentTitle = styled.h2`
   width: 500px;
-  font-size: 40px;
+  font-size: 2.5em;
   font-weight: 700;
   line-height: 49.92px;
   text-align: center;
@@ -161,23 +161,18 @@ const ScStarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px auto;
+  margin: 70px auto 40px;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
-  
 `;
 
 const ScInput = styled.input`
-
   width: 60%;
   height: 40px;
   margin: 30px auto;
   border: none;
   border-radius: 2px;
-  font-size: 20px;
+  font-size: 1.25em;
   text-align: left;
-  
-  
-
 `;
 
 const ScStarSelect = styled.select`
@@ -185,7 +180,7 @@ const ScStarSelect = styled.select`
   height: 30px;
   border-radius: 20px;
   text-align: left;
-  font-size: 14px;
+  font-size: 0.875em;
   border: none;
 `;
 
@@ -204,9 +199,9 @@ const ScReviewBtn = styled.button`
 
 const ScCardTitie = styled.div`
   position: relative;
-  margin: 20px auto;
+  margin: auto;
   width: 70%;
-  padding: 20px;
+  padding: 10px;
   border-top: 2px solid black;
   display: flex;
   justify-content: space-between;
@@ -214,26 +209,17 @@ const ScCardTitie = styled.div`
 `;
 
 const ScCardAlign1 = styled.div`
-  display: flex;
-  width: 30px;
-  padding: 2px 20px;
-  justify-content: center;
-  align-items: center;
+  margin-left: 30px;
   color: black;
 `;
 
 const ScCardAlign2 = styled.div`
-  width: 230px;
-  padding: 2px 20px;
-  display: flex;
-  justify-content: space-between;
+
 `;
 
 const ScCardAlign3 = styled.div`
   width: 400px;
   padding: 2px 80px;
-  display: flex;
-  justify-content: space-around;
 `;
 
 const ScCommentSpan = styled.span`
@@ -242,11 +228,11 @@ const ScCommentSpan = styled.span`
   left: 0;
 `;
 
-const ScDateSpan = styled.span`
+const ScDateSpan = styled.div`
   color: black;
 `;
 
-const ScNickSpan = styled.span`
+const ScNickSpan = styled.div`
   color: black;
 `;
 

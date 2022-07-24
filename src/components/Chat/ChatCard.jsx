@@ -54,7 +54,7 @@ const TitleWrap = styled.div`
   justify-content: space-between;
   & span {
     display: inline-block;
-    font-size: 30px;
+    font-size: 1.875em;
     font-weight: 700;
     padding-bottom: 20px;
   }
@@ -68,7 +68,7 @@ const ChatTop = styled.div`
   width: 100%;
   display: flex;
   & div {
-    font-size: 25px;
+    font-size: 1.5625em;
     font-weight: 600;
     margin-top: 30px;
   }

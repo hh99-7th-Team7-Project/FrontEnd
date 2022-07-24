@@ -47,8 +47,8 @@ const BrandCard = (props) => {
 
   return (
 
-    <div style={{position:'relative'}}>
- 
+    <div >
+        <div style={{position:'relative'}}>
       <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
       <div className="next" style={{fontSize:"30px"}}>&gt;</div>
       <Swiper
@@ -113,7 +113,7 @@ const BrandCard = (props) => {
           );
         })}
       </Swiper>
-   
+          </div>
 
       <div>
         <SCcardWrap>

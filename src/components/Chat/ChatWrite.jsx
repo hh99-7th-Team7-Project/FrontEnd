@@ -361,7 +361,7 @@ const TimeInput = styled.input`
 `;
 
 const Title = styled.span`
-  font-size: 19px;
+  font-size: 1.1875em;
   font-weight: 600;
 `;
 
@@ -387,7 +387,7 @@ const Btn = styled.button`
   border-radius: 100%;
   & span {
     font-weight: 900;
-    font-size: 20px;
+    font-size: 1.25em;
     display: flex;
     justify-content: center;
   }
@@ -406,7 +406,7 @@ const MakeBtn = styled.div`
     color: white;
     width: 166px;
     height: 49px;
-    font-size: 20px;
+    font-size: 1.25em;
     border-radius: 10px;
   }
 `;
@@ -429,7 +429,7 @@ const Input = styled.input`
   margin: 5px 0 20px 0;
   padding: 0px 0 0 10px;
   color: #5a5858;
-  font-size: 16px;
+  font-size: 1em;
   color: #5a5858;
 `;
 
@@ -442,7 +442,7 @@ const ContentInput = styled.textarea`
   padding: 10px;
   resize: none;
   white-space: pre-wrap;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 500;
   color: #5a5858;
   &:focus{

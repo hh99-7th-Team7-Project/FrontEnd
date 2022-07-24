@@ -8,24 +8,34 @@ const Search = () => {
   const{ keyword }= useParams()
   
   return (
-      <>
-      <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      <Wrap>      
-        <ScDrinkWrap>
-          <h2>"{keyword}"에 대한 음료 검색 결과</h2>
-          <CoffeeSearch keyword={ keyword }/>
-        </ScDrinkWrap>        
-        <br/>
-        <ScBoardWrap>
-          <h2>"{keyword}"에 대한 게시판 검색 결과</h2>
-          <BoardSearch keyword={ keyword }/>
-        </ScBoardWrap>
-      </Wrap>
+    <>
+      <ScMobile>
+        <div style={{margin:"auto", width:"80%"}}>
+          <Header />
+        </div>
+        <Wrap>      
+          <ScDrinkWrap>
+            <h2>"{keyword}"에 대한 음료 검색 결과</h2>
+            <CoffeeSearch keyword={ keyword }/>
+          </ScDrinkWrap>        
+          <br/>
+          <ScBoardWrap>
+            <h2>"{keyword}"에 대한 게시판 검색 결과</h2>
+            <BoardSearch keyword={ keyword }/>
+          </ScBoardWrap>
+        </Wrap>
+      </ScMobile>
     </>
   )
 }
+
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
 
 const Wrap = styled.div`
   margin: 80px auto;

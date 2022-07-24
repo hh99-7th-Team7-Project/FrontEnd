@@ -76,7 +76,7 @@ const ModalContainer = styled.div`
     max-height: 80%;
     width: 20rem;
     height: 50%;
-    padding: 16px;
+    padding: 1em;
     background: white;
     border-radius: 10px;
     text-align: center;
@@ -105,7 +105,7 @@ const ScClose =styled.div`
 const ScButton =styled.div`
   height: 40px;
   width: 130px;
-  font-size: 14px;
+  font-size: 0.875em;
   font-weight: 300;
   border: 1px white solid;
   border-radius: 10px;

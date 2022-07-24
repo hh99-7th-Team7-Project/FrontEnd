@@ -42,7 +42,8 @@ const CategoryCard = (props) => {
 
 
   return (
-    <div style={{position:'relative'}}>
+    <div >
+      <div style={{position:'relative'}}>
       <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
       <div className="next" style={{fontSize:"30px"}}>&gt;</div>
       <Swiper
@@ -105,7 +106,7 @@ const CategoryCard = (props) => {
           );
         })}
       </Swiper>
-
+      </div>
       <div>
         <SCcardWrap>
           <div>{coffeeReducer?.brand}</div>
@@ -127,7 +128,7 @@ const animation = keyframes`
 
 const ScSlide = styled.div`
   /* text-align: center; */
-  /* font-size: 18px; */
+  /* font-size: 1.125em; */
   width: 120px;
   height: 120px;
   transform: scale(0.9);

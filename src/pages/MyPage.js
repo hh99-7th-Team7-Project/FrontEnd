@@ -12,7 +12,7 @@ import {
 } from '../components/mypage/index';
 import styled from 'styled-components';
 import apis from '../shared/api/main';
-import { Pencil, Write, Moiim, left, right } from '../shared/svg/A-index';
+import { Pencil, Write, Moiim, left, right, MypageLogo } from '../shared/svg/A-index';
 import * as Sentry from "@sentry/react";
 
 const MyPage = () => {
@@ -28,8 +28,8 @@ const MyPage = () => {
   const [convertImg, setConvertImg] = useState(profileOrigin);
   const [changeImg, setChangeImg] = useState(false);
   const [condition, setCondition] = useState('');
-  const [countBoard,setCountBoard] =useState()
-  const [countChat,setCountChat] =useState()
+  const [countBoard, setCountBoard] = useState()
+  const [countChat, setCountChat] = useState()
 
   // console.log(changeImg);
 
@@ -40,31 +40,31 @@ const MyPage = () => {
         setEmail(res.data.username);
       }).catch(e => {
         Sentry.captureException(e);
-    });;
+      });;
     };
     profile();
   }, [setUpdate]);
 
-  useEffect(()=>{
-    const boardCount = async ()=>{
+  useEffect(() => {
+    const boardCount = async () => {
       await apis.getMyBoardCount(userId)
-      .then((res)=>{
-        setCountBoard(res.data)
-      }).catch(e => {
-        Sentry.captureException(e);
-    });
+        .then((res) => {
+          setCountBoard(res.data)
+        }).catch(e => {
+          Sentry.captureException(e);
+        });
     }
-    const chatCount =  async ()=>{
+    const chatCount = async () => {
       await apis.getMyChatCount(userId)
-      .then((res)=>{
-        setCountChat(res.data)
-      }).catch(e => {
-        Sentry.captureException(e);
-    });
+        .then((res) => {
+          setCountChat(res.data)
+        }).catch(e => {
+          Sentry.captureException(e);
+        });
     }
     boardCount()
     chatCount()
-  },[])
+  }, [])
 
   // console.log(nick);
   // console.log(newProfileImg);
@@ -121,120 +121,120 @@ const MyPage = () => {
   return (
     <>
       <ScMobile>
-       <div style={{margin:"auto", width:"100%"}}>
-        <Header />
+        <div style={{ margin: "auto", width: "62%" }}>
+          <Header />
         </div>
-        <ScsecondHead />
-      <ScWrap>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '40px',
-          }}
-        >
-          {update ? (
-            <ScMyprofile>
-              <UserPhotoUpdate
-                setNewProfileImg={setNewProfileImg}
-                setChangeImg={setChangeImg}
-              />
-              <div>
-                {/* <div onClick={() => { setUpdate(false) }} style={{marginLeft:"160px",marginBottom:"10px"}}>X</div> */}
-                <div style={{ marginRight: '120px' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <UserInfoUpdate setNick={setNick} />
-                    <div>
-                      <img src={Pencil} alt="" onClick={updateProfile} />
+        <ScsecondHead src={MypageLogo} />
+        <ScWrap>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '40px',
+            }}
+          >
+            {update ? (
+              <ScMyprofile>
+                <UserPhotoUpdate
+                  setNewProfileImg={setNewProfileImg}
+                  setChangeImg={setChangeImg}
+                />
+                <div>
+                  {/* <div onClick={() => { setUpdate(false) }} style={{marginLeft:"160px",marginBottom:"10px"}}>X</div> */}
+                  <div style={{ marginRight: '120px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <UserInfoUpdate setNick={setNick} />
+                      <div>
+                        <img src={Pencil} alt="" onClick={updateProfile} />
+                      </div>
                     </div>
+                    <div style={{ fontSize: '14px' }}>{email}</div>
+                  </div>
+                </div>
+              </ScMyprofile>
+            ) : (
+              <ScMyprofile>
+                <UserPhoto />
+                {/* <UserInfo email={email}/> */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    marginRight: '140px',
+                  }}
+                >
+                  <div style={{ display: 'flex' }}>
+                    <div style={{ fontSize: '22px' }}>{userName}</div>
+                    <img
+                      src={Pencil}
+                      alt=""
+                      onClick={() => {
+                        setUpdate(true);
+                      }}
+                    />
                   </div>
                   <div style={{ fontSize: '14px' }}>{email}</div>
                 </div>
-              </div>
-            </ScMyprofile>
-          ) : (
-            <ScMyprofile>
-              <UserPhoto />
-              {/* <UserInfo email={email}/> */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  marginRight: '140px',
-                }}
-              >
-                <div style={{ display: 'flex' }}>
-                  <div style={{ fontSize: '22px' }}>{userName}</div>
-                  <img
-                    src={Pencil}
-                    alt=""
-                    onClick={() => {
-                      setUpdate(true);
-                    }}
-                  />
+              </ScMyprofile>
+            )}
+            <div style={{ display: 'flex', gap: '23px', flexDirection: 'row' }}>
+              <ScMywrite>
+                <ScMyWriteBtn>
+                  <img alt="" src={Write} style={{ width: '26px' }} />
+                </ScMyWriteBtn>
+                <div style={{ color: '#9A2ACC', marginLeft: '34px' }}>
+                  <ScMyTitle>내가 쓴 글 갯수</ScMyTitle>
+                  <div style={{ fontSize: '32px' }}>{countBoard}</div>
                 </div>
-                <div style={{ fontSize: '14px' }}>{email}</div>
-              </div>
-            </ScMyprofile>
-          )}
-          <div style={{ display: 'flex', gap: '23px', flexDirection: 'row' }}>
-            <ScMywrite>
-              <ScMyWriteBtn>
-                <img alt="" src={Write} style={{ width: '26px' }} />
-              </ScMyWriteBtn>
-              <div style={{ color: '#9A2ACC', marginLeft: '34px' }}>
-                <ScMyTitle>내가 쓴 글 갯수</ScMyTitle>
-                <div style={{ fontSize: '32px' }}>{countBoard}</div>
-              </div>
-            </ScMywrite>
-            <ScChat>
-              <ScMyWriteBtn>
-                <img alt="" src={Moiim} style={{ width: '26px' }} />
-              </ScMyWriteBtn>
-              <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
-                <ScMyTitle>내가 참여한 모임수</ScMyTitle>
-                <div style={{ fontSize: '32px' }}>{countChat}</div>
-              </div>
-            </ScChat>
+              </ScMywrite>
+              <ScChat>
+                <ScMyWriteBtn>
+                  <img alt="" src={Moiim} style={{ width: '26px' }} />
+                </ScMyWriteBtn>
+                <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
+                  <ScMyTitle>내가 참여한 모임수</ScMyTitle>
+                  <div style={{ fontSize: '32px' }}>{countChat}</div>
+                </div>
+              </ScChat>
+            </div>
           </div>
-        </div>
-        <ScBookmark>
-          <div style={{ fontSize: '24px', fontWeight: '700' }}>북마크</div>
-          <div>
-            <ScBookmarkwrap>
-              <div style={{ display: 'flex', gap: '20px' }}>
-                <ScBookmarkCategory
-                  onClick={() => {
-                    setMenu(1);
-                  }}
-                >
-                  음료
-                </ScBookmarkCategory>
-                <div style={{ border: '1px solid black' }}></div>
-                <ScBookmarkCategory
-                  onClick={() => {
-                    setMenu(2);
-                  }}
-                >
-                  게시판
-                </ScBookmarkCategory>
-              </div>
-            </ScBookmarkwrap>
-            {/* <ScBookWrap> */}
-            {menu === 1 && <UserBoardCoffee />}
-            {menu === 2 && <UserBoardBoard />}
-            {/* {(menu===3)&&<UserBoardWrite/>} */}
-            {/* </ScBookWrap> */}
-          </div>
-        </ScBookmark>
-      </ScWrap>
+          <ScBookmark>
+            <div style={{ fontSize: '24px', fontWeight: '700' }}>북마크</div>
+            <div>
+              <ScBookmarkwrap>
+                <div style={{ display: 'flex', gap: '20px' }}>
+                  <ScBookmarkCategory
+                    onClick={() => {
+                      setMenu(1);
+                    }}
+                  >
+                    음료
+                  </ScBookmarkCategory>
+                  <div style={{ border: '1px solid black' }}></div>
+                  <ScBookmarkCategory
+                    onClick={() => {
+                      setMenu(2);
+                    }}
+                  >
+                    게시판
+                  </ScBookmarkCategory>
+                </div>
+              </ScBookmarkwrap>
+              {/* <ScBookWrap> */}
+              {menu === 1 && <UserBoardCoffee />}
+              {menu === 2 && <UserBoardBoard />}
+              {/* {(menu===3)&&<UserBoardWrite/>} */}
+              {/* </ScBookWrap> */}
+            </div>
+          </ScBookmark>
+        </ScWrap>
       </ScMobile>
     </>
   );
@@ -250,10 +250,12 @@ const ScMobile = styled.div`
   }
 `;
 
-const ScsecondHead = styled.div`
+const ScsecondHead = styled.img`
   height: 135px;
-  background-color: #ddd;
+  background-color: #F5E5F5; 
+
   margin-bottom: 40px;
+  width: 100%;
 `;
 
 const ScBookmarkwrap = styled.div`
@@ -264,7 +266,7 @@ const ScBookmarkwrap = styled.div`
   width: 140px;
 `;
 const ScMyTitle = styled.div`
-  font-size: 22px;
+  font-size: 1.375em;
   margin-bottom: 10px;
 `;
 
@@ -280,7 +282,7 @@ const ScBookmark = styled.div`
   /* justify-content: center; */
   /* align-items: flex-start; */
   /* left: 0; */
-  /* font-size: 24px; */
+  /* font-size: 1.5em; */
 `;
 const ScBookWrap = styled.div`
   background-color: #ddd;
@@ -292,7 +294,7 @@ const ScBookWrap = styled.div`
 `;
 
 const ScBookmarkCategory = styled.div`
-  font-size: 20px;
+  font-size: 1.25em;
   cursor: pointer;
   font-weight: 600;
 `;

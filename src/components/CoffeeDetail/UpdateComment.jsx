@@ -86,7 +86,7 @@ const ScTBWrap = Styled.div`
 
 const ScModalTitle = Styled.h2`
     line-height: 36px;
-    font-size: 28px;
+    font-size: 1.75em;
     font-weight: 700;
     margin: 26px 0;
 `;
@@ -97,7 +97,7 @@ const ScButton = Styled.button`
     right: 38px;
     background-color: transparent;
     border: 0;
-    font-size: 22px;
+    font-size: 1.375em;
     &:hover{
         cursor: pointer;
     }

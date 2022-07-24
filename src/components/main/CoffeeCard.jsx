@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Lens from './svg/Lens.svg';
@@ -11,11 +12,45 @@ const navigate = useNavigate()
 // console.log(item.pricePair)
 const pricePair = item.pricePair
 // console.log(pricePair)
+const [brandLogo, setBrandLogo] = useState()
 
 
 const moveOnclick = () => {
 navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
 }
+
+useEffect(()=>{
+switch(item?.brand){
+      case "스타벅스":
+        return setBrandLogo("/brandlogo/스타벅스.png")
+      case "할리스":
+        return setBrandLogo("/brandlogo/할리스.jpg")
+      case "엔젤인어스" : 
+      return setBrandLogo("/brandlogo/엔젤인어스.png")
+        case "이디야" : 
+        return setBrandLogo("/brandlogo/이디야.png")
+        case "커피빈" : 
+        return setBrandLogo("/brandlogo/커피빈.png")
+        case "더벤티" : 
+        return setBrandLogo("/brandlogo/더벤티.png")
+        case "드롭탑" :
+          return setBrandLogo("/brandlogo/드롭탑.png")
+          case "컴포즈" :
+            return setBrandLogo("/brandlogo/컴포즈.png")
+          case "탐앤탐스" :
+            return setBrandLogo("/brandlogo/탐앤탐스.png")
+          case "빽다방" :
+            return setBrandLogo("/brandlogo/빽다방.png")
+          case "폴바셋" :
+            return setBrandLogo("/brandlogo/폴바셋.png")
+          case "카페베네" :
+            return setBrandLogo("/brandlogo/카페베네.png")
+      default:
+        return undefined
+    }
+},[item])
+
+
 
   return (
     <div>
@@ -26,7 +61,7 @@ navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
             <SCprice>₩{pricePair[0].price}</SCprice>
           </ScBeforeHover>
         <SChover>
-          <ScLogo></ScLogo>
+          <ScLogo src={brandLogo}></ScLogo>
           <SCcardText style={{fontSize:'13px'}}>{item?.brand}</SCcardText>
           <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
           <SCcardPrice>₩{pricePair[0].price}</SCcardPrice>
@@ -58,8 +93,8 @@ export default CoffeeCard
 
 
 const SCcardText = styled.div`    
-    /* margin: 10px auto; */
-    /* font-size: 30px; */
+    margin-bottom: 5px;
+    /* font-size: 1.875em; */
 `;
 
 const ScBeforeHover = styled.div`
@@ -73,6 +108,37 @@ const ScLogo = styled.img`
     height: 70px;
     border-radius: 100%;
     background-color: white;
+     /* background-color: ${(props) => {
+    switch(props.color){
+      case "스타벅스":
+        return "rgb(1,98,65)"
+      case "할리스":
+        return "rgb(193,47,48)"
+      case "엔젤인어스" : 
+        return "#252525"
+        case "이디야" : 
+        return "rgb(36,60,132)"
+        case "커피빈" : 
+        return "rgb(76,44,105)"
+        case "더벤티" : 
+        return "rgb(123,0,155)"
+        case "드롭탑" :
+       return"rgb(26,38,138)"
+          case "컴포즈" :
+        return"rgb(254,217,0)"
+          case "탐앤탐스" :
+        return"rgb(79,21,29)"
+          case "빽다방" :
+         return"rgb(26,38,138)"
+          case "폴바셋" :
+        return"rgb(41,31,32)"
+          case "카페베네" :
+         return"rgb(121,98,80)"
+
+      default:
+        return "white"
+    }
+  }}; */
     margin: 42px 0 23px 0;
 `
 
@@ -90,7 +156,7 @@ const SCcardPrice = styled.div`
   const SCcoffeeImg = styled.img`
     max-width: 240px;
     height: 240px;
-    margin: 43px auto 40px;
+    margin: 25px auto 24px;
   `
 
 const ScZoomIn = styled.div`
@@ -137,37 +203,7 @@ const ScLens = styled.img`
   `
 const SCcard = styled.div`
     position: relative;
-    /* background-color: ${(props) => {
-    switch(props.color){
-      case "스타벅스":
-        return "rgb(1,98,65)"
-      case "할리스":
-        return "rgb(193,47,48)"
-      case "엔젤인어스" : 
-        return "#252525"
-        case "이디야" : 
-        return "rgb(36,60,132)"
-        case "커피빈" : 
-        return "rgb(76,44,105)"
-        case "더벤티" : 
-        return "rgb(123,0,155)"
-        case "드롭탑" :
-       return"rgb(26,38,138)"
-          case "컴포즈" :
-        return"rgb(254,217,0)"
-          case "탐앤탐스" :
-        return"rgb(79,21,29)"
-          case "빽다방" :
-         return"rgb(26,38,138)"
-          case "폴바셋" :
-        return"rgb(41,31,32)"
-          case "카페베네" :
-         return"rgb(121,98,80)"
-
-      default:
-        return "white"
-    }
-  }}; */
+   
     display: flex;
     flex-direction: column;
     /* border: 1px solid #ddd; */
@@ -179,10 +215,10 @@ const SCcard = styled.div`
     /* border-radius: 30px; */
     &:hover {
       ${ScZoomIn}{
-        opacity: 100%;
+        opacity: 100%!important;
       }
       ${SChover}{
-        opacity: 80%;
+        opacity: 90%;
       }
       
     }

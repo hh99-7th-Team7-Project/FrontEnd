@@ -69,7 +69,7 @@ const Review = ({ item, reviewData, url }) => {
              {pricePair&&<PriceScH3 style={{fontSize:'30px'}}>￦{pricePair[0]?.price}</PriceScH3>} 
             </ScPriceBox>
           </ScStarPriceContainer>
-          {pricePair &&(pricePair?.length===3) &&
+            {pricePair &&(pricePair?.length===3) &&
                       <ScImgWrap>
                           <ScSmallWrap>
                             <ScSmallImg src={Small} alt="" />
@@ -130,7 +130,7 @@ const ScSmallWrap =styled.div`
 `
 
 const Sctitle =styled.div`
-  font-size: 18px;
+  font-size: 1.125em;
 `
 const ScContentBox = styled.div`
   margin: 20px;
@@ -157,7 +157,7 @@ const ScGotoMap = styled.div`
   align-items: center;
   cursor: pointer;
   border-radius: 100px;
-  margin: auto;
+  margin: auto;  
 `;
 const ScGotoMap1 = styled.div`
   width: 250px;
@@ -171,12 +171,12 @@ const ScGotoMap1 = styled.div`
   align-items: center;
   cursor: pointer;
   border-radius: 100px;
-  margin: auto;
+  margin: auto;  
 `;
 
 const ScSpan = styled.span`
   margin-left: 5px;
-  font-size: 20px;
+  font-size: 1.25em;
 `;
 
 const ScStarPriceContainer = styled.div`
@@ -215,7 +215,7 @@ const PriceScH3 = styled.h2`
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 1.125em;
   line-height: 49.92px;
 `;
 

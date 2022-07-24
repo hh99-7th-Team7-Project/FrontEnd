@@ -167,7 +167,7 @@ export default function postReducer(state = initialState, action) {
     case ADD_COMMENT:
       return {
         ...state,
-        posts: [...state.posts, action.payload],
+        posts: [action.payload, ...state.posts ],
       };
     case LOAD_COMMENT:
       return {
