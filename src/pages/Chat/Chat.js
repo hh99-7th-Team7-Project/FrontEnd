@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { boardwrite, ChatLogo, Chatimoji, ChatLogoSmall } from '../../shared/svg/A-index';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import apis from '../../shared/api/main';
+import * as Sentry from "@sentry/react";
 
 const Chat = () => {
   const [posts, setPosts] = useState([]);
@@ -17,15 +18,18 @@ const Chat = () => {
 
   useEffect(() => {
    const Loading =async()=> await apis.getChatLists(page)
-      .then((data) => setPosts(data.data));
-    console.log(page);
+      .then((data) => setPosts(data.data))
+      .catch(e => {
+        Sentry.captureException(e);
+    });;
+    // console.log(page);
     Loading()
   }, [page, write]);
 
   const chatpostList = posts?.chatpostList;
   const totalPage = posts?.totalPage;
-console.log(posts)
-  console.log(chatpostList, page);
+// console.log(posts)
+  // console.log(chatpostList, page);
 
   // const chatReducer = useSelector((state) => state?.chat?.list);
 

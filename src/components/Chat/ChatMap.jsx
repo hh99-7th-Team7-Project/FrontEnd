@@ -5,27 +5,12 @@ const ChatMap = ({location}) => {
   const [info, setInfo] = useState()
   const [markers, setMarkers] = useState([])
   const [map, setMap] = useState()
-console.log(location)
+// console.log(location)
   const { kakao } = window;
 
   useEffect(() => {
     if (!map) return
     const ps = new kakao.maps.services.Places()
-
-    // const placesSearchCB = (data, status, _pagination) => {
-    //   if (status === window.kakao.maps.services.Status.OK) {
-    //     // 정상적으로 검색이 완료됐으면
-    //     // 검색 목록과 마커를 표출
-
-    //     displayPlaces(data);
-    //   } else if (status === window.kakao.maps.services.Status.ZERO_RESULT) {
-    //     alert('정확한 커피숍 이름을 입력해주세요');
-    //     return;
-    //   } else if (status === window.kakao.maps.services.Status.ERROR) {
-    //     alert('검색 결과 중 오류가 발생했습니다.');
-    //     return;
-    //   }
-    // };
 
     ps.keywordSearch(`${location}`, (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {

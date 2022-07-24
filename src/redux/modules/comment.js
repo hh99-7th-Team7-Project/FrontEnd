@@ -1,6 +1,7 @@
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import Swal from 'sweetalert2';
+import * as Sentry from "@sentry/react";
 
 const nickname = getCookie('nickname');
 
@@ -41,7 +42,7 @@ export const deleteComment = (payload) => {
 };
 
 export const updateComment = (payload) => {
-  console.log('수정할거야!');
+  // console.log('수정할거야!');
 
   return {
     type: UPDATE_COMMENT,
@@ -60,7 +61,7 @@ export const getAveStar = (payload) => {
 
 export const __addComment = (payload) => async (dispatch, getState) => {
   try {
-    console.log('add', payload);
+    // console.log('add', payload);
     const response = await apis.postComment(
       payload.brand,
       payload.boardId,
@@ -76,7 +77,8 @@ export const __addComment = (payload) => async (dispatch, getState) => {
     // console.log(response);
     dispatch(addComment(response.data));
   } catch (error) {
-    console.log(error);
+    Sentry.captureException(error);
+    // console.log(error);
     if (error.response.status === 401) {
       Swal.fire({
         title: '로그인을 해주세요!',
@@ -89,7 +91,7 @@ export const __addComment = (payload) => async (dispatch, getState) => {
 
 export const __updateComment = (payload) => async (dispatch, getState) => {
   try {
-    console.log('수정', payload);
+    // console.log('수정', payload);
     const response = await apis.updateComment(
       payload.brand,
       payload.boardId,
@@ -100,20 +102,22 @@ export const __updateComment = (payload) => async (dispatch, getState) => {
       }
     );
 
-    console.log('response data', response.data);
+    // console.log('response data', response.data);
     dispatch(updateComment(response.data));
   } catch (error) {
+    Sentry.captureException(error);
     console.log(error);
   }
 };
 
 export const __loadComment = (payload) => async (dispatch, getState) => {
   try {
-    console.log(payload);
+    // console.log(payload);
     const posts = await apis.getComment(payload.brand, payload.boardId);
-    console.log(posts.data);
+    // console.log(posts.data);
     dispatch(loadComment(posts.data));
   } catch (error) {
+    Sentry.captureException(error);
     console.log(error);
   }
 };
@@ -121,9 +125,9 @@ export const __loadComment = (payload) => async (dispatch, getState) => {
 export const __deleteComment =
   (brand, boardId, reviewId) => async (dispatch, getState) => {
     try {
-      console.log('삭제', brand, boardId, reviewId);
+      // console.log('삭제', brand, boardId, reviewId);
       const response = await apis.deleteComment(brand, boardId, reviewId);
-      console.log(response.data);
+      // console.log(response.data);
       dispatch(deleteComment(response.data));
       Swal.fire({
         title: '삭제 완료!!',
@@ -131,7 +135,8 @@ export const __deleteComment =
         confirmButtonText: '확인',
       });
     } catch (error) {
-      console.log(error);
+      Sentry.captureException(error);
+      // console.log(error);
       if (error.response.status === 500) {
         Swal.fire({
           title: '내가 쓴 한줄평만 삭제할 수 있습니다.',
@@ -145,11 +150,12 @@ export const __deleteComment =
 export const __getAverageStar =
   (brand, boardId) => async (dispatch, getState) => {
     try {
-      console.log('평점 가져오기', brand, boardId);
+      // console.log('평점 가져오기', brand, boardId);
       const response = await apis.getAveComment(brand, boardId);
-      console.log(response);
+      // console.log(response);
       dispatch(getAveStar(response));
     } catch (error) {
+      Sentry.captureException(error);
       console.log(error);
     }
   };

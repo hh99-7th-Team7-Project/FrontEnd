@@ -4,12 +4,28 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 import apis from '../../shared/api/main';
+import { getCookie } from '../../shared/Cookie';
+import * as Sentry from "@sentry/react";
 
 const BoardLike = ({ head, boardId, like2, setLike }) => {
+
+  const token = getCookie("token")
   const like = async () => {
-    await apis.postBoardsLike(head?.category, boardId).then((res) => {
+    if(token){
+      await apis.postBoardsLike(head?.category, boardId)
+      .then((res) => {
       setLike(res.data);
-    });
+    }).catch((e)=>{
+      Sentry.captureException(e);
+    })
+    }else{
+      Swal.fire({
+        title: '로그인 후 이용해 주세요!',
+        icon: 'warning',
+        confirmButtonText: '확인',
+      });
+    }
+    
   };
   const currentUrl = window.location.href;
   return (

@@ -1,6 +1,6 @@
 import apis from "../../shared/api/main"
 import { getCookie } from "../../shared/Cookie";
-
+import * as Sentry from "@sentry/react";
 
 let intialstate = {
   list: [],
@@ -41,23 +41,34 @@ export function removeCoffee(payload) {
 /* ----------------- 미들웨어 ------------------ */
 export const __loadCoffee = (brand) => {
   return async function (dispatch) {
-    const loadData = await apis.getCoffee(brand);
-    console.log(loadData.data);
+    try{
+       const loadData = await apis.getCoffee(brand);
+    // console.log(loadData.data);
     dispatch(loadCoffee(loadData.data));
-  };
+  }catch(e){
+    Sentry.captureException(e);
+  }
+    }
+   
 };
 export const __loadCoffees = () => {
   return async function (dispatch) {
-    const loadData = await apis.getCoffees();
-    console.log(loadData.data);
-    dispatch(loadCoffee(loadData.data));
+    try{const loadData = await apis.getCoffees();
+    // console.log(loadData.data);
+    dispatch(loadCoffee(loadData.data));}
+    catch(e){
+      Sentry.captureException(e);
+    }
   };
 };
 export const __loadCoffeeCategory = (category) => {
   return async function (dispatch) {
-    const loadData = await apis.getCoffeeCategory(category);
-    console.log(loadData.data);
-    dispatch(loadCoffeeCategory(loadData.data));
+    try{const loadData = await apis.getCoffeeCategory(category);
+    // console.log(loadData.data);
+    dispatch(loadCoffeeCategory(loadData.data));}
+    catch(e){
+      Sentry.captureException(e);
+    }
   };
 };
 
@@ -65,23 +76,32 @@ export const __loadCoffeeDetail = (brand,id) => {
   return async function (dispatch) {
     const token = getCookie("token")
     if(!token){
-       const loadData = await apis.getCoffeeDetail(brand,id);
-       console.log(loadData.data);
-      dispatch(loadCoffeeDetail(loadData.data[0]));
+       try{const loadData = await apis.getCoffeeDetail(brand,id);
+      //  console.log(loadData.data);
+      dispatch(loadCoffeeDetail(loadData.data[0]));}
+      catch(e){
+        Sentry.captureException(e);
+      }
     }else{
-      const loadData = await apis.getCoffeeDetailLogin(brand,id);
-       console.log(loadData.data);
-      dispatch(loadCoffeeDetail(loadData.data));
+     try{ const loadData = await apis.getCoffeeDetailLogin(brand,id);
+      //  console.log(loadData.data);
+      dispatch(loadCoffeeDetail(loadData.data));}
+      catch(e){
+        Sentry.captureException(e);
+      }
     }
   };
 };
 
 export const __createCoffee = () => {
   return async function (dispatch) {
-    console.log("러닝")
-    const loadData = await apis.getCoffee();
-    console.log(loadData.data);
-    dispatch(loadCoffee(loadData.data));
+    // console.log("러닝")
+    try{const loadData = await apis.getCoffee();
+    // console.log(loadData.data);
+    dispatch(loadCoffee(loadData.data));}
+    catch(e){
+      Sentry.captureException(e);
+    }
   };
 };
 

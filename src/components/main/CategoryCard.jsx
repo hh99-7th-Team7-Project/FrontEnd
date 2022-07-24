@@ -93,7 +93,7 @@ const CategoryCard = (props) => {
                 <ScSlide
                   onClick={(e) => {
                     // e.target.style.background
-                    console.log(item.id);
+                    // console.log(item.id);
                     setColor(!color);
                     dispatch(__loadCoffeeCategory(item?.brand));
                   }}
