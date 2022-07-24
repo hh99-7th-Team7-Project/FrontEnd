@@ -13,6 +13,8 @@ import { Flow } from '../components/main/Flow';
 import Modal from '../components/main/Modal';
 import { getCookie } from '../shared/Cookie';
 import { useMediaQuery } from "react-responsive";
+import ImgSlide2 from '../components/main/ImgSlide2';
+import Modal2 from '../components/main/Modal2';
 
 
 
@@ -61,8 +63,8 @@ const changeColor2 = ()=>{
     </div>
    
 <div style={{position:"relative"}}>
-    <ImgSlide/>
-  
+    {/* <ImgSlide/> */}
+    <ImgSlide2/>
     <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
           {/* <ScMapRandomWrap>
             <RandomPicker />
@@ -86,7 +88,7 @@ const changeColor2 = ()=>{
        </ScNavbarWrap>
       {category?<BrandCard/>:<CategoryCard/>}
     </div>
-    { isMobile ? null : <Modal showModal={showModal} closeModal={closeModal}/>}
+    { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
     {/* <Flow/> */}
     <Flower/>
 </div>    
