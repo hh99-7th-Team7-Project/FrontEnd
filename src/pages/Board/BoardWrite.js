@@ -51,33 +51,43 @@ const BoardWrite = () => {
 
   return (
     <>
-      <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      <ScWrite>
-        <BoardCategory title={setTitle} cate={setCate} />
-        <ToastEdit content={setContent} />
-
-        <ScSubmit>
-          <div onClick={submitOnclick}>제출</div>
-          <div
-            onClick={() => {
-              navigate('/board');
-            }}
-          >
-            취소
-          </div>
-        </ScSubmit>
-      </ScWrite>
+      <ScMobile>
+        <div style={{margin:"auto", width:"100%"}}>
+          <Header />
+        </div>
+        <ScWrite>
+          <BoardCategory title={setTitle} cate={setCate} />
+          <ToastEdit content={setContent} />
+          <ScSubmit>
+            <div onClick={submitOnclick}>제출</div>
+            <div
+              onClick={() => {
+                navigate('/board');
+              }}
+            >
+              취소
+            </div>
+          </ScSubmit>
+          </ScWrite>
+        </ScMobile>
     </>
   );
 };
 
 export default BoardWrite;
 
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
+
 const ScWrite = styled.div`
   min-width: 1200px;
-  margin: 73px auto;
+  width: 90%;
+  margin: 73px auto; 
 `;
 const ScSubmit = styled.div`
   display: flex;

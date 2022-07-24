@@ -50,21 +50,31 @@ const BoardUpdate = () => {
 
   return (
     <>
-    <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      <ScWrite>
-      <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
-      <ToastEditUpdate content={setContent} prevContent={prevContent} />
-      <ScSubmit>
-      <div onClick={submitOnclick}>제출</div>
-      </ScSubmit>
-      </ScWrite>
+      <ScMobile>
+        <div style={{margin:"auto", width:"100%"}}>
+          <Header />
+        </div>
+        <ScWrite>
+        <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
+        <ToastEditUpdate content={setContent} prevContent={prevContent} />
+        <ScSubmit>
+        <div onClick={submitOnclick}>제출</div>
+        </ScSubmit>
+        </ScWrite>
+      </ScMobile>
     </>
   )
 }
 
 export default BoardUpdate
+
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
 
 const ScWrite = styled.div`
   min-width: 1200px;

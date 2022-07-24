@@ -82,8 +82,7 @@ const closeModal = () => {
       exit={{ x: -300, opacity: 0 }}
     >
        <ScHeadWrap>
-        <ScLogo src={character} onClick={()=>{navigate('/')}}/>
-        <h2>환영 문구 또는 가입 문구</h2>
+        <ScLogo src={character} onClick={()=>{navigate('/')}}/>        
         </ScHeadWrap>
     </motion.div>
        
@@ -137,6 +136,7 @@ const ScLogo = styled.img`
  margin-top: 50px;
  padding-right: 60px;
 `
+
 
 const ScHeadWrap = styled.div`
 /* background-color: yellow; */

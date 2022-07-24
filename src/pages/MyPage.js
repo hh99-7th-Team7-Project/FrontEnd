@@ -110,10 +110,11 @@ const MyPage = () => {
 
   return (
     <>
-       <div style={{margin:"auto", width:"62%"}}>
+      <ScMobile>
+       <div style={{margin:"auto", width:"100%"}}>
         <Header />
-      </div>
-      <ScsecondHead />
+        </div>
+        <ScsecondHead />
       <ScWrap>
         <div
           style={{
@@ -224,11 +225,20 @@ const MyPage = () => {
           </div>
         </ScBookmark>
       </ScWrap>
+      </ScMobile>
     </>
   );
 };
 
 export default MyPage;
+
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
 
 const ScsecondHead = styled.div`
   height: 135px;

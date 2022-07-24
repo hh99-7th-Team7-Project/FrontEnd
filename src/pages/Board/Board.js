@@ -18,14 +18,14 @@ const Board = () => {
     
   return (
     <>
-    <ScMobile>
-      <div style={{margin:"auto", width:"62%"}}>
+      <ScMobile>
+        <div style={{margin:"auto", width:"62%"}}>
           <Header />
         </div>
         <ScWrap>
           <ScTopCard>
             <img src={BoardLogo} alt="" style={{ width: "100%" }} />
-            <ScTopWord style={{ margin: "167px 35% 159px 60%" }}>
+            <ScTopWord style={{ margin: "57px 35% 159px 60%" }}>
               <ScMainTitle>커피를 사랑하는<br/> 사람들의 커피 연구소</ScMainTitle>
               <Scwrite onClick={() => { navigate("/board/write") }}><img src={boardwrite} alt="" /><ScBoardWrite>글쓰러 가기</ScBoardWrite></Scwrite>
             </ScTopWord>
@@ -47,7 +47,6 @@ const Board = () => {
     </>
   )
 }
-
 const ScMobile = styled.div`
   @media screen and (min-width: 350px){
     display: flex;
@@ -59,19 +58,20 @@ const ScMobile = styled.div`
 const ScWrap = Styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 1200px
   width: 100%;
+  margin: auto;
 `;
 
 const ScTopCard = styled.div`
   display: flex;
-  height: 400px;
+  flex-direction: column;
   position: relative;
   background-color: #FFE4E0;
 `
 
 const ScTopWord = styled.div`
 position: absolute;
-
 
 `
 const ScMainTitle = styled.div`
@@ -82,6 +82,7 @@ font-size: 34px;
 line-height: 43px;
 margin-bottom: 30px;
 font-family: "SUIT ExtraBold";
+
 `
 
 const ScBoardWrite = styled.span`

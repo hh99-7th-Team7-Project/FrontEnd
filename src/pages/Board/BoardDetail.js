@@ -45,38 +45,46 @@ const BoardDetail = () => {
 
   return (
     <>
-     <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      <ScImgContainer>
-        <div style={{display:"flex", height:"135px", position:"relative"}}>
-          <ScImg src={BoardImg} alt="" />
-          <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
+      <ScMobile>
+        <div style={{margin:"auto", width:"62%"}}>
+          <Header />
         </div>
-      </ScImgContainer>
-      <ScWrap>
-        <BoardMain
-          head={boardReducer}
-          boardId={boardId}
-          bookmark2={bookmark}
-          setBookmark={setBookmark}
-        />
-        <BoardContent data={content} />
-        <BoardLike
-          head={boardReducer}
-          boardId={boardId}
-          like2={like}
-          setLike={setLike}
-        />
-        <BoardComment 
-          head={boardReducer}
-        />
-      </ScWrap>
+        <ScImgContainer>
+          <div style={{display:"flex", height:"135px", position:"relative"}}>
+            <ScImg src={BoardImg} alt="" />
+            <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
+          </div>
+        </ScImgContainer>
+        <ScWrap>
+          <BoardMain
+            head={boardReducer}
+            boardId={boardId}
+            bookmark2={bookmark}
+            setBookmark={setBookmark}
+          />
+          <BoardContent data={content} />
+          <BoardLike
+            head={boardReducer}
+            boardId={boardId}
+            like2={like}
+            setLike={setLike}
+          />
+          <BoardComment 
+            head={boardReducer}
+          />
+        </ScWrap>
+      </ScMobile>
     </>
   );
 };
 
-
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
 
 const ScImgContainer = styled.div`
   display: column;
