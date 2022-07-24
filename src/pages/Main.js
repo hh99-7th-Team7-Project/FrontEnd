@@ -12,6 +12,8 @@ import { Footer } from '../components/Footer';
 import { Flow } from '../components/main/Flow';
 import Modal from '../components/main/Modal';
 import { getCookie } from '../shared/Cookie';
+import { useMediaQuery } from "react-responsive";
+
 
 
 const Main = () => {
@@ -21,6 +23,10 @@ const [color, setColor] = useState('var(--main)');
 const [color2, setColor2] = useState('rgba(44, 39, 140, 0.4)');
 
 const notModal = getCookie("not seen a day")
+
+const isMobile = useMediaQuery({
+  query: "(max-width: 768px)",
+});
 
 useEffect(()=>{
   if(notModal){
@@ -80,7 +86,7 @@ const changeColor2 = ()=>{
        </ScNavbarWrap>
       {category?<BrandCard/>:<CategoryCard/>}
     </div>
-    <Modal showModal={showModal} closeModal={closeModal}/>
+    { isMobile ? null : <Modal showModal={showModal} closeModal={closeModal}/>}
     {/* <Flow/> */}
     <Flower/>
 </div>    

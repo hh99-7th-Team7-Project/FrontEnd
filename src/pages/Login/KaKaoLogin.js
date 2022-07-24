@@ -48,7 +48,11 @@ const KaKaoLogin = () => {
           })
           .catch((err) => {
             console.log('소셜로그인 에러', err);
-            alert('로그인 실패 !');
+            Swal.fire({
+              title: '로그인 실패!',
+              icon: 'error',
+              confirmButtonText: '확인',
+            });
             navigate('/');
           });
       };
