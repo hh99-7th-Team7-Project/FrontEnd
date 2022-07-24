@@ -69,7 +69,7 @@ const Review = ({ item, reviewData, url }) => {
              {pricePair&&<PriceScH3 style={{fontSize:'30px'}}>￦{pricePair[0]?.price}</PriceScH3>} 
             </ScPriceBox>
           </ScStarPriceContainer>
-          {pricePair &&(pricePair?.length===3) &&
+            {pricePair &&(pricePair?.length===3) &&
                       <ScImgWrap>
                           <ScSmallWrap>
                             <ScSmallImg src={Small} alt="" />
@@ -157,7 +157,7 @@ const ScGotoMap = styled.div`
   align-items: center;
   cursor: pointer;
   border-radius: 100px;
-  margin: auto;
+  margin: auto;  
 `;
 const ScGotoMap1 = styled.div`
   width: 250px;
@@ -171,7 +171,7 @@ const ScGotoMap1 = styled.div`
   align-items: center;
   cursor: pointer;
   border-radius: 100px;
-  margin: auto;
+  margin: auto;  
 `;
 
 const ScSpan = styled.span`

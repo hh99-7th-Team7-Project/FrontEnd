@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { GoChevronDown } from 'react-icons/go';
 import CommentMap from './CommentMap';
 import {
   __getBoardComment,
@@ -11,17 +10,17 @@ import {
 import Swal from 'sweetalert2';
 import { getCookie } from '../../shared/Cookie';
 
-const BoardComment = ({head}) => {
+const BoardComment = () => {
+
+  const comment_list = useSelector((state) => state.boardComment.boardcommentlist);
+
+  console.log(comment_list);
+
   const dispatch = useDispatch();
   const { boardId } = useParams();
   const nickname = getCookie("nickname");
 
-  // console.log(head);
-
-  const total = head?.totalComment;
-
-  // console.log(total);
-
+  const total = comment_list?.length;
 
   useEffect(() => {
     dispatch(__getBoardComment(boardId));
@@ -62,8 +61,10 @@ const BoardComment = ({head}) => {
     <>
       <ScWrap>
         <ScCommentWrap>
-          <ScInputWrap>
+          <ScNickAlign>
             <ScSpan>{nickname}</ScSpan>
+          </ScNickAlign>
+          <ScInputWrap>            
             <ScTextArea
               type="text"
               rows="1"
@@ -96,35 +97,48 @@ const ScH3 = styled.h3`
   margin-right: 20px;
 `;
 
+const ScNickAlign = styled.div`
+  
+`;
+
 const ScCommentWrap = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
+  
 `;
 
 const ScInputWrap = styled.div`
-  margin: 20px auto;
+  margin: auto;
   display: flex;
-  justify-content: start;
+  
+  
   align-items: center;
 `;
 
 const ScSpan = styled.span`
   width: 100px;
-  text-align: center;
+  text-align: left;
   font-size: 1.25em;
-  margin: 10px auto;
+  margin-left: 40px;
+  color: rgb(44,39,140, 80%);
 `;
 
 const ScTextArea = styled.textarea`
   width: 986px;
   height: 146px;
   margin: 30px auto;
-  /* border: none; */
-  border: 1px solid black;
+  border: 1px solid #EEE;
+  border-radius: 10px;
   outline: none;
   resize: none;
   text-align: left;
+  padding: 10px 20px ;
+  ::placeholder {
+    padding: 5px 10px;
+  }
+  
   
   
 `;
