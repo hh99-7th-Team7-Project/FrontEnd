@@ -12,7 +12,7 @@ import {
 } from '../components/mypage/index';
 import styled from 'styled-components';
 import apis from '../shared/api/main';
-import { Pencil, Write, Moiim, left, right } from '../shared/svg/A-index';
+import { Pencil, Write, Moiim, left, right, MypageLogo } from '../shared/svg/A-index';
 import * as Sentry from "@sentry/react";
 
 const MyPage = () => {
@@ -121,10 +121,10 @@ const MyPage = () => {
   return (
     <>
       <ScMobile>
-        <div style={{ margin: "auto", width: "100%" }}>
+        <div style={{ margin: "auto", width: "62%" }}>
           <Header />
         </div>
-        <ScsecondHead />
+        <ScsecondHead src={MypageLogo} />
         <ScWrap>
           <div
             style={{
@@ -250,10 +250,12 @@ const ScMobile = styled.div`
   }
 `;
 
-const ScsecondHead = styled.div`
+const ScsecondHead = styled.img`
   height: 135px;
-  background-color: #ddd;
+  background-color: #F5E5F5; 
+
   margin-bottom: 40px;
+  width: 100%;
 `;
 
 const ScBookmarkwrap = styled.div`

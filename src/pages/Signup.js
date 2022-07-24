@@ -72,7 +72,10 @@ const SignUp = (props) => {
   const dupNick = async () => {
     if (!nickCheck(Nickname)) {
       setAlert("올바른 닉네임 형식을 작성해주세요")
-    } else {
+    }else if(Nickname.includes(" ")){
+      setAlert("공백은 허용되지 않습니다.")
+    } 
+    else {
       setAlert("사용 가능한 닉네임입니다.");
       await apis.checkNickName({ nickname: Nickname })
         .then((res) => {

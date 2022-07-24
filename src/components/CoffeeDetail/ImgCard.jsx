@@ -59,7 +59,7 @@ const token = getCookie("token")
         </ScSubTitle>
       </div>
       <ScImgWrap>
-            {item?.brand === "더벤티" || item?.brand === "컴포즈"? <ScImgVenti src={url} /> : <ScImg src={url} /> }
+            {item?.brand === "더벤티" || item?.brand === "컴포즈" || item?.brand === "엔제리너스"? <ScImgVenti src={url} /> : <ScImg src={url} /> }
       </ScImgWrap>
 
     </>
