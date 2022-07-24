@@ -21,8 +21,10 @@ import Chatimoji from './Chatimoji.svg'
 import ChatLogoSmall from './ChatLogoSmall.svg'
 import MainCard1 from './MainCard1.svg'
 import FooterFlower from './Footer.svg'
+import MypageLogo from './MypageLogo.svg'
 
 export {
+  MypageLogo,
   FooterFlower,
   MainCard1,
   ChatLogoSmall,
