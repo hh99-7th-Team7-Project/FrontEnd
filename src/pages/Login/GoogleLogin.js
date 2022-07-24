@@ -33,6 +33,7 @@ const GoogleLogin = () => {
                 setCookie('islogin', true);
                 setCookie('profileImg', res?.data?.profileImage);
                 setCookie('userId', res?.data?.userId);
+                 navigate('/');
                 Swal.fire({
                   title: '환영합니다.!',
                   icon: 'success',
@@ -41,7 +42,7 @@ const GoogleLogin = () => {
                   Sentry.captureException(e);
               });
 
-                navigate('/');
+               
               })
               .catch((error) => 
               Sentry.captureException(error)
