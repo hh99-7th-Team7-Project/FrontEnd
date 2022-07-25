@@ -39,11 +39,7 @@ const ChatTop = styled.div`
 
 const Wrap = styled.div`
   align-items: center;
-  margin: 10px 5px;
-  & p {
-    display: inline-block;
-    margin-left: 10px;
-  }
+  margin: 10px -40px;
 `;
 
 const Profile = styled.img`
