@@ -1,14 +1,25 @@
 import React from 'react'
 import styled from 'styled-components';
-import { setCookie } from '../../shared/Cookie';
+import { getCookie, setCookie } from '../../shared/Cookie';
 import ImgSlideModal from './ImgSlideModal';
 import ImgSlideModal2 from './ImgSlideModal2';
+import Swal from 'sweetalert2';
 
 const Modal2 = ({showModal,closeModal}) => {
   const notSeenADay = ()=>{
     setCookie("not seen a day",true)
     closeModal()
   }
+
+  const notSeen = getCookie("not seen a day")
+  if(!notSeen){
+     Swal.fire({
+    title: '모바일 버전은 준비중입니다ㅜㅠ',
+    text: '제발 웹으로 들어와주세요...',
+    icon: 'warning',
+    confirmButtonText: '확인',
+  });
+  } 
 
 
   return (
