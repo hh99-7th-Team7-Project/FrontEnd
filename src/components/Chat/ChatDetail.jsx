@@ -72,9 +72,21 @@ const ChatDetail = () => {
       Sentry.captureException(e);
     })
   };
+  const downCount = async () => {
+    const item = await apis.attendChatMember(chatpostId).then((res) => {
+      // console.log(res.data);
+      setCheck(res.data.result);
+      setChat(false)
+      setContent(true);
+      setMap(true);
+      // return dispatch(__loadOneChatItem(id));
+    }).catch((e)=>{
+      Sentry.captureException(e);
+    })
+  };
 
   const joinChat = () => {
-    setChat(!chat);
+    setChat(true);
     setMap(!map);
     setContent(!content);
     setNone(!none);
@@ -156,15 +168,16 @@ const ChatDetail = () => {
                    ( 
                           <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}> 
                           {_checkUser===members[0].userTitle?null:
-                           <AttendBtn1 onClick={upCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                           <AttendBtn1 onClick={downCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                                 <ScCheckImg src={Check} alt=""/>
                                 <span>참여하지않기</span>
                               </AttendBtn1>
                           }
-                        <AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                          {map?<AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                                 <ScChatImg src={Chating} alt=""/>
                                 <span>채팅하러가기</span>
-                              </AttendBtn2>
+                              </AttendBtn2> : null}
+                        
                           </div>
                   ) 
                   : 
@@ -384,7 +397,8 @@ const AttendBtn2 = styled.div`
 
 const ChatWrap = styled.div`
   width: 80%;
-  height: 100%;
+  height: 97%;
+  margin-top: 20px;
 `;
 
 const Profile = styled.img`
