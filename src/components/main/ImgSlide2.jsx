@@ -14,7 +14,7 @@ const ImgSlide2 = () => {
   return (
     <>
     <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-      <SwiperSlide><a href="https://forms.gle/yGy74NsTZwQJWycVA"><img src={MainCard1} alt=""/></a></SwiperSlide>
+      <SwiperSlide><a href="https://forms.gle/yGy74NsTZwQJWycVA" target="_blank"><img src={MainCard1} alt=""/></a></SwiperSlide>
       <SwiperSlide><img src="/MainBanner.png"/></SwiperSlide>
     </Swiper>
   </>
