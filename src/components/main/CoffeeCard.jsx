@@ -34,17 +34,17 @@ switch(item?.brand){
         case "더벤티" : 
         return setBrandLogo("/brandlogo/더벤티.png")
         case "드롭탑" :
-          return setBrandLogo("/brandlogo/드롭탑.png")
+        return setBrandLogo("/brandlogo/드롭탑.png")
           case "컴포즈" :
-            return setBrandLogo("/brandlogo/컴포즈.png")
+        return setBrandLogo("/brandlogo/컴포즈.png")
           case "탐앤탐스" :
-            return setBrandLogo("/brandlogo/탐앤탐스.png")
+        return setBrandLogo("/brandlogo/탐앤탐스.png")
           case "빽다방" :
-            return setBrandLogo("/brandlogo/빽다방.png")
+        return setBrandLogo("/brandlogo/빽다방.png")
           case "폴바셋" :
-            return setBrandLogo("/brandlogo/폴바셋.png")
+        return setBrandLogo("/brandlogo/폴바셋.png")
           case "카페베네" :
-            return setBrandLogo("/brandlogo/카페베네.png")
+        return setBrandLogo("/brandlogo/카페베네.png")
       default:
         return undefined
     }
