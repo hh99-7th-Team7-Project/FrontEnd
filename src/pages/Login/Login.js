@@ -106,17 +106,20 @@ const closeModal = () => {
         </ScButtonWrap>
         <ScText><hr />소셜 로그인<hr /></ScText>
         <ScSocialWrap>
-          <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a>
+          <div>
+          <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a></div>
           {/* <a href={NAVER_AUTH_URL}> */}
+          <div>
           <ScImg src="/네이버.png" onClick={()=>{
             Swal.fire({
               title: '준비중입니다.',
               icon: 'info',
               confirmButtonText: '확인',
             })
-          }} />
+          }} 
+          /></div>
           {/* </a> */}
-          <a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg" /></a>
+          <div><a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg" /></a></div>
         </ScSocialWrap>
       </ScLogin>
     </ScWrap>
@@ -203,12 +206,16 @@ border: none;
 const ScSocialWrap = styled.div`
 display: flex;
 justify-content: center;
+align-items: center;
 width: 300px;
+gap:40px;
 /* border: 1px solid black; */
 padding: 0 90px;
 a{
-  display: flex;
-  margin: 5px 20px;
+  /* display: flex;
+  margin: 5px 20px; */
+}div{
+
 }
 `
 const ScImg = styled.img`
