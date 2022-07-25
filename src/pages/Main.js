@@ -6,7 +6,7 @@ import "../shared/css/flow.css"
 // components
 import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint, RandomPicker, CategoryCard}from '../components/main/A-mainIndex'
 import Header from './Header/Header';
-import {flow, flower,MainCard1} from "../shared/svg/A-index"
+import {flow, flower, MainCard1} from "../shared/svg/A-index"
 import { Flower } from '../components/main/Flower';
 import { Footer } from '../components/Footer';
 import { Flow } from '../components/main/Flow';
