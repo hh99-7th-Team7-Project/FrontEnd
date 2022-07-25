@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components';
-import Header from './Header/Header';
+import { Header, MobileHeader } from './Header/A-HeaderIndex';
 import { Comment, CommentCard, ImgCard, Review, CoffeeCategory } from '../components/CoffeeDetail/A-CoffeeDetailIndex';
 import { useParams } from 'react-router-dom';
 import {useDispatch,useSelector}from 'react-redux';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
+import { useMediaQuery } from 'react-responsive';
 
 
 const CoffeeDetail = () => {
@@ -15,6 +16,10 @@ const CoffeeDetail = () => {
  
   const dispatch = useDispatch()
   const [like, setLike] = useState()
+
+  const isMobile = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
 
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
@@ -37,9 +42,12 @@ return (
 
     <>
     <ScMobile>
-      <div style={{margin:"auto", width:"62%"}}>
+      {isMobile ? 
+      <div style={{margin:"auto", width:"80%"}}>
         <Header />
-      </div>
+      </div> : <div style={{margin:"auto", width:"80%"}}>
+        <MobileHeader />
+      </div> }
       
         <div>
           {/* <CoffeeCategory/> */}
