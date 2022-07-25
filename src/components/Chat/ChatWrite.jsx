@@ -52,7 +52,7 @@ const ChatWrite = ({ setWrite, write }) => {
     is_edit ? ChatItem?.calendar : ''
   );
   const [hourValue, setHourValue] = React.useState(is_edit ? time[0] : '');
-  const [hourValue2, setHourValue2] = React.useState(is_edit ? time[0] : '');
+  const [hourValue2, setHourValue2] = React.useState(is_edit ? time[1] : '');
 
   // console.log(hourValue2)
   const [minuteValue, setMinuteValue] = React.useState(is_edit ? time[1] : '');
@@ -95,14 +95,7 @@ const ChatWrite = ({ setWrite, write }) => {
 
   const inputMinute = (e) => {
     const value = e.target.value;
-    const onlyNumber = value.replace(/[^0-9]/g, '');
-    -2 < onlyNumber < 60
-      ? Swal.fire({
-        title: '60자 이내로 작성해주세요.!',
-        icon: 'info',
-        confirmButtonText: '확인',
-      })
-      : setMinuteValue(onlyNumber);
+   setMinuteValue(value);
   };
 
   const inputCount = (e) => setCountValue(Number(e.target.value));
@@ -145,7 +138,7 @@ const ChatWrite = ({ setWrite, write }) => {
       calendar: dateValue,
       map: mapfValue,
       totalcount: num,
-      meettime: hourValue + ':' + minuteValue,
+      meettime: hourValue + '~' + minuteValue,
     };
     if(chatName!==""&&chatContent!==""&&dateValue!==""&&mapfValue!==""&&num!==""&&hourValue!==""&&minuteValue!==""){
        dispatch(__updateChatItem(chatitem, id));
@@ -162,7 +155,6 @@ const ChatWrite = ({ setWrite, write }) => {
         icon: 'error',
       });
     }
-   
   };
 
   return (
@@ -190,7 +182,7 @@ const ChatWrite = ({ setWrite, write }) => {
         {is_edit ? (
           <div>
             <TimeInput value={hourValue} onChange={inputHour}  type="time" />
-            <span>시</span>
+            <span>~</span>
             <TimeInput
               value={minuteValue || ''}
               onChange={inputMinute}
