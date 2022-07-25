@@ -41,7 +41,7 @@ const ChatDetail = () => {
 
   const data = useSelector((state) => state.chat.one_list);
   const data2 = useSelector((state) => state.chat.member);
-  console.log(data2)
+  // console.log(data2)
 
   const mem_list = []
    const member = data2?.forEach((item,idx)=>{
