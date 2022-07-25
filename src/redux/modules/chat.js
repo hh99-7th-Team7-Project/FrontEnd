@@ -61,9 +61,13 @@ export const __loadChatLists = (page) => {
 
 export const __loadOneChatItem = (id) => {
   return async function (dispatch) {
+   try{ 
     const loadData = await apis.getOneChatItem(id);
     // console.log(loadData.data);
-    dispatch(loadOneChatItem(loadData.data));
+    dispatch(loadOneChatItem(loadData.data));}
+    catch(error){
+      Sentry.captureException(error);
+    }
   };
 };
 
@@ -115,7 +119,7 @@ export default function ChatReducer(state = initialState, action) {
       return { list: action.payload };
     }
     case LOAD_ONE_CHATITEM: {
-      return { ...state, one_list: action.payload };
+      return { ...state, one_list: action.payload , member: action.payload.chatPostMember};
     }
     case ADD_CHATITEM: {
       return { ...state, list: [...state.list, action.payload] };

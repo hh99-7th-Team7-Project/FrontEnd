@@ -66,17 +66,10 @@ const ChatList = (data) => {
               </span>
             </div>
           </InfoWrap>
-
-        {completed?(
-           <Btn onClick={ckLogin} >
+          <Btn onClick={ckLogin} >
           자세히 보기 {'>'}
           </Btn>
-        ):(
-          <Btn style={{color:"rgba(0, 0, 0, 0.2)"}}>
-          모집 완료 {'>'}
-          </Btn>
-        )}
-         
+        
         </BtnWrap>
         </div>
       </InnerContainer>
