@@ -12,7 +12,7 @@ const HeaderInput = () => {
   const onClick1 =()=>{
     if (searchRef?.current.value === "") {
       Swal.fire({
-        title: '검색어를 입력해주세요!(특수문자,공백 불가)',
+        title: '검색어를 입력해주세요!',
         text: '빈칸입니다',
         icon: 'warning',
         confirmButtonText: '확인',

@@ -150,7 +150,7 @@ const PostChat = ({ chatpostId }) => {
           welcome.set(payloadData.message, []);
           setWelcome(new Map(welcome));
           setUser(payloadData.userCount);
-          console.log('join 완료');
+          // console.log('join 완료');
         }
         break;
       case 'OUT':
