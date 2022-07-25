@@ -24,32 +24,48 @@ const ChatDetail = () => {
 
   const [write, setWrite] = React.useState(false);
   const [chat, setChat] = React.useState(false);
-  const [check, setCheck] = React.useState('true');
+  const [check, setCheck] = React.useState(true);
   const [map, setMap] = React.useState(true);
   const [content, setContent] = React.useState(true);
-  const [none, setNone] = React.useState('true');
-
+  const [none, setNone] = React.useState(true);
+  const [include, setInclude]= React.useState()
+  const [include1, setInclude1]= React.useState()
+  const [contents, setContents] = React.useState()
+  
 
   const _checkUser = getCookie('nickname');
 
   useEffect(() => {
     dispatch(__loadOneChatItem(id));
-  }, [chat,write]);
+  }, [chat,write,check]);
 
   const data = useSelector((state) => state.chat.one_list);
+  const data2 = useSelector((state) => state.chat.member);
+  console.log(data2)
+
+  const mem_list = []
+   const member = data2?.forEach((item,idx)=>{
+    mem_list.push(item?.userTitle)
+  })
+  console.log(mem_list)
+
 
   const deleteChatItem = async () => {
-    const item = await apis.deleteChatItem(id).then((res) => {
+    const item = await apis.deleteChatItem(id)
+    .then((res) => {
       navigate('/chatposts');
     });
   };
 
-  const members = data?.chatPostMember;
+  //멤버리스트에 내가 포함되어있는거 구하기
+ const members = data?.chatPostMember;
   const chatpostId = Number(data?.chatpostId);
 
+  // console.log(members)
+  // console.log(data)
   const upCount = async () => {
     const item = await apis.attendChatMember(chatpostId).then((res) => {
-      // console.log(res.data.result);
+      // console.log(res.data);
       setCheck(res.data.result);
       // return dispatch(__loadOneChatItem(id));
     }).catch((e)=>{
@@ -78,18 +94,12 @@ const ChatDetail = () => {
               {/* <Btn onClick={changeContent}>수정</Btn> */}
               <ChatWrite write={write} setWrite={setWrite} />
             </Wrap>
-              
           </WriteWrap>
         ) : (
           <>
             <BtnWrap>
               <div>
                 <ScLeftImg src={left} alt="" onClick={() => navigate('/chatposts')}></ScLeftImg>
-                {/* {data?.completed === true ? (
-                  <span>모집 중</span>
-                ) : (
-                  <span>모집 완료</span>
-                )} */}
                 {data?.count === data?.totalcount ? (
                  <div style={{display:"flex"}}> <span>모집 완료</span> <Time>{data?.beforeTime}</Time></div>
                 ) : (
@@ -142,38 +152,38 @@ const ChatDetail = () => {
                 </ContentWrap>
                 {members&&
                   <AttendBtnWrap>
-                  {check === 'true' ? ( 
-                      <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}> 
-                      {_checkUser===members[0].userTitle?( <AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
-                          <ScChatImg src={Chating} alt=""/>
-                          <span>채팅하러가기</span>
-                        </AttendBtn2>):(<><AttendBtn1 onClick={upCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
-                          <ScCheckImg src={Check} alt=""/>
-                          <span>참여하지않기</span>
-                        </AttendBtn1>
+                  {mem_list?.includes(`${_checkUser}`) ?
+                   ( 
+                          <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}> 
+                          {_checkUser===members[0].userTitle?null:
+                           <AttendBtn1 onClick={upCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                                <ScCheckImg src={Check} alt=""/>
+                                <span>참여하지않기</span>
+                              </AttendBtn1>
+                          }
                         <AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
-                          <ScChatImg src={Chating} alt=""/>
-                          <span>채팅하러가기</span>
-                        </AttendBtn2></>)}
-                        
-                      </div>
-                  ) : (
-                    <div style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
-                      <AttendBtn1 onClick={upCount} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
-                        <ScCheckImg src={Check} alt=""/>
-                        <span>참여하기</span>
+                                <ScChatImg src={Chating} alt=""/>
+                                <span>채팅하러가기</span>
+                              </AttendBtn2>
+                          </div>
+                  ) 
+                  : 
+                  (<div style={{display:"flex", justifyContent:"center",        alignItems:"center"}}>
+                      {data.totalcount===data.count?
+                      <AttendBtn1 onClick={()=>{navigate(-1)}} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                        <span>뒤로가기</span>
                       </AttendBtn1>
-                      {/* <AttendBtn2 onClick={joinChat} disabled style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
-                        <ScChatImg src={Chating} alt=""/>
-                        <span>참여완료</span>
-                      </AttendBtn2> */}
+                    :  <AttendBtn1 onClick={upCount} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                    <ScCheckImg src={Check} alt=""/>
+                    <span>참여하기</span>
+                  </AttendBtn1>}
                     </div>
                   )}
                     </AttendBtnWrap> 
                 }
               
                   
-              
+            
             </div>
           </>
         )}
