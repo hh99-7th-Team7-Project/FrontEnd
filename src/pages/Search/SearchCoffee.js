@@ -25,7 +25,7 @@ const SearchCoffee = () => {
 
   return (
     <ScWrap>
-      <div style={{ margin: "auto", width: "80%" }}>
+      <div style={{ margin: "auto",maxWidth:"1400px", width: "80%" }}>
         <Header />
       </div>
       <ScTitle>"{keyword}"에 대한 검색 결과입니다.</ScTitle>
