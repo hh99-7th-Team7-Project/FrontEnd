@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from './Header/Header';
+import { Header, MobileHeader } from './Header/A-HeaderIndex';
 import { BrandCard, CategoryCard } from '../components/main/A-mainIndex';
 import { Flower } from '../components/main/Flower';
+import { useMediaQuery } from 'react-responsive';
 
 const MenuCategory = () => {
   const [category, setCategory] = useState(true);
 
+  const isMobile = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
+
   return (
     <>
+      <ScMobile>
       <Flower />
-      <div style={{margin:"auto", width:"62%"}}>
+      {isMobile ? 
+      <div style={{margin:"auto", width:"80%"}}>
         <Header />
-      </div>
+      </div> : <div style={{margin:"auto", width:"80%"}}>
+        <MobileHeader />
+      </div> }
       <div style={{ maxWidth: '1230px', width: '84vw', margin: 'auto' }}>
         <ScNavbarWrap>
           <ScButtonWrap>
@@ -35,6 +44,7 @@ const MenuCategory = () => {
         </ScNavbarWrap>
         {category ? <BrandCard /> : <CategoryCard />}
       </div>
+      </ScMobile>
     </>
   );
 };
@@ -53,6 +63,15 @@ const ScNavbarWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const ScMobile = styled.div`
+  @media screen and (max-width: 350) {
+    max-width: 1230px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default MenuCategory;

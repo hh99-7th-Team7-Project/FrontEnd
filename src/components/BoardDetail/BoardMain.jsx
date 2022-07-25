@@ -31,6 +31,7 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
   
   };
 
+
   return (
     <ScWrap>
       <ScBtnWrap>
@@ -76,8 +77,26 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
 
             <ScButton
               onClick={async () => {
-                await apis.deleteBoard(boardId);
-                navigate('/board');
+                Swal.fire({
+                  title: '정말 삭제할까요?',
+                  text: "다시 되돌릴 수 없습니다!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: '네!',
+                  cancelButtonText: '아니요!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    apis.deleteBoard(boardId);
+                    Swal.fire(
+                      '삭제완료!',
+                      '성공적으로 삭제되었습니다.',
+                      'success'
+                    )
+                    navigate('/board'); 
+                  }
+                })
               }}
             >
               삭제

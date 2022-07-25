@@ -34,7 +34,8 @@ const CoffeeCategory = () => {
 
 
   return (
-    <div style={{maxWidth:"1230px",width:"84vw", margin:"auto", position:"relative"}}>
+
+        <div style={{maxWidth:"1230px",width:"80%", margin:"auto", position:"relative"}}>
             <ScNavbarWrap>
                 <ScButtonWrap >
                     <ScCategoryBox  ref={ref} onClick={()=>{
@@ -57,7 +58,8 @@ const CoffeeCategory = () => {
             </div>
                 {categoryVisible ? <Coffee ref={ref} />: null}
             
-    </div>
+        </div>
+
     )
 }
 
@@ -75,6 +77,11 @@ const ScNavbarWrap =styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
 `;
 
 const ScCategoryBox = styled.div`
