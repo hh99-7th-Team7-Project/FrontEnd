@@ -274,25 +274,6 @@ const ChatWrite = ({ setWrite, write }) => {
                 <span>+</span>
               </Btn>
             </div>
-            {/* {is_edit ? (
-              <div>
-                <Btn onClick={downCount}>-</Btn>
-                <CountInput
-                  onChange={inputCount}
-                  value={countValue}
-                ></CountInput>
-                <Btn onClick={upCount}>+</Btn>
-              </div>
-            ) : (
-              <div>
-                <Btn onClick={downCount}>-</Btn>
-                <CountInput
-                  onChange={inputCount}
-                  value={countValue}
-                ></CountInput>
-                <Btn onClick={upCount}>+</Btn>
-              </div>
-            )} */}
           </CountWrap>
           <MakeBtn>
             {is_edit ? (

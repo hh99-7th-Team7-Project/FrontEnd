@@ -220,6 +220,7 @@ const PostChat = ({ chatpostId }) => {
               key={index}
             >
               <dl>
+              {chat.senderName !== nickname && <Profile src={chat.profileImage} />}
                 <dt className="message-data">{chat.message}</dt>
                 <dd className="me">
                   {chat.createdAt.split(' ')[1]}
