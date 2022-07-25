@@ -49,10 +49,12 @@
   right: -4%;
   /* 허리가 중간에 감 */
   transform: translateY(-50%);
+  cursor: pointer;
 }
 .prev{
   position: absolute;
   left: -4%;
   top:40%;
   transform: translateY(-50%);
+  cursor: pointer;
 }
