@@ -78,20 +78,15 @@ const ChatList = (data) => {
 };
 
 const Container = styled.div`
-  height: 236px;
+  height: 256px;
   margin: 20px;
   border-radius: 12px;
   /* overflow: hidden; */
   border: 1px rgba(0, 0, 0, 0.2) solid;
-
   & p {
     /* font-size: 12px; */
     color: #3c3b3b;
   }
-  /* & .all {
-    width: 100%;
-    height: 100%;
-  } */
 `;
 
 const InnerContainer =styled.div`
@@ -113,20 +108,25 @@ const Wrap = styled.div`
 const Title = styled.p`
   font-size: 1.25em;
   margin: 9px 0 10px 0;
-  width: 300px;
+  height: 23px;
+  /* width: 300px; */
   /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   font-family: 'SUIT ExtraBold';
 `;
 
 const Contents = styled.p`
   font-size: 1em;
-  height: 53px;
+  height: 73px;
   overflow: hidden;
   text-overflow: ellipsis;
+  /* border:1px solid black; */
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 `;
 
