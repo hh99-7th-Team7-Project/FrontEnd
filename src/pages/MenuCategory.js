@@ -9,6 +9,7 @@ const MenuCategory = () => {
 
   return (
     <>
+      <ScMobile>
       <Flower />
       <div style={{margin:"auto", width:"62%"}}>
         <Header />
@@ -35,6 +36,7 @@ const MenuCategory = () => {
         </ScNavbarWrap>
         {category ? <BrandCard /> : <CategoryCard />}
       </div>
+      </ScMobile>
     </>
   );
 };
@@ -53,6 +55,15 @@ const ScNavbarWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const ScMobile = styled.div`
+  @media screen and (max-width: 350) {
+    max-width: 1230px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default MenuCategory;
