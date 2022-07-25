@@ -47,7 +47,7 @@ const ChatDetail = () => {
    const member = data2?.forEach((item,idx)=>{
     mem_list.push(item?.userTitle)
   })
-  console.log(mem_list)
+  // console.log(mem_list)
 
 
   const deleteChatItem = async () => {
