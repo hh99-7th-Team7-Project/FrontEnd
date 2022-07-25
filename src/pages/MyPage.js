@@ -69,6 +69,8 @@ const MyPage = () => {
   // console.log(nick);
   // console.log(newProfileImg);
 
+
+
   const updateProfile = async (e) => {
     e.preventDefault();
     //formdata로 이미지 변환
