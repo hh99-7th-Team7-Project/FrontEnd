@@ -5,7 +5,7 @@ import "../shared/css/flow.css"
 
 // components
 import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint, RandomPicker, CategoryCard}from '../components/main/A-mainIndex'
-import Header from './Header/Header';
+import { Header, MobileHeader } from './Header/A-HeaderIndex';
 import {flow, flower,MainCard1} from "../shared/svg/A-index"
 import { Flower } from '../components/main/Flower';
 import { Footer } from '../components/Footer';
@@ -27,8 +27,14 @@ const [color2, setColor2] = useState('rgba(44, 39, 140, 0.4)');
 const notModal = getCookie("not seen a day")
 
 const isMobile = useMediaQuery({
+  query: "(min-width: 768px)",
+});
+
+const isMobile2 = useMediaQuery({
   query: "(max-width: 768px)",
 });
+
+
 
 useEffect(()=>{
   if(notModal){
@@ -58,9 +64,12 @@ const changeColor2 = ()=>{
   return (
     <>
       <ScMobile>
-      <div style={{margin:"auto", width:"62%"}}>
+      {isMobile ? 
+      <div style={{margin:"auto", width:"80%"}}>
         <Header />
-      </div>
+      </div> : <div style={{margin:"auto", width:"80%"}}>
+        <MobileHeader />
+      </div> }
       <div style={{position:"relative"}}>
       <ImgSlide2/>
   
@@ -87,7 +96,7 @@ const changeColor2 = ()=>{
             </ScNavbarWrap>
             {category?<BrandCard/>:<CategoryCard/>}
         </div>
-        { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
+        { isMobile2 ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
           {/* <Flow/> */}
         <Flower/>
         </div>    

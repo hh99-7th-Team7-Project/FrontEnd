@@ -34,7 +34,8 @@ const CoffeeCategory = () => {
 
 
   return (
-    <div style={{maxWidth:"1230px",width:"84vw", margin:"auto", position:"relative"}}>
+    <ScMobile>
+        <div style={{maxWidth:"1230px",width:"80%", margin:"auto", position:"relative"}}>
             <ScNavbarWrap>
                 <ScButtonWrap >
                     <ScCategoryBox  ref={ref} onClick={()=>{
@@ -57,9 +58,18 @@ const CoffeeCategory = () => {
             </div>
                 {categoryVisible ? <Coffee ref={ref} />: null}
             
-    </div>
+        </div>
+    </ScMobile>
     )
 }
+
+const ScMobile = styled.div`
+  @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`;
 
 const ScButtonWrap = styled.div`
     margin: 20px auto;
