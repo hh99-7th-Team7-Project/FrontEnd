@@ -56,7 +56,7 @@ flex-direction: column;
 
 const ScCateBtnBox = styled.div`
     display: flex;    
-    width: 100%;
+    width: 70%;
     flex-direction: row;
     justify-content: space-between;
     margin: auto;    

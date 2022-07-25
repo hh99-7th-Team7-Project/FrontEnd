@@ -34,7 +34,7 @@ const CoffeeCategory = () => {
 
 
   return (
-    <ScMobile>
+
         <div style={{maxWidth:"1230px",width:"80%", margin:"auto", position:"relative"}}>
             <ScNavbarWrap>
                 <ScButtonWrap >
@@ -59,17 +59,9 @@ const CoffeeCategory = () => {
                 {categoryVisible ? <Coffee ref={ref} />: null}
             
         </div>
-    </ScMobile>
+
     )
 }
-
-const ScMobile = styled.div`
-  @media screen and (min-width: 350px){
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
-`;
 
 const ScButtonWrap = styled.div`
     margin: 20px auto;
@@ -85,6 +77,11 @@ const ScNavbarWrap =styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (min-width: 350px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
 `;
 
 const ScCategoryBox = styled.div`
