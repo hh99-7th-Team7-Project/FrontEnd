@@ -9,6 +9,8 @@ import { boardwrite, ChatLogo, Chatimoji, ChatLogoSmall } from '../../shared/svg
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import apis from '../../shared/api/main';
 import * as Sentry from "@sentry/react";
+import { getCookie } from '../../shared/Cookie';
+import Swal from 'sweetalert2';
 
 const Chat = () => {
   const [posts, setPosts] = useState([]);
@@ -32,7 +34,7 @@ const Chat = () => {
   // console.log(chatpostList, page);
 
   // const chatReducer = useSelector((state) => state?.chat?.list);
-
+  const token = getCookie("token")
 
 
   return (
@@ -47,7 +49,16 @@ const Chat = () => {
             <ScMainTitle>우리 같이<br /> 커피마셔요!</ScMainTitle>
             <Scwrite
               onClick={() => {
-                setWrite(!write);
+                if(token){
+                  setWrite(!write);
+                }else{
+                  Swal.fire({
+                    title: '로그인 후 이용 가능한 서비스입니다',
+                    icon: 'warning',
+                    confirmButtonText: '확인',
+                  });
+                }
+                
               }}
             >
               <img src={Chatimoji} alt='' />
