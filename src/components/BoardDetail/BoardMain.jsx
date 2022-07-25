@@ -23,7 +23,7 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
     })
     }else{
       Swal.fire({
-        title: '로그인 후 이용해 주세요!',
+        title: '로그인 후 이용 가능한 서비스입니다',
         icon: 'warning',
         confirmButtonText: '확인',
       });
