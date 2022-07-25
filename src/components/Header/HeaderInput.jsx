@@ -10,19 +10,20 @@ const HeaderInput = () => {
   const [keyword, setKeyword]=useState()
 
   const onClick1 =()=>{
-    navigate(`/search/${keyword}`)
-  }
-
-  const onKeyPress1=(e)=>{
     if (searchRef?.current.value === "") {
       Swal.fire({
-        title: '검색어를 입력해주세요!',
+        title: '검색어를 입력해주세요!(특수문자,공백 불가)',
         text: '빈칸입니다',
         icon: 'warning',
         confirmButtonText: '확인',
       });      
+    }else{
+     navigate(`/search/${keyword}`) 
     }
-    else if(e.key==="Enter"){
+  }
+
+  const onKeyPress1=(e)=>{
+     if(e.key==="Enter"){
       onClick1()
     }
   }
@@ -40,7 +41,6 @@ const HeaderInput = () => {
         }}
         onKeyPress={onKeyPress1}
         />
-        
     </ScWrap>
   )
 }
