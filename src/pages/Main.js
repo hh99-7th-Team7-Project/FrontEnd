@@ -56,7 +56,8 @@ const changeColor2 = ()=>{
  }
 
   return (
-    <>      
+    <>
+      <ScMobile>
       <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>
@@ -88,13 +89,15 @@ const changeColor2 = ()=>{
         </div>
         { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
           {/* <Flow/> */}
-      <Flower/>
-      </div>    
-      <Footer/>
+        <Flower/>
+        </div>    
+        <Footer/>
+      </ScMobile>
 
     </>
   )
 }
+
 
 
 const ScMapRandomWrap = styled.div`
@@ -134,9 +137,11 @@ color: ${props => props.color2};
 `;
 
 const ScMobile = styled.div`
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 350) {
     max-width: 1230px;
     width: 90%;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
