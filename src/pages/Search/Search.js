@@ -44,10 +44,12 @@ const Wrap = styled.div`
 `;
 
 const ScDrinkWrap = styled.div`
+  min-width: 1200px;
   margin: 20px auto;
 `;
 
 const ScBoardWrap = styled.div`
+  min-width: 1200px;
   margin: 100px auto;
 `;
 
