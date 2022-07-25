@@ -81,7 +81,7 @@ export const __addComment = (payload) => async (dispatch, getState) => {
     // console.log(error);
     if (error.response.status === 401) {
       Swal.fire({
-        title: '로그인을 해주세요!',
+        title: '로그인 후 이용 가능한 서비스입니다',
         icon: 'error',
         confirmButtonText: '확인',
       });
