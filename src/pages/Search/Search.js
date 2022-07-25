@@ -30,6 +30,8 @@ const Search = () => {
 }
 
 const ScMobile = styled.div`
+  min-width: 1200px;
+  width: 80%;
   @media screen and (min-width: 350px){
     display: flex;
     flex-direction: column;
