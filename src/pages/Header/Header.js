@@ -29,17 +29,18 @@ const Header = () => {
 
   return (
     <>
-        <ScHeaderBox>
-          <Logo />
+        
+        <ScHeaderBox> 
+          <Logo />         
           <Category />
           { isMobile ?  null: <HeaderInput /> }
-          <Button />
-          <ScToggleBtn href="" onClick={()=>{
+          <Button />          
+        </ScHeaderBox>
+        <ScToggleBtn href="" onClick={()=>{
             handleToggleBtn();
           }}>
             <FontAwesomeIcon icon={faBars} />
           </ScToggleBtn>
-        </ScHeaderBox>
         <Outlet />
         </>
   );
@@ -61,7 +62,7 @@ const ScHeaderBox = styled.nav`
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
-    padding: 8px 24px;
+    padding: 0px;
     height: 100%;
   }
 `;
