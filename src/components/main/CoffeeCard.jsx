@@ -122,7 +122,7 @@ const SCcardPrice = styled.div`
     border: 1px white solid;
     border-radius: 10px;
     width: 76px;
-    height: 21px;
+    /* height: 21px; */
 `
   const SCcoffeeImg = styled.img`
     max-width: 240px;
@@ -131,11 +131,14 @@ const SCcardPrice = styled.div`
   `
 
 const ScZoomIn = styled.div`
+    display: flex;
+    justify-content:center ;
+    align-items: center;
     width: 148px;
     height: 33px;
     border: 1px white solid;
     border-radius: 20px;
-    background-color: #2c278c;
+    background-color: var(--main);
     border-color: #2c278c;
     color: white;
     cursor: pointer;
@@ -152,7 +155,7 @@ const ScLens = styled.img`
     border: 1px black solid;
     border-radius: 10px;
     width: 76px;
-    height: 21px;
+    /* height: 21px; */
     margin: 10px auto;
   `
   const SChover =styled.div`
@@ -171,6 +174,7 @@ const ScLens = styled.img`
       height: 100%;   
       text-align: center;
       color: white;
+      transition: all 0.5s;
   `
 const SCcard = styled.div`
     position: relative;
@@ -185,11 +189,8 @@ const SCcard = styled.div`
     margin: 30px;
     /* border-radius: 30px; */
     &:hover {
-      ${ScZoomIn}{
-        opacity: 100%!important;
-      }
       ${SChover}{
-        opacity: 90%;
+        opacity: 80%;
       }
       
     }

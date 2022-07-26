@@ -23,6 +23,7 @@ import Chat from '../pages/Chat/Chat';
 import ChatDetail from '../pages/Chat/ChatDetail';
 import BoardUpdate from '../pages/Board/BoardUpdate';
 import MenuCategory from '../pages/MenuCategory';
+import Header from '../pages/Header/Header';
 
 const Router = () => {
   //내 현재위치 geolocation
@@ -48,14 +49,12 @@ const Router = () => {
   }, []);
 
   return (
+    <>
     <Routes>
+
+      <Route element={<Header/>}>
       <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
-
-      {/* signup */}
-      <Route path="/signup" element={<Signup />} />
-      {/* Login */}
-      <Route path="/login" element={<Login />} />
       <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
       <Route path="/oauth/google/callback" element={<GoogleLogin />} />
       <Route path="/oauth/naver/callback" element={<NaverLogin />} />
@@ -85,9 +84,16 @@ const Router = () => {
       {/**Chat */}
       <Route path="/chatposts" element={<Chat />} />
       <Route path="/chatposts/detail/:id" element={<ChatDetail />} />
+      </Route>
 
+      {/* signup */}
+      <Route path="/signup" element={<Signup />} />
+      {/* Login */}
+      <Route path="/login" element={<Login />} /> 
 
     </Routes>
+
+    </>
   );
 };
 

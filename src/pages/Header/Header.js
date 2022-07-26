@@ -8,6 +8,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMediaQuery } from "react-responsive";
+import {Outlet} from "react-router"
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,12 +19,15 @@ const Header = () => {
 
 
   return (
+    <>
         <ScHeaderBox>
           <Logo />
           <Category />
           { isMobile ?  null: <HeaderInput /> }
           <Button />
         </ScHeaderBox>
+        <Outlet />
+        </>
   );
 };
 
