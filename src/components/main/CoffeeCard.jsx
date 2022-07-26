@@ -25,8 +25,8 @@ switch(item?.brand){
         return setBrandLogo("/brandlogo/스타벅스.png")
       case "할리스":
         return setBrandLogo("/brandlogo/할리스.jpg")
-      case "엔젤인어스" : 
-      return setBrandLogo("/brandlogo/엔젤인어스.png")
+      case "엔제리너스" : 
+      return setBrandLogo("/brandlogo/엔제리너스.png")
         case "이디야" : 
         return setBrandLogo("/brandlogo/이디야.png")
         case "커피빈" : 
@@ -46,7 +46,7 @@ switch(item?.brand){
           case "카페베네" :
         return setBrandLogo("/brandlogo/카페베네.png")
           case "메가커피":
-            return setBrandLogo("/brandlogo/메가커피.png")
+        return setBrandLogo("/brandlogo/메가커피.png")
       default:
         return undefined
     }
@@ -110,37 +110,6 @@ const ScLogo = styled.img`
     height: 70px;
     border-radius: 100%;
     background-color: white;
-     /* background-color: ${(props) => {
-    switch(props.color){
-      case "스타벅스":
-        return "rgb(1,98,65)"
-      case "할리스":
-        return "rgb(193,47,48)"
-      case "엔젤인어스" : 
-        return "#252525"
-        case "이디야" : 
-        return "rgb(36,60,132)"
-        case "커피빈" : 
-        return "rgb(76,44,105)"
-        case "더벤티" : 
-        return "rgb(123,0,155)"
-        case "드롭탑" :
-       return"rgb(26,38,138)"
-          case "컴포즈" :
-        return"rgb(254,217,0)"
-          case "탐앤탐스" :
-        return"rgb(79,21,29)"
-          case "빽다방" :
-         return"rgb(26,38,138)"
-          case "폴바셋" :
-        return"rgb(41,31,32)"
-          case "카페베네" :
-         return"rgb(121,98,80)"
-
-      default:
-        return "white"
-    }
-  }}; */
     margin: 42px 0 23px 0;
 `
 
