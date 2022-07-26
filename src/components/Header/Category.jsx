@@ -48,9 +48,11 @@ const ScCategoryBox = styled.ul`
   @media screen and (max-width:768px){
     flex-direction: column;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 60%;  
+    align-items: center;
+    width: 40%;
+    text-align: center;
+    border: 1px solid black;
   }
 `;
 
@@ -59,14 +61,13 @@ const ScCategory = Styled.li`
   /* margin-left: 30px; */
   &: hover {
     cursor: pointer;
-    background-color: #2C278C;
-    color: white;
+    font-family: SUIT ExtraBold;
     border-radius: 4px;
   }
   padding: 8px 12px;
   @media screen and (max-width:768px){    
-    width: 100%;
-    text-align: center;    
+    width: 20%;
+       
   }
   
 `;

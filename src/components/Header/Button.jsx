@@ -36,8 +36,7 @@ const Button = () => {
     <ScWrap>
       {onair ? (
         <>
-          <ScBtn onClick={logOut}>로그아웃</ScBtn>
-          <p> | </p>
+          
           <ScBtn
             onClick={() => {
               navigate('/mypage');
@@ -45,23 +44,25 @@ const Button = () => {
           >
             마이페이지
           </ScBtn>
+          <p> | </p>
+          <ScBtn onClick={logOut}>로그아웃</ScBtn>
         </>
       ) : (
         <>
-          <ScBtn
-            onClick={() => {
-              navigate('/login');
-            }}
-          >
-            로그인
-          </ScBtn>
-          <p> | </p>
           <ScBtn
             onClick={() => {
               navigate('/signup');
             }}
           >
             회원가입
+          </ScBtn>          
+          <p> | </p>
+          <ScBtn
+            onClick={() => {
+              navigate('/login');
+            }}
+          >
+            로그인
           </ScBtn>
         </>
       )}
@@ -82,8 +83,7 @@ const ScWrap = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;    
-    width: 60%;
-
+    width: 40%;
   }
 `;
 
@@ -93,16 +93,15 @@ const ScBtn = styled.li`
   color: #2c278c;
   &:hover {
     cursor: pointer;
-    background-color: #2C278C;
-    color: white;
+    font-family: SUIT ExtraBold;
     border-radius: 4px;    
   }
   padding: 8px 12px;
   @media screen and (max-width:768px){ 
     display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: auto;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;   
     width: 40%;
   }
   

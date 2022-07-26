@@ -57,10 +57,7 @@ const ScHeaderBox = styled.nav`
   max-width: 1200px;
   min-width: 1200px;
   margin: auto;
-
   padding: 8px 12px;
-
-  
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;

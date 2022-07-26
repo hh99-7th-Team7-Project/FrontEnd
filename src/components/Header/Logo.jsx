@@ -17,7 +17,14 @@ const Logo = () => {
 
 
 const ScLogoBox = styled.div`
-  
+  @media screen and (max-width:768px){
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 40%;
+    border: 1px solid black;
+  }
 `;
 
 const ScLogo = styled.img`

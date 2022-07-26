@@ -68,7 +68,7 @@ const ScNavbarWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media screen and (max-width:768px){      
+  @media screen and (max-width:768px) {      
       display: flex;
       flex-direction: row;
       width: 100%;                
