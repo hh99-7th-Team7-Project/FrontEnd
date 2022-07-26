@@ -51,7 +51,7 @@ const Router = () => {
   return (
     <>
     <Routes>
-
+      {/* 헤더가 필요한 영역 */}
       <Route element={<Header/>}>
       <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
@@ -86,13 +86,12 @@ const Router = () => {
       <Route path="/chatposts/detail/:id" element={<ChatDetail />} />
       </Route>
 
+      {/* 헤더가 필요없는 영역 */}
       {/* signup */}
       <Route path="/signup" element={<Signup />} />
       {/* Login */}
       <Route path="/login" element={<Login />} /> 
-
     </Routes>
-
     </>
   );
 };

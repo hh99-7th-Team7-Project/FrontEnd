@@ -48,7 +48,7 @@ const BrandCard = (props) => {
 
   return (
 
-    <div >
+    <ScMobile>
         <div style={{position:'relative'}}>
       <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
       <div className="next" style={{fontSize:"30px"}}>&gt;</div>
@@ -125,11 +125,18 @@ const BrandCard = (props) => {
             })}
           </SCcardWrap>
         </div>
-      </div>
+      </ScMobile>
   );
 };
 
 
+const ScMobile = styled.div`
+  @media screen and (max-width:768px){    
+    flex-direction: column;    
+    align-items: center;
+    width: 100%;    
+  }
+`;
 
 const animation = keyframes`
   50% {

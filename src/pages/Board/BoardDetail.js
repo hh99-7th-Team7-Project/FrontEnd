@@ -50,9 +50,6 @@ const BoardDetail = () => {
   return (
     <>
       <ScMobile>
-        <div style={{ margin: "auto", width: "62%" }}>
-          <Header />
-        </div>
         <ScImgContainer>
           <div style={{ display: "flex", height: "135px", position: "relative" }}>
             <ScImg src={BoardImg} alt="" />

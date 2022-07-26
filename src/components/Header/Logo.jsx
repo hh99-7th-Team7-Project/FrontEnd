@@ -7,11 +7,18 @@ const Logo = () => {
   const navigate = useNavigate()
   return (
     <>
-      <ScLogo src={svg} onClick={()=>{navigate("/")}} alt="" style={{width:"165px"}}/>
-      {/* <svg></svg> */}
+      <ScLogoBox>
+        <ScLogo src={svg} onClick={()=>{navigate("/")}} alt="" style={{width:"165px"}}/>
+        {/* <svg></svg> */}
+      </ScLogoBox>
     </>
   )
 }
+
+
+const ScLogoBox = styled.div`
+  
+`;
 
 const ScLogo = styled.img`
   &:hover {
