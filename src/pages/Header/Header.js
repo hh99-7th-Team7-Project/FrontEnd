@@ -34,7 +34,7 @@ const Header = () => {
           <Category />
           { isMobile ?  null: <HeaderInput /> }
           <Button />
-          <ScToggleBtn href="#" onClick={()=>{
+          <ScToggleBtn href="" onClick={()=>{
             handleToggleBtn();
           }}>
             <FontAwesomeIcon icon={faBars} />
@@ -55,7 +55,7 @@ const ScHeaderBox = styled.nav`
   /* min-width: 1222px; */
   height: 130px;
   max-width: 1200px;
-  min-width: 1200px;
+  width: 100%;
   margin: auto;
   padding: 8px 12px;
   @media screen and (max-width: 768px) {

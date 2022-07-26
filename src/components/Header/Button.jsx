@@ -82,8 +82,10 @@ const ScWrap = styled.ul`
     flex-direction: row;
     display: flex;
     justify-content: center;
-    align-items: center;    
-    width: 40%;
+    align-items: center;   
+    margin: auto;
+    border: 1px solid black;
+    width: 100%;
   }
 `;
 
@@ -102,7 +104,6 @@ const ScBtn = styled.li`
     flex-direction: column;
     justify-content: start;
     text-align: center;   
-    width: 40%;
   }
   
 `;
