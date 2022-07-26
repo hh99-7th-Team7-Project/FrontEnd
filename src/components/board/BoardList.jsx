@@ -13,8 +13,6 @@ const BoardList = () => {
   // console.log(content)
   const token = getCookie('token');
 
-
-
   const [totalpage , settotalPage ]= useState(0)
   const [page, setPage] =useState(0)
 
@@ -24,16 +22,13 @@ const BoardList = () => {
         await apis
           .getBoards(page)
           .then((res) => {
-            // console.log(res.data);
             setContent(res.data.post); 
             settotalPage(res?.data.totalPage)           
           }).catch((e)=>{
             Sentry.captureException(e);
           })
-          
       } else {
         await apis.getBoardsLogin(page).then((res) => {
-          // console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
         }).catch((e)=>{
@@ -42,7 +37,7 @@ const BoardList = () => {
       }
     };
     getMark();
-  }, [page]);
+  }, [page])
 
 
   return (
@@ -72,7 +67,6 @@ const ScWrap = Styled.div`
     /* border: 1px solid black; */
     width: 100%;
     height: 100%;
-
 `;
 const ScBoard = Styled.div`    
     width: 100%;

@@ -18,7 +18,7 @@ const Board = () => {
 
   return (
     <>
-      <ScMobile> 
+      <ScMobile>
         <ScWrap>
           <ScTopCard>
             <img src={BoardLogo} alt="" style={{ width: "100%" }} />
@@ -30,11 +30,10 @@ const Board = () => {
           <PopularBoard />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <ScCategory>
-
               <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
-              <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 레시피</ScMyrecipe>
+              <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 비밀 레시피</ScMyrecipe>
               <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
-              <ScEtc onClick={() => { setCategory("기타") }}>사담</ScEtc>
+              <ScEtc onClick={() => { setCategory("기타") }}>기타</ScEtc>
             </ScCategory>
             {category === 0 && <BoardList />}
             {category !== 0 && <BoardListCategory category={category} />}

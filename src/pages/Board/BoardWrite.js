@@ -40,15 +40,16 @@ const BoardWrite = () => {
       await apis
         .postBoard({ title: title, content: content, category: cate })
         .then((res) => {
-          navigate('/board');
-          Swal.fire({
+              Swal.fire({
             title: '등록에 성공 했습니다.',
             icon: 'success',
             confirmButtonText: '확인',
-          }).catch(e => {
+          })
+          navigate('/board');
+        }).catch(e => {
             Sentry.captureException(e);
-          });;
-        });
+          })
+        ;
     }
   };
 

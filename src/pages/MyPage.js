@@ -69,7 +69,19 @@ const MyPage = () => {
   // console.log(nick);
   // console.log(newProfileImg);
 
+  const Mychat =async ()=>{
+    apis.getMyChatRoom(userId)
+      .then((res)=>{
+        console.log(res)
+      })
+  }
 
+  const MyWrite =async ()=>{
+    apis.getMyBoard(userId)
+      .then((res)=>{
+        console.log(res)
+      })
+  }
 
   const updateProfile = async (e) => {
     e.preventDefault();
@@ -186,7 +198,8 @@ const MyPage = () => {
             <div style={{ display: 'flex', gap: '23px', flexDirection: 'row' }}>
               <ScMywrite>
                 <ScMyWriteBtn>
-                  <img alt="" src={Write} style={{ width: '26px' }} />
+                  <img alt="" src={Write} style={{ width: '26px' }}  
+                  />
                 </ScMyWriteBtn>
                 <div style={{ color: '#9A2ACC', marginLeft: '34px' }}>
                   <ScMyTitle>내가 쓴 글 갯수</ScMyTitle>
@@ -195,7 +208,7 @@ const MyPage = () => {
               </ScMywrite>
               <ScChat>
                 <ScMyWriteBtn>
-                  <img alt="" src={Moiim} style={{ width: '26px' }} />
+                  <img alt="" src={Moiim} style={{ width: '26px' }}  />
                 </ScMyWriteBtn>
                 <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
                   <ScMyTitle>내가 참여한 모임수</ScMyTitle>
