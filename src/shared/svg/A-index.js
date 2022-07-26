@@ -22,8 +22,12 @@ import ChatLogoSmall from './ChatLogoSmall.svg'
 import MainCard1 from './MainCard1.svg'
 import FooterFlower from './Footer.svg'
 import MypageLogo from './MypageLogo.svg'
+import StarUnfilled from './StarUnfilled.svg'
+import StarFilled from './StarFilled.svg'
 
 export {
+  StarFilled,
+  StarUnfilled,
   MypageLogo,
   FooterFlower,
   MainCard1,

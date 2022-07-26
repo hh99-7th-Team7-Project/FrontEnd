@@ -65,7 +65,8 @@ const changeColor2 = ()=>{
               <LottoPoint/>
             </ScMapRandomWrap> */}
             <ScNavbarWrap>
-              <ScTitle>데일리 커피 Menu</ScTitle>
+
+              <ScTitle>Menu</ScTitle>
               <ScButtonWrap>
                 <ScCategory color={color}
                   onClick={()=>{
@@ -116,7 +117,8 @@ const ScTitle = styled.div`
     line-height: 80px;    padding: 8px 24px;
     margin: auto;
     width: 100%;
-    border: 1px solid black;  
+    justify-content: center;
+    width: 50%;
   }
 `;
 
@@ -131,13 +133,14 @@ margin: 50px auto;
     align-items: center;
     width: 50%; 
     justify-content: center;
+    
   }
 `;
 
 const ScButtonWrap = styled.div`
 display: flex;
 gap: 28px;
-font-size: 14pt;
+font-size: 1.13em;
 @media screen and (max-width:768px){
     flex-direction: row;
     display: flex;

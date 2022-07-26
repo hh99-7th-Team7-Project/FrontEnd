@@ -23,7 +23,6 @@ const ScLogoBox = styled.div`
     justify-content: center;
     align-items: center;    
     width: 40%;
-    border: 1px solid black;
   }
 `;
 

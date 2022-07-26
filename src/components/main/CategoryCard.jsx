@@ -44,8 +44,8 @@ const CategoryCard = (props) => {
   return (
     <div >
       <div style={{position:'relative'}}>
-      <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
-      <div className="next" style={{fontSize:"30px"}}>&gt;</div>
+      <div className="prev" style={{fontSize:'1.66em'}}>&lt;</div>  
+      <div className="next" style={{fontSize:'1.66em'}}>&gt;</div>
       <Swiper
         slidesPerView={8}
         spaceBetween={10}
@@ -100,7 +100,7 @@ const CategoryCard = (props) => {
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
                 ></ScSlide>
-              <div style={{ textAlign: 'center' }}>{item?.brand}</div>
+              <div style={{ textAlign: 'center', fontSize:"0.888em" }}>{item?.brand}</div>
               </div>
             </SwiperSlide>
           );

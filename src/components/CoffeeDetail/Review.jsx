@@ -66,7 +66,7 @@ const Review = ({ item, reviewData, url }) => {
             </ScStarBox>
             <ScPriceBox>
               <Sctitle>가격</Sctitle>
-             {pricePair&&<PriceScH3 style={{fontSize:'30px'}}>￦{pricePair[0]?.price}</PriceScH3>} 
+             {pricePair&&<PriceScH3 style={{fontSize:'1.66em'}}>￦{pricePair[0]?.price}</PriceScH3>} 
             </ScPriceBox>
           </ScStarPriceContainer>
             {pricePair &&(pricePair?.length===3) &&
