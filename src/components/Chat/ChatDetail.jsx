@@ -29,9 +29,6 @@ const ChatDetail = () => {
   const [map, setMap] = React.useState(true);
   const [content, setContent] = React.useState(true);
   const [none, setNone] = React.useState(true);
-  const [include, setInclude]= React.useState()
-  const [include1, setInclude1]= React.useState()
-  const [contents, setContents] = React.useState()
   
   
   const isMobile = useMediaQuery({
@@ -232,11 +229,7 @@ const All = styled.div`
 const WriteWrap = styled.div`
   width: 100%;
   @media screen and (max-width: 768px) {
-    flex-direction: column;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0px;
+    height: 100%;
   }
 `;
 
@@ -254,6 +247,7 @@ const Container = styled.div`
   margin-right: 30px;
   margin-top: 20px;
   height: 570px;
+  overflow-y: scroll;
   @media screen and (max-width: 768px) {
     width: 98%;
     margin-right:0;
@@ -358,6 +352,13 @@ const InfoWrap = styled.div`
 const Wrap = styled.div`
   display: flex;
   justify-content: flex-end;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0%;
+    /* overflow-y: scroll; */
+  }
 `;
 
 const ICON = styled.img`
