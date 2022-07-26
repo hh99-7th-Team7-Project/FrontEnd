@@ -73,7 +73,6 @@ const ScNavbarWrap = styled.div`
       flex-direction: row;
       width: 100%;                
   }
-  border: 1px solid black;
 `;
 
 const ScCategory = styled.div`
