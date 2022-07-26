@@ -84,7 +84,6 @@ const ScWrap = styled.ul`
     justify-content: center;
     align-items: center;   
     margin: auto;
-    border: 1px solid black;
     width: 100%;
   }
 `;
