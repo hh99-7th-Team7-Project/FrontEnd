@@ -20,8 +20,7 @@ const apis = {
   getMyBoardBookmark: (userId) => api.get(`mypage/posts/bookmarks/${userId}`),
   getMyBoardCount: (userId) => api.get(`/mypage/myboards/${userId}`),
   getMyChatCount: (userId) => api.get(`/mypage/myChat/${userId}`),
- 
-
+  getMyChatRoom: (userId) => api.get(`/mypage/myChatRoom/${userId}`),
 
   //커피정보
   getCoffee: (brand) => api.get(`/coffees/${brand}`),
