@@ -54,10 +54,7 @@ const BoardWrite = () => {
 
   return (
     <>
-      <ScMobile>
-        <div style={{ margin: "auto", width: "100%" }}>
-          <Header />
-        </div>
+      <ScMobile> 
         <ScWrite>
           <BoardCategory title={setTitle} cate={setCate} />
           <ToastEdit content={setContent} />

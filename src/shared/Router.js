@@ -23,6 +23,7 @@ import Chat from '../pages/Chat/Chat';
 import ChatDetail from '../pages/Chat/ChatDetail';
 import BoardUpdate from '../pages/Board/BoardUpdate';
 import MenuCategory from '../pages/MenuCategory';
+import Header from '../pages/Header/Header';
 
 const Router = () => {
   //내 현재위치 geolocation
@@ -48,6 +49,10 @@ const Router = () => {
   }, []);
 
   return (
+    <>
+    <div style={{margin:"auto", maxWidth:"1200px",minWidth:"1200px"}}>
+    <Header />
+    </div>
     <Routes>
       <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
@@ -88,6 +93,7 @@ const Router = () => {
 
 
     </Routes>
+    </>
   );
 };
 

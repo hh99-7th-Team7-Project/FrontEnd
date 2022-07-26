@@ -57,12 +57,8 @@ const changeColor2 = ()=>{
 
   return (
     <>      
-      <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      <div style={{position:"relative"}}>
-      <ImgSlide2/>
-  
+      <div style={{position:"relative", width:"100%",overflow:"hidden"}}>
+      <ImgSlide2/>  
         <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
             {/* <ScMapRandomWrap>
               <RandomPicker />

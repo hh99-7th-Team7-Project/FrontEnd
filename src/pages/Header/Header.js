@@ -38,7 +38,7 @@ const Header = () => {
           }}>
             <FontAwesomeIcon icon={faBars} />
           </ScToggleBtn>
-          
+
         </ScHeaderBox>
           
     </>

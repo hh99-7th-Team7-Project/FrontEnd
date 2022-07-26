@@ -10,9 +10,6 @@ const MenuCategory = () => {
   return (
     <>
       {/* <Flower /> */}
-      <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
       <div style={{ maxWidth: '1230px', width: '84vw', margin: 'auto' }}>
         <ScNavbarWrap>
           <ScButtonWrap>

@@ -37,9 +37,6 @@ const Chat = () => {
 
   return (
     <ScMobile>
-      <div style={{ margin: "auto", width: "62%" }}>
-        <Header />
-      </div>
       {write === false ? (
         <ScTopCard>
           <img alt='' src={ChatLogo} style={{ width: "100%" }} />

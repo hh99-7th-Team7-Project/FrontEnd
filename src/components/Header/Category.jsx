@@ -2,7 +2,6 @@ import React from 'react';
 import Styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from './Button';
 
 const Category = () => {
   const navigate = useNavigate();
@@ -49,7 +48,8 @@ const ScCategoryBox = styled.ul`
   @media screen and (max-width:768px){
     flex-direction: column;
     align-items: center;
-    width: 100%;    
+    width: 100%;
+    text-align: center;
   }
 `;
 
