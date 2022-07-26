@@ -10,7 +10,6 @@ function App() {
     <>
       <SCwrap>
         <AnimatePresence>
-          {/* <Header/> */}
           <Router />
         </AnimatePresence>
       </SCwrap>
@@ -26,5 +25,9 @@ display: flex;
 flex-direction: column;
 width: 100%;
 overflow: hidden;
+font-size: 16px;
+@media all and (max-width: 750px) {
+  font-size: 12px;
+}
 /* justify-content: center; */
 `

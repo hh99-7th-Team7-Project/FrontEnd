@@ -54,12 +54,12 @@ const MyCoffeeCard = ({item}) => {
         <div style={{width:"175px", marginBottom:"8px"}}>
         <SCcoffeeImg src={item?.img}/>
         </div>
-        <div style={{fontSize:'17px'}}>{item?.name}</div>
+        <div style={{fontSize:'1.0625em'}}>{item?.name}</div>
       </ScBeforeHover>
     <SChover>
       <ScLogo src={brandLogo}></ScLogo>
-      <div style={{fontSize:'13px'}}>{item?.brand}</div>
-      <div style={{fontSize:'17px'}}>{item?.name}</div>
+      <div style={{fontSize:'0.8125em'}}>{item?.brand}</div>
+      <div style={{fontSize:'1.0625em'}}>{item?.name}</div>
       <ScZoomIn onClick={moveOnclick}><ScLens src={Lens} alt=""/>자세히 보러 가기</ScZoomIn>
     </SChover>
     </SCcard>

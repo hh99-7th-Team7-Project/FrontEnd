@@ -36,8 +36,7 @@ const Button = () => {
     <ScWrap>
       {onair ? (
         <>
-          <ScBtn onClick={logOut}>로그아웃</ScBtn>
-          <p> | </p>
+          
           <ScBtn
             onClick={() => {
               navigate('/mypage');
@@ -45,23 +44,25 @@ const Button = () => {
           >
             마이페이지
           </ScBtn>
+          <p> | </p>
+          <ScBtn onClick={logOut}>로그아웃</ScBtn>
         </>
       ) : (
         <>
-          <ScBtn
-            onClick={() => {
-              navigate('/login');
-            }}
-          >
-            로그인
-          </ScBtn>
-          <p> | </p>
           <ScBtn
             onClick={() => {
               navigate('/signup');
             }}
           >
             회원가입
+          </ScBtn>          
+          <p> | </p>
+          <ScBtn
+            onClick={() => {
+              navigate('/login');
+            }}
+          >
+            로그인
           </ScBtn>
         </>
       )}
@@ -71,32 +72,37 @@ const Button = () => {
 
 const ScWrap = styled.ul`
   display: flex;
-  width: 30%;
+  width: 40%;
   justify-content: center;
   align-items: center;
   color: #2c278c;
   list-style: none;
   display: flex;
   @media screen and (max-width:768px){
-    flex-direction: row;    
-    width: 100%;    
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 40%;
   }
 `;
 
 const ScBtn = styled.li`
   margin: 20px;
-  font-size: 13pt;
+  font-size: 1.06em;
   color: #2c278c;
   &:hover {
     cursor: pointer;
-    background-color: #2C278C;
-    color: white;
+    font-family: SUIT ExtraBold;
     border-radius: 4px;    
   }
   padding: 8px 12px;
   @media screen and (max-width:768px){ 
-    text-align: center;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;   
+    width: 40%;
   }
   
 `;

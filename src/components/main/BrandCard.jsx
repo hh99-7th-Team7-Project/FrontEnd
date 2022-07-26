@@ -6,6 +6,7 @@ import CoffeeCard from './CoffeeCard';
 import { __loadCoffee } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Paiks } from '../../shared/svg/A-index';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -28,7 +29,7 @@ const BrandCard = (props) => {
 
   const brandList = [
     { brand: '스타벅스', id: 0, logo: '/brandlogo/스타벅스.png' },
-    { brand: '빽다방', id: 1, logo: '/brandlogo/빽다방.png' },
+    { brand: '빽다방', id: 1, logo: `/brandlogo/빽다방.png` },
     { brand: '커피빈', id: 2, logo: '/brandlogo/커피빈.png' },
     { brand: '이디야', id: 3, logo: '/brandlogo/이디야.png' },
     { brand: '컴포즈', id: 4, logo: '/brandlogo/컴포즈.png' },
@@ -49,9 +50,10 @@ const BrandCard = (props) => {
   return (
 
     <ScMobile>
+
         <div style={{position:'relative'}}>
-      <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
-      <div className="next" style={{fontSize:"30px"}}>&gt;</div>
+      <div className="prev" style={{fontSize:'1.66em'}}>&lt;</div>  
+      <div className="next" style={{fontSize:'1.66em'}}>&gt;</div>
       <Swiper
         slidesPerView={8}
         spaceBetween={10}
@@ -106,17 +108,19 @@ const BrandCard = (props) => {
                     dispatch(__loadCoffee(item?.brand));
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
-                ></ScSlide>
+                >
+
+                </ScSlide>
                 
-                <div style={{ textAlign: 'center' }}> {item?.brand}</div>
+                <div style={{ textAlign: 'center', fontSize:"0.8em" }}> {item?.brand}</div>
               </div>
             </SwiperSlide>
           );
         })}
       </Swiper>
-          </div>
 
-      <div>
+          </div>
+      
         <SCcardWrap>
           <div>{coffeeReducer?.brand}</div>
           {coffeeReducer &&
@@ -124,7 +128,7 @@ const BrandCard = (props) => {
               return <CoffeeCard key={index} item={item} />;
             })}
           </SCcardWrap>
-        </div>
+
       </ScMobile>
   );
 };
@@ -178,9 +182,13 @@ const SCcardWrap = Styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    /* border: 1px solid black; */
     /* height: 600px; */
+    @media screen and (max-width:768px){      
+      display: flex;
+      flex-direction: row;
+      width: 100%;                
+  }
+
 `;
 
 export default BrandCard;

@@ -36,20 +36,23 @@ const Category = () => {
 const ScCategoryBox = styled.ul`  
   display: flex;
   justify-content:center;
-  width: 40% ;
-  font-size: 13pt;
+  width: 40%;
+  font-size: 1.0625em;
   /* margin: auto; */
   /* justify-content: space-between; */
-  gap:11%;
+  gap:4%;
   /* margin: 0 0 0 40px; */
   color: #2C278C;
   list-style: none;
 
   @media screen and (max-width:768px){
     flex-direction: column;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 40%;
     text-align: center;
+
   }
 `;
 
@@ -58,14 +61,13 @@ const ScCategory = Styled.li`
   /* margin-left: 30px; */
   &: hover {
     cursor: pointer;
-    background-color: #2C278C;
-    color: white;
+    font-family: SUIT ExtraBold;
     border-radius: 4px;
   }
   padding: 8px 12px;
   @media screen and (max-width:768px){    
-    width: 100%;
-    text-align: center;    
+    width: 20%;
+       
   }
   
 `;

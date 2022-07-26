@@ -6,8 +6,8 @@ const UserInfo = ({ email }) => {
 
   return (
     <div>
-      <div style={{ fontSize: '22px' }}>{userName}</div>
-      <div style={{ fontSize: '14px' }}>{email}</div>
+      <div style={{ fontSize: '1.375em' }}>{userName}</div>
+      <div style={{ fontSize: '0.875em' }}>{email}</div>
     </div>
   );
 };

@@ -123,9 +123,6 @@ const MyPage = () => {
   return (
     <>
       <ScMobile>
-        <div style={{ margin: "auto", width: "62%" }}>
-          <Header />
-        </div>
         <ScsecondHead src={MypageLogo} />
         <ScWrap>
           <div
@@ -157,7 +154,7 @@ const MyPage = () => {
                         <img src={Pencil} alt="" onClick={updateProfile} />
                       </div>
                     </div>
-                    <div style={{ fontSize: '14px' }}>{email}</div>
+                    <div style={{ fontSize: ' 0.875em' }}>{email}</div>
                   </div>
                 </div>
               </ScMyprofile>
@@ -173,7 +170,7 @@ const MyPage = () => {
                   }}
                 >
                   <div style={{ display: 'flex' }}>
-                    <div style={{ fontSize: '22px' }}>{userName}</div>
+                    <div style={{ fontSize: '1.375em' }}>{userName}</div>
                     <img
                       src={Pencil}
                       alt=""
@@ -182,7 +179,7 @@ const MyPage = () => {
                       }}
                     />
                   </div>
-                  <div style={{ fontSize: '14px' }}>{email}</div>
+                  <div style={{ fontSize: ' 0.875em' }}>{email}</div>
                 </div>
               </ScMyprofile>
             )}
@@ -193,7 +190,7 @@ const MyPage = () => {
                 </ScMyWriteBtn>
                 <div style={{ color: '#9A2ACC', marginLeft: '34px' }}>
                   <ScMyTitle>내가 쓴 글 갯수</ScMyTitle>
-                  <div style={{ fontSize: '32px' }}>{countBoard}</div>
+                  <div style={{ fontSize: '2em' }}>{countBoard}</div>
                 </div>
               </ScMywrite>
               <ScChat>
@@ -202,13 +199,13 @@ const MyPage = () => {
                 </ScMyWriteBtn>
                 <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
                   <ScMyTitle>내가 참여한 모임수</ScMyTitle>
-                  <div style={{ fontSize: '32px' }}>{countChat}</div>
+                  <div style={{ fontSize: '2em' }}>{countChat}</div>
                 </div>
               </ScChat>
             </div>
           </div>
           <ScBookmark>
-            <div style={{ fontSize: '24px', fontWeight: '700' }}>북마크</div>
+            <div style={{ fontSize: '1.5em', fontWeight: '700' }}>북마크</div>
             <div>
               <ScBookmarkwrap>
                 <div style={{ display: 'flex', gap: '20px' }}>
