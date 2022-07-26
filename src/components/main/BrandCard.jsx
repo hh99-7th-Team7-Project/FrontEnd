@@ -49,74 +49,73 @@ const BrandCard = (props) => {
   return (
 
     <ScMobile>
-        <div style={{position:'relative'}}>
-      <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
-      <div className="next" style={{fontSize:"30px"}}>&gt;</div>
-      <Swiper
-        slidesPerView={8}
-        spaceBetween={10}
-        slidesPerGroup={1}
-        loop={true}
-        // loopFillGroupWithBlank={false}
-        // pagination={{
-        //   clickable: true,
-        // }}
-        navigation={{
-           prevEl: '.prev',
-            nextEl: '.next', }}
-        modules={[Navigation]}
-        breakpoints={{
-          0: {
-            slidesPerView: 2,
-          },
-          600: {
-            slidesPerView: 3,
-          },
-          700: {
-            slidesPerView: 4,
-          },
-          890: {
-            slidesPerView: 5,
-          },
-          1200: {
-            slidesPerView: 7,
-          },
-          1600: {
-            slidesPerView: 9,
-          },
-        }}
-        className="mySwiper2"
-      >
-   
-        {brandList.map((item, index) => {
-          return (
-            <SwiperSlide key={index} className="slide">
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}
-              >
-                <ScSlide
-                  onClick={(e) => {
-                    // e.target.style.background
-                    // console.log(item.id);
-                    setColor(!color);
-                    dispatch(__loadCoffee(item?.brand));
+      <div style={{position:'relative'}}>
+        <div className="prev" style={{fontSize:"30px"}}>&lt;</div>  
+        <div className="next" style={{fontSize:"30px"}}>&gt;</div>
+          <Swiper
+            slidesPerView={8}
+            spaceBetween={10}
+            slidesPerGroup={1}
+            loop={true}
+          // loopFillGroupWithBlank={false}
+          // pagination={{
+          //   clickable: true,
+          // }}
+            navigation={{
+            prevEl: '.prev',
+              nextEl: '.next', }}
+            modules={[Navigation]}
+            breakpoints={{
+            0: {
+              slidesPerView: 2,
+            },
+            600: {
+              slidesPerView: 3,
+            },
+            700: {
+              slidesPerView: 4,
+            },
+            890: {
+              slidesPerView: 5,
+            },
+            1200: {
+              slidesPerView: 7,
+            },
+            1600: {
+              slidesPerView: 9,
+            },
+          }}
+          className="mySwiper2"
+        >
+    
+          {brandList.map((item, index) => {
+            return (
+              <SwiperSlide key={index} className="slide">
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                   }}
-                  style={{ backgroundImage: `url(${item?.logo})` }}
-                ></ScSlide>
-                
-                <div style={{ textAlign: 'center' }}> {item?.brand}</div>
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+                >
+                  <ScSlide
+                    onClick={(e) => {
+                      // e.target.style.background
+                      // console.log(item.id);
+                      setColor(!color);
+                      dispatch(__loadCoffee(item?.brand));
+                    }}
+                    style={{ backgroundImage: `url(${item?.logo})` }}
+                  ></ScSlide>
+                  
+                    <div style={{ textAlign: 'center' }}> {item?.brand}</div>
+                  </div>
+                </SwiperSlide>
+              );
+             })}
+            </Swiper>
           </div>
-
-      <div>
+      
         <SCcardWrap>
           <div>{coffeeReducer?.brand}</div>
           {coffeeReducer &&
@@ -124,7 +123,7 @@ const BrandCard = (props) => {
               return <CoffeeCard key={index} item={item} />;
             })}
           </SCcardWrap>
-        </div>
+
       </ScMobile>
   );
 };
@@ -178,9 +177,13 @@ const SCcardWrap = Styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    /* border: 1px solid black; */
     /* height: 600px; */
+    @media screen and (max-width:768px){      
+      display: flex;
+      flex-direction: row;
+      width: 100%;                
+  }
+
 `;
 
 export default BrandCard;
