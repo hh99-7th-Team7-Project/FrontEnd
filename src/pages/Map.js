@@ -301,7 +301,7 @@ const Map = (props) => {
                 </div>
               </div>
             </div>
-            <div onClick={() => { navigate(-1) }}>✖</div>
+            <ScX onClick={() => { navigate(-1) }}>✖</ScX>
           </div>
           <ScMap id="map">지도</ScMap>
           <div>
@@ -360,4 +360,13 @@ const ScButton = styled.div`
   font-weight: 600;
   font-size: 1.25em;
   margin: 20px 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ScX = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
 `;
