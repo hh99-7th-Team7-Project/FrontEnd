@@ -88,13 +88,15 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
                   cancelButtonText: '아니요!'
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    apis.deleteBoard(boardId);
-                    Swal.fire(
-                      '삭제완료!',
-                      '성공적으로 삭제되었습니다.',
-                      'success'
-                    )
-                    navigate('/board'); 
+                    apis.deleteBoard(boardId)
+                        .then((res)=>{
+                          Swal.fire(
+                                '삭제완료!',
+                                '성공적으로 삭제되었습니다.',
+                                'success'
+                              )
+                           navigate('/board'); 
+                        })
                   }
                 })
               }}
