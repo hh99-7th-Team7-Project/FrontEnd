@@ -114,7 +114,7 @@ const Scwrite = styled.div`
   border-radius: 10px;
   @media screen and (max-width: 768px){
     width: 40%;
-    margin: -40px 1%;
+    margin: -50px 1%;
   }
 `
 const ScCategory = styled.div`
