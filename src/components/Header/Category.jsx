@@ -50,7 +50,7 @@ const ScCategoryBox = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    margin: auto;
     text-align: center;
 
   }
@@ -65,9 +65,8 @@ const ScCategory = Styled.li`
     border-radius: 4px;
   }
   padding: 8px 12px;
-  @media screen and (max-width:768px){    
-    width: 20%;
-       
+  @media screen and (max-width:768px){   
+
   }
   
 `;
