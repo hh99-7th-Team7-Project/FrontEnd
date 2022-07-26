@@ -159,7 +159,7 @@ const ChatWrite = ({ setWrite, write }) => {
 
   return (
     <Wrap>
-      <div>
+      <ScDate>
       <DatePicker
         selected={startDate}
         dateFormat="yyyy-MM-dd (eee)"
@@ -208,7 +208,7 @@ const ChatWrite = ({ setWrite, write }) => {
           </div>
         )}
         </div>
-        </div>
+        </ScDate>
       <InputWrap>
         <Title>제목</Title>
         {is_edit ? (
@@ -295,13 +295,25 @@ const ChatWrite = ({ setWrite, write }) => {
 const Wrap = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 107vw;
-  height: 59vh;
+  max-width: 1200px;
+  width: 100%;
   border-radius: 12px;
   display: flex;
   margin: auto;
   border: 1px #B6B6B6 solid;
   padding: 50px 35px 20px;
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;    
+  }
+`;
+
+const ScDate = styled.div`
+  @media screen and (max-width: 768px) {
+    margin: auto;
+    padding: 0;    
+  }
 `;
 
 const InputWrap = styled.div`
@@ -313,6 +325,11 @@ const InputWrap = styled.div`
   align-content: stretch;
   margin-left: 50px;
   width: 600px;
+  @media screen and (max-width: 768px) {
+    padding: 20px 20px 20px 20px;
+    margin: auto;
+  }
+  
 `;
 
 const MapInput = styled.input`
