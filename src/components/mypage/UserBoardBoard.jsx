@@ -45,6 +45,14 @@ const UserBoardBoard = () => {
     }
   };
 
+  useEffect(() => {
+    // console.log(curruntIdx);
+    slideRef.current.style.transition = `all 0.5s ease-in-out`;
+    slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
+  }, [curruntIdx]);
+
+
+
   return (
     <ScWrap>
       <ScMoveButton style={{ display: 'flex' }}>
