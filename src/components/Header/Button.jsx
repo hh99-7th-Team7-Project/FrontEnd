@@ -71,15 +71,19 @@ const Button = () => {
 
 const ScWrap = styled.ul`
   display: flex;
-  width: 30%;
+  width: 40%;
   justify-content: center;
   align-items: center;
   color: #2c278c;
   list-style: none;
   display: flex;
   @media screen and (max-width:768px){
-    flex-direction: row;    
-    width: 100%;    
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 60%;
+
   }
 `;
 
@@ -95,8 +99,11 @@ const ScBtn = styled.li`
   }
   padding: 8px 12px;
   @media screen and (max-width:768px){ 
+    display: flex;
+    justify-content: center;
     text-align: center;
-    width: 100%;
+    margin: auto;
+    width: 40%;
   }
   
 `;
