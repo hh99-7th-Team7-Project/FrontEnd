@@ -53,9 +53,13 @@ const ScHeaderBox = styled.nav`
   justify-content: space-between;
   align-items: center;
   /* min-width: 1222px; */
-  height: 130px; 
-  width: 100%;
+  height: 130px;
+  max-width: 1200px;
+  min-width: 1200px;
+  margin: auto;
+
   padding: 8px 12px;
+
   
   @media screen and (max-width: 768px) {
     flex-direction: column;
