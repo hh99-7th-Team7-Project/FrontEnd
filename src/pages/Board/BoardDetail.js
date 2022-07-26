@@ -107,6 +107,7 @@ const ScTitle = styled.div`
 const ScWrap = styled.div`
   margin: 15px auto;
   width: 1200px;
+  
 `;
 
 export default BoardDetail;

@@ -36,5 +36,7 @@ const ScTopWord = styled.div`
 position: absolute;
 font-family: "SUIT ExtraBold";
 width: 209px;
-
+@media screen and (max-width: 768px) {
+    display: none;
+  }
 `
