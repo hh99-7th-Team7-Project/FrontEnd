@@ -9,7 +9,7 @@ const MenuCategory = () => {
 
   return (
     <>
-      <Flower />
+      {/* <Flower /> */}
       <div style={{margin:"auto", width:"62%"}}>
         <Header />
       </div>

@@ -69,19 +69,21 @@ const changeColor2 = ()=>{
               <LottoPoint/>
             </ScMapRandomWrap> */}
             <ScNavbarWrap>
-            <ScMobile style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</ScMobile>
+              <ScMobile style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</ScMobile>
               <ScButtonWrap>
                 <ScCategory color={color}
                   onClick={()=>{
                   setCategory(true)
                   changeColor()
-                  }}>브랜드</ScCategory>
+                  }}>브랜드
+                </ScCategory>
                 <p>|</p>
                 <ScCategory2
                   color2={color2}
                   onClick={()=>{setCategory(false)
                   changeColor2()
-                  }}>음료</ScCategory2>
+                  }}>음료
+                </ScCategory2>
               </ScButtonWrap>
             </ScNavbarWrap>
             {category?<BrandCard/>:<CategoryCard/>}
@@ -110,6 +112,12 @@ const ScButtonWrap = styled.div`
 display: flex;
 gap: 28px;
 font-size: 14pt;
+@media screen and (max-width:768px){
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    width: 100%;    
+  }
 `;
 
 const ScNavbarWrap =styled.div`
@@ -117,6 +125,12 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 margin-top: 60px;
+@media screen and (max-width:768px){
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    justify-content: center;
+  }
 `;
 
 const ScCategory = styled.div`
