@@ -134,15 +134,14 @@ const MyPage = () => {
 
   return (
     <>
-      <ScMobile>
         <ScsecondHead src={MypageLogo} />
         <ScWrap>
-          <div
+          <ScMobile
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: '40px',
+              marginBottom: '40px',              
             }}
           >
             {update ? (
@@ -153,7 +152,7 @@ const MyPage = () => {
                 />
                 <div>
                   {/* <div onClick={() => { setUpdate(false) }} style={{marginLeft:"160px",marginBottom:"10px"}}>X</div> */}
-                  <div style={{ marginRight: '120px' }}>
+                  <div style={{ marginRight: '120px'}}>
                     <div
                       style={{
                         display: 'flex',
@@ -195,7 +194,7 @@ const MyPage = () => {
                 </div>
               </ScMyprofile>
             )}
-            <div style={{ display: 'flex', gap: '23px', flexDirection: 'row' }}>
+            <ScMobile2 style={{ display: 'flex', gap: '23px', flexDirection: 'row' }}>
               <ScMywrite>
                 <ScMyWriteBtn>
                   <img alt="" src={Write} style={{ width: '26px' }}  
@@ -208,15 +207,15 @@ const MyPage = () => {
               </ScMywrite>
               <ScChat>
                 <ScMyWriteBtn>
-                  <img alt="" src={Moiim} style={{ width: '26px' }}  />
+                  <img alt="" src={Moiim} style={{ width: '26px' }} onClick={Mychat} />
                 </ScMyWriteBtn>
                 <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
                   <ScMyTitle>내가 참여한 모임수</ScMyTitle>
                   <div style={{ fontSize: '2em' }}>{countChat}</div>
                 </div>
               </ScChat>
-            </div>
-          </div>
+            </ScMobile2>
+          </ScMobile>
           <ScBookmark>
             <div style={{ fontSize: '1.5em', fontWeight: '700' }}>북마크</div>
             <div>
@@ -247,27 +246,60 @@ const MyPage = () => {
             </div>
           </ScBookmark>
         </ScWrap>
-      </ScMobile>
     </>
   );
 };
 
 export default MyPage;
 
-const ScMobile = styled.div`
-  @media screen and (min-width: 350px){
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
-`;
 
 const ScsecondHead = styled.img`
   height: 135px;
   background-color: #F5E5F5; 
-
   margin-bottom: 40px;
   width: 100%;
+  @media screen and (max-width: 768px){
+    margin: auto;
+    width: 100%;
+  }
+`;
+
+const ScWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  width: 90%;
+  margin: auto;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+  }
+`;
+
+const ScMobile = styled.div`
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto;
+    width: 90%;
+  }
+`;
+
+const ScMobile2 = styled.div`
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto;
+    width: 100%;
+  }
 `;
 
 const ScBookmarkwrap = styled.div`
@@ -295,6 +327,14 @@ const ScBookmark = styled.div`
   /* align-items: flex-start; */
   /* left: 0; */
   /* font-size: 1.5em; */
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto;
+    width: 90%;
+  }
 `;
 const ScBookWrap = styled.div`
   background-color: #ddd;
@@ -310,16 +350,7 @@ const ScBookmarkCategory = styled.div`
   cursor: pointer;
   font-weight: 600;
 `;
-const ScWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
-  max-width: 1200px;
-  width: 63%;
-  margin: auto;
-`;
 
 const ScMywrite = styled.div`
   width: 277px;

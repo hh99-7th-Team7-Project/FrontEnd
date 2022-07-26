@@ -159,7 +159,7 @@ const ChatWrite = ({ setWrite, write }) => {
 
   return (
     <Wrap>
-      <div>
+      <ScDate>
       <DatePicker
         selected={startDate}
         dateFormat="yyyy-MM-dd (eee)"
@@ -175,9 +175,7 @@ const ChatWrite = ({ setWrite, write }) => {
           setDateValue(dateString);
         }}
       />
-      <div style={{
-        margin:"60px 0"
-      }}>
+        <ScTime>
         <Title>시간</Title>
         {is_edit ? (
           <div>
@@ -207,8 +205,9 @@ const ChatWrite = ({ setWrite, write }) => {
             </div>
           </div>
         )}
-        </div>
-        </div>
+        </ScTime>
+
+        </ScDate>
       <InputWrap>
         <Title>제목</Title>
         {is_edit ? (
@@ -295,14 +294,43 @@ const ChatWrite = ({ setWrite, write }) => {
 const Wrap = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 107vw;
-  height: 59vh;
+  max-width: 1200px;
+  width: 100%;
   border-radius: 12px;
   display: flex;
   margin: auto;
   border: 1px #B6B6B6 solid;
   padding: 50px 35px 20px;
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    display: flex;
+    padding: 20px 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;    
+    margin-top: 20px;
+    width: 90%;
+  }
 `;
+
+const ScDate = styled.div`
+  @media screen and (max-width: 768px) {
+    margin: auto;
+    padding: 0;    
+  }
+`;
+
+const ScTime = styled.div`
+  margin: 40px 0 0 0;
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    padding: 0;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`
 
 const InputWrap = styled.div`
   display: flex;
@@ -313,6 +341,11 @@ const InputWrap = styled.div`
   align-content: stretch;
   margin-left: 50px;
   width: 600px;
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+    margin: auto;
+  }
+  
 `;
 
 const MapInput = styled.input`
@@ -335,6 +368,10 @@ const TimeInput = styled.input`
   margin: 10px auto;
   padding: 0px 0 0 5px;
   color: #5a5858;
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    padding: 0;
+  }
 `;
 
 const Title = styled.span`

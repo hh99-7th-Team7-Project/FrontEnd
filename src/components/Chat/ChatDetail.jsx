@@ -16,6 +16,7 @@ import Check from './svg/Check.svg';
 import Chating from './svg/Chating.svg';
 import ChatMap from './ChatMap';
 import * as Sentry from "@sentry/react";
+import { useMediaQuery } from "react-responsive";
 
 const ChatDetail = () => {
   const dispatch = useDispatch();
@@ -28,10 +29,11 @@ const ChatDetail = () => {
   const [map, setMap] = React.useState(true);
   const [content, setContent] = React.useState(true);
   const [none, setNone] = React.useState(true);
-  const [include, setInclude]= React.useState()
-  const [include1, setInclude1]= React.useState()
-  const [contents, setContents] = React.useState()
   
+  
+  const isMobile = useMediaQuery({
+    query: "(max-width: 1604px)",
+  });
 
   const _checkUser = getCookie('nickname');
 
@@ -99,7 +101,7 @@ const ChatDetail = () => {
 
   return (
     <All>
-      <Container content={content}>
+      {isMobile&& chat? null : <Container content={content}>
         {write === true ? (
           <WriteWrap>
             <Wrap>
@@ -181,7 +183,7 @@ const ChatDetail = () => {
                           </div>
                   ) 
                   : 
-                  (<div style={{display:"flex", justifyContent:"center",        alignItems:"center"}}>
+                  (<div style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                       {data.totalcount<=data.count?
                       <AttendBtn1 onClick={()=>{navigate(-1)}} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                         <span>뒤로가기</span>
@@ -194,15 +196,16 @@ const ChatDetail = () => {
                   )}
                     </AttendBtnWrap> 
                 }
-              
-                  
-            
             </div>
           </>
         )}
-      </Container>
+      </Container>}
+      
       {chat === true ? (
         <ChatWrap>
+           <BackChat onClick={()=>{navigate(-1)}}>
+                        <span>뒤로가기</span>
+                      </BackChat>
           <PostChat chatpostId={id} />
         </ChatWrap>
       ) : null}
@@ -212,14 +215,22 @@ const ChatDetail = () => {
 
 const All = styled.div`
   display: flex;
-  width: 1200px;
-  height: 680px;
+  max-width: 1200px;
+  width: 90%;
   margin: auto;
+  @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px;
+  }
 `;
 
 const WriteWrap = styled.div`
   width: 100%;
-  height: 100vh;
+  @media screen and (max-width: 768px) {
+    height: 100%;
+  }
 `;
 
 const Time = styled.div`
@@ -235,7 +246,22 @@ const Container = styled.div`
   padding: 20px;
   margin-right: 30px;
   margin-top: 20px;
+  height: 570px;
+  overflow-y: scroll;
+  @media screen and (max-width: 768px) {
+    width: 98%;
+    margin-right:0;
+  }
 `;
+
+const BackChat = styled.div`
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+    width: 98%;
+    margin-right:0;
+  }
+`
 
 const BtnWrap = styled.div`
   display: flex;
@@ -264,17 +290,39 @@ const ContentWrap = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.content === true ? 'row' : 'column')};
   align-items: ${(props) => (props.content === true ? 'flex-start' : 'center')};
+  word-wrap: break-word;
+   word-break: break-all;
   & div {
-    width: 50vh;
+    width: 100%;
+  }
+  & span {
+   word-wrap: break-word;
+   word-break: break-all;
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    & span {
+   word-wrap: break-word;
+   word-break: break-all;
+  }
   }
 `;
 
 const Map = styled.div`
-  width: ${(props) => (props.map === true ? '100%' : '100%')};
+  width: ${(props) => (props.map === true ? '50%' : '100%')};
   height: ${(props) => (props.map === true ? '42vh' : '15vh')};
   background-color: #c4e8ff;
   border-radius: 10px;
-  margin: ${(props) => (props.map === true ? '0px 30px' : '0')}; ;
+  margin: ${(props) => (props.map === true ? '0px 30px' : '0')};
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 18vh;
+    margin: 0%;
+  }
 `;
 
 const Btn = styled.button`
@@ -290,6 +338,7 @@ const Btn = styled.button`
 const InfoWrap = styled.div`
   display: flex;
   margin: 2px 0px;
+  font-size: 13px;
   & div {
     display: flex;
     margin-right: 20px;
@@ -303,6 +352,13 @@ const InfoWrap = styled.div`
 const Wrap = styled.div`
   display: flex;
   justify-content: flex-end;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0%;
+    /* overflow-y: scroll; */
+  }
 `;
 
 const ICON = styled.img`
@@ -316,36 +372,55 @@ const TitleWrap = styled.div`
   margin: 10px 0;
   & span {
     display: inline-block;
-    font-size: 1.5625em;
+    font-size: 1.25em;
     font-weight: 700;
-    margin: 10px 0 15px 0;
+    margin: 10px 0 10px 0;
   }
   & p {
-    font-size: 1.25em;
+    font-size: 1.0em;
     font-weight: 700;
     color: #000;
     margin-bottom: 5px;
   }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+  }
+  
 `;
 
 const Contents = styled.div`
-  margin-top: 30px;
+  margin-top: 10px;
   & span {
     display: inline-block;
-    font-size: 1.25em;
+    font-size: 1.1em;
     margin-bottom: 10px;
   }  
   & p {
-    font-size: 1em;
+    font-size: 0.9em;
     height: ${(props) => (props.content === true ? '150px;' : '90px')};
-    overflow-y: scroll;    
+    overflow-y: scroll;   
+    word-wrap: break-word;
+    word-break: break-all; 
   }
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+    margin-top: 10px;
+    width: 100%;
+    & p {
+      padding: 0;
+      height: 90px;
+      width: 100%;
+    }
+  }
+  
 `;
 
 const AttendBtnWrap = styled.div`
   display: flex;
   justify-content: end;
-  margin: 50px 20px 0 0;
+  margin: 10px 20px 0 0;
   margin-left: 30px;
   & img {
     width: 20px;
@@ -396,9 +471,13 @@ const AttendBtn2 = styled.div`
 `;
 
 const ChatWrap = styled.div`
-  width: 80%;
-  height: 97%;
+  width: 100%;
+  height: 610px;
   margin-top: 20px;
+  margin-bottom: 20px;
+  @media screen and (max-width: 768px) {
+  height: 800px;
+  }
 `;
 
 const Profile = styled.img`

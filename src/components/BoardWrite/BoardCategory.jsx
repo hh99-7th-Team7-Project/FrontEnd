@@ -40,7 +40,7 @@ const BoardCategory = ({title, cate}) => {
   return (
     <>
     <ScCategory>
-      <div style={{width:"130px",textAlign:"right", marginRight:"40px"}}>카테고리 선택</div>
+      <ScMobile style={{width:"130px",textAlign:"right", marginRight:"40px"}}>카테고리 선택</ScMobile>
       <ScMyrecipe click={click} >
         <input 
         type="radio" 
@@ -71,15 +71,15 @@ const BoardCategory = ({title, cate}) => {
       </ScEtc>
     </ScCategory>
     <ScTitle>
-      <div style={{width:"130px",textAlign:"right"}}>제목</div>
-    <input 
-    type="text" 
-    onChange={(e)=>{
-      title(e.target.value)
-    }}
-    placeholder="제목을 입력해주세요"
-    />
-    <span style={{marginRight:"20px"}}>{nickname}</span>
+      <ScMobile style={{width:"130px",textAlign:"right"}}>제목</ScMobile>
+      <input 
+        type="text" 
+        onChange={(e)=>{
+        title(e.target.value)
+        }}
+        placeholder="제목을 입력해주세요"
+      />
+    <ScSpan style={{marginRight:"20px"}}>{nickname}</ScSpan>
      </ScTitle>
     </>
   )
@@ -93,8 +93,17 @@ const ScCategory = styled.div`
   gap: 8px;
   height: 70px;
   border-top: 1px solid #2C278C;
-  color: #2C278C;
+  color: #2C278C;  
+  @media screen and (max-width: 768px){
+    padding: 3;
+    width: 100%;
+  }
 `
+const ScMobile = styled.div`
+  @media screen and (max-width: 768px){
+    display: none; 
+  }
+`;
 
 const ScMyrecipe = styled.div`
   display: flex;
@@ -108,6 +117,10 @@ const ScMyrecipe = styled.div`
   input{
     display: none;
   };
+  @media screen and (max-width: 768px){
+    padding: 5;
+    font-size: 1.2em;     
+  }
 `
 const ScRecommend = styled.div`
  display: flex;
@@ -121,6 +134,10 @@ border: ${(props) => (props.click ? "1px solid #A454CA" : "")};
 input{
     display: none;
   };
+  @media screen and (max-width: 768px){
+    padding: 5;
+    font-size: 1.2em;      
+  }
 `
 const ScEtc = styled.div`
  display: flex;
@@ -134,6 +151,10 @@ border: ${(props) => (props.click ? "1px solid #F6C720" : "")};
 input{
     display: none;
   };
+  @media screen and (max-width: 768px){
+    padding: 5;
+    font-size: 1.2em;
+  }
 `
 const ScTitle =styled.div`
   display: flex;
@@ -148,5 +169,15 @@ const ScTitle =styled.div`
    border: none;
    width: 850px;
   };
-
+  @media screen and (max-width: 768px){
+    padding: 0;
+    font-size: 1.2em;
+  }
 `
+
+const ScSpan = styled.span`
+  @media screen and (max-width: 768px){
+    width: 100%;
+    font-size: 1.2em;
+  }
+`;

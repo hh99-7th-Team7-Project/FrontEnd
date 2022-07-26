@@ -21,13 +21,22 @@ const ChatDetail = () => {
 export default ChatDetail;
 
 const ScTopCard2 = styled.div`
+  width: 100%;
   display: flex;
-  height: 135px;
-  background-color:#F5EABB;
   font-size: 1.5em;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    padding: 0px;
+    margin: auto;
+  }
 `;
 const ScTopWord = styled.div`
 position: absolute;
 font-family: "SUIT ExtraBold";
 width: 209px;
+@media screen and (max-width: 768px) {
+    display: none;
+  }
 `

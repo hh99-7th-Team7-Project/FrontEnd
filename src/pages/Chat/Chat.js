@@ -40,10 +40,10 @@ const Chat = () => {
   return (
     <>
       {write === false ? (
+
         <ScTopCard>
             <img alt='' src={ChatLogo} style={{ width: "100%" }} />
-            <ScMobile>
-              <ScMainTitle>우리 같이<br /> 커피마셔요!</ScMainTitle>
+              <ScMainTitle>우리 같이 커피마셔요!</ScMainTitle>
               <Scwrite
                 onClick={() => {
                   if(token){
@@ -61,8 +61,8 @@ const Chat = () => {
                 <img src={Chatimoji} alt='' />
                 <span>모임만들기</span>
               </Scwrite>
-            </ScMobile>
-        </ScTopCard>
+        </ScTopCard>  
+
       ) : (
         <ScTopCard2>
           <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
@@ -104,6 +104,7 @@ const ScTopCard = styled.div`
   display: flex;
   background-color:#F5EABB;
   width: 100%;
+  position: relative;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -115,36 +116,43 @@ const ScTopCard = styled.div`
 const ScTopCard2 = styled.div`
   width: 100%;
   display: flex;
-  height: 135px;
-  background-color:#F5EABB;
   font-size: 1.5em;
-  margin-bottom: 74px;  
-`;
-
-
-const ScMobile = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin: 100px 536px 159px 1100px;
-  position: absolute;
+  margin-bottom: 30px;  
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    padding: 8px 24px;
-    margin: 150px auto;    
+    padding: 0px;
+    margin: auto;
+    div{
+      display: none;
+    }
   }
 `;
 
+
+// const ScMobile = styled.div`
+//   @media screen and (max-width: 768px) {
+//     flex-direction: column;
+//     align-items: center;
+//     padding: 8px 24px;
+//     margin: 150px auto;    
+//   }
+// `;
+
 const ScMainTitle = styled.div`
-  
-  height: 74px;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 2.125em;
-  line-height: 43px;
-  margin-bottom: 30px;
-  font-family: "SUIT ExtraBold";
-  
+  /* line-height: 43px; */
+  margin-bottom: 20px;
+  /* font-family: "SUIT ExtraBold"; */
+  position: absolute;
+  top:50%;
+  right: 20%;
+  @media screen and (max-width: 768px) {
+   font-size: 16px;
+   right: 20%;
+   display: none;
+  }
 `;
 
 
@@ -154,11 +162,14 @@ font-family: "SUIT ExtraBold";
 width: 100%;
 `
 const Scwrite = styled.div`
+  position: absolute;
+  top:64%;
+  right: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: black;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
   color: white;
   width: 166px;
@@ -169,6 +180,18 @@ const Scwrite = styled.div`
   &:hover {
     cursor: pointer;
   }
+  @media screen and (max-width: 768px) {
+   position: absolute;
+   font-size: 12px;
+   width: 86px;
+   height: 30px;
+   right: 16%;
+   top:50%;
+    img{
+      display: none;
+    }
+  }
+  
 `;
 
 const Wrap = styled.div`
