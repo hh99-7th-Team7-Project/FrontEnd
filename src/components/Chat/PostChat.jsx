@@ -224,7 +224,6 @@ const PostChat = ({ chatpostId }) => {
                     <strong>{chat.senderName}</strong>
                   </Wrap>
                   }
-
               <dl>
                 <dt className="message-data">{chat.message}</dt>
                 <dd className="me">
