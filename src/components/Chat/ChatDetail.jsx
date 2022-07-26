@@ -212,14 +212,28 @@ const ChatDetail = () => {
 
 const All = styled.div`
   display: flex;
-  width: 1200px;
+  max-width: 1200px;
+  width: 90%;
   height: 680px;
   margin: auto;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+  }
 `;
 
 const WriteWrap = styled.div`
   width: 100%;
-  height: 100vh;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0px;
+  }
+
 `;
 
 const Time = styled.div`
