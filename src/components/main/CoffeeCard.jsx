@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { StarFilled, StarUnfilled } from '../../shared/svg/A-index';
 import Lens from './svg/Lens.svg';
 
 
@@ -59,29 +60,32 @@ switch(item?.brand){
         <SCcard color={item?.brand}>
           <ScBeforeHover>
             <SCcoffeeImg src={item?.img}/>
-            <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
+            <SCcardText style={{fontSize:'1.0625em'}}>{item?.name}</SCcardText>
             <SCprice>₩{pricePair[0].price}</SCprice>
           </ScBeforeHover>
         <SChover>
+          <div>
           <ScLogo src={brandLogo}></ScLogo>
-          <SCcardText style={{fontSize:'13px'}}>{item?.brand}</SCcardText>
-          <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
+          </div>
+          <SCcardText style={{fontSize:'0.8125em'}}>{item?.brand}</SCcardText>
+          <SCcardText2 style={{fontSize:'1.0625em'}}>{item?.name}</SCcardText2>
           <SCcardPrice>₩{pricePair[0].price}</SCcardPrice>
-          {/* {pricePair.map((price,idx)=>{
-            return(<SCcardText key={idx}>{price?.size}:{price?.price}</SCcardText> )
-          })} */}
           <ScStar>
 
-          <div style={{fontSize:'13px'}}>총 별점</div>
+          <div style={{fontSize:'0.8125em'}}>총 별점</div>
           {item?.star === "NaN" ? 
-          <div style={{fontSize:'18px'}}>0.0</div>:
-          <div style={{fontSize:'18px'}}>{item?.star.toFixed(1)}</div>}
+          <>
+          <div style={{fontSize:'1.125em'}}>0.0</div>
+          <ScStarImg><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>
+          </>
+          :
+          <div style={{fontSize:'1.125em'}}>{item?.star.toFixed(1)}</div>}
           <div>            
-            {Math.floor(item?.star) === 1 &&  <div>⭐</div>}
-            {Math.floor(item?.star) === 2 &&  <div>⭐⭐</div>}
-            {Math.floor(item?.star) === 3 &&  <div>⭐⭐⭐</div>}
-            {Math.floor(item?.star) === 4 &&  <div>⭐⭐⭐⭐</div>}
-            {Math.floor(item?.star) === 5 &&  <div>⭐⭐⭐⭐⭐</div>}
+            {Math.floor(item?.star) === 1 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 2 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 3 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 4 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 5 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/></ScStarImg>}
           </div>
           </ScStar>
           <ScZoomIn onClick={moveOnclick}><ScLens src={Lens} alt=""/>자세히 보러 가기</ScZoomIn>
@@ -96,7 +100,11 @@ export default CoffeeCard
 
 const SCcardText = styled.div`    
     margin-bottom: 5px;
-    /* font-size: 1.875em; */
+
+`;
+const SCcardText2 = styled.div`    
+    margin-bottom: 5px;
+    width: 80%;
 `;
 
 const ScBeforeHover = styled.div`
@@ -105,19 +113,28 @@ const ScBeforeHover = styled.div`
     text-align: center;
     margin: auto;
 `
+const ScLogoWrap =styled.div`
+  
+`
 const ScLogo = styled.img`
     width: 70px;
     height: 70px;
     border-radius: 100%;
-    background-color: white;
-    margin: 42px 0 23px 0;
+    margin: 40px 0 20px 0;
 `
 
 const ScStar = styled.div`
     width: 105px;
     height: 66px;
-    margin: 25px 0 21px 0;
+    margin: 20px 0 21px 0;
 `
+
+const ScStarImg =styled.div`
+  img{
+    margin:0 1px;
+  }
+`
+
 const SCcardPrice = styled.div`
     border: 1px white solid;
     border-radius: 10px;
@@ -143,7 +160,7 @@ const ScZoomIn = styled.div`
     color: white;
     cursor: pointer;
     opacity: 100%!important;
-    padding: 5px 2px 2px 2px;
+    padding: 2px;
 `
 
 const ScLens = styled.img`
@@ -163,7 +180,8 @@ const ScLens = styled.img`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #000;
+    
+      
       border-radius: 12px;
       position: absolute;
       transform: translate(-50%,-50%) ;
@@ -178,20 +196,18 @@ const ScLens = styled.img`
   `
 const SCcard = styled.div`
     position: relative;
-   
     display: flex;
     flex-direction: column;
-    /* border: 1px solid #ddd; */
-    /* width: 100%; */
     width: 247px;
     height: 401px;
-    /* padding: 80px 0; */
+
     margin: 30px;
     /* border-radius: 30px; */
     &:hover {
       ${SChover}{
-        opacity: 80%;
+        opacity: 100%;
+        background-color: #000000bc;
+        /* background: linear-gradient(to bottom, #aaaaaa40, #0000004b); */
       }
-      
     }
     `

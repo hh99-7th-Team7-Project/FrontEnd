@@ -58,14 +58,12 @@ const BoardList = () => {
         </ScBoard>
       </ScWrap>
       <footer>
-
         <BoardPagination 
           total={totalpage}              
           page={page}
           setPage={setPage}
         />
       </footer> 
-                    
     </>
   );
 };

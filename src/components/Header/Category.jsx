@@ -37,7 +37,7 @@ const ScCategoryBox = styled.ul`
   display: flex;
   justify-content:center;
   width: 40%;
-  font-size: 13pt;
+  font-size: 1.0625em;
   /* margin: auto; */
   /* justify-content: space-between; */
   gap:4%;
@@ -52,7 +52,7 @@ const ScCategoryBox = styled.ul`
     align-items: center;
     margin: auto;
     text-align: center;
-    border: 1px solid black;
+
   }
 `;
 
