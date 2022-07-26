@@ -116,10 +116,17 @@ const ScTopCard = styled.div`
 const ScTopCard2 = styled.div`
   width: 100%;
   display: flex;
-  height: 135px;
-  background-color:#F5EABB;
   font-size: 1.5em;
-  margin-bottom: 74px;  
+  margin-bottom: 30px;  
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    margin: auto;
+    div{
+      display: none;
+    }
+  }
 `;
 
 

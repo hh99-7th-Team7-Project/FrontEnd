@@ -17,8 +17,9 @@ const Board = () => {
 
 
   return (
+
     <>
-      <ScMobile>
+
         <ScWrap>
           <ScTopCard>
             <img src={BoardLogo} alt="" style={{ width: "100%" }} />
@@ -39,11 +40,16 @@ const Board = () => {
             {category !== 0 && <BoardListCategory category={category} />}
           </div>
         </ScWrap>
-      </ScMobile>
     </>
   )
 }
-const ScMobile = styled.div`
+
+const ScWrap = Styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 1200px
+  width: 90%;
+  margin: auto;
   @media screen and (min-width: 350px){
     display: flex;
     flex-direction: column;
@@ -51,19 +57,18 @@ const ScMobile = styled.div`
   }
 `;
 
-const ScWrap = Styled.div`
-  display: flex;
-  flex-direction: column;
-  min-width: 1200px
-  width: 100%;
-  margin: auto;
-`;
-
 const ScTopCard = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  max-width: 1200px;
+  width: 90%;
   background-color: #FFE4E0;
+  @media screen and (min-width: 350px){
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const ScTopWord = styled.div`
