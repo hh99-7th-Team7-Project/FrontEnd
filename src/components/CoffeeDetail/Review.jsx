@@ -61,7 +61,7 @@ const Review = ({ item, reviewData, url }) => {
                 <ScH3>&#9733; &#9733; &#9733; &#9733; &#9734;</ScH3>
               )}
               {Math.floor(starPoint) === 5 && (
-                <ScH3>&#9733; &#9734; &#9734; &#9734; &#9734;</ScH3>
+                <ScH3>&#9733; &#9733; &#9733; &#9733; &#9733;</ScH3>
               )}
             </ScStarBox>
             <ScPriceBox>
