@@ -21,7 +21,7 @@ const UserPhotoUpdate = ({ setNewProfileImg, setChangeImg }) => {
   };
 
   return (
-    <div>
+    <ScWrap>
       <ScProfileImg style={{ backgroundImage: `url(${fileImage})` }}>
         <img
           onClick={onClickImageUpload}
@@ -38,17 +38,23 @@ const UserPhotoUpdate = ({ setNewProfileImg, setChangeImg }) => {
         onChange={saveFileImage}
         style={{ display: 'none' }}
       />
-    </div>
+    </ScWrap>
   );
 };
 
 export default UserPhotoUpdate;
 
+const ScWrap = styled.div`
+  @media screen and (max-width: 768px){
+    margin: auto;
+    width: 100%;
+  }
+`;
+
 const ScProfileImg = styled.div`
   width: 140px;
   height: 140px;
   border: 7px #4147d5 solid;
-
   border-radius: 50%;
-  background-size: cover;
+  background-size: cover;  
 `;
