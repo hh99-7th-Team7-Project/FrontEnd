@@ -6,6 +6,20 @@ import { Flower } from '../components/main/Flower';
 
 const MenuCategory = () => {
   const [category, setCategory] = useState(true);
+  const [color, setColor] = useState('var(--main)');
+  const [color2, setColor2] = useState('rgba(44, 39, 140, 0.4)');
+
+  const changeColor = ()=>{
+    if(color2 === 'var(--main)'){
+     setColor2('rgba(44, 39, 140, 0.4)') 
+     setColor('var(--main)')}
+   }
+   
+   const changeColor2 = ()=>{
+     if(color === 'var(--main)'){
+      setColor('rgba(44, 39, 140, 0.4)') 
+      setColor2('var(--main)')}
+    }
 
   return (
     <>
@@ -13,21 +27,25 @@ const MenuCategory = () => {
       <div style={{ maxWidth: '1230px', width: '84vw', margin: 'auto' }}>
         <ScNavbarWrap>
           <ScButtonWrap>
-            <div
+            <ScCategory
+              color={color}
               onClick={() => {
-                setCategory(!category);
+                setCategory(true);
+                changeColor();
               }}
             >
               브랜드
-            </div>
+            </ScCategory>
             <p>|</p>
-            <div
+            <ScCategory2
+              color={color2}
               onClick={() => {
-                setCategory(!category);
+                setCategory();
+                changeColor2();
               }}
             >
               음료
-            </div>
+            </ScCategory2>
           </ScButtonWrap>
         </ScNavbarWrap>
         {category ? <BrandCard /> : <CategoryCard />}
@@ -50,6 +68,25 @@ const ScNavbarWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width:768px){      
+      display: flex;
+      flex-direction: row;
+      width: 100%;                
+  }
+`;
+
+const ScCategory = styled.div`
+color: ${props => props.color};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ScCategory2 = styled.div`
+color: ${props => props.color};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default MenuCategory;

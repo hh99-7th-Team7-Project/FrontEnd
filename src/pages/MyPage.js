@@ -123,9 +123,6 @@ const MyPage = () => {
   return (
     <>
       <ScMobile>
-        <div style={{ margin: "auto", width: "62%" }}>
-          <Header />
-        </div>
         <ScsecondHead src={MypageLogo} />
         <ScWrap>
           <div

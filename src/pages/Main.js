@@ -59,13 +59,13 @@ const changeColor2 = ()=>{
     <>      
       <div style={{position:"relative", width:"100%",overflow:"hidden"}}>
       <ImgSlide2/>  
-        <div style={{maxWidth:"1230px",width:"84vw", margin:"auto"}}>
+        <div style={{maxWidth:"1230px",width:"100%", margin:"auto"}}>
             {/* <ScMapRandomWrap>
               <RandomPicker />
               <LottoPoint/>
             </ScMapRandomWrap> */}
             <ScNavbarWrap>
-              <ScMobile style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</ScMobile>
+              <div style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</div>
               <ScButtonWrap>
                 <ScCategory color={color}
                   onClick={()=>{
@@ -81,8 +81,8 @@ const changeColor2 = ()=>{
                   }}>음료
                 </ScCategory2>
               </ScButtonWrap>
-            </ScNavbarWrap>
-            {category?<BrandCard/>:<CategoryCard/>}
+            </ScNavbarWrap>            
+              {category?<BrandCard/>:<CategoryCard/>}            
         </div>
         { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
           {/* <Flow/> */}
@@ -104,6 +104,20 @@ const ScMapRandomWrap = styled.div`
   margin: 84px auto 79px;
 `;
 
+const ScNavbarWrap =styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 50px auto;
+@media screen and (max-width:768px){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%; 
+    justify-content: center;
+  }
+`;
+
 const ScButtonWrap = styled.div`
 display: flex;
 gap: 28px;
@@ -112,22 +126,10 @@ font-size: 14pt;
     flex-direction: row;
     display: flex;
     justify-content: center;
-    width: 100%;    
+    width: 50%;    
   }
 `;
 
-const ScNavbarWrap =styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-top: 60px;
-@media screen and (max-width:768px){
-    flex-direction: column;
-    align-items: center;
-    width: 100%; 
-    justify-content: center;
-  }
-`;
 
 const ScCategory = styled.div`
 color: ${props => props.color};
@@ -143,11 +145,5 @@ color: ${props => props.color2};
   }
 `;
 
-const ScMobile = styled.div`
-  @media screen and (max-width: 768px) {
-    max-width: 1230px;
-    width: 90%;
-  }
-`;
 
 export default Main

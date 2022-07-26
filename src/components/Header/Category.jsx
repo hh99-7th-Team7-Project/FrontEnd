@@ -36,20 +36,21 @@ const Category = () => {
 const ScCategoryBox = styled.ul`  
   display: flex;
   justify-content:center;
-  width: 40% ;
+  width: 40%;
   font-size: 13pt;
   /* margin: auto; */
   /* justify-content: space-between; */
-  gap:11%;
+  gap:4%;
   /* margin: 0 0 0 40px; */
   color: #2C278C;
   list-style: none;
 
   @media screen and (max-width:768px){
     flex-direction: column;
+    display: flex;
     align-items: center;
-    width: 100%;
-    text-align: center;
+    justify-content: center;
+    width: 60%;  
   }
 `;
 

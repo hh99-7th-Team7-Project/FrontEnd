@@ -177,6 +177,11 @@ const SCcardWrap = Styled.div`
     justify-content: center;
     /* border: 1px solid black; */
     /* height: 600px; */
+    @media screen and (max-width:768px){      
+      display: flex;
+      flex-direction: row;
+      width: 100%;                
+  }
 
 `;
 

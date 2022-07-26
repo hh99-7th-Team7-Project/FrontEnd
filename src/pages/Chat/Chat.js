@@ -38,7 +38,7 @@ const Chat = () => {
 
 
   return (
-    <ScMobile>
+    <>
       {write === false ? (
         <ScTopCard>
           <img alt='' src={ChatLogo} style={{ width: "100%" }} />
@@ -93,17 +93,11 @@ const Chat = () => {
           />
         </footer>
       </Wrap>
-    </ScMobile>
+    </>
   );
 };
 
-const ScMobile = styled.div`
-  @media screen and (min-width: 350px){
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
-`;
+
 
 const ScTopCard = styled.div`
   width: 100%;
@@ -111,10 +105,10 @@ const ScTopCard = styled.div`
   height: 400px;
   background-color:#F5EABB;
   width: 100%;
-  @media screen and (min-width: 350px){
-    display: flex;
+  @media screen and (max-width: 768px) {
     flex-direction: column;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
   }
 
@@ -127,12 +121,11 @@ const ScTopCard2 = styled.div`
   background-color:#F5EABB;
   font-size: 1.5em;
   margin-bottom: 74px;
-  @media screen and (min-width: 350px){
-    display: flex;
+  @media screen and (max-width: 768px) {
     flex-direction: column;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-    
   }
 `;
 
