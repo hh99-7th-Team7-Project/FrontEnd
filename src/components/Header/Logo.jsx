@@ -21,8 +21,8 @@ const ScLogoBox = styled.div`
     flex-direction: row;
     display: flex;
     justify-content: center;
-    align-items: center;    
-    width: 40%;
+    align-items: center;   
+
   }
 `;
 

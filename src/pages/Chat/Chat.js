@@ -41,7 +41,7 @@ const Chat = () => {
     <>
       {write === false ? (
         <ScTopCard>
-          <img alt='' src={ChatLogo} style={{ width: "100%" }} />
+            <img alt='' src={ChatLogo} style={{ width: "100%" }} />
             <ScMobile>
               <ScMainTitle>우리 같이<br /> 커피마셔요!</ScMainTitle>
               <Scwrite
@@ -102,14 +102,13 @@ const Chat = () => {
 const ScTopCard = styled.div`
   width: 100%;
   display: flex;
-  height: 400px;
   background-color:#F5EABB;
   width: 100%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    padding: 8px 24px;
-    margin: auto;    
+    padding: 0px;
+    margin: auto;
   }
 `;
 
@@ -119,9 +118,9 @@ const ScTopCard2 = styled.div`
   height: 135px;
   background-color:#F5EABB;
   font-size: 1.5em;
-  margin-bottom: 74px;
-  
+  margin-bottom: 74px;  
 `;
+
 
 const ScMobile = styled.div`
   display: flex;
@@ -173,8 +172,16 @@ const Scwrite = styled.div`
 `;
 
 const Wrap = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: auto;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0px;
+  }
 `;
 
 const WriteWrap = styled.div`
@@ -192,6 +199,14 @@ const ListWrap = styled.div`
   /* grid-template-rows: 230px 230px; */
   justify-content: space-around;
   margin: 40px auto 0;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    display: block;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0px;
+  }
+
 `;
 
 export default Chat;
