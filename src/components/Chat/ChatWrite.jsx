@@ -231,10 +231,14 @@ const ChatWrite = ({ setWrite, write }) => {
           <ContentInput value={chatContent || ''} onChange={inputContent} />
         ) : (
           <ContentInput
-          placeholder='간단한 자기소개와 함께 커파인러 분들과 함께 이야기 하고 싶은 주제에 대해 설명해주세요.'
+          placeholder='간단한 자기소개와 함께 커파인러 분들과 함께 이야기 하고 싶은 주제에 대해 설명해주세요.
+          <주의사항>
+          Coffind의 주제에서 벗어난 모든 모임은 통보없이 삭제될 수 있습니다.
+
+          '
           value={chatContent || ''} onChange={inputContent} />
         )}
-        <Title>카페 위치<span style={{color:"#8f8d8db7"}}>(명확한 상호명을 적어주세요 (ex)이태원 챔프커피)</span></Title>
+        <Title>카페 위치<span style={{color:"#8f8d8db7", fontSize:"0.8em",fontWeight:"400"}}>(명확한 상호명을 적어주세요 (ex)이태원 챔프커피)</span></Title>
 
         {is_edit ? (
           <div>
@@ -422,7 +426,7 @@ const ContentInput = styled.textarea`
     outline: none;
   }
   &::placeholder{
-    color: #ddd;
+    color: #a3a3a3;
   }
 `;
 

@@ -174,7 +174,6 @@ const SCcardWrap = Styled.div`
     justify-content: center;
     /* border: 1px solid black; */
     /* height: 600px; */
-
 `;
 
 export default BrandCard;
