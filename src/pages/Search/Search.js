@@ -10,9 +10,6 @@ const Search = () => {
   return (
     <>
       <ScMobile>
-        <div style={{margin:"auto", width:"80%"}}>
-          <Header />
-        </div>
         <Wrap>      
           <ScDrinkWrap>
             <h2>"{keyword}"에 대한 음료 검색 결과</h2>

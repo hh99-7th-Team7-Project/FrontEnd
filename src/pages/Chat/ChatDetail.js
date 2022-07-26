@@ -7,9 +7,6 @@ import Header from '../Header/Header';
 const ChatDetail = () => {
   return (
     <>
-      <div style={{ margin: "auto", width: "62%" }}>
-        <Header />
-      </div>
       <ScTopCard2>
         <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
         <ScTopWord style={{ margin: '60px 70% 60px 20%' }}>

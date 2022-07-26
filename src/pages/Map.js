@@ -271,9 +271,6 @@ const Map = (props) => {
 
   return (
     <>
-      <div style={{ margin: "auto", width: "62%" }}>
-        <Header />
-      </div>
       <div style={{ position: 'relative', margin: 'auto' }}>
         <ScMapWrap>
           <div

@@ -54,10 +54,7 @@ const BoardUpdate = () => {
 
   return (
     <>
-      <ScMobile>
-        <div style={{ margin: "auto", width: "100%" }}>
-          <Header />
-        </div>
+      <ScMobile> 
         <ScWrite>
           <BoardCategoryUpdate title={setTitle} cate={setCate} head={head} />
           <ToastEditUpdate content={setContent} prevContent={prevContent} />

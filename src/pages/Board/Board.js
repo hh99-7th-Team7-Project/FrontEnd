@@ -18,10 +18,7 @@ const Board = () => {
 
   return (
     <>
-      <ScMobile>
-        <div style={{ margin: "auto", width: "62%" }}>
-          <Header />
-        </div>
+      <ScMobile> 
         <ScWrap>
           <ScTopCard>
             <img src={BoardLogo} alt="" style={{ width: "100%" }} />
