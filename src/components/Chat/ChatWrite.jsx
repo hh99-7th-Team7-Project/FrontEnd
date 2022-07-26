@@ -175,9 +175,7 @@ const ChatWrite = ({ setWrite, write }) => {
           setDateValue(dateString);
         }}
       />
-      <div style={{
-        margin:"60px 0"
-      }}>
+        <ScTime>
         <Title>시간</Title>
         {is_edit ? (
           <div>
@@ -207,7 +205,8 @@ const ChatWrite = ({ setWrite, write }) => {
             </div>
           </div>
         )}
-        </div>
+        </ScTime>
+
         </ScDate>
       <InputWrap>
         <Title>제목</Title>
@@ -305,7 +304,12 @@ const Wrap = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: row;
     display: flex;
+    padding: 20px 0;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;    
+    margin-top: 20px;
+    width: 90%;
   }
 `;
 
@@ -315,6 +319,18 @@ const ScDate = styled.div`
     padding: 0;    
   }
 `;
+
+const ScTime = styled.div`
+  margin: 40px 0 0 0;
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    padding: 0;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`
 
 const InputWrap = styled.div`
   display: flex;
@@ -326,7 +342,7 @@ const InputWrap = styled.div`
   margin-left: 50px;
   width: 600px;
   @media screen and (max-width: 768px) {
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
     margin: auto;
   }
   
@@ -352,6 +368,10 @@ const TimeInput = styled.input`
   margin: 10px auto;
   padding: 0px 0 0 5px;
   color: #5a5858;
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    padding: 0;
+  }
 `;
 
 const Title = styled.span`

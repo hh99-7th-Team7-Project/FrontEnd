@@ -208,7 +208,7 @@ const MyPage = () => {
               </ScMywrite>
               <ScChat>
                 <ScMyWriteBtn>
-                  <img alt="" src={Moiim} style={{ width: '26px' }}  />
+                  <img alt="" src={Moiim} style={{ width: '26px' }} onClick={Mychat} />
                 </ScMyWriteBtn>
                 <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
                   <ScMyTitle>내가 참여한 모임수</ScMyTitle>

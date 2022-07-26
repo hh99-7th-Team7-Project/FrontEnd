@@ -115,6 +115,8 @@ const Title = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+   word-wrap: break-word;
+   word-break: break-all;
   font-family: 'SUIT ExtraBold';
 `;
 
@@ -125,6 +127,8 @@ const Contents = styled.p`
   text-overflow: ellipsis;
   /* border:1px solid black; */
   display: -webkit-box;
+  word-wrap: break-word;
+   word-break: break-all;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 `;
@@ -134,6 +138,11 @@ const InfoWrap = styled.div`
   & div {
     display: flex;
     height: 24px;
+  }
+  & span{
+    word-wrap: break-word;
+   word-break: break-all;
+   text-overflow: ellipsis;
   }
 `;
 
