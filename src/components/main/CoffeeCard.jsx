@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { StarFilled, StarUnfilled } from '../../shared/svg/A-index';
 import Lens from './svg/Lens.svg';
 
 
@@ -67,9 +68,6 @@ switch(item?.brand){
           <SCcardText style={{fontSize:'13px'}}>{item?.brand}</SCcardText>
           <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
           <SCcardPrice>₩{pricePair[0].price}</SCcardPrice>
-          {/* {pricePair.map((price,idx)=>{
-            return(<SCcardText key={idx}>{price?.size}:{price?.price}</SCcardText> )
-          })} */}
           <ScStar>
 
           <div style={{fontSize:'13px'}}>총 별점</div>
@@ -77,11 +75,11 @@ switch(item?.brand){
           <div style={{fontSize:'18px'}}>0.0</div>:
           <div style={{fontSize:'18px'}}>{item?.star.toFixed(1)}</div>}
           <div>            
-            {Math.floor(item?.star) === 1 &&  <div>⭐</div>}
-            {Math.floor(item?.star) === 2 &&  <div>⭐⭐</div>}
-            {Math.floor(item?.star) === 3 &&  <div>⭐⭐⭐</div>}
-            {Math.floor(item?.star) === 4 &&  <div>⭐⭐⭐⭐</div>}
-            {Math.floor(item?.star) === 5 &&  <div>⭐⭐⭐⭐⭐</div>}
+            {Math.floor(item?.star) === 1 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 2 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 3 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 4 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 5 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/></ScStarImg>}
           </div>
           </ScStar>
           <ScZoomIn onClick={moveOnclick}><ScLens src={Lens} alt=""/>자세히 보러 가기</ScZoomIn>
@@ -118,6 +116,13 @@ const ScStar = styled.div`
     height: 66px;
     margin: 25px 0 21px 0;
 `
+
+const ScStarImg =styled.div`
+  img{
+    gap: 5px;
+  }
+`
+
 const SCcardPrice = styled.div`
     border: 1px white solid;
     border-radius: 10px;
@@ -163,7 +168,8 @@ const ScLens = styled.img`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #000;
+    
+      
       border-radius: 12px;
       position: absolute;
       transform: translate(-50%,-50%) ;
@@ -178,20 +184,18 @@ const ScLens = styled.img`
   `
 const SCcard = styled.div`
     position: relative;
-   
     display: flex;
     flex-direction: column;
-    /* border: 1px solid #ddd; */
-    /* width: 100%; */
     width: 247px;
     height: 401px;
-    /* padding: 80px 0; */
+
     margin: 30px;
     /* border-radius: 30px; */
     &:hover {
       ${SChover}{
-        opacity: 80%;
+        opacity: 100%;
+        background-color: #000000bc;
+        /* background: linear-gradient(to bottom, #aaaaaa40, #0000004b); */
       }
-      
     }
     `

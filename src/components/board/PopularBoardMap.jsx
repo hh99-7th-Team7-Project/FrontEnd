@@ -20,7 +20,7 @@ const PopularBoardMap = (props) => {
   };
 
   return (
-    <ScBoardList>
+    <ScBoardList  onClick={moveToBoard}>
       <ScHeader>
         <div>
           {content?.category === '나만의 비밀 레시피' && (
@@ -33,7 +33,7 @@ const PopularBoardMap = (props) => {
           {/* <span>{content?.nickname}</span> */}
         </div>
       </ScHeader>
-      <ScTitle onClick={moveToBoard}>{content?.title}</ScTitle>
+      <ScTitle>{content?.title}</ScTitle>
       <ScBottom>
         <span>{content?.nickname}</span>
       </ScBottom>
@@ -67,8 +67,13 @@ const ScBoardList = styled.div`
   border-radius: 12px;
   font-size: 0.875em;
   margin: 24px 30px 24px 0;
-  background-color: white;
+  background-color: #ffffff;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.185);
+  cursor: pointer;
+  /* transition: all 0.5s; */
+  &:hover{
+    background-color: #8e4aad29;
+  }
 `;
 const ScHeader = styled.div`
   display: flex;
@@ -78,6 +83,9 @@ const ScHeader = styled.div`
 const Scbar = styled.div`
   display: flex;
   gap: 5px;
+  span{
+    color: #bebebe;
+  }
 `;
 const ScCategory = styled.span`
   border: 1px #2c278c solid;
@@ -96,6 +104,9 @@ const ScBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  span{
+    color: #000000b2;
+  }
 `;
 
 const ScMyrecipe = styled.div`
@@ -106,7 +117,8 @@ const ScMyrecipe = styled.div`
   border-radius: 100px;
   color: #d86f96;
   padding: 2px 12px;
-  cursor: pointer;
+  font-size: 13px;
+
 `;
 const ScRecommend = styled.div`
   display: flex;
@@ -116,7 +128,8 @@ const ScRecommend = styled.div`
   border-radius: 100px;
   padding: 2px 12px;
   color: #a454ca;
-  cursor: pointer;
+  font-size: 13px;
+
 `;
 const ScEtc = styled.div`
   display: flex;
@@ -126,5 +139,6 @@ const ScEtc = styled.div`
   background: rgba(255, 201, 15, 0.2);
   border-radius: 100px;
   color: #f6c720;
-  cursor: pointer;
+  font-size: 13px;
+
 `;

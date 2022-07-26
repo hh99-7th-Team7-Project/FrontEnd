@@ -37,7 +37,7 @@ const PopularBoard = () => {
 
 useEffect(() => {
         slideRef.current.style.transition = `all 0.5s ease-in-out`;
-        slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
+        slideRef.current.style.transform = `translateX(-${curruntIdx}120px)`;
     }, [curruntIdx]);
 
     const navigate = useNavigate()
@@ -108,7 +108,7 @@ const ScWrap = styled.div`
 const ScTop = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 20px 0 27px 115px;
+  margin: 30px 0 10px 30px;
   color: #2C278C
 ;
 `
@@ -127,12 +127,12 @@ const Container = styled.div`
 `;
 
 const ImageBox = styled.ul`
-    margin: 0 0 0 90px;
+    margin: 0 0 0 125px;
     padding: 0;
     width: 100%;
     display: flex;
     transition: ${(props) => (!props.count ? '' : 'all 1s ease-in-out')};
-    transform: ${(props) => 'translateX(-' + props.count * 1000 + 'px)'};
+    transform: ${(props) => 'translateX(-' + props.count * 1100 + 'px)'};
 `;
 const ImageList = styled.li`
     list-style: none;

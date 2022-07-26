@@ -10,7 +10,6 @@ function App() {
     <>
       <SCwrap>
         <AnimatePresence>
-          {/* <Header/> */}
           <Router />
         </AnimatePresence>
       </SCwrap>
