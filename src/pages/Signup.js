@@ -236,10 +236,9 @@ const SignUp = (props) => {
 
                 style={{ width: "160px" }}
               />
-              <h1 style={{ width: "50px", textAlign: "center", fontSize: "23px" }}>@</h1>
+              <h1 style={{ width: "50px", textAlign: "center", fontSize: "1.4375em" }}>@</h1>
 
-              <ScSelect onChange={handleSelect} value={Selected}
-              >
+              <ScSelect onChange={handleSelect} value={Selected}>
                 <option value="email">--Email--</option>
                 <option value="@naver.com" >naver.com</option>
                 <option value="@hanmail.net">hanmail.net</option>

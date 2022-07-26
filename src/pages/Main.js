@@ -65,7 +65,7 @@ const changeColor2 = ()=>{
               <LottoPoint/>
             </ScMapRandomWrap> */}
             <ScNavbarWrap>
-              <div style={{marginBottom:"46px", fontSize:"35px", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>데일리 커피 Menu</div>
+              <div style={{ fontSize:"2.1875em", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>Menu</div>
               <ScButtonWrap>
                 <ScCategory color={color}
                   onClick={()=>{
@@ -121,7 +121,7 @@ margin: 50px auto;
 const ScButtonWrap = styled.div`
 display: flex;
 gap: 28px;
-font-size: 14pt;
+font-size: 1.13em;
 @media screen and (max-width:768px){
     flex-direction: row;
     display: flex;

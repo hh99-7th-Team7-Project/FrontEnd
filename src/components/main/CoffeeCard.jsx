@@ -60,24 +60,28 @@ switch(item?.brand){
         <SCcard color={item?.brand}>
           <ScBeforeHover>
             <SCcoffeeImg src={item?.img}/>
-            <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
+            <SCcardText style={{fontSize:'1.0625em'}}>{item?.name}</SCcardText>
             <SCprice>₩{pricePair[0].price}</SCprice>
           </ScBeforeHover>
         <SChover>
           <div>
           <ScLogo src={brandLogo}></ScLogo>
           </div>
-          <SCcardText style={{fontSize:'13px'}}>{item?.brand}</SCcardText>
-          <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
+          <SCcardText style={{fontSize:'0.8125em'}}>{item?.brand}</SCcardText>
+          <SCcardText2 style={{fontSize:'1.0625em'}}>{item?.name}</SCcardText2>
           <SCcardPrice>₩{pricePair[0].price}</SCcardPrice>
           <ScStar>
 
-          <div style={{fontSize:'13px'}}>총 별점</div>
+          <div style={{fontSize:'0.8125em'}}>총 별점</div>
           {item?.star === "NaN" ? 
-          <div style={{fontSize:'18px'}}>0.0</div>:
-          <div style={{fontSize:'18px'}}>{item?.star.toFixed(1)}</div>}
+          <>
+          <div style={{fontSize:'1.125em'}}>0.0</div>
+          <ScStarImg><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>
+          </>
+          :
+          <div style={{fontSize:'1.125em'}}>{item?.star.toFixed(1)}</div>}
           <div>            
-            {Math.floor(item?.star) === 1 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(item?.star) === 1 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
             {Math.floor(item?.star) === 2 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
             {Math.floor(item?.star) === 3 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
             {Math.floor(item?.star) === 4 &&  <ScStarImg><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarFilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
@@ -96,7 +100,11 @@ export default CoffeeCard
 
 const SCcardText = styled.div`    
     margin-bottom: 5px;
-    /* font-size: 1.875em; */
+
+`;
+const SCcardText2 = styled.div`    
+    margin-bottom: 5px;
+    width: 80%;
 `;
 
 const ScBeforeHover = styled.div`
@@ -112,18 +120,18 @@ const ScLogo = styled.img`
     width: 70px;
     height: 70px;
     border-radius: 100%;
-    margin: 42px 0 23px 0;
+    margin: 40px 0 20px 0;
 `
 
 const ScStar = styled.div`
     width: 105px;
     height: 66px;
-    margin: 25px 0 21px 0;
+    margin: 20px 0 21px 0;
 `
 
 const ScStarImg =styled.div`
   img{
-    gap: 5px;
+    margin:0 1px;
   }
 `
 
@@ -152,7 +160,7 @@ const ScZoomIn = styled.div`
     color: white;
     cursor: pointer;
     opacity: 100%!important;
-    padding: 5px 2px 2px 2px;
+    padding: 2px;
 `
 
 const ScLens = styled.img`

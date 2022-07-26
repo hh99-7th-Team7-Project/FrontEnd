@@ -89,7 +89,7 @@ const ScWrap = styled.ul`
 
 const ScBtn = styled.li`
   margin: 20px;
-  font-size: 13pt;
+  font-size: 1.06em;
   color: #2c278c;
   &:hover {
     cursor: pointer;

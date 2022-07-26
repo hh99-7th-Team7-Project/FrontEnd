@@ -288,7 +288,7 @@ const Map = (props) => {
               marginBottom: '10px',
               gap: '5px',
             }}>
-              <div style={{ fontSize: '26px' }}>내주변 카페</div>
+              <div style={{ fontSize: '1.625em' }}>내주변 카페</div>
               <div id="menu">
                 <div>
                   <span>
