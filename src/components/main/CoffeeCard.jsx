@@ -64,7 +64,9 @@ switch(item?.brand){
             <SCprice>₩{pricePair[0].price}</SCprice>
           </ScBeforeHover>
         <SChover>
+          <div>
           <ScLogo src={brandLogo}></ScLogo>
+          </div>
           <SCcardText style={{fontSize:'13px'}}>{item?.brand}</SCcardText>
           <SCcardText style={{fontSize:'17px'}}>{item?.name}</SCcardText>
           <SCcardPrice>₩{pricePair[0].price}</SCcardPrice>
@@ -103,11 +105,13 @@ const ScBeforeHover = styled.div`
     text-align: center;
     margin: auto;
 `
+const ScLogoWrap =styled.div`
+  
+`
 const ScLogo = styled.img`
     width: 70px;
     height: 70px;
     border-radius: 100%;
-    background-color: white;
     margin: 42px 0 23px 0;
 `
 
