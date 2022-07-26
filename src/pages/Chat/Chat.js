@@ -42,26 +42,26 @@ const Chat = () => {
       {write === false ? (
         <ScTopCard>
           <img alt='' src={ChatLogo} style={{ width: "100%" }} />
-          <div style={{ margin: '167px 536px 159px 1081px', position: "absolute" }}>
-            <ScMainTitle>우리 같이<br /> 커피마셔요!</ScMainTitle>
-            <Scwrite
-              onClick={() => {
-                if(token){
-                  setWrite(!write);
-                }else{
-                  Swal.fire({
-                    title: '로그인 후 이용 가능한 서비스입니다',
-                    icon: 'warning',
-                    confirmButtonText: '확인',
-                  });
-                }
-                
-              }}
-            >
-              <img src={Chatimoji} alt='' />
-              <span>모임만들기</span>
-            </Scwrite>
-          </div>
+            <ScMobile>
+              <ScMainTitle>우리 같이<br /> 커피마셔요!</ScMainTitle>
+              <Scwrite
+                onClick={() => {
+                  if(token){
+                    setWrite(!write);
+                  }else{
+                    Swal.fire({
+                      title: '로그인 후 이용 가능한 서비스입니다',
+                      icon: 'warning',
+                      confirmButtonText: '확인',
+                    });
+                  }
+                  
+                }}
+              >
+                <img src={Chatimoji} alt='' />
+                <span>모임만들기</span>
+              </Scwrite>
+            </ScMobile>
         </ScTopCard>
       ) : (
         <ScTopCard2>
@@ -107,11 +107,10 @@ const ScTopCard = styled.div`
   width: 100%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
+    padding: 8px 24px;
+    margin: auto;    
   }
-
 `;
 
 const ScTopCard2 = styled.div`
@@ -121,11 +120,20 @@ const ScTopCard2 = styled.div`
   background-color:#F5EABB;
   font-size: 1.5em;
   margin-bottom: 74px;
+  
+`;
+
+const ScMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 100px 536px 159px 1100px;
+  position: absolute;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
+    padding: 8px 24px;
+    margin: 150px auto;    
   }
 `;
 

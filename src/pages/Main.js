@@ -65,7 +65,8 @@ const changeColor2 = ()=>{
               <LottoPoint/>
             </ScMapRandomWrap> */}
             <ScNavbarWrap>
-              <div style={{ fontSize:"2.1875em", color:"var(--main)", fontFamily:"SUIT ExtraBold"}}>Menu</div>
+
+              <ScTitle>Menu</ScTitle>
               <ScButtonWrap>
                 <ScCategory color={color}
                   onClick={()=>{
@@ -104,6 +105,23 @@ const ScMapRandomWrap = styled.div`
   margin: 84px auto 79px;
 `;
 
+const ScTitle = styled.div`
+  margin-bottom: 46px; 
+  font-size:35px;
+  color: var(--main); 
+  font-family: SUIT ExtraBold;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 80px;    padding: 8px 24px;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+    width: 50%;
+  }
+`;
+
 const ScNavbarWrap =styled.div`
 display: flex;
 justify-content: space-between;
@@ -115,6 +133,7 @@ margin: 50px auto;
     align-items: center;
     width: 50%; 
     justify-content: center;
+    
   }
 `;
 
