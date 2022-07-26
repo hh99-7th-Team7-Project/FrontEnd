@@ -50,17 +50,11 @@ const Router = () => {
 
   return (
     <>
-    <div style={{margin:"auto", maxWidth:"1200px",minWidth:"1200px"}}>
-    <Header />
-    </div>
     <Routes>
+      {/* 헤더가 필요한 영역 */}
+      <Route element={<Header/>}>
       <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
-
-      {/* signup */}
-      <Route path="/signup" element={<Signup />} />
-      {/* Login */}
-      <Route path="/login" element={<Login />} />
       <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
       <Route path="/oauth/google/callback" element={<GoogleLogin />} />
       <Route path="/oauth/naver/callback" element={<NaverLogin />} />
@@ -90,8 +84,13 @@ const Router = () => {
       {/**Chat */}
       <Route path="/chatposts" element={<Chat />} />
       <Route path="/chatposts/detail/:id" element={<ChatDetail />} />
+      </Route>
 
-
+      {/* 헤더가 필요없는 영역 */}
+      {/* signup */}
+      <Route path="/signup" element={<Signup />} />
+      {/* Login */}
+      <Route path="/login" element={<Login />} /> 
     </Routes>
     </>
   );

@@ -8,8 +8,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMediaQuery } from "react-responsive";
+import {Outlet} from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+
 
 const Header = () => {
   const navigate = useNavigate();
@@ -32,16 +34,14 @@ const Header = () => {
           <Category />
           { isMobile ?  null: <HeaderInput /> }
           <Button />
-
           <ScToggleBtn href="#" onClick={()=>{
             handleToggleBtn();
           }}>
             <FontAwesomeIcon icon={faBars} />
           </ScToggleBtn>
-
         </ScHeaderBox>
-          
-    </>
+        <Outlet />
+        </>
   );
 };
 

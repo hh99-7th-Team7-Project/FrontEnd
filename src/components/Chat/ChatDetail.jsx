@@ -182,7 +182,7 @@ const ChatDetail = () => {
                   ) 
                   : 
                   (<div style={{display:"flex", justifyContent:"center",        alignItems:"center"}}>
-                      {data.totalcount===data.count?
+                      {data.totalcount<=data.count?
                       <AttendBtn1 onClick={()=>{navigate(-1)}} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                         <span>뒤로가기</span>
                       </AttendBtn1>

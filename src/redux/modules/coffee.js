@@ -4,7 +4,7 @@ import * as Sentry from "@sentry/react";
 
 let intialstate = {
   list: [],
-  brand_list:["스타벅스", "빽다방", "커피빈","이디야","컴포즈","드롭탑", "탐앤탐스","더벤티","할리스","폴바셋","카페베네","엔젤인어스"],
+  brand_list: ["스타벅스", "빽다방", "커피빈", "이디야", "컴포즈", "드롭탑", "탐앤탐스", "더벤티", "할리스", "폴바셋", "카페베네", "엔제리너스"],
   detail_list: null,
   heart_list: null,
 };
@@ -23,7 +23,7 @@ export function loadCoffee(payload) {
   return { type: LOAD_COFFEE, payload };
 }
 export function loadCoffeeCategory(payload) {
-  return { type: LOAD_COFFEE_CATEGORY , payload };
+  return { type: LOAD_COFFEE_CATEGORY, payload };
 }
 export function loadCoffeeDetail(payload) {
   return { type: LOAD_COFFEE_DETAIL, payload };
@@ -41,52 +41,60 @@ export function removeCoffee(payload) {
 /* ----------------- 미들웨어 ------------------ */
 export const __loadCoffee = (brand) => {
   return async function (dispatch) {
-    try{
-       const loadData = await apis.getCoffee(brand);
-    // console.log(loadData.data);
-    dispatch(loadCoffee(loadData.data));
-  }catch(e){
-    Sentry.captureException(e);
-  }
+    try {
+      const loadData = await apis.getCoffee(brand);
+      // console.log(loadData.data);
+      dispatch(loadCoffee(loadData.data));
+    } catch (e) {
+      Sentry.captureException(e);
     }
-   
+  }
+
 };
 export const __loadCoffees = () => {
   return async function (dispatch) {
-    try{const loadData = await apis.getCoffees();
-    // console.log(loadData.data);
-    dispatch(loadCoffee(loadData.data));}
-    catch(e){
+    try {
+      const loadData = await apis.getCoffees();
+      // console.log(loadData.data);
+      dispatch(loadCoffee(loadData.data));
+    }
+    catch (e) {
       Sentry.captureException(e);
     }
   };
 };
 export const __loadCoffeeCategory = (category) => {
   return async function (dispatch) {
-    try{const loadData = await apis.getCoffeeCategory(category);
-    // console.log(loadData.data);
-    dispatch(loadCoffeeCategory(loadData.data));}
-    catch(e){
+    try {
+      const loadData = await apis.getCoffeeCategory(category);
+      // console.log(loadData.data);
+      dispatch(loadCoffeeCategory(loadData.data));
+    }
+    catch (e) {
       Sentry.captureException(e);
     }
   };
 };
 
-export const __loadCoffeeDetail = (brand,id) => {
+export const __loadCoffeeDetail = (brand, id) => {
   return async function (dispatch) {
     const token = getCookie("token")
-    if(!token){
-       try{const loadData = await apis.getCoffeeDetail(brand,id);
-      //  console.log(loadData.data);
-      dispatch(loadCoffeeDetail(loadData.data[0]));}
-      catch(e){
+    if (!token) {
+      try {
+        const loadData = await apis.getCoffeeDetail(brand, id);
+        //  console.log(loadData.data);
+        dispatch(loadCoffeeDetail(loadData.data[0]));
+      }
+      catch (e) {
         Sentry.captureException(e);
       }
-    }else{
-     try{ const loadData = await apis.getCoffeeDetailLogin(brand,id);
-      //  console.log(loadData.data);
-      dispatch(loadCoffeeDetail(loadData.data));}
-      catch(e){
+    } else {
+      try {
+        const loadData = await apis.getCoffeeDetailLogin(brand, id);
+        //  console.log(loadData.data);
+        dispatch(loadCoffeeDetail(loadData.data));
+      }
+      catch (e) {
         Sentry.captureException(e);
       }
     }
@@ -96,10 +104,12 @@ export const __loadCoffeeDetail = (brand,id) => {
 export const __createCoffee = () => {
   return async function (dispatch) {
     // console.log("러닝")
-    try{const loadData = await apis.getCoffee();
-    // console.log(loadData.data);
-    dispatch(loadCoffee(loadData.data));}
-    catch(e){
+    try {
+      const loadData = await apis.getCoffee();
+      // console.log(loadData.data);
+      dispatch(loadCoffee(loadData.data));
+    }
+    catch (e) {
       Sentry.captureException(e);
     }
   };
@@ -113,7 +123,7 @@ export default function CoffeeReducer(state = intialstate, action) {
       return { list: action.payload };
     }
     case LOAD_COFFEE_CATEGORY: {
-      return {...state, list : action.payload };
+      return { ...state, list: action.payload };
     }
     case LOAD_COFFEE_DETAIL: {
       return { ...state, coffee: action.payload };

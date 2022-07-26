@@ -27,7 +27,7 @@ const Brand = () => {
     { brand: '할리스', id: 8, logo: '/brandlogo/할리스.png' },
     { brand: '폴바셋', id: 9, logo: '/brandlogo/폴바셋.png' },
     { brand: '카페베네', id: 10, logo: '/brandlogo/카페베네.png' },
-    { brand: '엔젤인어스', id: 11, logo: '/brandlogo/엔제리너스.png' },
+    { brand: '엔제리너스', id: 11, logo: '/brandlogo/엔제리너스.png' },
   ];
 
   // console.log(brandList);
