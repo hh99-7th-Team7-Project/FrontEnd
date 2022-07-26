@@ -218,13 +218,19 @@ const PostChat = ({ chatpostId }) => {
             <li
               className={` ${chat.senderName === nickname ? 'self' : 'user'}`}
               key={index}
-            >
+            >{chat.senderName !== nickname &&
+                  <Wrap>
+                    <Profile src={chat.profileImage} />
+                    <strong>{chat.senderName}</strong>
+                  </Wrap>
+                  }
+
               <dl>
-              {chat.senderName !== nickname && <Profile src={chat.profileImage} />}
                 <dt className="message-data">{chat.message}</dt>
                 <dd className="me">
                   {chat.createdAt.split(' ')[1]}
                 </dd>
+          
               </dl>
             </li>
           ))}
@@ -249,7 +255,11 @@ const PostChat = ({ chatpostId }) => {
   );
 };
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+`;
 
 const Profile = styled.img`
   /* position: absolute; */

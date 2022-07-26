@@ -45,6 +45,8 @@ switch(item?.brand){
         return setBrandLogo("/brandlogo/폴바셋.png")
           case "카페베네" :
         return setBrandLogo("/brandlogo/카페베네.png")
+          case "메가커피":
+            return setBrandLogo("/brandlogo/메가커피.png")
       default:
         return undefined
     }

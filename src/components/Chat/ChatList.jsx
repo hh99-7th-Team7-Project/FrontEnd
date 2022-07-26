@@ -19,8 +19,7 @@ const ChatList = (data) => {
       navigate(`/chatposts/detail/${id}`)
     }else{
       Swal.fire({
-        title: '아직 회원이 아니신가요?',
-        text: '로그인을 해주세요!',
+        title: '로그인 후 이용 가능한 서비스입니다',
         icon: 'warning',
         confirmButtonText: '확인',
       });

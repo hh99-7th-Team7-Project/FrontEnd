@@ -27,7 +27,7 @@ const BoardWrite = () => {
   useEffect(() => {
     if (islogin === undefined) {
       Swal.fire({
-        title: '로그인 후 이용가능 합니다.',
+        title: '로그인 후 이용 가능한 서비스입니다',
         icon: 'error',
         confirmButtonText: '확인',
       });

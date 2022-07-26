@@ -11,16 +11,13 @@ const UserInfoUpdate = ({ setNick }) => {
 
   // console.log(condition);
 
-  const nickCheck = (nick) => {
-    let regExp = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣!@#$%^&*]{2,10}/;
-    //모두가능 2자에서10자
-    return regExp.test(nick);
-  };
+
   return (
     <div>
       <ScUpdate
         ref={nickInputRef}
         defaultValue={userName}
+        maxLength={8}
         onChange={() => {
           setNick(nickInputRef.current.value);
         }}
