@@ -7,9 +7,9 @@ const Logo = () => {
   const navigate = useNavigate()
   return (
     <>
-  <ScLogo src={svg} onClick={()=>{navigate("/")}} alt="" style={{width:"165px"}}/>
-  {/* <svg></svg> */}
-  </>
+      <ScLogo src={svg} onClick={()=>{navigate("/")}} alt="" style={{width:"165px"}}/>
+      {/* <svg></svg> */}
+    </>
   )
 }
 

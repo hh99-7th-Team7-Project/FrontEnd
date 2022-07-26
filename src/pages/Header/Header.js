@@ -18,29 +18,16 @@ const Header = () => {
 
 
   return (
-
-      <ScMobile>
         <ScHeaderBox>
           <Logo />
           <Category />
           { isMobile ?  null: <HeaderInput /> }
           <Button />
         </ScHeaderBox>
-      </ScMobile>
-
   );
 };
 
 
-const ScMobile = styled.div`
-  @media screen and (min-width: 350px){
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    justify-content: space-around;
-    width: 100%;
-  }
-`;
 
 const ScHeaderBox = styled.div`
   display: flex;
