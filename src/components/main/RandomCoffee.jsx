@@ -25,7 +25,7 @@ const RandomCoffee = () => {
     "탐앤탐스",
     "드롭탑",
     "더벤티",
-    "엔젤인어스",
+    "엔제리너스",
     "빽다방",
     "커피빈",
     "컴포즈",
@@ -118,12 +118,12 @@ const RandomCoffee = () => {
                 <ScBrandAlign>
                   <input 
                     type="radio" 
-                    id="엔젤인어스" 
-                    value="엔젤인어스" 
-                    checked={selectValue === "엔젤인어스"}
+                    id="엔제리너스" 
+                    value="엔제리너스" 
+                    checked={selectValue === "엔제리너스"}
                     onChange={handleBrandChange}
                     />
-                  <span>엔젤인어스</span>
+                  <span>엔제리너스</span>
                 </ScBrandAlign>
                 <ScBrandAlign>
                   <input 

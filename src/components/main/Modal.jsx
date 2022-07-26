@@ -18,7 +18,7 @@ const Modal = ({showModal,closeModal}) => {
       {/* <ImgSlideModal/> */}
       <ImgSlideModal2/>
       <ScX onClick={closeModal}>✖</ScX>
-      <ScBtn onClick={notSeenADay}>오늘 하루 보지 않기</ScBtn>
+      <ScBtn onClick={notSeenADay}>오늘 더 보지 않기</ScBtn>
      </ModalContainer>
      </Background> : null}</div>
   )
@@ -57,8 +57,10 @@ const ModalContainer = styled.div`
 `;
 const ScX =styled.div`
   position: absolute;
+  font-size: 26px;
   top:0px;
   right: -30px;
+  color: white;
   &:hover{
     cursor: pointer;
   }
@@ -68,12 +70,14 @@ const ScBtn = styled.div`
   /* background-color: #2c278c; */
   border: none;
   color: #000000;
-  width: 130px;
+  width: 120px;
   font-weight: 100;
   border-radius: 10px;
   position: absolute;
-z-index: 99;
-  right: 20px;
+  z-index: 99;
+  right: 35px;
+  bottom:30px;
+  border: 1px solid black;
   &:hover{
     cursor: pointer;
   }

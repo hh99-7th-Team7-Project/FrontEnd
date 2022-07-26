@@ -36,11 +36,7 @@ setLike(coffeeReducer?.loveCheck)
 return (
 
     <>
-    <ScMobile>
-      <div style={{margin:"auto", width:"62%"}}>
-        <Header />
-      </div>
-      
+    <ScMobile>      
         <div>
           {/* <CoffeeCategory/> */}
         </div>   

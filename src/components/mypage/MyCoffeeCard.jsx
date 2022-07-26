@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Lens from '../main/svg/Lens.svg'
@@ -6,6 +6,44 @@ import Lens from '../main/svg/Lens.svg'
 const MyCoffeeCard = ({item}) => {
 
   const navigate = useNavigate()
+  const [brandLogo, setBrandLogo] = useState()
+
+  useEffect(()=>{
+    switch(item?.brand){
+          case "스타벅스":
+            return setBrandLogo("/brandlogo/스타벅스.png")
+          case "할리스":
+            return setBrandLogo("/brandlogo/할리스.jpg")
+          case "엔제리너스" : 
+          return setBrandLogo("/brandlogo/엔제리너스.png")
+            case "이디야" : 
+            return setBrandLogo("/brandlogo/이디야.png")
+            case "커피빈" : 
+            return setBrandLogo("/brandlogo/커피빈.png")
+            case "더벤티" : 
+            return setBrandLogo("/brandlogo/더벤티.png")
+            case "드롭탑" :
+            return setBrandLogo("/brandlogo/드롭탑.png")
+              case "컴포즈" :
+            return setBrandLogo("/brandlogo/컴포즈.png")
+              case "탐앤탐스" :
+            return setBrandLogo("/brandlogo/탐앤탐스.png")
+              case "빽다방" :
+            return setBrandLogo("/brandlogo/빽다방.png")
+              case "폴바셋" :
+            return setBrandLogo("/brandlogo/폴바셋.png")
+              case "카페베네" :
+            return setBrandLogo("/brandlogo/카페베네.png")
+              case "메가커피":
+            return setBrandLogo("/brandlogo/메가커피.png")
+          default:
+            return undefined
+        }
+    },[item])
+    
+
+
+
   const moveOnclick = () => {
     navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
     }
@@ -19,7 +57,7 @@ const MyCoffeeCard = ({item}) => {
         <div style={{fontSize:'17px'}}>{item?.name}</div>
       </ScBeforeHover>
     <SChover>
-      <ScLogo></ScLogo>
+      <ScLogo src={brandLogo}></ScLogo>
       <div style={{fontSize:'13px'}}>{item?.brand}</div>
       <div style={{fontSize:'17px'}}>{item?.name}</div>
       <ScZoomIn onClick={moveOnclick}><ScLens src={Lens} alt=""/>자세히 보러 가기</ScZoomIn>
@@ -89,37 +127,6 @@ const ScLens = styled.img`
   `
 const SCcard = styled.div`
     position: relative;
-    /* background-color: ${(props) => {
-    switch(props.color){
-      case "스타벅스":
-        return "rgb(1,98,65)"
-      case "할리스":
-        return "rgb(193,47,48)"
-      case "엔젤인어스" : 
-        return "#252525"
-        case "이디야" : 
-        return "rgb(36,60,132)"
-        case "커피빈" : 
-        return "rgb(76,44,105)"
-        case "더벤티" : 
-        return "rgb(123,0,155)"
-        case "드롭탑" :
-       return"rgb(26,38,138)"
-          case "컴포즈" :
-        return"rgb(254,217,0)"
-          case "탐앤탐스" :
-        return"rgb(79,21,29)"
-          case "빽다방" :
-         return"rgb(26,38,138)"
-          case "폴바셋" :
-        return"rgb(41,31,32)"
-          case "카페베네" :
-         return"rgb(121,98,80)"
-
-      default:
-        return "white"
-    }
-  }}; */
     display: flex;
     flex-direction: column;
     /* border: 1px solid #ddd; */
