@@ -79,7 +79,7 @@ const BoardDetail = () => {
 };
 
 const ScMobile = styled.div`
-  @media screen and (min-width: 350px){
+  @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
     margin: auto;

@@ -69,6 +69,11 @@ const ScWrap = styled.div`
   /* border: 1px solid black; */
   width: 100%;
   height: 100%;
+  @media screen and (max-width: 768px){
+    margin: auto;
+    width: 70%;
+    padding: 10px 30px 0px 0px;
+  }
 `;
 const ScBoard = styled.div`
   width: 100%;

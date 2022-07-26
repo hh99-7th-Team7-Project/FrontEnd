@@ -54,41 +54,50 @@ const BoardWrite = () => {
   };
 
   return (
-    <>
-      <ScMobile> 
+    <> 
         <ScWrite>
           <BoardCategory title={setTitle} cate={setCate} />
-          <ToastEdit content={setContent} />
+          <ScBoard>
+            <ToastEdit content={setContent} />
+          </ScBoard>
           <ScSubmit>
-            <div onClick={submitOnclick}>제출</div>
-            <div
+            <ScBtn onClick={submitOnclick}>제출</ScBtn>
+            <ScBtn
               onClick={() => {
                 navigate('/board');
               }}
             >
               취소
-            </div>
+            </ScBtn>
           </ScSubmit>
         </ScWrite>
-      </ScMobile>
+
     </>
   );
 };
 
 export default BoardWrite;
 
-const ScMobile = styled.div`
-  @media screen and (min-width: 350px){
+
+const ScWrite = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 73px auto;
+  
+  @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
     margin: auto;
+    
   }
 `;
 
-const ScWrite = styled.div`
-  min-width: 1200px;
-  width: 90%;
-  margin: 73px auto; 
+const ScBoard = styled.div`
+  
+  @media screen and (max-width: 768px){
+    width: 80%;
+    margin: auto;
+  }
 `;
 const ScSubmit = styled.div`
   display: flex;
@@ -105,5 +114,11 @@ const ScSubmit = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 50px;
+  }
+`;
+
+const ScBtn = styled.div`
+  &:hover {
+    cursor: pointer;
   }
 `;
