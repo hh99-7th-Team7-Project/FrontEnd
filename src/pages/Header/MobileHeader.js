@@ -7,23 +7,45 @@ import {
 } from '../../components/Header/A-HeaderIndex';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { useMediaQuery } from "react-responsive";
 import {Outlet} from "react-router"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 
 const Header = () => {
   const navigate = useNavigate();
 
+  const isMobile = useMediaQuery({
+    query: "(max-width: 1604px)",
+  });
+
+  const [ categoryVisible , setCategoryVisible ] = useState(false);
+  const [ buttonVisible , setButtonVisible ] = useState(false);
+  const [ toggleBtn, setToggleBtn ] = useState(false);
+
+  const handleToggleBtn = () => {
+    setToggleBtn(!toggleBtn);    
+  }
+
+
   return (
-        <>
-          <ScHeaderBox> 
-            <Logo />
-            <Category />
-            <HeaderInput />
-            <Button/>
-          </ScHeaderBox>
-          <Outlet />
+    <>
+        
+        <ScHeaderBox> 
+          <Logo />          
+          {categoryVisible ? <Category /> : null }
+          { isMobile ?  null : <HeaderInput /> }          
+          {buttonVisible ? <Button /> : null }
+        </ScHeaderBox>
+        <ScToggleBtn onClick={()=>{            
+            handleToggleBtn();
+            setCategoryVisible(!categoryVisible);
+            setButtonVisible(!buttonVisible);
+          }}>
+            <FontAwesomeIcon icon={faBars} />
+          </ScToggleBtn>
+        <Outlet />
         </>
   );
 };
