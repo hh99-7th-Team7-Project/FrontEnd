@@ -92,17 +92,19 @@ const ScImgContainer = styled.div`
   display: flex;
   /* position: relative; */
   font-size: 1.1em;  
+  width: 100%;
+  margin: auto;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
     display: flex;
-    padding: 0px;
-    margin: auto;
+    margin: 20px auto;
   }
 `;
 
 const ScImg = styled.img`
   width: 100%;
+  
 `;
 
 const ScTitle = styled.div`
@@ -120,15 +122,12 @@ const ScTitle = styled.div`
 
 const ScMobile2 = styled.div`
   @media screen and (max-width: 768px){
-    width: 90%;
-    background-color: #EEE;
-    
+          
   }  
 `;
 
 const ScWrap = styled.div`
   margin: 15px auto;
-  max-width: 1200px;
   
 `;
 

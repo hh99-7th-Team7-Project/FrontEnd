@@ -70,6 +70,9 @@ const ScX =styled.div`
   position: absolute;
   top:0px;
   right: -30px;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const ScBtn = styled.div`
@@ -84,4 +87,7 @@ const ScBtn = styled.div`
   /* bottom: 130px; */
   right: 25px;
   z-index: 99;
+  &:hover {
+    cursor: pointer;
+  }
 `;

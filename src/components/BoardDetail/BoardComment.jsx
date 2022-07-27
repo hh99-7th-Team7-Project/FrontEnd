@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CommentMap from './CommentMap';
+import MobileCommentMap from './MobileCommentMap';
 import {
   __getBoardComment,
   __addBoardComment,
 } from '../../redux/modules/boardcomment';
 import Swal from 'sweetalert2';
 import { getCookie } from '../../shared/Cookie';
+import { useMediaQuery } from 'react-responsive';
 
 const BoardComment = () => {
 
@@ -21,6 +23,10 @@ const BoardComment = () => {
   const nickname = getCookie("nickname");
 
   const total = comment_list?.length;
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
 
   useEffect(() => {
     dispatch(__getBoardComment(boardId));
@@ -84,13 +90,18 @@ const BoardComment = () => {
         </ScCommentWrap>
         <ScH3>전체 댓글 : {total}</ScH3>        
       </ScWrap>
-      <CommentMap/>
+      {isMobile ? 
+      <MobileCommentMap/> : <CommentMap/> }
     </>
   );
 };
 
 const ScWrap = styled.div`
   width: 100%;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;    
+  }
 `;
 
 const ScH3 = styled.h3`
@@ -111,10 +122,12 @@ const ScCommentWrap = styled.div`
 
 const ScInputWrap = styled.div`
   margin: auto;
-  display: flex;
-  
-  
+  display: flex;  
   align-items: center;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const ScSpan = styled.span`
@@ -137,6 +150,11 @@ const ScTextArea = styled.textarea`
   padding: 10px 20px ;
   ::placeholder {
     padding: 5px 10px;
+  }
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
   
   

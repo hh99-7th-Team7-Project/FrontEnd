@@ -6,6 +6,7 @@ import { __deleteComment, __loadComment } from '../../redux/modules/comment';
 import { getCookie } from '../../shared/Cookie';
 import { FillStar } from './svg/FillStar.svg';
 import { BlankStar } from './svg/BlankStar.svg';
+import { useMediaQuery } from 'react-responsive';
 
 const CommentCard = (props) => {
   const { brand, boardId } = props;
@@ -22,6 +23,11 @@ const CommentCard = (props) => {
   // console.log(posts);
 
   // console.log(showUpdate);
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
 
   useEffect(() => {
     dispatch(__loadComment({ brand, boardId }));
@@ -54,18 +60,30 @@ const CommentCard = (props) => {
                     )}
                   </ScStar>
                   <ScCardAlign1>
-                    <ScCommentSpan>{item?.review}</ScCommentSpan>
+                    {isMobile ? <ScCommentMobile>{item?.review}</ScCommentMobile> :
+                    <ScCommentSpan>{item?.review}</ScCommentSpan> }
                   </ScCardAlign1>
                   <ScCardAlign2>
-                    <ScDateSpan>{item?.createdAt.split('T')[0]}</ScDateSpan>
-                    <ScNickSpan>{item?.nickname}</ScNickSpan>
+                    {isMobile ? null :
+                    <ScDateSpan>{item?.createdAt.split('T')[0]}</ScDateSpan> }
+                    {isMobile ? <ScNickMobile>{item?.nickname}</ScNickMobile> :
+                    <ScNickSpan>{item?.nickname}</ScNickSpan> }
 
                     {/* <ScButton onClick={()=>{
                           setShowUpdate(true);
                           setReviewId(item?.id);
                         }}>신고</ScButton> */}
-
-                    <ScButton
+                      {isMobile ?
+                    <ScButtonMobile
+                      onClick={() => {
+                        dispatch(
+                          __deleteComment(brand, boardId, Number(item?.id))
+                        );
+                        dispatch(__loadComment({ brand, boardId }));
+                      }}
+                    >
+                      X
+                    </ScButtonMobile> : <ScButton
                       onClick={() => {
                         dispatch(
                           __deleteComment(brand, boardId, Number(item?.id))
@@ -74,7 +92,7 @@ const CommentCard = (props) => {
                       }}
                     >
                       삭제
-                    </ScButton>
+                    </ScButton> } 
                   </ScCardAlign2>
                 </ScCommentCardWrap>
 
@@ -114,10 +132,11 @@ const ScWrap = styled.div`
   ::-webkit-scrollbar-track {
     background-color: #eee;
   }
-  @media screen and (min-width: 350px){
+  @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
     margin: auto;
+    width: 68%;
   }
 `;
 
@@ -139,6 +158,17 @@ const ScButton = styled.button`
   background-color: rgb(44,39,140,0%);
   font-weight: 400;
 `;
+
+const ScButtonMobile = styled.button`
+  &:hover {
+    cursor: pointer;
+  }
+  border: none;
+  background-color: rgb(44,39,140,0%);
+  font-weight: 400;
+  width: 10%;
+`;
+
 
 const ScStar = styled.div`
   display: flex;
@@ -168,6 +198,10 @@ const ScCommentSpan = styled.span`
   font-weight: 400;
 `;
 
+const ScCommentMobile = styled.span`
+  margin-left: 30px;
+`;
+
 const ScDateSpan = styled.span`
   color: black;
   font-weight: 400;
@@ -176,6 +210,10 @@ const ScDateSpan = styled.span`
 const ScNickSpan = styled.span`
   color: black;
   font-weight: 400;
+`;
+
+const ScNickMobile = styled.span`
+  
 `;
 
 export default CommentCard;

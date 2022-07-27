@@ -52,8 +52,8 @@ const BrandCard = (props) => {
     <ScMobile>
 
         <div style={{position:'relative'}}>
-      <div className="prev" style={{fontSize:'1.66em'}}>&lt;</div>  
-      <div className="next" style={{fontSize:'1.66em'}}>&gt;</div>
+      <ScPrev className="prev" style={{fontSize:'1.66em'}}>&lt;</ScPrev>  
+      <ScNext className="next" style={{fontSize:'1.66em'}}>&gt;</ScNext>
       <Swiper
         slidesPerView={8}
         spaceBetween={10}
@@ -148,6 +148,18 @@ const animation = keyframes`
   }
 `;
 
+const ScPrev = styled.div`
+     @media screen and (max-width:768px){      
+      left: 3%;      
+  }
+`
+
+const ScNext = styled.div`
+     @media screen and (max-width:768px){      
+      right: 3%;           
+  }
+`
+
 const ScSlide = styled.div`
   width: 120px;
   height: 120px;
@@ -176,6 +188,9 @@ const ScSlide = styled.div`
     animation: ${animation} 0.5s;
     cursor: pointer;
   }
+  @media screen and (max-width:768px){    
+   
+  }
 `;
 const SCcardWrap = Styled.div`
     margin: 30px 0;
@@ -184,9 +199,11 @@ const SCcardWrap = Styled.div`
     flex-wrap: wrap;
     /* height: 600px; */
     @media screen and (max-width:768px){      
-      display: flex;
-      flex-direction: row;
-      width: 100%;                
+      /* display: flex;
+      flex-wrap: wrap; */
+      /* flex-direction: row; */
+      width: 90%; 
+      margin: 20px auto;               
   }
 
 `;

@@ -7,41 +7,23 @@ import {
 } from '../../components/Header/A-HeaderIndex';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useMediaQuery } from "react-responsive";
+
 import {Outlet} from "react-router"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const isMobile = useMediaQuery({
-    query: "(max-width: 1604px)",
-  });
-
-  const [ toggleBtn, setToggleBtn ] = useState(false);
-
-  const handleToggleBtn = () => {
-    setToggleBtn(true);    
-  }
-
-
   return (
-    <>
-        
-        <ScHeaderBox> 
-          <Logo />         
-          <Category />
-          { isMobile ?  null: <HeaderInput /> }
-          <Button />          
-        </ScHeaderBox>
-        <ScToggleBtn href="" onClick={()=>{
-            handleToggleBtn();
-          }}>
-            <FontAwesomeIcon icon={faBars} />
-          </ScToggleBtn>
-        <Outlet />
+        <>
+          <ScHeaderBox> 
+            <Logo />
+            <Category />
+            <HeaderInput />
+            <Button/>
+          </ScHeaderBox>
+          <Outlet />
         </>
   );
 };
@@ -67,13 +49,16 @@ const ScHeaderBox = styled.nav`
   }
 `;
 
-const ScToggleBtn = styled.a`
+const ScToggleBtn = styled.div`
   position: absolute;
   right: 2em;
   font-size: 1.5em;
   display: none;
   @media screen and (max-width: 768px) {
     display: block;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 

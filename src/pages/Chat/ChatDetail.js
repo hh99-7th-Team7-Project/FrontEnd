@@ -29,7 +29,7 @@ const ScTopCard2 = styled.div`
     align-items: center;
     display: flex;
     padding: 0px;
-    margin: auto;
+    margin: 10px auto;
   }
 `;
 const ScTopWord = styled.div`

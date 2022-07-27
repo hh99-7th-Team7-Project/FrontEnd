@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 // 페이지
 
@@ -24,8 +25,15 @@ import ChatDetail from '../pages/Chat/ChatDetail';
 import BoardUpdate from '../pages/Board/BoardUpdate';
 import MenuCategory from '../pages/MenuCategory';
 import Header from '../pages/Header/Header';
+import MobileHeader from '../pages/Header/MobileHeader';
 
 const Router = () => {
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
+
   //내 현재위치 geolocation
   const [myLocation, setSetMyLocation] = useState({
     lat: '36.0659104000',
@@ -52,7 +60,8 @@ const Router = () => {
     <>
     <Routes>
       {/* 헤더가 필요한 영역 */}
-      <Route element={<Header/>}>
+      
+      <Route element={isMobile ? <MobileHeader/> : <Header/>}>
       <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
