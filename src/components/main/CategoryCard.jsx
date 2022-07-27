@@ -100,7 +100,7 @@ const CategoryCard = (props) => {
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
                 ></ScSlide>
-              <div style={{ textAlign: 'center', fontSize:"0.888em" }}>{item?.brand}</div>
+              <div style={{ textAlign: 'center', fontSize:"0.8em" }}>{item?.brand}</div>
               </div>
             </SwiperSlide>
           );
@@ -167,19 +167,11 @@ const ScSlide = styled.div`
     animation: ${animation} 0.5s;
     cursor: pointer;
   }
-
-  /* div:nth-child(){
-    border-bottom: 2px solid var(--aquaD);
-  } */
-
-  /* &:active{
-    scale: 1.1;
-    border: 1px #b46f6f solid;
-    background: pink!important;
-    ::after {
-      background-color: #e73653!important;
-    }
-  }  */
+  @media screen and (max-width:768px){      
+    width: 100px;
+    height: 100px;
+    margin: 0;     
+  }
 `;
 const SCcardWrap = Styled.div`
     margin: 30px 0;
