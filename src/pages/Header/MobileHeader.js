@@ -43,7 +43,7 @@ const Header = () => {
             setCategoryVisible(!categoryVisible);
             setButtonVisible(!buttonVisible);
           }}>
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon style={{color:"#2c278c"}} icon={faBars} />
           </ScToggleBtn>
         <Outlet />
         </>
