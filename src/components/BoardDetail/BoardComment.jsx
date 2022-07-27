@@ -91,6 +91,10 @@ const BoardComment = () => {
 
 const ScWrap = styled.div`
   width: 100%;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;    
+  }
 `;
 
 const ScH3 = styled.h3`
@@ -111,10 +115,12 @@ const ScCommentWrap = styled.div`
 
 const ScInputWrap = styled.div`
   margin: auto;
-  display: flex;
-  
-  
+  display: flex;  
   align-items: center;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const ScSpan = styled.span`
@@ -137,6 +143,11 @@ const ScTextArea = styled.textarea`
   padding: 10px 20px ;
   ::placeholder {
     padding: 5px 10px;
+  }
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
   
   

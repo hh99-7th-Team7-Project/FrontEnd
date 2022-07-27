@@ -94,18 +94,27 @@ const CommentMap = () => {
 
 const ScWrap = styled.div`
   margin: 20px auto;
-  width: 1200px;
+  max-width: 1200px;
+  width: 90%;
   height: 500px;
   padding: 20px;
   overflow-y: auto;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
+  @media screen and (max-width: 768px){
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const ScNickAlign = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 768px){
+    width: 10%;
+  }
 `;
 
 const ScCommentAlign = styled.div`
@@ -113,13 +122,19 @@ const ScCommentAlign = styled.div`
   padding: 30px;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 768px){
+    width: 90%;
+  }
 
 `;
 
 const ScBtnAlign = styled.div`
   width: 150px;  
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
+  @media screen and (max-width: 768px){
+    width: 70%;
+  }  
 `;
 
 const ScTableWrap = styled.div`
