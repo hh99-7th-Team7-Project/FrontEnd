@@ -73,7 +73,8 @@ const ScTopWord = styled.div`
   position: absolute;
   margin: 70px 60% 50px 60%;
   @media screen and (max-width: 768px){
-    width: 80%;
+    width: 90%;
+    margin: 60px 60%;
   }
 `
 const ScMainTitle = styled.div`
@@ -125,8 +126,8 @@ const ScCategory = styled.div`
   margin: 0 0 0 18%;
   gap: 8px;
   @media screen and (max-width: 768px){
-      margin: 10px 30px auto;
-      padding: 0px 20px 20px 20px ;
+      margin: 0px 15px auto;
+      padding: 0px 0px 0px 0px;      
     }
 `
 

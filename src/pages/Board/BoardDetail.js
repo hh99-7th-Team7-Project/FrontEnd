@@ -49,64 +49,86 @@ const BoardDetail = () => {
 
   return (
     <>
-      <ScMobile>
-        <ScImgContainer>
-          <div style={{ display: "flex", height: "135px", position: "relative" }}>
+        <ScMobile>
+          <ScImgContainer>
             <ScImg src={BoardImg} alt="" />
             <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
-          </div>
-        </ScImgContainer>
-        <ScWrap>
-          <BoardMain
-            head={boardReducer}
-            boardId={boardId}
-            bookmark2={bookmark}
-            setBookmark={setBookmark}
-          />
-          <BoardContent data={content} />
-          <BoardLike
-            head={boardReducer}
-            boardId={boardId}
-            like2={like}
-            setLike={setLike}
-          />
-          <BoardComment            
-          />
-        </ScWrap>
-      </ScMobile>
+          </ScImgContainer>
+          <ScMobile2>
+            <ScWrap>
+              <BoardMain
+                head={boardReducer}
+                boardId={boardId}
+                bookmark2={bookmark}
+                setBookmark={setBookmark}
+              />
+              <BoardContent data={content} />
+              <BoardLike
+                head={boardReducer}
+                boardId={boardId}
+                like2={like}
+                setLike={setLike}
+              />
+              <BoardComment            
+              />
+            </ScWrap>
+          </ScMobile2>
+        </ScMobile>
     </>
   );
 };
 
-const ScMobile = styled.div`
+const ScMobile = styled.div`  
+  margin: auto;
+  max-width: 1200px;
+  width: 90%;
   @media screen and (max-width: 768px){
     display: flex;
+    flex-direction: column;    
+  }
+`;
+
+const ScImgContainer = styled.div`  
+  display: flex;
+  /* position: relative; */
+  font-size: 1.1em;  
+  @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
+    display: flex;
+    padding: 0px;
     margin: auto;
   }
 `;
 
-const ScImgContainer = styled.div`
-  display: column;
-`;
-
 const ScImg = styled.img`
+  width: 100%;
 `;
 
 const ScTitle = styled.div`
   position: absolute;
   width: 377px;
   line-height: 30px;
-  margin: 40px auto;
+  margin: 40px 300px auto;
   font-size: 1.5em;
   font-weight: 500;
   font-family: 'SUIT Heavy';
-  margin-left: 350px;
+  @media screen and (max-width: 768px){
+    display: none;
+  }
+`;
+
+const ScMobile2 = styled.div`
+  @media screen and (max-width: 768px){
+    width: 90%;
+    background-color: #EEE;
+    
+  }  
 `;
 
 const ScWrap = styled.div`
   margin: 15px auto;
-  width: 1200px;
+  max-width: 1200px;
   
 `;
 

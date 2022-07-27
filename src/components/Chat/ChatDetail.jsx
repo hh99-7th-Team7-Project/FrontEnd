@@ -35,7 +35,8 @@ const ChatDetail = () => {
     query: "(max-width: 1604px)",
   });
 
-  const _checkUser = getCookie('nickname');
+  const _checkUser = getCookie('userId');
+  console.log(_checkUser)
 
   useEffect(() => {
     dispatch(__loadOneChatItem(id));
@@ -47,9 +48,10 @@ const ChatDetail = () => {
 
   const mem_list = []
    const member = data2?.forEach((item,idx)=>{
-    mem_list.push(item?.userTitle)
+    mem_list.push(`${item?.id}`)
   })
-  // console.log(mem_list)
+  console.log("멤리스트",mem_list)
+  console.log(mem_list?.includes(_checkUser))
 
 
   const deleteChatItem = async () => {
@@ -120,7 +122,7 @@ const ChatDetail = () => {
                   <div style={{display:"flex"}}> <div>모집 중</div> <Time>{data?.beforeTime}</Time></div>
                 )}
               </div>
-              {chat === true ? null : _checkUser === data?.nickname ? (
+              {chat === true ? null : _checkUser === data?.id ? (
                 <div>
                   <Btn onClick={changeContent}>수정</Btn>
                   <Btn onClick={deleteChatItem}>삭제</Btn>
@@ -169,17 +171,16 @@ const ChatDetail = () => {
                   {mem_list?.includes(`${_checkUser}`) ?
                    ( 
                           <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}> 
-                          {_checkUser===members[0].userTitle?null:
+                          {_checkUser===members[0].id? null:
                            <AttendBtn1 onClick={downCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                                 <ScCheckImg src={Check} alt=""/>
                                 <span>참여하지않기</span>
                               </AttendBtn1>
                           }
-                          {map?<AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                          <AttendBtn2 onClick={joinChat} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                                 <ScChatImg src={Chating} alt=""/>
                                 <span>채팅하러가기</span>
-                              </AttendBtn2> : null}
-                        
+                              </AttendBtn2>
                           </div>
                   ) 
                   : 
