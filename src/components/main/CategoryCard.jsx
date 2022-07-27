@@ -44,8 +44,8 @@ const CategoryCard = (props) => {
   return (
     <div >
       <div style={{position:'relative'}}>
-      <div className="prev" style={{fontSize:'1.66em'}}>&lt;</div>  
-      <div className="next" style={{fontSize:'1.66em'}}>&gt;</div>
+      <ScPrev className="prev" style={{fontSize:'1.66em'}}>&lt;</ScPrev>  
+      <ScNext className="next" style={{fontSize:'1.66em'}}>&gt;</ScNext>
       <Swiper
         slidesPerView={8}
         spaceBetween={10}
@@ -61,7 +61,7 @@ const CategoryCard = (props) => {
         modules={[Navigation]}
         breakpoints={{
           0: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           600: {
             slidesPerView: 3,
@@ -126,6 +126,18 @@ const animation = keyframes`
   }
 `;
 
+const ScPrev = styled.div`
+     @media screen and (max-width:768px){      
+      left: 3%;      
+  }
+`
+
+const ScNext = styled.div`
+     @media screen and (max-width:768px){      
+      right: 3%;           
+  }
+`
+
 const ScSlide = styled.div`
   /* text-align: center; */
   /* font-size: 1.125em; */
@@ -180,7 +192,6 @@ const SCcardWrap = Styled.div`
     @media screen and (max-width:768px){      
       display: flex;
       flex-direction: row;
-      width: 100%;                
   }
 
 `;

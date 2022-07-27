@@ -69,7 +69,7 @@ const BrandCard = (props) => {
         modules={[Navigation]}
         breakpoints={{
           0: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           600: {
             slidesPerView: 3,
@@ -189,7 +189,9 @@ const ScSlide = styled.div`
     cursor: pointer;
   }
   @media screen and (max-width:768px){    
-   
+    width: 100px;
+    height: 100px;
+    margin: 0;
   }
 `;
 const SCcardWrap = Styled.div`
@@ -201,8 +203,7 @@ const SCcardWrap = Styled.div`
     @media screen and (max-width:768px){      
       /* display: flex;
       flex-wrap: wrap; */
-      /* flex-direction: row; */
-      width: 90%; 
+      /* flex-direction: row; */ 
       margin: 20px auto;               
   }
 

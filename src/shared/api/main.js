@@ -27,7 +27,7 @@ const apis = {
   getCoffeeDetail: (brand, id) => api.get(`/coffees/${brand}/${id}`),
   getCoffeeDetailLogin: (brand, id) => api.get(`/auths/coffees/${brand}/${id}`),
   getStar: (brand, id) => api.get(`/coffee/${brand}/${id}/star`),
-  getCoffeeCategory: (category) => api.get(`/coffees/sidebars/${category}`),
+  getCoffeeCategory: (category) => api.get(`/coffees/category?keyword=${category}`),
   addCoffee: (brand, coffee) => instance.post(`/coffees/${brand}`, coffee),
   getRandomCoffee: () => api.get('/coffees/random?brand=스타벅스&category=coffee'),
   getCoffees: () => api.get('/coffees'),
