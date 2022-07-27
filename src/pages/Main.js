@@ -145,7 +145,7 @@ font-size: 1.13em;
     flex-direction: row;
     display: flex;
     justify-content: center;
-    width: 50%;    
+    width: 100%;    
   }
 `;
 
