@@ -54,12 +54,21 @@ const ScWrap = styled.div`
     padding: 0 5px;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 768px){
+      width: 40%;
+      margin: auto;
+      display: flex;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 0 5px;
+      justify-content: center;
+      align-items: center;
+    }
 `;
 
 const ScInput = styled.input`
     border: none;
     height: 32px;
-
     width: 80%;
     padding: 0 8px;
     font-size: 12pt;
@@ -68,6 +77,17 @@ const ScInput = styled.input`
     }
     &:focus{
       outline: none;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 0.875em;
+      border: none;
+      width: 80%;
+      &::placeholder{
+      color: #ddd;
+    }
+    &:focus{
+      outline: none;
+    }
     }
   `
 
