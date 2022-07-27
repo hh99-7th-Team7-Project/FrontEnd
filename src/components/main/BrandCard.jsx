@@ -170,7 +170,7 @@ const ScSlide = styled.div`
   background-color: white;
   background: no-repeat center;
   background-size: 100%;
-
+  /* border: 1px solid var(--main); */
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -204,7 +204,7 @@ const SCcardWrap = Styled.div`
       /* display: flex;
       flex-wrap: wrap; */
       /* flex-direction: row; */ 
-      margin: 20px auto;               
+      margin: 20px 10px;               
   }
 
 `;
