@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
 import { getCookie } from '../../shared/Cookie';
 import Swal from 'sweetalert2';
+import { useMediaQuery } from 'react-responsive';
 
 const Comment = ({ item }) => {
   const [select, setSelect] = useState('');
@@ -19,6 +20,10 @@ const Comment = ({ item }) => {
 
   const commentInputRef = React.useRef();
   const selectStarRef = React.useRef();
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
   
 
 
@@ -95,7 +100,8 @@ const Comment = ({ item }) => {
             내용
           </ScCardAlign2>
           <div style={{display:"flex", width:"30%", gap:"45%"}}>
-            <ScDateSpan>날짜</ScDateSpan>
+            {isMobile ? null :
+            <ScDateSpan>날짜</ScDateSpan> }
             <ScNickSpan>닉네임</ScNickSpan>
           </div>
       </ScCardTitie>
@@ -106,10 +112,11 @@ const Comment = ({ item }) => {
 const ScWrap = styled.div`
   margin: 100px auto;
   width: 100%;
-  @media screen and (min-width: 350px){
+  @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
     margin: auto;
+    width: 100%;
   }
 `;
 
@@ -163,6 +170,11 @@ const ScStarContainer = styled.div`
   align-items: center;
   margin: 70px auto 40px;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 768px){    
+    margin: auto;
+    width: 80%;
+    margin-bottom: 20px;
+  }
 `;
 
 const ScInput = styled.input`
@@ -172,7 +184,7 @@ const ScInput = styled.input`
   border: none;
   border-radius: 2px;
   font-size: 1.25em;
-  text-align: left;
+  text-align: left;  
 `;
 
 const ScStarSelect = styled.select`
