@@ -271,7 +271,6 @@ const Map = (props) => {
 
   return (
     <>
-      <div style={{ position: 'relative', margin: 'auto' }}>
         <ScMapWrap>
           <div
             style={{
@@ -286,6 +285,7 @@ const Map = (props) => {
               display: 'flex',
               alignItems: 'center',
               marginBottom: '10px',
+              justifyContent: "space-between",
               gap: '5px',
             }}>
               <div style={{ fontSize: '1.625em' }}>내주변 카페</div>
@@ -294,7 +294,9 @@ const Map = (props) => {
                   <span>
                     <img src={Info} alt="" />
                   </span>
-                  <p className="arrow_box">반경 5KM 안에있는 카페 결과입니다.</p>
+                  <p className="arrow_box">반경 5KM 안에있는 카페 결과입니다.
+                  <br/>보이지 않는 경우 위치 허용을 해주세요!
+                  </p>
                 </div>
               </div>
             </div>
@@ -320,7 +322,6 @@ const Map = (props) => {
             </div>
           </div>
         </ScMapWrap>
-      </div>
     </>
   );
 };
@@ -328,11 +329,19 @@ const Map = (props) => {
 export default Map;
 
 const ScMapWrap = styled.div`
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  margin: auto;
 `;
 const ScMap = styled.div`
   height: 600px;
+  width: 100%;
   background-color: grey;
   /* border: 1px solid #2c278c; */
   box-shadow: 0 7px 6px 0 #00000026;
@@ -341,6 +350,8 @@ const ScMap = styled.div`
 const ScList = styled.div`
   overflow-y: scroll;
   height: 300px;
+  max-width: 1200px;
+  width: 100%;
   li {
     list-style: none;
   }

@@ -5,7 +5,7 @@ import { __loadChatLists } from '../../redux/modules/chat';
 import ChatWrite from '../../components/Chat/ChatWrite';
 import Header from '../Header/Header';
 import styled from 'styled-components';
-import { boardwrite, ChatLogo, Chatimoji, ChatLogoSmall } from '../../shared/svg/A-index';
+import { boardwrite, ChatLogo, Chatimoji, ChatLogoSmall, ChatMini1, ChatMini2 } from '../../shared/svg/A-index';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import apis from '../../shared/api/main';
 import * as Sentry from "@sentry/react";
@@ -42,7 +42,8 @@ const Chat = () => {
       {write === false ? (
 
         <ScTopCard>
-            <img alt='' src={ChatLogo} style={{ width: "100%" }} />
+            <ScLogo1 alt='' src={ChatLogo} style={{ width: "100%" }} />
+            <ScLogo2 alt='' src={ChatMini1} style={{ width: "100%" }} />
               <ScMainTitle>우리 같이 커피마셔요!</ScMainTitle>
               <Scwrite
                 onClick={() => {
@@ -65,7 +66,8 @@ const Chat = () => {
 
       ) : (
         <ScTopCard2>
-          <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
+          <ScLogo1 src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
+          <ScLogo2 alt='' src={ChatMini2} style={{ width: "100%" }} />
           <ScTopWord style={{ margin: '60px 70% 60px 20%' }}>
             우리 같이 커피마셔요!
           </ScTopWord>
@@ -113,6 +115,18 @@ const ScTopCard = styled.div`
   }
 `;
 
+const ScLogo1 = styled.img`
+@media screen and (max-width: 768px) {
+  display: none;
+}
+`
+const ScLogo2 = styled.img`
+display: none;
+@media screen and (max-width: 768px) {
+  display: block;
+  }
+`
+
 const ScTopCard2 = styled.div`
   width: 100%;
   display: flex;
@@ -148,6 +162,11 @@ const ScMainTitle = styled.div`
   position: absolute;
   top:50%;
   right: 20%;
+  @media screen and (max-width: 1200px) {
+   font-size: 28px;
+   right: 20%;
+   /* display: none; */
+  }
   @media screen and (max-width: 768px) {
    font-size: 16px;
    right: 20%;
@@ -185,8 +204,8 @@ const Scwrite = styled.div`
    font-size: 12px;
    width: 86px;
    height: 30px;
-   right: 16%;
-   top:50%;
+   right: 10%;
+   top:30%;
     img{
       display: none;
     }

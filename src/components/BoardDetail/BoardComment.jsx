@@ -16,7 +16,7 @@ const BoardComment = () => {
 
   const comment_list = useSelector((state) => state.boardComment.boardcommentlist);
 
-  console.log(comment_list);
+  // console.log(comment_list);
 
   const dispatch = useDispatch();
   const { boardId } = useParams();

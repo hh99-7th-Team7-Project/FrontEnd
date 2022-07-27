@@ -36,7 +36,7 @@ const MyPage = () => {
     const profile = async () => {
       await apis.getMypage(userId)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setEmail(res.data);
         setNick(res?.data.nickname)
         setConvertImg(res?.data.profileImage)
@@ -50,8 +50,8 @@ const MyPage = () => {
    const [nick, setNick] = useState(); 
    const [convertImg, setConvertImg] = useState();
 
-  console.log(nick);
-  console.log(convertImg);
+  // console.log(nick);
+  // console.log(convertImg);
   
   useEffect(() => {
     const boardCount = async () => {
@@ -80,14 +80,14 @@ const MyPage = () => {
   const Mychat =async ()=>{
     apis.getMyChatRoom(userId)
       .then((res)=>{
-        console.log(res)
+        // console.log(res)
       })
   }
 
   const MyWrite =async ()=>{
     apis.getMyBoard(userId)
       .then((res)=>{
-        console.log(res)
+        // console.log(res)
       })
   }
 
