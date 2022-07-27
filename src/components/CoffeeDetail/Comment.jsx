@@ -102,7 +102,8 @@ const Comment = ({ item }) => {
           <div style={{display:"flex", width:"30%", gap:"45%"}}>
             {isMobile ? null :
             <ScDateSpan>날짜</ScDateSpan> }
-            <ScNickSpan>닉네임</ScNickSpan>
+            {isMobile ? null :
+            <ScNickSpan>닉네임</ScNickSpan> }
           </div>
       </ScCardTitie>
     </ScWrap>
@@ -218,6 +219,10 @@ const ScCardTitie = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 768px){    
+    margin: 10px auto;
+    
+  }
 `;
 
 const ScCardAlign1 = styled.div`

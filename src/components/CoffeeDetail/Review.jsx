@@ -116,9 +116,12 @@ const ScWrap = styled.div`
   height: 150px;
   margin: auto;
   position: relative;
-  @media screen and (max-width: 768px){    
-    width: 50%;
-    margin: -10px;
+  @media screen and (max-width: 768px){  
+    width  : 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 `;
 
@@ -138,18 +141,29 @@ const ScSmallWrap =styled.div`
 
 const Sctitle =styled.div`
   font-size: 1.125em;
+
 `
 const ScContentBox = styled.div`
   margin: 20px;
 `;
 
 const ScBtnWrap = styled.div`
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
   margin: 30px auto;
+  @media screen and (max-width: 768px){    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    gap: 20px;
+  }
 `;
 
 const ScGotoMap = styled.div`
@@ -166,7 +180,14 @@ const ScGotoMap = styled.div`
   border-radius: 100px;
   margin: auto;
   @media screen and (max-width: 768px){    
-    width: 40%;    
+    width: 40%; 
+    margin: 0;
+    height: 20px;
+    font-weight: 400;
+    font-size: 10px;
+    img{
+      width: 20px;
+    }
   }
 `;
 const ScGotoMap1 = styled.div`
@@ -183,7 +204,14 @@ const ScGotoMap1 = styled.div`
   border-radius: 100px;
   margin: auto;
   @media screen and (max-width: 768px){    
-    width: 20%;    
+    width: 25%; 
+    margin: 0;
+    height: 20px;
+    font-weight: 400;
+    font-size: 10px;
+    img{
+      width: 20px;
+    }
   } 
 `;
 
@@ -200,7 +228,9 @@ const ScStarPriceContainer = styled.div`
   margin: 50px 0 0 200px;
   gap:10px;
   @media screen and (max-width: 768px){    
-    margin-left: -20px;
+    width: 100%;
+    margin: 20px 0;
+    /* border: 1px red solid; */
   }
   
 `;
@@ -210,6 +240,11 @@ const ScStarBox = styled.div`
   height: 150px;
   margin: auto;
   text-align: center;
+  @media screen and (max-width: 768px){    
+    margin: 0;
+    /* border: 1px red solid; */
+    height: 100%
+  }
 `;
 
 const ScH2 = styled.h2`
@@ -234,6 +269,10 @@ const PriceScH3 = styled.h2`
   margin-bottom: 10px;
   font-size: 1.125em;
   line-height: 49.92px;
+  @media screen and (max-width: 768px){    
+    margin-top: 0px;
+    line-height: 24.92px;
+  }
 `;
 
 const ScPriceBox = styled.div`
@@ -241,6 +280,11 @@ const ScPriceBox = styled.div`
   height: 150px;
   /* margin: auto 0 0; */
   text-align: center;
+  @media screen and (max-width: 768px){    
+    margin: 0;
+    /* border: 1px red solid; */
+    height: 100%
+  }
 `;
 
 const ScImgWrap = styled.div`
@@ -253,6 +297,12 @@ const ScImgWrap = styled.div`
   div{
     color: var(--main);
   }
+   @media screen and (max-width: 768px){    
+    margin: auto;
+    /* border: 1px red solid; */
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 
@@ -261,6 +311,12 @@ const ScSmallImg = styled.img`
     height: 80px;
     margin-left: 20px;
     margin-right: 20px;
+    @media screen and (max-width: 768px){    
+    margin: 0;
+    /* border: 1px red solid; */
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 const ScMediumImg = styled.img`
@@ -268,6 +324,12 @@ const ScMediumImg = styled.img`
     height: 120px;
     margin-left: 20px;
     margin-right: 20px;
+    @media screen and (max-width: 768px){    
+    margin: 0;
+    /* border: 1px red solid; */
+    width: 90px;
+    height: 90px;
+  }
 `;
 
 const ScLargeImg = styled.img`
@@ -275,4 +337,10 @@ const ScLargeImg = styled.img`
     height: 160px;
     margin-left: 20px;
     margin-right: 20px;
+    @media screen and (max-width: 768px){    
+    margin: 0;
+    /* border: 1px red solid; */
+    width: 140px;
+    height: 140px;
+  }
 `;
