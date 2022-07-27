@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { getCookie } from '../../shared/Cookie';
 
-const UserPhotoUpdate = ({ setNewProfileImg, setChangeImg }) => {
-  const profileImg = getCookie('profileImg');
-  const [fileImage, setFileImage] = React.useState(profileImg);
+const UserPhotoUpdate = ({ setNewProfileImg, setChangeImg , convertImg }) => {
+  // const profileImg = convertImg;
+  console.log(convertImg)
+  const [fileImage, setFileImage] = React.useState(convertImg);
   const fileInputRef = React.useRef();
   // console.log(fileInputRef?.current.files[0])
 
