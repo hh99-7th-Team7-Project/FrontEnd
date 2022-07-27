@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { StarFilled, StarUnfilled } from '../../shared/svg/A-index';
 import Lens from './svg/Lens.svg';
+import LensBlack from './svg/LensBlack.svg';
 
 
 
@@ -56,11 +57,13 @@ switch(item?.brand){
 
 
   return (
-    <>
+    <>  
         <SCcard color={item?.brand}>
           <ScBeforeHover>
             <SCcoffeeImg src={item?.img}/>
             <SCcardText>{item?.name}</SCcardText>
+            <MobileLogo src={brandLogo}></MobileLogo>
+            <ScLens2 onClick={moveOnclick}> 더보기{`>`}</ScLens2>
             <SCprice>₩{pricePair[0].price}</SCprice>
           </ScBeforeHover>
         <SChover>
@@ -111,7 +114,7 @@ const SCcardText = styled.div`
     @media screen and (max-width:768px){ 
           font-size: 10px;
           width: 100px;
-          height: 45px;
+          height: 35px;
           margin-bottom:0;
           line-height: 16px;
         }
@@ -151,7 +154,7 @@ const ScBeforeHover = styled.div`
     text-align  :center ;
     align-items: center;
     width: 100%;  
-    border: 1px red solid;  
+    /* border: 1px red solid;   */
   }
 `
 const ScLogoWrap =styled.div`
@@ -178,9 +181,13 @@ const ScStarName =styled.div`
 const ScStarImgMobile =styled.div`
     display: none;
     @media screen and (max-width:768px){ 
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
     img{
       width: 12px;
+      margin-right: 6px;
     }
   }
 `
@@ -246,15 +253,26 @@ const ScZoomIn = styled.div`
        width: 92px;
       font-size: 10px;
       font-weight: 500;
+      display: none;
   }
 `
+
+const ScLens2 = styled.div`
+    display: none;
+    @media screen and (max-width:768px){ 
+    display: flex;
+     position: absolute;
+    width: 50px;
+    right: -8px;
+    bottom: 4px;
+    font-size: 9px;
+    z-index: 99;
+  }
+`;
 
 const ScLens = styled.img`
     margin-right: 5px;
     width: 18px;
-    @media screen and (max-width:768px){ 
-      width: 15px;
-  }
 `;
 
   const SCprice = styled.div`
@@ -269,6 +287,7 @@ const ScLens = styled.img`
           border-radius: 10px;
           /* width:180%; */
           font-size: 9px;
+          margin-bottom: 10px;
         }
   `
   const SChover =styled.div`
@@ -293,6 +312,7 @@ const ScLens = styled.img`
         justify-content: center;
         margin: 0;
         height: 220px;
+        width: 88%;
         }
   `
 const SCcard = styled.div`
@@ -308,20 +328,34 @@ const SCcard = styled.div`
         opacity: 100%;
         background-color: #000000bc;
         /* background: linear-gradient(to bottom, #aaaaaa40, #0000004b); */
+    
       }
     }
     @media screen and (max-width:768px){  
         display  :flex; 
         align-items: center;
         justify-content: center;
-        width: 47%; 
-        margin: 10px 3px;
-        height: 200px;
+        width: 43%; 
+        margin: 10px 7px;
+        height: 220px;
+        border: 1px var(--main) solid;
+        padding: 10px 0;
+        border-radius: 20px;
         &:hover {
       ${SChover}{
-        opacity: 100%;
+        opacity: 0%;
         background-color: #000000a9;
       }
     }
   }
     `
+
+  const MobileLogo =styled.img`
+  display: none;
+   @media screen and (max-width:768px){  
+    position: absolute;
+    width: 30px;
+    border-radius: 50%;
+    right: 10px;
+    top: 5px;}
+  `

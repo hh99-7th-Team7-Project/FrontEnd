@@ -24,7 +24,7 @@ const MenuCategory = () => {
   return (
     <>
       {/* <Flower /> */}
-      <div style={{ maxWidth: '1230px', width: '84vw', margin: 'auto' }}>
+      <ScMaxWrap>
         <ScNavbarWrap>
           <ScButtonWrap>
             <ScCategory
@@ -49,10 +49,20 @@ const MenuCategory = () => {
           </ScButtonWrap>
         </ScNavbarWrap>
         {category ? <BrandCard /> : <CategoryCard />}
-      </div>
+      </ScMaxWrap>
     </>
   );
 };
+
+const ScMaxWrap = styled.div`
+max-width:1230px;
+width:100%;
+ margin:auto;
+ @media screen and (max-width: 768px) {
+  max-width:100%;
+  /* border: 1px red solid; */
+  }
+`
 
 const ScButtonWrap = styled.div`
   margin: 20px auto;
