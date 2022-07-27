@@ -134,7 +134,7 @@ const ScSpan = styled.span`
   width: 100px;
   text-align: left;
   font-size: 1.25em;
-  margin-left: 40px;
+  margin-left: 10px;
   color: rgb(44,39,140, 80%);
 `;
 
@@ -154,11 +154,8 @@ const ScTextArea = styled.textarea`
   @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 280px;
   }
-  
-  
-  
 `;
 
 const ScBtn = styled.button`
@@ -172,6 +169,9 @@ const ScBtn = styled.button`
   }
   background-color: black;
   color: white;
+  @media screen and (max-width: 768px) {
+    margin: 10px auto;
+  }
 `;
 
 

@@ -69,6 +69,10 @@ const ScBoardList = styled.div`
   font-size: 0.875em;
   margin: 24px auto;
   background-color: white;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 20px auto;
+  }
 `;
 const ScHeader = styled.div`
   display: flex;
