@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CommentMap from './CommentMap';
+import MobileCommentMap from './MobileCommentMap';
 import {
   __getBoardComment,
   __addBoardComment,
 } from '../../redux/modules/boardcomment';
 import Swal from 'sweetalert2';
 import { getCookie } from '../../shared/Cookie';
+import { useMediaQuery } from 'react-responsive';
 
 const BoardComment = () => {
 
@@ -21,6 +23,10 @@ const BoardComment = () => {
   const nickname = getCookie("nickname");
 
   const total = comment_list?.length;
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
 
   useEffect(() => {
     dispatch(__getBoardComment(boardId));
@@ -84,7 +90,8 @@ const BoardComment = () => {
         </ScCommentWrap>
         <ScH3>전체 댓글 : {total}</ScH3>        
       </ScWrap>
-      <CommentMap/>
+      {isMobile ? 
+      <MobileCommentMap/> : <CommentMap/> }
     </>
   );
 };

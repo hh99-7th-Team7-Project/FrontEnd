@@ -7,6 +7,7 @@ import {useDispatch,useSelector}from 'react-redux';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
 
 
+
 const CoffeeDetail = () => {
 
   const { brand } = useParams();
@@ -19,6 +20,7 @@ const CoffeeDetail = () => {
 
 const coffeeReducer = useSelector((state) => state.coffee.coffee);
 const commentReducer = useSelector((state) => state.comment.posts);
+
 
 //Like자체 바뀔때마다 바뀌게 설정
 useEffect(()=>{
@@ -35,8 +37,7 @@ setLike(coffeeReducer?.loveCheck)
 
 return (
 
-    <>
-    <ScMobile>      
+    <>   
         <div>
           {/* <CoffeeCategory/> */}
         </div>   
@@ -60,24 +61,16 @@ return (
         <ScCommentBox>
             <Comment 
               item={coffeeReducer}
-            />          
+            />
             <CommentCard 
               boardId={boardId}
               brand={brand}
             />
         </ScCommentBox>
-      </ScMobile>
     </>
   )
 }
 
-const ScMobile = styled.div`
-  @media screen and (min-width: 350px){
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
-`;
 
 const Scwrap = styled.div`
   display: flex;
@@ -85,20 +78,27 @@ const Scwrap = styled.div`
   max-width:1200px;
   width:100%;
   margin: auto;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
 `;
 
 const ScContainer = styled.div`
-  display: column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ScReviewCommentBox = styled.div`
-  display: column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ScCommentBox = styled.div`
   margin: 400px auto;
-  width: 1900px;
-  height: 1900px;
+  max-width: 1900px;
+  width: 100%;
   background-color: rgb(44,39,140,10%);
 `;
 

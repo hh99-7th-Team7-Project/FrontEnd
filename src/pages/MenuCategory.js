@@ -71,7 +71,8 @@ const ScNavbarWrap = styled.div`
   @media screen and (max-width:768px) {      
       display: flex;
       flex-direction: row;
-      width: 100%;                
+      width: 100%;
+      margin: 20px auto;                
   }
 `;
 
