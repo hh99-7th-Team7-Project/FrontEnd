@@ -29,7 +29,7 @@ const ScMobile = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 8px 24px;
-    margin: auto;    
+    margin: 30px auto;    
   }
 `;
 export default ImgSlide2

@@ -109,7 +109,7 @@ const ScTopCard = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    margin: auto;
+    margin: 30px auto;
   }
 `;
 

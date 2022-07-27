@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import "../shared/css/flow.css"
+import { Link } from 'react-scroll';
 
 // components
 import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint, RandomPicker, CategoryCard}from '../components/main/A-mainIndex'
@@ -66,7 +67,7 @@ const changeColor2 = ()=>{
             </ScMapRandomWrap> */}
             <ScNavbarWrap>
 
-              <ScTitle>Menu</ScTitle>
+              <ScTitle id="Top">Menu</ScTitle>
               <ScButtonWrap>
                 <ScCategory color={color}
                   onClick={()=>{
@@ -85,6 +86,11 @@ const changeColor2 = ()=>{
             </ScNavbarWrap>            
               {category?<BrandCard/>:<CategoryCard/>}            
         </div>
+        <ScTopBtnWrap>
+          <Link to="Top" spy={true} smooth={true}>
+            <ScTopBtn>Top</ScTopBtn>
+          </Link>
+        </ScTopBtnWrap>
         { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
           {/* <Flow/> */}
       <Flower/>
@@ -162,6 +168,28 @@ color: ${props => props.color2};
   &:hover {
     cursor: pointer;
   }
+`;
+
+const ScTopBtnWrap = styled.div`
+  width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ScTopBtn = styled.div`
+  background-color: #2c278c;
+  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
 `;
 
 

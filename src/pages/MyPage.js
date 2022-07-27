@@ -268,7 +268,7 @@ const ScsecondHead = styled.img`
   margin-bottom: 40px;
   width: 100%;
   @media screen and (max-width: 768px){
-    margin: auto;
+    margin: 20px auto;
     width: 100%;
   }
 `;
