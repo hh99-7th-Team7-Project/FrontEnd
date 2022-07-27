@@ -60,3 +60,9 @@
   cursor: pointer;
   z-index: 99;
 }
+
+.swiper-slide-active{
+  /* border: 1px red solid; */
+  transform: scale(1.1);
+
+}

@@ -36,7 +36,7 @@ const ChatDetail = () => {
   });
 
   const _checkUser = getCookie('userId');
-  console.log(_checkUser)
+  // console.log(_checkUser)
 
   useEffect(() => {
     dispatch(__loadOneChatItem(id));
@@ -50,8 +50,8 @@ const ChatDetail = () => {
    const member = data2?.forEach((item,idx)=>{
     mem_list.push(`${item?.id}`)
   })
-  console.log("멤리스트",mem_list)
-  console.log(mem_list?.includes(_checkUser))
+  // console.log("멤리스트",mem_list)
+  // console.log(mem_list?.includes(_checkUser))
 
 
   const deleteChatItem = async () => {

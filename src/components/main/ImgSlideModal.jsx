@@ -13,7 +13,11 @@ import "../../shared/css/swiper.css";
 const ImgSlideModal = () => {
   return (
     <>
-    <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+    <Swiper 
+     pagination={{
+      clickable: true,
+    }}
+    modules={[Pagination]} className="mySwiper">
       <SwiperSlide><img src="/mainmodal/mini/1.webp" alt=""/></SwiperSlide>
       <SwiperSlide><img src="/mainmodal/mini/2.webp" alt=""/></SwiperSlide>
       <SwiperSlide><img src="/mainmodal/mini/3.webp" alt=""/></SwiperSlide>

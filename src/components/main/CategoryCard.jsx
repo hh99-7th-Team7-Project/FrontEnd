@@ -17,19 +17,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import styled, { css, keyframes } from 'styled-components';
 
 const CategoryCard = (props) => {
   // const{coffeeReducer} = props
   const [color, setColor] = useState(false);
+  const [brandName, setBrandName] = useState("ADE")
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const coffee = 'coffee';
   useEffect(() => {
     dispatch(__loadCoffeeCategory('ADE'));
   }, [dispatch]);
-
+console.log(brandName)
   const coffeeReducer = useSelector((state) => state.coffee.list);
 
   const categoryList = [
@@ -48,17 +49,14 @@ const CategoryCard = (props) => {
       <ScNext className="next" style={{fontSize:'1.66em'}}>&gt;</ScNext>
       <Swiper
         slidesPerView={8}
-        spaceBetween={10}
-        slidesPerGroup={1}
+        spaceBetween={30}
+        centeredSlides={true}
+        // pagination={true}
         loop={true}
-        // loopFillGroupWithBlank={false}
-        // pagination={{
-        //   clickable: true,
-        // }}
         navigation={{
           prevEl: '.prev',
            nextEl: '.next', }}
-        modules={[Navigation]}
+        modules={[Navigation,Pagination]}
         breakpoints={{
           0: {
             slidesPerView: 1,
@@ -83,6 +81,7 @@ const CategoryCard = (props) => {
       >
         {categoryList.map((item, index) => {
           return (
+            <>
             <SwiperSlide key={index} className="slide">
               <div
                 style={{
@@ -93,23 +92,24 @@ const CategoryCard = (props) => {
               >
                 <ScSlide
                   onClick={(e) => {
-                    // e.target.style.background
-                    // console.log(item.id);
                     setColor(!color);
                     dispatch(__loadCoffeeCategory(item?.brand));
+                    setBrandName(item?.brand)
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
                 ></ScSlide>
               <div style={{ textAlign: 'center', fontSize:"0.8em" }}>{item?.brand}</div>
               </div>
             </SwiperSlide>
+                </>
           );
         })}
       </Swiper>
       </div>
+     
       <div>
+        <ScBrand>{brandName}</ScBrand>
         <SCcardWrap>
-          <div>{coffeeReducer?.brand}</div>
           {coffeeReducer &&
             coffeeReducer.map((item, index) => {
               return <CoffeeCard key={index} item={item} />;
@@ -129,6 +129,16 @@ const animation = keyframes`
 const ScPrev = styled.div`
      @media screen and (max-width:768px){      
       left: 3%;      
+  }
+`
+
+const ScBrand = styled.div`
+/* border: 1px red solid; */
+font-size: 22px;
+margin-top: 20px;
+     @media screen and (max-width:768px){      
+      /* left: 3%;       */
+      display: none;
   }
 `
 
