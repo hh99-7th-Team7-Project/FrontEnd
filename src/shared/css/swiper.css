@@ -46,15 +46,17 @@
 .next{
   position: absolute;
   top:40%;
-  right: -4%;
+  right: -1%;
   /* 허리가 중간에 감 */
   transform: translateY(-50%);
   cursor: pointer;
+  z-index: 99;
 }
 .prev{
   position: absolute;
-  left: -4%;
+  left: -1%;
   top:40%;
   transform: translateY(-50%);
   cursor: pointer;
+  z-index: 99;
 }
