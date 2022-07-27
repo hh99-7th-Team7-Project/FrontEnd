@@ -217,7 +217,7 @@ const MyPage = () => {
             </ScMobile2>
           </ScMobile>
           <ScBookmark>
-            <div style={{ fontSize: '1.5em', fontWeight: '700' }}>북마크</div>
+            <ScMobileBookmark style={{ fontSize: '1.5em', fontWeight: '700' }}>북마크</ScMobileBookmark>
             <div>
               <ScBookmarkwrap>
                 <div style={{ display: 'flex', gap: '20px' }}>
@@ -302,12 +302,22 @@ const ScMobile2 = styled.div`
   }
 `;
 
+const ScMobileBookmark = styled.div`
+  @media screen and (max-width: 768px){    
+    width: 20%;
+  }
+`;
+
 const ScBookmarkwrap = styled.div`
   display: flex;
   gap: 20px;
   margin-left: 10px;
   margin-top: 10px;
   width: 140px;
+  @media screen and (max-width: 768px){
+    display: flex;    
+    justify-content: center;
+  }
 `;
 const ScMyTitle = styled.div`
   font-size: 1.375em;

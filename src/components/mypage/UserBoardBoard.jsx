@@ -91,6 +91,9 @@ const ScWrap = styled.div`
   border-radius: 20px;
   padding: 10px;
   position: relative;
+  @media screen and (max-width: 768px){
+    width: 90%;
+  }
 `;
 const Container = styled.div`
   max-width: 1200px;
