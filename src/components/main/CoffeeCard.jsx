@@ -110,7 +110,7 @@ const SCcardText = styled.div`
     color: #000000c8;
     @media screen and (max-width:768px){ 
           font-size: 10px;
-          width: 90px;
+          width: 100px;
           height: 45px;
           margin-bottom:0;
           line-height: 16px;
@@ -150,7 +150,8 @@ const ScBeforeHover = styled.div`
     flex-direction: column;
     text-align  :center ;
     align-items: center;
-    width: 30%;    
+    width: 100%;  
+    border: 1px red solid;  
   }
 `
 const ScLogoWrap =styled.div`
@@ -220,8 +221,8 @@ const SCcardPrice = styled.div`
     height: 260px;
     margin: 25px auto 10px;
     @media screen and (max-width:768px){ 
-          max-width: 120px;
-          max-height: 120px;
+          max-width: 140px;
+          max-height: 140px;
           margin: 0;
         }
   `
@@ -264,12 +265,9 @@ const ScLens = styled.img`
     font-weight: 400;
     font-size: 14px;
     @media screen and (max-width:768px){ 
-          display: flex;
-          flex-direction: column;
-          text-align  :center ;
-          align-items: center;
           margin:0;
-          width:180%;
+          border-radius: 10px;
+          /* width:180%; */
           font-size: 9px;
         }
   `
@@ -293,9 +291,8 @@ const ScLens = styled.img`
         display  :flex; 
         align-items: center;
         justify-content: center;
-        width: 90%; 
         margin: 0;
-        height: 230px;
+        height: 220px;
         }
   `
 const SCcard = styled.div`
@@ -318,14 +315,12 @@ const SCcard = styled.div`
         align-items: center;
         justify-content: center;
         width: 47%; 
-        /* border: 1px red solid; */
-        margin: 10px 4px;
+        margin: 10px 3px;
         height: 200px;
         &:hover {
       ${SChover}{
         opacity: 100%;
-        background-color: #00000073;
-        /* background: linear-gradient(to bottom, #aaaaaa40, #0000004b); */
+        background-color: #000000a9;
       }
     }
   }
