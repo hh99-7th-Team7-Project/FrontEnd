@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
         <>
-          <ScHeaderBox> 
+          <ScHeaderBox>
             <Logo />
             <Category />
             <HeaderInput />
