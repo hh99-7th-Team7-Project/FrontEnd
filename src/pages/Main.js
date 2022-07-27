@@ -87,7 +87,7 @@ const changeColor2 = ()=>{
              {category?<BrandCard/>:<CategoryCard/>}            
         </ScMaxWrap>
         <ScTopBtnWrap>
-          <Link to="Top" spy={true} smooth={true}>
+            <Link to="Top" spy={true} smooth={true}>
             <ScTopBtn>Top</ScTopBtn>
           </Link>
         </ScTopBtnWrap>
@@ -172,13 +172,16 @@ color: ${props => props.color2};
 `;
 
 const ScTopBtnWrap = styled.div`
-  width: 500px;
+  width: 200px;
   margin: auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   &:hover {
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    justify-content: center;
   }
 `;
 
