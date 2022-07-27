@@ -45,14 +45,7 @@ const BoardSearch = (props) => {
               return <BoardMap key={idx} content={item} />;
             })}
           {sliceBoard?.length > 3 ? (
-            <ScBox
-              style={{
-                width: '1200px',
-                position: 'absolute',
-                height: '500px',
-                marginTop: '450px',
-              }}
-            ></ScBox>
+            <ScBox/>
           ) : null}
         </ScCardContainer>
       </ScCoffeeWrap>
@@ -74,7 +67,15 @@ const BoardSearch = (props) => {
 };
 
 const ScCoffeeWrap = styled.div`
-  /* margin: auto;  */
+  margin: auto;  
+  width: 1300px;
+  @media screen and (max-width:768px) {
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const ScCardContainer = styled.div`
@@ -85,6 +86,10 @@ const ScCardContainer = styled.div`
 `;
 
 const ScBox = styled.div`
+  width: 1200px;
+  position: absolute;
+  height: 500px;
+  margin-top: 450px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 82.29%);
 `;
 

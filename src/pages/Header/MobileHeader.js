@@ -22,6 +22,7 @@ const Header = () => {
 
   const [ categoryVisible , setCategoryVisible ] = useState(false);
   const [ buttonVisible , setButtonVisible ] = useState(false);
+  const [ inputVisible , setInputVisible ] = useState(false);
   const [ toggleBtn, setToggleBtn ] = useState(false);
 
   const handleToggleBtn = () => {
@@ -35,13 +36,14 @@ const Header = () => {
         <ScHeaderBox> 
           <Logo />          
           {categoryVisible ? <Category /> : null }
-          { isMobile ?  null : <HeaderInput /> }          
+          { inputVisible ?  <HeaderInput/> : null }          
           {buttonVisible ? <Button /> : null }
         </ScHeaderBox>
         <ScToggleBtn onClick={()=>{            
             handleToggleBtn();
             setCategoryVisible(!categoryVisible);
             setButtonVisible(!buttonVisible);
+            setInputVisible(!inputVisible);
           }}>
             <FontAwesomeIcon style={{color:"#2c278c"}} icon={faBars} />
           </ScToggleBtn>

@@ -9,7 +9,6 @@ const Search = () => {
   
   return (
     <>
-      <ScMobile>
         <Wrap>      
           <ScDrinkWrap>
             <h2>"{keyword}"에 대한 음료 검색 결과</h2>
@@ -21,33 +20,42 @@ const Search = () => {
             <BoardSearch keyword={ keyword }/>
           </ScBoardWrap>
         </Wrap>
-      </ScMobile>
     </>
   )
 }
 
-const ScMobile = styled.div`
-  min-width: 1200px;
-  width: 80%;
-  @media screen and (min-width: 350px){
+
+const Wrap = styled.div`
+  max-width: 1200px;
+  width: 90%;
+  margin: 80px auto;
+  @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 20px auto;
   }
 `;
 
-const Wrap = styled.div`
-  margin: 80px auto;
-`;
-
-const ScDrinkWrap = styled.div`
-  min-width: 1200px;
+const ScDrinkWrap = styled.div`  
   margin: 20px auto;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto;   
+    justify-content: center;
+    align-items: center;
+
+  }
 `;
 
-const ScBoardWrap = styled.div`
-  min-width: 1200px;
+const ScBoardWrap = styled.div`  
   margin: 100px auto;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    flex-wrap: wrap;
+  }
 `;
 
 export default Search

@@ -65,8 +65,8 @@ max-width:1230px;
 width:100%;
  margin:auto;
  @media screen and (max-width: 768px) {
-  max-width:100%;
-  /* border: 1px red solid; */
+    max-width:100%;
+  
   }
 `
 
@@ -97,12 +97,18 @@ color: ${props => props.color};
   &:hover {
     cursor: pointer;
   }
+  @media screen and (max-width: 768px){
+    font-size: 0.8em;
+  }
 `;
 
 const ScCategory2 = styled.div`
 color: ${props => props.color};
   &:hover {
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px){
+    font-size: 0.8em;
   }
 `;
 

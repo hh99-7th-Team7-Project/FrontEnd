@@ -119,7 +119,7 @@ const ScMyrecipe = styled.div`
   };
   @media screen and (max-width: 768px){
     padding: 5;
-    font-size: 1.2em;     
+    font-size: 1.1em;     
   }
 `
 const ScRecommend = styled.div`
@@ -127,33 +127,37 @@ const ScRecommend = styled.div`
   align-items: center;
   justify-content: center;
   background: ${(props) => (props.click ? "#EDE2F2" : "#ddd")};
-border-radius: 100px;
-padding: 2px 12px;
-color: ${(props) => (props.click ? "#A454CA" : "#7e7c7c")};
-border: ${(props) => (props.click ? "1px solid #A454CA" : "")};
-input{
+  border-radius: 100px;
+  padding: 2px 12px;
+  color: ${(props) => (props.click ? "#A454CA" : "#7e7c7c")};
+  border: ${(props) => (props.click ? "1px solid #A454CA" : "")};
+  input{
     display: none;
   };
   @media screen and (max-width: 768px){
     padding: 5;
-    font-size: 1.2em;      
+    font-size: 1.1em;      
   }
 `
 const ScEtc = styled.div`
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 2px 12px;
   background: ${(props) => (props.click ? "rgba(255, 201, 15, 0.2)" : "#ddd")};
-border-radius: 100px;
-color: ${(props) => (props.click ? "#F6C720" : "#7e7c7c")};
-border: ${(props) => (props.click ? "1px solid #F6C720" : "")};
-input{
+  border-radius: 100px;
+  color: ${(props) => (props.click ? "#F6C720" : "#7e7c7c")};
+  border: ${(props) => (props.click ? "1px solid #F6C720" : "")};
+  input{
     display: none;
+    @media screen and (max-width: 768px) {
+      font-size: 1.0em;
+      
+    }
   };
   @media screen and (max-width: 768px){
     padding: 5;
-    font-size: 1.2em;
+    font-size: 1.0em;
   }
 `
 const ScTitle =styled.div`
@@ -171,13 +175,13 @@ const ScTitle =styled.div`
   };
   @media screen and (max-width: 768px){
     padding: 0;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 `
 
 const ScSpan = styled.span`
   @media screen and (max-width: 768px){
     width: 100%;
-    font-size: 1.2em;
+    font-size: 1.0em;
   }
 `;
