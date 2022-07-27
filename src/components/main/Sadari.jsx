@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Styled from 'styled-components';
 import Sadaricard from './Sadaricard';
 import "../../shared/css/Sadari.css"
+import styled from 'styled-components';
 
 const initialCards = [
   { "src": "/images/strawberry.png", matched: false },
@@ -102,11 +103,11 @@ const Sadari = () => {
   )
 }
 
-const ScSadariWrap = Styled.div`
-    border: 2px solid black;
-    width: 50vw;
+const ScSadariWrap = styled.div`
+    /* border: 2px solid black;
     padding: 10px;
     margin: 20px;
+     */
 `;
 
 export default Sadari

@@ -100,7 +100,7 @@
   
   .container button {
       color: white;
-      background-color: black;
+      background-color: var(--main);
       border: 0px solid white;
       width: 7rem;
       height: 3rem;
@@ -120,11 +120,10 @@
       color: white; 
       font-family: monospace;
       font-size: 1.5rem;
-      background-color: black;
+      background-color: var(--main);
       border: 0px solid white;
-      border-radius: 20px;
-      /* width: 10rem;
-      height: 4rem; */
+      padding: 10px;
+      /* border-radius: 20px; */
   }
   
   .grid {
