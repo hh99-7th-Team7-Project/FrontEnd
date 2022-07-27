@@ -28,7 +28,6 @@ useEffect(()=>{
 //  console.log(coffeeReducer?.loveCheck)
 },[like])
 // console.log(coffeeReducer)
-
 //불려올때마다 재설정되서 처음 불려올때만 like설정하게 바꿔둠
 useEffect(()=>{
 setLike(coffeeReducer?.loveCheck)
@@ -75,24 +74,39 @@ return (
 const Scwrap = styled.div`
   display: flex;
   flex-direction: column;
-  max-width:1200px;
-  width:100%;
+  max-width: 1200px;
+  width: 100%;
   margin: auto;
   @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 40px auto 0;
+    max-width:100%;
   }
 `;
 
 const ScContainer = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width:100%;
+  }
 `;
 
 const ScReviewCommentBox = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px){
+    display: flex;
+    height: 100px;
+    /* border: 1px red solid; */
+    flex-direction: column;
+    margin: auto;
+    width:100%;
+  }
 `;
 
 const ScCommentBox = styled.div`
