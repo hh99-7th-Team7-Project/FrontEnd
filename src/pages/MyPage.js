@@ -22,29 +22,37 @@ const MyPage = () => {
   const [menu, setMenu] = useState(1);
 
   const [update, setUpdate] = useState(false);
-  const [nick, setNick] = useState(nickOrigin);
+
   const [email, setEmail] = useState();
   const [newProfileImg, setNewProfileImg] = useState(null);
-  const [convertImg, setConvertImg] = useState(profileOrigin);
+
   const [changeImg, setChangeImg] = useState(false);
   const [condition, setCondition] = useState('');
   const [countBoard, setCountBoard] = useState()
   const [countChat, setCountChat] = useState()
 
-  // console.log(changeImg);
 
   useEffect(() => {
     const profile = async () => {
-      await apis.getMypage(userId).then((res) => {
-        // console.log(res);
-        setEmail(res.data.username);
+      await apis.getMypage(userId)
+      .then((res) => {
+        console.log(res);
+        setEmail(res.data);
+        setNick(res?.data.nickname)
+        setConvertImg(res?.data.profileImage)
       }).catch(e => {
         Sentry.captureException(e);
       });;
     };
     profile();
-  }, [setUpdate]);
+  }, [setUpdate,update]);
 
+   const [nick, setNick] = useState(); 
+   const [convertImg, setConvertImg] = useState();
+
+  console.log(nick);
+  console.log(convertImg);
+  
   useEffect(() => {
     const boardCount = async () => {
       await apis.getMyBoardCount(userId)
@@ -149,6 +157,7 @@ const MyPage = () => {
                 <UserPhotoUpdate
                   setNewProfileImg={setNewProfileImg}
                   setChangeImg={setChangeImg}
+                  convertImg ={convertImg}
                 />
                 <div>
                   {/* <div onClick={() => { setUpdate(false) }} style={{marginLeft:"160px",marginBottom:"10px"}}>X</div> */}
@@ -160,18 +169,18 @@ const MyPage = () => {
                         alignItems: 'center',
                       }}
                     >
-                      <UserInfoUpdate setNick={setNick} />
+                      <UserInfoUpdate setNick={setNick} nick={nick}/>
                       <div>
                         <img src={Pencil} alt="" onClick={updateProfile} />
                       </div>
                     </div>
-                    <div style={{ fontSize: ' 0.875em' }}>{email}</div>
+                    <div style={{ fontSize: ' 0.875em' }}>{email?.username}</div>
                   </div>
                 </div>
               </ScMyprofile>
             ) : (
               <ScMyprofile>
-                <UserPhoto />
+                <UserPhoto convertImg={convertImg}/>
                 {/* <UserInfo email={email}/> */}
                 <div
                   style={{
@@ -181,7 +190,7 @@ const MyPage = () => {
                   }}
                 >
                   <div style={{ display: 'flex' }}>
-                    <div style={{ fontSize: '1.375em' }}>{userName}</div>
+                    <div style={{ fontSize: '1.375em' }}>{email?.nickname}</div>
                     <img
                       src={Pencil}
                       alt=""
@@ -190,7 +199,7 @@ const MyPage = () => {
                       }}
                     />
                   </div>
-                  <div style={{ fontSize: ' 0.875em' }}>{email}</div>
+                  <div style={{ fontSize: ' 0.875em' }}>{email?.username}</div>
                 </div>
               </ScMyprofile>
             )}

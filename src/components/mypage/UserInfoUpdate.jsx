@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 
-const UserInfoUpdate = ({ setNick }) => {
-  const userName = getCookie('nickname');
-  const nickInputRef = React.useRef(userName);
+const UserInfoUpdate = ({ setNick ,nick}) => {
+  // const userName = nick
+  const nickInputRef = React.useRef();
   const [oknickname, setokNickname] = React.useState(false);
   const [condition, setCondition] = React.useState('값이 나오나');
 
@@ -16,12 +16,12 @@ const UserInfoUpdate = ({ setNick }) => {
     <div>
       <ScUpdate
         ref={nickInputRef}
-        defaultValue={userName}
+        defaultValue={nick}
         maxLength={8}
         onChange={() => {
-          setNick(nickInputRef.current.value);
+          setNick(nickInputRef?.current.value);
         }}
-      />
+        />
     </div>
   );
 };
