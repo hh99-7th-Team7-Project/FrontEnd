@@ -354,6 +354,7 @@ const SCcard = styled.div`
   display: none;
    @media screen and (max-width:768px){  
     position: absolute;
+    display: block;
     width: 30px;
     border-radius: 50%;
     right: 10px;

@@ -44,13 +44,13 @@ const CoffeeSearch = (props) => {
             return(<CoffeeCard key={idx} item={item}/>)
           })} 
           {sliceCoffee?.length > 4 ? 
-          <ScBox style={{width:"1200px", position:"absolute", height: "500px",marginTop:"450px"}}></ScBox> : null }
+          <ScBox/> : null }
         </ScCardContainer>
       </ScCoffeeWrap>
       <ScBtnAlign>
         <ScBtnWrap>
           <ScBtn 
-          onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>
+            onClick={()=>{navigate(`/search/coffee/${keyword}`)}}>
             <ScBtnTitle>+더보기</ScBtnTitle>
           </ScBtn>
         </ScBtnWrap>
@@ -64,6 +64,13 @@ const CoffeeSearch = (props) => {
 const ScCoffeeWrap = styled.div`
   margin: auto;  
   width: 1300px;
+  @media screen and (max-width:768px) {
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const ScNothing = styled.div`
@@ -83,7 +90,17 @@ const ScCardContainer = styled.div`
 `;
 
 const ScBox = styled.div`
+  width: 1300px;
+  position: absolute;
+  height: 500px;
+  margin-top: 450px;
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFF 82.29%);
+  @media screen and (max-width: 768px) {    
+    width: 450px;
+    height: 300px;
+    margin-top: 750px;
+    position: absolute;
+  }
 `;
 
 const ScBtnAlign = styled.div`  
@@ -105,6 +122,10 @@ const ScBtn = styled.div`
   background: #2c278c;
   border-radius: 100px;
   border: none;
+  @media screen and (max-width: 768px) {
+    text-align: center;
+    font-size: 1.2em;
+  }
 `;
 
 const ScBtnTitle = styled.div`

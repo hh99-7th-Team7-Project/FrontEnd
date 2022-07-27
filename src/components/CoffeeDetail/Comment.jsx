@@ -55,7 +55,7 @@ const Comment = ({ item }) => {
 
   return (
     <ScWrap>
-      <div>
+      <ScBrandTitleWrap>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
         </ScBrandTitle>
@@ -63,18 +63,26 @@ const Comment = ({ item }) => {
           <ScH1>"{item?.name}"</ScH1>
           <ScOneCommentTitle>한줄평을 남겨주세요!</ScOneCommentTitle>
         </ScCoffeeTitle>
-      </div>
+      </ScBrandTitleWrap>
       <ScStarContainer>
-        <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
-          <option value="공백">-----선택하기-----</option>
-
+        {isMobile ? 
+        <ScStarSelectMobile type="text" onChange={starSelect} ref={selectStarRef}>
+          <option value="공백">--선택하기--</option>
 
           <option value="1">&#9733;</option>
           <option value="2">&#9733;&#9733;</option>
           <option value="3">&#9733;&#9733;&#9733;</option>
           <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
           <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-        </ScStarSelect>
+        </ScStarSelectMobile> : <ScStarSelect type="text" onChange={starSelect} ref={selectStarRef}>
+          <option value="공백">-----선택하기-----</option>
+
+          <option value="1">&#9733;</option>
+          <option value="2">&#9733;&#9733;</option>
+          <option value="3">&#9733;&#9733;&#9733;</option>
+          <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+          <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+        </ScStarSelect> }
         <ScInput
           type="text"
           placeholder="한줄평을 작성해주세요.(20자 이내로 작성해주세요.)"
@@ -121,6 +129,16 @@ const ScWrap = styled.div`
   }
 `;
 
+const ScBrandTitleWrap = styled.div`
+  margin: auto;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto;
+    width: 80%;
+  }
+`;
+
 const ScBrandTitle = styled.div`
   border: 2px solid black;
   width: 117px;
@@ -130,6 +148,9 @@ const ScBrandTitle = styled.div`
   border-radius: 100px;
   padding: 8px, 20px, 8px, 20px;
   gap: 10px;
+  @media screen and (max-width: 768px){
+    width: 50%;
+  }
 `;
 
 const ScCoffeeTitle = styled.div`
@@ -138,6 +159,10 @@ const ScCoffeeTitle = styled.div`
   display: column;
   justify-content: start;
   align-items: center;
+  @media screen and (max-width: 768px){
+    width: 100%;
+    margin: 20px auto;    
+  }
 `;
 
 const ScH1 = styled.h1`
@@ -147,11 +172,23 @@ const ScH1 = styled.h1`
   font-size: 2.5em;
   line-height: 49.92px;
   width: 500px;
+  @media screen and (max-width: 768px){
+    width: 100%;
+    margin: auto;
+    font-weight: 600;
+    font-size: 1.7em;    
+  }
 `;
 
 const ScH3 = styled.h3`
   text-align: center;
   margin: 10px auto;
+  @media screen and (max-width: 768px){
+    
+    font-weight: 600;
+    font-size: 1.7em;    
+  }
+  
 `;
 
 const ScOneCommentTitle = styled.h2`
@@ -160,6 +197,12 @@ const ScOneCommentTitle = styled.h2`
   font-weight: 700;
   line-height: 49.92px;
   text-align: center;
+  @media screen and (max-width: 768px){
+    width: 100%;
+    margin: auto;
+    font-weight: 600;
+    font-size: 1.7em;    
+  }
 `;
 
 const ScStarContainer = styled.div`
@@ -173,8 +216,9 @@ const ScStarContainer = styled.div`
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
   @media screen and (max-width: 768px){    
     margin: auto;
-    width: 80%;
-    margin-bottom: 20px;
+    width: 80%;    
+    margin-bottom: 40px;
+    
   }
 `;
 
@@ -185,7 +229,14 @@ const ScInput = styled.input`
   border: none;
   border-radius: 2px;
   font-size: 1.25em;
-  text-align: left;  
+  text-align: left;
+  @media screen and (max-width: 768px){    
+    margin: auto;
+    width: 80%;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
 `;
 
 const ScStarSelect = styled.select`
@@ -194,7 +245,15 @@ const ScStarSelect = styled.select`
   border-radius: 20px;
   text-align: left;
   font-size: 0.875em;
-  border: none;
+  border: none;  
+`;
+
+const ScStarSelectMobile = styled.select`
+    margin: auto;
+    width: 35%;  
+    font-weight: 300;
+    font-size: 0.9em;
+    border: none;
 `;
 
 const ScReviewBtn = styled.button`
@@ -207,6 +266,14 @@ const ScReviewBtn = styled.button`
   color: white;
   &:hover {
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px){    
+    margin: auto;
+    width: 20%;
+    font-size: 0.9em;
+    font-weight: 300;
+    background-color: #000;
+    color: white;
   }
 `;
 
@@ -228,10 +295,19 @@ const ScCardTitie = styled.div`
 const ScCardAlign1 = styled.div`
   margin-left: 30px;
   color: black;
+  @media screen and (max-width:768px) {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-left: 25px
+  }
 `;
 
 const ScCardAlign2 = styled.div`
-
+  @media screen and (max-width:768px) {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-left: 25px
+  }
 `;
 
 const ScCardAlign3 = styled.div`
