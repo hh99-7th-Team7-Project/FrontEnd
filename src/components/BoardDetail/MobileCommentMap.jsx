@@ -9,7 +9,8 @@ import {
 import UpdateBoardComment from './UpdateBoardComment';
 import { getCookie } from '../../shared/Cookie';
 
-const CommentMap = () => {
+
+const MobileCommentMap = () => {
   const dispatch = useDispatch();
   const { boardId } = useParams();
   const nickname = getCookie('nickname');
@@ -26,6 +27,8 @@ const CommentMap = () => {
   const [ showToggle , setShowToggle ] = useState(false);
 
   // console.log(commentId);
+
+
 
   return (
     <>
@@ -49,7 +52,7 @@ const CommentMap = () => {
                   ) : (
                     <ScSpanComment>{item?.comment}</ScSpanComment>
                   )}
-                  <ScSpan>{item?.createdAt.split('T')[0]}</ScSpan> 
+                  {/* <ScSpan>{item?.createdAt.split('T')[0]}</ScSpan>  */}
                 </ScCommentAlign>
                 
                 
@@ -101,12 +104,22 @@ const ScWrap = styled.div`
   overflow-y: auto;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
+  @media screen and (max-width: 768px){
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const ScNickAlign = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 768px){
+    width: 50%;
+    margin-bottom: 10px;       
+
+  }
 `;
 
 const ScCommentAlign = styled.div`
@@ -114,12 +127,20 @@ const ScCommentAlign = styled.div`
   padding: 30px;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 768px){
+    width: 100%;    
+  }
+
 `;
 
 const ScBtnAlign = styled.div`
   width: 150px;  
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 768px){
+    width: 100%;
+    margin-top: -20px;
+  }  
 `;
 
 const ScTableWrap = styled.div`
@@ -138,21 +159,21 @@ const ScTableWrap = styled.div`
 
 const ScTable = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin-top: 10px;
 `;
 
 const ScSpan = styled.span`
   text-align: left;
   width: 100px;
-  color: rgb(44,39,140, 80%);
+  color: rgb(51,102,255, 80%);
 
 `;
 
 const ScSpanComment = styled.span`
   text-align: left;
   width: 70%;
-  color: rgb(44,39,140, 80%);
+  color: rgb(00,51,102, 100%);
 
 `;
 
@@ -163,8 +184,8 @@ const ScButton = styled.button`
   background-color: white;
   color: black;
   border: none;
-  margin-left: 50px;
   width: 100px;
+  font-size: 0.9em;
 `;
 
-export default CommentMap;
+export default MobileCommentMap;

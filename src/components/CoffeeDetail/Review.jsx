@@ -114,9 +114,12 @@ export default Review;
 const ScWrap = styled.div`
   width: 1000px;
   height: 150px;
-
   margin: auto;
   position: relative;
+  @media screen and (max-width: 768px){    
+    width: 50%;
+    margin: -10px;
+  }
 `;
 
 const ScSmallWrap =styled.div`
@@ -126,6 +129,10 @@ const ScSmallWrap =styled.div`
   justify-content: center;
   div{
     margin-top: 20px;
+  }
+  @media screen and (max-width: 768px){    
+    width: 50%;
+    margin: -10px;
   }
 `
 
@@ -157,7 +164,10 @@ const ScGotoMap = styled.div`
   align-items: center;
   cursor: pointer;
   border-radius: 100px;
-  margin: auto;  
+  margin: auto;
+  @media screen and (max-width: 768px){    
+    width: 40%;    
+  }
 `;
 const ScGotoMap1 = styled.div`
   width: 250px;
@@ -171,7 +181,10 @@ const ScGotoMap1 = styled.div`
   align-items: center;
   cursor: pointer;
   border-radius: 100px;
-  margin: auto;  
+  margin: auto;
+  @media screen and (max-width: 768px){    
+    width: 20%;    
+  } 
 `;
 
 const ScSpan = styled.span`
@@ -185,7 +198,11 @@ const ScStarPriceContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 50px 0 0 200px;
-  gap:10px
+  gap:10px;
+  @media screen and (max-width: 768px){    
+    margin-left: -20px;
+  }
+  
 `;
 
 const ScStarBox = styled.div`

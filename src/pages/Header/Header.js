@@ -20,10 +20,12 @@ const Header = () => {
     query: "(max-width: 1604px)",
   });
 
+  const [ categoryVisible , setCategoryVisible ] = useState(false);
+  const [ buttonVisible , setButtonVisible ] = useState(false);
   const [ toggleBtn, setToggleBtn ] = useState(false);
 
   const handleToggleBtn = () => {
-    setToggleBtn(true);    
+    setToggleBtn(!toggleBtn);    
   }
 
 
@@ -31,13 +33,17 @@ const Header = () => {
     <>
         
         <ScHeaderBox> 
-          <Logo />         
-          <Category />
+          <Logo />
+          {categoryVisible ?         
+          <Category /> : null }
           { isMobile ?  null: <HeaderInput /> }
-          <Button />          
+          {buttonVisible ? <Button /> :
+           null }
         </ScHeaderBox>
-        <ScToggleBtn href="" onClick={()=>{
+        <ScToggleBtn onClick={()=>{            
             handleToggleBtn();
+            setCategoryVisible(!categoryVisible);
+            setButtonVisible(!buttonVisible);
           }}>
             <FontAwesomeIcon icon={faBars} />
           </ScToggleBtn>
@@ -67,13 +73,16 @@ const ScHeaderBox = styled.nav`
   }
 `;
 
-const ScToggleBtn = styled.a`
+const ScToggleBtn = styled.div`
   position: absolute;
   right: 2em;
   font-size: 1.5em;
   display: none;
   @media screen and (max-width: 768px) {
     display: block;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
