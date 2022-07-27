@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from './Header/Header';
 import { BrandCard, CategoryCard } from '../components/main/A-mainIndex';
 import { Flower } from '../components/main/Flower';
+import { Link } from 'react-scroll';
 
 const MenuCategory = () => {
   const [category, setCategory] = useState(true);
@@ -24,7 +25,7 @@ const MenuCategory = () => {
   return (
     <>
       {/* <Flower /> */}
-      <ScMaxWrap>
+      <ScMaxWrap id="Top">
         <ScNavbarWrap>
           <ScButtonWrap>
             <ScCategory
@@ -50,6 +51,11 @@ const MenuCategory = () => {
         </ScNavbarWrap>
         {category ? <BrandCard /> : <CategoryCard />}
       </ScMaxWrap>
+        <ScTopBtnWrap>
+            <Link to="Top" spy={true} smooth={true}>
+            <ScTopBtn>Top</ScTopBtn>
+          </Link>
+        </ScTopBtnWrap>
     </>
   );
 };
@@ -98,6 +104,31 @@ color: ${props => props.color};
   &:hover {
     cursor: pointer;
   }
+`;
+
+const ScTopBtnWrap = styled.div`
+  width: 200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const ScTopBtn = styled.div`
+  background-color: #2c278c;
+  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
 `;
 
 export default MenuCategory;

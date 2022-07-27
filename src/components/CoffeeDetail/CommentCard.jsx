@@ -66,7 +66,7 @@ const CommentCard = (props) => {
                   <ScCardAlign2>
                     {isMobile ? null :
                     <ScDateSpan>{item?.createdAt.split('T')[0]}</ScDateSpan> }
-                    {isMobile ? <ScNickMobile>{item?.nickname}</ScNickMobile> :
+                    {isMobile ? null :
                     <ScNickSpan>{item?.nickname}</ScNickSpan> }
 
                     {/* <ScButton onClick={()=>{
@@ -200,6 +200,9 @@ const ScCommentSpan = styled.span`
 
 const ScCommentMobile = styled.span`
   margin-left: 30px;
+  line-height: 20px;  
+  width: 170px;
+  font-weight: 300;
 `;
 
 const ScDateSpan = styled.span`
@@ -212,8 +215,6 @@ const ScNickSpan = styled.span`
   font-weight: 400;
 `;
 
-const ScNickMobile = styled.span`
-  
-`;
+
 
 export default CommentCard;

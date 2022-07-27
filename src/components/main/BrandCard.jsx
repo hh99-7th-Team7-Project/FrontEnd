@@ -128,8 +128,7 @@ const BrandCard = (props) => {
               return <CoffeeCard key={index} item={item} />;
             })}
           </SCcardWrap>
-
-      </ScMobile>
+          </ScMobile>
   );
 };
 
