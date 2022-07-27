@@ -66,6 +66,7 @@ const ScTopCard = styled.div`
   /* background-color: #FFE4E0; */
   @media screen and (max-width: 768px){
     width: 100%;
+    margin: 20px auto;
   }
 `
 

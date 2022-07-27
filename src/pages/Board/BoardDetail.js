@@ -98,6 +98,7 @@ const ScImgContainer = styled.div`
     flex-direction: column;
     align-items: center;
     display: flex;
+    margin: 20px auto;
   }
 `;
 
