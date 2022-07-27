@@ -67,7 +67,7 @@ const ScWrap = Styled.div`
     /* border: 1px solid black; */
     max-width: 1200px;
     width: 90%;
-    margin: auto;
+    margin: auto;    
     @media screen and (max-width: 768px){
     margin: auto;
     width: 70%;

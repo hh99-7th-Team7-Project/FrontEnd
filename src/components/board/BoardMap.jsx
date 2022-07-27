@@ -89,6 +89,9 @@ const ScCategory = styled.span`
 const ScTitle = styled.div`
   font-size: 1.375em;
   font-weight: 600;
+  &:hover {
+      cursor: pointer;
+    }
 `;
 const ScBottom = styled.div`
   display: flex;

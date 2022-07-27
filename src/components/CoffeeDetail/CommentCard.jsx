@@ -167,6 +167,7 @@ const ScButtonMobile = styled.button`
   background-color: rgb(44,39,140,0%);
   font-weight: 400;
   width: 10%;
+  
 `;
 
 
@@ -201,8 +202,9 @@ const ScCommentSpan = styled.span`
 const ScCommentMobile = styled.span`
   margin-left: 30px;
   line-height: 20px;  
-  width: 170px;
-  font-weight: 300;
+  width: 100px;
+  font-size: 0.9em;
+  font-weight: 300;  
 `;
 
 const ScDateSpan = styled.span`

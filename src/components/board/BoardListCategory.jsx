@@ -83,7 +83,7 @@ const ScBoard = styled.div`
 const ScTable = styled.div`
   /* border: 1px solid black; */
   width: 100%;
-  margin: 30px auto;
+  margin: 30px auto;  
 `;
 
 export default BoardListCategory;
