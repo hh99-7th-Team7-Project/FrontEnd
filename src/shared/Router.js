@@ -63,7 +63,7 @@ const Router = () => {
       {/* 헤더가 필요한 영역 */}
       
       <Route element={isMobile ? <MobileHeader/> : <Header/>}>
-      {/* <Route path="/" element={<Main myLocation={myLocation} />} /> */}
+      <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
       <Route path="/oauth/google/callback" element={<GoogleLogin />} />
@@ -98,7 +98,7 @@ const Router = () => {
 
       {/* 헤더가 필요없는 영역 */}
       {/* 임시점검 페이지 */}
-      <Route path="/" element={<Inspect/>} />
+      {/* <Route path="/" element={<Inspect/>} /> */}
       {/* signup */}
       <Route path="/signup" element={<Signup />} />
       {/* Login */}

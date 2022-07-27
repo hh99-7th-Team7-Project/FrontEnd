@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import "../shared/css/flow.css"
 import { Link } from 'react-scroll';
 
+
 // components
 import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint, RandomPicker, CategoryCard}from '../components/main/A-mainIndex'
 import Header from './Header/Header';
@@ -16,6 +17,7 @@ import { getCookie } from '../shared/Cookie';
 import { useMediaQuery } from "react-responsive";
 import ImgSlide2 from '../components/main/ImgSlide2';
 import Modal2 from '../components/main/Modal2';
+import ImgSlideMini from '../components/main/ImgSlideMini';
 
 
 
@@ -59,7 +61,9 @@ const changeColor2 = ()=>{
   return (
     <>      
       <div style={{position:"relative", width:"100%",overflow:"hidden"}}>
-      <ImgSlide2/>  
+        
+        <ImgSlideMini/>
+        <ImgSlide2/>  
         <ScMaxWrap style={{maxWidth:"1230px",width:"100%", margin:"auto"}}>
             {/* <ScMapRandomWrap>
               <RandomPicker />
@@ -84,7 +88,8 @@ const changeColor2 = ()=>{
                 </ScCategory2>
               </ScButtonWrap>
             </ScNavbarWrap>            
-             {category?<BrandCard/>:<CategoryCard/>}            
+             {category?<BrandCard/>:<CategoryCard/>}   
+                      
         </ScMaxWrap>
         <ScTopBtnWrap>
             <Link to="Top" spy={true} smooth={true}>
@@ -95,7 +100,7 @@ const changeColor2 = ()=>{
           {/* <Flow/> */}
       <Flower/>
       </div>    
-      <Footer/>
+      {/* <Footer/> */}
 
     </>
   )
@@ -122,7 +127,7 @@ width:100%;
 `
 
 const ScTitle = styled.div`
-  margin-bottom: 46px; 
+  /* margin-bottom: 46px;  */
   font-size:35px;
   color: var(--main); 
   font-family: SUIT ExtraBold;

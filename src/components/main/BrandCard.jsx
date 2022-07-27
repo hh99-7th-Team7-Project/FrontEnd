@@ -118,11 +118,10 @@ const BrandCard = (props) => {
           );
         })}
       </Swiper>
-
           </div>
-      
+           
         <SCcardWrap>
-          <div>{coffeeReducer?.brand}</div>
+          <div style={{fontSize:"30px"}}>{coffeeReducer?.brand}</div>
           {coffeeReducer &&
             coffeeReducer.map((item, index) => {
               return <CoffeeCard key={index} item={item} />;

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
 import { BoardList, PopularBoard, BoardListCategory } from "../../components/board/A-boardindex"
 import styled from 'styled-components';
-import { boardwrite, BoardLogo } from '../../shared/svg/A-index'
+import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
 import BoardPagination from '../../components/board/Pagination/BoardPagination';
 
 
@@ -21,7 +21,8 @@ const Board = () => {
     <>
         <ScWrap>
           <ScTopCard>
-            <img src={BoardLogo} alt="" style={{ width: "100%" }} />
+            <ScLogo1 src={BoardLogo} alt="" style={{ width: "100%" }} />
+            <ScLogo2 src={BoardMini1} alt="" style={{ width: "100%" }} />
             <ScTopWord>
               <ScMainTitle>커피를 사랑하는<br /> 사람들의 커피 연구소</ScMainTitle>
               <Scwrite onClick={() => { navigate("/board/write") }}>
@@ -58,6 +59,18 @@ const ScWrap = Styled.div`
   }
 `;
 
+const ScLogo1 = styled.img`
+@media screen and (max-width: 768px) {
+  display: none;
+}
+`
+const ScLogo2 = styled.img`
+display: none;
+@media screen and (max-width: 768px) {
+  display: block;
+  }
+`
+
 const ScTopCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,6 +99,11 @@ font-size: 2.125em;
 line-height: 43px;
 margin-bottom: 30px;
 font-family: "SUIT ExtraBold";
+@media screen and (max-width: 1200px) {
+   font-size: 28px;
+   right: 20%;
+   /* display: none; */
+  }
 @media screen and (max-width: 768px){
     display: none;
   }
@@ -96,8 +114,8 @@ const ScBoardWrite = styled.span`
     cursor: pointer;
   }
   @media screen and (max-width: 768px){
-    width: 60%;
-    top: 0;
+    width: 50%;
+    top: 19%;
   }
   
 `;
@@ -115,8 +133,10 @@ const Scwrite = styled.div`
   font-size: 1.25em;
   border-radius: 10px;
   @media screen and (max-width: 768px){
-    width: 40%;
-    margin: -50px 1%;
+    /* width: 30%; */
+    /* margin: -50px 1%; */
+    width: 140px;
+    font-size: 13px;
   }
 `
 const ScCategory = styled.div`
