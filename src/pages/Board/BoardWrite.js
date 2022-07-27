@@ -83,7 +83,7 @@ const ScWrite = styled.div`
   max-width: 1200px;
   width: 100%;
   margin: 73px auto;
-  
+
   @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
@@ -95,7 +95,7 @@ const ScWrite = styled.div`
 const ScBoard = styled.div`
   
   @media screen and (max-width: 768px){
-    width: 80%;
+    width: 94%;
     margin: auto;
   }
 `;
