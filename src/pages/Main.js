@@ -60,7 +60,7 @@ const changeColor2 = ()=>{
     <>      
       <div style={{position:"relative", width:"100%",overflow:"hidden"}}>
       <ImgSlide2/>  
-        <div style={{maxWidth:"1230px",width:"100%", margin:"auto"}}>
+        <ScMaxWrap style={{maxWidth:"1230px",width:"100%", margin:"auto"}}>
             {/* <ScMapRandomWrap>
               <RandomPicker />
               <LottoPoint/>
@@ -84,8 +84,8 @@ const changeColor2 = ()=>{
                 </ScCategory2>
               </ScButtonWrap>
             </ScNavbarWrap>            
-              {category?<BrandCard/>:<CategoryCard/>}            
-        </div>
+             {category?<BrandCard/>:<CategoryCard/>}            
+        </ScMaxWrap>
         <ScTopBtnWrap>
           <Link to="Top" spy={true} smooth={true}>
             <ScTopBtn>Top</ScTopBtn>
@@ -111,20 +111,23 @@ const ScMapRandomWrap = styled.div`
   margin: 84px auto 79px;
 `;
 
+const ScMaxWrap = styled.div`
+max-width:1230px;
+width:100%;
+ margin:auto;
+ @media screen and (max-width: 768px) {
+  max-width:100%;
+  /* border: 1px red solid; */
+  }
+`
+
 const ScTitle = styled.div`
   margin-bottom: 46px; 
   font-size:35px;
   color: var(--main); 
   font-family: SUIT ExtraBold;
   @media screen and (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 80px;    padding: 8px 24px;
-    margin: auto;
-    width: 100%;
-    justify-content: center;
-    width: 50%;
+    margin-bottom:0;
   }
 `;
 
@@ -135,11 +138,11 @@ align-items: center;
 margin: 50px auto;
 @media screen and (max-width:768px){
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    width: 50%; 
-    justify-content: center;
-    
+    margin: 0 10px 30px 10px;
+    /* border: 1px solid red; */
   }
 `;
 
@@ -148,10 +151,8 @@ display: flex;
 gap: 28px;
 font-size: 1.13em;
 @media screen and (max-width:768px){
-    flex-direction: row;
-    display: flex;
-    justify-content: center;
-    width: 100%;    
+    /* justify-content: center; */ 
+    /* border: 1px solid red;    */
   }
 `;
 
