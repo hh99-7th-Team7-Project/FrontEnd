@@ -29,8 +29,6 @@ const token = getCookie("token")
 
   return (
     <>
-
-
       <div style={{display:"flex", flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
         <ScBrandTitle>
           <ScH3>{item?.brand}</ScH3>
@@ -59,7 +57,7 @@ const token = getCookie("token")
         </ScSubTitle>
       </div>
       <ScImgWrap>
-            {item?.brand === "더벤티" || item?.brand === "컴포즈" || item?.brand === "엔제리너스"? <ScImgVenti src={url} /> : <ScImg src={url} /> }
+            {item?.brand === "더벤티" || item?.brand === "컴포즈" || item?.brand === "엔제리너스" ||item?.brand === "빽다방"? <ScImgVenti src={url} /> : <ScImg src={url} /> }
       </ScImgWrap>
 
     </>
@@ -75,26 +73,51 @@ const ScBrandTitle = styled.div`
   border-radius: 100px;
   padding: 8px, 20px, 8px, 20px;
   gap: 10px;
+  @media screen and (max-width: 768px){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 33px;
+    border: 1px solid black;
+  }
 `;
 
 const ScH3 = styled.div`
   text-align: center;
   margin: 10px auto;  
+  
 `;
 
 const ScCoffeeTitle = styled.div`
   margin: auto;
+  position: relative;
   width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.75em;
   transform: translateX(-5%);
+  @media screen and (max-width: 768px){
+    /* border: 1px red solid; */
+    width: 90%;
+    margin: auto;
+    transform: translateX(0%);
+  }
 `;
 
 const ScImgBookMark = styled.img`
   margin: auto;
   width: 30px;
+  @media screen and (max-width: 768px){
+    /* border: 1px red solid; */
+    /* width: 5px; */
+    height: 25px;
+    position: absolute;
+    top: 13px;
+    left: 16px;
+
+  }
 `;
 
 const ScH1 = styled.div`
@@ -103,6 +126,13 @@ const ScH1 = styled.div`
   margin: 20px auto;
   line-height: 70px;
   text-align: center;
+  @media screen and (max-width: 768px){
+    /* border: 1px red solid; */
+    width: 60%;
+    padding:0;
+    margin: 0px auto;
+    line-height: 50px;
+  }
 `;
 
 const ScSubTitle = styled.div`
@@ -124,11 +154,27 @@ const ScImgWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 768px){
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* margin: auto; */
+    /* border: 1px red solid; */
+    height: 400px;
+    width: 100%;
+  }
 `;
 
 const ScImgVenti = styled.img`
   width: 300px;
   height: 400px;
+  @media screen and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width:100%;
+    width: 200px;
+    height: 300px;
+  }
 `;
 
 const ScImg = styled.img`
