@@ -95,8 +95,12 @@ const ScCategory = styled.div`
   border-top: 1px solid #2C278C;
   color: #2C278C;  
   @media screen and (max-width: 768px){
+    /* margin-top: 20px; */
     padding: 3;
-    width: 100%;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+ 
   }
 `
 const ScMobile = styled.div`
@@ -174,8 +178,16 @@ const ScTitle =styled.div`
    width: 850px;
   };
   @media screen and (max-width: 768px){
+    border: 1px red solid;
     padding: 0;
     font-size: 1.1em;
+    justify-content: center;
+    text-align: center;
+    input{
+   border: none;
+   width: 850px;
+   margin-left: 40px;
+  };
   }
 `
 

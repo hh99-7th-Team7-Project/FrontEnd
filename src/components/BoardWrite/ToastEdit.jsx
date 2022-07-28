@@ -12,19 +12,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadBoard } from '../../redux/modules/board';
 import { api, instance } from '../../shared/api/core/api';
 import apis from '../../shared/api/main';
+import styled from 'styled-components';
 
 const ToastEdit = (props) => {
   const { content } = props;
   const editorRef = useRef();
 
   return (
-    <div>
+    <>
+    <ScEditor>
       <Editor
         onChange={() => {
           content(editorRef.current?.getInstance().getMarkdown());
         }}
         initialValue=""
-        previewStyle="vertical" // 미리보기 스타일 지정
+        previewStyle="tab" // 미리보기 스타일 지정
         height="600px" // 에디터 창 높이
         initialEditType="markdown"
         useCommandShortcut={false} // 초기 입력모드 설정(디폴트 markdown)
@@ -50,8 +52,57 @@ const ToastEdit = (props) => {
         }}
       />
       {/* <button onClick={handleRegisterButton}>등록</button> */}
-    </div>
+    </ScEditor>
+    {/* <ScMobileEditor>
+    <Editor
+        onChange={() => {
+          content(editorRef.current?.getInstance().getMarkdown());
+        }}
+        initialValue=""
+        previewStyle="tab" // 미리보기 스타일 지정
+        height="600px" // 에디터 창 높이
+        initialEditType="markdown"
+        useCommandShortcut={false} // 초기 입력모드 설정(디폴트 markdown)
+        previewHighlight={false}
+        language="ko-KR"
+        toolbarItems={[
+          // 툴바 옵션 설정
+          ['heading', 'bold', 'italic', 'strike'],
+          ['hr', 'quote'],
+          ['ul', 'ol', 'indent', 'outdent', 'image'],
+        ]}
+        ref={editorRef}
+        plugins={[colorSyntax]}
+        hooks={{
+          addImageBlobHook: async (blob, callback) => {
+            let formData = new FormData();
+            formData.append('imgUrl', blob);
+            const image_data = await apis.postImg(formData);
+            // console.log(image_data?.data.img);
+
+            callback(`${image_data?.data.img}`, `${blob.name.split('.')[0]}`);
+          },
+        }}
+      />
+
+    </ScMobileEditor> */}
+    
+    </>
   );
 };
 
 export default ToastEdit;
+
+const ScEditor =styled.div`
+     /* @media screen and (max-width:768px){      
+     display:none;         
+  } */
+
+`
+
+const ScMobileEditor = styled.div`
+  display:none; 
+       @media screen and (max-width:768px){      
+     display:block;         
+  }
+`

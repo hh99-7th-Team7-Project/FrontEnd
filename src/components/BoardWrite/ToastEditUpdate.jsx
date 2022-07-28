@@ -30,7 +30,7 @@ const ToastEditUpdate = (props) => {
             content(editorRef.current?.getInstance().getMarkdown());
           }}
           initialValue=""
-          previewStyle="vertical" // 미리보기 스타일 지정
+          previewStyle="tab" // 미리보기 스타일 지정
           height="400px" // 에디터 창 높이
           initialEditType="markdown"
           useCommandShortcut={false} // 초기 입력모드 설정(디폴트 markdown)
