@@ -3,8 +3,6 @@ import Swal from 'sweetalert2';
 import * as Sentry from "@sentry/react";
 
 const initialState = {
-  one_list:[],
-  member:[]
 };
 
 /* ----------------- 액션 타입 ------------------ */

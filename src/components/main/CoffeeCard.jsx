@@ -279,7 +279,7 @@ const ScLens = styled.img`
     border: 1px black solid;
     border-radius: 20px;
     margin: 10px auto;
-    width: 30%;
+    width: 80px;
     font-weight: 400;
     font-size: 14px;
     @media screen and (max-width:768px){ 

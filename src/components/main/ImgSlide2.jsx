@@ -22,7 +22,7 @@ const ImgSlide2 = () => {
         clickable: true,
       }}
       autoplay={{
-        delay: 2500,
+        delay: 5500,
         disableOnInteraction: false,
       }}
         loop={true}
