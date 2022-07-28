@@ -18,6 +18,7 @@ const ImgSlideModal = () => {
       clickable: true,
     }}
     modules={[Pagination]} className="mySwiper">
+      <SwiperSlide><img src="/mainmodal/mini/0.png" alt=""/></SwiperSlide>
       <SwiperSlide><img src="/mainmodal/mini/1.webp" alt=""/></SwiperSlide>
       <SwiperSlide><img src="/mainmodal/mini/2.webp" alt=""/></SwiperSlide>
       <SwiperSlide><img src="/mainmodal/mini/3.webp" alt=""/></SwiperSlide>
