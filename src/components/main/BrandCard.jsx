@@ -119,7 +119,7 @@ const BrandCard = (props) => {
         })}
       </Swiper>
           </div>
-           
+
         <SCcardWrap>
           <div style={{fontSize:"30px"}}>{coffeeReducer?.brand}</div>
           {coffeeReducer &&
