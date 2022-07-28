@@ -11,6 +11,7 @@ import { useMediaQuery } from "react-responsive";
 import {Outlet} from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import zoom from '../../components/Header/svg/Zoom.svg'
 
 
 const Header = () => {
@@ -34,16 +35,30 @@ const Header = () => {
     <>
         
         <ScHeaderBox> 
-          <Logo />          
+          <Logo /> 
+          <ScGap>        
           {categoryVisible ? <Category /> : null }
           { inputVisible ?  <HeaderInput/> : null }          
           {buttonVisible ? <Button /> : null }
+          </ScGap> 
         </ScHeaderBox>
+        <ScZoom  
+        onClick={()=>{
+           setInputVisible(!inputVisible);
+           if(categoryVisible&&buttonVisible){
+            setCategoryVisible(false);
+            setButtonVisible(false);
+           }
+        }}
+        src={zoom} alt=""style={{cursor:"pointer"}}/>
         <ScToggleBtn onClick={()=>{            
             handleToggleBtn();
             setCategoryVisible(!categoryVisible);
             setButtonVisible(!buttonVisible);
-            setInputVisible(!inputVisible);
+            if(inputVisible){
+              setInputVisible(false);
+             }
+           
           }}>
             <FontAwesomeIcon style={{color:"#2c278c"}} icon={faBars} />
           </ScToggleBtn>
@@ -65,13 +80,21 @@ const ScHeaderBox = styled.nav`
   width: 100%;
   margin: auto;
   padding: 8px 12px;
+  position: relative;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    height: 100%;
+    height: 10%;
   }
 `;
+
+const ScZoom = styled.img`
+  width: 5%;
+  position: absolute;
+  left: 25px;
+  top: 23.0px;
+`
 
 const ScToggleBtn = styled.div`
   position: absolute;
@@ -86,6 +109,15 @@ const ScToggleBtn = styled.div`
     }
   }
 `;
+
+const ScGap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  margin: auto;
+  
+`
 
 // const ScBar = styled.div`
 //     display: flex;

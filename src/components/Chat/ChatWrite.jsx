@@ -238,7 +238,6 @@ const ChatWrite = ({ setWrite, write }) => {
           value={chatContent || ''} onChange={inputContent} />
         )}
         <Title>카페 위치<span style={{color:"#8f8d8db7", fontSize:"0.8em",fontWeight:"400"}}>(명확한 상호명을 적어주세요 (ex)이태원 챔프커피)</span></Title>
-
         {is_edit ? (
           <div>
             <MapInput

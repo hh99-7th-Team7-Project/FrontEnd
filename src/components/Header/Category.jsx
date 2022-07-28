@@ -50,7 +50,7 @@ const ScCategoryBox = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 20px auto 0;
     text-align: center;
 
   }

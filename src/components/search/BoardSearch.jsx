@@ -74,7 +74,7 @@ const ScCoffeeWrap = styled.div`
     margin: 30px auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
   }
 `;
 
@@ -82,7 +82,7 @@ const ScCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
 `;
 
 const ScBox = styled.div`
@@ -91,6 +91,10 @@ const ScBox = styled.div`
   height: 500px;
   margin-top: 450px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 82.29%);
+  @media screen and (max-width: 768px){    
+    width: 450px;
+    height: 400px;
+  }
 `;
 
 const ScBtnAlign = styled.div`

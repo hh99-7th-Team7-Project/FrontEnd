@@ -30,7 +30,7 @@ const ScMobile = styled.div`
     display: block;
     flex-direction: column;
     align-items: center;
-    margin: 30px auto;    
+    margin: 0 auto 30px;    
   }
 `;
 export default ImgSlideMini

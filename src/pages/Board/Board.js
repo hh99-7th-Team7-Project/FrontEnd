@@ -6,6 +6,7 @@ import { BoardList, PopularBoard, BoardListCategory } from "../../components/boa
 import styled from 'styled-components';
 import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
 import BoardPagination from '../../components/board/Pagination/BoardPagination';
+import PopularBoardMobile from '../../components/board/PopularBoardMobile';
 
 
 
@@ -31,6 +32,7 @@ const Board = () => {
               </Scwrite>
             </ScTopWord>
           </ScTopCard>
+          {/* <PopularBoardMobile/> */}
           <PopularBoard />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <ScCategory>

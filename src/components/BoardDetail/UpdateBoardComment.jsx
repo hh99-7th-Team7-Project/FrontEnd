@@ -77,6 +77,10 @@ const ScTextArea = styled.textarea`
   outline: none;
   resize: none;  
   text-align: left;
+  @media screen and (max-width: 768px) {
+    width: 200px;
+    margin-left: -40px;
+  }
 `;
 
 const ScButton = styled.button`
@@ -87,6 +91,9 @@ const ScButton = styled.button`
   color: black;
   border: none;
   margin-left: 20px;
+  @media screen and (max-width: 768px) {
+    width: 30px;    
+  }
 `;
 
 export default UpdateBoardComment;
