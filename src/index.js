@@ -8,6 +8,7 @@ import  GlobalStyle  from './GlobalStyle';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
+import ReactGA from 'react-ga';
 
 import "swiper/css/bundle";
 import ScrollToTop from './shared/ScrollToTop';
@@ -22,6 +23,8 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+const TRACKING_ID = process.env.REACT_APP_GOOGLE_ANALYTICS;
+ReactGA.initialize(TRACKING_ID)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
