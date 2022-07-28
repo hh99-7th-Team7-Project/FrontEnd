@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Button,
   Category,
@@ -26,40 +26,57 @@ const Header = () => {
   const [ inputVisible , setInputVisible ] = useState(false);
   const [ toggleBtn, setToggleBtn ] = useState(false);
 
+  
+
   const handleToggleBtn = () => {
     setToggleBtn(!toggleBtn);    
   }
 
+  const el = useRef();
+
+  const closeToggle = (e) => {
+    if (el.current && !el.current.contains(e.target)){
+      setToggleBtn(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("click",closeToggle);
+  
+    return () => {
+      window.removeEventListener("click",closeToggle)
+    }
+  }, [])
+  
+
 
   return (
     <>
-        
-        <ScHeaderBox> 
-          <Logo /> 
+        <ScHeaderBox ref={el}> 
+          <Logo/> 
           <ScGap>        
-          {categoryVisible ? <Category /> : null }
-          { inputVisible ?  <HeaderInput/> : null }          
-          {buttonVisible ? <Button /> : null }
+            {categoryVisible ? <Category /> : null }
+            { inputVisible ?  <HeaderInput /> : null }          
+            {buttonVisible ? <Button /> : null }
           </ScGap> 
         </ScHeaderBox>
-        <ScZoom  
-        onClick={()=>{
-           setInputVisible(!inputVisible);
-           if(categoryVisible&&buttonVisible){
-            setCategoryVisible(false);
-            setButtonVisible(false);
-           }
-        }}
-        src={zoom} alt=""style={{cursor:"pointer"}}/>
-        <ScToggleBtn onClick={()=>{            
-            handleToggleBtn();
-            setCategoryVisible(!categoryVisible);
-            setButtonVisible(!buttonVisible);
-            if(inputVisible){
-              setInputVisible(false);
-             }
-           
-          }}>
+          <ScZoom  
+            onClick={()=>{
+            setInputVisible(!inputVisible);
+            if(categoryVisible&&buttonVisible){
+                  setCategoryVisible(false);
+                  setButtonVisible(false);
+                }
+              }}
+              src={zoom} alt=""style={{cursor:"pointer"}}/>
+            <ScToggleBtn onClick={()=>{                      
+              handleToggleBtn();           
+              setCategoryVisible(!categoryVisible);
+              setButtonVisible(!buttonVisible);
+              if(inputVisible){
+                setInputVisible(false);
+              }
+            }}>
             <FontAwesomeIcon style={{color:"#2c278c"}} icon={faBars} />
           </ScToggleBtn>
         <Outlet />
