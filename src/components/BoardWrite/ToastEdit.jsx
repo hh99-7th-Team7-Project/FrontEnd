@@ -20,7 +20,7 @@ const ToastEdit = (props) => {
 
   return (
     <>
-    <ScEditor>
+   
       <Editor
         onChange={() => {
           content(editorRef.current?.getInstance().getMarkdown());
@@ -52,7 +52,7 @@ const ToastEdit = (props) => {
         }}
       />
       {/* <button onClick={handleRegisterButton}>등록</button> */}
-    </ScEditor>
+
     {/* <ScMobileEditor>
     <Editor
         onChange={() => {

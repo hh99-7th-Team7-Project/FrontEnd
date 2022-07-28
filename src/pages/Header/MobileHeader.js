@@ -34,10 +34,12 @@ const Header = () => {
     <>
         
         <ScHeaderBox> 
-          <Logo />          
+          <Logo /> 
+          <ScGap>        
           {categoryVisible ? <Category /> : null }
           { inputVisible ?  <HeaderInput/> : null }          
           {buttonVisible ? <Button /> : null }
+          </ScGap> 
         </ScHeaderBox>
         <ScToggleBtn onClick={()=>{            
             handleToggleBtn();
@@ -69,7 +71,7 @@ const ScHeaderBox = styled.nav`
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    height: 100%;
+    height: 10%;
   }
 `;
 
@@ -86,6 +88,15 @@ const ScToggleBtn = styled.div`
     }
   }
 `;
+
+const ScGap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  margin: auto;
+  
+`
 
 // const ScBar = styled.div`
 //     display: flex;

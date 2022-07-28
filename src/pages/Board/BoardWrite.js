@@ -88,7 +88,6 @@ const ScWrite = styled.div`
     display: flex;
     flex-direction: column;
     margin: 30px auto 0;
-    
   }
 `;
 

@@ -114,6 +114,9 @@ const ScCommentBox = styled.div`
   max-width: 1900px;
   width: 100%;
   background-color: rgb(44,39,140,10%);
+  @media screen and (max-width: 768px){
+    margin: 300px auto 0;
+  }
 `;
 
 
