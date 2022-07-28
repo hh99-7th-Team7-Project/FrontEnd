@@ -24,13 +24,12 @@ const Header = () => {
   const [ categoryVisible , setCategoryVisible ] = useState(false);
   const [ buttonVisible , setButtonVisible ] = useState(false);
   const [ inputVisible , setInputVisible ] = useState(false);
+
+
   const [ toggleBtn, setToggleBtn ] = useState(false);
 
-  
 
-  const handleToggleBtn = () => {
-    setToggleBtn(!toggleBtn);    
-  }
+  const handleToggleBtn = () => setToggleBtn(!toggleBtn);    
 
   const el = useRef();
 
@@ -41,24 +40,23 @@ const Header = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("click",closeToggle);
-  
+    window.addEventListener("click", closeToggle);
     return () => {
-      window.removeEventListener("click",closeToggle)
+      window.removeEventListener("click", closeToggle);
     }
-  }, [])
+  }, []);
   
 
 
   return (
     <>
-        <ScHeaderBox ref={el}> 
+        <ScHeaderBox> 
           <Logo/> 
-          <ScGap>        
+          <ScGap ref={el}>        
             {categoryVisible ? <Category /> : null }
             { inputVisible ?  <HeaderInput /> : null }          
             {buttonVisible ? <Button /> : null }
-          </ScGap> 
+          </ScGap>
         </ScHeaderBox>
           <ScZoom  
             onClick={()=>{
