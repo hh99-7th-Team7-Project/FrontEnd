@@ -24,35 +24,15 @@ const Header = () => {
   const [ categoryVisible , setCategoryVisible ] = useState(false);
   const [ buttonVisible , setButtonVisible ] = useState(false);
   const [ inputVisible , setInputVisible ] = useState(false);
-
-
   const [ toggleBtn, setToggleBtn ] = useState(false);
 
-
-  const handleToggleBtn = () => setToggleBtn(!toggleBtn);    
-
-  const el = useRef();
-
-  const closeToggle = (e) => {
-    if (el.current && !el.current.contains(e.target)){
-      setToggleBtn(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("click", closeToggle);
-    return () => {
-      window.removeEventListener("click", closeToggle);
-    }
-  }, []);
-  
 
 
   return (
     <>
-        <ScHeaderBox> 
-          <Logo/> 
-          <ScGap ref={el}>        
+        <ScHeaderBox > 
+          <Logo/>
+          <ScGap>    
             {categoryVisible ? <Category /> : null }
             { inputVisible ?  <HeaderInput /> : null }          
             {buttonVisible ? <Button /> : null }
@@ -68,7 +48,7 @@ const Header = () => {
               }}
               src={zoom} alt=""style={{cursor:"pointer"}}/>
             <ScToggleBtn onClick={()=>{                      
-              handleToggleBtn();           
+              setToggleBtn(!toggleBtn);           
               setCategoryVisible(!categoryVisible);
               setButtonVisible(!buttonVisible);
               if(inputVisible){
