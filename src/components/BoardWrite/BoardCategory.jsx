@@ -97,7 +97,7 @@ const ScCategory = styled.div`
   @media screen and (max-width: 768px){
     /* margin-top: 20px; */
     padding: 3;
-    width: 90%;
+    width: 100%;
     margin: auto;
     justify-content: center;
  
@@ -178,7 +178,7 @@ const ScTitle =styled.div`
    width: 850px;
   };
   @media screen and (max-width: 768px){
-    border: 1px red solid;
+    /* border: 1px red solid; */
     padding: 0;
     font-size: 1.1em;
     justify-content: center;
