@@ -20,7 +20,7 @@ const BoardMap = (props) => {
   };
 
   return (
-    <ScBoardList>
+    <ScBoardList  onClick={moveToBoard}>
       <ScHeader>
         <div>
           {content?.category === '나만의 비밀 레시피' && (
@@ -44,7 +44,7 @@ const BoardMap = (props) => {
           <span>{content?.view}</span>
         </Scbar>
       </ScHeader>
-      <ScTitle onClick={moveToBoard}>{content?.title}</ScTitle>
+      <ScTitle>{content?.title}</ScTitle>
       <ScBottom>
         <span>{content?.nickname}</span>
         <span>{create}</span>
@@ -69,6 +69,10 @@ const ScBoardList = styled.div`
   font-size: 0.875em;
   margin: 24px auto;
   background-color: white;
+  cursor: pointer;
+  &:hover{
+    background-color: #8e4aad29;
+  }
   @media screen and (max-width: 768px) {
     width: 100%;
     margin: 20px auto;
