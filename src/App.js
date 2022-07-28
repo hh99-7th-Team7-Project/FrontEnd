@@ -3,9 +3,13 @@ import './App.css';
 import Router from './shared/Router';
 import styled from 'styled-components'
 import { AnimatePresence } from 'framer-motion'
+import RouteChangeTracker from './shared/RouteChangeTracker';
 
 
 function App() {
+
+  RouteChangeTracker();
+
   return (
     <>
       <SCwrap>
