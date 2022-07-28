@@ -71,7 +71,7 @@ const PostChat = ({ chatpostId }) => {
   };
 
   const stompConnect = () => {
-    let socket = new SockJs('https://sparta-gi.shop/ws-coala');
+    let socket = new SockJs(process.env.REACT_APP_URL_CHAT);
     stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
     // console.log('stomp연결');
