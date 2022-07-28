@@ -11,15 +11,15 @@ const Modal2 = ({showModal,closeModal}) => {
     closeModal()
   }
 
-  const notSeen = getCookie("not seen a day")
-  if(!notSeen){
-     Swal.fire({
-    title: '모바일 버전은 준비중입니다ㅜㅠ',
-    text: '제발 웹으로 들어와주세요...',
-    icon: 'warning',
-    confirmButtonText: '확인',
-  });
-  } 
+  // const notSeen = getCookie("not seen a day")
+  // if(!notSeen){
+  //    Swal.fire({
+  //   title: '모바일 버전은 준비중입니다ㅜㅠ',
+  //   text: '제발 웹으로 들어와주세요...',
+  //   icon: 'warning',
+  //   confirmButtonText: '확인',
+  // });
+  // } 
 
 
   return (
