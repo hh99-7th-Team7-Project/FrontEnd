@@ -36,7 +36,7 @@ const ChatDetail = () => {
   });
 
   const _checkUser = getCookie('userId');
-  // console.log(_checkUser)
+
 
   useEffect(() => {
     dispatch(__loadOneChatItem(id));
@@ -44,13 +44,14 @@ const ChatDetail = () => {
 
   const data = useSelector((state) => state.chat.one_list);
   const data2 = useSelector((state) => state.chat.member);
-  // console.log(data2)
+  const data3 = useSelector((state) => state.chat.first_member);
+  console.log(data3)
 
   const mem_list = []
    const member = data2?.forEach((item,idx)=>{
     mem_list.push(`${item?.id}`)
   })
-  // console.log("멤리스트",mem_list)
+  
   // console.log(mem_list?.includes(_checkUser))
 
 
@@ -65,8 +66,7 @@ const ChatDetail = () => {
  const members = data?.chatPostMember;
   const chatpostId = Number(data?.chatpostId);
 
-  // console.log(members)
-  // console.log(data)
+  
   const upCount = async () => {
     const item = await apis.attendChatMember(chatpostId).then((res) => {
       // console.log(res.data);
@@ -122,7 +122,7 @@ const ChatDetail = () => {
                   <div style={{display:"flex"}}> <div>모집 중</div> <Time>{data?.beforeTime}</Time></div>
                 )}
               </div>
-              {chat === true ? null : _checkUser === data?.id ? (
+              {chat === true ? null : _checkUser == data3?.id ? (
                 <div>
                   <Btn onClick={changeContent}>수정</Btn>
                   <Btn onClick={deleteChatItem}>삭제</Btn>
@@ -171,7 +171,7 @@ const ChatDetail = () => {
                   {mem_list?.includes(`${_checkUser}`) ?
                    ( 
                           <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}> 
-                          {_checkUser===members[0].id? null:
+                          {_checkUser==members[0].id? null:
                            <AttendBtn1 onClick={downCount} none={none} style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                                 <ScCheckImg src={Check} alt=""/>
                                 <span>참여하지않기</span>
