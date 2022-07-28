@@ -49,20 +49,20 @@ const ScWrap = styled.div`
     width: 40%;
     height: 38px;
     display: flex;
-    border: 1px solid #bbb;
+    border: 1px solid var(--main);
     border-radius: 20px;
     padding: 0 5px;
     justify-content: center;
     align-items: center;
     @media screen and (max-width: 768px){
-      width: 40%;
-      margin: auto;
+      width: 140%;
+      margin: 30px 0 30px 0;
       display: flex;
-      border: 1px solid #bbb;
       border-radius: 10px;
       padding: 0 5px;
       justify-content: center;
       align-items: center;
+    
     }
 `;
 
@@ -81,7 +81,7 @@ const ScInput = styled.input`
     @media screen and (max-width: 768px) {
       font-size: 0.875em;
       border: none;
-      width: 80%;
+      width: 100%;
       &::placeholder{
       color: #ddd;
     }

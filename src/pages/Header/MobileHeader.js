@@ -11,6 +11,7 @@ import { useMediaQuery } from "react-responsive";
 import {Outlet} from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import zoom from '../../components/Header/svg/Zoom.svg'
 
 
 const Header = () => {
@@ -41,11 +42,23 @@ const Header = () => {
           {buttonVisible ? <Button /> : null }
           </ScGap> 
         </ScHeaderBox>
+        <ScZoom  
+        onClick={()=>{
+           setInputVisible(!inputVisible);
+           if(categoryVisible&&buttonVisible){
+            setCategoryVisible(false);
+            setButtonVisible(false);
+           }
+        }}
+        src={zoom} alt=""style={{cursor:"pointer"}}/>
         <ScToggleBtn onClick={()=>{            
             handleToggleBtn();
             setCategoryVisible(!categoryVisible);
             setButtonVisible(!buttonVisible);
-            setInputVisible(!inputVisible);
+            if(inputVisible){
+              setInputVisible(false);
+             }
+           
           }}>
             <FontAwesomeIcon style={{color:"#2c278c"}} icon={faBars} />
           </ScToggleBtn>
@@ -67,6 +80,7 @@ const ScHeaderBox = styled.nav`
   width: 100%;
   margin: auto;
   padding: 8px 12px;
+  position: relative;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
@@ -74,6 +88,13 @@ const ScHeaderBox = styled.nav`
     height: 10%;
   }
 `;
+
+const ScZoom = styled.img`
+  width: 5%;
+  position: absolute;
+  left: 25px;
+  top: 23.0px;
+`
 
 const ScToggleBtn = styled.div`
   position: absolute;
