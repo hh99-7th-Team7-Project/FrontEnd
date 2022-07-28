@@ -9,7 +9,7 @@ const RouteChangeTracker = () => {
   const [initialized,setinitialized] =useState(false)
 
   useEffect(()=>{
-    if(!window.location.href.includes("localhost")){
+    if(!window.location.href.includes("coffind")){
       ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS)
     }
     setinitialized(true)
@@ -17,6 +17,7 @@ const RouteChangeTracker = () => {
 
   useEffect(()=>{
     if(initialized){
+      ReactGA.set({page: window.location.pathname});
       ReactGA.pageview(location.pathname + location.search)
     }
   },[initialized,location])
