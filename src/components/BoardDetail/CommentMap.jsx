@@ -144,8 +144,9 @@ const ScTable = styled.div`
 
 const ScSpan = styled.span`
   text-align: left;
-  width: 100px;
+  width: 120px;
   color: rgb(44,39,140, 80%);
+  
 
 `;
 
@@ -153,7 +154,6 @@ const ScSpanComment = styled.span`
   text-align: left;
   width: 70%;
   color: rgb(44,39,140, 80%);
-
 `;
 
 const ScButton = styled.button`

@@ -105,7 +105,7 @@ const ScWrap = styled.div`
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   @media screen and (max-width: 768px){
-    width: 90%;
+    width: 300px;
     display: flex;
     flex-direction: column;
   }
@@ -116,9 +116,10 @@ const ScNickAlign = styled.div`
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 768px){
-    width: 50%;
-    margin-bottom: 10px;       
-
+    width: 270px;
+    justify-content: start;
+    margin-bottom: 10px;
+    margin-top: 20px;    
   }
 `;
 
@@ -128,7 +129,9 @@ const ScCommentAlign = styled.div`
   display: flex;
   justify-content: space-between;
   @media screen and (max-width: 768px){
-    width: 100%;    
+    width: 220px;    
+    margin-bottom: 5px;
+    padding: 20px;    
   }
 
 `;

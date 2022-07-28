@@ -44,7 +44,6 @@ const ScDrinkWrap = styled.div`
     margin: 30px auto;   
     justify-content: center;
     align-items: center;
-
   }
 `;
 
@@ -55,6 +54,8 @@ const ScBoardWrap = styled.div`
     flex-direction: column;
     width: 80%;
     flex-wrap: wrap;
+    margin: 30px auto;
+    align-items: center;
   }
 `;
 
