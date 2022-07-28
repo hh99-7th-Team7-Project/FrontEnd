@@ -4,7 +4,7 @@ import { deleteCookie, getCookie } from '../../shared/Cookie';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
-const Button = () => {
+const Button = ({toggle}) => {
   const navigate = useNavigate();
   const isLogin = getCookie('islogin');
   const [onair, setonair] = useState(false);
