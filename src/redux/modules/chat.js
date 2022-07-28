@@ -2,7 +2,10 @@ import apis from '../../shared/api/main';
 import Swal from 'sweetalert2';
 import * as Sentry from "@sentry/react";
 
-const initialState = {};
+const initialState = {
+  one_list:[],
+  member:[]
+};
 
 /* ----------------- 액션 타입 ------------------ */
 
@@ -119,7 +122,7 @@ export default function ChatReducer(state = initialState, action) {
       return { list: action.payload };
     }
     case LOAD_ONE_CHATITEM: {
-      return { ...state, one_list: action.payload , member: action.payload.chatPostMember};
+      return { ...state, one_list: action.payload , member: action.payload.chatPostMember,first_member: action.payload.chatPostMember[0]};
     }
     case ADD_CHATITEM: {
       return { ...state, list: [...state.list, action.payload] };
