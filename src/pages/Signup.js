@@ -234,7 +234,7 @@ const SignUp = (props) => {
                   setEmail(event.target.value);
                 }}
 
-                style={{ width: "160px" }}
+                style={{ width: "30%" }}
               />
               <h1 style={{ width: "50px", textAlign: "center", fontSize: "1.4375em" }}>@</h1>
 
@@ -313,6 +313,10 @@ const SignUp = (props) => {
 const ScWrap2 = styled.div`
 display: flex;
 width: 100%;
+@media screen and (max-width: 768px){
+    margin: 50px auto;
+    /* width: 40%; */
+  }
 `
 const ScCheck = styled.img`
 margin-left: 10px;
@@ -332,6 +336,12 @@ display: flex;
 flex-direction: column;
 justify-content:center;
 align-items:center;
+/* border: 1px red solid; */
+width: 100%;
+@media screen and (max-width: 768px){
+    /* margin: auto; */
+    width: 40%;
+  }
 `
 const ScProfileImg = styled.div`
  width: 130px;
@@ -371,6 +381,9 @@ input{
     color: gray;
   }
 }
+@media screen and (max-width: 768px){
+    width: 90%;
+  }
 `
 
 const ScDuplicateButton = styled.div`
@@ -387,6 +400,7 @@ const ScDuplicateButton = styled.div`
   margin-left: 10px;
   /* margin: 0 30px 0 0; */
   cursor: pointer;
+  
 `
 
 const ScWrap = styled.div`
@@ -420,6 +434,11 @@ margin: 5px 37px 5px 0;
 border: none;
 color: white;
 background-color: gray;
+@media screen and (max-width: 768px){
+    width: 90%;
+    margin: 5px auto;
+
+  }
 `
 
 const ScCondition = styled.div`

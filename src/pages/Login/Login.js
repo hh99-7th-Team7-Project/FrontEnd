@@ -109,7 +109,7 @@ const closeModal = () => {
           <div>
           <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a></div>
           {/* <a href={NAVER_AUTH_URL}> */}
-          <div>
+          {/* <div>
           <ScImg src="/네이버.png" onClick={()=>{
             Swal.fire({
               title: '준비중입니다.',
@@ -117,7 +117,7 @@ const closeModal = () => {
               confirmButtonText: '확인',
             })
           }} 
-          /></div>
+          /></div> */}
           {/* </a> */}
           <div><a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg" /></a></div>
         </ScSocialWrap>
@@ -132,12 +132,22 @@ export default Login
 const ScWrap = styled.div`
 display: flex;
 width: 100%;
+@media screen and (max-width: 768px){
+    margin: auto;
+    /* width: 40%; */
+  }
 `
 
 const ScLogo = styled.img`
  width: 300px;
  margin-top: 50px;
  padding-right: 60px;
+ @media screen and (max-width: 768px){
+    /* margin: auto; */
+    width: 40%;
+    padding-right:0;
+    
+  }
 `
 
 
@@ -145,6 +155,7 @@ const ScHeadWrap = styled.div`
 /* background-color: yellow; */
 margin-bottom: 48px;
 text-align: center;
+
 `
 const ScLogin = styled.div`
 
@@ -153,6 +164,12 @@ flex: 6;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+@media screen and (max-width: 768px){
+    /* margin: auto; */
+    width: 40%;
+    padding-right:0;
+    
+  }
 `
 const ScImageBox = styled.div`
 flex:4;
@@ -176,6 +193,20 @@ input{
 } input::placeholder{
     color: black;
   }
+  @media screen and (max-width: 768px){
+    /* margin: auto; */
+    width: 100%;
+    input{
+  padding-left: 20px ;
+  width: 80%;
+  height: 60px;
+  border-radius: 10px;
+  margin: 10px auto;
+  
+  background-color: rgb(233, 230, 230);
+}
+    
+  }
 `
 const ScText = styled.h3`
 display: flex;
@@ -187,6 +218,13 @@ hr{
   border: none;
   border-bottom: 1px #bbb solid;
 }
+@media screen and (max-width: 768px){
+  hr{
+  width: 90px;
+  border: none;
+  border-bottom: 1px #bbb solid;
+}
+  }
 `
 const ScButtonWrap = styled.div`
 display: flex;
@@ -201,6 +239,14 @@ cursor: pointer;
 margin: 5px 0;
 border: none;
 }
+@media screen and (max-width: 768px){
+    /* margin: auto; */
+    width: 90%;
+    padding-right:0;
+    button{
+      width: 100%;
+    }
+  }
 `
 
 const ScSocialWrap = styled.div`
@@ -217,6 +263,12 @@ a{
 }div{
 
 }
+@media screen and (max-width: 768px){
+    /* margin: auto; */
+    width: 100%;
+    padding-right:0;
+    padding: 0;
+  }
 `
 const ScImg = styled.img`
 width: 50px;
