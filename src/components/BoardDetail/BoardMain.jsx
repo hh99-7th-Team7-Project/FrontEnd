@@ -114,6 +114,9 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
 const ScWrap = styled.div`
   margin: 50px auto;
   width: 100%;
+  @media screen and (max-width: 768px){
+    margin : 0;
+  }
 `;
 
 const ScBtnWrap = styled.div`
@@ -211,7 +214,11 @@ const ScNickTimeBox = styled.div`
   padding: 0px 5px 0px 5px;
   display: flex;
   justify-content: space-between;
-  margin-top: 20px
+  margin-top: 20px;
+  @media screen and (max-width: 768px){
+    display: flex;
+    width: 100%;
+  }
 `;
 
 const ScButton = styled.div`

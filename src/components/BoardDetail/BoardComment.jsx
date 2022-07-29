@@ -154,7 +154,8 @@ const ScTextArea = styled.textarea`
   @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 400px;
+    margin: 0;
   }
 `;
 
@@ -170,7 +171,7 @@ const ScBtn = styled.button`
   background-color: black;
   color: white;
   @media screen and (max-width: 768px) {
-    margin: 10px auto;
+    margin: 10px 0;
   }
 `;
 
