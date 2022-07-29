@@ -86,26 +86,26 @@ const ScHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   @media screen and (max-width: 768px){
-    margin: auto;
+    margin: 0 auto 20px;
     width: 100%;
-    /* height: 100%; */
     font-size: 10px;
   }
 `;
 const Scbar = styled.div`
   display: flex;
+  align-items: center;
   gap: 5px;
   span{
     color: #bebebe;
   }
   @media screen and (max-width: 768px){
     margin: auto;
-    width: 100%;
+    width: 110%;
     height: 100%;
     font-size: 10px;
     img{
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
     }
   }
 `;
@@ -121,12 +121,12 @@ const ScTitle = styled.div`
   font-weight: 600;
   height: 83px;
   overflow: hidden;
-  /* @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px){
     margin: auto;
     width: 160px;
-    height: 100%;
+    height: 600px;
     font-size: 16px;
-  } */
+  }
 `;
 const ScBottom = styled.div`
   display: flex;
@@ -135,12 +135,12 @@ const ScBottom = styled.div`
   span{
     color: #000000b2;
   }
-  /* @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px){
     margin: auto;
     width: 160px;
     height: 100%;
-    font-size: 16px;
-  } */
+    font-size: 14px;
+  }
 `;
 
 const ScMyrecipe = styled.div`

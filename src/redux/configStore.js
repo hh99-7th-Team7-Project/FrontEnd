@@ -16,7 +16,6 @@ const rootReducer = combineReducers({
   comment: commentReducer,
   coffee: coffeeReducer,
   board: boardReducer,
-
   chat: chatReducer,
   boardComment: boardCommentReducer,
 });

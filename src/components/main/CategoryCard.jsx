@@ -110,7 +110,7 @@ console.log(brandName)
       </div>
      
       <div>
-        <ScBrand>{brandName}</ScBrand>
+        {/* <ScBrand>{brandName}</ScBrand> */}
         <SCcardWrap>
           {coffeeReducer &&
             coffeeReducer.map((item, index) => {

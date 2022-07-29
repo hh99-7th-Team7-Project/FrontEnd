@@ -34,6 +34,9 @@
   height: 100%;
   object-fit: cover;
 }
+.swiper-pagination-bullets{
+  /* margin-top: 40px; */
+}
 .swiper-pagination-bullet-active{
   background-color: var(--main);
 }
@@ -61,6 +64,24 @@
   z-index: 99;
 }
 
+.next2{
+  position: absolute;
+  top: 280px;
+  
+  /* right:10px; */
+  /* 허리가 중간에 감 */
+  transform: translateX(70%);
+  cursor: pointer;
+  z-index: 99;
+}
+.prev2{
+  position: absolute;
+  /* left: 120px; */
+  top: 280px;
+  transform: translateX(-70%);
+  cursor: pointer;
+  z-index: 99;
+}
 .swiper-slide-active .middle {
   /* border: 1px red solid; */
   transform: scale(1.0);
