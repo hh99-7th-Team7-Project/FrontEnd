@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { Swiper } from 'swiper/react';
 import { StarFilled, StarUnfilled } from '../../shared/svg/A-index';
 import Lens from './svg/Lens.svg';
 import LensBlack from './svg/LensBlack.svg';

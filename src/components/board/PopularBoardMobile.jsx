@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import * as Sentry from "@sentry/react";
 
 // import "./styles.css";
-import { Pagination } from "swiper";
+import { Pagination,Navigation } from "swiper";
 import { getCookie } from "../../shared/Cookie";
 import apis from "../../shared/api/main";
 import PopularBoardMap from "./PopularBoardMap";
@@ -56,15 +56,21 @@ const PopularBoardMobile = () => {
               </ScMoveButton>
             </ScTop>
             <Container>
+            <ScPrev className="prev2" style={{fontSize:'1.66em'}}>&lt;</ScPrev>  
+      <ScNext className="next2" style={{fontSize:'1.66em'}}>&gt;</ScNext>
     <Swiper
-      slidesPerView={4}
-      spaceBetween={180}
+      slidesPerView={2}
+      spaceBetween={120}
       centeredSlides={true}
+      // loop={true}
       pagination={{
         clickable: true,
       }}
-      modules={[Pagination]}
-      className="mySwiper"
+      modules={[Pagination,Navigation]}
+      navigation={{
+        prevEl: '.prev2',
+         nextEl: '.next2', }}
+      className="mySwiper2"
     >
       <ImageBox>
        {content&&content.map((item,idx)=>{
@@ -91,7 +97,21 @@ const ScWrap = styled.div`
     background-color: #F4F1FF;
     border-radius: 20px;
     padding: 20px;
+    position: relative;
 `;
+
+const ScPrev = styled.div`
+     @media screen and (max-width:768px){      
+      left: 3%;      
+  }
+`
+
+
+const ScNext = styled.div`
+     @media screen and (max-width:768px){      
+      right: 3%;           
+  }
+`
 
 const ScTop = styled.div`
   display: flex;
@@ -106,12 +126,13 @@ const ScMoveButton =styled.div`
   gap: 24px;
 `
 const Container = styled.div`
-    max-width: 1150px;
-    width: 100%;
+    /* max-width: 1150px; */
+    /* width: 100%; */
+    /* position: relative; */
     height: 300px;
-    margin: 0 auto;
+    margin: 0 ;
     overflow: hidden;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     /* position: relative; */
 `;
 
