@@ -25,6 +25,7 @@ import MypageLogo from './MypageLogo.svg'
 import StarUnfilled from './StarUnfilled.svg'
 import StarFilled from './StarFilled.svg'
 import MiniBanner from './MiniBanner.svg'
+import MainBanner2 from './MainBanner2.svg'
 import ChatMini1 from './ChatMini1.svg'
 import ChatMini2 from './ChatMini2.svg'
 import BoardMini1 from './BoardMini1.svg'
@@ -32,6 +33,7 @@ import BoardMini2 from './BoardMini2.svg'
 
 
 export {
+  MainBanner2,
   ChatMini1,
   ChatMini2,
   BoardMini1,
