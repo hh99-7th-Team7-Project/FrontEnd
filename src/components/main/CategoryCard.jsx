@@ -159,7 +159,7 @@ const ScSlide = styled.div`
   /* font-size: 1.125em; */
   width: 120px;
   height: 120px;
-  transform: scale(0.9);
+  transform: scale(0.8);
   background: no-repeat center;
   border: 1px solid var(--main);
   background-size: cover;
