@@ -55,7 +55,7 @@ const Header = () => {
         <ScHeaderBox ref={el}> 
           <Logo/> 
           <ScGap>        
-            {categoryVisible ? <Category /> : null }
+            {categoryVisible ? <Category  /> : null }
             { inputVisible ?  <HeaderInput /> : null }          
             {buttonVisible ? <Button /> : null }
           </ScGap> 
