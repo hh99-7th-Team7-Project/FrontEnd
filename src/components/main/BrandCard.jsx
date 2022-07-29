@@ -46,6 +46,9 @@ const BrandCard = (props) => {
   // const coffeeLoad =(e)=>{
   //   <add className ="active" here>
   // }
+  // const slide = ()=>{
+  //   mySwiper2.slideTo(3,1000,false)
+  // }
 
   return (
 
@@ -57,12 +60,8 @@ const BrandCard = (props) => {
       <Swiper
         slidesPerView={8}
         spaceBetween={10}
-        slidesPerGroup={1}
+        centeredSlides={true}
         loop={true}
-        // loopFillGroupWithBlank={false}
-        // pagination={{
-        //   clickable: true,
-        // }}
         navigation={{
            prevEl: '.prev',
             nextEl: '.next', }}
@@ -87,7 +86,9 @@ const BrandCard = (props) => {
             slidesPerView: 9,
           },
         }}
+        slideToClickedSlide={true}
         className="mySwiper2"
+        
       >
    
         {brandList.map((item, index) => {
@@ -102,17 +103,17 @@ const BrandCard = (props) => {
               >
                 <ScSlide
                   onClick={(e) => {
-                    // e.target.style.background
-                    // console.log(item.id);
+                    // slide()
                     setColor(!color);
                     dispatch(__loadCoffee(item?.brand));
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
+                  className="middle"
                 >
 
                 </ScSlide>
                 
-                <div style={{ textAlign: 'center', fontSize:"0.8em" }}> {item?.brand}</div>
+                <ScBrand className='middle2' style={{ textAlign: 'center' }}> {item?.brand}</ScBrand>
               </div>
             </SwiperSlide>
           );
@@ -131,6 +132,9 @@ const BrandCard = (props) => {
   );
 };
 
+const ScBrand =styled.div`
+  font-size: 0.8em;
+`
 
 const ScMobile = styled.div`
   @media screen and (max-width:768px){    
@@ -161,7 +165,7 @@ const ScNext = styled.div`
 const ScSlide = styled.div`
   width: 120px;
   height: 120px;
-  transform: scale(0.9);
+  transform: scale(0.8);
   border-radius: 60px;
 
   /* border: 1px #ddd solid; */

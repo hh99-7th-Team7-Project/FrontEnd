@@ -53,6 +53,7 @@ console.log(brandName)
         centeredSlides={true}
         // pagination={true}
         loop={true}
+        slideToClickedSlide={true}
         navigation={{
           prevEl: '.prev',
            nextEl: '.next', }}
@@ -97,8 +98,9 @@ console.log(brandName)
                     setBrandName(item?.brand)
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
+                  className="middle"
                 ></ScSlide>
-              <div style={{ textAlign: 'center', fontSize:"0.8em" }}>{item?.brand}</div>
+              <ScBrand2 className='middle2' style={{ textAlign: 'center' }}>{item?.brand}</ScBrand2>
               </div>
             </SwiperSlide>
                 </>
@@ -120,6 +122,10 @@ console.log(brandName)
   );
 };
 
+
+const ScBrand2 =styled.div`
+  font-size: 0.8em;
+`
 const animation = keyframes`
   50% {
     transform: scale(1.0);

@@ -61,8 +61,14 @@
   z-index: 99;
 }
 
-.swiper-slide-active{
+.swiper-slide-active .middle {
   /* border: 1px red solid; */
-  transform: scale(1.1);
+  transform: scale(1.0);
+  /* border: 3px var(--main) solid; */
+  background-size: cover;
+}
 
+.swiper-slide-active  .middle2{
+  font-size: 18px;
+  color: var(--main);
 }

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
 import BoardPagination from '../../components/board/Pagination/BoardPagination';
 import PopularBoardMobile from '../../components/board/PopularBoardMobile';
-
+import { useMediaQuery } from 'react-responsive';
 
 
 const Board = () => {
@@ -15,7 +15,9 @@ const Board = () => {
   const [category, setCategory] = useState(0)
 
 
-
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
 
   return (
 
@@ -32,8 +34,7 @@ const Board = () => {
               </Scwrite>
             </ScTopWord>
           </ScTopCard>
-          {/* <PopularBoardMobile/> */}
-          <PopularBoard />
+          {isMobile?<PopularBoardMobile/> :<PopularBoard />}
           <div style={{ display: "flex", flexDirection: "column" }}>
             <ScCategory>
               <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
