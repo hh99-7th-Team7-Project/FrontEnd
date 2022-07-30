@@ -130,7 +130,7 @@ const ScTopBtn = styled.div`
   background-color: #2c278c;
   position: fixed;
   bottom: 3%;
-  left: 2%;
+  right: 2%;
   color: white;
   width: 60px;
   height: 60px;
