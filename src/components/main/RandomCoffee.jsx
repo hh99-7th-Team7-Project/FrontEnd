@@ -26,6 +26,8 @@ const RandomCoffee = ({closeModal}) => {
   const [ selectCategoryValue , setSelectCategoryValue ] = useState();
   const [ value, setValue ] = useState([2000, 8000]);
 
+  
+
 
   function valuetext(value) {
     return `${value}원`;
