@@ -6,7 +6,6 @@ import CoffeeCard from './CoffeeCard';
 import { __loadCoffee } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Paiks } from '../../shared/svg/A-index';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -27,6 +26,7 @@ const BrandCard = (props) => {
 
   const coffeeReducer = useSelector((state) => state.coffee.list);
 
+
   const brandList = [
     { brand: '스타벅스', id: 0, logo: '/brandlogo/스타벅스.png' },
     { brand: '빽다방', id: 1, logo: `/brandlogo/빽다방.png` },
@@ -43,12 +43,9 @@ const BrandCard = (props) => {
     { brand: '메가커피', id: 12, logo: '/brandlogo/메가커피.png' },
   ];
 
-  // const coffeeLoad =(e)=>{
-  //   <add className ="active" here>
-  // }
-  // const slide = ()=>{
-  //   mySwiper2.slideTo(3,1000,false)
-  // }
+  const categoryList = [
+    { brand: 'COFFEE' }, { brand: 'NONCOFFEE'},{ brand: 'SMOOTHIE' },{ brand: 'ADE'},{ brand: 'TEA' },
+  ];
 
   return (
 
@@ -120,9 +117,12 @@ const BrandCard = (props) => {
         })}
       </Swiper>
           </div>
-
+          <ScCategory>
+          {categoryList.map((cate, idx)=>{
+                       return <ScCate>{cate.brand}</ScCate>
+                      })}
+                      </ScCategory>
         <SCcardWrap>
-          <div style={{fontSize:"30px"}}>{coffeeReducer?.brand}</div>
           {coffeeReducer &&
             coffeeReducer.map((item, index) => {
               return <CoffeeCard key={index} item={item} />;
@@ -134,6 +134,18 @@ const BrandCard = (props) => {
 
 const ScBrand =styled.div`
   font-size: 0.8em;
+`
+
+const ScCate = styled.div`
+  display: flex;
+`
+
+const ScCategory = styled.div`
+  display: flex;
+  width: 70%;
+  margin: auto;
+  border: 1px solid var(--main);
+  justify-content: space-between;
 `
 
 const ScMobile = styled.div`
@@ -197,10 +209,11 @@ const ScSlide = styled.div`
   }
 `;
 const SCcardWrap = Styled.div`
-    margin: 30px 0;
+    margin: 90px 0 0 0;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+   
     /* height: 600px; */
     @media screen and (max-width:768px){      
       /* display: flex;
