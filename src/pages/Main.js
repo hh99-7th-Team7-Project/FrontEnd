@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import "../shared/css/flow.css"
 import { Link } from 'react-scroll';
+import RandomBg from '../components/main/svg/RandomBtnBg.svg';
 
 
 // components
@@ -26,6 +27,7 @@ const [category, setCategory] = useState(true)
 const [showModal, setShowModal] = useState(true);
 const [color, setColor] = useState('var(--main)');
 const [color2, setColor2] = useState('rgba(44, 39, 140, 0.4)');
+const [ randomOpenModal , setRandomOpenModal ] = useState(false);
 
 const notModal = getCookie("not seen a day")
 
@@ -46,6 +48,14 @@ const closeModal = () => {
   setShowModal(false);
 }
 
+const randomOpen = () => {
+  setRandomOpenModal(true);
+}
+
+const randomClose = () => {
+  setRandomOpenModal(false);
+}
+
 const changeColor = ()=>{
  if(color2 === 'var(--main)'){
   setColor2('rgba(44, 39, 140, 0.4)') 
@@ -63,14 +73,16 @@ const changeColor2 = ()=>{
       <div style={{position:"relative", width:"100%",overflow:"hidden"}}>
         
         <ImgSlideMini/>
-        <ImgSlide2/>  
-        <ScMaxWrap style={{maxWidth:"1230px",width:"100%", margin:"auto"}}>
+        <ImgSlide2/>
+        
+        <ScMaxWrap style={{maxWidth:"1230px",width:"100%", margin:"auto"}}>            
             {/* <ScMapRandomWrap>
-              <RandomPicker />
-              <LottoPoint/>
+              <RandomPicker />              
             </ScMapRandomWrap> */}
+            <ScRandomWrap>
+              <ScRandomBtn src={RandomBg} alt="" onClick={()=>{randomOpen();}}/>
+            </ScRandomWrap>
             <ScNavbarWrap>
-
               <ScTitle id="Top">Menu</ScTitle>
               <ScButtonWrap>
                 <ScCategory color={color}
@@ -88,15 +100,15 @@ const changeColor2 = ()=>{
                 </ScCategory2>
               </ScButtonWrap>
             </ScNavbarWrap>            
-             {category?<BrandCard/>:<CategoryCard/>}   
-                      
+             {category?<BrandCard/>:<CategoryCard/>}    
         </ScMaxWrap>
         <ScTopBtnWrap>
             <Link to="Top" spy={true} smooth={true}>
-            <ScTopBtn>Top</ScTopBtn>
-          </Link>
+              <ScTopBtn>Top</ScTopBtn>
+            </Link>
         </ScTopBtnWrap>
         { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
+        { randomOpenModal ? <RandomCoffee closeModal={randomClose} /> : null }
           {/* <Flow/> */}
       <Flower/>
       </div>    
@@ -114,6 +126,49 @@ const ScMapRandomWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 84px auto 79px;
+`;
+
+const ScRandomWrap = styled.div`
+  background-color: white;
+  position: fixed;
+  left: -35px;
+  width: 210px;
+  height: 215px;
+  border-bottom-right-radius: 30%;
+  border-top-right-radius: 30%;
+  z-index: 99;
+  &:hover {
+    cursor: pointer;
+    left: 0px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    left: 0;
+    bottom: 10%;
+  }
+`;
+
+
+const ScRandomBtn = styled.img`
+  background-color: #2c278c;
+  position: fixed;
+  left: -35px;
+  width: 210px;
+  height: 215px;
+  border-bottom-right-radius: 30%;
+  border-top-right-radius: 30%;
+  
+  &:hover {
+    cursor: pointer;
+    left: 0px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    left: 0;
+    bottom: 10%;
+  }
 `;
 
 const ScMaxWrap = styled.div`
@@ -194,18 +249,18 @@ const ScTopBtn = styled.div`
   background-color: #2c278c;
   position: fixed;
   bottom: 3%;
-  left: 2%;
+  right: 2%;
   color: white;
   width: 60px;
   height: 60px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   @media screen and (max-width: 768px) {
     width: 40px;
     height: 40px;
-    left: 3%;
+    right: 3%;
     bottom: 2%;
   }
 `;
