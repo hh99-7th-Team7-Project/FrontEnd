@@ -398,6 +398,7 @@ const ScRandomWrapBack = Styled.div`
     height: 800px;
     background-image: url(${RandomBackBg});
     background-size: cover;
+    background-position: center;
     border-radius: 32px;
     display: flex;
     flex-direction: column;    
