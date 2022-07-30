@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Styled from 'styled-components';
-import { useInView } from 'react-intersection-observer';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CoffeeCard from './CoffeeCard';
 import {
-  __loadCoffee,
-  loadCoffee,
-  loadBrand,
-  __loadCoffees,
   __loadCoffeeCategory,
 } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +13,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
-import styled, { css, keyframes } from 'styled-components';
+import styled, {keyframes } from 'styled-components';
 
 const CategoryCard = (props) => {
   // const{coffeeReducer} = props

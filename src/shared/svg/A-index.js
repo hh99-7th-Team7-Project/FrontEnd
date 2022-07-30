@@ -22,6 +22,7 @@ import ChatLogoSmall from './ChatLogoSmall.svg'
 import MainCard1 from './MainCard1.svg'
 import FooterFlower from './Footer.svg'
 import MypageLogo from './MypageLogo.svg'
+import MypageMini from './MypageMini.svg'
 import StarUnfilled from './StarUnfilled.svg'
 import StarFilled from './StarFilled.svg'
 import MiniBanner from './MiniBanner.svg'
@@ -33,6 +34,7 @@ import BoardMini2 from './BoardMini2.svg'
 
 
 export {
+  MypageMini,
   MainBanner2,
   ChatMini1,
   ChatMini2,
