@@ -79,7 +79,9 @@ const changeColor2 = ()=>{
             {/* <ScMapRandomWrap>
               <RandomPicker />              
             </ScMapRandomWrap> */}
-            <ScRandomBtn src={RandomBg} alt="" onClick={()=>{randomOpen();}}/>
+            <ScRandomWrap>
+              <ScRandomBtn src={RandomBg} alt="" onClick={()=>{randomOpen();}}/>
+            </ScRandomWrap>
             <ScNavbarWrap>
               <ScTitle id="Top">Menu</ScTitle>
               <ScButtonWrap>
@@ -126,6 +128,27 @@ const ScMapRandomWrap = styled.div`
   margin: 84px auto 79px;
 `;
 
+const ScRandomWrap = styled.div`
+  background-color: white;
+  position: fixed;
+  left: -35px;
+  width: 210px;
+  height: 215px;
+  border-bottom-right-radius: 30%;
+  border-top-right-radius: 30%;
+  z-index: 99;
+  &:hover {
+    cursor: pointer;
+    left: 0px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    left: 0;
+    bottom: 10%;
+  }
+`;
+
 
 const ScRandomBtn = styled.img`
   background-color: #2c278c;
@@ -133,8 +156,9 @@ const ScRandomBtn = styled.img`
   left: -35px;
   width: 210px;
   height: 215px;
-  border-bottom-right-radius: 20%;
-  border-top-right-radius: 20%;
+  border-bottom-right-radius: 30%;
+  border-top-right-radius: 30%;
+  
   &:hover {
     cursor: pointer;
     left: 0px;
