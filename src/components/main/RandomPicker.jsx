@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Styled from 'styled-components';
 import RandomModalBg from './image/RandomModalBg.png';
+import RandomBackBg from './image/RamdomResultBg.webp';
 import RandomLogo from './svg/RandomImage.svg';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -309,13 +310,23 @@ const RandomPicker = ({closeModal}) => {
       </ScRandomWrap>    
       </ScWrap>
       <ScWrap className="item back">
-        <ScButton
-          onClick={() => {
-            setClick(!click);
-          }}
-        >
-          골라보기
-        </ScButton>
+        <ScRandomWrapBack>
+          <ScBackTitleWrap>
+            <ScBackTitle>스타벅스</ScBackTitle>
+            <ScBackCoffee>아메리카노</ScBackCoffee>
+            <Scimg src={RandomLogo} alt=""/>
+          </ScBackTitleWrap>
+          <ScStarPriceWrap>
+            <ScStarTitle>총 별점</ScStarTitle>
+            <ScPriceTitle>가격</ScPriceTitle>
+          </ScStarPriceWrap>
+          <ScStarPriceBox>
+            <ScStar>4.5</ScStar>
+            <ScPrice>￦5,400</ScPrice>
+          </ScStarPriceBox>
+          <ScX onClick={closeModal}>✖</ScX>
+          
+        </ScRandomWrapBack>
       </ScWrap>
     </ScTotal>
     </Background>
@@ -348,14 +359,6 @@ const ScWrap = styled.div`
   margin-left: 30px;
   background-color: white;
 `;
-const ScWordWrap = styled.div``;
-
-const ScSquare = styled.img`
-  border: 1px #ddd solid;
-  height: 164px;
-  width: 131px;
-  background-color: #d9d9d9;
-`;
 
 
 const Background = Styled.div`
@@ -377,6 +380,23 @@ const ScRandomWrap = Styled.div`
     height: 800px;
     background-color: #FFF;
     background-image: url(${RandomModalBg});
+    background-size: cover;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    text-align: center;
+    font-size: 1em;    
+`;
+
+const ScRandomWrapBack = Styled.div`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 756px;
+    height: 800px;
+    background-image: url(${RandomBackBg});
     background-size: cover;
     border-radius: 32px;
     display: flex;
@@ -586,4 +606,72 @@ const ScButton = Styled.div`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const ScBackTitleWrap = Styled.div`  
+  width: 500px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ScBackTitle = Styled.h2`
+  border: 1px solid black;
+  width: 150px;
+  height: 27px;
+  border-radius: 100px;
+  padding: 8px 20px;
+  margin: auto;
+  font-size: 1.7em;
+  font-weight: 600;
+`;
+
+const ScBackCoffee = Styled.h3`
+  margin: 20px auto;
+  font-size: 1.5em;
+  font-weight: 700;
+`;
+
+const Scimg = Styled.img`
+  margin: auto;
+  width: 200px;
+  height: 300px;
+`;
+
+const ScStarPriceWrap = Styled.div`  
+  width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const ScStarTitle = Styled.h3`
+  font-size: 1.8em;
+  width: 300px;
+`;
+
+const ScPriceTitle = Styled.h3`
+  font-size: 1.8em;
+  width: 300px;
+
+`;
+
+const ScStarPriceBox = Styled.div`
+  width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 40px auto;
+`;
+
+const ScStar = Styled.h5`
+  font-size: 1.7em;
+  width: 300px;
+`;
+
+const ScPrice = Styled.h5`
+  font-size: 1.7em;
+  width: 300px;
 `;
