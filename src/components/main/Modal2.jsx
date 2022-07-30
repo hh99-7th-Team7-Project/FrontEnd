@@ -73,7 +73,7 @@ const ScX =styled.div`
   &:hover {
     cursor: pointer;
   }
-`
+`;
 
 const ScBtn = styled.div`
   /* background-color: #2c278c; */

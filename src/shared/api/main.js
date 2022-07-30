@@ -77,6 +77,9 @@ const apis = {
   searchCoffee: (keyword) => api.get(`/coffees/searches?keyword=${keyword}`),
   searchBoard: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
   searchBoardLogin: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
+
+  //랜덤커피
+  randomCoffee: (brand, category, min, max) => api.get(`/coffees/random/${brand}/${category}/${min}/${max}`),
 };
 
 
