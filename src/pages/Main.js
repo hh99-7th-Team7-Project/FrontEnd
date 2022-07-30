@@ -108,7 +108,7 @@ const changeColor2 = ()=>{
             </Link>
         </ScTopBtnWrap>
         { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
-        { randomOpenModal ? <RandomCoffee closeModal={randomClose} /> : null }
+        { randomOpenModal ? <RandomPicker closeModal={randomClose} /> : null }
           {/* <Flow/> */}
       <Flower/>
       </div>    
