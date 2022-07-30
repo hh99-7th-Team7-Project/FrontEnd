@@ -30,10 +30,11 @@ const Header = () => {
 
   return (
     <>
-        <ScHeaderBox > 
-          <Logo/>
-          <ScGap>    
-            {categoryVisible ? <Category /> : null }
+
+        <ScHeaderBox> 
+          <Logo/> 
+          <ScGap>        
+            {categoryVisible ? <Category  /> : null }
             { inputVisible ?  <HeaderInput /> : null }          
             {buttonVisible ? <Button /> : null }
           </ScGap>

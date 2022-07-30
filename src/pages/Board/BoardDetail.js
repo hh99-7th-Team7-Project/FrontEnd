@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { __loadBoardDetail } from '../../redux/modules/board';
 import BoardImg from './svg/BoardMain.svg';
 import * as Sentry from "@sentry/react";
+import { BoardMini2 } from '../../shared/svg/A-index';
 
 
 const BoardDetail = () => {
@@ -48,12 +49,12 @@ const BoardDetail = () => {
   }, []);
 
   return (
-    <>
-        <ScMobile>
-          <ScImgContainer>
+    <><ScMini src={BoardMini2} alt="" />
+     <ScImgContainer>
             <ScImg src={BoardImg} alt="" />
             <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
           </ScImgContainer>
+        <ScMobile>
           <ScMobile2>
             <ScWrap>
               <BoardMain
@@ -104,7 +105,17 @@ const ScImgContainer = styled.div`
 
 const ScImg = styled.img`
   width: 100%;
-  
+  @media screen and (max-width: 768px) {
+  display: none;
+  }
+`;
+
+const ScMini = styled.img`
+  width: 100%;
+  display: none;
+  @media screen and (max-width: 768px) {
+  display: block;
+  }
 `;
 
 const ScTitle = styled.div`
@@ -128,7 +139,9 @@ const ScMobile2 = styled.div`
 
 const ScWrap = styled.div`
   margin: 15px auto;
-  
+  @media screen and (max-width: 768px){
+    margin:0;    
+        }  
 `;
 
 export default BoardDetail;

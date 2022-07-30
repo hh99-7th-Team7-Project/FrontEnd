@@ -53,6 +53,7 @@ console.log(brandName)
         centeredSlides={true}
         // pagination={true}
         loop={true}
+        slideToClickedSlide={true}
         navigation={{
           prevEl: '.prev',
            nextEl: '.next', }}
@@ -97,8 +98,9 @@ console.log(brandName)
                     setBrandName(item?.brand)
                   }}
                   style={{ backgroundImage: `url(${item?.logo})` }}
+                  className="middle"
                 ></ScSlide>
-              <div style={{ textAlign: 'center', fontSize:"0.8em" }}>{item?.brand}</div>
+              <ScBrand2 className='middle2' style={{ textAlign: 'center' }}>{item?.brand}</ScBrand2>
               </div>
             </SwiperSlide>
                 </>
@@ -108,7 +110,7 @@ console.log(brandName)
       </div>
      
       <div>
-        <ScBrand>{brandName}</ScBrand>
+        {/* <ScBrand>{brandName}</ScBrand> */}
         <SCcardWrap>
           {coffeeReducer &&
             coffeeReducer.map((item, index) => {
@@ -120,6 +122,10 @@ console.log(brandName)
   );
 };
 
+
+const ScBrand2 =styled.div`
+  font-size: 0.8em;
+`
 const animation = keyframes`
   50% {
     transform: scale(1.0);
@@ -153,7 +159,7 @@ const ScSlide = styled.div`
   /* font-size: 1.125em; */
   width: 120px;
   height: 120px;
-  transform: scale(0.9);
+  transform: scale(0.8);
   background: no-repeat center;
   border: 1px solid var(--main);
   background-size: cover;

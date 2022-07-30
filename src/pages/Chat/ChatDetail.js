@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import ChatDetailItem from '../../components/Chat/ChatDetail';
-import { ChatLogoSmall } from '../../shared/svg/A-index';
+import { ChatLogoSmall, ChatMini2 } from '../../shared/svg/A-index';
 import Header from '../Header/Header';
 
 const ChatDetail = () => {
   return (
     <>
       <ScTopCard2>
-        <img src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
+        <ScImg1 src={ChatLogoSmall} alt='' style={{ width: "100%" }} />
+        <ScImg2 src={ChatMini2} alt='' style={{ width: "100%" }} />
         <ScTopWord style={{ margin: '60px 70% 60px 20%' }}>
           우리 같이 커피마셔요!
         </ScTopWord>
@@ -38,5 +39,17 @@ font-family: "SUIT ExtraBold";
 width: 209px;
 @media screen and (max-width: 768px) {
     display: none;
+  }
+`
+
+const ScImg1 = styled.img`
+@media screen and (max-width: 768px) {
+    display: none;
+  }
+`
+const ScImg2 = styled.img`
+display: none;
+@media screen and (max-width: 768px) {
+    display: block;
   }
 `

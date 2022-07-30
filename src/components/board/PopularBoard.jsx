@@ -114,7 +114,7 @@ const ScTop = styled.div`
 `
 const ScMoveButton =styled.div`
   display: flex;
-  margin: 30px 38px 0 0 ;
+  margin: 3% 5% 0 0 ;
   gap: 24px;
 `
 const Container = styled.div`

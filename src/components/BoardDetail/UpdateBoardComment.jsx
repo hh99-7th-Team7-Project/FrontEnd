@@ -43,6 +43,7 @@ const UpdateBoardComment = (props) => {
         defaultValue={comment}
         maxlength={300}
       />
+      <div>
       <ScButton
         onClick={() => {
           boardCommentUpdate();
@@ -58,6 +59,7 @@ const UpdateBoardComment = (props) => {
       >
         취소
       </ScButton>
+      </div>
     </ScWrap>
   );
 };
@@ -67,6 +69,12 @@ const ScWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 800px;
+  /* border: 1px red solid; */
+  @media screen and (max-width: 768px) {
+    width: 400px;
+    flex-direction: column;
+    /* margin-left: -40px; */
+  }
 `;
 
 const ScTextArea = styled.textarea`
@@ -78,8 +86,8 @@ const ScTextArea = styled.textarea`
   resize: none;  
   text-align: left;
   @media screen and (max-width: 768px) {
-    width: 200px;
-    margin-left: -40px;
+    width: 400px;
+    /* margin-left: -40px; */
   }
 `;
 
