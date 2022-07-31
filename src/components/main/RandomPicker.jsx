@@ -2,17 +2,24 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Styled from 'styled-components';
 import RandomModalBg from './image/RandomModalBg.png';
+import RandomBackBg from './image/RamdomResultBg.webp';
 import RandomLogo from './svg/RandomImage.svg';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import apis from '../../shared/api/main'
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import * as Sentry from "@sentry/react";
 import { createTheme } from '@mui/material/styles';
-import character from '../../shared/svg/MainCharacter2.svg';
 import './flipcard.css';
-import RandomCoffee from './RandomCoffee';
+
+import { withSentryReactRouterV6Routing } from '@sentry/react';
 
 const RandomPicker = ({closeModal}) => {
+
+  const navigate = useNavigate();
   const [click, setClick] = useState(false);
+  const [ status , setStatus ] = useState();
 
   const theme = createTheme({
     palette: {
@@ -26,6 +33,8 @@ const RandomPicker = ({closeModal}) => {
   const [ selectBrandValue , setSelectBrandValue ] = useState();
   const [ selectCategoryValue , setSelectCategoryValue ] = useState();
   const [ value, setValue ] = useState([2000, 8000]);
+
+  const [ randomCoffee , setRandomCoffee ] = useState();
 
   
 
@@ -57,18 +66,36 @@ const RandomPicker = ({closeModal}) => {
 
   const randomCoffeePick = async () => {
     await apis.randomCoffee(
-       selectBrandValue,
-       selectCategoryValue,
-       value[0],
-       value[1]
+        selectBrandValue,
+        selectCategoryValue,
+        value[0],
+        value[1]
     )
     .then((res)=>{
-      console.log(res);
+      console.log("response",res?.data);
+      setRandomCoffee(res?.data);
     })
     .catch((error)=>{
-      console.log(error);
+      console.log("에러로그",error.response.status);
+      if (error.response.status === 404) {
+        Swal.fire({
+          title: '해당하는 커피를 찾을 수 없습니다.',
+          icon: 'warning',
+          confirmButtonText: '확인',
+        });
+        closeModal();
+      }
+      Sentry.captureException(error);
     })
   }
+
+
+  const coffeeBrand = randomCoffee?.brand;
+  const coffeeName = randomCoffee?.name;
+  const coffeeImg = randomCoffee?.img;
+  const coffeePrice = randomCoffee?.pricePair[0].price;
+  const coffeeStar = randomCoffee?.star;
+
 
 
 
@@ -228,61 +255,61 @@ const RandomPicker = ({closeModal}) => {
                 <ScCateAlign>
                   <ScInput 
                     type="radio" 
-                    id="커피" 
-                    value="커피" 
-                    checked={selectCategoryValue === "커피"}
+                    id="COFFEE" 
+                    value="COFFEE" 
+                    checked={selectCategoryValue === "COFFEE"}
                     onChange={handleCategoryChange}
                     />
-                  <label htmlFor="커피">커피</label>
+                  <label htmlFor="COFFEE">커피</label>
                 </ScCateAlign>
                 <ScCateAlign>
                   <ScInput 
                     type="radio" 
-                    id="논커피" 
-                    value="논커피" 
-                    checked={selectCategoryValue === "논커피"}
+                    id="NONCOFFEE" 
+                    value="NONCOFFEE" 
+                    checked={selectCategoryValue === "NONCOFFEE"}
                     onChange={handleCategoryChange}
                     />
-                  <label htmlFor="논커피">논커피</label>
+                  <label htmlFor="NONCOFFEE">논커피</label>
                 </ScCateAlign>
                 <ScCateAlign>
                   <ScInput 
                     type="radio" 
-                    id="스무디" 
-                    value="스무디"
-                    checked={selectCategoryValue === "스무디"} 
+                    id="SMOOTHIE" 
+                    value="SMOOTHIE"
+                    checked={selectCategoryValue === "SMOOTHIE"} 
                     onChange={handleCategoryChange}
                     />
-                  <label htmlFor="스무디">스무디</label>
+                  <label htmlFor="SMOOTHIE">스무디</label>
                 </ScCateAlign>
                 <ScCateAlign>
                   <ScInput 
                     type="radio" 
-                    id="에이드" 
-                    value="에이드" 
-                    checked={selectCategoryValue === "에이드"}
+                    id="ADE" 
+                    value="ADE" 
+                    checked={selectCategoryValue === "ADE"}
                     onChange={handleCategoryChange}
                     />
-                  <label htmlFor="에이드">에이드</label>
+                  <label htmlFor="ADE">에이드</label>
                 </ScCateAlign>
                 <ScCateAlign>
                   <ScInput 
                     type="radio" 
-                    id="티" 
-                    value="티" 
-                    checked={selectCategoryValue === "티"}
+                    id="TEA" 
+                    value="TEA" 
+                    checked={selectCategoryValue === "TEA"}
                     onChange={handleCategoryChange}
                     />
-                  <label htmlFor="티">티</label>
+                  <label htmlFor="TEA">티</label>
                 </ScCateAlign>
             </ScCateRadioWrap>
         </ScCategoryWrap>
         <ScPriceWrap>
             <h4>가격대</h4>
-            <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between",width: "550px",margin:"20px auto"}}>
+            <ScMobile>
               <div>W2000</div>
               <div>W7000+</div>
-            </div>
+            </ScMobile>
             <ScPriceAlign>
               <Box style={{width:"508px"}}>
               <Slider
@@ -303,19 +330,35 @@ const RandomPicker = ({closeModal}) => {
         </ScPriceWrap>                 
         <ScX onClick={closeModal}>✖</ScX>
         <ScButton onClick={()=>{
-          randomCoffeePick();
+          randomCoffeePick(
+            selectBrandValue,
+            selectCategoryValue,
+            value[0],
+            value[1]);
           setClick(!click);
         }}>선택 완료</ScButton>
       </ScRandomWrap>    
       </ScWrap>
-      <ScWrap className="item back">
-        <ScButton
-          onClick={() => {
-            setClick(!click);
-          }}
-        >
-          골라보기
-        </ScButton>
+      <ScWrap className="item back">        
+        <ScRandomWrapBack>          
+          <ScBackTitleWrap>
+            <ScBackTitle>{coffeeBrand}</ScBackTitle>
+            <ScBackCoffee>{coffeeName}</ScBackCoffee>
+            {coffeeBrand === "엔제리너스" || coffeeBrand === "더벤티" ? <ScimgAngel src={coffeeImg} alt=""/> :
+            <Scimg src={coffeeImg} alt=""/> }
+          </ScBackTitleWrap>
+          <ScStarPriceWrap>
+            <ScStarTitle>총 별점</ScStarTitle>
+            <ScPriceTitle>가격</ScPriceTitle>
+          </ScStarPriceWrap>
+          <ScStarPriceBox>
+          {coffeeStar === "NaN" ? <ScStar2>별점이 없습니다.</ScStar2> : 
+            <ScStar>{coffeeStar}</ScStar> }          
+            <ScPrice>￦{coffeePrice}</ScPrice>
+          </ScStarPriceBox>
+        <ScX onClick={closeModal}>✖</ScX>
+        <ScReturnBtn onClick={()=>{setClick(!click)}}>다시 뽑기</ScReturnBtn>
+        </ScRandomWrapBack>
       </ScWrap>
     </ScTotal>
     </Background>
@@ -333,7 +376,9 @@ const ScTotal = styled.div`
     transform: ${(props) =>
       props.click ? 'rotateY(0deg)' : 'rotateY(180deg)'};
   }
-`;
+
+  
+  `;
 
 const ScWrap = styled.div`
   display: flex;
@@ -346,15 +391,7 @@ const ScWrap = styled.div`
   border: 1px #bbb solid;
   border-radius: 12px;
   margin-left: 30px;
-  background-color: white;
-`;
-const ScWordWrap = styled.div``;
-
-const ScSquare = styled.img`
-  border: 1px #ddd solid;
-  height: 164px;
-  width: 131px;
-  background-color: #d9d9d9;
+  background-color: white; 
 `;
 
 
@@ -383,7 +420,37 @@ const ScRandomWrap = Styled.div`
     flex-direction: column;    
     align-items: center;
     text-align: center;
-    font-size: 1em;    
+    font-size: 1em; 
+    @media screen and (max-width: 768px) {
+    width: 350px;
+    height: 500px;
+    margin: -100px auto;
+    font-size: 0.7em;
+  }   
+`;
+
+const ScRandomWrapBack = Styled.div`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 756px;
+    height: 800px;
+    background-image: url(${RandomBackBg});
+    background-size: cover;
+    background-position: center;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    text-align: center;
+    font-size: 1em;
+    @media screen and (max-width: 768px) {
+      width: 350px;
+      height: 500px;
+      margin: -100px auto;
+      font-size: 0.7em;
+    }  
 `;
 
 const ScX = Styled.div`
@@ -408,13 +475,24 @@ const ScTitleImgWrap = Styled.div`
   align-items: center;
   margin: 70px auto;
   width: 700px;
+  @media screen and (max-width: 768px) {
+      font-size: 0.7em;
+      width: 350px;
+      height: 400px;      
+      margin-top: 30px;
+      margin-left: 5px;
+    } 
 `;
 
 const ScTitleWrap = Styled.div`  
   display: flex;
   flex-direction: column;
   width: 450px;
-  height: 94px; 
+  height: 94px;
+  @media screen and (max-width: 768px) {
+    font-size: 0.7em;
+    margin: 5px auto;
+  }
 `;
 
 const ScTitle1 = Styled.h1`  
@@ -422,6 +500,9 @@ const ScTitle1 = Styled.h1`
   line-height: 47px;
   font-size: 2.75em;
   font-weight: 400;
+  @media screen and (max-width: 768px) {
+      line-height: 2px;     
+    } 
 `;
 
 const ScTitle2 = Styled.h1`  
@@ -429,6 +510,9 @@ const ScTitle2 = Styled.h1`
   line-height: 47px;
   font-size: 2.75em;
   font-weight: 600;
+  @media screen and (max-width: 768px) {
+      line-height: 40px;    
+    }
 `;
 
 const ScTitle3 = Styled.h3`
@@ -436,15 +520,24 @@ const ScTitle3 = Styled.h3`
   line-height: 23.27px;
   font-size: 1.125em;
   font-weight: 300;
+  @media screen and (max-width: 768px) {
+      line-height: 10px;    
+    }
 `;
 
 const ScImgWrap = Styled.div`
-  
+  @media screen and (max-width: 768px) {
+      width: 30%;
+    }
 `;
 
 const ScImg = Styled.img`
-  
+  @media screen and (max-width: 768px) {
+      width: 120px;
+      height: 80px;   
+    }
 `;
+
 
 const ScBrandWrap = Styled.div`
   width: 674px;
@@ -454,13 +547,27 @@ const ScBrandWrap = Styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 8px 32px;
-  gap: 10px;    
+  gap: 10px;
+  @media screen and (max-width: 768px) {
+      width: 300px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column; 
+      margin-top: -100px;
+      margin-left: -20px; 
+    }  
 `;
 
 const ScBrandRadioWrap = Styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 5px;
+  @media screen and (max-width: 768px) {
+    
+    width: 350px;
+    height: 40px;
+    margin-top: -20px;
+  }
 `;
 
 
@@ -476,7 +583,11 @@ const ScBrandAlign = Styled.div`
   align-items: center;
   margin: 5px;
   justify-content: center;
-  font-size: 0.815em;  
+  font-size: 0.815em;
+  @media (max-width: 768px) {
+    width: 15%;
+    font-size: 0.4em;
+  }  
   input:checked + label {
     border: 1px solid #2c278c;
     background-color: #2c278c;
@@ -491,7 +602,8 @@ const ScBrandAlign = Styled.div`
     &:hover {
     cursor: pointer;
   } 
-  }  
+  }
+  
   }
 `;
 
@@ -499,8 +611,7 @@ const ScInput = Styled.input`
   display: none;
   &:hover {
     cursor: pointer;
-  }
-  
+  } 
 `;
 
 const ScCategoryWrap = Styled.div`  
@@ -511,12 +622,27 @@ const ScCategoryWrap = Styled.div`
   align-items: flex-start;
   margin: 100px auto;
   margin-bottom: 5px;
+  @media screen and (max-width: 768px) {
+      width: 350px;
+      height: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      margin-top: 130px;
+      margin-left: 2px;
+    }  
 `;
 
 const ScCateRadioWrap = Styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 5px;
+  @media screen and (max-width: 768px) {
+    
+    width: 350px;
+    height: 40px;
+    
+  }
 `;
 
 const ScCateAlign = Styled.div`  
@@ -531,7 +657,11 @@ const ScCateAlign = Styled.div`
   align-items: center;
   margin: 5px;
   justify-content: center;
-  font-size: 0.815em;  
+  font-size: 0.815em;
+  @media (max-width: 768px) {
+    width: 15%;
+    font-size: 0.4em;
+  }  
   input:checked + label {
     border: 1px solid #2c278c;
     background-color: #2c278c;
@@ -558,6 +688,27 @@ const ScPriceWrap = Styled.div`
   align-items: flex-start;
   margin: 30px auto;
   margin-bottom: 80px;
+  @media screen and (max-width: 768px) {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;    
+  }
+`;
+
+const ScMobile = Styled.div`
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+  width: 550px;
+  margin: 20px auto;
+  @media screen and (max-width: 768px) {
+    
+    width: 350px;
+    justify-content: space-around;
+    margin: -20px auto;
+  }
 `;
 
 const ScPriceAlign = Styled.div`
@@ -567,6 +718,11 @@ const ScPriceAlign = Styled.div`
   font-size: 0.915em;
   &:hover {
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    width: 180px;
+    justify-content: center;
+    margin: -40px auto;
   }
 `;
 
@@ -585,5 +741,166 @@ const ScButton = Styled.div`
   font-weight: 500;
   &:hover {
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    width: 350px;
+    height: 200px;
+    margin: -45px auto;
+  }
+`;
+
+const ScBackTitleWrap = Styled.div`  
+  width: 500px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 768px) {
+    width: 350px;
+    margin: 10px auto;
+    font-size: 0.9em;
+  }
+
+`;
+
+const ScBackTitle = Styled.h2`
+  border: 1px solid black;
+  width: 150px;
+  height: 27px;
+  border-radius: 100px;
+  padding: 8px 20px;
+  margin: auto;
+  font-size: 1.9em;
+  font-weight: 600;
+   
+`;
+
+const ScBackCoffee = Styled.h3`
+  margin: 40px auto;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #2c278c;
+  @media screen and (max-width: 768px) {
+    font-size: 0.9em;
+  } 
+`;
+
+const Scimg = Styled.img`
+  margin: auto;
+  width: 400px;
+  height: 400px;
+  @media screen and (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+    margin: -30px auto;
+  } 
+`;
+
+const ScimgAngel = Styled.img`
+  margin: auto;
+  width: 200px;
+  height: 400px;
+  @media screen and (max-width: 768px) {
+    width: 100px;
+    height: 200px;
+    margin: -30px auto;
+  } 
+`;
+
+const ScStarPriceWrap = Styled.div`  
+  width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media screen and (max-width: 768px) {    
+    width: 350px;
+    
+  } 
+ 
+`;
+
+const ScStarTitle = Styled.h3`
+  font-size: 1.9em;
+  width: 300px;
+  color: #2c278c; 
+  @media screen and (max-width: 768px) {    
+    width: 175px;
+    font-size: 0.9em;
+  } 
+`;
+
+const ScPriceTitle = Styled.h3`
+  font-size: 1.9em;
+  width: 300px;
+  color: #2c278c;
+  @media screen and (max-width: 768px) {    
+    width: 175px;
+    font-size: 0.9em;
+  } 
+
+`;
+
+const ScStarPriceBox = Styled.div`
+  width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px auto;
+  @media screen and (max-width: 768px) { 
+    width: 350px;
+  } 
+`;
+
+const ScStar = Styled.h5`
+  font-size: 1.7em;
+  width: 300px;
+  @media screen and (max-width: 768px) {    
+    font-size: 0.9em;
+    width: 175px;
+  } 
+`;
+
+const ScStar2 = Styled.h5`
+  font-size: 1.7em;
+  width: 300px;
+  color: red;
+  @media screen and (max-width: 768px) {    
+    font-size: 0.9em;
+    width: 175px;
+  } 
+`;
+
+const ScPrice = Styled.h5`
+  font-size: 1.7em;
+  width: 300px;
+  @media screen and (max-width: 768px) {    
+    font-size: 1.1em;
+    width: 175px;
+  } 
+`;
+
+const ScReturnBtn = Styled.div`
+  display: flex;
+  border: 1px solid #2c278c;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  background-color: #2c278c;
+  color: white;
+  &:hover {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 768px){
+    width: 350px;
+    height: 100px;
+    margin: 68px auto;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    font-size: 1.2em;
   }
 `;
