@@ -131,52 +131,52 @@ const BrandCard = (props) => {
             <SCCate1>
                <input 
                   type="radio" 
-                  id="COFFEE" 
+                  id="커피" 
                   value="COFFEE"
                   checked={selectCategoryValue === "COFFEE"}                   
                   onChange={handleCategoryChange}
                   />
-                <label htmlFor="COFFEE">COFFEE</label>
+                <label htmlFor="커피">COFFEE</label>
             </SCCate1>
             <SCCate1>
                <input 
                   type="radio" 
-                  id="NONCOFFEE" 
+                  id="논커피" 
                   value="NONCOFFEE"
                   checked={selectCategoryValue === "NONCOFFEE"}                   
                   onChange={handleCategoryChange}
                   />
-                <label htmlFor="NONCOFFEE">NONCOFFEE</label>
+                <label htmlFor="논커피">NONCOFFEE</label>
             </SCCate1>
             <SCCate1>
                <input 
                   type="radio" 
-                  id="SMOOTHIE" 
+                  id="스무디" 
                   value="SMOOTHIE"
                   checked={selectCategoryValue === "SMOOTHIE"}                   
                   onChange={handleCategoryChange}
                   />
-                <label htmlFor="SMOOTHIE">SMOOTHIE</label>
+                <label htmlFor="스무디">SMOOTHIE</label>
             </SCCate1>
             <SCCate1>
                <input 
                   type="radio" 
-                  id="ADE" 
+                  id="에이드" 
                   value="ADE"
                   checked={selectCategoryValue === "ADE"}                   
                   onChange={handleCategoryChange}
                   />
-                <label htmlFor="ADE">ADE</label>
+                <label htmlFor="에이드">ADE</label>
             </SCCate1>
             <SCCate1>
                <input 
                   type="radio" 
-                  id="TEA" 
+                  id="티" 
                   value="TEA"
                   checked={selectCategoryValue === "TEA"}                   
                   onChange={handleCategoryChange}
                   />
-                <label htmlFor="TEA">TEA</label>
+                <label htmlFor="티">TEA</label>
             </SCCate1>
           </ScCategory>
           <SCcardWrap>

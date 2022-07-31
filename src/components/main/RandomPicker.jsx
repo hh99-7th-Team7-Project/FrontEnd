@@ -4,6 +4,8 @@ import Styled from 'styled-components';
 import RandomModalBg from './image/RandomModalBg.png';
 import RandomBackBg from './image/RamdomResultBg.webp';
 import RandomLogo from './svg/RandomImage.svg';
+import PinMap from './svg/PinMap.svg'
+import Pencil from './svg/Pencil.svg'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import apis from '../../shared/api/main'
@@ -11,9 +13,9 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import * as Sentry from "@sentry/react";
 import { createTheme } from '@mui/material/styles';
+import { StarFilledPurple, StarUnfilled } from '../../shared/svg/A-index';
 import './flipcard.css';
 
-import { withSentryReactRouterV6Routing } from '@sentry/react';
 
 const RandomPicker = ({closeModal}) => {
 
@@ -35,6 +37,7 @@ const RandomPicker = ({closeModal}) => {
   const [ value, setValue ] = useState([2000, 8000]);
 
   const [ randomCoffee , setRandomCoffee ] = useState();
+
 
   
 
@@ -60,8 +63,8 @@ const RandomPicker = ({closeModal}) => {
     setSelectCategoryValue(e.target.value);
   }
 
-  console.log(selectBrandValue);
-  console.log(selectCategoryValue);
+  // console.log(selectBrandValue);
+  // console.log(selectCategoryValue);
 
 
   const randomCoffeePick = async () => {
@@ -95,6 +98,7 @@ const RandomPicker = ({closeModal}) => {
   const coffeeImg = randomCoffee?.img;
   const coffeePrice = randomCoffee?.pricePair[0].price;
   const coffeeStar = randomCoffee?.star;
+  const coffeeId = randomCoffee?.id;
 
 
 
@@ -250,7 +254,7 @@ const RandomPicker = ({closeModal}) => {
             </ScBrandRadioWrap>
         </ScBrandWrap>
         <ScCategoryWrap>
-            <h4>종류</h4>
+            <h4>카테고리</h4>
             <ScCateRadioWrap>
                 <ScCateAlign>
                   <ScInput 
@@ -307,8 +311,8 @@ const RandomPicker = ({closeModal}) => {
         <ScPriceWrap>
             <h4>가격대</h4>
             <ScMobile>
-              <div>W2000</div>
-              <div>W7000+</div>
+              <div>￦2000</div>
+              <div>￦7000+</div>
             </ScMobile>
             <ScPriceAlign>
               <Box style={{width:"508px"}}>
@@ -342,6 +346,14 @@ const RandomPicker = ({closeModal}) => {
       <ScWrap className="item back">        
         <ScRandomWrapBack>          
           <ScBackTitleWrap>
+            <ScPin src={PinMap} onClick={()=>{
+              navigate(`/map/${coffeeBrand}`)
+            }}/>
+            <ScPencil src={Pencil}
+            onClick={()=>{
+              navigate(`/coffee/${coffeeBrand}/${coffeeName}/${coffeeId}`)
+            }}
+            />
             <ScBackTitle>{coffeeBrand}</ScBackTitle>
             <ScBackCoffee>{coffeeName}</ScBackCoffee>
             {coffeeBrand === "엔제리너스" || coffeeBrand === "더벤티" ? <ScimgAngel src={coffeeImg} alt=""/> :
@@ -352,8 +364,27 @@ const RandomPicker = ({closeModal}) => {
             <ScPriceTitle>가격</ScPriceTitle>
           </ScStarPriceWrap>
           <ScStarPriceBox>
-          {coffeeStar === "NaN" ? <ScStar2>별점이 없습니다.</ScStar2> : 
-            <ScStar>{coffeeStar}</ScStar> }          
+          {/* {coffeeStar === "NaN" ? <ScStar2>별점이 없습니다.</ScStar2> : 
+            <ScStar>{coffeeStar}</ScStar> }           */}
+            <div style={{width:"40%"}}>
+            {coffeeStar === "NaN" ? 
+          <>
+          <ScStarImg><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/>
+          </ScStarImg>
+          </>
+          :
+          <>
+          {/* <ScStar style={{fontSize:'1.125em'}}>{coffeeStar}</ScStar> */}
+          </>
+          }
+          <>            
+            {Math.floor(coffeeStar) === 1 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(coffeeStar) === 2 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(coffeeStar) === 3 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(coffeeStar) === 4 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+            {Math.floor(coffeeStar) === 5 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/></ScStarImg>}
+          </>
+          </div>
             <ScPrice>￦{coffeePrice}</ScPrice>
           </ScStarPriceBox>
         <ScX onClick={closeModal}>✖</ScX>
@@ -429,16 +460,18 @@ const ScRandomWrap = Styled.div`
   }   
 `;
 
-const ScRandomWrapBack = Styled.div`
+const ScRandomWrapBack = styled.div`
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 756px;
     height: 800px;
+    padding: 10px;
     background-image: url(${RandomBackBg});
-    background-size: cover;
-    background-position: center;
+    background-size: 100%;
+    /* background-position: center; */
+    
     border-radius: 32px;
     display: flex;
     flex-direction: column;    
@@ -584,10 +617,15 @@ const ScBrandAlign = Styled.div`
   margin: 5px;
   justify-content: center;
   font-size: 0.815em;
+  label{
+    width: 100%;
+    text-align: center;
+  }
   @media (max-width: 768px) {
     width: 15%;
     font-size: 0.4em;
   }  
+  
   input:checked + label {
     border: 1px solid #2c278c;
     background-color: #2c278c;
@@ -645,6 +683,13 @@ const ScCateRadioWrap = Styled.div`
   }
 `;
 
+const ScStarImg =styled.div`
+  img{
+    margin:0 1px;
+    height: 25px;
+  }
+`
+
 const ScCateAlign = Styled.div`  
   display: flex;
   flex-direction: flex-start;
@@ -658,6 +703,10 @@ const ScCateAlign = Styled.div`
   margin: 5px;
   justify-content: center;
   font-size: 0.815em;
+  label{
+    width: 100%;
+    text-align: center;
+  }
   @media (max-width: 768px) {
     width: 15%;
     font-size: 0.4em;
@@ -749,9 +798,11 @@ const ScButton = Styled.div`
   }
 `;
 
-const ScBackTitleWrap = Styled.div`  
-  width: 500px;
-  margin: 50px auto;
+const ScBackTitleWrap = Styled.div`
+  position: relative;  
+  width: 100%;
+  /* border:1px red solid; */
+  margin: 50px auto 0;
   display: flex;
   flex-direction: column;
   @media screen and (max-width: 768px) {
@@ -762,21 +813,36 @@ const ScBackTitleWrap = Styled.div`
 
 `;
 
-const ScBackTitle = Styled.h2`
+const ScPin = styled.img`
+position: absolute;
+/* border: 1px red solid; */
+top: 0;
+right: 5.3%;
+height: 40px;
+`
+
+const ScPencil = styled.img`
+position: absolute;
+/* border: 1px red solid; */
+top: 12%;
+right: 5%;
+width: 30px;
+`
+
+const ScBackTitle = Styled.div`
   border: 1px solid black;
-  width: 150px;
-  height: 27px;
+  width: 15%;
+  height: 20px;
   border-radius: 100px;
-  padding: 8px 20px;
+  padding: 6px 10px;
   margin: auto;
-  font-size: 1.9em;
-  font-weight: 600;
-   
+  font-size: 1.1em;
+  font-weight: 400;
 `;
 
-const ScBackCoffee = Styled.h3`
-  margin: 40px auto;
-  font-size: 1.8em;
+const ScBackCoffee = Styled.div`
+  margin: 30px auto 10px;
+  font-size: 1.5em;
   font-weight: 700;
   color: #2c278c;
   @media screen and (max-width: 768px) {
@@ -786,8 +852,8 @@ const ScBackCoffee = Styled.h3`
 
 const Scimg = Styled.img`
   margin: auto;
-  width: 400px;
-  height: 400px;
+  width: 440px;
+  height: 440px;
   @media screen and (max-width: 768px) {
     width: 200px;
     height: 200px;
@@ -797,8 +863,9 @@ const Scimg = Styled.img`
 
 const ScimgAngel = Styled.img`
   margin: auto;
-  width: 200px;
-  height: 400px;
+  width: 300px;
+  height: 360px;
+  padding: 40px 25px;
   @media screen and (max-width: 768px) {
     width: 100px;
     height: 200px;
@@ -808,7 +875,6 @@ const ScimgAngel = Styled.img`
 
 const ScStarPriceWrap = Styled.div`  
   width: 600px;
-  height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -819,8 +885,9 @@ const ScStarPriceWrap = Styled.div`
  
 `;
 
-const ScStarTitle = Styled.h3`
-  font-size: 1.9em;
+const ScStarTitle = Styled.div`
+  font-size: 1.4em;
+  font-weight:300;
   width: 300px;
   color: #2c278c; 
   @media screen and (max-width: 768px) {    
@@ -829,8 +896,9 @@ const ScStarTitle = Styled.h3`
   } 
 `;
 
-const ScPriceTitle = Styled.h3`
-  font-size: 1.9em;
+const ScPriceTitle = Styled.div`
+  font-size: 1.4em;
+  font-weight:300;
   width: 300px;
   color: #2c278c;
   @media screen and (max-width: 768px) {    
@@ -841,39 +909,43 @@ const ScPriceTitle = Styled.h3`
 `;
 
 const ScStarPriceBox = Styled.div`
-  width: 600px;
+  width: 100%;
+  /* border:1px red solid; */
   height: 50px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  margin: 30px auto;
+  margin: 20px auto 30px;
   @media screen and (max-width: 768px) { 
     width: 350px;
   } 
 `;
 
-const ScStar = Styled.h5`
-  font-size: 1.7em;
+const ScStar = Styled.div`
+  font-size: 1em;
   width: 300px;
+  font-weight:300;
   @media screen and (max-width: 768px) {    
     font-size: 0.9em;
     width: 175px;
   } 
 `;
 
-const ScStar2 = Styled.h5`
-  font-size: 1.7em;
+const ScStar2 = Styled.div`
+  font-size: 1em;
+  font-weight:400;
   width: 300px;
-  color: red;
+  color: #9e9b9b;
   @media screen and (max-width: 768px) {    
     font-size: 0.9em;
     width: 175px;
   } 
 `;
 
-const ScPrice = Styled.h5`
-  font-size: 1.7em;
-  width: 300px;
+const ScPrice = Styled.div`
+  font-size: 1.3em;
+  font-weight:300;
+  width: 40%;
   @media screen and (max-width: 768px) {    
     font-size: 1.1em;
     width: 175px;
@@ -889,6 +961,8 @@ const ScReturnBtn = Styled.div`
   border-radius: 100px;
   margin-bottom: 20px;
   background-color: #2c278c;
+  padding: 10px;
+  font-weight:300;
   color: white;
   &:hover {
     cursor: pointer;

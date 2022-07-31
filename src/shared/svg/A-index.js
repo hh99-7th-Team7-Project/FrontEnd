@@ -32,9 +32,11 @@ import ChatMini2 from './ChatMini2.svg'
 import BoardMini1 from './BoardMini1.svg'
 import BoardMini2 from './BoardMini2.svg'
 import MapIco from "./MapIco.svg"
+import StarFilledPurple from './StarFilledPurple.svg'
 
 
 export {
+  StarFilledPurple,
   MapIco,
   MypageMini,
   MainBanner2,
