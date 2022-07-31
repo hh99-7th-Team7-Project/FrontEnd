@@ -377,13 +377,13 @@ const RandomPicker = ({closeModal}) => {
           {/* <ScStar style={{fontSize:'1.125em'}}>{coffeeStar}</ScStar> */}
           </>
           }
-          <>            
-            {Math.floor(coffeeStar) === 1 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
-            {Math.floor(coffeeStar) === 2 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
-            {Math.floor(coffeeStar) === 3 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
-            {Math.floor(coffeeStar) === 4 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
-            {Math.floor(coffeeStar) === 5 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/></ScStarImg>}
-          </>
+          <>    
+              {Math.floor(coffeeStar) === 1 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+              {Math.floor(coffeeStar) === 2 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+              {Math.floor(coffeeStar) === 3 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+              {Math.floor(coffeeStar) === 4 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarUnfilled} alt=""/></ScStarImg>}
+              {Math.floor(coffeeStar) === 5 &&  <ScStarImg><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/><img src={StarFilledPurple} alt=""/></ScStarImg>}
+          </> 
           </div>
             <ScPrice>￦{coffeePrice}</ScPrice>
           </ScStarPriceBox>
@@ -453,7 +453,7 @@ const ScRandomWrap = Styled.div`
     text-align: center;
     font-size: 1em; 
     @media screen and (max-width: 768px) {
-    width: 350px;
+    width: 300px;
     height: 500px;
     margin: -100px auto;
     font-size: 0.7em;
@@ -471,6 +471,13 @@ const ScRandomWrapBack = styled.div`
     background-image: url(${RandomBackBg});
     background-size: 100%;
     /* background-position: center; */
+    @media screen and (max-width: 768px) {
+    background-image: url(${RandomBackBg});
+    background-size: 130%;
+    background-position: 20%;
+    transform: translate(-53%, -50%);
+    }
+
     
     border-radius: 32px;
     display: flex;
@@ -511,9 +518,9 @@ const ScTitleImgWrap = Styled.div`
   @media screen and (max-width: 768px) {
       font-size: 0.7em;
       width: 350px;
-      height: 400px;      
-      margin-top: 30px;
-      margin-left: 5px;
+      height: 400px;
+      margin-top: -90px;
+      margin-left: -20px;
     } 
 `;
 
@@ -524,7 +531,7 @@ const ScTitleWrap = Styled.div`
   height: 94px;
   @media screen and (max-width: 768px) {
     font-size: 0.7em;
-    margin: 5px auto;
+    width: 300px;
   }
 `;
 
@@ -561,13 +568,15 @@ const ScTitle3 = Styled.h3`
 const ScImgWrap = Styled.div`
   @media screen and (max-width: 768px) {
       width: 30%;
+      position: absolute;
+      right: 0;
     }
 `;
 
 const ScImg = Styled.img`
   @media screen and (max-width: 768px) {
-      width: 120px;
-      height: 80px;   
+      width: 80px;
+      height: 50px;   
     }
 `;
 
@@ -586,7 +595,7 @@ const ScBrandWrap = Styled.div`
       display: flex;
       flex-wrap: wrap;
       flex-direction: column; 
-      margin-top: -100px;
+      margin-top: -200px;
       margin-left: -20px; 
     }  
 `;
@@ -597,9 +606,9 @@ const ScBrandRadioWrap = Styled.div`
   padding: 5px;
   @media screen and (max-width: 768px) {
     
-    width: 350px;
+    width: 300px;
     height: 40px;
-    margin-top: -20px;
+    margin-top: -10px;
   }
 `;
 
@@ -661,13 +670,13 @@ const ScCategoryWrap = Styled.div`
   margin: 100px auto;
   margin-bottom: 5px;
   @media screen and (max-width: 768px) {
-      width: 350px;
+      width: 300px;
       height: 40px;
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
       margin-top: 130px;
-      margin-left: 2px;
+      margin-left: 10px;
     }  
 `;
 
@@ -677,7 +686,7 @@ const ScCateRadioWrap = Styled.div`
   padding: 5px;
   @media screen and (max-width: 768px) {
     
-    width: 350px;
+    width: 280px;
     height: 40px;
     
   }
@@ -687,6 +696,9 @@ const ScStarImg =styled.div`
   img{
     margin:0 1px;
     height: 25px;
+  }
+  @media screen and (max-width: 768px) {
+    margin-top: 10px;
   }
 `
 
@@ -708,7 +720,7 @@ const ScCateAlign = Styled.div`
     text-align: center;
   }
   @media (max-width: 768px) {
-    width: 15%;
+    width: 13%;
     font-size: 0.4em;
   }  
   input:checked + label {
@@ -738,7 +750,7 @@ const ScPriceWrap = Styled.div`
   margin: 30px auto;
   margin-bottom: 80px;
   @media screen and (max-width: 768px) {
-    width: 350px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -754,7 +766,7 @@ const ScMobile = Styled.div`
   margin: 20px auto;
   @media screen and (max-width: 768px) {
     
-    width: 350px;
+    width: 300px;
     justify-content: space-around;
     margin: -20px auto;
   }
@@ -771,7 +783,7 @@ const ScPriceAlign = Styled.div`
   @media screen and (max-width: 768px) {
     width: 180px;
     justify-content: center;
-    margin: -40px auto;
+    margin: 15px auto;
   }
 `;
 
@@ -792,9 +804,9 @@ const ScButton = Styled.div`
     cursor: pointer;
   }
   @media screen and (max-width: 768px) {
-    width: 350px;
-    height: 200px;
-    margin: -45px auto;
+    width: 300px;
+    height: 100px;
+    margin: -60px auto;
   }
 `;
 
@@ -807,7 +819,7 @@ const ScBackTitleWrap = Styled.div`
   flex-direction: column;
   @media screen and (max-width: 768px) {
     width: 350px;
-    margin: 10px auto;
+    margin: 23px auto;
     font-size: 0.9em;
   }
 
@@ -819,6 +831,12 @@ position: absolute;
 top: 0;
 right: 5.3%;
 height: 40px;
+&:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {  
+  padding: 5px 10px;
+}
 `
 
 const ScPencil = styled.img`
@@ -827,6 +845,13 @@ position: absolute;
 top: 12%;
 right: 5%;
 width: 30px;
+&:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {  
+  padding: 5px 10px;
+  margin-top: 30px;
+}
 `
 
 const ScBackTitle = Styled.div`
@@ -847,6 +872,7 @@ const ScBackCoffee = Styled.div`
   color: #2c278c;
   @media screen and (max-width: 768px) {
     font-size: 0.9em;
+    margin: 20px auto;
   } 
 `;
 
@@ -857,7 +883,7 @@ const Scimg = Styled.img`
   @media screen and (max-width: 768px) {
     width: 200px;
     height: 200px;
-    margin: -30px auto;
+    margin: 10px auto;
   } 
 `;
 
@@ -880,7 +906,7 @@ const ScStarPriceWrap = Styled.div`
   align-items: center;
   @media screen and (max-width: 768px) {    
     width: 350px;
-    
+    margin: -10px auto;
   } 
  
 `;
@@ -902,7 +928,7 @@ const ScPriceTitle = Styled.div`
   width: 300px;
   color: #2c278c;
   @media screen and (max-width: 768px) {    
-    width: 175px;
+    width: 200px;
     font-size: 0.9em;
   } 
 
@@ -918,6 +944,9 @@ const ScStarPriceBox = Styled.div`
   margin: 20px auto 30px;
   @media screen and (max-width: 768px) { 
     width: 350px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   } 
 `;
 
@@ -970,11 +999,11 @@ const ScReturnBtn = Styled.div`
   @media screen and (max-width: 768px){
     width: 350px;
     height: 100px;
-    margin: 68px auto;
+    margin: 2px 3px auto;
     border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 `;
