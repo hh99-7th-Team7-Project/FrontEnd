@@ -223,41 +223,45 @@ const MyPage = () => {
             </ScMobile2>
           </ScMobile>
           <ScBookmark>
-            <ScMobileBookmark style={{ fontSize: '1.5em', fontWeight: '700' }}>북마크</ScMobileBookmark>
+            <ScMobileBookmark style={{ fontSize: '1.4em', fontWeight: '700' }}>북마크</ScMobileBookmark>
             <div>
               <ScBookmarkwrap>
                 <div style={{ display: 'flex', gap: '20px' }}>
                   <ScBookmarkCategory
+                    menu={menu}
                     onClick={() => {
                       setMenu(1);
                     }}
                   >
                     음료
                   </ScBookmarkCategory>
-                  <div style={{ border: '1px solid black' }}></div>
-                  <ScBookmarkCategory
+                  <div style={{ border: '1px solid #7e7c7c' }}></div>
+                  <ScBookmarkCategory2
+                  menu={menu}
                     onClick={() => {
                       setMenu(2);
                     }}
                   >
                     게시판
-                  </ScBookmarkCategory>
-                  <div style={{ border: '1px solid black' }}></div>
-                  <ScBookmarkCategory
+                  </ScBookmarkCategory2>
+                  <div style={{ border: '1px solid #7e7c7c' }}></div>
+                  <ScBookmarkCategory3
+                  menu={menu}
                     onClick={() => {
                       setMenu(3);
                     }}
                   >
                     내가 쓴 글
-                  </ScBookmarkCategory>
-                  <div style={{ border: '1px solid black' }}></div>
-                  <ScBookmarkCategory
+                  </ScBookmarkCategory3>
+                  <div style={{ border: '1px solid #7e7c7c' }}></div>
+                  <ScBookmarkCategory4
+                  menu={menu}
                     onClick={() => {
                       setMenu(4);
                     }}
                   >
                     내 모임
-                  </ScBookmarkCategory>
+                  </ScBookmarkCategory4>
                 </div>
               </ScBookmarkwrap>
               {/* <ScBookWrap> */}
@@ -387,11 +391,32 @@ const ScBookWrap = styled.div`
 `;
 
 const ScBookmarkCategory = styled.div`
-  font-size: 1.25em;
+  font-size: 1.1em;
+  font-weight: ${(props) => (props.menu===1 ? "600" : "400")};
   cursor: pointer;
-  font-weight: 600;
+  color: ${(props) => (props.menu===1 ? "black" : "#7e7c7c")};
 `;
 
+const ScBookmarkCategory2= styled.div`
+  font-size: 1.1em;
+  font-weight:  ${(props) => (props.menu===2 ? "600" : "400")};
+  cursor: pointer;
+  color: ${(props) => (props.menu===2 ? "black" : "#7e7c7c")};
+`;
+
+const ScBookmarkCategory3 = styled.div`
+  font-size: 1.1em;
+  font-weight: ${(props) => (props.menu===3 ? "600" : "400")};
+  cursor: pointer;
+  color: ${(props) => (props.menu===3 ? "black" : "#7e7c7c")};
+`;
+
+const ScBookmarkCategory4 = styled.div`
+  font-size: 1.1em;
+  font-weight: ${(props) => (props.menu===4 ? "600" : "400")};
+  cursor: pointer;
+  color: ${(props) => (props.menu===4 ? "black" : "#7e7c7c")};
+`;
 
 const ScMywrite = styled.div`
   width: 277px;
