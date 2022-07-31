@@ -24,6 +24,7 @@ const apis = {
 
   //커피정보
   getCoffee: (brand) => api.get(`/coffees/${brand}`),
+  getCoffeeBrandnCate: (brand,category) => api.get(`/coffees/${brand}/category?keyword=${category}`),
   getCoffeeDetail: (brand, id) => api.get(`/coffees/${brand}/${id}`),
   getCoffeeDetailLogin: (brand, id) => api.get(`/auths/coffees/${brand}/${id}`),
   getStar: (brand, id) => api.get(`/coffee/${brand}/${id}/star`),

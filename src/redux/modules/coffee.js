@@ -13,6 +13,7 @@ let intialstate = {
 const LOAD_COFFEE = "coffee_reducer/LOAD";
 const LOAD_COFFEE_CATEGORY = "coffee_reducer/CATEGORY";
 const LOAD_COFFEE_DETAIL = "coffee_reducer/DETAIL"
+const LOAD_COFFEE_CATEGORY_BRAND ="coffee_reducer/CATEGORYnBRAND"
 const CREATE_COFFEE = "coffee_reducer/CREATE";
 const UPDATE_COFFEE = "coffee_reducer/UPDATE";
 const REMOVE_COFFEE = "coffee_reducer/REMOVE";
@@ -23,20 +24,20 @@ export function loadCoffee(payload) {
   return { type: LOAD_COFFEE, payload };
 }
 export function loadCoffeeCategory(payload) {
-  return { type: LOAD_COFFEE_CATEGORY, payload };
+  return { type: LOAD_COFFEE_CATEGORY_BRAND, payload };
 }
 export function loadCoffeeDetail(payload) {
   return { type: LOAD_COFFEE_DETAIL, payload };
 }
-export function createCoffee(payload) {
-  return { type: CREATE_COFFEE, payload };
-}
-export function updateCoffee(payload) {
-  return { type: UPDATE_COFFEE, payload };
-}
-export function removeCoffee(payload) {
-  return { type: REMOVE_COFFEE, payload };
-}
+// export function createCoffee(payload) {
+//   return { type: CREATE_COFFEE, payload };
+// }
+// export function updateCoffee(payload) {
+//   return { type: UPDATE_COFFEE, payload };
+// }
+// export function removeCoffee(payload) {
+//   return { type: REMOVE_COFFEE, payload };
+// }
 
 /* ----------------- 미들웨어 ------------------ */
 export const __loadCoffee = (brand) => {
@@ -63,6 +64,19 @@ export const __loadCoffees = () => {
     }
   };
 };
+
+export const __loadCoffeesnBrand = (data) => {
+  return async function (dispatch) {
+    try {
+      const loadData = await apis.getCoffeeBrandnCate(data.brand,data.cate);
+      dispatch(loadCoffee(loadData.data));
+    }
+    catch (e) {
+      Sentry.captureException(e);
+    }
+  };
+};
+
 export const __loadCoffeeCategory = (category) => {
   return async function (dispatch) {
     try {
@@ -123,6 +137,9 @@ export default function CoffeeReducer(state = intialstate, action) {
       return { list: action.payload };
     }
     case LOAD_COFFEE_CATEGORY: {
+      return { ...state, list: action.payload };
+    }
+    case LOAD_COFFEE_CATEGORY_BRAND: {
       return { ...state, list: action.payload };
     }
     case LOAD_COFFEE_DETAIL: {

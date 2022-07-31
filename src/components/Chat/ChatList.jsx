@@ -141,8 +141,8 @@ const InfoWrap = styled.div`
   }
   & span{
     word-wrap: break-word;
-   word-break: break-all;
-   text-overflow: ellipsis;
+    word-break: break-all;
+    text-overflow: ellipsis;
   }
 `;
 

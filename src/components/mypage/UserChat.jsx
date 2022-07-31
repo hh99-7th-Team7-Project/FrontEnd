@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import PopularBoardMap from '../board/PopularBoardMap';
-import { left, right } from '../../shared/svg/A-index';
+import { left, MapIco, right } from '../../shared/svg/A-index';
+import calendar from '../../Image/Chat/calendar.svg';
+import IconTime from '../../Image/Chat/time.svg';
+import coffee from '../../Image/Chat/coffee.svg';
+import person from '../../Image/Chat/person.png';
 import * as Sentry from "@sentry/react";
+import { useNavigate } from 'react-router-dom';
 
 const UserChat = () => {
   const [content, setContent] = useState();
@@ -15,11 +20,13 @@ const UserChat = () => {
   const [slide, setSlide] = useState();
   const imgLength = 1000;
   const [curruntIdx, setCurrentIdx] = useState(0);
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     apis.getMyChatRoom(userId)
     .then((res) => {
-      // console.log(res.data);
+      console.log(res.data);
       setContent(res.data);
       setSlide(Math.floor(res?.data?.length / 4));
     }).catch((e)=>{
@@ -65,7 +72,30 @@ const UserChat = () => {
           content.map((item, idx) => {
             return (
               <ImageList key={idx}>
-                {/* <PopularBoardMap content={item} /> */}
+                <ScMap onClick={()=>{
+                   navigate(`/chatposts/detail/${item.chatpostId}`)
+                }}>
+                {item.count===item.totalcount ?
+                 <div style={{fontWeight:"300"}}>모집완료</div>:
+                 <div style={{fontWeight:"300"}}>모집중</div>}
+                  <ScTitle>{item.title}</ScTitle>
+                  <ScBundle>
+                  <ICON src={calendar}/>
+                  <span>{item.calendar}</span>
+                  </ScBundle>
+                  <ScBundle >
+                  <ICON src={IconTime}/>
+                  <span>{item.meettime}</span>
+                  </ScBundle>
+                  <ScBundle>
+                  <ICON src={MapIco}/>
+                  <div >{item.map}</div>
+                  </ScBundle>
+                  <ScBundle>
+                  <ICON src={person}/>
+                  <div>{item.nickname}</div> 
+                  </ScBundle>  
+                </ScMap>
               </ImageList>
             );
           })}
@@ -74,6 +104,23 @@ const UserChat = () => {
   </ScWrap>
   )
 }
+
+
+const ICON = styled.img`
+margin-right: 5px;
+width: 20px;
+`;
+
+const ScBundle =styled.div`
+  display: flex;
+  font-weight: 300;
+  span{
+    font-weight: 300;
+  }
+  div{
+    font-weight: 300;
+  }
+`
 
 const ScWrap = styled.div`
   /* border: 1px solid black; */
@@ -89,6 +136,13 @@ const ScWrap = styled.div`
     width: 90%;
   }
 `;
+
+const ScTitle =styled.div`
+  font-size: 17px;
+  font-weight: 700!important;
+  height: 110px;
+  margin: 10px 0 ;
+`
 const Container = styled.div`
   max-width: 1200px;
   width: 100%;
@@ -96,6 +150,19 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
+const ScMap = styled.div`
+  /* border: 1px red solid; */
+  height: 260px;
+  width: 220px;
+  margin: 10px 20px 0 0;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.185);
+  &:hover{
+    background-color: #fdf0f2;
+  }
+`
 const ImageBox = styled.ul`
   margin: 0 0 0 30px;
   padding: 0;
