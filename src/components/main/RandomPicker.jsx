@@ -46,7 +46,7 @@ const RandomPicker = ({closeModal}) => {
     return `${value}원`;
   }
 
-  console.log("min",value[0],"max",value[1]);
+  // console.log("min",value[0],"max",value[1]);
 
   
   const handleChange = (event, newValue) => {
@@ -75,7 +75,7 @@ const RandomPicker = ({closeModal}) => {
         value[1]
     )
     .then((res)=>{
-      console.log("response",res?.data);
+      // console.log("response",res?.data);
       setRandomCoffee(res?.data);
     })
     .catch((error)=>{

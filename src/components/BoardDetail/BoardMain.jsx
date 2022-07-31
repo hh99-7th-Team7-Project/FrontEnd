@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 
 const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
   const navigate = useNavigate();
+  // console.log(head)
   const nickname = getCookie('nickname');
   const bookmarkfunc = async () => {
     if(nickname){
@@ -48,7 +49,7 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
       <ScHR />
       <ScTitleWrap>
         <ScBookMarkTitleBox>
-          {head?.bookmark ? (
+          {bookmark2 ? (
             <ScImg src={bookmarkck} alt="" onClick={bookmarkfunc} />
           ) : (
             <ScImg src={bookmark} alt="" onClick={bookmarkfunc} />

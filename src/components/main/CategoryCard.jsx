@@ -25,7 +25,7 @@ const CategoryCard = (props) => {
   useEffect(() => {
     dispatch(__loadCoffeeCategory('ADE'));
   }, [dispatch]);
-console.log(brandName)
+// console.log(brandName)
   const coffeeReducer = useSelector((state) => state.coffee.list);
 
   const categoryList = [

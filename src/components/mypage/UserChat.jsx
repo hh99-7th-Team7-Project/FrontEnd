@@ -26,7 +26,7 @@ const UserChat = () => {
   useEffect(() => {
     apis.getMyChatRoom(userId)
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setContent(res.data);
       setSlide(Math.floor(res?.data?.length / 4));
     }).catch((e)=>{
