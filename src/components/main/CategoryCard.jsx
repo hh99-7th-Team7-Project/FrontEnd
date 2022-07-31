@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Styled from 'styled-components';
-import { useInView } from 'react-intersection-observer';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CoffeeCard from './CoffeeCard';
 import {
-  __loadCoffee,
-  loadCoffee,
-  loadBrand,
-  __loadCoffees,
   __loadCoffeeCategory,
 } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +13,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
-import styled, { css, keyframes } from 'styled-components';
+import styled, {keyframes } from 'styled-components';
 
 const CategoryCard = (props) => {
   // const{coffeeReducer} = props
@@ -30,7 +25,7 @@ const CategoryCard = (props) => {
   useEffect(() => {
     dispatch(__loadCoffeeCategory('ADE'));
   }, [dispatch]);
-console.log(brandName)
+// console.log(brandName)
   const coffeeReducer = useSelector((state) => state.coffee.list);
 
   const categoryList = [
@@ -190,7 +185,7 @@ const ScSlide = styled.div`
   }
 `;
 const SCcardWrap = Styled.div`
-    margin: 30px 0;
+    margin: 0px ;
     width: 100%;
     display: flex;
     flex-wrap: wrap;

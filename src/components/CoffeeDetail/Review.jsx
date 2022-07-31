@@ -294,6 +294,7 @@ const ScImgWrap = styled.div`
   vertical-align: bottom;
   align-items: flex-end;
   justify-content: center;
+  gap:6%;
   div{
     color: var(--main);
   }
@@ -307,7 +308,7 @@ const ScImgWrap = styled.div`
 
 
 const ScSmallImg = styled.img`
-    width: 80px;
+    /* width: 80px; */
     height: 80px;
     margin-left: 20px;
     margin-right: 20px;
@@ -320,7 +321,7 @@ const ScSmallImg = styled.img`
 `;
 
 const ScMediumImg = styled.img`
-    width: 120px;
+    /* width: 120px; */
     height: 120px;
     margin-left: 20px;
     margin-right: 20px;
@@ -333,7 +334,7 @@ const ScMediumImg = styled.img`
 `;
 
 const ScLargeImg = styled.img`
-    width: 160px;
+    /* width: 160px; */
     height: 160px;
     margin-left: 20px;
     margin-right: 20px;

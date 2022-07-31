@@ -12,8 +12,9 @@ import {
 } from '../components/mypage/index';
 import styled from 'styled-components';
 import apis from '../shared/api/main';
-import { Pencil, Write, Moiim, left, right, MypageLogo } from '../shared/svg/A-index';
+import { Pencil, Write, Moiim, left, right, MypageLogo, MypageMini } from '../shared/svg/A-index';
 import * as Sentry from "@sentry/react";
+import UserChat from '../components/mypage/UserChat';
 
 const MyPage = () => {
   const userId = getCookie('userId'); //아직설정안해쓰
@@ -77,12 +78,7 @@ const MyPage = () => {
   // console.log(nick);
   // console.log(newProfileImg);
 
-  const Mychat =async ()=>{
-    apis.getMyChatRoom(userId)
-      .then((res)=>{
-        // console.log(res)
-      })
-  }
+
 
   const MyWrite =async ()=>{
     apis.getMyBoard(userId)
@@ -143,6 +139,7 @@ const MyPage = () => {
   return (
     <>
         <ScsecondHead src={MypageLogo} />
+        <ScsecondHead2 src={MypageMini} />
         <ScWrap>
           <ScMobile
             style={{
@@ -216,7 +213,7 @@ const MyPage = () => {
               </ScMywrite>
               <ScChat>
                 <ScMyWriteBtn>
-                  <img alt="" src={Moiim} style={{ width: '26px' }} onClick={Mychat} />
+                  <img alt="" src={Moiim} style={{ width: '26px' }} />
                 </ScMyWriteBtn>
                 <div style={{ color: '#F91D6F', marginLeft: '34px' }}>
                   <ScMyTitle>내가 참여한 모임수</ScMyTitle>
@@ -226,30 +223,52 @@ const MyPage = () => {
             </ScMobile2>
           </ScMobile>
           <ScBookmark>
-            <ScMobileBookmark style={{ fontSize: '1.5em', fontWeight: '700' }}>북마크</ScMobileBookmark>
+            <ScMobileBookmark style={{ fontSize: '1.4em', fontWeight: '700' }}>북마크</ScMobileBookmark>
             <div>
               <ScBookmarkwrap>
                 <div style={{ display: 'flex', gap: '20px' }}>
                   <ScBookmarkCategory
+                    menu={menu}
                     onClick={() => {
                       setMenu(1);
                     }}
                   >
                     음료
                   </ScBookmarkCategory>
-                  <div style={{ border: '1px solid black' }}></div>
-                  <ScBookmarkCategory
+                  <div style={{ border: '1px solid #7e7c7c' }}></div>
+                  <ScBookmarkCategory2
+                  menu={menu}
                     onClick={() => {
                       setMenu(2);
                     }}
                   >
                     게시판
-                  </ScBookmarkCategory>
+                  </ScBookmarkCategory2>
+                  <div style={{ border: '1px solid #7e7c7c' }}></div>
+                  <ScBookmarkCategory3
+                  menu={menu}
+                    onClick={() => {
+                      setMenu(3);
+                    }}
+                  >
+                    내가 쓴 글
+                  </ScBookmarkCategory3>
+                  <div style={{ border: '1px solid #7e7c7c' }}></div>
+                  <ScBookmarkCategory4
+                  menu={menu}
+                    onClick={() => {
+                      setMenu(4);
+                    }}
+                  >
+                    내 모임
+                  </ScBookmarkCategory4>
                 </div>
               </ScBookmarkwrap>
               {/* <ScBookWrap> */}
               {menu === 1 && <UserBoardCoffee />}
               {menu === 2 && <UserBoardBoard />}
+              {menu === 3 && <UserBoardWrite />}
+              {menu === 4 && <UserChat />}
               {/* {(menu===3)&&<UserBoardWrite/>} */}
               {/* </ScBookWrap> */}
             </div>
@@ -268,7 +287,14 @@ const ScsecondHead = styled.img`
   margin-bottom: 40px;
   width: 100%;
   @media screen and (max-width: 768px){
-    margin: 20px auto;
+  display: none;
+  }
+`;
+
+const ScsecondHead2 = styled.img`
+  display: none;
+  @media screen and (max-width: 768px){
+    display: block;
     width: 100%;
   }
 `;
@@ -322,7 +348,7 @@ const ScBookmarkwrap = styled.div`
   gap: 20px;
   margin-left: 10px;
   margin-top: 10px;
-  width: 140px;
+  width: 40%;
   @media screen and (max-width: 768px){
     display: flex;    
     justify-content: center;
@@ -365,11 +391,32 @@ const ScBookWrap = styled.div`
 `;
 
 const ScBookmarkCategory = styled.div`
-  font-size: 1.25em;
+  font-size: 1.1em;
+  font-weight: ${(props) => (props.menu===1 ? "600" : "400")};
   cursor: pointer;
-  font-weight: 600;
+  color: ${(props) => (props.menu===1 ? "black" : "#7e7c7c")};
 `;
 
+const ScBookmarkCategory2= styled.div`
+  font-size: 1.1em;
+  font-weight:  ${(props) => (props.menu===2 ? "600" : "400")};
+  cursor: pointer;
+  color: ${(props) => (props.menu===2 ? "black" : "#7e7c7c")};
+`;
+
+const ScBookmarkCategory3 = styled.div`
+  font-size: 1.1em;
+  font-weight: ${(props) => (props.menu===3 ? "600" : "400")};
+  cursor: pointer;
+  color: ${(props) => (props.menu===3 ? "black" : "#7e7c7c")};
+`;
+
+const ScBookmarkCategory4 = styled.div`
+  font-size: 1.1em;
+  font-weight: ${(props) => (props.menu===4 ? "600" : "400")};
+  cursor: pointer;
+  color: ${(props) => (props.menu===4 ? "black" : "#7e7c7c")};
+`;
 
 const ScMywrite = styled.div`
   width: 277px;

@@ -35,7 +35,7 @@ const BoardLike = ({ head, boardId, like2, setLike }) => {
           <ScH3>{head?.totalLove}</ScH3>
         </ScTitleWrap>
         <ScBtnWrap>
-          {head?.loveCheck ? (
+          {like2 ? (
             <ScBtn
               style={{ backgroundColor: 'black', color: 'white' }}
               onClick={like}

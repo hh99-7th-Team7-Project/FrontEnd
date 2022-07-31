@@ -22,6 +22,7 @@ import ChatLogoSmall from './ChatLogoSmall.svg'
 import MainCard1 from './MainCard1.svg'
 import FooterFlower from './Footer.svg'
 import MypageLogo from './MypageLogo.svg'
+import MypageMini from './MypageMini.svg'
 import StarUnfilled from './StarUnfilled.svg'
 import StarFilled from './StarFilled.svg'
 import MiniBanner from './MiniBanner.svg'
@@ -30,9 +31,14 @@ import ChatMini1 from './ChatMini1.svg'
 import ChatMini2 from './ChatMini2.svg'
 import BoardMini1 from './BoardMini1.svg'
 import BoardMini2 from './BoardMini2.svg'
+import MapIco from "./MapIco.svg"
+import StarFilledPurple from './StarFilledPurple.svg'
 
 
 export {
+  StarFilledPurple,
+  MapIco,
+  MypageMini,
   MainBanner2,
   ChatMini1,
   ChatMini2,

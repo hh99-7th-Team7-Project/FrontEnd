@@ -54,12 +54,12 @@ const MyCoffeeCard = ({item}) => {
         <div style={{width:"175px", marginBottom:"8px"}}>
         <SCcoffeeImg src={item?.img}/>
         </div>
-        <div style={{fontSize:'1.0625em'}}>{item?.name}</div>
+        <div style={{fontSize:'1em'}}>{item?.name}</div>
       </ScBeforeHover>
     <SChover>
       <ScLogo src={brandLogo}></ScLogo>
       <div style={{fontSize:'0.8125em'}}>{item?.brand}</div>
-      <div style={{fontSize:'1.0625em'}}>{item?.name}</div>
+      <div style={{fontSize:'1em', fontWeight:"400"}}>{item?.name}</div>
       <ScZoomIn onClick={moveOnclick}><ScLens src={Lens} alt=""/>자세히 보러 가기</ScZoomIn>
     </SChover>
     </SCcard>
@@ -80,7 +80,7 @@ const ScLogo = styled.img`
     height: 70px;
     border-radius: 100%;
     background-color: white;
-    margin: 20px 0 23px 0;
+    margin: 20px 0 15px 0;
 `
   const SCcoffeeImg = styled.img`
     max-width: 202px;
@@ -92,6 +92,10 @@ const ScLogo = styled.img`
 const ScZoomIn = styled.div`
     width: 148px;
     height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
     border: 1px white solid;
     border-radius: 20px;
     background-color: #2c278c;
@@ -99,7 +103,8 @@ const ScZoomIn = styled.div`
     color: white;
     cursor: pointer;
     opacity: 100%!important;
-    padding: 5px 2px 2px 2px;
+    margin-top: 7px;
+    padding: 2px;
 `
 
 const ScLens = styled.img`
@@ -137,11 +142,9 @@ const SCcard = styled.div`
     margin: 30px;
     /* border-radius: 30px; */
     &:hover {
-      ${ScZoomIn}{
-        opacity: 100%;
-      }
       ${SChover}{
-        opacity: 80%;
+        opacity: 100%;
+        background-color: #000000bc;
       }
       
     }

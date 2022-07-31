@@ -4,7 +4,7 @@ import { getCookie } from '../../shared/Cookie';
 
 const UserPhotoUpdate = ({ setNewProfileImg, setChangeImg , convertImg }) => {
   // const profileImg = convertImg;
-  console.log(convertImg)
+  // console.log(convertImg)
   const [fileImage, setFileImage] = React.useState(convertImg);
   const fileInputRef = React.useRef();
   // console.log(fileInputRef?.current.files[0])

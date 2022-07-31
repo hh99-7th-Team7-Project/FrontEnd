@@ -276,9 +276,10 @@ const Map = (props) => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              marginBottom: '10px',
               justifyContent: "space-between",
               gap: '5px',
+              maxWidth:"1100px",
+              width: "90%"
             }}
           >
             <div style={{
@@ -287,6 +288,7 @@ const Map = (props) => {
               marginBottom: '10px',
               justifyContent: "space-between",
               gap: '5px',
+             
             }}>
               <div style={{ fontSize: '1.625em' }}>내주변 카페</div>
               <div id="menu">
@@ -303,8 +305,13 @@ const Map = (props) => {
             <ScX onClick={() => { navigate(-1) }}>✖</ScX>
           </div>
           <ScMap id="map">지도</ScMap>
-          <div>
-            <div>
+    
+            <div
+             style={{
+              maxWidth:"1100px",
+              width: "90%"
+            }}
+            >
               <ScButton
                 onClick={() => {
                   setMap(true);
@@ -320,7 +327,7 @@ const Map = (props) => {
               <hr />
               <ScList id="placesList">목록</ScList>
             </div>
-          </div>
+     
         </ScMapWrap>
     </>
   );
@@ -354,6 +361,7 @@ const ScList = styled.div`
   width: 100%;
   li {
     list-style: none;
+ 
   }
 `;
 const ScButton = styled.div`
