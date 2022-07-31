@@ -104,7 +104,7 @@ const changeColor2 = ()=>{
         </ScMaxWrap>
         <ScTopBtnWrap>
             <Link to="Top" spy={true} smooth={true}>
-              <ScTopBtn>Top</ScTopBtn>
+              <ScTopBtn>&#129137;</ScTopBtn>
             </Link>
         </ScTopBtnWrap>
         { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}

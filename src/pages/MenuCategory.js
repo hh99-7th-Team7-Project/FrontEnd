@@ -53,7 +53,7 @@ const MenuCategory = () => {
       </ScMaxWrap>
         <ScTopBtnWrap>
             <Link to="Top" spy={true} smooth={true}>
-            <ScTopBtn>Top</ScTopBtn>
+            <ScTopBtn>&#129137;</ScTopBtn>
           </Link>
         </ScTopBtnWrap>
     </>
