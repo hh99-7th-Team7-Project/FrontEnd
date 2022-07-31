@@ -26,7 +26,7 @@ const UserChat = () => {
   useEffect(() => {
     apis.getMyChatRoom(userId)
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setContent(res.data);
       setSlide(Math.floor(res?.data?.length / 4));
     }).catch((e)=>{
@@ -129,7 +129,7 @@ const ScWrap = styled.div`
   /* width: 100%; */
   height: 300px;
   background-color: #ddd;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px;
   position: relative;
   @media screen and (max-width: 768px){
@@ -140,7 +140,7 @@ const ScWrap = styled.div`
 const ScTitle =styled.div`
   font-size: 17px;
   font-weight: 700!important;
-  height: 110px;
+  height: 80px;
   margin: 10px 0 ;
 `
 const Container = styled.div`
@@ -152,9 +152,9 @@ const Container = styled.div`
 
 const ScMap = styled.div`
   /* border: 1px red solid; */
-  height: 260px;
+  height: 230px;
   width: 220px;
-  margin: 10px 20px 0 0;
+  margin: 20px 20px 0 0;
   padding: 10px 20px;
   background-color: white;
   border-radius: 20px;

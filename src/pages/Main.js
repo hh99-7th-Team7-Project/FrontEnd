@@ -104,7 +104,7 @@ const changeColor2 = ()=>{
         </ScMaxWrap>
         <ScTopBtnWrap>
             <Link to="Top" spy={true} smooth={true}>
-              <ScTopBtn>Top</ScTopBtn>
+              <ScTopBtn>&#129137;</ScTopBtn>
             </Link>
         </ScTopBtnWrap>
         { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
@@ -130,18 +130,6 @@ const ScMapRandomWrap = styled.div`
 `;
 
 const ScRandomWrap = styled.div`
-  background-color: white;
-  position: fixed;
-  left: -35px;
-  width: 210px;
-  height: 215px;
-  border-bottom-right-radius: 30%;
-  border-top-right-radius: 30%;
-  z-index: 99;
-  &:hover {
-    cursor: pointer;
-    left: 0px;
-  }
   @media screen and (max-width: 768px) {
     width: 80px;
     height: 80px;
@@ -152,23 +140,25 @@ const ScRandomWrap = styled.div`
 
 
 const ScRandomBtn = styled.img`
-  background-color: #2c278c;
   position: fixed;
-  left: -35px;
+  left: -65px;
   width: 210px;
   height: 215px;
-  border-bottom-right-radius: 30%;
-  border-top-right-radius: 30%;
-  
+  bottom: 100px;
+  z-index: 1000;
   &:hover {
     cursor: pointer;
-    left: 0px;
+    left: -35px;
   }
   @media screen and (max-width: 768px) {
     width: 80px;
     height: 80px;
-    left: 0;
     bottom: 10%;
+    left: -35px;
+    &:hover {
+    cursor: pointer;
+    left: -20px;
+  }
   }
 `;
 

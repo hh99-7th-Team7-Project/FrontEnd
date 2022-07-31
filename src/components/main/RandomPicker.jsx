@@ -46,7 +46,7 @@ const RandomPicker = ({closeModal}) => {
     return `${value}원`;
   }
 
-  console.log("min",value[0],"max",value[1]);
+  // console.log("min",value[0],"max",value[1]);
 
   
   const handleChange = (event, newValue) => {
@@ -75,7 +75,7 @@ const RandomPicker = ({closeModal}) => {
         value[1]
     )
     .then((res)=>{
-      console.log("response",res?.data);
+      // console.log("response",res?.data);
       setRandomCoffee(res?.data);
     })
     .catch((error)=>{
@@ -253,8 +253,8 @@ const RandomPicker = ({closeModal}) => {
               </ScBrandAlign>
             </ScBrandRadioWrap>
         </ScBrandWrap>
-        <ScCategoryWrap>
-            <h4>카테고리</h4>
+           <ScCategoryWrap>
+            <div>카테고리</div>
             <ScCateRadioWrap>
                 <ScCateAlign>
                   <ScInput 
@@ -306,16 +306,17 @@ const RandomPicker = ({closeModal}) => {
                     />
                   <label htmlFor="TEA">티</label>
                 </ScCateAlign>
+
             </ScCateRadioWrap>
         </ScCategoryWrap>
         <ScPriceWrap>
-            <h4>가격대</h4>
+            <div>가격대</div>
             <ScMobile>
-              <div>￦2000</div>
-              <div>￦7000+</div>
+              <div>￦2,000</div>
+              <div>￦7,000+</div>
             </ScMobile>
             <ScPriceAlign>
-              <Box style={{width:"508px"}}>
+              <Box style={{width:"80%"}}>
               <Slider
                   theme={theme}
                   getAriaLabel={() => 'Price range'}
@@ -433,7 +434,7 @@ const Background = Styled.div`
     bottom: 0;
     right: 0;
     background-color: rgba(0,0,0,0.30);
-    z-index: 1;
+    z-index: 99;
 `;
 
 const ScRandomWrap = Styled.div`
@@ -524,38 +525,41 @@ const ScTitleImgWrap = Styled.div`
     } 
 `;
 
-const ScTitleWrap = Styled.div`  
+const ScTitleWrap = styled.div`  
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   width: 450px;
   height: 94px;
   @media screen and (max-width: 768px) {
     font-size: 0.7em;
-    width: 300px;
+    width: 250px;
+    margin:10px;
   }
 `;
 
-const ScTitle1 = Styled.h1`  
+const ScTitle1 = Styled.div`  
   text-align: left;
   line-height: 47px;
-  font-size: 2.75em;
+  font-size: 1.75em;
   font-weight: 400;
   @media screen and (max-width: 768px) {
       line-height: 2px;     
     } 
 `;
 
-const ScTitle2 = Styled.h1`  
+const ScTitle2 = Styled.div`  
   text-align: left;
   line-height: 47px;
-  font-size: 2.75em;
+  font-size: 2.35em;
   font-weight: 600;
   @media screen and (max-width: 768px) {
       line-height: 40px;    
     }
 `;
 
-const ScTitle3 = Styled.h3`
+const ScTitle3 = Styled.div`
   text-align: left;
   line-height: 23.27px;
   font-size: 1.125em;
@@ -567,16 +571,13 @@ const ScTitle3 = Styled.h3`
 
 const ScImgWrap = Styled.div`
   @media screen and (max-width: 768px) {
-      width: 30%;
-      position: absolute;
-      right: 0;
+      display:none;
     }
 `;
 
 const ScImg = Styled.img`
   @media screen and (max-width: 768px) {
-      width: 80px;
-      height: 50px;   
+      display:none;   
     }
 `;
 
@@ -605,9 +606,9 @@ const ScBrandRadioWrap = Styled.div`
   flex-wrap: wrap;
   padding: 5px;
   @media screen and (max-width: 768px) {
-    
-    width: 300px;
+    width: 98%;
     height: 40px;
+    padding:0;
     margin-top: -10px;
   }
 `;
@@ -671,21 +672,19 @@ const ScCategoryWrap = Styled.div`
   margin-bottom: 5px;
   @media screen and (max-width: 768px) {
       width: 300px;
-      height: 40px;
+      height: 60px;
       display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
       margin-top: 130px;
       margin-left: 10px;
     }  
 `;
 
-const ScCateRadioWrap = Styled.div`
+const ScCateRadioWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 5px;
   @media screen and (max-width: 768px) {
-    
+    /* flex-direction:column; */
     width: 280px;
     height: 40px;
     
@@ -751,10 +750,10 @@ const ScPriceWrap = Styled.div`
   margin-bottom: 80px;
   @media screen and (max-width: 768px) {
     width: 300px;
+    /* height: 130px; */
+    margin: 30px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;    
+    /* justify-content: center; */
   }
 `;
 
@@ -765,7 +764,6 @@ const ScMobile = Styled.div`
   width: 550px;
   margin: 20px auto;
   @media screen and (max-width: 768px) {
-    
     width: 300px;
     justify-content: space-around;
     margin: -20px auto;

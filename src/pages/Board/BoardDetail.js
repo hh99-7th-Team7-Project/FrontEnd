@@ -20,33 +20,41 @@ import { BoardMini2 } from '../../shared/svg/A-index';
 
 const BoardDetail = () => {
   const { boardId } = useParams();
-  // console.log(boardId);
+
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState();
-  const [head, setHead] = useState();
+  const [boardReducer, setHead] = useState();
 
   const [bookmark, setBookmark] = useState();
   const [like, setLike] = useState();
   const dispatch = useDispatch();
   const token = getCookie('token');
 
-  const boardReducer = useSelector((state) => state.board.board);
-
-  useEffect(() => {
-    setLoading(true);
-    dispatch(__loadBoardDetail(boardId));
-  }, [like, bookmark]);
 
   //이유는 모르게쓴데 이전에 불려온 값이 뷰어로 들어가 ㅠㅠ
   useEffect(() => {
-    setBookmark(boardReducer?.bookmark);
-    setLike(boardReducer?.loveCheck);
-    apis.getBoard(boardId).then((res) => {
-      setContent(res?.data.content);
-    }).catch(e => {
-      Sentry.captureException(e);
-    });;
-  }, []);
+    if(!token){
+      apis.getBoard(boardId).then((res) => {
+        setContent(res?.data.content);
+        setHead(res?.data)
+      }).catch(e => {
+        Sentry.captureException(e);
+      });
+    }else{
+      apis.getBoardLogin(boardId).then((res) => {
+        setContent(res?.data.content);
+        setHead(res?.data)
+        setBookmark(res?.data.bookmark)
+        setLike(res?.data.loveCheck)
+      }).catch(e => {
+        Sentry.captureException(e);
+      });
+    }
+  }, [like]);
+
+  // useEffect(()=>{
+
+  // },[like, bookmark])
 
   return (
     <><ScMini src={BoardMini2} alt="" />

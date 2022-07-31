@@ -30,7 +30,7 @@ const BrandCard = (props) => {
 
   const coffeeReducer = useSelector((state) => state.coffee.list);
 
-  console.log(coffeeReducer[0]?.brand)
+  // console.log(coffeeReducer[0]?.brand)
   const handleCategoryChange = async(e) => {
     setSelectCategoryValue(e.target.value);
     dispatch(__loadCoffeesnBrand({
@@ -55,7 +55,7 @@ const BrandCard = (props) => {
     { brand: '메가커피', id: 12, logo: '/brandlogo/메가커피.png' },
   ];
 
-  console.log(selectCategoryValue);
+  // console.log(selectCategoryValue);
 
   return (
 
