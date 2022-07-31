@@ -267,7 +267,8 @@ const ScLens2 = styled.div`
     right: -8px;
     bottom: 4px;
     font-size: 9px;
-    z-index: 99;
+    z-index: 30;
+    cursor: pointer;
   }
 `;
 
