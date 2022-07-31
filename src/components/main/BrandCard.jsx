@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import CoffeeCard from './CoffeeCard';
-import { __loadCoffee } from '../../redux/modules/coffee';
+import { __loadCoffee, __loadCoffeesnBrand } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -13,19 +13,31 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
 import styled, { css, keyframes } from 'styled-components';
+import apis from '../../shared/api/main';
 
 const BrandCard = (props) => {
   // const{coffeeReducer} = props
   const [color, setColor] = useState(false);
+  const [ selectCategoryValue , setSelectCategoryValue ] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const ediya = '스타벅스';
+
   useEffect(() => {
     dispatch(__loadCoffee(ediya));
+    setSelectCategoryValue()
   }, [dispatch]);
 
   const coffeeReducer = useSelector((state) => state.coffee.list);
 
+  console.log(coffeeReducer[0]?.brand)
+  const handleCategoryChange = async(e) => {
+    setSelectCategoryValue(e.target.value);
+    dispatch(__loadCoffeesnBrand({
+      brand: coffeeReducer[0]?.brand,
+      cate:e.target.value
+      }))
+  }
 
   const brandList = [
     { brand: '스타벅스', id: 0, logo: '/brandlogo/스타벅스.png' },
@@ -43,9 +55,7 @@ const BrandCard = (props) => {
     { brand: '메가커피', id: 12, logo: '/brandlogo/메가커피.png' },
   ];
 
-  const categoryList = [
-    { brand: 'COFFEE' }, { brand: 'NONCOFFEE'},{ brand: 'SMOOTHIE' },{ brand: 'ADE'},{ brand: 'TEA' },
-  ];
+  console.log(selectCategoryValue);
 
   return (
 
@@ -54,80 +64,128 @@ const BrandCard = (props) => {
         <div style={{position:'relative'}}>
       <ScPrev className="prev" style={{fontSize:'1.66em'}}>&lt;</ScPrev>  
       <ScNext className="next" style={{fontSize:'1.66em'}}>&gt;</ScNext>
-      <Swiper
-        slidesPerView={8}
-        spaceBetween={10}
-        centeredSlides={true}
-        loop={true}
-        navigation={{
-           prevEl: '.prev',
-            nextEl: '.next', }}
-        modules={[Navigation]}
-        breakpoints={{
-          0: {
-            slidesPerView: 1,
-          },
-          600: {
-            slidesPerView: 3,
-          },
-          700: {
-            slidesPerView: 4,
-          },
-          890: {
-            slidesPerView: 5,
-          },
-          1200: {
-            slidesPerView: 7,
-          },
-          1600: {
-            slidesPerView: 9,
-          },
-        }}
-        slideToClickedSlide={true}
-        className="mySwiper2"
-        
-      >
-   
-        {brandList.map((item, index) => {
-          return (
-            <SwiperSlide key={index} className="slide">
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
+              <Swiper
+                slidesPerView={8}
+                spaceBetween={10}
+                centeredSlides={true}
+                loop={true}
+                navigation={{
+                  prevEl: '.prev',
+                    nextEl: '.next', }}
+                modules={[Navigation]}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                  },
+                  600: {
+                    slidesPerView: 3,
+                  },
+                  700: {
+                    slidesPerView: 4,
+                  },
+                  890: {
+                    slidesPerView: 5,
+                  },
+                  1200: {
+                    slidesPerView: 7,
+                  },
+                  1600: {
+                    slidesPerView: 9,
+                  },
                 }}
-              >
-                <ScSlide
-                  onClick={(e) => {
-                    // slide()
-                    setColor(!color);
-                    dispatch(__loadCoffee(item?.brand));
-                  }}
-                  style={{ backgroundImage: `url(${item?.logo})` }}
-                  className="middle"
-                >
-
-                </ScSlide>
+                slideToClickedSlide={true}
+                className="mySwiper2"
                 
-                <ScBrand className='middle2' style={{ textAlign: 'center' }}> {item?.brand}</ScBrand>
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+              >
+          
+                {brandList.map((item, index) => {
+                  return (
+                    <SwiperSlide key={index} className="slide">
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <ScSlide
+                          onClick={(e) => {
+                            // slide()
+                            setColor(!color);
+                            dispatch(__loadCoffee(item?.brand));
+                          }}
+                          style={{ backgroundImage: `url(${item?.logo})` }}
+                          className="middle"
+                        >
+
+                        </ScSlide>
+                        
+                        <ScBrand className='middle2' style={{ textAlign: 'center' }}> {item?.brand}</ScBrand>
+                      </div>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
           </div>
           <ScCategory>
-          {categoryList.map((cate, idx)=>{
-                       return <ScCate>{cate.brand}</ScCate>
-                      })}
-                      </ScCategory>
-        <SCcardWrap>
+            <SCCate1>
+               <input 
+                  type="radio" 
+                  id="COFFEE" 
+                  value="COFFEE"
+                  checked={selectCategoryValue === "COFFEE"}                   
+                  onChange={handleCategoryChange}
+                  />
+                <label htmlFor="COFFEE">COFFEE</label>
+            </SCCate1>
+            <SCCate1>
+               <input 
+                  type="radio" 
+                  id="NONCOFFEE" 
+                  value="NONCOFFEE"
+                  checked={selectCategoryValue === "NONCOFFEE"}                   
+                  onChange={handleCategoryChange}
+                  />
+                <label htmlFor="NONCOFFEE">NONCOFFEE</label>
+            </SCCate1>
+            <SCCate1>
+               <input 
+                  type="radio" 
+                  id="SMOOTHIE" 
+                  value="SMOOTHIE"
+                  checked={selectCategoryValue === "SMOOTHIE"}                   
+                  onChange={handleCategoryChange}
+                  />
+                <label htmlFor="SMOOTHIE">SMOOTHIE</label>
+            </SCCate1>
+            <SCCate1>
+               <input 
+                  type="radio" 
+                  id="ADE" 
+                  value="ADE"
+                  checked={selectCategoryValue === "ADE"}                   
+                  onChange={handleCategoryChange}
+                  />
+                <label htmlFor="ADE">ADE</label>
+            </SCCate1>
+            <SCCate1>
+               <input 
+                  type="radio" 
+                  id="TEA" 
+                  value="TEA"
+                  checked={selectCategoryValue === "TEA"}                   
+                  onChange={handleCategoryChange}
+                  />
+                <label htmlFor="TEA">TEA</label>
+            </SCCate1>
+          </ScCategory>
+          <SCcardWrap>
           {coffeeReducer &&
             coffeeReducer.map((item, index) => {
               return <CoffeeCard key={index} item={item} />;
             })}
           </SCcardWrap>
+
           </ScMobile>
   );
 };
@@ -139,13 +197,63 @@ const ScBrand =styled.div`
 const ScCate = styled.div`
   display: flex;
 `
+            
+const SCCate1 =styled.div`
+    display: flex;
+  flex-direction: flex-start;
+  border: 1px solid #2c278c;
+  background-color: white;
+  color: #2c278c;
+  border-radius: 23px;
+  width: 14%;
+  height: 30px;
+  align-items: center;
+  margin: 5px;
+  justify-content: center;
+  font-size: 0.815em; 
+  cursor: pointer; 
+  input{
+    display: none;
+  }
+  label{
+    width: 100%;
+    text-align: center;
+  }
+  input:checked + label {
+    border: 1px solid #2c278c;
+    background-color: #2c278c;
+    color: white;
+    border-radius: 23px;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+  label {
+    &:hover {
+    cursor: pointer;
+  } 
+  }  
+  }
+  @media screen and (max-width:768px){    
+    flex-direction: column;    
+    align-items: center;
+    width: 100%;    
+  }
+`
 
 const ScCategory = styled.div`
+  padding: 30px 0 0 0;
   display: flex;
-  width: 70%;
+  width: 60%;
   margin: auto;
-  border: 1px solid var(--main);
+  /* border: 1px solid var(--main); */
   justify-content: space-between;
+  @media screen and (max-width:768px){    
+  
+    align-items: center;
+    width: 80%;    
+  }
 `
 
 const ScMobile = styled.div`
@@ -209,16 +317,11 @@ const ScSlide = styled.div`
   }
 `;
 const SCcardWrap = Styled.div`
-    margin: 90px 0 0 0;
+    margin: 0;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-   
-    /* height: 600px; */
     @media screen and (max-width:768px){      
-      /* display: flex;
-      flex-wrap: wrap; */
-      /* flex-direction: row; */ 
       margin: 20px 10px;               
   }
 

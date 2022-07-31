@@ -31,9 +31,11 @@ import ChatMini1 from './ChatMini1.svg'
 import ChatMini2 from './ChatMini2.svg'
 import BoardMini1 from './BoardMini1.svg'
 import BoardMini2 from './BoardMini2.svg'
+import MapIco from "./MapIco.svg"
 
 
 export {
+  MapIco,
   MypageMini,
   MainBanner2,
   ChatMini1,

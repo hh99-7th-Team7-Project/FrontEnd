@@ -185,7 +185,7 @@ const ScSlide = styled.div`
   }
 `;
 const SCcardWrap = Styled.div`
-    margin: 30px 0;
+    margin: 0px ;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
