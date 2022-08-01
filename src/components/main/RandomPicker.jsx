@@ -473,6 +473,8 @@ const ScRandomWrapBack = styled.div`
     background-size: 100%;
     /* background-position: center; */
     @media screen and (max-width: 768px) {
+    width: 300px;
+    height: 500px;
     background-image: url(${RandomBackBg});
     background-size: 130%;
     background-position: 20%;
