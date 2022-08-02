@@ -7,14 +7,16 @@ import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import * as Sentry from "@sentry/react";
 
-const BoardLike = ({ head, boardId, like2, setLike }) => {
+const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike }) => {
 
   const token = getCookie("token")
   const like = async () => {
     if(token){
       await apis.postBoardsLike(head?.category, boardId)
       .then((res) => {
-      setLike(res.data);
+        console.log(res.data)
+      setLike(res?.data.postlove);
+      setTotLike(res?.data.postloveCount)
     }).catch((e)=>{
       Sentry.captureException(e);
     })
@@ -32,7 +34,7 @@ const BoardLike = ({ head, boardId, like2, setLike }) => {
     <>
       <ScWrap>
         <ScTitleWrap>
-          <ScH3>{head?.totalLove}</ScH3>
+          <ScH3>{totLike}</ScH3>
         </ScTitleWrap>
         <ScBtnWrap>
           {like2 ? (
