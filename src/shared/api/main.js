@@ -81,6 +81,10 @@ const apis = {
 
   //랜덤커피
   randomCoffee: (brand, category, min, max) => api.get(`/coffees/random/${brand}/${category}/${min}/${max}`),
+
+  //신고
+  reportBoard : (userId,data)=> api.post(`/reports/posts/${userId}`,data),
+  reportChat : (userId,data)=> api.post(`/reports/chatposts/${userId}`,data),
 };
 
 
