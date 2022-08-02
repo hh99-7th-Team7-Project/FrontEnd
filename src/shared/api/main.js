@@ -80,7 +80,7 @@ const apis = {
   searchBoardLogin: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
 
   //랜덤커피
-  randomCoffee: (brand, category, min, max) => api.get(`/coffees/random/${brand}/${category}/${min}/${max}`),
+  randomCoffee: (brand, category, min, max) => api.get(`/coffees/random?brand=${brand}&category=${category}&min=${min}&max=${max}`),
 };
 
 
