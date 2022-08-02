@@ -32,8 +32,8 @@ const RandomPicker = ({closeModal}) => {
   });
 
   
-  const [ selectBrandValue , setSelectBrandValue ] = useState();
-  const [ selectCategoryValue , setSelectCategoryValue ] = useState();
+  const [ selectBrandValue , setSelectBrandValue ] = useState(null);
+  const [ selectCategoryValue , setSelectCategoryValue ] = useState(null);
   const [ value, setValue ] = useState([2000, 8000]);
 
   const [ randomCoffee , setRandomCoffee ] = useState();
@@ -68,7 +68,74 @@ const RandomPicker = ({closeModal}) => {
 
 
   const randomCoffeePick = async () => {
-    await apis.randomCoffee(
+    if(selectCategoryValue===null&& selectBrandValue===null){
+      await apis.randomCoffee4(
+        value[0],
+        value[1]
+    )
+    .then((res)=>{
+      // console.log("response",res?.data);
+      setRandomCoffee(res?.data);
+    })
+    .catch((error)=>{
+      console.log("에러로그",error.response.status);
+      if (error.response.status === 404) {
+        Swal.fire({
+          title: '해당하는 커피를 찾을 수 없습니다.',
+          icon: 'warning',
+          confirmButtonText: '확인',
+        });
+        closeModal();
+      }
+      Sentry.captureException(error);
+    })
+    }else if(selectCategoryValue!==null&& selectBrandValue===null){
+      await apis.randomCoffee2(
+        selectCategoryValue,
+        value[0],
+        value[1]
+    )
+    .then((res)=>{
+      // console.log("response",res?.data);
+      setRandomCoffee(res?.data);
+    })
+    .catch((error)=>{
+      console.log("에러로그",error.response.status);
+      if (error.response.status === 404) {
+        Swal.fire({
+          title: '해당하는 커피를 찾을 수 없습니다.',
+          icon: 'warning',
+          confirmButtonText: '확인',
+        });
+        closeModal();
+      }
+      Sentry.captureException(error);
+    })
+    }else if(selectCategoryValue===null&& selectBrandValue!==null){
+      await apis.randomCoffee1(
+        selectBrandValue,
+        value[0],
+        value[1]
+    )
+    .then((res)=>{
+      // console.log("response",res?.data);
+      setRandomCoffee(res?.data);
+    })
+    .catch((error)=>{
+      console.log("에러로그",error.response.status);
+      if (error.response.status === 404) {
+        Swal.fire({
+          title: '해당하는 커피를 찾을 수 없습니다.',
+          icon: 'warning',
+          confirmButtonText: '확인',
+        });
+        closeModal();
+      }
+      Sentry.captureException(error);
+    })
+    }
+    else{
+      await apis.randomCoffee3(
         selectBrandValue,
         selectCategoryValue,
         value[0],
@@ -90,6 +157,9 @@ const RandomPicker = ({closeModal}) => {
       }
       Sentry.captureException(error);
     })
+    }
+    
+
   }
 
 
