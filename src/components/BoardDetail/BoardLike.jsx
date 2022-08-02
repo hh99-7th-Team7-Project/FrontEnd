@@ -7,14 +7,17 @@ import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import * as Sentry from "@sentry/react";
 
-const BoardLike = ({ head, boardId, like2, setLike }) => {
+const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike }) => {
 
   const token = getCookie("token")
+  const user = getCookie("userId")
   const like = async () => {
     if(token){
       await apis.postBoardsLike(head?.category, boardId)
       .then((res) => {
-      setLike(res.data);
+        // console.log(res.data)
+      setLike(res?.data.postlove);
+      setTotLike(res?.data.postloveCount)
     }).catch((e)=>{
       Sentry.captureException(e);
     })
@@ -28,11 +31,25 @@ const BoardLike = ({ head, boardId, like2, setLike }) => {
     
   };
   const currentUrl = window.location.href;
+
+  const report =  async () => {
+    const data ={
+      userId: 1,
+      postId: Number(head.id)
+    }
+    if(token){
+      await apis.reportBoard(user,data)
+      .then((res)=>{
+        console.log(res)
+      })
+    }}
+
+
   return (
     <>
       <ScWrap>
         <ScTitleWrap>
-          <ScH3>{head?.totalLove}</ScH3>
+          <ScH3>{totLike}</ScH3>
         </ScTitleWrap>
         <ScBtnWrap>
           {like2 ? (
@@ -60,13 +77,7 @@ const BoardLike = ({ head, boardId, like2, setLike }) => {
               📢공유
             </ScBtn2>
           </CopyToClipboard>
-          <ScBtn2 onClick={()=>{
-            Swal.fire({
-              title: '준비중입니다.',
-              icon: 'info',
-              confirmButtonText: '확인',
-            });
-          }}>⚠️신고</ScBtn2>
+          <ScBtn2 onClick={report}>⚠️신고</ScBtn2>
         </ScBtnWrap2>
       </ScWrap>
       <ScHR />

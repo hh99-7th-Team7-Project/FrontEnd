@@ -27,6 +27,7 @@ const BoardDetail = () => {
 
   const [bookmark, setBookmark] = useState();
   const [like, setLike] = useState();
+  const [totLike, setTotLike] =useState();
   const dispatch = useDispatch();
   const token = getCookie('token');
 
@@ -37,6 +38,7 @@ const BoardDetail = () => {
       apis.getBoard(boardId).then((res) => {
         setContent(res?.data.content);
         setHead(res?.data)
+        setTotLike(res?.data.totalLove)
       }).catch(e => {
         Sentry.captureException(e);
       });
@@ -46,15 +48,14 @@ const BoardDetail = () => {
         setHead(res?.data)
         setBookmark(res?.data.bookmark)
         setLike(res?.data.loveCheck)
+        setTotLike(res?.data.totalLove)
       }).catch(e => {
         Sentry.captureException(e);
       });
     }
-  }, [like]);
+  }, []);
 
-  // useEffect(()=>{
 
-  // },[like, bookmark])
 
   return (
     <><ScMini src={BoardMini2} alt="" />
@@ -77,6 +78,8 @@ const BoardDetail = () => {
                 boardId={boardId}
                 like2={like}
                 setLike={setLike}
+                totLike={totLike}
+                setTotLike={setTotLike}
               />
               <BoardComment            
               />
