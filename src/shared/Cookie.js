@@ -8,8 +8,6 @@ const cookies = new Cookies();
 //   document.cookie = `${name}=${value}; 
 //   expires=${date.toUTCString()};
 //   path=/;`;
-
-//   // return cookies.set(name, value, { ...option });
 // };
 
 export const setCookie = (name, value, exp = 24) => {
@@ -26,6 +24,4 @@ export const getCookie = (name) => {
 
 export const deleteCookie = (name) => {
   return cookies.remove(name,{ path: '/' });
-  // let date = new Date("2020-01-01").toUTCString();
-  // document.cookie = name + "=; expires=" + date;
 };

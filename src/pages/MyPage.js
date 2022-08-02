@@ -12,7 +12,7 @@ import {
 } from '../components/mypage/index';
 import styled from 'styled-components';
 import apis from '../shared/api/main';
-import { Pencil, Write, Moiim, left, right, MypageLogo, MypageMini } from '../shared/svg/A-index';
+import { Pencil, Write, Moiim, MypageLogo, MypageMini } from '../shared/svg/A-index';
 import * as Sentry from "@sentry/react";
 import UserChat from '../components/mypage/UserChat';
 
@@ -50,10 +50,7 @@ const MyPage = () => {
 
    const [nick, setNick] = useState(); 
    const [convertImg, setConvertImg] = useState();
-
-  // console.log(nick);
-  // console.log(convertImg);
-  
+ 
   useEffect(() => {
     const boardCount = async () => {
       await apis.getMyBoardCount(userId)
@@ -75,18 +72,6 @@ const MyPage = () => {
     chatCount()
   }, [])
 
-  // console.log(nick);
-  // console.log(newProfileImg);
-
-
-
-  const MyWrite =async ()=>{
-    apis.getMyBoard(userId)
-      .then((res)=>{
-        // console.log(res)
-      })
-  }
-
   const updateProfile = async (e) => {
     e.preventDefault();
     //formdata로 이미지 변환
@@ -94,7 +79,6 @@ const MyPage = () => {
     form.append('imgUrl', newProfileImg);
     // console.log(form);
     //만약 이미지값이 변경 되었다면 이미지 변환성공하면 그 url값 받아서 수정정보에 넣어서 보내줌 put
-
     if (changeImg) {
       const update = await apis
         .postImg(form)
@@ -134,6 +118,7 @@ const MyPage = () => {
         });
     }
   };
+  
   const userName = getCookie('nickname');
 
   return (

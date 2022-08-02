@@ -80,7 +80,10 @@ const apis = {
   searchBoardLogin: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
 
   //랜덤커피
-  randomCoffee: (brand, category, min, max) => api.get(`/coffees/random/${brand}/${category}/${min}/${max}`),
+  randomCoffee1: (brand, min, max) => api.get(`/coffees/random?brand=${brand}&min=${min}&max=${max}`),
+  randomCoffee2: (category, min, max) => api.get(`/coffees/random?category=${category}&min=${min}&max=${max}`),
+  randomCoffee3: (brand, category, min, max) => api.get(`/coffees/random?brand=${brand}&category=${category}&min=${min}&max=${max}`),
+  randomCoffee4: (min, max) => api.get(`/coffees/random?min=${min}&max=${max}`),
 
   //신고
   reportBoard : (userId,data)=> api.post(`/reports/posts/${userId}`,data),
