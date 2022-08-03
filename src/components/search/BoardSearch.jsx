@@ -19,14 +19,12 @@ const BoardSearch = (props) => {
     const search = async () => {
       if (!token) {
         apis.searchBoard(keyword,0).then((res) => {
-          // console.log(res);
           setBoardReducer(res?.data.post);
         }).catch(e => {
           Sentry.captureException(e);
       });;
       } else {
         apis.searchBoardLogin(keyword,0).then((res) => {
-          // console.log(res);
           setBoardReducer(res?.data.post);
         }).catch(e => {
           Sentry.captureException(e);

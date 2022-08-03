@@ -17,14 +17,12 @@ import Swal from 'sweetalert2';
 
 
 const ImgCard = ({ url, item, like, setLike }) => {
-  // console.log(item);
 
 const token = getCookie("token")
 
   const likeCoffee = async () => {
     if(token){
        await apis.likeCoffee(item?.brand, item?.id).then((res) => {
-      // console.log(res.data);
       setLike(res.data);
     });
     }else{

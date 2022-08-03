@@ -86,7 +86,6 @@ const MyPage = () => {
     //formdata로 이미지 변환
     const form = new FormData();
     form.append('imgUrl', newProfileImg);
-    // console.log(form);
     //만약 이미지값이 변경 되었다면 이미지 변환성공하면 그 url값 받아서 수정정보에 넣어서 보내줌 put
     if (changeImg) {
       const update = await apis

@@ -15,9 +15,8 @@ const LOAD_COFFEE_CATEGORY = "coffee_reducer/CATEGORY";
 const LOAD_COFFEE_DETAIL = "coffee_reducer/DETAIL"
 const LOAD_COFFEE_CATEGORY_BRAND ="coffee_reducer/CATEGORYnBRAND"
 const CREATE_COFFEE = "coffee_reducer/CREATE";
-const UPDATE_COFFEE = "coffee_reducer/UPDATE";
 const REMOVE_COFFEE = "coffee_reducer/REMOVE";
-// const CREATE_HEART = "COFFEE_reducer/CREATE";
+
 
 /* ----------------- 액션 생성 함수 ------------------ */
 export function loadCoffee(payload) {
@@ -29,22 +28,12 @@ export function loadCoffeeCategory(payload) {
 export function loadCoffeeDetail(payload) {
   return { type: LOAD_COFFEE_DETAIL, payload };
 }
-// export function createCoffee(payload) {
-//   return { type: CREATE_COFFEE, payload };
-// }
-// export function updateCoffee(payload) {
-//   return { type: UPDATE_COFFEE, payload };
-// }
-// export function removeCoffee(payload) {
-//   return { type: REMOVE_COFFEE, payload };
-// }
 
 /* ----------------- 미들웨어 ------------------ */
 export const __loadCoffee = (brand) => {
   return async function (dispatch) {
     try {
       const loadData = await apis.getCoffee(brand);
-      // console.log(loadData.data);
       dispatch(loadCoffee(loadData.data));
     } catch (e) {
       Sentry.captureException(e);
@@ -56,7 +45,6 @@ export const __loadCoffees = () => {
   return async function (dispatch) {
     try {
       const loadData = await apis.getCoffees();
-      // console.log(loadData.data);
       dispatch(loadCoffee(loadData.data));
     }
     catch (e) {
@@ -81,7 +69,6 @@ export const __loadCoffeeCategory = (category) => {
   return async function (dispatch) {
     try {
       const loadData = await apis.getCoffeeCategory(category);
-      // console.log(loadData.data);
       dispatch(loadCoffeeCategory(loadData.data));
     }
     catch (e) {
@@ -96,7 +83,6 @@ export const __loadCoffeeDetail = (brand, id) => {
     if (!token) {
       try {
         const loadData = await apis.getCoffeeDetail(brand, id);
-        //  console.log(loadData.data);
         dispatch(loadCoffeeDetail(loadData.data[0]));
       }
       catch (e) {
@@ -105,7 +91,6 @@ export const __loadCoffeeDetail = (brand, id) => {
     } else {
       try {
         const loadData = await apis.getCoffeeDetailLogin(brand, id);
-        //  console.log(loadData.data);
         dispatch(loadCoffeeDetail(loadData.data));
       }
       catch (e) {
@@ -117,10 +102,8 @@ export const __loadCoffeeDetail = (brand, id) => {
 
 export const __createCoffee = () => {
   return async function (dispatch) {
-    // console.log("러닝")
     try {
       const loadData = await apis.getCoffee();
-      // console.log(loadData.data);
       dispatch(loadCoffee(loadData.data));
     }
     catch (e) {

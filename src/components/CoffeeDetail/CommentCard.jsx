@@ -23,10 +23,6 @@ const CommentCard = (props) => {
 
   const posts = useSelector((state) => state.comment.posts);
 
-  // console.log(posts);
-
-  // console.log(showUpdate);
-
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });

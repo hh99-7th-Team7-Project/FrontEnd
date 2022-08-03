@@ -67,7 +67,7 @@ const SignUp = (props) => {
     }
 
   };
-  // console.log(Email+Selected)
+
   // 닉네임 중복 체크
   const dupNick = async () => {
     if (!nickCheck(Nickname)) {
@@ -171,7 +171,7 @@ const SignUp = (props) => {
       type: "application/json"
     }))
     form.append('profileImage', fileInputRef.current.files[0])
-    // console.log(fileInputRef.current.files[0].name)
+
     if (fileInputRef.current.files?.length === 0) {
       const response = await apis.addUserWO(data)
         .then(response => {

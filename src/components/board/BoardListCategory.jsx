@@ -23,7 +23,6 @@ const BoardListCategory = ({ category }) => {
       if (!token) {
         await apis.getBoardsCategory(category , Number(page))
         .then((res) => {
-          // console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
         }).catch((e)=>{
@@ -32,7 +31,6 @@ const BoardListCategory = ({ category }) => {
       } else {
         await apis.getBoardsCategoryLogin(category, Number(page))
         .then((res) => {
-          // console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
         }).catch((e)=>{

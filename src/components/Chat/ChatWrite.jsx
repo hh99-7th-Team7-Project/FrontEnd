@@ -54,16 +54,14 @@ const ChatWrite = ({ setWrite, write }) => {
   const [hourValue, setHourValue] = React.useState(is_edit ? time[0] : '');
   const [hourValue2, setHourValue2] = React.useState(is_edit ? time[1] : '');
 
-  // console.log(hourValue2)
+
   const [minuteValue, setMinuteValue] = React.useState(is_edit ? time[1] : '');
   const [countValue, setCountValue] = React.useState(
     is_edit ? ChatItem?.totalcount : 3
   );
   const [mapfValue, setmapfValue] = React.useState(is_edit ? map : '');
-  const [mapsValue, setmapsValue] = React.useState(is_edit ? map[1] : '');
-  const [maptValue, setmaptValue] = React.useState(is_edit ? map[2] : '');
 
-  // console.log(hourValue, minuteValue);
+
   //input 값
   const inputTitle = (e) => {
     setChatName(e.target.value);
@@ -76,20 +74,13 @@ const ChatWrite = ({ setWrite, write }) => {
   const inputMapF = (e) => {
     setmapfValue(e.target.value);
   };
-  // const inputMapS = (e) => {
-  //   setmapsValue(e.target.value);
-  // };
-  // const inputMapT = (e) => {
-  //   setmaptValue(e.target.value);
-  // };
+
 
   const inputHour = (e) => {
-    // const value = e.target.value;
     setHourValue(e.target.value);
   };
 
   const inputHour2 = (e) => {
-    // const value = e.target.value;
     setHourValue2(e.target.value);
   };
 

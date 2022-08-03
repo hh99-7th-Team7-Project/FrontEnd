@@ -45,7 +45,6 @@ const ChatDetail = () => {
   const data = useSelector((state) => state.chat.one_list);
   const data2 = useSelector((state) => state.chat.member);
   const data3 = useSelector((state) => state.chat.first_member);
-  console.log(data3)
 
   const mem_list = []
    const member = data2?.forEach((item,idx)=>{
@@ -59,7 +58,6 @@ const ChatDetail = () => {
     }
       await apis.reportChat(_checkUser,info)
       .then((res)=>{
-        console.log(res)
       })
     }
 

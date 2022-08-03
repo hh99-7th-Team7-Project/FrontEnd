@@ -19,7 +19,6 @@ const PostChat = ({ chatpostId }) => {
   const userId = getCookie('userId');
   const token = { Authorization: `Bearer ${cookie}` };
   const profileImg = getCookie('profileImg');
-  // console.log(userId);
 
   React.useEffect(() => {
     dispatch(__prevPostChat(chatpostId));
@@ -30,7 +29,6 @@ const PostChat = ({ chatpostId }) => {
   }, []);
 
   const post_chat_list = useSelector((state) => state.chat.post_list);
-  // console.log(post_chat_list);
 
   const [welcome, setWelcome] = React.useState(new Map());
   const [publicChats, setPublicChats] = React.useState([]);
@@ -74,7 +72,6 @@ const PostChat = ({ chatpostId }) => {
     let socket = new SockJs(process.env.REACT_APP_URL_CHAT);
     stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
-    // console.log('stomp연결');
   };
 
   const onConnected = () => {
@@ -86,7 +83,6 @@ const PostChat = ({ chatpostId }) => {
         senderName: nickname,
       };
       setConnected(true);
-      // console.log(connected);
       setUserData({
         ...userData,
         profileImg: profileImg,
@@ -100,7 +96,6 @@ const PostChat = ({ chatpostId }) => {
         onPublicMessageReceived,
         token
       );
-      // console.log(onPublicMessageReceived);
 
       if (chatScroll !== true) {
         setChatScroll(true);
@@ -127,7 +122,6 @@ const PostChat = ({ chatpostId }) => {
           chatpostId: Number(chatpostId),
           id: userId,
         };
-        // console.log(chatMessage);
 
         stompClient.send('/app/postchat', token, JSON.stringify(chatMessage));
         setUserData({ ...userData, message: '' });
@@ -143,14 +137,12 @@ const PostChat = ({ chatpostId }) => {
   //subscribe의 함수
   const onPublicMessageReceived = (payload) => {
     let payloadData = JSON.parse(payload.body);
-    // console.log(payloadData);
     switch (payloadData.status) {
       case 'JOIN':
         if (!welcome.get(payloadData.senderName)) {
           welcome.set(payloadData.message, []);
           setWelcome(new Map(welcome));
           setUser(payloadData.userCount);
-          // console.log('join 완료');
         }
         break;
       case 'OUT':
@@ -165,12 +157,13 @@ const PostChat = ({ chatpostId }) => {
         setPublicChats([...publicChats]);
         setUser(payloadData.userCount);
          break;
-    }
+      default:
+            return undefined
+    } 
   };
 
   const onError = (err) => {
     console.log(err);
-    // console.log('plz');
   };
 
   const scrollToBottom = () => {
@@ -178,8 +171,6 @@ const PostChat = ({ chatpostId }) => {
       messageRef.current.scrollTop = messageRef.current.scrollHeight;
     }
   };
-
-  // console.log(publicChats)
 
   return (
     <ChatDiv>

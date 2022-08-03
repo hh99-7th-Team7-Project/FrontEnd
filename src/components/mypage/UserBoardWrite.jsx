@@ -20,7 +20,6 @@ const UserBoardWrite = () => {
   useEffect(()=>{
     apis.getMyBoard(userId)
         .then((res)=>{
-        // console.log(res.data)
         setContent(res.data)
     }).catch(e => {
         Sentry.captureException(e);
@@ -45,7 +44,6 @@ const UserBoardWrite = () => {
   };
 
   useEffect(() => {
-    // console.log(curruntIdx);
     slideRef.current.style.transition = `all 0.5s ease-in-out`;
     slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
   }, [curruntIdx]);

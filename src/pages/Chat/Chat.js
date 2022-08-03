@@ -24,16 +24,12 @@ const Chat = () => {
       .catch(e => {
         Sentry.captureException(e);
       });;
-    // console.log(page);
+
     Loading()
   }, [page, write]);
 
   const chatpostList = posts?.chatpostList;
   const totalPage = posts?.totalPage;
-  // console.log(posts)
-  // console.log(chatpostList, page);
-
-  // const chatReducer = useSelector((state) => state?.chat?.list);
   const token = getCookie("token")
 
 

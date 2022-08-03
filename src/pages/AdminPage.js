@@ -19,7 +19,6 @@ const AdminPage = () => {
 
   useEffect(() => {
     dispatch(__loadCoffee())
-    // console.log("돌아가?")
   }, [])
 
 

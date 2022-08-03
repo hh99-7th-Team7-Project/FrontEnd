@@ -19,7 +19,6 @@ const REMOVE_BOARD = "board_reducer/REMOVE";
 
 /* ----------------- 액션 생성 함수 ------------------ */
 export function loadBoard(payload) {
-  // console.log(payload)
   return { type: LOAD_BOARD, payload };
 }
 export function loadBoardDetail(payload) {
@@ -39,7 +38,6 @@ export function removeBoard(payload) {
 export const __loadBoard = (brand) => {
   return async function (dispatch) {
     try{const loadData = await apis.getBoard(brand);
-    // console.log(loadData.data);
     dispatch(loadBoard(loadData.data));}
     catch(e){
       Sentry.captureException(e);
@@ -49,7 +47,6 @@ export const __loadBoard = (brand) => {
 export const __loadBoards = () => {
   return async function (dispatch) {
    try{ const loadData = await apis.getBoards();
-    // console.log(loadData.data);
     dispatch(loadBoard(loadData.data));}
     catch(e){
       Sentry.captureException(e);
@@ -61,14 +58,12 @@ export const __loadBoardDetail = (boardId) => {
     const token = getCookie("token")
     if(!token){
       try{ const loadData = await apis.getBoard(boardId);
-    // console.log(loadData.data);
     dispatch(loadBoardDetail(loadData.data));}
     catch(e){
       Sentry.captureException(e);
     }
     }else{
      try{ const loadData = await apis.getBoardLogin(boardId);
-      // console.log(loadData.data);
       dispatch(loadBoardDetail(loadData.data));}
       catch(e){
         Sentry.captureException(e);
@@ -79,9 +74,8 @@ export const __loadBoardDetail = (boardId) => {
 };
 export const __createBoard = () => {
   return async function (dispatch) {
-   try{ // console.log("러닝")
+   try{ 
     const loadData = await apis.getBoard();
-    // console.log(loadData.data);
     dispatch(loadBoard(loadData.data));}
     catch(e){
       Sentry.captureException(e);
@@ -94,7 +88,6 @@ export default function BoardReducer(state = intialstate, action) {
   // 새로운 액션 타입 추가시 case 추가한다.
   switch (action.type) {
     case LOAD_BOARD: {
-      // console.log(action.payload)
       return { board: action.payload };
     }
     case LOAD_BOARD_DETAIL: {

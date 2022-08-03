@@ -26,7 +26,6 @@ const UserChat = () => {
   useEffect(() => {
     apis.getMyChatRoom(userId)
     .then((res) => {
-      // console.log(res.data);
       setContent(res.data);
       setSlide(Math.floor(res?.data?.length / 4));
     }).catch((e)=>{
@@ -52,7 +51,6 @@ const UserChat = () => {
   };
 
   useEffect(() => {
-    // console.log(curruntIdx);
     slideRef.current.style.transition = `all 0.5s ease-in-out`;
     slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
   }, [curruntIdx]);

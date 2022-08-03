@@ -24,7 +24,6 @@ const SearchBoard = () => {
         apis
           .searchBoard(keyword, page)
           .then((res) => {
-            // console.log(res);
             setBoardReducer(res?.data.post);
             settotalPage(res?.data.totalPage)
           }).catch(e => {
@@ -33,7 +32,6 @@ const SearchBoard = () => {
       } else {
         apis.searchBoardLogin(keyword, page)
           .then((res) => {
-            // console.log(res);
             setBoardReducer(res?.data.post);
             settotalPage(res?.data.totalPage)
           }).catch(e => {

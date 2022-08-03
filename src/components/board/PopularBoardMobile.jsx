@@ -27,7 +27,6 @@ const PopularBoardMobile = () => {
         if(!token){
            await apis.getBoardsLike(0)
                     .then((res)=>{
-                        // console.log(res.data)
                         setContent(res.data.post.slice(0,10))
                       
                       }).catch((e)=>{
@@ -36,7 +35,6 @@ const PopularBoardMobile = () => {
         }else{
           await apis.getBoardsLikeLogin(0)
                   .then((res)=>{
-                      // console.log(res.data)
                       setContent(res.data.post.slice(0,10))
                     }).catch((e)=>{
                       Sentry.captureException(e);

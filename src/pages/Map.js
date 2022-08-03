@@ -16,8 +16,6 @@ const Map = (props) => {
   // 마커를 클릭하면 장소명을 표출할 인포윈도우
   const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
 
-  // console.log(map);
-
   useEffect(() => {
     const container = document.getElementById('map');
     let markers = [];
@@ -27,7 +25,6 @@ const Map = (props) => {
         center: new window.kakao.maps.LatLng(myLocation?.lat, myLocation?.lng),
         level: 3,
       };
-      // console.log(options);
 
       // 지도 생성
       const map = new window.kakao.maps.Map(container, options);
@@ -38,7 +35,6 @@ const Map = (props) => {
 
       // 장소 검색 객체를 생성
       const ps = new window.kakao.maps.services.Places();
-      // console.log(ps);
       // 키워드 검색 완료 시 호출되는 콜백함수
       const placesSearchCB = (data, status, _pagination) => {
         if (status === window.kakao.maps.services.Status.OK) {
@@ -69,7 +65,6 @@ const Map = (props) => {
         const listEl = document.getElementById('placesList'),
           fragment = document.createDocumentFragment(),
           bounds = new window.kakao.maps.LatLngBounds();
-        // console.log(listEl);
         // 검색 결과 목록에 추가된 항목들을 제거합니다
         removeAllChildNods(listEl);
 
@@ -135,7 +130,6 @@ const Map = (props) => {
         el.style.paddingBottom = '20px';
         el.style.paddingTop = '15px';
 
-        // console.log(places.info_pannel);
         if (places.road_address_name) {
           itemStr +=
             '    <span style="color:grey;font-size:14px">' +
