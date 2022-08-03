@@ -158,8 +158,6 @@ const RandomPicker = ({closeModal}) => {
       Sentry.captureException(error);
     })
     }
-    
-
   }
 
 
