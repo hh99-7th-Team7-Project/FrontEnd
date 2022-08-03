@@ -1,7 +1,8 @@
 
 
 # COFFIND
-☕[커파인드로 가기](https://www.coffind.co.kr/)
+☕[커파인드 바로 가기](https://www.coffind.co.kr/)
+<br />
 <b>커피, 모든 메뉴를 한번에!</b>
 <br />
 <img src="https://ifh.cc/g/QOLmWP.webp" />
