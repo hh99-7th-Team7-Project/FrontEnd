@@ -1,7 +1,9 @@
 import React from 'react';
-import Styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+/** CSS */
 import styled from 'styled-components';
+/** react-router-dom */
+import { useNavigate } from 'react-router-dom';
+
 
 const Category = () => {
   const navigate = useNavigate();
@@ -56,10 +58,10 @@ const ScCategoryBox = styled.ul`
   }
 `;
 
-const ScCategory = Styled.li` 
+const ScCategory = styled.li` 
   background-color: white;
   /* margin-left: 30px; */
-  &: hover {
+  &:hover {
     cursor: pointer;
     font-family: SUIT ExtraBold;
     border-radius: 4px;

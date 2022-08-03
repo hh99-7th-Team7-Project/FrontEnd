@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+
+/** redux */
+import { useDispatch } from 'react-redux';
+
+/** react-router-dom */
 import { useParams } from 'react-router-dom'
+
+/** component */
 import CoffeeCard from '../../components/main/CoffeeCard';
-import { __loadCoffees } from '../../redux/modules/coffee';
+
+/** 서버 api 통신 */
 import apis from '../../shared/api/main';
+
+/** Top 스크롤 이동 */
 import { Link } from 'react-scroll';
-import Header from '../Header/Header';
+
 
 const SearchCoffee = () => {
   const { keyword } = useParams();
