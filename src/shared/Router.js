@@ -26,7 +26,7 @@ import BoardUpdate from '../pages/Board/BoardUpdate';
 import MenuCategory from '../pages/MenuCategory';
 import Header from '../pages/Header/Header';
 import MobileHeader from '../pages/Header/MobileHeader';
-import Inspect from '../pages/Inspect';
+
 
 const Router = () => {
 
@@ -59,7 +59,6 @@ const Router = () => {
     <>
     <Routes>
       {/* 헤더가 필요한 영역 */}
-      
       <Route element={isMobile ? <MobileHeader/> : <Header/>}>
       <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
@@ -95,8 +94,6 @@ const Router = () => {
       </Route>
 
       {/* 헤더가 필요없는 영역 */}
-      {/* 임시점검 페이지 */}
-      {/* <Route path="/" element={<Inspect/>} /> */}
       {/* signup */}
       <Route path="/signup" element={<Signup />} />
       {/* Login */}
