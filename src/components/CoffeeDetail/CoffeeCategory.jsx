@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+
+/** 메뉴 카테고리 component */
 import Brand from './Slide/Brand';
 import Coffee from './Slide/Coffee';
 
@@ -18,7 +20,6 @@ const CoffeeCategory = () => {
     const handleToggleOption = () => setShowOption((prev)=>!prev)
 
     const handleClickOutside = (e) => {
-        // console.log(ref.current.contain(e.target))
         if (showOption && !ref.current.contains(e.target)){
             setShowOption(false)
         }

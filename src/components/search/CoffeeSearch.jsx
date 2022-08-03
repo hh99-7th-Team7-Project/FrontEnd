@@ -1,31 +1,28 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { __loadCoffee, __loadCoffees } from '../../redux/modules/coffee'
 import apis from '../../shared/api/main'
+//css
+import styled from 'styled-components'
+//component
 import CoffeeCard from '../main/CoffeeCard'
+//error log
 import * as Sentry from "@sentry/react";
 
 const CoffeeSearch = (props) => {
   const {keyword} = props
-  // console.log(keyword)
-  const dispatch = useDispatch()
+
   const navigate = useNavigate()
   const [coffeeReducer, setCoffeeReducer] = useState()
-  // const coffeeReducer = useSelector((state) => state.coffee.list);
-  // console.log(coffeeReducer?.length)
+
   //처음 4개만 보여주기위해서 검색결과에서 4개 짜름
   const sliceCoffee = coffeeReducer?.slice(0,8)
-  // console.log(sliceCoffee);
 
-  //임시
+
+
   useEffect(()=>{
     const search = async()=>{
      await apis.searchCoffee(keyword)
           .then((res)=>{
-            // console.log(res)
             setCoffeeReducer(res?.data)
           }).catch(e => {
             Sentry.captureException(e);

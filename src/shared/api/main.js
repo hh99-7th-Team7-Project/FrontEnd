@@ -81,6 +81,7 @@ const apis = {
   searchBoardLogin: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
 
   //랜덤커피
+
   randomCoffee1: (brand, min, max) => api.get(`/coffees/random?brand=${brand}&min=${min}&max=${max}`),
   randomCoffee2: (category, min, max) => api.get(`/coffees/random?category=${category}&min=${min}&max=${max}`),
   randomCoffee3: (brand, category, min, max) => api.get(`/coffees/random?brand=${brand}&category=${category}&min=${min}&max=${max}`),

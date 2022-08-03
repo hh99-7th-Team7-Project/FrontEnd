@@ -15,7 +15,6 @@ const BoardCategory = ({title, cate}) => {
   const clickRadio = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
-    // console.log(e.target.value)
     setClick(true)
     setClick2(false)
     setClick3(false)
@@ -23,7 +22,6 @@ const BoardCategory = ({title, cate}) => {
    const clickRadio2 = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
-    // console.log(e.target.value)
     setClick(false)
     setClick2(true)
     setClick3(false)
@@ -31,7 +29,6 @@ const BoardCategory = ({title, cate}) => {
   const clickRadio3 = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
-    // console.log(e.target.value)
     setClick(false)
     setClick2(false)
     setClick3(true)
@@ -46,7 +43,6 @@ const BoardCategory = ({title, cate}) => {
         type="radio" 
         id="카페 추천합니다"
         value="카페 추천합니다" 
-        // checked={x ==="카페 추천합니다"}
         onClick={clickRadio}
         />
       <label htmlFor='카페 추천합니다'>카페 추천합니다</label>
@@ -56,7 +52,6 @@ const BoardCategory = ({title, cate}) => {
         type="radio" 
         id="나만의 비밀 레시피" 
         value="나만의 비밀 레시피"
-        // checked={x ==="나만의 비밀 레시피"}
         onClick={clickRadio2}/>
         <label htmlFor='나만의 비밀 레시피'>나만의 비밀 레시피</label>
       </ScRecommend>
@@ -65,7 +60,6 @@ const BoardCategory = ({title, cate}) => {
         type="radio" 
         id="기타" 
         value="기타"
-        // checked={x ==="기타"}
         onClick={clickRadio3}/>
       <label htmlFor='기타'>기타</label>
       </ScEtc>

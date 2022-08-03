@@ -5,7 +5,6 @@ const ChatMap = ({location}) => {
   const [info, setInfo] = useState()
   const [markers, setMarkers] = useState([])
   const [map, setMap] = useState()
-// console.log(location)
   const { kakao } = window;
 
   useEffect(() => {

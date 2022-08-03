@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 //component
-import { BoardList, PopularBoard, BoardListCategory,PopularBoardMobile } from "../../components/board/A-boardindex"
+import { BoardList, PopularBoard, BoardListCategory, PopularBoardMobile } from "../../components/board/A-boardindex"
 // css
 import styled from 'styled-components';
 import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
@@ -18,32 +18,31 @@ const Board = () => {
   });
 
   return (
-
     <>
-        <ScWrap>
-          <ScTopCard>
-            <ScLogo1 src={BoardLogo} alt="" style={{ width: "100%" }} />
-            <ScLogo2 src={BoardMini1} alt="" style={{ width: "100%" }} />
-            <ScTopWord>
-              <ScMainTitle>커피를 사랑하는<br /> 사람들의 커피 연구소</ScMainTitle>
-              <Scwrite onClick={() => { navigate("/board/write") }}>
-                <img src={boardwrite} alt="" />
-                <ScBoardWrite>글쓰러 가기</ScBoardWrite>
-              </Scwrite>
-            </ScTopWord>
-          </ScTopCard>
-          {isMobile?<PopularBoardMobile/> :<PopularBoard />}
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <ScCategory>
-              <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
-              <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 비밀 레시피</ScMyrecipe>
-              <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
-              <ScEtc onClick={() => { setCategory("기타") }}>기타</ScEtc>
-            </ScCategory>
-            {category === 0 && <BoardList />}
-            {category !== 0 && <BoardListCategory category={category} />}
-          </div>
-        </ScWrap>
+      <ScWrap>
+        <ScTopCard>
+          <ScLogo1 src={BoardLogo} alt="" style={{ width: "100%" }} />
+          <ScLogo2 src={BoardMini1} alt="" style={{ width: "100%" }} />
+          <ScTopWord>
+            <ScMainTitle>커피를 사랑하는<br /> 사람들의 커피 연구소</ScMainTitle>
+            <Scwrite onClick={() => { navigate("/board/write") }}>
+              <img src={boardwrite} alt="" />
+              <ScBoardWrite>글쓰러 가기</ScBoardWrite>
+            </Scwrite>
+          </ScTopWord>
+        </ScTopCard>
+        {isMobile ? <PopularBoardMobile /> : <PopularBoard />}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <ScCategory>
+            <ScAll onClick={() => { setCategory(0) }}>All</ScAll>
+            <ScMyrecipe onClick={() => { setCategory("나만의 비밀 레시피") }}>나만의 비밀 레시피</ScMyrecipe>
+            <ScRecommend onClick={() => { setCategory("카페 추천합니다") }}>카페 추천 합니다</ScRecommend>
+            <ScEtc onClick={() => { setCategory("기타") }}>기타</ScEtc>
+          </ScCategory>
+          {category === 0 && <BoardList />}
+          {category !== 0 && <BoardListCategory category={category} />}
+        </div>
+      </ScWrap>
     </>
   )
 }
@@ -51,8 +50,7 @@ const Board = () => {
 const ScWrap = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 1200px;
-  width: 90%;
+  width: 100%;
   margin: auto;
   @media screen and (max-width: 768px){
     margin: auto;

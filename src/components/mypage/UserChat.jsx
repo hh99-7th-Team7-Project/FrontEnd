@@ -1,24 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
-import PopularBoardMap from '../board/PopularBoardMap';
+import { useNavigate } from 'react-router-dom';
+//css
+import styled from 'styled-components';
 import { left, MapIco, right } from '../../shared/svg/A-index';
 import calendar from '../../Image/Chat/calendar.svg';
 import IconTime from '../../Image/Chat/time.svg';
-import coffee from '../../Image/Chat/coffee.svg';
 import person from '../../Image/Chat/person.png';
+//error log
 import * as Sentry from "@sentry/react";
-import { useNavigate } from 'react-router-dom';
+
 
 const UserChat = () => {
   const [content, setContent] = useState();
   const userId = getCookie('userId');
   const [count, setCount] = useState(0);
   const slideRef = useRef(null);
-  const TOTAL_SLIDES = 2;
+
   const [slide, setSlide] = useState();
-  const imgLength = 1000;
   const [curruntIdx, setCurrentIdx] = useState(0);
   const navigate = useNavigate()
 
@@ -26,7 +26,6 @@ const UserChat = () => {
   useEffect(() => {
     apis.getMyChatRoom(userId)
     .then((res) => {
-      // console.log(res.data);
       setContent(res.data);
       setSlide(Math.floor(res?.data?.length / 4));
     }).catch((e)=>{
@@ -52,10 +51,10 @@ const UserChat = () => {
   };
 
   useEffect(() => {
-    // console.log(curruntIdx);
     slideRef.current.style.transition = `all 0.5s ease-in-out`;
     slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
   }, [curruntIdx]);
+
   return (
     <ScWrap>
     <ScMoveButton style={{ display: 'flex' }}>
@@ -123,10 +122,8 @@ const ScBundle =styled.div`
 `
 
 const ScWrap = styled.div`
-  /* border: 1px solid black; */
   margin: 23px auto 0 auto;
   width: 1200px;
-  /* width: 100%; */
   height: 300px;
   background-color: #ddd;
   border-radius: 10px;
@@ -151,7 +148,6 @@ const Container = styled.div`
 `;
 
 const ScMap = styled.div`
-  /* border: 1px red solid; */
   height: 230px;
   width: 220px;
   margin: 20px 20px 0 0;

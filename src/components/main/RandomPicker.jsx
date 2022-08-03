@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+//css
 import styled from 'styled-components';
 import Styled from 'styled-components';
 import RandomModalBg from './image/RandomModalBg.png';
@@ -8,20 +10,24 @@ import PinMap from './svg/PinMap.svg'
 import Pencil from './svg/Pencil.svg'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import apis from '../../shared/api/main'
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
-import * as Sentry from "@sentry/react";
+import apis from '../../shared/api/main';
 import { createTheme } from '@mui/material/styles';
-import { StarFilledPurple, StarUnfilled } from '../../shared/svg/A-index';
+import Swal from 'sweetalert2';
 import './flipcard.css';
+
+import { useNavigate } from 'react-router-dom';
+
+//에러로그
+import * as Sentry from "@sentry/react";
+
+import { StarFilledPurple, StarUnfilled } from '../../shared/svg/A-index';
+
 
 
 const RandomPicker = ({closeModal}) => {
 
   const navigate = useNavigate();
   const [click, setClick] = useState(false);
-  const [ status , setStatus ] = useState();
 
   const theme = createTheme({
     palette: {
@@ -35,38 +41,25 @@ const RandomPicker = ({closeModal}) => {
   const [ selectBrandValue , setSelectBrandValue ] = useState(null);
   const [ selectCategoryValue , setSelectCategoryValue ] = useState(null);
   const [ value, setValue ] = useState([2000, 8000]);
-
   const [ randomCoffee , setRandomCoffee ] = useState();
-
-
-  
-
 
   function valuetext(value) {
     return `${value}원`;
   }
 
-  // console.log("min",value[0],"max",value[1]);
-
-  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleBrandChange = (e) => {
-    // console.log(e.target.value);
     setSelectBrandValue(e.target.value);
   }
 
   const handleCategoryChange = (e) => {
-    // console.log(e.target.value);
     setSelectCategoryValue(e.target.value);
   }
 
-  // console.log(selectBrandValue);
-  // console.log(selectCategoryValue);
-
-
+  //랜덤픽 여러가지 상황에 따른 api따로 사용 로직
   const randomCoffeePick = async () => {
     if(selectCategoryValue===null&& selectBrandValue===null){
       await apis.randomCoffee4(
@@ -74,7 +67,6 @@ const RandomPicker = ({closeModal}) => {
         value[1]
     )
     .then((res)=>{
-      // console.log("response",res?.data);
       setRandomCoffee(res?.data);
     })
     .catch((error)=>{
@@ -96,7 +88,6 @@ const RandomPicker = ({closeModal}) => {
         value[1]
     )
     .then((res)=>{
-      // console.log("response",res?.data);
       setRandomCoffee(res?.data);
     })
     .catch((error)=>{
@@ -118,7 +109,6 @@ const RandomPicker = ({closeModal}) => {
         value[1]
     )
     .then((res)=>{
-      // console.log("response",res?.data);
       setRandomCoffee(res?.data);
     })
     .catch((error)=>{
@@ -142,7 +132,6 @@ const RandomPicker = ({closeModal}) => {
         value[1]
     )
     .then((res)=>{
-      // console.log("response",res?.data);
       setRandomCoffee(res?.data);
     })
     .catch((error)=>{
@@ -541,6 +530,8 @@ const ScRandomWrapBack = styled.div`
     background-size: 100%;
     /* background-position: center; */
     @media screen and (max-width: 768px) {
+    width: 300px;
+    height: 500px;
     background-image: url(${RandomBackBg});
     background-size: 130%;
     background-position: 20%;

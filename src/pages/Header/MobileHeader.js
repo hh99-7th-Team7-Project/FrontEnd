@@ -1,21 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {Outlet} from "react-router"
+//css
 import {
   Button,
   Category,
   HeaderInput,
   Logo,
 } from '../../components/Header/A-HeaderIndex';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMediaQuery } from "react-responsive";
-import {Outlet} from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import zoom from '../../components/Header/svg/Zoom.svg'
 
 
 const Header = () => {
-  const navigate = useNavigate();
+
 
   const isMobile = useMediaQuery({
     query: "(max-width: 1604px)",

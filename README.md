@@ -44,7 +44,6 @@
     export const __loadPost = () => {
       return async function (dispatch) {
         const loadData = await apis.getPosts();
-        // console.log(loadData.data);
         dispatch(loadPosts(loadData.data));
       };
     };

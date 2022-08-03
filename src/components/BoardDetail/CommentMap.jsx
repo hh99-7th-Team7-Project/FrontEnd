@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+/** redux */
 import { useSelector, useDispatch } from 'react-redux';
+
+/** react-router-dom */
 import { useParams } from 'react-router-dom';
+
+/** component */
 import {
   __getBoardComment,
   __deleteBoardComment,
 } from '../../redux/modules/boardcomment';
 import UpdateBoardComment from './UpdateBoardComment';
+
+/** 쿠키 가져오기 */
 import { getCookie } from '../../shared/Cookie';
 
 const CommentMap = () => {
   const dispatch = useDispatch();
   const { boardId } = useParams();
   const nickname = getCookie('nickname');
-  const comment_list = useSelector(
-    (state) => state.boardComment.boardcommentlist
-  );
+  const comment_list = useSelector((state) => state.boardComment.boardcommentlist);
 
-  // console.log(comment_list)
-
-  const imgRef = React.useRef();
   const [showUpdate, setShowUpdate] = useState(false);
   const [commentId, setCommentId] = useState();
-  const [ buttonVisible , setButtonVisible ] = useState(false);
-  const [ showToggle , setShowToggle ] = useState(false);
 
-  // console.log(commentId);
+
 
   return (
     <>
@@ -75,13 +76,7 @@ const CommentMap = () => {
                     >
                       댓글 삭제
                     </ScButton>
-                  ) : null}                
-                  {/* <div>
-                    {buttonVisible === true && item?.id === commentId ? <DotDrop/> : null}
-                    <img src={Dot} alt="" onClick={()=>{
-                      setButtonVisible(!buttonVisible);                      
-                    }}/>
-                  </div> */}
+                  ) : null}
                 </ScBtnAlign>
               </ScTable>
             </div>

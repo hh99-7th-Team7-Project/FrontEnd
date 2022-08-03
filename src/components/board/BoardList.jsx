@@ -8,7 +8,7 @@ import { getCookie } from '../../shared/Cookie';
 
 //component
 import{ BoardPagination , BoardMap } from './A-boardindex'
-
+// 에러로그
 import * as Sentry from "@sentry/react";
 
 
@@ -19,6 +19,7 @@ const BoardList = () => {
   const [totalpage , settotalPage ]= useState(0)
   const [page, setPage] =useState(0)
 
+  // 페이지네이션
   useEffect(() => {
     const getMark = async () => {
       if (!token) {

@@ -1,17 +1,18 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import React from "react";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { MainCard1, MiniBanner,MainBanner2 } from '../../shared/svg/A-index';
+import { MainCard1,MainBanner2 } from '../../shared/svg/A-index';
 import { Pagination, Navigation, Autoplay } from "swiper";
 
-
 // Import Swiper styles
+//css
 import "swiper/css/bundle";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../shared/css/swiper.css";
+import styled from "styled-components";
 
 const ImgSlide2 = () => {
   return (
@@ -26,7 +27,6 @@ const ImgSlide2 = () => {
         disableOnInteraction: false,
       }}
         loop={true}
-        // navigation={true}
        modules={[Autoplay,Pagination,Navigation]} 
        className="mySwiper">
         <SwiperSlide><a style={{ width: "inherit"}} href="https://forms.gle/yGy74NsTZwQJWycVA" target="_blank"><img src={MainCard1} alt=""/></a></SwiperSlide>

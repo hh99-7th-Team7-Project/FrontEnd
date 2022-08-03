@@ -1,26 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
-import apis from '../../shared/api/main'
 import { getCookie } from '../../shared/Cookie'
-import BoardMap from '../board/BoardMap'
-import * as Sentry from "@sentry/react";
-import { left, right } from '../../shared/svg/A-index'
+import apis from '../../shared/api/main'
+//component
 import PopularBoardMap from '../board/PopularBoardMap'
+//css
+import styled from 'styled-components'
+import { left, right } from '../../shared/svg/A-index'
+//err
+import * as Sentry from "@sentry/react";
 
 const UserBoardWrite = () => {
     const [content, setContent] = useState();
     const userId = getCookie('userId');
     const [count, setCount] = useState(0);
     const slideRef = useRef(null);
-    const TOTAL_SLIDES = 2;
+ 
     const [slide, setSlide] = useState();
-    const imgLength = 1000;
     const [curruntIdx, setCurrentIdx] = useState(0);
 
   useEffect(()=>{
     apis.getMyBoard(userId)
         .then((res)=>{
-        // console.log(res.data)
         setContent(res.data)
     }).catch(e => {
         Sentry.captureException(e);
@@ -45,7 +45,6 @@ const UserBoardWrite = () => {
   };
 
   useEffect(() => {
-    // console.log(curruntIdx);
     slideRef.current.style.transition = `all 0.5s ease-in-out`;
     slideRef.current.style.transform = `translateX(-${curruntIdx}000px)`;
   }, [curruntIdx]);

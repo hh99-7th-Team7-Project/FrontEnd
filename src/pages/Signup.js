@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import apis from "../shared/api/main";
+//css
 import styled from "styled-components";
 import { motion } from "framer-motion"
 import unchecked from '../shared/svg/Unchecked.svg'
 import checked from '../shared/svg/Checked.svg'
-import SignupModal from '../components/Signup/SignupModal';
 import { useMediaQuery } from 'react-responsive';
+//component
+import SignupModal from '../components/Signup/SignupModal';
+//error log
 import * as Sentry from "@sentry/react";
 
 
@@ -67,14 +70,14 @@ const SignUp = (props) => {
     }
 
   };
-  // console.log(Email+Selected)
+
   // 닉네임 중복 체크
   const dupNick = async () => {
     if (!nickCheck(Nickname)) {
       setAlert("올바른 닉네임 형식을 작성해주세요")
-    }else if(Nickname.includes(" ")){
+    } else if (Nickname.includes(" ")) {
       setAlert("공백은 허용되지 않습니다.")
-    } 
+    }
     else {
       setAlert("사용 가능한 닉네임입니다.");
       await apis.checkNickName({ nickname: Nickname })
@@ -171,7 +174,7 @@ const SignUp = (props) => {
       type: "application/json"
     }))
     form.append('profileImage', fileInputRef.current.files[0])
-    // console.log(fileInputRef.current.files[0].name)
+
     if (fileInputRef.current.files?.length === 0) {
       const response = await apis.addUserWO(data)
         .then(response => {

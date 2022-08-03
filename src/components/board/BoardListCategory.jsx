@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react';
+//css
 import styled from 'styled-components';
-import BoardMap from './BoardMap';
+
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
-import BoardPagination from './Pagination/BoardPagination';
+//컴포넌트
+import {BoardPagination, BoardMap} from './A-boardindex';
+// 에러로그
 import * as Sentry from "@sentry/react";
 
 
 const BoardListCategory = ({ category }) => {
-  const [content, setContent] = useState();
-  const token = getCookie('token');
 
+  const [content, setContent] = useState();
   const [totalpage , settotalPage ]= useState(0)
   const [page, setPage] =useState(0)
+  const token = getCookie('token');
 
+  //북마크 여부 때문에 토큰 유무로 API나눔
   useEffect(() => {
     const getMark = async () => {
       if (!token) {
         await apis.getBoardsCategory(category , Number(page))
         .then((res) => {
-          // console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
         }).catch((e)=>{
@@ -28,7 +31,6 @@ const BoardListCategory = ({ category }) => {
       } else {
         await apis.getBoardsCategoryLogin(category, Number(page))
         .then((res) => {
-          // console.log(res.data);
           setContent(res.data.post);
           settotalPage(res?.data.totalPage) 
         }).catch((e)=>{

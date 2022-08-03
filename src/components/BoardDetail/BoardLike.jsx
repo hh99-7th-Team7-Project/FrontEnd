@@ -1,21 +1,28 @@
 import React from 'react';
-import Styled from 'styled-components';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
+
+/** react-clipboard hook */
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+/** swal alert */
 import Swal from 'sweetalert2';
+
+/** 서버 api 통신 */
 import apis from '../../shared/api/main';
+
+/** 쿠키 가져오기 */
 import { getCookie } from '../../shared/Cookie';
+
+/** Sentry */
 import * as Sentry from "@sentry/react";
 
 const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike, reportck,setReportck }) => {
-  console.log(head?.userId)
   const token = getCookie("token")
   const user = getCookie("userId")
   const like = async () => {
     if(token){
       await apis.postBoardsLike(boardId)
       .then((res) => {
-        // console.log(res.data)
       setLike(res?.data.postlove);
       setTotLike(res?.data.postloveCount)
     }).catch((e)=>{
@@ -40,7 +47,6 @@ const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike, reportc
     if(token){
       await apis.reportBoard(user,data)
       .then((res)=>{
-        console.log(res)
         setReportck(res.data)
       })
     }else{
@@ -103,7 +109,7 @@ const ScWrap = styled.div`
   margin: 80px auto;
 `;
 
-const ScTitleWrap = Styled.div`
+const ScTitleWrap = styled.div`
   width: 100%;
   margin: 27px auto 15px;
   display: flex;
@@ -111,27 +117,14 @@ const ScTitleWrap = Styled.div`
   text-align: center;
 `;
 
-const ScH3 = Styled.h3`
+const ScH3 = styled.h3`
   font-size: 2.5em;
   margin: auto;
 
 `;
 
-const URLShareButton = Styled.button`
-	width: 90px;
-	height: 48px;
-	color: white;
-	border-radius: 24px;
-	border: 0px;
-	font-weight: 800;
-	font-size: 1.125em;
-	cursor: pointer;
-	background-color: #7362ff;
-	&:hover {
-		background-color: #a99fee;
-	}
-`;
-const ScBtnWrap = Styled.div`
+
+const ScBtnWrap = styled.div`
   margin: 20px auto;  
   display: flex;
   justify-content: center;
@@ -183,7 +176,7 @@ const ScBtn2 = styled.div`
   }
 `;
 
-const ScHR = Styled.hr`
+const ScHR = styled.hr`
     margin-top: 40px;
     margin-bottom: 20px;
 `;

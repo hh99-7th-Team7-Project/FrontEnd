@@ -1,10 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+
+/** redux */
 import { useDispatch } from 'react-redux';
+
+/** component */
 import {
   __getBoardComment,
   __updateBoardComment,
 } from '../../redux/modules/boardcomment';
+
+/** Swal alert */
 import Swal from 'sweetalert2';
 
 const UpdateBoardComment = (props) => {

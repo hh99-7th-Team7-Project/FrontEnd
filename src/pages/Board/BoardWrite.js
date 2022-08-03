@@ -1,15 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import BoardCategory from '../../components/BoardWrite/BoardCategory';
-import ToastEdit from '../../components/BoardWrite/ToastEdit';
-import Header from '../Header/Header';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadBoard } from '../../redux/modules/board';
+import React, { useEffect, useState } from 'react';
+/** react-router-dom */
 import { useNavigate } from 'react-router-dom';
-import apis from '../../shared/api/main';
-import styled from 'styled-components';
+/** 쿠키가져오기 */
 import { getCookie } from '../../shared/Cookie';
+/** 서버 api 통신 */
+import apis from '../../shared/api/main';
+/** component */
+import {BoardCategory,ToastEdit } from '../../components/BoardWrite/A-boardwriteindex'
+//css
+import styled from 'styled-components';
+/** swal alert */
 import Swal from 'sweetalert2';
+/** Sentry */
 import * as Sentry from "@sentry/react";
 
 const BoardWrite = () => {
@@ -17,13 +19,9 @@ const BoardWrite = () => {
   const [title, setTitle] = useState('');
   const [cate, setCate] = useState('카페 추천합니다');
   const [content, setContent] = useState('');
-  // console.log(cate);
-  // console.log(title);
-  // console.log(content);
 
   //로그인 후 이용가능한 서비스 알람
   const islogin = getCookie('islogin');
-  // console.log(islogin);
   useEffect(() => {
     if (islogin === undefined) {
       Swal.fire({

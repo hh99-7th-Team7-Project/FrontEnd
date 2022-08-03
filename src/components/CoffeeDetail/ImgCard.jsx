@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+
+/** 서버 api 통신 */
 import apis from '../../shared/api/main';
-import svg from './svg/BookMark.svg';
+
+/** svg 이미지 파일 import */
 import { bookmark, bookmarkck } from '../../shared/svg/A-index';
+
+/** 쿠키 가져오기 */
 import { getCookie } from '../../shared/Cookie';
+
+/** Swal alert */
 import Swal from 'sweetalert2';
 
+
+
+
 const ImgCard = ({ url, item, like, setLike }) => {
-  // console.log(item);
 
 const token = getCookie("token")
 
   const likeCoffee = async () => {
     if(token){
        await apis.likeCoffee(item?.brand, item?.id).then((res) => {
-      // console.log(res.data);
       setLike(res.data);
     });
     }else{

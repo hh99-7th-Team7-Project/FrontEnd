@@ -1,9 +1,11 @@
-import React from 'react'
-import { useRef } from 'react';
+import React,{ useRef } from 'react'
+import apis from '../../shared/api/main';
+//css
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
+//error log
 import * as Sentry from "@sentry/react";
-import apis from '../../shared/api/main';
+
 
 const SignupModal = ({showModal,closeModal,signupAfter,email}) => {
   const verifyRef = useRef()

@@ -2,7 +2,8 @@ import React from 'react'
 import { flower } from '../../shared/svg/A-index'
 
 export const Flower = () => {
-  return (<>
+  return (
+  <>
     <img src={flower}
     style={{zIndex:"-1", position:"absolute", left:"1303px",top:"3096px", width:"601px"}}
     alt=""
@@ -19,7 +20,6 @@ export const Flower = () => {
      <img src={flower}
     style={{zIndex:"-1", position:"absolute", left:"-100px",bottom:"-300px", width:"701px"}}  alt=""
     /> 
-    
-    </>
+  </>
   )
 }

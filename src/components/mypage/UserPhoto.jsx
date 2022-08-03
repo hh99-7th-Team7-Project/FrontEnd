@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { getCookie } from '../../shared/Cookie';
 
 const UserPhoto = ({convertImg}) => {
-  // const profileImg2 = email?.profileImg;
+
   return (
     <>
       <ScProfileImg

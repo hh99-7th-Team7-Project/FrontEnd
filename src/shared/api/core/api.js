@@ -4,11 +4,10 @@ import { getCookie } from '../../Cookie';
 //기본설정
 export const api = axios.create({
   baseURL: process.env.REACT_APP_URL,
-  // withCredentials: false,
 });
-export const apin =axios.create({
+//헤더에 아무것도 담지 않음
+export const apin = axios.create({
   baseURL: process.env.REACT_APP_URL,
-  // withCredentials: false,
 });
 //폼데이터 전송 두가지 토큰O/X
 export const instance = axios.create({
@@ -58,23 +57,3 @@ instances.interceptors.request.use(
   }
 );
 
-//3. 응답 인터셉터
-// api.interceptors.response.use(
-//   (success) => {
-//     const response = success.data;
-
-//     if (
-//       response.statusCode === 200 &&
-//       response.responseMessage === "조회 성공"
-//     ) {
-//       return response.posts;
-//     }
-
-//     return success;
-//   },
-//   (error) => {
-//     console.log(error);
-//   }
-// );
-
-// export const TokenCheck = localStorage.getItem("token") ? true : false;

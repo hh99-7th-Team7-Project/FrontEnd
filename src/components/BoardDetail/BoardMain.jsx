@@ -1,18 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+
+/** Sentry */
 import * as Sentry from "@sentry/react";
+
+/** react-router-dom */
 import { useNavigate } from 'react-router-dom';
+
+/** 서버 api 통신 */
 import apis from '../../shared/api/main';
+
+/** component */
 import {
   bookmark,
   bookmarkck
 } from '../../shared/svg/A-index';
+
+/** 쿠키 가져오기 */
 import { getCookie } from '../../shared/Cookie';
+
+/** Swal alert */
 import Swal from 'sweetalert2';
 
 const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
   const navigate = useNavigate();
-  // console.log(head)
   const nickname = getCookie('nickname');
   const bookmarkfunc = async () => {
     if(nickname){
@@ -125,22 +136,6 @@ const ScBtnWrap = styled.div`
   margin: 10px 10px;
 `;
 
-const Btn = styled.button`
-  margin: 10px;
-  width: 150px;
-  height: 30px;
-  border-radius: 30px;
-  &:hover {
-    background-color: black;
-    color: white;
-    border-color: black;
-    cursor: pointer;
-  }
-
-  background-color: white;
-  border-color: black;
-  padding: 0px 5px 0px 5px;
-`;
 
 const ScHR = styled.hr`
   margin-top: 20px;
