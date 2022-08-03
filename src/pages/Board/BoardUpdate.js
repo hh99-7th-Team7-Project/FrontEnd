@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import BoardCategory from '../../components/BoardWrite/BoardCategory'
-import Header from '../Header/Header'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+
+/** react-router-dom */
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios'
+
+/** component */
 import ToastEditUpdate from '../../components/BoardWrite/ToastEditUpdate';
 import BoardCategoryUpdate from '../../components/BoardWrite/BoardCategoryUpdate';
+
+/** api 서버 통신 */
 import apis from '../../shared/api/main';
-import styled from 'styled-components';
+
+/** Sentry */
 import * as Sentry from "@sentry/react";
 
 const BoardUpdate = () => {
@@ -19,9 +24,6 @@ const BoardUpdate = () => {
   const [prevContent, setPrevContent] = useState()
   const [head, setHead] = useState()
 
-  // console.log(cate)
-  // console.log(title)
-  // console.log(content)
 
   const submitOnclick = async () => {
     const data = { "title": title, "content": content, "category": cate }
@@ -37,10 +39,8 @@ const BoardUpdate = () => {
     const getMark = async () => {
       await apis.getBoard(boardId)
         .then((res) => {
-          // console.log(res)
           setPrevContent(res?.data?.content)
           setHead(res?.data)
-          // console.log(res?.data)
           setTitle(res?.data?.title)
           setCate(res?.data?.category)
         }).catch(e => {

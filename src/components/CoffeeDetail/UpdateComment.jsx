@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react'
+import React  from 'react';
 import Styled from 'styled-components';
+
+/** redux */
 import { useDispatch }from 'react-redux';
-import { __loadComment, __updateComment } from '../../redux/modules/comment';
-import { getCookie } from '../../shared/Cookie';
+import { __updateComment } from '../../redux/modules/comment';
+
 
 const UpdateComment = (props) => {
 
     const { showUpdate , setShowUpdate, commentId, brand, boardId } = props;   
     
     const dispatch = useDispatch();
-    const nickname = getCookie("nickname");
+
     const reviewRef = React.useRef();
 
 

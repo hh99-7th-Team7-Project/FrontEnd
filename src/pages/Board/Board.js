@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import Styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom'
-import Header from '../Header/Header';
-import { BoardList, PopularBoard, BoardListCategory } from "../../components/board/A-boardindex"
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
-import BoardPagination from '../../components/board/Pagination/BoardPagination';
+
+/** 페이지 이동 */
+import { useNavigate } from 'react-router-dom'
+
+/** component */
+import { BoardList, PopularBoard, BoardListCategory } from "../../components/board/A-boardindex";
 import PopularBoardMobile from '../../components/board/PopularBoardMobile';
+
+/** svg 이미지 파일 import */
+import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
+
+/** react-responsive 라이브러리 (모바일 적용) */
 import { useMediaQuery } from 'react-responsive';
 
 
@@ -50,10 +55,10 @@ const Board = () => {
   )
 }
 
-const ScWrap = Styled.div`
+const ScWrap = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 1200px
+  min-width: 1200px;
   width: 90%;
   margin: auto;
   @media screen and (max-width: 768px){
