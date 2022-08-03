@@ -21,6 +21,7 @@ const apis = {
   getMyBoardCount: (userId) => api.get(`/mypage/myboards/${userId}`),
   getMyChatCount: (userId) => api.get(`/mypage/myChat/${userId}`),
   getMyChatRoom: (userId) => api.get(`/mypage/myChatRoom/${userId}`),
+  getMyReport:(userId) => api.get(`/mypage/report/${userId}`),
 
   //커피정보
   getCoffee: (brand) => api.get(`/coffees/${brand}`),

@@ -43,7 +43,14 @@ const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike, reportc
         console.log(res)
         setReportck(res.data)
       })
-    }}
+    }else{
+      Swal.fire({
+        title: '로그인 후 이용 가능한 서비스입니다',
+        icon: 'warning',
+        confirmButtonText: '확인',
+      })
+    }
+  }
 
 
   return (
