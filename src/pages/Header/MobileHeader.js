@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {Outlet} from "react-router"
+//라우터에서 특정페이지에서만 헤더나오게 설정
+import { Outlet } from "react-router";
 //css
+import styled from 'styled-components';
+/** component */
 import {
   Button,
   Category,
   HeaderInput,
   Logo,
 } from '../../components/Header/A-HeaderIndex';
-import styled from 'styled-components';
-import { useMediaQuery } from "react-responsive";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import zoom from '../../components/Header/svg/Zoom.svg'
+/** svg 이미지 import */
+import zoom from '../../components/Header/svg/Zoom.svg';
+/** fontAwesome */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const Header = () => {
 
 
-  const isMobile = useMediaQuery({
-    query: "(max-width: 1604px)",
-  });
 
   const [ categoryVisible , setCategoryVisible ] = useState(false);
   const [ buttonVisible , setButtonVisible ] = useState(false);
@@ -30,8 +30,7 @@ const Header = () => {
 
 
   return (
-    <>
-
+      <>
         <ScHeaderBox> 
           <Logo/> 
           <ScGap>        
@@ -60,7 +59,7 @@ const Header = () => {
             <FontAwesomeIcon style={{color:"#2c278c"}} icon={faBars} />
           </ScToggleBtn>
         <Outlet />
-        </>
+      </>
   );
 };
 

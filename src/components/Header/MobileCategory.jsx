@@ -1,9 +1,12 @@
 import React from 'react';
-import Styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+/** CSS */
 import styled from 'styled-components';
+/** react-router-dom */
+import { useNavigate } from 'react-router-dom';
+
 
 const MobileCategory = () => {
+
   const navigate = useNavigate();
 
   return (
@@ -45,10 +48,9 @@ const ScCategoryBox = styled.div`
   color: #2C278C;
 `;
 
-const ScCategory = Styled.div` 
+const ScCategory = styled.div` 
   background-color: white;
-  /* margin-left: 30px; */
-  &: hover {
+  &:hover {
     cursor: pointer;
   }
 `;

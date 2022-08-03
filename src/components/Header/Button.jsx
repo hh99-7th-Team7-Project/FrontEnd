@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { deleteCookie, getCookie } from '../../shared/Cookie';
+/** CSS */
 import styled from 'styled-components';
+/** react-router-dom */
+import { useNavigate } from 'react-router-dom';
+/** 쿠키 가져오기, 삭제 */
+import { deleteCookie, getCookie } from '../../shared/Cookie';
+/** Swal alert */
 import Swal from 'sweetalert2';
 
 const Button = ({toggle}) => {
@@ -35,7 +39,6 @@ const Button = ({toggle}) => {
     <ScWrap>
       {onair ? (
         <>
-          
           <ScBtn
             onClick={() => {
               navigate('/mypage');

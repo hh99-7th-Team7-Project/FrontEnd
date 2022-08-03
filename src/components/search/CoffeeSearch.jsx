@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+/** react-router-dom */
+import { useNavigate } from 'react-router-dom';
+/** component */
 import apis from '../../shared/api/main'
 //css
 import styled from 'styled-components'

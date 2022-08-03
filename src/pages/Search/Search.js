@@ -1,6 +1,10 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react';
 import styled from 'styled-components';
+
+/** react-router-dom */
+import { useParams } from 'react-router-dom'
+
+/** component */
 import { BoardSearch, CoffeeSearch } from '../../components/search/A-Search';
 
 

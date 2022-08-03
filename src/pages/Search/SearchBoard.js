@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate, useParams } from 'react-router-dom';
+
+/** react-router-dom */
+import { useParams } from 'react-router-dom';
+
+/** component */
 import BoardMap from '../../components/board/BoardMap';
-import { Link } from 'react-scroll';
-import apis from '../../shared/api/main';
-import { getCookie } from '../../shared/Cookie';
 import BoardPagination from '../../components/board/Pagination/BoardPagination';
+
+/** Top 스크롤 이동 */
+import { Link } from 'react-scroll';
+
+/** 서버 api 통신 */
+import apis from '../../shared/api/main';
+
+/** 쿠키 가져오기 */
+import { getCookie } from '../../shared/Cookie';
+
+/** Sentry */
 import * as Sentry from "@sentry/react";
 
 const SearchBoard = () => {
   const { keyword } = useParams();
-  const navigate = useNavigate();
   const [boardReducer, setBoardReducer] = useState();
   const [totalpage, settotalPage] = useState(0)
   const [page, setPage] = useState(0)
