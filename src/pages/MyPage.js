@@ -31,6 +31,7 @@ const MyPage = () => {
   const [condition, setCondition] = useState('');
   const [countBoard, setCountBoard] = useState()
   const [countChat, setCountChat] = useState()
+  const [countReport,setCountReport]= useState()
 
 
   useEffect(() => {
@@ -68,8 +69,17 @@ const MyPage = () => {
           Sentry.captureException(e);
         });
     }
+    const reportCount = async()=>{
+      await apis.getMyReport(userId)
+      .then((res) => {
+        setCountReport(res.data)
+      }).catch(e => {
+        Sentry.captureException(e);
+      });
+    }
     boardCount()
     chatCount()
+    reportCount()
   }, [])
 
   const updateProfile = async (e) => {
@@ -171,6 +181,7 @@ const MyPage = () => {
                     marginRight: '140px',
                   }}
                 >
+                  {countReport&&<div style={{color:"tomato"}}>{countReport}</div>}
                   <div style={{ display: 'flex' }}>
                     <div style={{ fontSize: '1.375em' }}>{email?.nickname}</div>
                     <img
