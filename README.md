@@ -1,13 +1,11 @@
 
 
-# [COFFIND](https://www.coffind.co.kr/)
-
+# COFFIND
+☕[커파인드로 가기](https://www.coffind.co.kr/)
 <b>커피, 모든 메뉴를 한번에!</b>
 <br />
-
-## COFFIND 소개
 <img src="https://ifh.cc/g/QOLmWP.webp" />
-
+## COFFIND 소개
 ### 서비스 개요💻
 
 <br />
