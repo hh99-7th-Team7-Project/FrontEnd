@@ -1,9 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components';
-import Header from './Header/Header';
-import { Comment, CommentCard, ImgCard, Review, CoffeeCategory } from '../components/CoffeeDetail/A-CoffeeDetailIndex';
+
+/** component */
+import { Comment, CommentCard, ImgCard, Review } from '../components/CoffeeDetail/A-CoffeeDetailIndex';
+
+/** react-router-dom */
 import { useParams } from 'react-router-dom';
-import {useDispatch,useSelector}from 'react-redux';
+
+/** redux */
+import { useDispatch,useSelector } from 'react-redux';
 import { __loadCoffeeDetail } from '../redux/modules/coffee';
 
 

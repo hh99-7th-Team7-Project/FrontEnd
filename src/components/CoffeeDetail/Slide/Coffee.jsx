@@ -1,28 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from 'react';
 import styled from 'styled-components';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper';
-import { css, keyframes } from 'styled-components';
 
-const Coffee = ({ref}) => {
-  const [color, setColor] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const categoryList = [
-    { brand: 'coffee', id: 0 },
-    { brand: 'nonCoffee', id: 1 },
-    { brand: 'smoothie', id: 2 },
-    { brand: 'aid', id: 3 },
-    { brand: 'tea', id: 4 },
-  ];
+const Coffee = () => {
+
 
   return (
     <>

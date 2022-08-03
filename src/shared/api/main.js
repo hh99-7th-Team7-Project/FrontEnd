@@ -59,6 +59,8 @@ const apis = {
 //게시판
     getBoards: (page) => api.get(`/posts?page=${page}`),
     getBoardsLogin: (page) => api.get(`/auths/posts?page=${page}`),
+
+
     postBoardsLike: (id) => api.post(`/postslogin/postlove/${id}`),
     postBoardsBookmark: (id) => api.post(`/posts/bookmark/${id}`),
     getBoardsCategory: (category, page) => api.get(`/posts?category=${category}&page=${page}`),
@@ -81,6 +83,7 @@ const apis = {
   searchBoardLogin: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
 
   //랜덤커피
+
   randomCoffee1: (brand, min, max) => api.get(`/coffees/random?brand=${brand}&min=${min}&max=${max}`),
   randomCoffee2: (category, min, max) => api.get(`/coffees/random?category=${category}&min=${min}&max=${max}`),
   randomCoffee3: (brand, category, min, max) => api.get(`/coffees/random?brand=${brand}&category=${category}&min=${min}&max=${max}`),

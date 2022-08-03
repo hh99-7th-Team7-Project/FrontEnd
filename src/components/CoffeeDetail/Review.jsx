@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
+
+/** react-router-dom */
+import { useNavigate } from 'react-router-dom';
+
+/** svg 이미지 파일 import */
 import svg from './svg/MapMaker.svg';
 import svg1 from './svg/Write.svg';
 import  Large  from './svg/Large.svg';
 import  Medium  from './svg/Medium.svg';
 import  Small  from './svg/Small.svg'
-import { Link } from 'react-scroll';
-// import { __getAverageStar } from '../../redux/modules/comment';
-import { useDispatch } from 'react-redux';
 
-const Review = ({ item, reviewData, url }) => {
+/** react-scroll hook */
+import { Link } from 'react-scroll';
+
+
+const Review = ({ item }) => {
   const navigate = useNavigate();
   const pricePair = item?.pricePair;
   const starPoint = item?.star;

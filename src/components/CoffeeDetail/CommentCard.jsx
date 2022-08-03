@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
+/** component */
 import UpdateComment from './UpdateComment';
+
+/** redux */
 import { useSelector, useDispatch } from 'react-redux';
 import { __deleteComment, __loadComment } from '../../redux/modules/comment';
-import { getCookie } from '../../shared/Cookie';
-import { FillStar } from './svg/FillStar.svg';
-import { BlankStar } from './svg/BlankStar.svg';
+
+
+/** react-responsive 라이브러리 (모바일적용) */
 import { useMediaQuery } from 'react-responsive';
 
+
+
 const CommentCard = (props) => {
+
   const { brand, boardId } = props;
-
   const dispatch = useDispatch();
-
-  const nickname = getCookie('nickname');
-
   const [showUpdate, setShowUpdate] = useState(false);
   const [reviewId, setReviewId] = useState();
 

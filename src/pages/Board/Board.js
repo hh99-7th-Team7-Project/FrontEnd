@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 //component
@@ -5,6 +6,7 @@ import { BoardList, PopularBoard, BoardListCategory,PopularBoardMobile } from ".
 // css
 import styled from 'styled-components';
 import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
+
 import { useMediaQuery } from 'react-responsive';
 
 

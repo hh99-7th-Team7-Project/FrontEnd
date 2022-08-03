@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+
+/** 메뉴 카테고리 component */
 import Brand from './Slide/Brand';
 import Coffee from './Slide/Coffee';
 
