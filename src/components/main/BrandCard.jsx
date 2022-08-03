@@ -1,36 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import Styled from 'styled-components';
-import { useInView } from 'react-intersection-observer';
-import { useNavigate } from 'react-router-dom';
+
 import CoffeeCard from './CoffeeCard';
 import { __loadCoffee, __loadCoffeesnBrand } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
+//css
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
-import styled, { css, keyframes } from 'styled-components';
-import apis from '../../shared/api/main';
+import styled, { keyframes } from 'styled-components';
+import Styled from 'styled-components';
 
 const BrandCard = (props) => {
-  // const{coffeeReducer} = props
+
   const [color, setColor] = useState(false);
   const [ selectCategoryValue , setSelectCategoryValue ] = useState();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const ediya = '스타벅스';
 
+  const dispatch = useDispatch();
+  const coffeeReducer = useSelector((state) => state.coffee.list);
+
+  const starbucks = '스타벅스';
   useEffect(() => {
-    dispatch(__loadCoffee(ediya));
+    dispatch(__loadCoffee(starbucks));
     setSelectCategoryValue()
   }, [dispatch]);
 
-  const coffeeReducer = useSelector((state) => state.coffee.list);
-
-  // console.log(coffeeReducer[0]?.brand)
+  //카테고리 선택
   const handleCategoryChange = async(e) => {
     setSelectCategoryValue(e.target.value);
     dispatch(__loadCoffeesnBrand({
@@ -55,15 +53,13 @@ const BrandCard = (props) => {
     { brand: '메가커피', id: 12, logo: '/brandlogo/메가커피.png' },
   ];
 
-  // console.log(selectCategoryValue);
-
   return (
 
     <ScMobile>
 
         <div style={{position:'relative'}}>
-      <ScPrev className="prev" style={{fontSize:'1.66em'}}>&lt;</ScPrev>  
-      <ScNext className="next" style={{fontSize:'1.66em'}}>&gt;</ScNext>
+          <ScPrev className="prev" style={{fontSize:'1.66em'}}>&lt;</ScPrev>  
+          <ScNext className="next" style={{fontSize:'1.66em'}}>&gt;</ScNext>
               <Swiper
                 slidesPerView={8}
                 spaceBetween={10}
@@ -110,16 +106,13 @@ const BrandCard = (props) => {
                       >
                         <ScSlide
                           onClick={(e) => {
-                            // slide()
                             setColor(!color);
                             dispatch(__loadCoffee(item?.brand));
                           }}
                           style={{ backgroundImage: `url(${item?.logo})` }}
                           className="middle"
                         >
-
                         </ScSlide>
-                        
                         <ScBrand className='middle2' style={{ textAlign: 'center' }}> {item?.brand}</ScBrand>
                       </div>
                     </SwiperSlide>

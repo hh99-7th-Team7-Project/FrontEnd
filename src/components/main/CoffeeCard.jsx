@@ -1,27 +1,22 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+//css
 import styled from 'styled-components';
-import { Swiper } from 'swiper/react';
 import { StarFilled, StarUnfilled } from '../../shared/svg/A-index';
 import Lens from './svg/Lens.svg';
-import LensBlack from './svg/LensBlack.svg';
-
-
 
 const CoffeeCard = ({item}) => {
 
 const navigate = useNavigate()
-// console.log(item.pricePair)
 const pricePair = item.pricePair
-// console.log(pricePair)
 const [brandLogo, setBrandLogo] = useState()
-
 
 const moveOnclick = () => {
 navigate(`/coffee/${item?.brand}/${item?.name}/${item?.id}`)
 }
 
+//로고사진스위치문
 useEffect(()=>{
 switch(item?.brand){
       case "스타벅스":
@@ -145,8 +140,6 @@ const SCcardText3 = styled.div`
 `;
 
 const ScBeforeHover = styled.div`
-    /* display: flex;
-    flex-direction: column; */
     text-align: center;
     margin: auto;
     @media screen and (max-width:768px){ 
@@ -155,12 +148,9 @@ const ScBeforeHover = styled.div`
     text-align  :center ;
     align-items: center;
     width: 100%;  
-    /* border: 1px red solid;   */
   }
 `
-const ScLogoWrap =styled.div`
-  
-`
+
 const ScLogo = styled.img`
     width: 70px;
     height: 70px;
@@ -198,7 +188,6 @@ const ScStar = styled.div`
     height: 66px;
     margin: 20px 0 21px 0;
     @media screen and (max-width:768px){ 
-    /* display: none; */
     margin:  0;
     height: 30px;
   }
@@ -219,7 +208,6 @@ const SCcardPrice = styled.div`
     border: 1px white solid;
     border-radius: 10px;
     width: 76px;
-    /* height: 21px; */
     @media screen and (max-width:768px){ 
     display: none;
   }
@@ -287,7 +275,6 @@ const ScLens = styled.img`
     @media screen and (max-width:768px){ 
           margin:0;
           border-radius: 10px;
-          /* width:180%; */
           font-size: 9px;
           margin-bottom: 10px;
         }
@@ -324,13 +311,10 @@ const SCcard = styled.div`
     width: 247px;
     height: 401px;
     margin: 30px;
-    /* border-radius: 30px; */
     &:hover {
       ${SChover}{
         opacity: 100%;
         background-color: #000000bc;
-        /* background: linear-gradient(to bottom, #aaaaaa40, #0000004b); */
-    
       }
     }
     @media screen and (max-width:768px){  

@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
-import { getCookie, setCookie } from '../../shared/Cookie';
+import { setCookie } from '../../shared/Cookie';
 import ImgSlideModal from './ImgSlideModal';
-import ImgSlideModal2 from './ImgSlideModal2';
-import Swal from 'sweetalert2';
+
 
 const Modal2 = ({showModal,closeModal}) => {
   const notSeenADay = ()=>{
@@ -11,22 +10,10 @@ const Modal2 = ({showModal,closeModal}) => {
     closeModal()
   }
 
-  // const notSeen = getCookie("not seen a day")
-  // if(!notSeen){
-  //    Swal.fire({
-  //   title: '모바일 버전은 준비중입니다ㅜㅠ',
-  //   text: '제발 웹으로 들어와주세요...',
-  //   icon: 'warning',
-  //   confirmButtonText: '확인',
-  // });
-  // } 
-
-
   return (
     <div>{showModal ? 
       <Background>
       <ModalContainer>
-      {/* <ImgSlideModal/> */}
       <ImgSlideModal/>
       <ScX onClick={closeModal}>✖</ScX>
       <ScBtn onClick={notSeenADay}>오늘 하루 보지 않기</ScBtn>
@@ -54,14 +41,9 @@ const ModalContainer = styled.div`
     position: fixed;
     left: 50%;
     top: 50%;
-    /* color: #2c278c; */
     transform: translate(-50%, -50%);
-    /* max-height: 80%; */
     max-width: 300px;
     width: 80%;
-    /* height: 65%; */
-    /* padding: 20px; */
-
     border-radius: 10px;
     text-align: center;
     font-size: 1em;
@@ -76,7 +58,6 @@ const ScX =styled.div`
 `;
 
 const ScBtn = styled.div`
-  /* background-color: #2c278c; */
   border: none;
   color: #000000;
   width: 130px;
@@ -84,7 +65,6 @@ const ScBtn = styled.div`
   font-weight: 100;
   border-radius: 10px;
   position: absolute;
-  /* bottom: 130px; */
   right: 25px;
   z-index: 99;
   &:hover {
