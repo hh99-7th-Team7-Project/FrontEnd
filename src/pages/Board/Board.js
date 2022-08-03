@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
 
-/** 페이지 이동 */
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-/** component */
-import { BoardList, PopularBoard, BoardListCategory } from "../../components/board/A-boardindex";
-import PopularBoardMobile from '../../components/board/PopularBoardMobile';
-
-/** svg 이미지 파일 import */
+//component
+import { BoardList, PopularBoard, BoardListCategory,PopularBoardMobile } from "../../components/board/A-boardindex"
+// css
+import styled from 'styled-components';
 import { boardwrite, BoardLogo, BoardMini1 } from '../../shared/svg/A-index'
 
-/** react-responsive 라이브러리 (모바일 적용) */
 import { useMediaQuery } from 'react-responsive';
 
 

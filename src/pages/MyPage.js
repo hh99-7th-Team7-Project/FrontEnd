@@ -38,7 +38,6 @@ const MyPage = () => {
     const profile = async () => {
       await apis.getMypage(userId)
       .then((res) => {
-        // console.log(res);
         setEmail(res.data);
         setNick(res?.data.nickname)
         setConvertImg(res?.data.profileImage)
@@ -51,7 +50,7 @@ const MyPage = () => {
 
    const [nick, setNick] = useState(); 
    const [convertImg, setConvertImg] = useState();
- 
+
   useEffect(() => {
     const boardCount = async () => {
       await apis.getMyBoardCount(userId)
@@ -152,7 +151,6 @@ const MyPage = () => {
                   convertImg ={convertImg}
                 />
                 <div>
-                  {/* <div onClick={() => { setUpdate(false) }} style={{marginLeft:"160px",marginBottom:"10px"}}>X</div> */}
                   <div style={{ marginRight: '120px'}}>
                     <div
                       style={{
@@ -173,7 +171,6 @@ const MyPage = () => {
             ) : (
               <ScMyprofile>
                 <UserPhoto convertImg={convertImg}/>
-                {/* <UserInfo email={email}/> */}
                 <div
                   style={{
                     display: 'flex',

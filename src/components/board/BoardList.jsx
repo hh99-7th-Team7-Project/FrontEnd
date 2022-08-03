@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import Styled from 'styled-components';
+//css
+import styled from 'styled-components';
 import '../../shared/css/dropdown.css';
-import BoardMap from './BoardMap';
+
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
-import BoardPagination from './Pagination/BoardPagination';
+
+//component
+import{ BoardPagination , BoardMap } from './A-boardindex'
+
 import * as Sentry from "@sentry/react";
 
 
 const BoardList = () => {
-  const [content, setContent] = useState();
-  // console.log(content)
   const token = getCookie('token');
 
+  const [content, setContent] = useState();
   const [totalpage , settotalPage ]= useState(0)
   const [page, setPage] =useState(0)
 
@@ -63,8 +66,7 @@ const BoardList = () => {
   );
 };
 
-const ScWrap = Styled.div`
-    /* border: 1px solid black; */
+const ScWrap = styled.div`
     max-width: 1200px;
     width: 90%;
     margin: auto;    
@@ -74,12 +76,12 @@ const ScWrap = Styled.div`
     padding: 10px 30px 0px 0px;
   }
 `;
-const ScBoard = Styled.div`    
+const ScBoard = styled.div`    
     width: 100%;
     height: 100%;
 `;
 
-const ScTable = Styled.div`
+const ScTable = styled.div`
     /* border: 1px solid black; */
     width: 100%;
     margin: 30px auto;
