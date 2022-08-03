@@ -7,13 +7,13 @@ import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import * as Sentry from "@sentry/react";
 
-const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike }) => {
-
+const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike, reportck,setReportck }) => {
+  console.log(head?.userId)
   const token = getCookie("token")
   const user = getCookie("userId")
   const like = async () => {
     if(token){
-      await apis.postBoardsLike(head?.category, boardId)
+      await apis.postBoardsLike(boardId)
       .then((res) => {
         // console.log(res.data)
       setLike(res?.data.postlove);
@@ -34,13 +34,14 @@ const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike }) => {
 
   const report =  async () => {
     const data ={
-      userId: 1,
-      postId: Number(head.id)
+      userId: Number(head?.userId),
+      reportId: Number(head?.id)
     }
     if(token){
       await apis.reportBoard(user,data)
       .then((res)=>{
         console.log(res)
+        setReportck(res.data)
       })
     }}
 
@@ -77,7 +78,7 @@ const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike }) => {
               📢공유
             </ScBtn2>
           </CopyToClipboard>
-          <ScBtn2 onClick={report}>⚠️신고</ScBtn2>
+          {reportck? <ScBtn2 style={{backgroundColor:"#ddd",color:"white"}}>신고완료</ScBtn2>:<ScBtn2 onClick={report}>⚠️신고</ScBtn2>}
         </ScBtnWrap2>
       </ScWrap>
       <ScHR />

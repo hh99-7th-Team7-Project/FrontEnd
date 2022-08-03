@@ -16,7 +16,7 @@ const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
   const nickname = getCookie('nickname');
   const bookmarkfunc = async () => {
     if(nickname){
-        await apis.postBoardsBookmark(head?.category, boardId)
+        await apis.postBoardsBookmark(boardId)
         .then((res) => {
       setBookmark(res.data);
     }).catch((e)=>{
