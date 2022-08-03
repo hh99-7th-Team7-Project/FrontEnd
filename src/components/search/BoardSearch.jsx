@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+/** 서버 api 통신 */
 import apis from '../../shared/api/main';
+/** 쿠키 가져오기 */
 import { getCookie } from '../../shared/Cookie';
+/** react-router-dom */
 import { useNavigate } from 'react-router-dom';
 //component
 import BoardMap from '../../components/board/BoardMap';

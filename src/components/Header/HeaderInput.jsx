@@ -1,7 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+/** CSS */
 import styled from 'styled-components';
-import zoom from './svg/Zoom.svg'
+/** react-router-dom */
+import { useNavigate } from 'react-router-dom';
+/** svg 이미지 import */
+import zoom from './svg/Zoom.svg';
+/** Swal alert */
 import Swal from 'sweetalert2';
 
 const HeaderInput = () => {

@@ -1,6 +1,9 @@
 import React from 'react'
+/** CSS */
 import styled from 'styled-components';
+/** react-router-dom */
 import { useNavigate } from 'react-router-dom';
+/** svg 이미지 import */
 import svg from './svg/Logo.svg'
 
 const Logo = () => {
