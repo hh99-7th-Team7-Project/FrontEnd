@@ -59,8 +59,6 @@ const apis = {
 //게시판
     getBoards: (page) => api.get(`/posts?page=${page}`),
     getBoardsLogin: (page) => api.get(`/auths/posts?page=${page}`),
-
-
     postBoardsLike: (id) => api.post(`/postslogin/postlove/${id}`),
     postBoardsBookmark: (id) => api.post(`/posts/bookmark/${id}`),
     getBoardsCategory: (category, page) => api.get(`/posts?category=${category}&page=${page}`),

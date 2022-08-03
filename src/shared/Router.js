@@ -12,7 +12,6 @@ import Login from '../pages/Login/Login';
 import KaKaoLogin from '../pages/Login/KaKaoLogin';
 import GoogleLogin from '../pages/Login/GoogleLogin';
 import Signup from '../pages/Signup';
-import AdminPage from '../pages/AdminPage';
 import Board from '../pages/Board/Board';
 import BoardDetail from '../pages/Board/BoardDetail';
 import BoardWrite from '../pages/Board/BoardWrite';
@@ -64,11 +63,7 @@ const Router = () => {
       <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
       <Route path="/oauth/google/callback" element={<GoogleLogin />} />
 
-      {/* Admin Page */}
-      <Route path="/admin" element={<AdminPage />} />
-
       {/* Main Page */}
-
       <Route path="/menucategory" element={<MenuCategory />} />
 
       {/** CafeDetail */}

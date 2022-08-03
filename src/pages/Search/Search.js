@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import { BoardSearch, CoffeeSearch } from '../../components/search/A-Search';
-import Header from '../Header/Header'
+
 
 const Search = () => {
   const{ keyword }= useParams()

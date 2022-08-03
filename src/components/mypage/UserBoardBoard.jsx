@@ -1,23 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
 import PopularBoardMap from '../board/PopularBoardMap';
+//css
+import styled from 'styled-components';
 import { left, right } from '../../shared/svg/A-index';
+//에러로그
 import * as Sentry from "@sentry/react";
 
 const UserBoardBoard = () => {
   const [content, setContent] = useState();
   const userId = getCookie('userId');
   const [count, setCount] = useState(0);
+
   const slideRef = useRef(null);
-  const TOTAL_SLIDES = 2;
   const [slide, setSlide] = useState();
-  const imgLength = 1000;
   const [curruntIdx, setCurrentIdx] = useState(0);
   
 
-  //내가쓴글
+  //내가쓴글슬라이드 총갯수 데이터 4로 나눔
   useEffect(() => {
     apis.getMyBoardBookmark(userId)
     .then((res) => {
@@ -80,10 +81,8 @@ const UserBoardBoard = () => {
 export default UserBoardBoard;
 
 const ScWrap = styled.div`
-  /* border: 1px solid black; */
   margin: 23px auto 0 auto;
   width: 1200px;
-  /* width: 100%; */
   height: 300px;
   background-color: #ddd;
   border-radius: 20px;

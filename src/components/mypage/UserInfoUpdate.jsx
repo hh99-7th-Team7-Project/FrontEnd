@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import apis from '../../shared/api/main';
-import { getCookie } from '../../shared/Cookie';
 
 const UserInfoUpdate = ({ setNick ,nick}) => {
-  // const userName = nick
   const nickInputRef = React.useRef();
 
   return (

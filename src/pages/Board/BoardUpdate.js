@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
+//css
 import styled from 'styled-components';
-
 /** react-router-dom */
 import { useNavigate, useParams } from 'react-router-dom';
-
 /** component */
 import {ToastEditUpdate,BoardCategoryUpdate } from '../../components/BoardWrite/A-boardwriteindex'
-
 /** api 서버 통신 */
-import apis from '../../shared/api/main';
-
+import apis from '../../shared/api/main'
 /** Sentry */
 import * as Sentry from "@sentry/react";
 

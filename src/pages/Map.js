@@ -3,8 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getCookie } from '../shared/Cookie';
 import '../shared/css/HoverBubble.css';
-import Header from './Header/Header';
-import { MapPin, Info, Pointer } from '../shared/svg/A-index';
+import { Info, Pointer } from '../shared/svg/A-index';
 
 const Map = (props) => {
   const { myLocation } = props;

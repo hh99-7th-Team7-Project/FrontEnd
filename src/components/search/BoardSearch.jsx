@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import BoardMap from '../../components/board/BoardMap';
 import apis from '../../shared/api/main';
 import { getCookie } from '../../shared/Cookie';
+import { useNavigate } from 'react-router-dom';
+//component
+import BoardMap from '../../components/board/BoardMap';
+//css
+import styled from 'styled-components';
+//error log
 import * as Sentry from "@sentry/react";
 
 const BoardSearch = (props) => {

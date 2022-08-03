@@ -1,6 +1,6 @@
 import React from 'react';
+//css
 import styled from 'styled-components';
-import { getCookie } from '../../shared/Cookie';
 
 const UserPhotoUpdate = ({ setNewProfileImg, setChangeImg , convertImg }) => {
 

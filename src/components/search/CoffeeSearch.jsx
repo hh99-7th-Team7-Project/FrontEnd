@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { __loadCoffee, __loadCoffees } from '../../redux/modules/coffee'
 import apis from '../../shared/api/main'
+//css
+import styled from 'styled-components'
+//component
 import CoffeeCard from '../main/CoffeeCard'
+//error log
 import * as Sentry from "@sentry/react";
 
 const CoffeeSearch = (props) => {
@@ -18,7 +18,7 @@ const CoffeeSearch = (props) => {
   const sliceCoffee = coffeeReducer?.slice(0,8)
 
 
-  //임시
+
   useEffect(()=>{
     const search = async()=>{
      await apis.searchCoffee(keyword)
