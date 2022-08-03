@@ -6,6 +6,7 @@
 <br />
 
 ## COFFIND 소개
+<img src="https://ifh.cc/g/QOLmWP.webp" />
 
 ### 서비스 개요💻
 
