@@ -41,7 +41,6 @@ const Router = () => {
     lng: '128.10945683000',
   });
   const [error, setError] = useState('');
-  // console.log(myLocation);
   useEffect(() => {
     if (navigator.geolocation) {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -50,7 +49,6 @@ const Router = () => {
           lat: position.coords.latitude, // 위도
           lng: position.coords.longitude, // 경도
         });
-        // console.log(myLocation);
       });
     } else {
       setError('Geolocation is not supported.');

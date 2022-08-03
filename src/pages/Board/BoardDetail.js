@@ -27,62 +27,69 @@ const BoardDetail = () => {
 
   const [bookmark, setBookmark] = useState();
   const [like, setLike] = useState();
+  const [totLike, setTotLike] = useState();
+  const [reportck, setReportck] = useState()
   const dispatch = useDispatch();
   const token = getCookie('token');
 
 
   //이유는 모르게쓴데 이전에 불려온 값이 뷰어로 들어가 ㅠㅠ
   useEffect(() => {
-    if(!token){
+    if (!token) {
       apis.getBoard(boardId).then((res) => {
         setContent(res?.data.content);
         setHead(res?.data)
+        setTotLike(res?.data.totalLove)
       }).catch(e => {
         Sentry.captureException(e);
       });
-    }else{
+    } else {
       apis.getBoardLogin(boardId).then((res) => {
         setContent(res?.data.content);
         setHead(res?.data)
         setBookmark(res?.data.bookmark)
         setLike(res?.data.loveCheck)
+        setTotLike(res?.data.totalLove)
+        setReportck(res?.data.report)
       }).catch(e => {
         Sentry.captureException(e);
       });
     }
-  }, [like]);
+  }, []);
 
-  // useEffect(()=>{
 
-  // },[like, bookmark])
 
   return (
     <><ScMini src={BoardMini2} alt="" />
-     <ScImgContainer>
-            <ScImg src={BoardImg} alt="" />
-            <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
-          </ScImgContainer>
-        <ScMobile>
-          <ScMobile2>
-            <ScWrap>
-              <BoardMain
-                head={boardReducer}
-                boardId={boardId}
-                bookmark2={bookmark}
-                setBookmark={setBookmark}
-              />
-              <BoardContent data={content} />
-              <BoardLike
-                head={boardReducer}
-                boardId={boardId}
-                like2={like}
-                setLike={setLike}
-              />
-              <BoardComment            
-              />
-            </ScWrap>
-          </ScMobile2>
-        </ScMobile>
+      <ScImgContainer>
+        <ScImg src={BoardImg} alt="" />
+        <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
+      </ScImgContainer>
+      <ScMobile>
+        <ScMobile2>
+          <ScWrap>
+            <BoardMain
+              head={boardReducer}
+              boardId={boardId}
+              bookmark2={bookmark}
+              setBookmark={setBookmark}
+            />
+            <BoardContent data={content} />
+            <BoardLike
+              head={boardReducer}
+              boardId={boardId}
+              like2={like}
+              setLike={setLike}
+              totLike={totLike}
+              setTotLike={setTotLike}
+              reportck={reportck}
+              setReportck={setReportck}
+            />
+            <BoardComment
+            />
+          </ScWrap>
+        </ScMobile2>
+      </ScMobile>
     </>
   );
 };

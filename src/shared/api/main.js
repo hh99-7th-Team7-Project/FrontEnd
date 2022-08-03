@@ -21,6 +21,7 @@ const apis = {
   getMyBoardCount: (userId) => api.get(`/mypage/myboards/${userId}`),
   getMyChatCount: (userId) => api.get(`/mypage/myChat/${userId}`),
   getMyChatRoom: (userId) => api.get(`/mypage/myChatRoom/${userId}`),
+  getMyReport:(userId) => api.get(`/mypage/report/${userId}`),
 
   //커피정보
   getCoffee: (brand) => api.get(`/coffees/${brand}`),
@@ -58,8 +59,10 @@ const apis = {
 //게시판
     getBoards: (page) => api.get(`/posts?page=${page}`),
     getBoardsLogin: (page) => api.get(`/auths/posts?page=${page}`),
-    postBoardsLike: (category,id) => api.post(`/postslogin/postlove/${id}`),
-    postBoardsBookmark: (category,id) => api.post(`/posts/bookmark/${id}`),
+
+
+    postBoardsLike: (id) => api.post(`/postslogin/postlove/${id}`),
+    postBoardsBookmark: (id) => api.post(`/posts/bookmark/${id}`),
     getBoardsCategory: (category, page) => api.get(`/posts?category=${category}&page=${page}`),
     getBoardsCategoryLogin: (category,page) => api.get(`/auths/posts/?category=${category}&page=${page}`),
     getBoardsLike:(page)=> api.get(`/posts?category=love&page=${page}`),
@@ -80,7 +83,15 @@ const apis = {
   searchBoardLogin: (keyword,page) => api.get(`/posts/searches?keyword=${keyword}&page=${page}`),
 
   //랜덤커피
-  randomCoffee: (brand, category, min, max) => api.get(`/coffees/random?brand=${brand}&category=${category}&min=${min}&max=${max}`),
+
+  randomCoffee1: (brand, min, max) => api.get(`/coffees/random?brand=${brand}&min=${min}&max=${max}`),
+  randomCoffee2: (category, min, max) => api.get(`/coffees/random?category=${category}&min=${min}&max=${max}`),
+  randomCoffee3: (brand, category, min, max) => api.get(`/coffees/random?brand=${brand}&category=${category}&min=${min}&max=${max}`),
+  randomCoffee4: (min, max) => api.get(`/coffees/random?min=${min}&max=${max}`),
+
+  //신고
+  reportBoard : (userId,data)=> api.post(`/reports/posts/${userId}`,data),
+  reportChat : (userId,data)=> api.post(`/reports/chatposts/${userId}`,data),
 };
 
 

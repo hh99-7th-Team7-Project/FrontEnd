@@ -22,7 +22,7 @@ const ChatDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
-
+  
   const [write, setWrite] = React.useState(false);
   const [chat, setChat] = React.useState(false);
   const [check, setCheck] = React.useState(true);
@@ -45,14 +45,23 @@ const ChatDetail = () => {
   const data = useSelector((state) => state.chat.one_list);
   const data2 = useSelector((state) => state.chat.member);
   const data3 = useSelector((state) => state.chat.first_member);
-  // console.log(data3)
+  console.log(data3)
 
   const mem_list = []
    const member = data2?.forEach((item,idx)=>{
     mem_list.push(`${item?.id}`)
   })
-  
-  // console.log(mem_list?.includes(_checkUser))
+
+  const report =  async () => {
+    const info ={
+      userId: Number(data3.id),
+      reportId: Number(data.chatpostId)
+    }
+      await apis.reportChat(_checkUser,info)
+      .then((res)=>{
+        console.log(res)
+      })
+    }
 
 
   const deleteChatItem = async () => {
@@ -63,27 +72,23 @@ const ChatDetail = () => {
   };
 
   //멤버리스트에 내가 포함되어있는거 구하기
- const members = data?.chatPostMember;
+  const members = data?.chatPostMember;
   const chatpostId = Number(data?.chatpostId);
 
   
   const upCount = async () => {
     const item = await apis.attendChatMember(chatpostId).then((res) => {
-      // console.log(res.data);
       setCheck(res.data.result);
-      // return dispatch(__loadOneChatItem(id));
     }).catch((e)=>{
       Sentry.captureException(e);
     })
   };
   const downCount = async () => {
     const item = await apis.attendChatMember(chatpostId).then((res) => {
-      // console.log(res.data);
       setCheck(res.data.result);
       setChat(false)
       setContent(true);
       setMap(true);
-      // return dispatch(__loadOneChatItem(id));
     }).catch((e)=>{
       Sentry.captureException(e);
     })
@@ -107,7 +112,6 @@ const ChatDetail = () => {
         {write === true ? (
           <WriteWrap>
             <Wrap>
-              {/* <Btn onClick={changeContent}>수정</Btn> */}
               <ChatWrite write={write} setWrite={setWrite} />
             </Wrap>
           </WriteWrap>
@@ -127,13 +131,7 @@ const ChatDetail = () => {
                   <Btn onClick={changeContent}>수정</Btn>
                   <Btn onClick={deleteChatItem}>삭제</Btn>
                 </div>
-              ) : null}
-              {/* {_checkUser === data?.nickname ? (
-                <div>
-                  <Btn onClick={changeContent}>수정</Btn>
-                  <Btn onClick={deleteChatItem}>삭제</Btn>
-                </div>
-              ) : null} */}
+              ) : <div onClick={report}>신고하기</div>}
             </BtnWrap>
            
             <ChatAttend
