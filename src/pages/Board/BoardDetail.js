@@ -1,27 +1,36 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import Header from '../Header/Header';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+
+/** params로 boardId 가져오기 */
+import { useParams } from 'react-router-dom';
+
+/** 서버 api 통신 */
+import apis from '../../shared/api/main';
+
+/** 쿠키 가져오기 */
+import { getCookie } from '../../shared/Cookie';
+
+/** component */
 import {
   BoardComment,
   BoardContent,
   BoardLike,
   BoardMain,
 } from '../../components/BoardDetail/A-BoardDetailIndex';
-import apis from '../../shared/api/main';
-import styled from 'styled-components';
-import { getCookie } from '../../shared/Cookie';
-import { useDispatch, useSelector } from 'react-redux';
-import { __loadBoardDetail } from '../../redux/modules/board';
-import BoardImg from './svg/BoardMain.svg';
-import * as Sentry from "@sentry/react";
+
+/** 이미지 import */
 import { BoardMini2 } from '../../shared/svg/A-index';
+import BoardImg from './svg/BoardMain.svg';
+
+
+/** Sentry */
+import * as Sentry from "@sentry/react";
+
 
 
 const BoardDetail = () => {
   const { boardId } = useParams();
 
-  const [loading, setLoading] = useState(false);
   const [content, setContent] = useState();
   const [boardReducer, setHead] = useState();
 
@@ -29,7 +38,6 @@ const BoardDetail = () => {
   const [like, setLike] = useState();
   const [totLike, setTotLike] = useState();
   const [reportck, setReportck] = useState()
-  const dispatch = useDispatch();
   const token = getCookie('token');
 
 
@@ -59,40 +67,41 @@ const BoardDetail = () => {
 
 
 
-  return (
-    <><ScMini src={BoardMini2} alt="" />
-      <ScImgContainer>
-        <ScImg src={BoardImg} alt="" />
-        <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
-      </ScImgContainer>
-      <ScMobile>
-        <ScMobile2>
-          <ScWrap>
-            <BoardMain
-              head={boardReducer}
-              boardId={boardId}
-              bookmark2={bookmark}
-              setBookmark={setBookmark}
-            />
-            <BoardContent data={content} />
-            <BoardLike
-              head={boardReducer}
-              boardId={boardId}
-              like2={like}
-              setLike={setLike}
-              totLike={totLike}
-              setTotLike={setTotLike}
-              reportck={reportck}
-              setReportck={setReportck}
-            />
-            <BoardComment
-            />
-          </ScWrap>
-        </ScMobile2>
-      </ScMobile>
-    </>
-  );
-};
+    return (
+      <>
+        <ScMini src={BoardMini2} alt="" />
+        <ScImgContainer>
+          <ScImg src={BoardImg} alt="" />
+          <ScTitle>커피를 사랑하는 사람들의 연구소</ScTitle>
+        </ScImgContainer>
+        <ScMobile>
+          <ScMobile2>
+            <ScWrap>
+              <BoardMain
+                head={boardReducer}
+                boardId={boardId}
+                bookmark2={bookmark}
+                setBookmark={setBookmark}
+              />
+              <BoardContent data={content} />
+              <BoardLike
+                head={boardReducer}
+                boardId={boardId}
+                like2={like}
+                setLike={setLike}
+                totLike={totLike}
+                setTotLike={setTotLike}
+                reportck={reportck}
+                setReportck={setReportck}
+              />
+              <BoardComment
+              />
+            </ScWrap>
+          </ScMobile2>
+        </ScMobile>
+      </>
+    );
+  };
 
 const ScMobile = styled.div`  
   margin: auto;

@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+/** redux */
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { __addComment } from '../../redux/modules/comment';
+
+/** react-router-dom */
+import { useParams } from 'react-router-dom';
+
+/** 쿠키 가져오기 */
 import { getCookie } from '../../shared/Cookie';
+
+/** Swal alert */
 import Swal from 'sweetalert2';
+
+/** react-responsive 라이브러리 (모바일 적용) */
 import { useMediaQuery } from 'react-responsive';
 
 const Comment = ({ item }) => {
+
   const [select, setSelect] = useState('');
 
   const starSelect = (e) => {
@@ -310,16 +321,6 @@ const ScCardAlign2 = styled.div`
   }
 `;
 
-const ScCardAlign3 = styled.div`
-  width: 400px;
-  padding: 2px 80px;
-`;
-
-const ScCommentSpan = styled.span`
-  color: black;
-  text-align: left;
-  left: 0;
-`;
 
 const ScDateSpan = styled.div`
   color: black;

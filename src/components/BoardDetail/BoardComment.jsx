@@ -1,22 +1,35 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+
+/** redux */
 import { useDispatch, useSelector } from 'react-redux';
+
+/** react-router-dom */
 import { useParams } from 'react-router-dom';
+
+/** component */
 import CommentMap from './CommentMap';
 import MobileCommentMap from './MobileCommentMap';
 import {
   __getBoardComment,
   __addBoardComment,
 } from '../../redux/modules/boardcomment';
+
+/** swal alert */
 import Swal from 'sweetalert2';
+
+/** 쿠키가져오기 */
 import { getCookie } from '../../shared/Cookie';
+
+/** react-responsive 라이브러리 */
 import { useMediaQuery } from 'react-responsive';
+
+
+
 
 const BoardComment = () => {
 
   const comment_list = useSelector((state) => state.boardComment.boardcommentlist);
-
-  // console.log(comment_list);
 
   const dispatch = useDispatch();
   const { boardId } = useParams();
