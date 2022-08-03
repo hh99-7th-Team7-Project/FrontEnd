@@ -121,6 +121,7 @@
 
 
 ## ⚙️ 아키텍쳐
+<img src="https://ifh.cc/g/2YHnlQ.jpg" />
 
 ## 코드컨벤션
 - 기본 카멜케이스사용
