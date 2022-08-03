@@ -5,8 +5,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 /** component */
-import BoardCategory from '../../components/BoardWrite/BoardCategory';
-import ToastEdit from '../../components/BoardWrite/ToastEdit';
+import {BoardCategory,ToastEdit } from '../../components/BoardWrite/A-boardwriteindex'
 
 /** 서버 api 통신 */
 import apis from '../../shared/api/main';
@@ -28,7 +27,6 @@ const BoardWrite = () => {
 
   //로그인 후 이용가능한 서비스 알람
   const islogin = getCookie('islogin');
-
   useEffect(() => {
     if (islogin === undefined) {
       Swal.fire({

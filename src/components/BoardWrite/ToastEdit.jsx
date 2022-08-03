@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import React, { useRef} from 'react';
 
 // Toast 에디터
 import { Editor } from '@toast-ui/react-editor';
@@ -8,11 +7,7 @@ import '@toast-ui/editor/dist/i18n/ko-kr';
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import 'tui-color-picker/dist/tui-color-picker.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadBoard } from '../../redux/modules/board';
-import { api, instance } from '../../shared/api/core/api';
 import apis from '../../shared/api/main';
-import styled from 'styled-components';
 
 const ToastEdit = (props) => {
   const { content } = props;

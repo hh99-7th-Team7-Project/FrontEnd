@@ -5,8 +5,7 @@ import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
 
 /** component */
-import ToastEditUpdate from '../../components/BoardWrite/ToastEditUpdate';
-import BoardCategoryUpdate from '../../components/BoardWrite/BoardCategoryUpdate';
+import {ToastEditUpdate,BoardCategoryUpdate } from '../../components/BoardWrite/A-boardwriteindex'
 
 /** api 서버 통신 */
 import apis from '../../shared/api/main';

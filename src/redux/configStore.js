@@ -4,7 +4,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import rootReducer from './modules';
 import commentReducer from './modules/comment';
 import coffeeReducer from './modules/coffee';
-import boardReducer from './modules/board';
 import boardCommentReducer from './modules/boardcomment';
 import chatReducer from './modules/chat';
 
@@ -13,7 +12,6 @@ const enhancer = composeWithDevTools(applyMiddleware(...middlewares));
 const rootReducer = combineReducers({
   comment: commentReducer,
   coffee: coffeeReducer,
-  board: boardReducer,
   chat: chatReducer,
   boardComment: boardCommentReducer,
 });
