@@ -1,24 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components';
 import apis from '../../shared/api/main';
-import PopularBoardMap from './PopularBoardMap';
+import { PopularBoardMap } from './A-boardindex';
+
+//css
+import styled from 'styled-components';
 import{ left,right }from '../../shared/svg/A-index'
+
 import { getCookie } from '../../shared/Cookie';
+
+//에러로그
 import * as Sentry from "@sentry/react";
 
 const PopularBoard = () => {
+
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState();
+    const [curruntIdx, setCurrentIdx] = useState(0);
+    const [count, setCount] = useState(0);
     const token = getCookie("token")
 
     const TOTAL_SLIDES = 2; 
-    const imgLength = 1000;
-    const [curruntIdx, setCurrentIdx] = useState(0);
-    const [count, setCount] = useState(0);
     const slideRef = useRef(null);
   
-
+    //슬라이드 넘기기
     const nextSlide = () => {
       if (curruntIdx >= TOTAL_SLIDES) {
           setCurrentIdx(0);
@@ -27,28 +31,28 @@ const PopularBoard = () => {
       }
   };
 
-  const prevSlide = () => {
-    if (curruntIdx === 0) {
-        setCurrentIdx(TOTAL_SLIDES);
-    } else {
-        setCurrentIdx((prev) => prev - 1);
-    }
-};
+  //슬라이드 넘기기
+    const prevSlide = () => {
+      if (curruntIdx === 0) {
+          setCurrentIdx(TOTAL_SLIDES);
+      } else {
+          setCurrentIdx((prev) => prev - 1);
+      }
+  };
 
-useEffect(() => {
-        slideRef.current.style.transition = `all 0.5s ease-in-out`;
-        slideRef.current.style.transform = `translateX(-${curruntIdx}120px)`;
-    }, [curruntIdx]);
+    //넘기는 모션
+      useEffect(() => {
+              slideRef.current.style.transition = `all 0.5s ease-in-out`;
+              slideRef.current.style.transform = `translateX(-${curruntIdx}120px)`;
+          }, [curruntIdx]);
 
-    const navigate = useNavigate()
-
+    //탑10가져오기
       useEffect(() => {  
         setLoading(true)
           const getMark = async () => {
             if(!token){
                await apis.getBoardsLike(0)
                         .then((res)=>{
-                            // console.log(res.data)
                             setContent(res.data.post.slice(0,10))
                           
                           }).catch((e)=>{
@@ -57,7 +61,6 @@ useEffect(() => {
             }else{
               await apis.getBoardsLikeLogin(0)
                       .then((res)=>{
-                          // console.log(res.data)
                           setContent(res.data.post.slice(0,10))
                         }).catch((e)=>{
                           Sentry.captureException(e);
@@ -66,6 +69,8 @@ useEffect(() => {
                         }
                       getMark()
                     }, [loading])
+
+
   return (
     <>
         <ScWrap>

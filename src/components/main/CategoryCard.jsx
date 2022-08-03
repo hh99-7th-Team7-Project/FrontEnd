@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+
+
 import CoffeeCard from './CoffeeCard';
 import {
   __loadCoffeeCategory,
 } from '../../redux/modules/coffee';
 import { useDispatch, useSelector } from 'react-redux';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -14,18 +13,18 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
 import styled, {keyframes } from 'styled-components';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const CategoryCard = (props) => {
-  // const{coffeeReducer} = props
+
   const [color, setColor] = useState(false);
-  const [brandName, setBrandName] = useState("ADE")
-  const navigate = useNavigate();
+  const [setBrandName] = useState("ADE")
   const dispatch = useDispatch();
-  const coffee = 'coffee';
+
   useEffect(() => {
     dispatch(__loadCoffeeCategory('ADE'));
   }, [dispatch]);
-// console.log(brandName)
+
   const coffeeReducer = useSelector((state) => state.coffee.list);
 
   const categoryList = [
@@ -105,7 +104,6 @@ const CategoryCard = (props) => {
       </div>
      
       <div>
-        {/* <ScBrand>{brandName}</ScBrand> */}
         <SCcardWrap>
           {coffeeReducer &&
             coffeeReducer.map((item, index) => {
@@ -133,16 +131,6 @@ const ScPrev = styled.div`
   }
 `
 
-const ScBrand = styled.div`
-/* border: 1px red solid; */
-font-size: 22px;
-margin-top: 20px;
-     @media screen and (max-width:768px){      
-      /* left: 3%;       */
-      display: none;
-  }
-`
-
 const ScNext = styled.div`
      @media screen and (max-width:768px){      
       right: 3%;           
@@ -150,15 +138,12 @@ const ScNext = styled.div`
 `
 
 const ScSlide = styled.div`
-  /* text-align: center; */
-  /* font-size: 1.125em; */
   width: 120px;
   height: 120px;
   transform: scale(0.8);
   background: no-repeat center;
   border: 1px solid var(--main);
   background-size: cover;
-
   border-radius: 60px;
 
   /* Center slide text vertically */
@@ -184,14 +169,12 @@ const ScSlide = styled.div`
     margin: 0;     
   }
 `;
-const SCcardWrap = Styled.div`
+const SCcardWrap = styled.div`
     margin: 0px ;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* border: 1px solid black; */
-    /* height: 600px; */
     @media screen and (max-width:768px){      
       display: flex;
       flex-direction: row;

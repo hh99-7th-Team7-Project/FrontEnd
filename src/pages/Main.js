@@ -1,120 +1,109 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-scroll';
+//css
+import RandomBg from '../components/main/svg/RandomBtnBg.svg';
 import styled from 'styled-components';
 import "../shared/css/flow.css"
-import { Link } from 'react-scroll';
-import RandomBg from '../components/main/svg/RandomBtnBg.svg';
-
 
 // components
-import  {BrandCard, ImgSlide, RandomCoffee, LottoPoint, RandomPicker, CategoryCard}from '../components/main/A-mainIndex'
-import Header from './Header/Header';
-import {flow, flower, MainCard1} from "../shared/svg/A-index"
+import { BrandCard, ImgSlide2, Modal2, ImgSlideMini, RandomPicker, CategoryCard, Modal } from '../components/main/A-mainIndex'
 import { Flower } from '../components/main/Flower';
-import { Footer } from '../components/Footer';
-import { Flow } from '../components/main/Flow';
-import Modal from '../components/main/Modal';
+
 import { getCookie } from '../shared/Cookie';
 import { useMediaQuery } from "react-responsive";
-import ImgSlide2 from '../components/main/ImgSlide2';
-import Modal2 from '../components/main/Modal2';
-import ImgSlideMini from '../components/main/ImgSlideMini';
 
 
 
 const Main = () => {
-const [category, setCategory] = useState(true)
-const [showModal, setShowModal] = useState(true);
-const [color, setColor] = useState('var(--main)');
-const [color2, setColor2] = useState('rgba(44, 39, 140, 0.4)');
-const [ randomOpenModal , setRandomOpenModal ] = useState(false);
+  const [category, setCategory] = useState(true)
+  const [showModal, setShowModal] = useState(true);
+  const [color, setColor] = useState('var(--main)');
+  const [color2, setColor2] = useState('rgba(44, 39, 140, 0.4)');
+  const [randomOpenModal, setRandomOpenModal] = useState(false);
 
-const notModal = getCookie("not seen a day")
+  const notModal = getCookie("not seen a day")
 
-const isMobile = useMediaQuery({
-  query: "(max-width: 768px)",
-});
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
 
-useEffect(()=>{
-  if(notModal){
-    setShowModal(false)
+  //하루 동안 보지않기 체크
+  useEffect(() => {
+    if (notModal) {
+      setShowModal(false)
+    }
+  }, [])
+
+  const openModal = () => {
+    setShowModal(true);
   }
-},[])
+  const closeModal = () => {
+    setShowModal(false);
+  }
 
-const openModal = () => {
-  setShowModal(true);
-}
-const closeModal = () => {
-  setShowModal(false);
-}
+  //랜덤커피 모달 
+  const randomOpen = () => {
+    setRandomOpenModal(true);
+  }
+  const randomClose = () => {
+    setRandomOpenModal(false);
+  }
 
-const randomOpen = () => {
-  setRandomOpenModal(true);
-}
-
-const randomClose = () => {
-  setRandomOpenModal(false);
-}
-
-const changeColor = ()=>{
- if(color2 === 'var(--main)'){
-  setColor2('rgba(44, 39, 140, 0.4)') 
-  setColor('var(--main)')}
-}
-
-const changeColor2 = ()=>{
-  if(color === 'var(--main)'){
-   setColor('rgba(44, 39, 140, 0.4)') 
-   setColor2('var(--main)')}
- }
+  //클릭 후 색 변하게
+  const changeColor = () => {
+    if (color2 === 'var(--main)') {
+      setColor2('rgba(44, 39, 140, 0.4)')
+      setColor('var(--main)')
+    }
+  }
+  const changeColor2 = () => {
+    if (color === 'var(--main)') {
+      setColor('rgba(44, 39, 140, 0.4)')
+      setColor2('var(--main)')
+    }
+  }
 
   return (
-    <>      
-      <div style={{position:"relative", width:"100%",overflow:"hidden"}}>
-        
-        <ImgSlideMini/>
-        <ImgSlide2/>
-        
-        <ScMaxWrap style={{maxWidth:"1230px",width:"100%", margin:"auto"}}>            
-            {/* <ScMapRandomWrap>
-              <RandomPicker />              
-            </ScMapRandomWrap> */}
-            <ScRandomWrap>
-              <ScRandomBtn src={RandomBg} alt="" onClick={()=>{randomOpen();}}/>
-            </ScRandomWrap>
-            <ScNavbarWrap>
-              <ScTitle id="Top">Menu</ScTitle>
-              <ScButtonWrap>
-                <ScCategory color={color}
-                  onClick={()=>{
+    <>
+      <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+
+        <ImgSlideMini />
+        <ImgSlide2 />
+
+        <ScMaxWrap style={{ maxWidth: "1230px", width: "100%", margin: "auto" }}>
+          <ScRandomWrap>
+            <ScRandomBtn src={RandomBg} alt="" onClick={() => { randomOpen(); }} />
+          </ScRandomWrap>
+          <ScNavbarWrap>
+            <ScTitle id="Top">Menu</ScTitle>
+            <ScButtonWrap>
+              <ScCategory color={color}
+                onClick={() => {
                   setCategory(true)
                   changeColor()
-                  }}>브랜드
-                </ScCategory>
-                <p>|</p>
-                <ScCategory2
-                  color2={color2}
-                  onClick={()=>{setCategory(false)
+                }}>브랜드
+              </ScCategory>
+              <p>|</p>
+              <ScCategory2
+                color2={color2}
+                onClick={() => {
+                  setCategory(false)
                   changeColor2()
-                  }}>음료
-                </ScCategory2>
-              </ScButtonWrap>
-            </ScNavbarWrap>            
-             {category?<BrandCard/>:<CategoryCard/>}    
+                }}>음료
+              </ScCategory2>
+            </ScButtonWrap>
+          </ScNavbarWrap>
+          {category ? <BrandCard /> : <CategoryCard />}
         </ScMaxWrap>
         <ScTopBtnWrap>
-            <Link to="Top" spy={true} smooth={true}>
-              <ScTopBtn>&#129137;</ScTopBtn>
-            </Link>
+          <Link to="Top" spy={true} smooth={true}>
+            <ScTopBtn>&#129137;</ScTopBtn>
+          </Link>
         </ScTopBtnWrap>
-        { isMobile ? <Modal2 showModal={showModal} closeModal={closeModal}/> : <Modal showModal={showModal} closeModal={closeModal}/>}
-        { randomOpenModal ? <RandomPicker closeModal={randomClose} /> : null }
-        
-          {/* <Flow/> */}
-      <Flower/>
-      </div>    
-      {/* <Footer/> */}
-
+        {isMobile ? <Modal2 showModal={showModal} closeModal={closeModal} /> : <Modal showModal={showModal} closeModal={closeModal} />}
+        {randomOpenModal ? <RandomPicker closeModal={randomClose} /> : null}
+        <Flower />
+      </div>
     </>
   )
 }
@@ -182,7 +171,7 @@ const ScTitle = styled.div`
   }
 `;
 
-const ScNavbarWrap =styled.div`
+const ScNavbarWrap = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;

@@ -16,7 +16,6 @@ const BoardCategoryUpdate = ({title, cate, head}) => {
   const clickRadio = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
-    // console.log(e.target.value)
     setClick(true)
     setClick2(false)
     setClick3(false)
@@ -24,7 +23,6 @@ const BoardCategoryUpdate = ({title, cate, head}) => {
   const clickRadio2 = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
-    // console.log(e.target.value)
     setClick(false)
     setClick2(true)
     setClick3(false)
@@ -32,7 +30,6 @@ const BoardCategoryUpdate = ({title, cate, head}) => {
   const clickRadio3 = (e) =>{
     setX(e.target.value)
     cate(e.target.value)
-    // console.log(e.target.value)
     setClick(false)
     setClick2(false)
     setClick3(true)

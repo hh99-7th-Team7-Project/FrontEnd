@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 // 페이지
@@ -11,9 +11,7 @@ import MyPage from '../pages/MyPage';
 import Login from '../pages/Login/Login';
 import KaKaoLogin from '../pages/Login/KaKaoLogin';
 import GoogleLogin from '../pages/Login/GoogleLogin';
-import NaverLogin from '../pages/Login/NaverLogin';
 import Signup from '../pages/Signup';
-import AdminPage from '../pages/AdminPage';
 import Board from '../pages/Board/Board';
 import BoardDetail from '../pages/Board/BoardDetail';
 import BoardWrite from '../pages/Board/BoardWrite';
@@ -57,20 +55,15 @@ const Router = () => {
 
   return (
     <>
+    {/* 헤더가 필요한 영역 */}
     <Routes>
-      {/* 헤더가 필요한 영역 */}
       <Route element={isMobile ? <MobileHeader/> : <Header/>}>
       <Route path="/" element={<Main myLocation={myLocation} />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/oauth/kakao/callback" element={<KaKaoLogin />} />
       <Route path="/oauth/google/callback" element={<GoogleLogin />} />
-      <Route path="/oauth/naver/callback" element={<NaverLogin />} />
-
-      {/* Admin Page */}
-      <Route path="/admin" element={<AdminPage />} />
 
       {/* Main Page */}
-
       <Route path="/menucategory" element={<MenuCategory />} />
 
       {/** CafeDetail */}

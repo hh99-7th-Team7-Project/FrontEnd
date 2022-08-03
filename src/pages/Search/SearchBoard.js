@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import BoardMap from '../../components/board/BoardMap';
 import { Link } from 'react-scroll';
 import apis from '../../shared/api/main';
-import Header from '../Header/Header';
 import { getCookie } from '../../shared/Cookie';
 import BoardPagination from '../../components/board/Pagination/BoardPagination';
 import * as Sentry from "@sentry/react";
@@ -24,7 +23,6 @@ const SearchBoard = () => {
         apis
           .searchBoard(keyword, page)
           .then((res) => {
-            // console.log(res);
             setBoardReducer(res?.data.post);
             settotalPage(res?.data.totalPage)
           }).catch(e => {
@@ -33,7 +31,6 @@ const SearchBoard = () => {
       } else {
         apis.searchBoardLogin(keyword, page)
           .then((res) => {
-            // console.log(res);
             setBoardReducer(res?.data.post);
             settotalPage(res?.data.totalPage)
           }).catch(e => {

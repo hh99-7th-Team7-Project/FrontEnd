@@ -17,14 +17,12 @@ import { getCookie } from '../../shared/Cookie';
 import * as Sentry from "@sentry/react";
 
 const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike, reportck,setReportck }) => {
-  // console.log(head?.userId)
   const token = getCookie("token")
   const user = getCookie("userId")
   const like = async () => {
     if(token){
       await apis.postBoardsLike(boardId)
       .then((res) => {
-        // console.log(res.data)
       setLike(res?.data.postlove);
       setTotLike(res?.data.postloveCount)
     }).catch((e)=>{
@@ -49,7 +47,6 @@ const BoardLike = ({ head, boardId, like2, setLike, totLike, setTotLike, reportc
     if(token){
       await apis.reportBoard(user,data)
       .then((res)=>{
-        // console.log(res)
         setReportck(res.data)
       })
     }else{

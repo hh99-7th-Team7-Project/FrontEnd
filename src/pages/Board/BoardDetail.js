@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 /** params로 boardId 가져오기 */
 import { useParams } from 'react-router-dom';
-
 /** 서버 api 통신 */
 import apis from '../../shared/api/main';
-
 /** 쿠키 가져오기 */
 import { getCookie } from '../../shared/Cookie';
-
 /** component */
 import {
   BoardComment,
@@ -17,12 +13,9 @@ import {
   BoardLike,
   BoardMain,
 } from '../../components/BoardDetail/A-BoardDetailIndex';
-
-/** 이미지 import */
+//css
 import { BoardMini2 } from '../../shared/svg/A-index';
 import BoardImg from './svg/BoardMain.svg';
-
-
 /** Sentry */
 import * as Sentry from "@sentry/react";
 

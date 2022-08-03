@@ -1,16 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import apis from '../../shared/api/main';
-import { getCookie } from '../../shared/Cookie';
 
 const UserInfoUpdate = ({ setNick ,nick}) => {
-  // const userName = nick
   const nickInputRef = React.useRef();
-  const [oknickname, setokNickname] = React.useState(false);
-  const [condition, setCondition] = React.useState('값이 나오나');
-
-  // console.log(condition);
-
 
   return (
     <div>

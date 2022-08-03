@@ -23,16 +23,8 @@ const MobileCommentMap = () => {
   const { boardId } = useParams();
   const nickname = getCookie('nickname');
   const comment_list = useSelector((state) => state.boardComment.boardcommentlist);
-
-  // console.log(comment_list)
-
-
   const [showUpdate, setShowUpdate] = useState(false);
   const [commentId, setCommentId] = useState();
-
-
-  // console.log(commentId);
-
 
 
   return (

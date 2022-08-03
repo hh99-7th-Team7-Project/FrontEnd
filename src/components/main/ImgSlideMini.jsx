@@ -1,23 +1,23 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import React from "react";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { MainCard1, MiniBanner } from '../../shared/svg/A-index';
 import { Pagination } from "swiper";
-
+import { MiniBanner } from '../../shared/svg/A-index';
 
 // Import Swiper styles
 import "swiper/css/bundle";
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../shared/css/swiper.css";
+import styled from "styled-components";
 
 const ImgSlideMini = () => {
   return (
     <>
     <ScMobile>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-        <SwiperSlide><a href="https://forms.gle/yGy74NsTZwQJWycVA" target="_blank"><img src={MiniBanner} alt=""/></a></SwiperSlide>
+        <SwiperSlide><a href="https://forms.gle/yGy74NsTZwQJWycVA" target="_blank" rel="noreferrer"><img src={MiniBanner} alt=""/></a></SwiperSlide>
       </Swiper>
     </ScMobile>
   </>

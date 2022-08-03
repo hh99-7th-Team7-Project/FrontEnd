@@ -1,24 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { deleteCookie, getCookie, setCookie } from '../shared/Cookie';
-import Header from './Header/Header';
+import apis from '../shared/api/main';
+//컴포넌트
 import {
   UserBoardBoard,
   UserBoardWrite,
-  UserInfo,
   UserPhoto,
   UserBoardCoffee,
   UserInfoUpdate,
   UserPhotoUpdate,
+  UserChat
 } from '../components/mypage/index';
+//css
 import styled from 'styled-components';
-import apis from '../shared/api/main';
 import { Pencil, Write, Moiim, MypageLogo, MypageMini } from '../shared/svg/A-index';
+//에러로그
 import * as Sentry from "@sentry/react";
-import UserChat from '../components/mypage/UserChat';
+
 
 const MyPage = () => {
-  const userId = getCookie('userId'); //아직설정안해쓰
-  const nickOrigin = getCookie('nickname');
+  const userId = getCookie('userId');
   const profileOrigin = getCookie('profileImg');
   const [menu, setMenu] = useState(1);
 
@@ -51,6 +52,7 @@ const MyPage = () => {
    const [nick, setNick] = useState(); 
    const [convertImg, setConvertImg] = useState();
 
+   //유저 글쓴갯수, 유저참여채팅방,유저 신고횟수
   useEffect(() => {
     const boardCount = async () => {
       await apis.getMyBoardCount(userId)
@@ -86,7 +88,6 @@ const MyPage = () => {
     //formdata로 이미지 변환
     const form = new FormData();
     form.append('imgUrl', newProfileImg);
-    // console.log(form);
     //만약 이미지값이 변경 되었다면 이미지 변환성공하면 그 url값 받아서 수정정보에 넣어서 보내줌 put
     if (changeImg) {
       const update = await apis
@@ -128,7 +129,6 @@ const MyPage = () => {
     }
   };
   
-  const userName = getCookie('nickname');
 
   return (
     <>
@@ -257,13 +257,10 @@ const MyPage = () => {
                   </ScBookmarkCategory4>
                 </div>
               </ScBookmarkwrap>
-              {/* <ScBookWrap> */}
               {menu === 1 && <UserBoardCoffee />}
               {menu === 2 && <UserBoardBoard />}
               {menu === 3 && <UserBoardWrite />}
               {menu === 4 && <UserChat />}
-              {/* {(menu===3)&&<UserBoardWrite/>} */}
-              {/* </ScBookWrap> */}
             </div>
           </ScBookmark>
         </ScWrap>
@@ -361,10 +358,6 @@ const ScMyprofile = styled.div`
 const ScBookmark = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: flex-start; */
-  /* left: 0; */
-  /* font-size: 1.5em; */
   @media screen and (max-width: 768px){
     display: flex;
     flex-direction: column;
@@ -373,14 +366,6 @@ const ScBookmark = styled.div`
     margin: 20px auto;
     width: 90%;
   }
-`;
-const ScBookWrap = styled.div`
-  background-color: #ddd;
-  position: relative;
-  border-radius: 10px;
-  height: 315px;
-  /* min-width: 1200px; */
-  width: 100%;
 `;
 
 const ScBookmarkCategory = styled.div`

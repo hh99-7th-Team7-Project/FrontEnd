@@ -1,20 +1,18 @@
 import React from 'react';
+//css
 import styled from 'styled-components';
-import { getCookie } from '../../shared/Cookie';
 
 const UserPhotoUpdate = ({ setNewProfileImg, setChangeImg , convertImg }) => {
-  // const profileImg = convertImg;
-  // console.log(convertImg)
+
   const [fileImage, setFileImage] = React.useState(convertImg);
   const fileInputRef = React.useRef();
-  // console.log(fileInputRef?.current.files[0])
+
 
   //프로필 사진 업로드
   const saveFileImage = async (e) => {
     setFileImage(URL.createObjectURL(e.target.files[0]));
     setNewProfileImg(fileInputRef?.current.files[0]);
     setChangeImg(true);
-    // setProfileImage(e.target.files)
   };
   //input창 숨기고 사진 넣기
   const onClickImageUpload = () => {

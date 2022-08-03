@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 //router
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 //cookie
 import { setCookie } from '../../shared/Cookie'
 //apis
@@ -9,31 +9,19 @@ import apis from '../../shared/api/main'
 import Swal from 'sweetalert2';
 
 //소셜로그인
-import KaKaoLogin from './KaKaoLogin'
-import GoogleLogin from './GoogleLogin'
-import NaverLogin from './NaverLogin'
-import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL, NAVER_AUTH_URL } from '../../shared/SocialOAuth'
-
+import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL} from '../../shared/SocialOAuth'
+//css
 import styled from 'styled-components'
 import character from '../../shared/svg/MainCharacter2.svg'
-import { motion, AnimatePresence } from "framer-motion"
-import Modal from '../../components/main/Modal'
+//애니메이션등장
+import { motion } from "framer-motion"
 
 const Login = (props) => {
 
   const navigate = useNavigate()
-  //ref
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
 
-const [showModal, setShowModal] = useState(false);
-
-const openModal = () => {
-  setShowModal(true);
-}
-const closeModal = () => {
-  setShowModal(false);
-}
   //로그인 onclick
   const loginClick = async () => {
     try {
@@ -43,9 +31,6 @@ const closeModal = () => {
           password: passwordRef.current.value
         }
       )
-
-      // console.log(response)
-      // console.log(response.headers)
 
       //쿠키설정
       setCookie("token", response.headers.authorization.split(" ")[1])
@@ -108,17 +93,6 @@ const closeModal = () => {
         <ScSocialWrap>
           <div>
           <a href={GOOGLE_AUTH_URL}><ScImg src="/구굴.jpg" /></a></div>
-          {/* <a href={NAVER_AUTH_URL}> */}
-          {/* <div>
-          <ScImg src="/네이버.png" onClick={()=>{
-            Swal.fire({
-              title: '준비중입니다.',
-              icon: 'info',
-              confirmButtonText: '확인',
-            })
-          }} 
-          /></div> */}
-          {/* </a> */}
           <div><a href={KAKAO_AUTH_URL}><ScImg src="/카카오.jpg" /></a></div>
         </ScSocialWrap>
       </ScLogin>
@@ -134,7 +108,6 @@ display: flex;
 width: 100%;
 @media screen and (max-width: 768px){
     margin: auto;
-    /* width: 40%; */
   }
 `
 
@@ -152,7 +125,6 @@ const ScLogo = styled.img`
 
 
 const ScHeadWrap = styled.div`
-/* background-color: yellow; */
 margin-bottom: 48px;
 text-align: center;
 
@@ -165,18 +137,10 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 @media screen and (max-width: 768px){
-    /* margin: auto; */
     width: 40%;
     padding-right:0;
     
   }
-`
-const ScImageBox = styled.div`
-flex:4;
-height: 100vh;
-/* position: absolute; */
-background: url('https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/d818028e-d92a-4077-b35e-41f3c945e4a9.jpeg') center center no-repeat;
-background-size:cover;
 `
 
 const ScInputWrap = styled.div`
@@ -194,7 +158,6 @@ input{
     color: black;
   }
   @media screen and (max-width: 768px){
-    /* margin: auto; */
     width: 100%;
     input{
   padding-left: 20px ;
@@ -240,7 +203,6 @@ margin: 5px 0;
 border: none;
 }
 @media screen and (max-width: 768px){
-    /* margin: auto; */
     width: 90%;
     padding-right:0;
     button{
@@ -255,14 +217,7 @@ justify-content: center;
 align-items: center;
 width: 300px;
 gap:40px;
-/* border: 1px solid black; */
 padding: 0 90px;
-a{
-  /* display: flex;
-  margin: 5px 20px; */
-}div{
-
-}
 @media screen and (max-width: 768px){
     /* margin: auto; */
     width: 100%;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+//css
 import styled from 'styled-components';
-import Header from './Header/Header';
+//component
 import { BrandCard, CategoryCard } from '../components/main/A-mainIndex';
-import { Flower } from '../components/main/Flower';
 import { Link } from 'react-scroll';
 
 const MenuCategory = () => {
@@ -24,7 +24,6 @@ const MenuCategory = () => {
 
   return (
     <>
-      {/* <Flower /> */}
       <ScMaxWrap id="Top">
         <ScNavbarWrap>
           <ScButtonWrap>

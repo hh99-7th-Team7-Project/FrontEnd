@@ -24,7 +24,6 @@ import Swal from 'sweetalert2';
 
 const BoardMain = ({ head, boardId, bookmark2, setBookmark }) => {
   const navigate = useNavigate();
-  // console.log(head)
   const nickname = getCookie('nickname');
   const bookmarkfunc = async () => {
     if(nickname){
