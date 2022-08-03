@@ -1,23 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+//css+스와이퍼
+import styled from "styled-components";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Pagination,Navigation } from "swiper";
+//에러로그
 import * as Sentry from "@sentry/react";
 
-// import "./styles.css";
-import { Pagination,Navigation } from "swiper";
 import { getCookie } from "../../shared/Cookie";
 import apis from "../../shared/api/main";
-import PopularBoardMap from "./PopularBoardMap";
-import styled from "styled-components";
+//컴포넌트
+import { PopularBoardMap } from './A-boardindex';
 
 const PopularBoardMobile = () => {
+
   const token = getCookie("token")
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState();
 
+  //탑10 가져오기
   useEffect(() => {  
     setLoading(true)
       const getMark = async () => {

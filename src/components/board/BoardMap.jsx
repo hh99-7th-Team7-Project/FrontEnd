@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 
+//css
+import styled from 'styled-components';
 import {
   bookmark,
   bookmarkck,
@@ -10,17 +11,18 @@ import {
 } from '../../shared/svg/A-index';
 
 const BoardMap = (props) => {
-  const navigate = useNavigate();
- 
   const { content } = props;
-
   const create = content?.createdAt.split('T')[0];
+  
+  const navigate = useNavigate();
+
+
   const moveToBoard = (e) => {
     navigate(`/board/${content?.id}`);
   };
 
   return (
-    <ScBoardList  onClick={moveToBoard}>
+    <ScBoardList onClick={moveToBoard}>
       <ScHeader>
         <div>
           {content?.category === '나만의 비밀 레시피' && (
