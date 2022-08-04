@@ -2,7 +2,7 @@
   max-width: 1200px;
   width: 90%;
   margin: auto;
-  transform: translateY(80%);
+  transform: translate(23%,90%);
   /*        부모의 자식 요소가 3차원의 애니메이션 효과를 가질때, 300px의 거리에서 보는 원근감을 줌*/
   perspective: 2300px;
   z-index: 100;
