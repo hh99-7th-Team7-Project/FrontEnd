@@ -1,19 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 //라우터에서 특정페이지에서만 헤더나오게 설정
 import {Outlet} from "react-router"
 //css
+import styled from 'styled-components';
 import {
   Button,
   Category,
   HeaderInput,
   Logo,
 } from '../../components/Header/A-HeaderIndex';
-
-import styled from 'styled-components';
-
-
-
 
 
 const Header = () => {

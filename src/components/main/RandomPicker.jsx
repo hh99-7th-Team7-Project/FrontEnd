@@ -515,6 +515,7 @@ const ScRandomWrap = Styled.div`
     height: 500px;
     margin: -100px auto;
     font-size: 0.7em;
+    transform: translate(-50%, -50%);
   }   
 `;
 
@@ -535,7 +536,7 @@ const ScRandomWrapBack = styled.div`
     background-image: url(${RandomBackBg});
     background-size: 130%;
     background-position: 20%;
-    transform: translate(-53%, -50%);
+    transform: translate(-50%, -50%);
     }
 
     

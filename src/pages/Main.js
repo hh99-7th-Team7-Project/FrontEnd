@@ -109,14 +109,6 @@ const Main = () => {
 }
 
 
-const ScMapRandomWrap = styled.div`
-  display: flex; 
-  flex-direction : row;
-  /* flex-wrap: wrap; */
-  justify-content: space-between;
-  align-items: center;
-  margin: 84px auto 79px;
-`;
 
 const ScRandomWrap = styled.div`
   @media screen and (max-width: 768px) {
@@ -157,12 +149,10 @@ width:100%;
  margin:auto;
  @media screen and (max-width: 768px) {
   max-width:100%;
-  /* border: 1px red solid; */
   }
 `
 
 const ScTitle = styled.div`
-  /* margin-bottom: 46px;  */
   font-size:35px;
   color: var(--main); 
   font-family: SUIT ExtraBold;
