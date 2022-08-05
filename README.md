@@ -127,7 +127,6 @@
 <a href="https://github.com/hh99-7th-Team7-Project/FrontEnd/wiki/%EC%BD%94%EB%93%9C%EC%BB%A8%EB%B2%A4%EC%85%98">코드컨벤션 보러 가기</a>
 
 
-## 🔨 Trouble Shooting
 
 <br/>
 
